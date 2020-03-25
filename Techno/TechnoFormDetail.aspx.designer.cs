@@ -283,6 +283,51 @@ namespace ClaimProject.Techno {
         protected global::System.Web.UI.WebControls.Button btnNoteToCpoy;
         
         /// <summary>
+        /// divFileUploalNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFileUploalNote;
+        
+        /// <summary>
+        /// FileUploalNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUploalNote;
+        
+        /// <summary>
+        /// btnUploadNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnUploadNote;
+        
+        /// <summary>
+        /// FileNoteGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView FileNoteGridView;
+        
+        /// <summary>
+        /// check49 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label check49;
+        
+        /// <summary>
         /// Div1 control.
         /// </summary>
         /// <remarks>
@@ -346,22 +391,31 @@ namespace ClaimProject.Techno {
         protected global::System.Web.UI.WebControls.Label lbDateOrderEnd;
         
         /// <summary>
-        /// ImageOrder control.
+        /// FileEditEQ control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageOrder;
+        protected global::System.Web.UI.WebControls.FileUpload FileEditEQ;
         
         /// <summary>
-        /// btnDownloadOrder control.
+        /// lbtnchangeimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnDownloadOrder;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnchangeimg;
+        
+        /// <summary>
+        /// gridquatation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridquatation;
         
         /// <summary>
         /// Div4 control.

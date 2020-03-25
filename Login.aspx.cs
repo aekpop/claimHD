@@ -13,8 +13,9 @@ namespace ClaimProject
         {
             if (!this.IsPostBack)
             {
-                string sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
+                string sql = "SELECT * FROM tbl_cpoint WHERE cpoint_login = '1' ORDER BY cpoint_id";
                 function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
+                
             }
         }
 
@@ -54,13 +55,17 @@ namespace ClaimProject
                             cpoint = txtCpoint.SelectedValue;
                         }
                         // Storee Session
+                        Session.Add("NewEQPK", "");
+                        Session.Add("NewEQPKtype", "");
                         Session.Add("User", txtUser.Text);
                         Session.Add("UserName", rs.GetString("name"));
                         Session.Add("UserPrivilegeId", rs.GetString("level"));
                         Session.Add("UserPrivilege", function.GetLevel(int.Parse(rs.GetString("level"))));
                         Session.Add("UserCpoint", cpoint);
-                        Session.Timeout = 60 * 24;
-
+                        Session.Timeout = 28800;
+                        
+                        
+                        
                         //Response.Charset = "UTF-8";
                         HttpCookie newCookie = new HttpCookie("ClaimLogin");
                         newCookie["User"] = txtUser.Text;
@@ -68,10 +73,19 @@ namespace ClaimProject
                         newCookie["UserPrivilegeId"] = rs.GetString("level");
                         newCookie["UserPrivilege"] = function.GetLevel(int.Parse(rs.GetString("level")));
                         newCookie["UserCpoint"] = cpoint;
-                        newCookie.Expires = DateTime.Now.AddDays(1);
+                        //newCookie.Expires = DateTime.Now.AddDays(1);
+                        newCookie.Expires = DateTime.Now.AddSeconds(30);
                         Response.Cookies.Add(newCookie);
                         //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language = 'javascript'>alert('dd')</script>");
-                        Response.Redirect("/");
+                        if(Session["UserPrivilegeId"].ToString() == "5" )
+                        {
+                            Response.Redirect("/equip/EquipMain");
+                        }
+                        else
+                        {
+                            Response.Redirect("/");
+                        }
+                        
                     }
                     else
                     {

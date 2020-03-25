@@ -21,11 +21,18 @@ namespace ClaimProject
             {
                 if (!function.CheckLevel("Department",Session["UserPrivilegeId"].ToString()))
                 {
-                    Response.Redirect("/Claim/DefaultClaim");
+                    if(Session["UserPrivilegeId"].ToString() == "5")
+                    {
+                        Response.Redirect("/equip/EquipMain");
+                    }
+                    else 
+                    {
+                        Response.Redirect("/Claim/DefaultClaim");
+                    }
+                    
                 }
             }
 
-            
             if (!this.IsPostBack)
             {
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
@@ -37,7 +44,11 @@ namespace ClaimProject
 
         private void getStatusAmount(Label label, int status, string year)
         {
-            string sql = "SELECT COUNT(*) AS count_num FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status LEFT JOIN tbl_user ON username = claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' AND c.claim_status = '" + status + "' AND c.claim_budget_year = '" + year + "'";
+            string sql = "SELECT COUNT(*) AS count_num FROM tbl_claim c " +
+                         " JOIN tbl_cpoint ON claim_cpoint = cpoint_id " +
+                         " JOIN tbl_status ON status_id = claim_status " +
+                         "  LEFT JOIN tbl_user ON username = claim_user_start_claim " +
+                         " JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' AND c.claim_status = '" + status + "' AND c.claim_budget_year = '" + year + "'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
@@ -55,8 +66,8 @@ namespace ClaimProject
         private void getBind(string year)
         {
             getStatusAmount(lbAlert, 1, year);
-            getStatusAmount(lbQuote, 2, year);
-            getStatusAmount(lbSend, 3, year);
+            getStatusAmount(lbQuote, 3, year);
+            getStatusAmount(lbSend, 2, year);
             getStatusAmount(lbRepair, 4, year);
             getStatusAmount(lbSuccess, 5, year);
             getStatusAmount(lbReport, 6, year);
@@ -101,7 +112,7 @@ namespace ClaimProject
         {
             SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
             //serviceLine.GetData(5555, true);
-            serviceLine.MessageToServer(DropDownList1.SelectedValue, TextBox1.Text,TextBox2.Text.Trim(), 1,430);
+            serviceLine.MessageToServer(DropDownList1.SelectedValue, TextBox1.Text /*+ DropDownList1.SelectedValue.ToString()*/, TextBox2.Text.Trim(), 1,430);
             //function.MessageLine(DropDownList1.SelectedValue, TextBox1.Text);
             TextBox1.Text = "";
             TextBox2.Text = "";

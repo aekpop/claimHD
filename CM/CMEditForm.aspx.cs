@@ -13,6 +13,10 @@ namespace ClaimProject.CM
     {
         ClaimFunction function = new ClaimFunction();
         public string cm_id = "";
+        public string alert = "";
+        public string alertType = "";
+        public string icon = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] == null)
@@ -24,8 +28,8 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
-                BindData("");
-
+                function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
@@ -39,33 +43,42 @@ namespace ClaimProject.CM
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     //txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 }
+                BindData();
             }
+
         }
 
-        void BindData(string key)
+
+        void BindData()
         {
             string sql = "";
-            string sqlPlus = "";
-            if (Session["UserCpoint"].ToString() != "0")
+            string checkCpoint = txtCpointSearch.SelectedValue;
+            if(checkCpoint == "")
             {
-                sqlPlus = "AND c.cpoint_id = '" + Session["UserCpoint"].ToString() + "'";
+                sql += "SELECT * FROM tbl_cm_detail cm " +
+                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " WHERE cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
+                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
-            if (key != "")
+            else
             {
-                sqlPlus = "AND c.cpoint_id = '" + key + "'";
+                sql += "SELECT * FROM tbl_cm_detail cm " +
+                   " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                   " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " WHERE cm.cm_cpoint = '"+checkCpoint+"' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
+                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
-            try
-            {
-                sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id WHERE (cm.cm_detail_status_id='0' OR cm.cm_detail_status_id='1') " + sqlPlus + " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
                 CMGridView.DataSource = ds.Tables[0];
                 CMGridView.DataBind();
-                if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
+               // if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
                 //lbCMNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
-            }
-            catch (Exception e) { e.ToString(); }
+            
         }
 
         protected void CMGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -118,6 +131,7 @@ namespace ClaimProject.CM
         {
             cm_id = e.CommandName;
             Label1.Text = "#" + cm_id;
+            lbcmid.Text = cm_id;
             string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON c.cpoint_id=cm.cm_cpoint WHERE cm.cm_detail_id = '" + cm_id + "'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
@@ -164,7 +178,7 @@ namespace ClaimProject.CM
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                                    BindData("");
+                                    BindData();
                                 }
                                 else
                                 {
@@ -192,9 +206,48 @@ namespace ClaimProject.CM
             }
         }
 
-        protected void txtCpointSearch_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnSearchEdit_Click(object sender, EventArgs e)
         {
-            BindData(txtCpointSearch.SelectedValue);
+            BindData();
         }
+
+        protected void btnDeleteCM_Command(object sender, CommandEventArgs e)
+        {
+            string dateNow = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            string sqlDelete = "UPDATE tbl_cm_detail SET cm_detail_status_id='9', cm_delete_time='" + dateNow + "', cm_delete_user ='" + Session["User"].ToString() + "' " +
+                " WHERE cm_detail_id='" + lbcmid.Text + "' ";
+
+            if (function.MySqlQuery(sqlDelete))
+            {
+                AlertPop("ลบรายการแจ้งซ่อมเรียบร้อย", "warning");
+            }
+            else
+            {
+                AlertPop("ลบรายการแจ้งซ่อมล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ ", "error");
+            }
+            BindData();
+        }
+
+        public void AlertPop(string msg, string type)
+        {
+            switch (type)
+            {
+                case "success":
+                    icon = "add_alert";
+                    alertType = "success";
+                    break;
+                case "error":
+                    icon = "error";
+                    alertType = "danger";
+                    break;
+                case "warning":
+                    icon = "warning";
+                    alertType = "warning";
+                    break;
+            }
+            //alertType = type;
+            alert = msg;
+        }
+
     }
 }

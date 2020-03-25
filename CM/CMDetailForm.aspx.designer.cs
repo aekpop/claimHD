@@ -40,13 +40,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.TextBox txtPoint;
         
         /// <summary>
-        /// txtChannel control.
+        /// ddlChanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtChannel;
+        protected global::System.Web.UI.WebControls.DropDownList ddlChanel;
         
         /// <summary>
         /// txtSDate control.
@@ -155,6 +155,33 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtCpointSearch;
+        
+        /// <summary>
+        /// ddlBudgetcc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBudgetcc;
+        
+        /// <summary>
+        /// btnSearchAddd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchAddd;
+        
+        /// <summary>
+        /// btnToReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnToReport;
         
         /// <summary>
         /// Panel1 control.

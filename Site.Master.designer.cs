@@ -13,6 +13,15 @@ namespace ClaimProject {
     public partial class SiteMaster {
         
         /// <summary>
+        /// divlogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divlogo;
+        
+        /// <summary>
         /// nav0 control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace ClaimProject {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li2;
         
         /// <summary>
+        /// equipDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl equipDiv;
+        
+        /// <summary>
         /// nav2 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
+        
+        /// <summary>
+        /// searchEn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchEn;
         
         /// <summary>
         /// lbUser control.
@@ -101,5 +128,14 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        
+        /// <summary>
+        /// txtUrlchk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUrlchk;
     }
 }

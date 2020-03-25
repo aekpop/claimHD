@@ -33,7 +33,7 @@ namespace ClaimProject.Claim
                 function.getListItem(txtSearchStatus, "SELECT * FROM tbl_status ORDER by status_id", "status_name", "status_id");
                 txtSearchStatus.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 txtSearchYear.SelectedValue = function.getBudgetYear(date);
-
+                
                 string sql = "";
                 if (Session["UserCpoint"] != null)
                 {
@@ -61,7 +61,6 @@ namespace ClaimProject.Claim
             }
         }
 
-
         void BindData(string month)
         {
             string sql = "";
@@ -69,7 +68,15 @@ namespace ClaimProject.Claim
             {
                 if (month != "")
                 {
-                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' AND (cpoint_id Like '%" + Session["UserCpoint"].ToString() + "%' AND claim_cpoint_note LIKE '%" + txtSearchComNumber.Text + "%' AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' AND claim_start_date LIKE '%" + month + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%' ) ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
+                    sql = "SELECT * FROM tbl_claim c " +
+                        "JOIN tbl_cpoint ON claim_cpoint = cpoint_id " +
+                        "JOIN tbl_status ON status_id = claim_status " +
+                        "LEFT JOIN tbl_user ON username=claim_user_start_claim " +
+                        "JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status " +
+                        "WHERE claim_delete = '0' AND (cpoint_id Like '%" + Session["UserCpoint"].ToString() + "%' AND claim_cpoint_note LIKE '%" + txtSearchComNumber.Text + "%' " +
+                        "AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' " +
+                        "AND claim_start_date LIKE '%" + month + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%' ) " +
+                        "ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
                     Session["sql"] = sql;
                 }
                 else
@@ -317,8 +324,11 @@ namespace ClaimProject.Claim
             string supperPos = "";
             string car = "";
             string licensePlate = "";
+            string licenseEng = "";
             string licensePlate2 = "";
+            string provinceplate2 = "";
             string province = "";
+            string provinceEng = "";
             string comeFrom = "";
             string nameDrive = "";
             string idcard = "";
@@ -337,6 +347,28 @@ namespace ClaimProject.Claim
             string cpoint_manager = "";
             string title2 = "";
             string DateTitle = "";
+            string license2 = "";
+            string province2 = "";
+            string cardetail2 = "";
+            string licenEng2 = "";
+            string provinEng2 = "";
+            string driver2 = "";
+            string idcard2 = "";
+            string address2 = "";
+            string licenAdd2 = "";
+            string provinAdd2 = "";
+            string tel2 = "";
+            string license3 = "";
+            string province3 = "";
+            string cardetail3 = "";
+            string licenEng3 = "";
+            string provinEng3 = "";
+            string driver3 = "";
+            string idcard3 = "";
+            string address3 = "";
+            string licenAdd3 = "";
+            string provinAdd3 = "";
+            string tel3 = "";
 
             string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON cc.claim_id=c.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint WHERE c.claim_id = '" + key + "'";
 
@@ -359,6 +391,8 @@ namespace ClaimProject.Claim
 
                 car = rs.GetString("claim_detail_car").Replace(",", "").ToUpper();
                 licensePlate = rs.GetString("claim_detail_license_plate");
+                licenseEng = rs.GetString("Licen_Eng");
+                provinceEng = rs.GetString("Province_Eng");
                 licensePlate2 = rs.GetString("claim_detail_lp2");
                 province = rs.GetString("claim_detail_province");
                 comeFrom = rs.GetString("claim_detail_comefrom");
@@ -377,16 +411,80 @@ namespace ClaimProject.Claim
                 title = rs.GetString("claim_equipment");
                 cpoint_manager = rs.GetString("cpoint_manager");
 
+                try
+                {
+                    provinceplate2 = rs.GetString("claim_detail_provi2");
+                }
+                catch
+                {
+
+                }
+
             }
             rs.Close();
             function.Close();
+            string getcar2  = "select * FROM tbl_claim_com where claim_id = '" + key + "' AND claim_detail_number = '2'";
+            string getcar3 = "select * FROM tbl_claim_com where claim_id = '" + key + "' AND claim_detail_number = '3'";
+            string car2has = "1"; string car3has = "1";
+            MySqlDataReader checkcar2 = function.MySqlSelect(getcar2);
+            if (checkcar2.Read())
+            {
+                license2 = checkcar2.GetString("claim_detail_license_plate");
+                province2 = checkcar2.GetString("claim_detail_province");
+                cardetail2 = checkcar2.GetString("claim_detail_car").Replace(",", "").ToUpper();
+                licenEng2 = checkcar2.GetString("Licen_Eng");
+                provinEng2 = checkcar2.GetString("Province_Eng");
+                driver2 = checkcar2.GetString("claim_detail_driver");
+                idcard2 = checkcar2.GetString("claim_detail_idcard");
+                address2 = checkcar2.GetString("claim_detail_address");
+                licenAdd2 = checkcar2.GetString("claim_detail_lp2");
+                provinAdd2 = checkcar2.GetString("claim_detail_provi2");
+                tel2 = checkcar2.GetString("claim_detail_tel");
+            }
+            else
+            {
+                car2has = "0";
+            }
+            checkcar2.Close();
+            MySqlDataReader checkcar3 = function.MySqlSelect(getcar3);
+            if (checkcar3.Read())
+            {
+                license3 = checkcar3.GetString("claim_detail_license_plate");
+                province3 = checkcar3.GetString("claim_detail_province");
+                cardetail3 = checkcar3.GetString("claim_detail_car");
+                licenEng3 = checkcar3.GetString("Licen_Eng");
+                provinEng3 = checkcar3.GetString("Province_Eng");
+                driver3 = checkcar3.GetString("claim_detail_driver");
+                idcard3 = checkcar3.GetString("claim_detail_idcard");
+                address3 = checkcar3.GetString("claim_detail_address");
+                licenAdd3 = checkcar3.GetString("claim_detail_lp2");
+                provinAdd3 = checkcar3.GetString("claim_detail_provi2");
+                tel3 = checkcar3.GetString("claim_detail_tel");
+            }
+            else
+            {
+                car3has = "0";
+            }
+
+
 
             string strNote = "เนื่องด้วยเมื่อวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก" + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
             if (cabinet != "") { strNote += " ตู้ " + cabinet; }
             strNote += " " + direction + " ได้แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงได้แจ้งรองผู้จัดการด่านฯ ประจำผลัด คือ " + supper + " ให้ทราบ";
-            strNote += " หลังจากได้รับแจ้งเหตุเจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ลงไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน พบคู่กรณีเป็น" + car;
+            strNote += " หลังจากได้รับแจ้งเหตุเจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ลงไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;
 
-            if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ")
+            if(car2has == "1")
+            {
+                strNote += "พบคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
+                    +" โดยมี"+driver2+" เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " หมายเลขโทรศัพท์ " + tel2 : "") + "" +
+                    " และคันที่ ๒ เป็น"+car;
+            }
+            else
+            {
+                strNote += "พบคู่กรณีเป็น " + car;
+            }
+
+            if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-" )
             {
                 strNote += "ไม่ทราบหมายเลขทะเบียน";
             }
@@ -394,8 +492,49 @@ namespace ClaimProject.Claim
             {
                 strNote += " หมายเลขทะเบียน " + licensePlate;
 
-                if (licensePlate2 != "" && licensePlate2 != "-") { strNote += " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2; }
-                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                if (licensePlate2 != "" && licensePlate2 != "-")
+                {
+                    
+                        if(provinceplate2 != province)
+                        {
+                            strNote += " จังหวัด "+province+ " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด "+provinceplate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn 
+                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                            }
+                            else
+                            {
+                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                            }
+                        }
+                        else
+                        {
+                            strNote += " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                            }
+                            else
+                            {
+                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                            }
+                        }
+                   
+                }
+                else
+                {
+                    if (licenseEng != "")
+                    {
+                        strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                    }
+                    else
+                    {
+                        strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                    }
+                }
+                
+                
                 if (insurer.Trim() == "" || insurer.Trim() == "-")
                 {
                     strNote += " ซึ่งรถยนต์คันดังกล่าวไม่ได้ทำประกันไว้";
@@ -480,7 +619,7 @@ namespace ClaimProject.Claim
                 function.Close();
 
 
-                string sql_doc = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + key + "' AND claim_doc_type = '0'";
+                string sql_doc = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + key + "' AND claim_doc_type = '1'";
                 rs = function.MySqlSelect(sql_doc);
                 if (rs.Read())
                 {
@@ -488,18 +627,18 @@ namespace ClaimProject.Claim
                     noteTo1 = rs.GetString("claim_doc_to");
                     listDoc += "เอกสารประกอบการพิจารณาแนบ ดังนี้";
                     listDoc += "\r\n                      1. บันทึกข้อความ " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
-                    listDoc += "\r\n                      2. สำเนาบันทึกการเปรียบเทียบปรับ จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
-                    listDoc += "\r\n                      3. สำเนาใบเสร็จค่าปรับ จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
-                    listDoc += "\r\n                      4. บันทึกข้อมูลการเกิดอุบัติเหตุเบื้องต้นสำหรับการแจ้งความ จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";
-                    listDoc += "\r\n                      5. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no5")) + " ฉบับ";
-                    listDoc += "\r\n                      6. สำเนารายงานประจำวันเกี่ยวกับคดี จำนวน จำนวน " + converNum(rs.GetString("claim_doc_no6")) + " ฉบับ";
-                    listDoc += "\r\n                      7. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no7")) + " ฉบับ";
-                    listDoc += "\r\n                      8. หนังสือยอมความรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no8")) + " ฉบับ";
-                    listDoc += "\r\n                      9. สำเนาบัตรประจำตัวประชาชน จำนวน " + converNum(rs.GetString("claim_doc_no9")) + " ฉบับ";
-                    listDoc += "\r\n                      10. สำเนาใบอนุญาตขับรถ จำนวน " + converNum(rs.GetString("claim_doc_no10")) + " ฉบับ";
-                    listDoc += "\r\n                      11. สำเนาใบรับรองความเสียหายต่อทรัพย์สิน (ใบเคลมประกัน) จำนวน " + converNum(rs.GetString("claim_doc_no11")) + " ฉบับ";
-                    listDoc += "\r\n                      12. บันทึกข้อความรายงานของ พ.ควบคุมระบบ และรองผจด.ประจำผลัด จำนวน " + converNum(rs.GetString("claim_doc_no12")) + " ฉบับ";
-                    listDoc += "\r\n                      13. รูปภาพประกอบ จำนวน " + converNum(rs.GetString("claim_doc_no13")) + " ฉบับ";
+                    listDoc += "\r\n                      2. หนังสือยอมรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
+                    listDoc += "\r\n                      3. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
+                    listDoc += "\r\n                      4. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";
+                    listDoc += "\r\n                      5. บันทึกข้อมูลการเกิดอุบัติเหตุเบื้องต้นสำหรับการแจ้งความ จำนวน " + converNum(rs.GetString("claim_doc_no5")) + " ฉบับ";
+                    listDoc += "\r\n                      6. สำเนารายงานประจำวันเกี่ยวกับคดี จำนวน " + converNum(rs.GetString("claim_doc_no6")) + " ฉบับ";
+                    listDoc += "\r\n                      7. สำเนาบันทึกการเปรียบเทียบ จำนวน " + converNum(rs.GetString("claim_doc_no7")) + " ฉบับ";
+                    listDoc += "\r\n                      8. สำเนาใบเสร็จรับเงินค่าปรับ จำนวน " + converNum(rs.GetString("claim_doc_no8")) + " ฉบับ";
+                    listDoc += "\r\n                      9. ใบรับรองความเสียหายต่อทรัพย์สิน(ใบเคลมประกัน) จำนวน " + converNum(rs.GetString("claim_doc_no9")) + " ฉบับ";
+                    listDoc += "\r\n                      10. สำเนาบัตรประชาชน จำนวน " + converNum(rs.GetString("claim_doc_no10")) + " ฉบับ";
+                    listDoc += "\r\n                      11. สำเนาใบอนุญาตขับรถ จำนวน " + converNum(rs.GetString("claim_doc_no11")) + " ฉบับ";
+                    listDoc += "\r\n                      12. บันทึกข้อความรองผู้จัดการด่านฯ และพนักงานควบคุมระบบ จำนวน " + converNum(rs.GetString("claim_doc_no12")) + " ฉบับ";
+                    listDoc += "\r\n                      13. รูปถ่าย จำนวน " + converNum(rs.GetString("claim_doc_no13")) + " ฉบับ";
                     title2 = rs.GetString("claim_doc_title");
                     DateTitle = rs.GetString("claim_doc_date");
                 }
@@ -556,27 +695,34 @@ namespace ClaimProject.Claim
             claimID.Text = e.CommandName;
             Session["claim_id"] = e.CommandName;
             clearDate();
-            string sql_query = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + e.CommandName + "' and claim_doc_type = '0'";
+            string sql_query = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + e.CommandName + "' and claim_doc_type = '1'";
             MySqlDataReader rs = function.MySqlSelect(sql_query);
             if (rs.Read())
             {
-                txtNoteTo.Text = rs.GetString("claim_doc_to");
-                txtDocNum.Text = rs.GetString("claim_doc_num").Split('/')[3];
-                txtDate.Text = rs.GetString("claim_doc_date");
-                txtTitle.Text = rs.GetString("claim_doc_title");
-                txtNo1.Text = rs.GetString("claim_doc_no1");
-                txtNo2.Text = rs.GetString("claim_doc_no2");
-                txtNo3.Text = rs.GetString("claim_doc_no3");
-                txtNo4.Text = rs.GetString("claim_doc_no4");
-                txtNo5.Text = rs.GetString("claim_doc_no5");
-                txtNo6.Text = rs.GetString("claim_doc_no6");
-                txtNo7.Text = rs.GetString("claim_doc_no7");
-                txtNo8.Text = rs.GetString("claim_doc_no8");
-                txtNo9.Text = rs.GetString("claim_doc_no9");
-                txtNo10.Text = rs.GetString("claim_doc_no10");
-                txtNo11.Text = rs.GetString("claim_doc_no11");
-                txtNo12.Text = rs.GetString("claim_doc_no12");
-                txtNo13.Text = rs.GetString("claim_doc_no13");
+                try
+                {
+                    txtNoteTo.Text = rs.GetString("claim_doc_to");
+                    try { txtDocNum.Text = rs.GetString("claim_doc_num").Split('/')[3]; } catch { txtDocNum.Text = ""; }
+                    txtDate.Text = rs.GetString("claim_doc_date");
+                    txtTitle.Text = rs.GetString("claim_doc_title");
+                    txtNo1.Text = rs.GetString("claim_doc_no1");
+                    txtNo2.Text = rs.GetString("claim_doc_no2");
+                    txtNo3.Text = rs.GetString("claim_doc_no3");
+                    txtNo4.Text = rs.GetString("claim_doc_no4");
+                    txtNo5.Text = rs.GetString("claim_doc_no5");
+                    txtNo6.Text = rs.GetString("claim_doc_no6");
+                    txtNo7.Text = rs.GetString("claim_doc_no7");
+                    txtNo8.Text = rs.GetString("claim_doc_no8");
+                    txtNo9.Text = rs.GetString("claim_doc_no9");
+                    txtNo10.Text = rs.GetString("claim_doc_no10");
+                    txtNo11.Text = rs.GetString("claim_doc_no11");
+                    txtNo12.Text = rs.GetString("claim_doc_no12");
+                    txtNo13.Text = rs.GetString("claim_doc_no13");
+                }
+                catch
+                {
+
+                }
             }
             rs.Close();
             function.Close();
@@ -604,11 +750,11 @@ namespace ClaimProject.Claim
                 textValue[11] = txtNo12.Text.Trim();
                 textValue[12] = txtNo13.Text.Trim();
 
-                string sql_query = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + Session["claim_id"].ToString() + "' and claim_doc_type = '0'";
+                string sql_query = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + Session["claim_id"].ToString() + "' and claim_doc_type = '1'";
                 MySqlDataReader rs = function.MySqlSelect(sql_query);
                 if (!rs.Read())
                 {
-                    string sql = "INSERT INTO tbl_claim_doc ( claim_doc_id,claim_doc_title,claim_doc_date,claim_doc_num, claim_doc_type, claim_doc_to, claim_doc_no1, claim_doc_no2, claim_doc_no3, claim_doc_no4, claim_doc_no5, claim_doc_no6, claim_doc_no7, claim_doc_no8, claim_doc_no9, claim_doc_no10, claim_doc_no11, claim_doc_no12, claim_doc_no13, claim_doc_no14, claim_doc_no15, claim_doc_no16) VALUES ( '" + Session["claim_id"].ToString() + "','" + txtTitle.Text.Trim() + "','" + txtDate.Text.Trim() + "','" + note_number + "', '0', '" + note_to + "', '" + textValue[0] + "', '" + textValue[1] + "', '" + textValue[2] + "', '" + textValue[3] + "', '" + textValue[4] + "', '" + textValue[5] + "', '" + textValue[6] + "', '" + textValue[7] + "', '" + textValue[8] + "', '" + textValue[9] + "', '" + textValue[10] + "', '" + textValue[11] + "', '" + textValue[12] + "', '0', '0', '0' )";
+                    string sql = "INSERT INTO tbl_claim_doc ( claim_doc_id,claim_doc_title,claim_doc_date,claim_doc_num, claim_doc_type, claim_doc_to, claim_doc_no1, claim_doc_no2, claim_doc_no3, claim_doc_no4, claim_doc_no5, claim_doc_no6, claim_doc_no7, claim_doc_no8, claim_doc_no9, claim_doc_no10, claim_doc_no11, claim_doc_no12, claim_doc_no13, claim_doc_no14, claim_doc_no15, claim_doc_no16) VALUES ( '" + Session["claim_id"].ToString() + "','" + txtTitle.Text.Trim() + "','" + txtDate.Text.Trim() + "','" + note_number + "', '1', '" + note_to + "', '" + textValue[0] + "', '" + textValue[1] + "', '" + textValue[2] + "', '" + textValue[3] + "', '" + textValue[4] + "', '" + textValue[5] + "', '" + textValue[6] + "', '" + textValue[7] + "', '" + textValue[8] + "', '" + textValue[9] + "', '" + textValue[10] + "', '" + textValue[11] + "', '" + textValue[12] + "', '0', '0', '0' )";
                     if (function.MySqlQuery(sql))
                     {
 
@@ -616,7 +762,7 @@ namespace ClaimProject.Claim
                 }
                 else
                 {
-                    string sql = "UPDATE tbl_claim_doc SET claim_doc_title='" + txtTitle.Text.Trim() + "',claim_doc_date='" + txtDate.Text.Trim() + "',claim_doc_to = '" + note_to + "',claim_doc_num='" + note_number + "', claim_doc_no1 = '" + textValue[0] + "', claim_doc_no2 = '" + textValue[1] + "', claim_doc_no3 = '" + textValue[2] + "', claim_doc_no4 = '" + textValue[3] + "', claim_doc_no5 = '" + textValue[4] + "', claim_doc_no6 = '" + textValue[5] + "', claim_doc_no7 = '" + textValue[6] + "', claim_doc_no8 = '" + textValue[7] + "', claim_doc_no9 = '" + textValue[8] + "', claim_doc_no10 = '" + textValue[9] + "', claim_doc_no11 = '" + textValue[10] + "', claim_doc_no12 = '" + textValue[11] + "', claim_doc_no13 = '" + textValue[12] + "' WHERE claim_doc_id = '" + Session["claim_id"].ToString() + "' AND claim_doc_type = '0'";
+                    string sql = "UPDATE tbl_claim_doc SET claim_doc_title='" + txtTitle.Text.Trim() + "',claim_doc_date='" + txtDate.Text.Trim() + "',claim_doc_to = '" + note_to + "',claim_doc_num='" + note_number + "', claim_doc_no1 = '" + textValue[0] + "', claim_doc_no2 = '" + textValue[1] + "', claim_doc_no3 = '" + textValue[2] + "', claim_doc_no4 = '" + textValue[3] + "', claim_doc_no5 = '" + textValue[4] + "', claim_doc_no6 = '" + textValue[5] + "', claim_doc_no7 = '" + textValue[6] + "', claim_doc_no8 = '" + textValue[7] + "', claim_doc_no9 = '" + textValue[8] + "', claim_doc_no10 = '" + textValue[9] + "', claim_doc_no11 = '" + textValue[10] + "', claim_doc_no12 = '" + textValue[11] + "', claim_doc_no13 = '" + textValue[12] + "' WHERE claim_doc_id = '" + Session["claim_id"].ToString() + "' AND claim_doc_type = '1'";
                     if (function.MySqlQuery(sql))
                     {
 

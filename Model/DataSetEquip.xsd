@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetEquip" targetNamespace="http://tempuri.org/DataSetEquip.xsd" xmlns:mstns="http://tempuri.org/DataSetEquip.xsd" xmlns="http://tempuri.org/DataSetEquip.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetEquip" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetEquip" msprop:Generator_UserDSName="DataSetEquip">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EquipRe" msprop:Generator_TableClassName="EquipReDataTable" msprop:Generator_TableVarName="tableEquipRe" msprop:Generator_TablePropName="EquipRe" msprop:Generator_RowDeletingName="EquipReRowDeleting" msprop:Generator_RowChangingName="EquipReRowChanging" msprop:Generator_RowEvHandlerName="EquipReRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipReRowDeleted" msprop:Generator_UserTableName="EquipRe" msprop:Generator_RowChangedName="EquipReRowChanged" msprop:Generator_RowEvArgName="EquipReRowChangeEvent" msprop:Generator_RowClassName="EquipReRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Enameth" msprop:Generator_ColumnVarNameInTable="columnEnameth" msprop:Generator_ColumnPropNameInRow="Enameth" msprop:Generator_ColumnPropNameInTable="EnamethColumn" msprop:Generator_UserColumnName="Enameth" type="xs:string" minOccurs="0" />
+              <xs:element name="Enumber" msprop:Generator_ColumnVarNameInTable="columnEnumber" msprop:Generator_ColumnPropNameInRow="Enumber" msprop:Generator_ColumnPropNameInTable="EnumberColumn" msprop:Generator_UserColumnName="Enumber" type="xs:string" minOccurs="0" />
+              <xs:element name="Eserial" msprop:Generator_ColumnVarNameInTable="columnEserial" msprop:Generator_ColumnPropNameInRow="Eserial" msprop:Generator_ColumnPropNameInTable="EserialColumn" msprop:Generator_UserColumnName="Eserial" type="xs:string" minOccurs="0" />
+              <xs:element name="Ebrand" msprop:Generator_ColumnVarNameInTable="columnEbrand" msprop:Generator_ColumnPropNameInRow="Ebrand" msprop:Generator_ColumnPropNameInTable="EbrandColumn" msprop:Generator_UserColumnName="Ebrand" type="xs:string" minOccurs="0" />
+              <xs:element name="Eseries" msprop:Generator_ColumnVarNameInTable="columnEseries" msprop:Generator_ColumnPropNameInRow="Eseries" msprop:Generator_ColumnPropNameInTable="EseriesColumn" msprop:Generator_UserColumnName="Eseries" type="xs:string" minOccurs="0" />
+              <xs:element name="Elocate" msprop:Generator_ColumnVarNameInTable="columnElocate" msprop:Generator_ColumnPropNameInRow="Elocate" msprop:Generator_ColumnPropNameInTable="ElocateColumn" msprop:Generator_UserColumnName="Elocate" type="xs:string" minOccurs="0" />
+              <xs:element name="Etoll" msprop:Generator_ColumnVarNameInTable="columnEtoll" msprop:Generator_ColumnPropNameInRow="Etoll" msprop:Generator_ColumnPropNameInTable="EtollColumn" msprop:Generator_UserColumnName="Etoll" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="Enote" msprop:Generator_ColumnVarNameInTable="columnEnote" msprop:Generator_ColumnPropNameInRow="Enote" msprop:Generator_ColumnPropNameInTable="EnoteColumn" msprop:Generator_UserColumnName="Enote" type="xs:string" minOccurs="0" />
+              <xs:element name="Epic" msprop:Generator_ColumnVarNameInTable="columnEpic" msprop:Generator_ColumnPropNameInRow="Epic" msprop:Generator_ColumnPropNameInTable="EpicColumn" msprop:Generator_UserColumnName="Epic" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tranAct" msprop:Generator_TableClassName="tranActDataTable" msprop:Generator_TableVarName="tabletranAct" msprop:Generator_TablePropName="tranAct" msprop:Generator_RowDeletingName="tranActRowDeleting" msprop:Generator_RowChangingName="tranActRowChanging" msprop:Generator_RowEvHandlerName="tranActRowChangeEventHandler" msprop:Generator_RowDeletedName="tranActRowDeleted" msprop:Generator_UserTableName="tranAct" msprop:Generator_RowChangedName="tranActRowChanged" msprop:Generator_RowEvArgName="tranActRowChangeEvent" msprop:Generator_RowClassName="tranActRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="eqnameth" msprop:Generator_ColumnVarNameInTable="columneqnameth" msprop:Generator_ColumnPropNameInRow="eqnameth" msprop:Generator_ColumnPropNameInTable="eqnamethColumn" msprop:Generator_UserColumnName="eqnameth" type="xs:string" minOccurs="0" />
+              <xs:element name="eqnumber" msprop:Generator_ColumnVarNameInTable="columneqnumber" msprop:Generator_ColumnPropNameInRow="eqnumber" msprop:Generator_ColumnPropNameInTable="eqnumberColumn" msprop:Generator_UserColumnName="eqnumber" type="xs:string" minOccurs="0" />
+              <xs:element name="eqserial" msprop:Generator_ColumnVarNameInTable="columneqserial" msprop:Generator_ColumnPropNameInRow="eqserial" msprop:Generator_ColumnPropNameInTable="eqserialColumn" msprop:Generator_UserColumnName="eqserial" type="xs:string" minOccurs="0" />
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

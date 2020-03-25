@@ -62,14 +62,14 @@ namespace ClaimProject.Techno
                     int num = 1;
                     foreach (string s in readText)
                     {
-                        if (num != 8)
-                        {
-                            AddControls(num, num + ". " + s + " จำนวน", Panel1);
-                        }
-                        else
-                        {
-                            AddControls(num, num + ". " + s + " " + function.GetSelectValue("tbl_claim_com", "claim_id='" + Session["codePK"].ToString() + "'", "claim_detail_insurer") + " จำนวน", Panel1);
-                        }
+                        /*  if (num != 8)
+                          {*/
+                        AddControls(num, num + ". " + s + " จำนวน", Panel1);
+                        /* }
+                         else
+                         {
+                             AddControls(num, num + ". " + s + " " + function.GetSelectValue("tbl_claim_com", "claim_id='" + Session["codePK"].ToString() + "'", "claim_detail_insurer") + " จำนวน", Panel1);
+                         }*/
                         num++;
                     }
 
@@ -87,6 +87,7 @@ namespace ClaimProject.Techno
                     {
                         getDataStatus3();
                     }
+                    BindImg();
 
                 }
 
@@ -121,7 +122,7 @@ namespace ClaimProject.Techno
                 {
                     EnableBtn("7");
                 }
-                
+
                 Session["status_id"] = rs.GetString("status_id");
                 lbTitle.Text = rs.GetString("claim_equipment");
                 lbTitleStatus.CssClass = "badge badge-" + rs.GetString("status_alert");
@@ -194,11 +195,13 @@ namespace ClaimProject.Techno
                     Div2.Visible = false;
                     Div3.Visible = false;
                     Div4.Visible = false;
+                    divFileUploalNote.Visible = false;
                     break;
                 case "2":
                     btns0.Visible = false;
                     btns1.Visible = false;
                     btns2.Visible = true;
+                    divFileUploalNote.Visible = true;
                     btns3.Visible = false;
                     btns4.Visible = false;
                     Div1.Visible = false;
@@ -211,6 +214,7 @@ namespace ClaimProject.Techno
                     btns1.Visible = false;
                     btns2.Visible = true;
                     btns3.Visible = true;
+                    divFileUploalNote.Visible = false;
                     btns4.Visible = false;
                     Div1.Visible = true;
                     Div2.Visible = true;
@@ -227,6 +231,7 @@ namespace ClaimProject.Techno
                     Div2.Visible = true;
                     Div3.Visible = true;
                     Div4.Visible = false;
+                    divFileUploalNote.Visible = false;
                     break;
                 case "5":
                     btns0.Visible = false;
@@ -238,6 +243,7 @@ namespace ClaimProject.Techno
                     Div2.Visible = true;
                     Div3.Visible = true;
                     Div4.Visible = true;
+                    divFileUploalNote.Visible = false;
                     break;
                 case "6":
                     btns0.Visible = true;
@@ -249,6 +255,7 @@ namespace ClaimProject.Techno
                     Div2.Visible = false;
                     Div3.Visible = false;
                     Div4.Visible = false;
+                    divFileUploalNote.Visible = false;
                     break;
                 case "7":
                     btns0.Visible = false;
@@ -629,7 +636,7 @@ namespace ClaimProject.Techno
             newTextbox.CssClass = "form-control text-center col-md-3";
 
 
-            newLabel.Text = text+" ";
+            newLabel.Text = text + " ";
             newLabel.CssClass = "col-md-6";
             newLabelEnd.Text = " ฉบับ";
 
@@ -644,12 +651,11 @@ namespace ClaimProject.Techno
 
         protected void btnSaveNoteTo_Click(object sender, EventArgs e)
         {
-           
-            string text = "claim_doc_id,claim_doc_type,claim_doc_num,claim_doc_title,claim_doc_to,claim_doc_date";
+            string text = "claim_doc_id,claim_doc_type,techno_doc_num,techno_doc_title,techno_doc_to,techno_doc_date";
             string value = "'" + Session["CodePK"].ToString() + "','1','" + txtNoteNumTo.Text.Trim() + "','" + txtNoteTitleTo.Text.Trim() + "','" + txtNoteSendTo.Text.Trim() + "','" + txtDateNoteto.Text.Trim() + "'";
 
-            string text_updat = "claim_doc_num = '" + txtNoteNumTo.Text.Trim() + "',claim_doc_title='" + txtNoteTitleTo.Text.Trim() + "',claim_doc_to='" + txtNoteSendTo.Text.Trim() + "',claim_doc_date='" + txtDateNoteto.Text.Trim() + "'";
-            //string message = "";
+            string text_updat = "techno_doc_num = '" + txtNoteNumTo.Text.Trim() + "',techno_doc_title='" + txtNoteTitleTo.Text.Trim() + "',techno_doc_to='" + txtNoteSendTo.Text.Trim() + "',techno_doc_date='" + txtDateNoteto.Text.Trim() + "'";
+            //string message = "";  
             int i = 1;
             foreach (TextBox textBox in Panel1.Controls.OfType<TextBox>())
             {
@@ -657,6 +663,7 @@ namespace ClaimProject.Techno
                 text += ",claim_doc_no" + i;
                 value += ",'" + textBox.Text.Trim() + "'";
                 text_updat += ",claim_doc_no" + i + "='" + textBox.Text.Trim() + "'";
+
                 i++;
             }
 
@@ -682,14 +689,16 @@ namespace ClaimProject.Techno
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
                     btnNoteTo.Visible = true;
                     btnNoteToCpoy.Visible = true;
+
                 }
             }
 
         }
 
+
         void PrintReport(int doc)
         {
-            string cpoint_title = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร 0 2360 7871";
+            string cpoint_title = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร 0 2360 7865";
             string num_title = "กท./ฝจ./";
             string date_thai = "";
             string note_title = "";
@@ -715,37 +724,40 @@ namespace ClaimProject.Techno
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
-                note_text_to = "อ้างถึง บันทึกข้อความ ด่านฯ " + rs.GetString("cpoint_name") + " ที่ " + rs.GetString("claim_doc_num") + " ลงวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_doc_date")) + " เรื่อง " + rs.GetString("claim_doc_title");
-                note_text = "ฝ่ายบริหารการจัดเก็บค่าธรรมเนียม ได้รับรายงานว่า เมื่อวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_start_date")) + " เวลาประมาณ " + rs.GetString("claim_detail_time") + " น.";
-                note_text += " ได้เกิดอุบัติเหตุ" + rs.GetString("claim_detail_car") ;
-                if (rs.GetString("claim_detail_license_plate")==""|| rs.GetString("claim_detail_license_plate")=="-"|| rs.GetString("claim_detail_license_plate")=="ไม่ทราบ")
+                note_text_to = "อ้างถึง บันทึกข้อความด่านฯ " + rs.GetString("cpoint_name") + " ที่ " + rs.GetString("claim_doc_num") + " ลงวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_doc_date")) + " เรื่อง " + rs.GetString("claim_doc_title");
+                note_text = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม ได้รับรายงานว่า เมื่อวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_start_date")) + " เวลาประมาณ " + rs.GetString("claim_detail_time") + " น.";
+                string[] carDetail = rs.GetString("claim_detail_car").Split(',');
+                note_text += " ได้เกิดอุบัติเหตุ" + carDetail[0] + " ยี่ห้อ " + carDetail[2] + " สี" + carDetail[4];
+                if (rs.GetString("claim_detail_license_plate") == "" || rs.GetString("claim_detail_license_plate") == "-" || rs.GetString("claim_detail_license_plate") == "ไม่ทราบ")
                 {
                     note_text += " ไม่ทราบหมายเลขทะเบียน ";
                 }
                 else
                 {
-                    note_text += " หมายเลขทะเบียน " + rs.GetString("claim_detail_license_plate");
-                    if (rs.GetString("claim_detail_lp2") != "" && rs.GetString("claim_detail_lp2") != "-") { note_text += " ส่วนพ่วงหมายเลขทะเบียน " + rs.GetString("claim_detail_lp2"); }
-                    note_text += " จังหวัด" + rs.GetString("claim_detail_province") + " เมื่อถึงด่านฯ " + rs.GetString("cpoint_name") + " เข้าช่องทางที่ " + rs.GetString("claim_detail_cb_claim");
-                    note_text += " " + rs.GetString("claim_detail_direction") + " (มุ่งหน้า" + rs.GetString("claim_detail_direction_in") + ") รถได้เฉี่ยวชนอุปกรณ์ ทำให้ทรัพย์สินของทางราชการได้รับความเสียหาย ผู้ขับขี่คือ " + rs.GetString("claim_detail_driver") + " ที่อยู่ " + rs.GetString("claim_detail_address");
+                    note_text += " ทะเบียน " + rs.GetString("claim_detail_license_plate");
+                    if (rs.GetString("claim_detail_lp2") != "" && rs.GetString("claim_detail_lp2") != "-") { note_text += " ส่วนพ่วงทะเบียน " + rs.GetString("claim_detail_lp2"); }
+                    note_text += " " + rs.GetString("claim_detail_province") + " เมื่อถึงด่านฯ " + rs.GetString("cpoint_name") + " เข้าช่องทาง " + rs.GetString("claim_detail_cb_claim");
+                    note_text += " " + rs.GetString("claim_detail_direction") + " (มุ่งหน้า" + rs.GetString("claim_detail_direction_in") + ") รถได้เฉี่ยวชนอุปกรณ์ ทำให้ทรัพย์สินของทางราชการได้รับความเสียหาย ผู้ขับขี่" + rs.GetString("claim_detail_driver") + " ที่อยู่ " + rs.GetString("claim_detail_address");
                     if (rs.GetString("claim_detail_insurer") != "" && rs.GetString("claim_detail_insurer") != "-")
                     {
-                        note_text += " รถคันดังกล่าวได้ทำประกันไว้กับ " + rs.GetString("claim_detail_insurer") + " หมายเลขเคลมเลขที่ " + rs.GetString("claim_detail_clemence") + " หมายเลขกรมธรรม์ " + rs.GetString("claim_detail_policyholders");
+                        note_text += " รถคันดังกล่าวได้ทำประกันภัยไว้กับ " + rs.GetString("claim_detail_insurer") + " เลขที่เคลม " + rs.GetString("claim_detail_clemence") + " เลขที่กรมธรรม์ " + rs.GetString("claim_detail_policyholders");
                     }
                     else
                     {
-                        note_text += " รถคันดังกล่าวไม่ได้ทำประกันไว้";
+                        note_text += " รถคันดังกล่าวไม่ได้ทำประกันภัยไว้";
                     }
                 }
                 note_text += " ทั้งนี้ด่านฯ " + rs.GetString("cpoint_name") + " ได้ดำเนินการแจ้งความร้องทุกไว้ที่ " + rs.GetString("claim_detail_inform") + " ไว้เป็นหลักฐานเรียบร้อยแล้ว";
-                copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name") + "\r\n                   - เพื่อทราบติดตามผลการดำเนินงานต่อไป";
+                //copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name") + "\r\n                   - เพื่อทราบติดตามผลการดำเนินงานต่อไป";
+                copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name");
                 name_copy = "(นายเผชิญ  หุนตระนี)\r\n                                 ผจท.";
+
             }
             rs.Close();
             function.Close();
 
             list_dev += "ความเสียหายของทรัพย์สินของทางราชการ เบื้องต้นสรุปได้ดังนี้";
-            sql = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + Session["CodePK"].ToString() + "'";
+            sql = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + Session["CodePK"].ToString() + "' AND device_damaged_delete ='0' ";
             int i = 1;
             rs = function.MySqlSelect(sql);
             while (rs.Read())
@@ -762,8 +774,10 @@ namespace ClaimProject.Techno
             string[] readText = File.ReadAllLines(HostingEnvironment.MapPath("/Config/") + "ListDocTechno" + ".txt");
             foreach (string s in readText)
             {
+                string Values = function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'", "claim_doc_no" + i);
+                if (Values == "0") Values = "-";
                 //list.Items.Add(new ListItem(s.Trim(), s.Trim()));
-                list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'", "claim_doc_no" + i) + " ฉบับ";
+                list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
                 i++;
             }
 
@@ -784,11 +798,14 @@ namespace ClaimProject.Techno
 
             if (doc != 0)
             {
-                name = "(ลงนาม)       เผชิญ  หุนตระนี\r\n                                                                               " + name;
-
+                //name = "(ลงนาม)       เผชิญ  หุนตระนี\r\n                                                                               " + name;
+                name = "(ลงชื่อ)     เผชิญ  หุนตระนี";
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("copy_title", copy_title);
                 rpt.SetParameterValue("copy_tiele1", copy_tiele1);
+                rpt.SetParameterValue("copy2", "- เพื่อทราบติดตามผลการดำเนินงานต่อไป");
+                rpt.SetParameterValue("fullname", "(นายเผชิญ  หุนตระนี)");
+                rpt.SetParameterValue("posboss", "ผจท.");
                 rpt.SetParameterValue("name_copy", name_copy);
                 rpt.SetParameterValue("user", user);
             }
@@ -798,6 +815,9 @@ namespace ClaimProject.Techno
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("copy_title", "");
                 rpt.SetParameterValue("copy_tiele1", "");
+                rpt.SetParameterValue("copy2", "");
+                rpt.SetParameterValue("fullname", "");
+                rpt.SetParameterValue("posboss", "");
                 rpt.SetParameterValue("name_copy", "");
                 rpt.SetParameterValue("user", "");
             }
@@ -815,10 +835,15 @@ namespace ClaimProject.Techno
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
-                txtNoteNumTo.Text = rs.GetString("claim_doc_num");
-                txtNoteTitleTo.Text = rs.GetString("claim_doc_title");
-                txtNoteSendTo.Text = rs.GetString("claim_doc_to");
-                txtDateNoteto.Text = rs.GetString("claim_doc_date");
+
+                try
+                {
+                    txtNoteNumTo.Text = rs.GetString("techno_doc_num");
+                    txtNoteTitleTo.Text = rs.GetString("techno_doc_title");
+                    txtNoteSendTo.Text = rs.GetString("techno_doc_to");
+                    txtDateNoteto.Text = rs.GetString("techno_doc_date");
+                }
+                catch { }
                 int i = 1;
                 if (txtNoteSendTo.Text.Trim() != "")
                 {
@@ -828,6 +853,8 @@ namespace ClaimProject.Techno
                         textBox.Text = rs.GetString("claim_doc_no" + i);
                         i++;
                     }
+                    btnNoteTo.Visible = true;
+                    btnNoteToCpoy.Visible = true;
                 }
                 else
                 {
@@ -840,19 +867,33 @@ namespace ClaimProject.Techno
                 btnNoteTo.Visible = false;
                 btnNoteToCpoy.Visible = false;
             }
-            
+
             rs.Close();
             function.Close();
         }
 
         protected void btnNoteToCpoy_Click(object sender, EventArgs e)
         {
-            PrintReport(1);
+            try
+            {
+                PrintReport(1);
+            }
+            catch
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่มีต้นเรื่องจากธุระการด่านฯ')", true);
+            }
         }
 
         protected void btnNoteTo_Click(object sender, EventArgs e)
         {
-            PrintReport(0);
+            try
+            {
+                PrintReport(0);
+            }
+            catch
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่มีต้นเรื่องจากธุระการด่านฯ')", true);
+            }
         }
 
         protected void btnSaveOrder_Click(object sender, EventArgs e)
@@ -892,7 +933,6 @@ namespace ClaimProject.Techno
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
 
-
         }
 
         protected void txtCompanyOrder_SelectedIndexChanged(object sender, EventArgs e)
@@ -914,19 +954,24 @@ namespace ClaimProject.Techno
             {
                 lbCompanyOrder.Text = rs.GetString("company_name");
                 lbPriceOrder.Text = double.Parse(rs.GetString("quotations_company_price")).ToString("#,##0.00") + " บาท";
-                ImageOrder.ImageUrl = rs.GetString("quotations_order_img"); ;
+                string quaimg = "SELECT * FROM tbl_quotations " +
+                         " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
+
+                MySqlDataAdapter da = function.MySqlSelectDataSet(quaimg);
+                System.Data.DataSet ds = new System.Data.DataSet();
+                da.Fill(ds);
+                gridquatation.DataSource = ds.Tables[0];
+                gridquatation.DataBind();
             }
+        
             rs.Close();
             function.Close();
 
             lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_start"));
             lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_end"));
-        }
+        } 
 
-        protected void btnDownloadOrder_Click(object sender, EventArgs e)
-        {
-            DownLoad(ImageOrder.ImageUrl);
-        }
+
 
         protected void txtDateSendOrder_TextChanged(object sender, EventArgs e)
         {
@@ -993,7 +1038,6 @@ namespace ClaimProject.Techno
 
         protected void btnDownloadOrderSend_Click(object sender, EventArgs e)
         {
-            DownLoad(ImageOrderSend.ImageUrl);
         }
 
         void getDataStatus5()
@@ -1005,7 +1049,6 @@ namespace ClaimProject.Techno
             if (rs.Read())
             {
                 lbFineOrder.Text = double.Parse(rs.GetString("quotations_fine")).ToString("#,##0.00") + " บาท";
-                ImageOrderSend.ImageUrl = rs.GetString("quotations_doc_img_send");
                 if (lbFineOrder.Text == "0.00 บาท")
                 {
                     lbFineOrder.Text = "ไม่มีค่าปรับ";
@@ -1027,14 +1070,14 @@ namespace ClaimProject.Techno
             name_replace = name_replace.Replace("ว่าที่ร.ต.หญิง", "");
             name_replace = name_replace.Replace("ว่าที่ ร.ต.", "");
             name_replace = name_replace.Replace("ว่าที่ ร.ต.หญิง", "");
-            return "CRS : "+name_replace;
+            return "CRS : " + name_replace;
         }
 
         protected void txtDateNoteto_TextChanged(object sender, EventArgs e)
         {
             if (function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'", "claim_doc_id") == "")
             {
-                string sql = "INSERT INTO tbl_claim_doc (claim_doc_id,claim_doc_date,claim_doc_type,claim_doc_num,claim_doc_title,claim_doc_to) VALUES ('" + Session["CodePK"].ToString() + "','" + txtDateNoteto.Text.Trim()+ "','1',' ',' ',' ')";
+                string sql = "INSERT INTO tbl_claim_doc (claim_doc_id,techno_doc_date,claim_doc_type,techno_doc_num,techno_doc_title,techno_doc_to) VALUES ('" + Session["CodePK"].ToString() + "','" + txtDateNoteto.Text.Trim() + "','1',' ',' ',' ')";
                 if (function.MySqlQuery(sql))
                 {
                     sql = "UPDATE tbl_status_detail SET detail_date_start ='" + txtDateNoteto.Text + "',detail_date_end ='" + function.ConvertDateTime(txtDateNoteto.Text, SendTo) + "' WHERE detail_status_id='3' AND detail_claim_id='" + Session["CodePK"].ToString() + "'";
@@ -1044,7 +1087,7 @@ namespace ClaimProject.Techno
             }
             else
             {
-                string sql_update = "UPDATE tbl_claim_doc SET claim_doc_date = '"+ txtDateNoteto.Text.Trim() + "'  WHERE claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'";
+                string sql_update = "UPDATE tbl_claim_doc SET techno_doc_date = '" + txtDateNoteto.Text.Trim() + "'  WHERE claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'";
                 if (function.MySqlQuery(sql_update))
                 {
                     sql_update = "UPDATE tbl_status_detail SET detail_date_start ='" + txtDateNoteto.Text + "',detail_date_end ='" + function.ConvertDateTime(txtDateNoteto.Text, SendTo) + "' WHERE detail_status_id='3' AND detail_claim_id='" + Session["CodePK"].ToString() + "'";
@@ -1056,7 +1099,7 @@ namespace ClaimProject.Techno
 
         protected void btns0_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE tbl_claim SET claim_delete = '1' WHERE claim_id = '"+ Session["CodePK"].ToString() + "'";
+            string sql = "UPDATE tbl_claim SET claim_delete = '1' WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
             if (function.MySqlQuery(sql))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success : ลบข้อมูลสำเร็จ')", true);
@@ -1065,6 +1108,181 @@ namespace ClaimProject.Techno
             else
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ลบข้อมูลล้มเหลว ')", true);
+            }
+        }
+
+        protected void btnUploadNote_Click(object sender, EventArgs e)
+        {
+            if (FileUploalNote.HasFile)
+            {
+                foreach (HttpPostedFile postedFile in FileUploalNote.PostedFiles)
+                {
+                    Insert(2, postedFile);
+                }
+            }
+            else
+            {
+                //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+            }
+        }
+
+        void Insert(int type, HttpPostedFile file)
+        {
+            String NewFileDocName = "";
+            string typeFile = file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
+            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+            {
+                NewFileDocName = Session["CodePK"].ToString() + new Random().Next(1000, 9999);
+                NewFileDocName = "/Claim/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                file.SaveAs(Server.MapPath(NewFileDocName.ToString()));
+
+                string sql_text = "claim_img_url,claim_deteil_id,claim_img_type";
+                string sql_value = "'" + NewFileDocName + "','" + Session["CodePK"].ToString() + "','" + type + "'";
+                string sql_insert = "INSERT INTO tbl_claim_img (" + sql_text + ") VALUES (" + sql_value + ")";
+                function.MySqlQuery(sql_insert);
+                BindImg();
+            }
+            else
+            {
+                //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+            }
+
+        }
+
+        void BindImg()
+        {
+            string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '2'";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            FileNoteGridView.DataSource = ds.Tables[0];
+            FileNoteGridView.DataBind();
+        }
+
+        protected void FileNoteGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image ImgNote = (Image)(e.Row.FindControl("ImgNote"));
+            if (ImgNote != null)
+            {
+                ImgNote.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+            }
+
+            LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
+            if (btnDownload != null)
+            {
+                btnDownload.CommandArgument = ((string)DataBinder.Eval(e.Row.DataItem, "claim_img_url")).ToString();
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                try
+                {
+                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการรูปภาพแนบ ใช่หรือไม่');";
+                }
+                catch { }
+            }
+        }
+
+
+        protected void FileNoteGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + FileNoteGridView.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
+
+            string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + FileNoteGridView.DataKeys[e.RowIndex].Value + "'";
+            if (function.MySqlQuery(sql_delete))
+            {
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                }
+                BindImg();
+            }
+        }
+
+        protected void btnDownload_Command(object sender, CommandEventArgs e)
+        {
+            DownLoad(e.CommandArgument.ToString());
+        }
+
+        protected void lbtnload_Command(object sender, CommandEventArgs e) //โหลดใบสั่งจ้าง
+        {
+            DownLoad(e.CommandName.ToString());
+        }
+
+        protected void gridquatation_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image imgqua = (Image)e.Row.FindControl("imgqua");
+            if (imgqua != null)
+            {
+                imgqua.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+                if (imgqua.ImageUrl == "")
+                {
+                    imgqua.Visible = false;
+                }
+            }
+
+
+            LinkButton lbtnload = (LinkButton)(e.Row.FindControl("lbtnload"));
+            if (lbtnload != null)
+            {
+                lbtnload.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+            }
+        }
+
+        protected void gridquatation_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string sql = "UPDATE FROM tbl_quotations SET quotations_order_img = '0' WHERE quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'";
+            //string script = "";
+            if (function.MySqlQuery(sql))
+            {
+                //script = "บันทึกสำเร็จ";
+            }
+            string quaimg = "SELECT * FROM tbl_quotations " +
+                         " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(quaimg);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            gridquatation.DataSource = ds.Tables[0];
+            gridquatation.DataBind();
+        }
+
+        protected void lbtnchangeimg_Command(object sender, CommandEventArgs e)
+        {
+            String NewFileDocName = "";
+            if (FileOrder.HasFile)
+            {
+                string typeFile = FileOrder.FileName.Split('.')[FileOrder.FileName.Split('.').Length - 1];
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                {
+                    NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
+                    NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                    FileOrder.SaveAs(Server.MapPath(NewFileDocName.ToString()));
+                    
+                    string sqlp = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
+
+                    if(function.MySqlQuery(sqlp))
+                    {
+
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFinal : แนบรูปภาพล้มเหลวติดต่อโปรแกรมเมอร์')", true);
+                    }
+
+                }
+                else
+                {
+                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                }
+            }
+            else
+            {
+                //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
         }
     }

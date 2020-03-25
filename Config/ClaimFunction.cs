@@ -13,9 +13,13 @@ namespace ClaimProject.Config
 {
     public class ClaimFunction
     {
+
         //ClaimConnection conn = new ClaimConnection();
         public MySqlConnection conn;
-        string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";  //Depoly
+                                                                                    //charset=tis620
+        string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        //string strConnString = "Server=10.6.3.201;User Id=claimtwo; Password=123456789;charset=utf8; Database=db_claim; Pooling=false";
+        //string strConnString = "Server=10.6.3.213;User Id=heaven; Password=admin1234;charset=utf8; Database=db_claim; Pooling=false";  
         //string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
 
         public void getListItem(DropDownList list, string sql, string text, string value)
@@ -68,14 +72,43 @@ namespace ClaimProject.Config
 
             }
         }
-        public MySqlDataReader MySqlSelect(string sql)
+         public MySqlDataReader MySqlSelect(string sql)
+         {
+             conn = new MySqlConnection(strConnString);
+             MySqlCommand cmd = conn.CreateCommand();
+             cmd.CommandText = sql;
+             conn.Open();
+             MySqlDataReader result = cmd.ExecuteReader();
+             return result;
+         }
+
+        public DataTable MySqlSelectDataTable(string sql)
         {
             conn = new MySqlConnection(strConnString);
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = sql;
             conn.Open();
-            MySqlDataReader result = cmd.ExecuteReader();
-            return result;
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+        }
+        public DataTable GetTable(string query)
+        {
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand(query);
+
+            conn = new MySqlConnection(strConnString);
+            conn.Open();
+            MySqlDataAdapter sda = new MySqlDataAdapter();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+            sda.SelectCommand = cmd;
+            sda.Fill(dt);
+            conn.Close();
+            return dt;
+
         }
 
         public MySqlDataAdapter MySqlSelectDataSet(string sql)
@@ -246,6 +279,20 @@ namespace ClaimProject.Config
 
             return textShort;
         }
+        public string ShortTextCom(string text)
+        {
+            string textShort = "";
+            if (text.Length > 36)
+            {
+                textShort = text.Substring(0, 33) + "...";
+            }
+            else
+            {
+                textShort = text;
+            }
+
+            return textShort;
+        }
 
         public string GetSelectValue(string table, string condition, string value)
         {
@@ -268,6 +315,141 @@ namespace ClaimProject.Config
             {
                 list.Items.Add(new ListItem(s.Trim(), s.Trim()));
             }
+        }
+        public string GenAddNewEQPK(int cpoint)
+        {
+            string pk = cpoint.ToString();
+            long code = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")) + new Random().Next(100000000, 999999999);
+            while (code.ToString().Length > 10)
+            {
+                code = code / cpoint;
+            }
+
+            if (code.ToString().Length != 10)
+            {
+                switch (code.ToString().Length)
+                {
+                    case 1:
+                        code = long.Parse(code.ToString() + new Random().Next(100000000, 999999999));
+                        break;
+                    case 2:
+                        code = long.Parse(code.ToString() + new Random().Next(10000000, 99999999));
+                        break;
+                    case 3:
+                        code = long.Parse(code.ToString() + new Random().Next(1000000, 9999999));
+                        break;
+                    case 4:
+                        code = long.Parse(code.ToString() + new Random().Next(100000, 999999));
+                        break;
+                    case 5:
+                        code = long.Parse(code.ToString() + new Random().Next(10000, 99999));
+                        break;
+                    case 6:
+                        code = long.Parse(code.ToString() + new Random().Next(1000, 9999));
+                        break;
+                    case 7:
+                        code = long.Parse(code.ToString() + new Random().Next(100, 999));
+                        break;
+                    case 8:
+                        code = long.Parse(code.ToString() + new Random().Next(10, 99));
+                        break;
+                    case 9:
+                        code = long.Parse(code.ToString() + new Random().Next(1, 9));
+                        break;
+                }
+            }
+            pk += code.ToString();
+            int codeSub = 0;
+            for (int i = 0; i < pk.Length; i++)
+            {
+                codeSub = codeSub + int.Parse(pk.Substring(i, 1));
+            }
+            try
+            {
+                pk += codeSub.ToString().Substring(0, 2);
+            }
+            catch
+            {
+                pk += new Random().Next(10, 99);
+            }
+
+            string sql = "";
+            sql = "SELECT NewEQ_id FROM tbl_newequipment WHERE NewEQ_id = '" + pk + "'";
+
+            while (MySqlSelect(sql).Read())
+            {
+                return "";
+            }
+            conn.Close();
+            return pk;
+        }
+
+        public string GenTransferPK(int cpoint)
+        {
+            string pk = cpoint.ToString();
+            long code = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")) + new Random().Next(100000000, 999999999);
+            while (code.ToString().Length > 10)
+            {
+                code = code / cpoint;
+            }
+            
+            if (code.ToString().Length != 10)
+            {
+                switch (code.ToString().Length)
+                {
+                    case 1:
+                        code = long.Parse(code.ToString() + new Random().Next(100000000, 999999999));
+                        break;
+                    case 2:
+                        code = long.Parse(code.ToString() + new Random().Next(10000000, 99999999));
+                        break;
+                    case 3:
+                        code = long.Parse(code.ToString() + new Random().Next(1000000, 9999999));
+                        break;
+                    case 4:
+                        code = long.Parse(code.ToString() + new Random().Next(100000, 999999));
+                        break;
+                    case 5:
+                        code = long.Parse(code.ToString() + new Random().Next(10000, 99999));
+                        break;
+                    case 6:
+                        code = long.Parse(code.ToString() + new Random().Next(1000, 9999));
+                        break;
+                    case 7:
+                        code = long.Parse(code.ToString() + new Random().Next(100, 999));
+                        break;
+                    case 8:
+                        code = long.Parse(code.ToString() + new Random().Next(10, 99));
+                        break;
+                    case 9:
+                        code = long.Parse(code.ToString() + new Random().Next(1, 9));
+                        break;
+                }
+            }
+            pk += code.ToString();
+            int codeSub = 0;
+            for (int i = 0; i < pk.Length; i++)
+            {
+                codeSub = codeSub + int.Parse(pk.Substring(i, 1));
+            }
+            try
+            {
+                pk += codeSub.ToString().Substring(0, 2);
+            }
+            catch
+            {
+                pk += new Random().Next(10, 99);
+            }
+
+            string sql = "";
+            sql = "SELECT trans_act_id FROM tbl_transfer_action WHERE trans_act_id = '" + pk + "'";
+
+            while (MySqlSelect(sql).Read())
+            {
+                return "";
+            }
+            conn.Close();
+            return pk;
         }
 
         public string GeneratorPK(int cpoint)
@@ -372,9 +554,10 @@ namespace ClaimProject.Config
             return dateTime.AddDays(addDay).ToString("dd-MM") + "-" + (dateTime.AddDays(addDay).Year + 543);
         }
 
-        public string getBudgetYear(string date)
+        public string getBudgetYear(string date) //14-10-2562
         {
             DateTime dateTime = DateTime.ParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+          //  string chk = (Int32.Parse(dateTime.Year)).ToString();
             if (dateTime.Month < 10)
             {
                 return (dateTime.Year).ToString();
@@ -390,7 +573,7 @@ namespace ClaimProject.Config
             switch (allow)
             {
                 case "Department":
-                    if (level == "0" || level == "1" || level == "4")
+                    if (level == "0" || level == "1" || level == "4" || level == "5")
                     {
                         return true;
                     }

@@ -31,7 +31,6 @@ namespace ClaimProject.Techno
                 {
                     BindData("", status, year);
                 }
-                
 
             }
         }

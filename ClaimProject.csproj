@@ -166,6 +166,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\FlashControlV71.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Nuttakit\ITEXTSHARP\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -225,6 +229,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -305,6 +310,8 @@
     <Content Include="Claim\Upload\chrome_installer.exe" />
     <Content Include="CM\CMDetailForm.aspx" />
     <Content Include="CM\CMEditForm.aspx" />
+    <Content Include="CM\CMLine.aspx" />
+    <Content Include="CM\CMReport.aspx" />
     <Content Include="CM\CMSurveyForm.aspx" />
     <Content Include="CM\DefaultCM.aspx" />
     <Content Include="Company\CompanyForm.aspx" />
@@ -314,6 +321,7 @@
     <Content Include="Config\CabinetList.txt" />
     <Content Include="Config\PosList.txt" />
     <Content Include="Config\LevelList.txt" />
+    <Content Include="Config\thaiMonth.txt" />
     <Content Include="Config\typeCar.txt" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -1203,6 +1211,17 @@
     <Content Include="Default.aspx" />
     <Content Include="Device\DeviceForm.aspx" />
     <Content Include="Device\GroupDeviceForm.aspx" />
+    <Content Include="equip\EquipAddAll.aspx" />
+    <Content Include="equip\EquipDefault.aspx" />
+    <Content Include="equip\EquipReportPage.aspx" />
+    <Content Include="equip\EquipReportTran.aspx" />
+    <Content Include="equip\EquipStatistics.aspx" />
+    <Content Include="equip\EquipTranGetList.aspx" />
+    <Content Include="equip\EquipTranList.aspx" />
+    <Content Include="equip\EquipAdd.aspx" />
+    <Content Include="equip\EquipAddList.aspx" />
+    <Content Include="equip\EquipMain.aspx" />
+    <Content Include="equip\EquipNewTrans.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1225,7 +1244,18 @@
     <Content Include="lib\Assembly.Software.Profile.dll" />
     <Content Include="lib\Assembly.Software.Profile.xml" />
     <Content Include="Login.aspx" />
+    <Content Include="PM\AdminPMReport.aspx" />
+    <Content Include="PM\PMDetailForm.aspx" />
+    <Content Include="PM\PMListForm.aspx" />
     <Content Include="PM\PMMainForm.aspx" />
+    <Content Include="PM\PMReportGM.aspx" />
+    <Content Include="PM\Report\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
+    <Content Include="PM\Report\CoverPageAdmin.aspx" />
+    <Content Include="PM\Report\PM71Report.aspx" />
+    <Content Include="PM\Report\PM72Report.aspx" />
+    <Content Include="PM\Report\PM9Report.aspx" />
+    <Content Include="PM\Report\PMAllReport.aspx" />
+    <Content Include="PM\Report\PMComReport.aspx" />
     <Content Include="ReportView\Default.aspx" />
     <Content Include="Report\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Report\report.aspx" />
@@ -1295,7 +1325,32 @@
     <Content Include="Model\DataSetClaim.xss">
       <DependentUpon>DataSetClaim.xsd</DependentUpon>
     </Content>
+    <Content Include="PM\PMAllTable.xsc">
+      <DependentUpon>PMAllTable.xsd</DependentUpon>
+    </Content>
+    <Content Include="Model\DataSetEquip.xsc">
+      <DependentUpon>DataSetEquip.xsd</DependentUpon>
+    </Content>
+    <None Include="Model\DataSetEquip.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetEquip.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Model\DataSetEquip.xss">
+      <DependentUpon>DataSetEquip.xsd</DependentUpon>
+    </Content>
+    <None Include="PM\PMAllTable.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PMAllTable.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="PM\PMAllTable.xss">
+      <DependentUpon>PMAllTable.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1396,6 +1451,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Search\searchmain.aspx" />
     <Content Include="settingPage.aspx" />
     <Content Include="Site.Master" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -1421,7 +1477,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\SreviceLine\WebService_Server.disco" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -1522,6 +1580,20 @@
     <Compile Include="CM\CMEditForm.aspx.designer.cs">
       <DependentUpon>CMEditForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CM\CMLine.aspx.cs">
+      <DependentUpon>CMLine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CM\CMLine.aspx.designer.cs">
+      <DependentUpon>CMLine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CM\CMReport.aspx.cs">
+      <DependentUpon>CMReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CM\CMReport.aspx.designer.cs">
+      <DependentUpon>CMReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CM\CMSurveyForm.aspx.cs">
       <DependentUpon>CMSurveyForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1575,6 +1647,95 @@
     <Compile Include="Device\GroupDeviceForm.aspx.designer.cs">
       <DependentUpon>GroupDeviceForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="equip\EquipAddAll.aspx.cs">
+      <DependentUpon>EquipAddAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipAddAll.aspx.designer.cs">
+      <DependentUpon>EquipAddAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipDefault.aspx.cs">
+      <DependentUpon>EquipDefault.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipDefault.aspx.designer.cs">
+      <DependentUpon>EquipDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="equip\EquipReportPage.aspx.cs">
+      <DependentUpon>EquipReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipReportPage.aspx.designer.cs">
+      <DependentUpon>EquipReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipReportTran.aspx.cs">
+      <DependentUpon>EquipReportTran.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipReportTran.aspx.designer.cs">
+      <DependentUpon>EquipReportTran.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipStatistics.aspx.cs">
+      <DependentUpon>EquipStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipStatistics.aspx.designer.cs">
+      <DependentUpon>EquipStatistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipTranGetList.aspx.cs">
+      <DependentUpon>EquipTranGetList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipTranGetList.aspx.designer.cs">
+      <DependentUpon>EquipTranGetList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipTranList.aspx.cs">
+      <DependentUpon>EquipTranList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipTranList.aspx.designer.cs">
+      <DependentUpon>EquipTranList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipAdd.aspx.cs">
+      <DependentUpon>EquipAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipAdd.aspx.designer.cs">
+      <DependentUpon>EquipAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipAddList.aspx.cs">
+      <DependentUpon>EquipAddList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipAddList.aspx.designer.cs">
+      <DependentUpon>EquipAddList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipMain.aspx.cs">
+      <DependentUpon>EquipMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipMain.aspx.designer.cs">
+      <DependentUpon>EquipMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipNewTrans.aspx.cs">
+      <DependentUpon>EquipNewTrans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipNewTrans.aspx.designer.cs">
+      <DependentUpon>EquipNewTrans.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\ReportTran.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportTran.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1590,12 +1751,112 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetClaim.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataSetEquip.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetEquip.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PM\AdminPMReport.aspx.cs">
+      <DependentUpon>AdminPMReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\AdminPMReport.aspx.designer.cs">
+      <DependentUpon>AdminPMReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\PMAllTable.cs">
+      <DependentUpon>PMAllTable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PM\PMAllTable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMAllTable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PM\PMDetailForm.aspx.cs">
+      <DependentUpon>PMDetailForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\PMDetailForm.aspx.designer.cs">
+      <DependentUpon>PMDetailForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\PMListForm.aspx.cs">
+      <DependentUpon>PMListForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\PMListForm.aspx.designer.cs">
+      <DependentUpon>PMListForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PM\PMMainForm.aspx.cs">
       <DependentUpon>PMMainForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PM\PMMainForm.aspx.designer.cs">
       <DependentUpon>PMMainForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\PMReportGM.aspx.cs">
+      <DependentUpon>PMReportGM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\PMReportGM.aspx.designer.cs">
+      <DependentUpon>PMReportGM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\CoverPageAdmin.aspx.cs">
+      <DependentUpon>CoverPageAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\Report\CoverPageAdmin.aspx.designer.cs">
+      <DependentUpon>CoverPageAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\PM71Report.aspx.cs">
+      <DependentUpon>PM71Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PM71Report.aspx.designer.cs">
+      <DependentUpon>PM71Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\PM72Report.aspx.cs">
+      <DependentUpon>PM72Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PM72Report.aspx.designer.cs">
+      <DependentUpon>PM72Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\PM9Report.aspx.cs">
+      <DependentUpon>PM9Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PM9Report.aspx.designer.cs">
+      <DependentUpon>PM9Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\PMAdminReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMAdminReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PMComReport.aspx.cs">
+      <DependentUpon>PMComReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PMComReport.aspx.designer.cs">
+      <DependentUpon>PMComReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\PMOverall.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMOverall.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PMAllReport.aspx.cs">
+      <DependentUpon>PMAllReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM\Report\PMAllReport.aspx.designer.cs">
+      <DependentUpon>PMAllReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM\Report\PMAdmin.cs">
+      <DependentUpon>PMAdmin.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -1623,6 +1884,13 @@
     </Compile>
     <Compile Include="Report\reportView.aspx.designer.cs">
       <DependentUpon>reportView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Search\searchmain.aspx.cs">
+      <DependentUpon>searchmain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search\searchmain.aspx.designer.cs">
+      <DependentUpon>searchmain.aspx</DependentUpon>
     </Compile>
     <Compile Include="settingPage.aspx.cs">
       <DependentUpon>settingPage.aspx</DependentUpon>
@@ -1701,7 +1969,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CM\Report\" />
     <Folder Include="CM\Upload\" />
+    <Folder Include="equip\Upload\" />
+    <Folder Include="PM\Upload\" />
     <Folder Include="Techno\Upload\Order\" />
   </ItemGroup>
   <ItemGroup>
@@ -1735,6 +2006,26 @@
     <EmbeddedResource Include="Claim\reportImg.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportImg.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="equip\EquipReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EquipReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="equip\ReportTran.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportTran.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PM\Report\PMAdminReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PMAdminReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PM\Report\PMOverall.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PMOverall.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PM\Report\PMAdmin.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PMAdmin.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Techno\Quotations.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

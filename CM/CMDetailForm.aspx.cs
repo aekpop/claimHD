@@ -24,10 +24,16 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
+                
+                string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+                function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group = '1' Order By locate_id ASC", "locate_name", "locate_id");
+                BindData();
+                function.getListItem(ddlBudgetcc, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
+                    
                     function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
@@ -44,7 +50,7 @@ namespace ClaimProject.CM
                 function.getListItem(txtDeviceAdd, sql_Device, "device_name", "device_id");
                 txtDeviceAdd.Items.Insert(0, new ListItem("", ""));
                 txtSTime.Text = DateTime.Now.ToString("HH.mm");
-                BindData("");
+                BindData();
 
                 if (Request["ref"] != null)
                 {
@@ -55,8 +61,9 @@ namespace ClaimProject.CM
                     {
                         txtCpoint.SelectedValue = rs.GetString("cm_cpoint");
                         txtPoint.Text = rs.GetString("cm_point");
-                        txtChannel.Text = rs.GetString("cm_detail_channel");
+                       // txtChannel.Text = rs.GetString("cm_detail_channel");
                         txtSDate.Text = rs.GetString("cm_detail_sdate");
+                        ddlChanel.SelectedValue = rs.GetString("cm_detail_channel");
                         txtSTime.Text = rs.GetString("cm_detail_stime");
                         txtDeviceAdd.SelectedValue = rs.GetString("cm_detail_driver_id");
                         txtProblem.Text = rs.GetString("cm_detail_problem");
@@ -91,67 +98,86 @@ namespace ClaimProject.CM
 
 
         }
-        void BindData(string key)
+        void BindData()
         {
             string sql = "";
-            string sqlPlus = "";
-            if (Session["UserCpoint"].ToString() != "0")
+            string checkCpoint = txtCpointSearch.SelectedValue.ToString();
+            if (checkCpoint == "")
             {
-                sqlPlus = "WHERE c.cpoint_id = '" + Session["UserCpoint"].ToString() + "'";
+                sql = "SELECT * FROM tbl_cm_detail cm " +
+                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                    " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
+                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " WHERE cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlBudgetcc.SelectedValue + "' " +
+                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
-            if (key != "")
+            else
             {
-                sqlPlus = "WHERE c.cpoint_id = '" + key + "'";
+                sql = "SELECT * FROM tbl_cm_detail cm " +
+                   " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                   " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
+                   " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlBudgetcc.SelectedValue + "' " +
+                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
-            try
-            {
-                sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " + sqlPlus + " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                CMGridView.DataSource = ds.Tables[0];
-                CMGridView.DataBind();
-                if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
-                //lbCMNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
-            }
-            catch { }
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            CMGridView.DataSource = ds.Tables[0];
+            CMGridView.DataBind();
+            if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
         }
 
-        protected void btnSaveCM_Click(object sender, EventArgs e)
+        protected string ChkPicInsert ()
         {
-
-            String NewFileDocName = "";
-            if (fileImg.HasFile)
+            string NewFileDocName = "";
+            if(fileImg.HasFile)
             {
                 string typeFile = fileImg.FileName.Split('.')[fileImg.FileName.Split('.').Length - 1];
-                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if(typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
                 {
                     NewFileDocName = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileImg.FileName.Split('.')[0];
                     NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
                     fileImg.SaveAs(Server.MapPath(NewFileDocName.ToString()));
-
-                    string sql_insert = "INSERT INTO tbl_cm_detail (cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_detail_note,cm_cpoint,cm_point,cm_user) VALUES ('" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + txtChannel.Text + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + NewFileDocName + "','" + txtNote.Text + "','" + txtCpoint.SelectedValue + "','" + txtPoint.Text.Trim() + "','" + Session["User"].ToString() + "')";
-                    if (function.MySqlQuery(sql_insert))
-                    {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                        BindData("");
-                        ClearDate();
-                    }
-                    else
-                    {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
-                    }
+                    return NewFileDocName;
                 }
                 else
                 {
-                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                   
+                    return "picTypeError";
                 }
             }
             else
             {
-                //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
+                return "0";
+            }
+            
+        }
+        protected void btnSaveCM_Click(object sender, EventArgs e)
+        {
+            string getChkpic = ChkPicInsert();
+
+            if(getChkpic == "picTypeError")
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+            }
+            else
+            {
+                string bgy = function.getBudgetYear(txtSDate.Text);
+                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_detail_note,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtNote.Text + "','" + txtCpoint.SelectedValue + "','" + txtPoint.Text.Trim() + "','" + Session["User"].ToString() + "')";
+                if(function.MySqlQuery(sql_insert))
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                    BindData();
+                    ClearDate();
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว กรุณาติดต่อผู้ดูแล')", true);
+                }
+
             }
         }
 
@@ -161,7 +187,7 @@ namespace ClaimProject.CM
             txtPoint.Text = "";
             txtDeviceAdd.SelectedIndex = 0;
             txtProblem.Text = "";
-            txtChannel.Text = "";
+            //txtChannel.Text = "";
             txtNote.Text = "";
             txtSDate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
             txtSTime.Text = DateTime.Now.ToString("HH.mm");
@@ -232,11 +258,11 @@ namespace ClaimProject.CM
                 img = "cm_detail_simg = '" + NewFileDocName + "',";
             }
 
-            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_driver_id = '" + txtDeviceAdd.SelectedValue + "',cm_detail_problem='" + txtProblem.Text + "',cm_detail_channel='" + txtChannel.Text + "',cm_detail_sdate='" + txtSDate.Text + "',cm_detail_stime='" + txtSTime.Text + "'," + img + "cm_detail_note='" + txtNote.Text + "',cm_cpoint='" + txtCpoint.SelectedValue + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
+            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_driver_id = '" + txtDeviceAdd.SelectedValue + "',cm_detail_problem='" + txtProblem.Text + "',cm_detail_channel='" + ddlChanel.SelectedValue.ToString() + "',cm_detail_sdate='" + txtSDate.Text + "',cm_detail_stime='" + txtSTime.Text + "'," + img + "cm_detail_note='" + txtNote.Text + "',cm_cpoint='" + txtCpoint.SelectedValue + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
             if (function.MySqlQuery(sql_insert))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);
-                BindData("");
+                BindData();
                 //ClearDate();
             }
             else
@@ -252,12 +278,14 @@ namespace ClaimProject.CM
 
         protected void btnDeleteCM_Click(object sender, EventArgs e)
         {
-            string sql_insert = "DELETE FROM tbl_cm_detail WHERE cm_detail_id = '" + txtRef.Value + "'";
+            string dateNow = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_status_id='9', cm_delete_time='" + dateNow + "', cm_delete_user ='" + Session["User"].ToString() + "' " +
+                " WHERE cm_detail_id='" + txtRef.Value + "' ";
             if (function.MySqlQuery(sql_insert))
             {
                 //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ลบข้อมูลสำเร็จ')", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect", "alert('ลบข้อมูลสำเร็จ'); window.location='/CM/CMDetailForm';", true);
-                BindData("");
+                BindData();
                 ClearDate();
             }
             else
@@ -266,9 +294,14 @@ namespace ClaimProject.CM
             }
         }
 
-        protected void txtCpointSearch_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnSearchAddd_Click(object sender, EventArgs e)
         {
-            BindData(txtCpointSearch.SelectedValue);
+            BindData();
+        }
+
+        protected void btnToReport_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/CM/CMLine.aspx");
         }
     }
 }
