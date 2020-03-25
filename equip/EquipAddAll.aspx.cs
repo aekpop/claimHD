@@ -13,7 +13,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 using System.IO;
-
+//test
 namespace ClaimProject.equip
 {
     public partial class EquipAddAll : System.Web.UI.Page
