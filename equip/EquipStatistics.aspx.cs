@@ -118,5 +118,10 @@ namespace ClaimProject.equip
                 txtEndDate.Enabled = true;
             }
         }
+
+        protected void btnMainEQt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/equip/EquipDefault");
+        }
     }
 }

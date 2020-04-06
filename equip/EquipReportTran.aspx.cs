@@ -57,11 +57,15 @@ namespace ClaimProject.equip
                 string stat = parame.GetString("trans_stat");
                 if (stat == "1")
                 {
-                    Headmas = "ใบรับ - ส่งอุปกรณ์";
+                    Headmas = "ใบรับ - ส่งครุภัณฑ์";
+                }
+                else if(stat == "2" || stat == "6")
+                {
+                    Headmas = "ใบส่งคืนครุภัณฑ์";
                 }
                 else if(stat == "4")
                 {
-                    Headmas = "ใบส่งซ่อมอุปกรณ์";
+                    Headmas = "ใบส่งซ่อมครุภัณฑ์";
                 }
                 gettoll = parame.GetString("toll_name");
                 if(gettoll == "ฝ่ายบริหารฯ")

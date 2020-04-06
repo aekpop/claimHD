@@ -251,11 +251,7 @@ namespace ClaimProject.equip
                 btnEditEquip.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
 
             }
-            Label lbnumrowq = (Label)(e.Row.FindControl("lbnumrowq"));
-            if (lbnumrowq != null)
-            {
-                lbnumrowq.Text = (GridEquipAdd.Rows.Count + 1).ToString() + ".";
-            }
+          
         }
 
         protected void btnEditEquip_Command(object sender, CommandEventArgs e)
@@ -515,6 +511,7 @@ namespace ClaimProject.equip
                 }
                 else
                 {
+                    string usereq = Session["User"].ToString();
                     if (SNum != "") //มีเลข+ทุกด่านฯ
                     {
                         if(statt != "0")
@@ -1001,7 +998,6 @@ namespace ClaimProject.equip
 
         }
 
-        
 
         protected void lbtnTollReport_Command(object sender, CommandEventArgs e)
         {
@@ -1028,6 +1024,12 @@ namespace ClaimProject.equip
         protected void btnBackHomeADDEQ_Click(object sender, EventArgs e)
         {
             Response.Redirect("/equip/EquipMain.aspx");
+        }
+
+        protected void GridEquipAdd_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridEquipAdd.PageIndex = e.NewPageIndex;
+            SearchBind();
         }
     }
 }

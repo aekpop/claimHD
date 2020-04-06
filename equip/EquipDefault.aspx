@@ -1,15 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipDefault.aspx.cs" Inherits="ClaimProject.equip.EquipDefault" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:Button runat="server" ID="btnMainEQtt"  Font-Bold="true" BackColor="#737272" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักครุภัณฑ์"  OnClick="btnMainEQtt_Click" CssClass="btn" />
+    <br />
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="row">
-                <div class="col-md-2 text-right">
-                    <asp:Label ID="Label1" runat="server" Text="ปีงบประมาณ : "></asp:Label>
-                </div>
-                <div class="col-md-2">
-                    <asp:DropDownList ID="txtBudgetYear" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="txtBudgetYear_SelectedIndexChanged">
+                <div class="col-md" >
+                    <div class="form-group" style="padding:1px 1px 1px 30px">
+                        <asp:Label ID="Label1" runat="server" Text="ปีงบประมาณ : "></asp:Label>
+                        <asp:DropDownList ID="txtBudgetYear" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="txtBudgetYear_SelectedIndexChanged">
                     </asp:DropDownList>
+                    </div>
+                    
                 </div>
+                
             </div>
 
             <br />
@@ -124,6 +129,26 @@
                     </div>
                 </div>
                 </div>
+
+            <div class="row" >
+
+                <asp:Chart ID="Chart1" runat="server"  BackImageAlignment="Center"  >
+                               <Series>
+                                   <asp:Series Name="Series1"  >
+                                   </asp:Series>
+                                   <asp:Series Name="Series2"  >
+                                   </asp:Series>
+                               </Series>
+                               <ChartAreas>
+                                   <asp:ChartArea Name="ChartArea1"  >
+                                   </asp:ChartArea>
+                                   <asp:ChartArea Name="ChartArea2"  >
+                                   </asp:ChartArea>
+                               </ChartAreas>
+
+                              </asp:Chart>
+
+            </div>
             
             
         </ContentTemplate>

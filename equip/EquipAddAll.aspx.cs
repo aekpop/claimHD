@@ -13,11 +13,14 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 using System.IO;
-//test
+
 namespace ClaimProject.equip
 {
     public partial class EquipAddAll : System.Web.UI.Page
     {
+        public string alerts = "";
+        public string alertTypes = "";
+        public string icons = "";
         ClaimFunction function = new ClaimFunction();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,6 +72,12 @@ namespace ClaimProject.equip
             }
 
             ddlserchToll.Items.Insert(0, new ListItem("ทุกด่าน", "0"));
+            string al = Session["EQAddAlert"].ToString();
+            if (al == "1")
+            {
+                AlertPop("บันทึกสำเร็จ!! ", "success");
+            }
+            
 
         }
 
@@ -173,5 +182,26 @@ namespace ClaimProject.equip
             }
 
         }
+        public void AlertPop(string msg, string type)
+        {
+            switch (type)
+            {
+                case "success":
+                    icons = "add_alert";
+                    alertTypes = "success";
+                    break;
+                case "error":
+                    icons = "error";
+                    alertTypes = "danger";
+                    break;
+                case "warning":
+                    icons = "warning";
+                    alertTypes = "warning";
+                    break;
+            }
+            //alertType = type;
+            alerts = msg;
+        }
+
     }
 }

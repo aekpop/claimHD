@@ -15,32 +15,32 @@
                         <div class="col-md-3" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ชื่อครุภัณฑ์(ไทย)</label>
-                                <asp:TextBox ID="txtAddTH" runat="server" text="-" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddTH" runat="server" text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-3" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ชื่อครุภัณฑ์(อังกฤษ)</label>
-                                <asp:TextBox ID="txtAddENG" runat="server" Text="-"  Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddENG" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ยี่ห้อ</label>
-                                <asp:TextBox ID="txtAddBrand" runat="server" Text="-"  Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtAddBrand" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">รุ่น</label>
-                                <asp:TextBox ID="txtAddSeries" runat="server" Text="-"  Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddSeries" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         
                         <div class="col-md-2" style="padding:1px 10px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">เลขสัญญา</label>
-                                <asp:TextBox ID="txtAddContractNum" runat="server" Text="-" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddContractNum" runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Text="-" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                          
@@ -62,13 +62,13 @@
                         <div class="col-md-2" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ราคา</label>
-                                <asp:TextBox ID="txtAddPrize" runat="server" Text="-" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddPrize" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-1" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">หน่วย</label>
-                                <asp:TextBox ID="txtAddUnit" runat="server" Text="-" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddUnit" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-3" style="padding:1px 5px 1px 5px">
@@ -87,7 +87,7 @@
                     </div>
             <asp:Label ID="checkRowNum" runat="server" Visible="false"></asp:Label>
        
-                <asp:gridview ID="Gridview1" runat="server"
+                <asp:gridview ID="Gridview1" runat="server" CssClass="col-md text-center"
                     ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="20px" 
                     AutoGenerateColumns="false" > 
                     <AlternatingRowStyle BackColor="#edebec" />
@@ -105,7 +105,7 @@
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
-                             <asp:Button ID="btnNewrow" runat="server" Font-Size="Large" Font-Bold="true"   BackColor="#035405" ForeColor="White" CssClass="btn btn-sm " Text="เพิ่มแถว" OnClick="btnNewrow_Click" />
+                             <asp:Button ID="btnNewrow" runat="server" Font-Size="Large" Font-Bold="true"   BackColor="#035405" ForeColor="White" CssClass="btn btn-sm " Text="(+) เพิ่มแถว" OnClick="btnNewrow_Click" />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField  ItemStyle-Width="45px" ItemStyle-CssClass="text-center">
@@ -120,22 +120,18 @@
                     <RowStyle BackColor="#ffedf5"  />
                 </asp:gridview>
             <br />
-            <div class="row text-center">
-                <div class="col-md-3">
-                    
-                </div>
-               <div class="col-md-3" >
+            <div class="row">
+                <div class="col-md  text-center">
                     <asp:Button ID="btnSubmit" CssClass="btn btn-rose" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึกรายการทั้งหมด" />
+                
                 </div>
-                <div class="col-md-2" >
-                    <asp:Button ID="deleteAll" runat="server" Visible="false" CssClass="btn btn-danger" Font-Bold="true" OnClick="deleteAll_Click" Text="ลบรายการที่เพิ่มไปแล้วทั้งหมด" />
-                </div>
+                    
             </div>
           
 
             <hr />
-            <div class="row" style="padding-left:50px;" >
-                <div class="row text-center" >
+            <div class="row" style="padding-left:30px;" >
+                <div class="text-center" >
                     <asp:Label ID="resulttt" runat="server" Font-Bold="true" ></asp:Label>
                 </div>
             </div>
@@ -146,12 +142,18 @@
                     <Columns>
                         <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                    <%# Container.DataItemIndex + 1+"." %>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="200px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="180px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:Label ID="lbEQnumber"   runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_number") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="เลขทะเบียน" ItemStyle-Width="180px" ItemStyle-CssClass="text-center">
+                            <ItemTemplate >
+                                <asp:Label ID="lbEQSerial"   runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_serial") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -190,6 +192,14 @@
                 </asp:gridview>
 
     </div>
+        <div class="row">
+                <div class="col-md text-center">
+                    <asp:Button ID="deleteAll" runat="server" Visible="false" CssClass="btn btn-danger" Font-Bold="true" OnClick="deleteAll_Click" Text="ลบรายการที่เพิ่มไปแล้วทั้งหมด" />
+                </div>
+                    
+                
+            </div>
+
         <div class="row" >
             <div class="col-md-4">
 

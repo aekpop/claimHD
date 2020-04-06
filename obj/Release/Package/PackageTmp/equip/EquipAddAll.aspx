@@ -40,12 +40,12 @@
                 <div class="row" style="padding-left:35px;" >
                     <asp:Label ID="lbamountEQ" runat="server" ></asp:Label>
                 </div>
-          <asp:Panel ID="Panel1" runat="server" ScrollBars="Both"  BorderStyle="Solid" BorderColor="#fcd7e4"  Height="800px" > 
+          <asp:Panel ID="Panel1" CssClass="col-md text-center" runat="server" ScrollBars="Both"  BorderStyle="Solid" BorderColor="#fcd7e4"  Height="800px" > 
               
             <asp:GridView ID="GridAddAll" runat="server"
-            DataKeyNames="NewEQ_id"
+            DataKeyNames="NewEQ_id" 
             OnRowDataBound="GridAddAll_RowDataBound"
-            CssClass="table table-hover table-sm " 
+            CssClass="table table-hover table-sm col-md text-center" 
             AutoGenerateColumns="False"
             HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#333333" GridLines="Both">
                 <AlternatingRowStyle BackColor="#f3ffe0" />
@@ -111,5 +111,12 @@
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
-
+    <script type="text/javascript"> 
+        $(function () {
+        <% if (alerts != "")
+        { %>
+            demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
+        <% } %>
+        });
+    </script>
 </asp:Content>

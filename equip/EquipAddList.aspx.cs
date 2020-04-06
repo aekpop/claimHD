@@ -34,48 +34,51 @@ namespace ClaimProject.equip
         }
         protected void LoadPaging ()
         {
+            string PrivCode = Session["UserPrivilegeId"].ToString();
+            string userrrr = Session["User"].ToString();
+            if (PrivCode == "0" || PrivCode == "1" || PrivCode == "5")
+            {
+                if (userrrr == "sawitree")
+                {
+                    string sawitree = "SELECT * FROM tbl_toll " +
+                        "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'sawitree' Order by toll_id ASC ";
+                    function.getListItem(ddlAddCpoint, sawitree, "toll_name", "toll_id");
+                }
+                else if (userrrr == "supaporn")
+                {
+                    string supaporn = " SELECT * FROM tbl_toll " +
+                        "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'supaporn' Order by toll_id ASC ";
+                    function.getListItem(ddlAddCpoint, supaporn, "toll_name", "toll_id");
+                }
+                else if (userrrr == "watcharee")
+                {
+                    string watcharee = "SELECT * FROM tbl_toll " +
+                        "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'watcharee' Order by toll_id ASC ";
+                    function.getListItem(ddlAddCpoint, watcharee, "toll_name", "toll_id");
+                }
+                else
+                {
+                    function.getListItem(ddlAddCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
+                }
+
+            }
+            else
+            {
+                string cpointToll = "SELECT * FROM tbl_toll " +
+                                    "JOIN tbl_cpoint ON tbl_cpoint.cpoint_id = tbl_toll.cpoint_id " +
+                                    "WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By tbl_toll.toll_id ASC";
+                function.getListItem(ddlAddCpoint, cpointToll, "toll_name", "toll_id");
+            }
             if (Session["NewEQPKtype"].ToString() == "new")
             {
                 statsave.Text = Session["NewEQPK"].ToString() +" (รายการใหม่ยังไม่บันทึก)";
                 statsave.BackColor = System.Drawing.ColorTranslator.FromHtml("#dedede");
-                string PrivCode = Session["UserPrivilegeId"].ToString();
-                string userrrr = Session["User"].ToString();
-                if (PrivCode == "0" || PrivCode == "1" || PrivCode == "5")
-                {
-                    if (userrrr == "sawitree")
-                    {
-                        string sawitree = "SELECT * FROM tbl_toll " +
-                            "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'sawitree' Order by toll_id ASC ";
-                        function.getListItem(ddlAddCpoint, sawitree, "toll_name", "toll_id");
-                    }
-                    else if (userrrr == "supaporn")
-                    {
-                        string supaporn = " SELECT * FROM tbl_toll " +
-                            "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'supaporn' Order by toll_id ASC ";
-                        function.getListItem(ddlAddCpoint, supaporn, "toll_name", "toll_id");
-                    }
-                    else if (userrrr == "watcharee")
-                    {
-                        string watcharee = "SELECT * FROM tbl_toll " +
-                            "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'watcharee' Order by toll_id ASC ";
-                        function.getListItem(ddlAddCpoint, watcharee, "toll_name", "toll_id");
-                    }
-                    else
-                    {
-                        function.getListItem(ddlAddCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
-                    }
-
-                }
-                else
-                {
-                    string cpointToll = "SELECT * FROM tbl_toll " +
-                                        "JOIN tbl_cpoint ON tbl_cpoint.cpoint_id = tbl_toll.cpoint_id " +
-                                        "WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By tbl_toll.toll_id ASC";
-                    function.getListItem(ddlAddCpoint, cpointToll, "toll_name", "toll_id");
-                }
+                
             }
             else if(Session["NewEQPKtype"].ToString() == "old")
             {
+                
+                ddlAddCpoint.Enabled = false;
                 statsave.Text = Session["NewEQPK"].ToString() ;
                 statsave.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffd9e7");
                 string qdata = "select * from tbl_newequipment where NewEQ_id = '"+ Session["NewEQPK"].ToString() + "' ";
@@ -87,7 +90,8 @@ namespace ClaimProject.equip
                     txtAddBrand.Text = rs.GetString("AddBrand");
                     txtAddSeries.Text = rs.GetString("AddSeries");
                     txtAddContractNum.Text = rs.GetString("AddConNum");
-                    ddlAddCpoint.SelectedValue = rs.GetInt32("AddCpoint").ToString();
+                    string cpointtt = rs.GetInt32("AddCpoint").ToString();
+                    ddlAddCpoint.SelectedValue = cpointtt;
                     txtAddDateGet.Text = rs.GetString("AddDateGet");
                     txtAddPrize.Text = rs.GetString("AddPrize");
                     txtAddUnit.Text = rs.GetString("AddUnit");
@@ -100,12 +104,18 @@ namespace ClaimProject.equip
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     gridadded.DataSource = dt;
-                    
+                    if(dt.Rows.Count.ToString() != "0")
+                    {
+                        deleteAll.Visible = true;
+                    }
+                    else
+                    {
+                        deleteAll.Visible = false;
+                    }
                     resulttt.Text = "รายการครุภัณฑ์ที่เพิ่มเข้าระบบเรียบร้อย  " + dt.Rows.Count.ToString() + " รายการ";
                     gridadded.DataBind();
                 }
-                deleteAll.Visible = true;
-                ddlAddCpoint.Enabled = false;
+                
             }
             
         }
@@ -217,6 +227,7 @@ namespace ClaimProject.equip
             {
                 if(txtAddContractNum.Text != "" && txtAddDateGet.Text != "" && txtAddPrize.Text != "" && txtAddUnit.Text != ""  )
                 {
+                    string EQPKTYPE = Session["NewEQPKtype"].ToString();
                     for (int i = 0; i < Gridview1.Rows.Count; i++)
                     {
                         Num1 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox1")).Text;
@@ -238,7 +249,8 @@ namespace ClaimProject.equip
                                     {
                                         Num2 = "-";
                                     }
-                                    if(Session["NewEQPKtype"].ToString() == "new")
+                                    
+                                    if (EQPKTYPE == "new")
                                     {
                                         newEQref = "INSERT INTO tbl_newequipment " +
                                         "(NewEQ_id,NewEQ_Date,NewEQ_Time,NewEQ_User,NewEQ_Comment,AddNameth,AddNameEng,AddBrand,AddSeries,AddConNum," +
@@ -248,7 +260,7 @@ namespace ClaimProject.equip
                                         ",'" + ddlAddCpoint.SelectedValue + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddUnit.Text + "'" +
                                         ",'" + ddlAddCompany.SelectedValue + "','" + ddlAddStat.SelectedValue + "')";
                                     }
-                                    else if(Session["NewEQPKtype"].ToString() == "old")
+                                    else if(EQPKTYPE == "old")
                                     {
                                         newEQref = "update tbl_newequipment SET " +
                                         "NewEQ_Date='"+ DateNoww + "',NewEQ_Time = '"+ TimeNoww + "',NewEQ_User= '"+ Session["User"].ToString() + "'" +
@@ -256,7 +268,7 @@ namespace ClaimProject.equip
                                         ",AddSeries='"+ txtAddSeries.Text + "',AddConNum='"+ txtAddContractNum.Text + "'," +
                                         "AddCpoint='"+ ddlAddCpoint.SelectedValue + "',AddDateGet='"+ txtAddDateGet.Text + "',AddPrize='"+ txtAddPrize.Text + "'" +
                                         ",AddUnit='"+ txtAddUnit.Text + "',AddCompany='"+ ddlAddCompany.SelectedValue + "',AddStat='"+ ddlAddStat.SelectedValue + "' " +
-                                        " where newlist_id = '"+ Session["NewEQPK"].ToString() + "'";
+                                        " where NewEQ_id = '" + Session["NewEQPK"].ToString() + "'";
                                     }
                                     SQLPMM = "INSERT INTO tbl_equipment " +
                                         "(equipment_img,locate_id,equipment_name,equipment_nameth,equipment_no,equipment_serial,equipment_brand" +
@@ -270,9 +282,9 @@ namespace ClaimProject.equip
                                       "          , '" + TimeNoww + "','" + DateNoww + "','0','-') ";
                                     
                                     eqaddList = "insert into tbl_neweq_list " +
-                                        " (newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll) " +
-                                        "values ('"+ Session["NewEQPK"].ToString() + "','"+DateNoww+"','"+TimeNoww+"'," +
-                                        "'"+Num1+"','"+ txtAddTH.Text + "','"+ txtAddBrand.Text + "','"+ txtAddSeries.Text + "','"+ txtAddContractNum.ToString() + "'," +
+                                        " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll) " +
+                                        "values ('"+Num2+"','"+ Session["NewEQPK"].ToString() + "','"+DateNoww+"','"+TimeNoww+"'," +
+                                        "'"+Num1+"','"+ txtAddTH.Text + "','"+ txtAddBrand.Text + "','"+ txtAddSeries.Text + "','"+ txtAddContractNum.Text + "'," +
                                         " '"+ ddlAddCpoint.SelectedValue + "')";
 
                                     if (function.MySqlQuery(SQLPMM))
@@ -281,22 +293,29 @@ namespace ClaimProject.equip
                                         {
                                             if(function.MySqlQuery(eqaddList))
                                             {
-                                                Response.Redirect("/equip/EquipAddAll.aspx");
+                                                Session["NewEQPKtype"] = "old";
+                                                LoadPaging();
+                                                break;
                                             }
                                             else
                                             {
                                                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFinal ติดต่อเจ้าหน้าที่ ')", true);
+                                                break;
                                             }
                                             
                                         }
                                         else
                                         {
                                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error01 ติดต่อเจ้าหน้าที่ ')", true);
+                                            break;
                                         }
 
                                     }
                                     else
-                                    { doOrnot = 0; break; }
+                                    {
+                                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFirst ติดต่อเจ้าหน้าที่ ')", true);
+                                        doOrnot = 0; break;
+                                    }
                                 }
                             }
                             else
@@ -318,7 +337,7 @@ namespace ClaimProject.equip
                                       "          ,'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue.ToString() + "','" + ddlAddStat.SelectedValue.ToString() + "'" +
                                       "          ,'" + ddlAddCompany.SelectedValue.ToString() + "','-','0','" + Session["User"].ToString() + "'" +
                                       "          , '" + TimeNoww + "','" + DateNoww + "','0','-') ";
-                                    if (Session["NewEQPKtype"].ToString() == "new")
+                                    if (EQPKTYPE == "new")
                                     {
                                         newEQref = "INSERT INTO tbl_newequipment " +
                                         "(NewEQ_Date,NewEQ_Time,NewEQ_User,NewEQ_Comment,AddNameth,AddNameEng,AddBrand,AddSeries,AddConNum," +
@@ -328,7 +347,7 @@ namespace ClaimProject.equip
                                         ",'" + ddlAddCpoint.SelectedValue + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddUnit.Text + "'" +
                                         ",'" + ddlAddCompany.SelectedValue + "','" + ddlAddStat.SelectedValue + "')";
                                     }
-                                    else if (Session["NewEQPKtype"].ToString() == "old")
+                                    else if (EQPKTYPE == "old")
                                     {
                                         newEQref = "update tbl_newequipment SET " +
                                         "NewEQ_Date='" + DateNoww + "',NewEQ_Time = '" + TimeNoww + "',NewEQ_User= '" + Session["User"].ToString() + "'" +
@@ -336,11 +355,11 @@ namespace ClaimProject.equip
                                         ",AddSeries='" + txtAddSeries.Text + "',AddConNum='" + txtAddContractNum.Text + "'," +
                                         "AddCpoint='" + ddlAddCpoint.SelectedValue + "',AddDateGet='" + txtAddDateGet.Text + "',AddPrize='" + txtAddPrize.Text + "'" +
                                         ",AddUnit='" + txtAddUnit.Text + "',AddCompany='" + ddlAddCompany.SelectedValue + "',AddStat='" + ddlAddStat.SelectedValue + "' " +
-                                        " where newlist_id = '" + Session["NewEQPK"].ToString() + "'";
+                                        " where NewEQ_id = '" + Session["NewEQPK"].ToString() + "'";
                                     }
                                     eqaddList = "insert into tbl_neweq_list " +
-                                        " (newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll) " +
-                                        "values ('" + Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "'," +
+                                        " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll) " +
+                                        "values ('"+Num2+"','" + Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "'," +
                                         "'" + Num1 + "','" + txtAddTH.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.ToString() + "'," +
                                         " '" + ddlAddCpoint.SelectedValue + "')";
                                     if (function.MySqlQuery(SQLPMM))
@@ -349,16 +368,18 @@ namespace ClaimProject.equip
                                         {
                                             if(function.MySqlQuery(eqaddList))
                                             {
-                                                Response.Redirect("/equip/EquipAddAll.aspx");
+                                                
                                             }
                                             else
                                             {
                                                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFinal2 ติดต่อเจ้าหน้าที่ ')", true);
+                                                break;
                                             }
                                         }
                                         else
                                         {
                                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error02 ติดต่อเจ้าหน้าที่ ')", true);
+                                            break;
                                         }
                                     }
                                     else
@@ -369,19 +390,22 @@ namespace ClaimProject.equip
                         else if (resultChk == "no")
                         {
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!')", true);
+                            break;
                         }
-                        else { ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ดูแลระบบ')", true); }
+                        else { ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ดูแลระบบ')", true); break; }
 
                     }
                 }
                 else
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)')", true);
+                    
                 }
             }
             else
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)')", true);
+                
             }
                 
                /* if (doOrnot != 0) { Response.Redirect("/equip/EquipAddList"); }
@@ -525,16 +549,34 @@ namespace ClaimProject.equip
             // + GridAddTran.DataKeys[e.RowIndex].Value + "'";
             //GridAddTran.DataKeys[e.RowIndex].Value + "'";
             string deleterow = "delete from tbl_neweq_list where newlist_id = '"+gridadded.DataKeys[e.RowIndex].Value+"' ";
-            if(function.MySqlQuery(deleterow))
+            string getEQnum = "select list_number from tbl_neweq_list where newlist_id = '" + gridadded.DataKeys[e.RowIndex].Value + "' ";
+            MySqlDataReader rd = function.MySqlSelect(getEQnum);
+            if(rd.Read())
             {
+                string EQQnum = rd.GetString("list_number");
+                rd.Close();
+                string deleteEQ = "Delete from tbl_equipment where equipment_no = '"+EQQnum+"'";
+                if (function.MySqlQuery(deleteEQ))
+                {
+                    if (function.MySqlQuery(deleterow))
+                    {
 
-            }
-            else
-            {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ลบรายการล้มเหลว!! ติดต่อเจ้าหน้าที่!!')", true);
-            }
+                        Response.Redirect("/equip/EquipAddList.aspx");
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!')", true);
+                    }
 
-            gridadded.EditIndex = -1;
+                    gridadded.EditIndex = -1;
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ลบรายการล้มเหลว!! ติดต่อเจ้าหน้าที่!!')", true);
+                }
+                
+            }
+            
         }
 
         protected void gridadded_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -558,10 +600,11 @@ namespace ClaimProject.equip
                     if(function.MySqlQuery(deleteEQ))
                     {
                         
+                        
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ลบไม่สำเร็จ!! ติดต่อเจ้าหน้าที่!!')", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete EQ_num: "+numGet+" ติดต่อเจ้าหน้าที่!!')", true);
                         break;
                     }
 
@@ -571,12 +614,22 @@ namespace ClaimProject.equip
                     string deleteAddmain = "Delete from tbl_newequipment where NewEQ_id = '"+ Session["NewEQPK"].ToString() + "'  ";
                     if(function.MySqlQuery(deleteAddmain))
                     {
-                        Response.Redirect("/equip/EquipAddAll.aspx");
-                        break;
+                        string deleteListEQ = "Delete from tbl_neweq_list where newEQ_idx = '" + Session["NewEQPK"].ToString() + "'";
+                        if (function.MySqlQuery(deleteListEQ))
+                        {
+                            Response.Redirect("/equip/EquipAddAll.aspx");
+                            break;
+                        }
+                        else
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!')", true);
+                            break;
+                        }
+                        
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Final ลบไม่สำเร็จ!! ติดต่อเจ้าหน้าที่!!')", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete newequipment ติดต่อเจ้าหน้าที่!!')", true);
                         break;
                     }
                     

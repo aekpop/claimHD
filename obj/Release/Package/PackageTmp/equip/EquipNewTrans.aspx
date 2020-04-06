@@ -11,7 +11,7 @@
         <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</h3>
         
         <div id="divtranFirst" class="card-body table-responsive" style="padding-top:1px" runat="server">
-           <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" Font-Size="Large" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" CssClass="" Font-Size="Medium" ></asp:Label>)</h3>
+           <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" Font-Size="Large" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" CssClass="" Font-Size="Medium" ></asp:Label></h3>
             <div class="row" id="divhitback" runat="server" visible="false" style="padding:1px 1px 1px 20px;height:60px"  >
                 <asp:TextBox ID="NoteHitback" BackColor="#ffffcc" BorderColor="#e1e1e1" runat="server" Width="800px"  ForeColor="Red" Font-Bold="true" Font-Size="Large"  TextMode="MultiLine"></asp:TextBox>
             </div>
@@ -195,7 +195,6 @@
                     ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="20px" 
                     AutoGenerateColumns="false" OnRowDataBound="GridRepair_RowDataBound"
                     HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" 
-
                     > 
                     <AlternatingRowStyle BackColor="#d5c7ff" />
                     <Columns>

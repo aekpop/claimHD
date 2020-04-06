@@ -68,9 +68,9 @@ namespace ClaimProject.equip
                 function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name","toll_id");
                 function.getListItem(ddlPosition, "SELECT * FROM tbl_position WHERE position_group = '2' Order By position_id", "position_name", "position_id");
                 function.getListItem(ddlposGet, "SELECT * FROM tbl_position WHERE position_group = '2' Order By position_id", "position_name", "position_name");
-                function.getListItem(ddlTypeEQQ, "SELECT * FROM tbl_transfer_status Order By trans_stat_id", "trans_stat_name", "trans_stat_id");
+                
 
-                function.getListItem(ddlcompany, "select * from tbl_company WHERE company_status = '2' order by company_id ASC ", "company_name", "company_id");
+                
                 function.getListItem(ddlStartEQ,tollStart, "toll_name", "toll_id");
                 function.getListItem(txtEquipTrans, equipNo, "equipment_no", "equipment_id"); 
                 txtEquipTrans.Items.Insert(0, new ListItem("", ""));
@@ -107,6 +107,8 @@ namespace ClaimProject.equip
 
             if(Session["TransNew"].ToString() == "1")
             {
+                function.getListItem(ddlcompany, "select * from tbl_company WHERE company_status = '2' order by company_id ASC ", "company_name", "company_id");
+                function.getListItem(ddlTypeEQQ, "SELECT * FROM tbl_transfer_status Order By trans_stat_id", "trans_stat_name", "trans_stat_id");
                 btnFistSubmit.Visible = false;
                 string selectData = "SELECT * FROM tbl_transfer " +
                     " JOIN tbl_trans_complete ON tbl_trans_complete.complete_id = tbl_transfer.complete_stat  " +
@@ -119,7 +121,7 @@ namespace ClaimProject.equip
                     string completestatus = redf.GetString("complete_stat");
 
                     refnoo.Text = " (เลขอ้างอิง : " + Session["TransID"].ToString() + " / สถานะ : ";
-                    stathead.Text = redf.GetString("complete_name");
+                    stathead.Text = redf.GetString("complete_name")+" )";
                     stathead.CssClass = "badge badge-"+redf.GetString("complete_badge");
                     if (transtatt != "4")
                     {
@@ -450,6 +452,23 @@ namespace ClaimProject.equip
             }
             else
             {
+                function.getListItem(ddlcompany, "select * from tbl_company WHERE company_status = '2' order by company_id ASC ", "company_name", "company_id");
+                if (Session["UserCpoint"].ToString() == "0")
+                {
+                    function.getListItem(ddlTypeEQQ, "SELECT * FROM tbl_transfer_status Order By trans_stat_id", "trans_stat_name", "trans_stat_id");
+                    ddlTollEQ.Enabled = true;
+                }
+                else
+                {
+                    function.getListItem(ddlTypeEQQ, "SELECT * FROM tbl_transfer_status WHERE group_stat = '1' Order By trans_stat_id", "trans_stat_name", "trans_stat_id");
+                    ddlTollEQ.SelectedValue = "9200";
+                    ddlTollEQ.Enabled = false;
+                    ddlcompany.SelectedValue = "22";
+                    ddlcompany.Enabled = false;
+                }
+
+                
+
                 divEndToll.Visible = true;
                 btnFistSubmit.Visible = true;
             }
@@ -549,10 +568,10 @@ namespace ClaimProject.equip
                                 {
                                     sqltranAct = "INSERT INTO tbl_transfer_action " +
                                         "(tran_type,repair_action,old_status,transfer_id,trans_equip_id,old_locate,old_toll,old_name,old_nameth,old_serial,old_series" +
-                                        ",old_type,old_no,old_person,old_brand,num_success) " +
+                                        ",old_type,old_no,old_person,old_brand,num_success,budget_y,month_y,date_y) " +
                                         " VALUES ('"+ddlTypeEQQ.SelectedValue+"','0','"+oldStatus+"','" + Session["TransID"].ToString() + "','" + eqidd + "','" + locate_idd + "'," +
                                         "'" + oldtoll + "','" + old_name + "','" + oldnameth + "','" + oldserial + "','" + oldseries + "'," +
-                                        " '" + oldtype + "','" + oldno + "','" + user + "','" + oldbrand + "','no')";
+                                        " '" + oldtype + "','" + oldno + "','" + user + "','" + oldbrand + "','no','" + function.getBudgetYear(txtDateSend.Text) + "','" + datesss + "','" + txtDateSend.Text + "')";
                                     if (function.MySqlQuery(sqltranAct))
                                     {
                                         if (ddlTypeEQQ.SelectedValue != "3" && ddlTypeEQQ.SelectedValue != "4")
@@ -587,10 +606,10 @@ namespace ClaimProject.equip
                             {
                                 sqltranAct = "INSERT INTO tbl_transfer_action " +
                                         "(tran_type,repair_action,old_status,transfer_id,trans_equip_id,old_locate,old_toll,old_name,old_nameth,old_serial,old_series" +
-                                        ",old_type,old_no,old_brand,num_success) " +
+                                        ",old_type,old_no,old_brand,num_success,budget_y,month_y,date_y) " +
                                         " VALUES ('"+ddlTypeEQQ.SelectedValue+"','0','"+oldStatus+"','" + Session["TransID"].ToString() + "','" + eqidd + "','" + locate_idd + "'," +
                                         "'" + oldtoll + "','" + old_name + "','" + oldnameth + "','" + oldserial + "','" + oldseries + "'," +
-                                        " '" + oldtype + "','" + oldno + "','" + oldbrand + "','no')";
+                                        " '" + oldtype + "','" + oldno + "','" + oldbrand + "','no','" + function.getBudgetYear(txtDateSend.Text) + "','" + datesss + "','" + txtDateSend.Text + "')";
                                 
                                 if (function.MySqlQuery(sqltranAct))
                                 {
@@ -774,7 +793,8 @@ namespace ClaimProject.equip
                 divnormal.Visible = false;
                 divnewserial.Visible = true;
                 ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#fffec2");
-                
+                ddlTollEQ.Enabled = true;
+
             }
             else if(ddlTypeEQQ.SelectedValue == "4")
             {
@@ -785,6 +805,28 @@ namespace ClaimProject.equip
                 divnewserial.Visible = false;
                 ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#ede0ff");
                 divnormal.Style.Add("background-color", "#ede0ff");
+                ddlTollEQ.Enabled = true;
+                if(Session["UserCpoint"].ToString() != "0")
+                {
+                    ddlcompany.Enabled = false;
+                }
+                else
+                {
+                    ddlcompany.Enabled = true;
+                }
+
+            }
+            else if(ddlTypeEQQ.SelectedValue == "2")
+            {
+                divcompany.Visible = false;
+                divEndToll.Visible = true;
+                divreplace.Visible = false;
+                divnormal.Visible = true;
+                divnewserial.Visible = false;
+                ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#dbfff8");
+                divnormal.Style.Add("background-color", "lightcyan");
+                ddlTollEQ.SelectedValue = "9200";
+                ddlTollEQ.Enabled = false;
             }
             else 
             {
@@ -795,6 +837,7 @@ namespace ClaimProject.equip
                 divnewserial.Visible = false;
                 ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#dbfff8");
                 divnormal.Style.Add("background-color", "lightcyan");
+                ddlTollEQ.Enabled = true;
             }
         }
 

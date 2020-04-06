@@ -60,13 +60,15 @@
                         <asp:LinkButton ID="lbtnDepartReport" runat="server"  Visible="false" ToolTip="พิมพ์" CssClass="fa fa-print"  Font-Size="40px"  ForeColor="#990000" OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
                 </div>
 
-          <asp:Panel ID="Panel1" runat="server" ScrollBars="Both"  BorderStyle="Solid" BorderColor="#ffcc99"  Height="800px" > 
+          <asp:Panel ID="Panel1" runat="server" ScrollBars="Both"  BorderStyle="Solid" BorderColor="#ffcc99"  Height="850px" > 
               
             <asp:GridView ID="GridEquipAdd" runat="server"
             DataKeyNames="equipment_id"
             OnRowDataBound="GridEquipAdd_RowDataBound"
             CssClass="table table-hover table-sm " 
-            AutoGenerateColumns="False"
+            AutoGenerateColumns="False" OnPageIndexChanging="GridEquipAdd_PageIndexChanging" PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
+            PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
+            AllowPaging="true" 
             HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#333333" GridLines="Both">
                 <AlternatingRowStyle BackColor="#f3ffe0" />
                 <Columns>
@@ -75,9 +77,9 @@
                             <asp:LinkButton ID="btnEditEquip" runat="server" Text="แก้ไข" Font-Size="12px" CssClass="fas text-warning" OnCommand="btnEditEquip_Command">&#xf044;</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="40px">
-                        <ItemTemplate>
-                            <asp:Label ID="lbnumrowq" runat="server" Font-Size="16px" CssClass="text-center"  ></asp:Label>
+                    <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="50px" ControlStyle-Font-Size="12px">
+                        <ItemTemplate >
+                            <%# Container.DataItemIndex + 1+"." %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" ControlStyle-Width="200px">
@@ -86,13 +88,13 @@
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="เลขครุภัณฑ์" ControlStyle-Width="150px">
+                    <asp:TemplateField HeaderText="เลขครุภัณฑ์" ControlStyle-Width="140px">
                         <ItemTemplate>
                             <asp:Label ID="lbequipNo" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_no") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="เลขทะเบียน" ControlStyle-Width="150px" >
+                    <asp:TemplateField HeaderText="เลขทะเบียน" ControlStyle-Width="140px" >
                         <ItemTemplate>
                             <asp:Label ID="lbequipSe" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_serial") %>'></asp:Label>
                         </ItemTemplate>
@@ -103,27 +105,14 @@
                             <asp:Label ID="lbequipbrand"  runat="server" Font-Size="16px"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_brand") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รุ่น" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="220px">
-                        <ItemTemplate>
-                            <asp:Label ID="lbequipseries"  runat="server" Font-Size="16px" Width="90px" Text='<%# new ClaimProject.Config.ClaimFunction().ShortTextCom(DataBinder.Eval(Container, "DataItem.equipment_series").ToString()) %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
-                        <ItemTemplate>
-                            <asp:Label ID="lbepoint"  runat="server" Font-Size="16px" Width="100px" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
+                    
                     <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
                             <asp:Label ID="lbequipToll"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField HeaderText="ผู้รับผิดชอบ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
-                        <ItemTemplate>
-                            <asp:Label ID="lbpersonnn"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.person_name") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="100px">
+                    
+                    <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="70px">
                         <ItemTemplate>
                             <asp:Label ID="lbequipchk"  runat="server" Font-Size="16px"  Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                         </ItemTemplate>
@@ -133,7 +122,6 @@
                             <asp:Label ID="lbequipnote"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.equip_comment") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle CssClass="text-center" BackColor="#25660d"  ForeColor="White" ></HeaderStyle>
@@ -142,12 +130,11 @@
                 <SelectedRowStyle BackColor="#a2fca5" Font-Bold="True" ForeColor="#333333" />
                 <SortedAscendingCellStyle BackColor="#baf7b2" />
                 <SortedDescendingHeaderStyle BackColor="#5abe48"/>
-
+                <PagerStyle HorizontalAlign="Center" BackColor="White" ForeColor="#026b14"  />
         </asp:GridView>
                   
    </asp:Panel>   
 
-                
             </div>
         </div>
    <div class="modal fade" id="EquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

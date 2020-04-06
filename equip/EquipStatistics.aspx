@@ -4,7 +4,7 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-
+        <asp:Button runat="server" ID="btnMainEQt"  Font-Bold="true" BackColor="#737272" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักรายงาน"  OnClick="btnMainEQt_Click" CssClass="btn" />
 
     <div class="card" style="z-index: 0">
         <div class="card-header card-header-warning" style="height:60px;">

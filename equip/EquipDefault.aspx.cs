@@ -24,11 +24,11 @@ namespace ClaimProject.equip
                 loadingpage();
             }
 
-
         }
         
         protected void loadingpage()
         {
+            function.getListItem(txtBudgetYear, "SELECT trans_budget FROM tbl_transfer GROUP BY trans_budget ORDER BY trans_budget DESC", "trans_budget", "trans_budget");
             string tran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '1' AND complete_stat = '3' ";
             string tranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '1' AND num_success = 'yes'";
             MySqlDataReader tr = function.MySqlSelect(tran);
@@ -44,7 +44,7 @@ namespace ClaimProject.equip
                 }
             }
 
-            string send = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '2' AND complete_stat = '3' ";
+            string send = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '2' AND complete_stat = '3' AND trans_budget = '"+txtBudgetYear.SelectedValue+"' ";
             string sendact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '2' AND num_success = 'yes'";
             MySqlDataReader snd = function.MySqlSelect(send);
             if (snd.Read())
@@ -108,9 +108,74 @@ namespace ClaimProject.equip
             }
 
 
-
+            loadChart();
 
         }
+        protected void loadChart ()
+        {
+
+            /*  int nowBudget = int.Parse(function.getBudgetYear("01-" + DateTime.Now.ToString("MM") + "-" + (DateTime.Now.Year + 543).ToString()));
+              string budgetss = txtBudgetYear.Text;
+              string MonthFullList = "ตุลาคม-มกราคม-กุมภาพันธ์-มีนาคม-เมษายน-พฤษภาคม-มิถุนายน-กรกฎาคม-สิงหาคม-กันยายน-ตุลาคม-พฤศจิกายน-ธันวาคม";
+              string[] MonthList = MonthFullList.Split('-');
+              string ChartQuery = " select IFNULL(c.month_y,'ตุลาคม') AS monthx,COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                                  + " WHERE c.month_y = 'ตุลาคม'  AND c.tran_type = 6 AND  num_success = 'yes' AND"
+                                  + " c.budget_y = '" + budgetss + "' "
+                                  + " UNION  select IFNULL(c.month_y,'พฤศจิกายน') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                                  + " WHERE c.month_y = 'พฤศจิกายน' AND c.tran_type = 6 AND num_success = 'yes' AND"
+                                  + " c.budget_y = '" + budgetss + "'  "
+                                  + " UNION  select IFNULL(c.month_y,'ธันวาคม') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                                  + " WHERE c.month_y = 'ธันวาคม'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                                  + " c.budget_y = '" + budgetss + "'  ";
+              string ChartQ = ChartQuery
+                            + " UNION select IFNULL(c.month_y, 'มกราคม') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'มกราคม'  AND c.tran_type != 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'กุมภาพันธ์') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'กุมภาพันธ์'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'มีนาคม') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'มีนาคม'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'เมษายน') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'เมษายน'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'พฤษภาคม') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'พฤษภาคม'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'มิถุนายน') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'มิถุนายน'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'กรกฎาคม') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'กรกฎาคม'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'สิงหาคม') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'สิงหาคม'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  "
+                            + " UNION select IFNULL(c.month_y, 'กันยายน') AS monthx, COUNT(c.trans_act_id)AS Total  FROM tbl_transfer_action c "
+                            + " WHERE c.month_y = 'กันยายน'  AND c.tran_type = 6 AND num_success = 'yes' AND"
+                            + " c.budget_y = '" + budgetss + "'  ";
+  */
+            /*  MySqlDataAdapter da = function.MySqlSelectDataSet(QueryXX);
+              DataSet ds = new DataSet();
+              da.Fill(ds);
+              lbChart1.Visible = true;
+              Chart1.DataSource = ds.Tables[0];
+
+              Chart1.Series["Series1"].ChartType = SeriesChartType.Column;
+              Chart1.Series["Series1"].Color = Color.DarkOrange;
+              Chart1.Series["Series1"].LabelForeColor = Color.Black;
+              Chart1.Series["Series1"].IsValueShownAsLabel = true;
+              Chart1.Series["Series1"].XValueMember = "monthx";
+              Chart1.Series["Series1"].YValueMembers = "Total";
+              Chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+              Chart1.ChartAreas["ChartArea1"].BackColor = Color.LightGoldenrodYellow;
+              Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+              Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+              Chart1.ChartAreas["ChartArea1"].AxisY.Title = "จำนวน";
+              Chart1.DataBind(); */
+        }
+
         protected void txtBudgetYear_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -123,22 +188,27 @@ namespace ClaimProject.equip
 
         protected void lbtnSendHeadDetail_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/equip/EquipStatistics");
         }
 
         protected void lbtnSellDetail_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/equip/EquipStatistics");
         }
 
         protected void lbtnRepairDetail_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/equip/EquipStatistics");
         }
 
         protected void lbtnCopyDetail_Click(object sender, EventArgs e)
         {
+            Response.Redirect("/equip/EquipStatistics");
+        }
 
+        protected void btnMainEQtt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/equip/EquipMain");
         }
     }
 }

@@ -55,8 +55,10 @@ namespace ClaimProject
                             cpoint = txtCpoint.SelectedValue;
                         }
                         // Storee Session
+                        Session.Add("EQAddAlert", "");
                         Session.Add("NewEQPK", "");
                         Session.Add("NewEQPKtype", "");
+                        Session.Add("EQLevel",rs.GetString("eq_level"));
                         Session.Add("User", txtUser.Text);
                         Session.Add("UserName", rs.GetString("name"));
                         Session.Add("UserPrivilegeId", rs.GetString("level"));

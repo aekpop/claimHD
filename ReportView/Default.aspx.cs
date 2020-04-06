@@ -246,10 +246,10 @@ namespace ClaimProject.ReportView
                 Chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
                 Chart1.ChartAreas["ChartArea1"].BackColor = Color.LightGoldenrodYellow;
                 Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
-                Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+                Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false; 
                 //Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
                 Chart1.DataBind();
-                
+
             }
             else
             {
@@ -1266,7 +1266,6 @@ namespace ClaimProject.ReportView
                 annexx += " SELECT * FROM tbl_annex  ORDER BY Annex_id ASC";
                 divAnexx.Visible = false;
             }
-            
 
         }
 
