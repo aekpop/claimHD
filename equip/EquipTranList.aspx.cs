@@ -37,11 +37,10 @@ namespace ClaimProject
                 Session["BackWhat"] = "Send";
                 function.getListItem(ddlsearchEndToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                 function.getListItem(ddlsearchType, "SELECT * FROM tbl_transfer_status Order by trans_stat_id ASC ", "trans_stat_name", "trans_stat_id");
-                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '4' AND complete_id != '5'  AND complete_id != '6' order by complete_id asc ", "complete_name", "complete_id");
+                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '4' AND complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");
                 ddlsearchEndToll.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
-                
             }
             LineTran();
             LoadPaging();
@@ -111,11 +110,11 @@ namespace ClaimProject
                     {
                         if(txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND complete_stat !='6' AND trans_id like '%" + txtRefTran.Text+ "%'  Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_id like '%" + txtRefTran.Text+ "%'  Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND complete_stat !='6'  Order By tbl_transfer.complete_stat ASC , STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'   Order By tbl_transfer.complete_stat ASC , STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
                     }
@@ -139,11 +138,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND complete_stat !='6' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND complete_stat !='6' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -171,7 +170,7 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5' AND complete_stat !='6' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
@@ -200,12 +199,12 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5' AND complete_stat !='6' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' " +
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' " +
                                 " AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND complete_stat !='6' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_transfer.complete_stat ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -271,7 +270,7 @@ namespace ClaimProject
             {
                 lbtnprintTran.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "trans_id");
                 if (DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "แจ้งใหม่" ||
-                    DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "สำเร็จ")
+                    DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "สำเร็จ" )
                 {
                     lbtnprintTran.Visible = true;
                 }

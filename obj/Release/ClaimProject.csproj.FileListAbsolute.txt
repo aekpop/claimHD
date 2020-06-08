@@ -637,3 +637,5 @@ E:\claim_bak\ClaimProject\ClaimProject\obj\Release\ClaimProject.csproj.CopyCompl
 E:\claim_bak\ClaimProject\ClaimProject\obj\Release\ClaimProject.dll
 E:\claim_bak\ClaimProject\ClaimProject\obj\Release\ClaimProject.pdb
 E:\claim_bak\ClaimProject\ClaimProject\obj\Release\ClaimProject.XmlSerializers.dll
+E:\claim_bak\ClaimProject\ClaimProject\bin\Microsoft.VisualStudio.Designer.Interfaces.dll
+E:\claim_bak\ClaimProject\ClaimProject\bin\Microsoft.VisualStudio.Designer.Interfaces.xml

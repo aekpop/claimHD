@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>04/06/2020 11:14:36</publishTime>
+      <publishTime>06/04/2020 14:12:24</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>04/06/2020 11:14:36</publishTime>
+      <publishTime>06/04/2020 14:12:24</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>04/06/2020 11:14:38</publishTime>
+      <publishTime>06/04/2020 14:12:25</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>08/31/2017 05:21:24</publishTime>
@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2017 20:25:40</publishTime>
     </File>
     <File Include="bin/EnvDTE.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/EnvDTE80.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>03/02/2017 20:25:40</publishTime>
@@ -229,7 +229,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 14:14:32</publishTime>
     </File>
     <File Include="bin/Microsoft.MSXML.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.Common.dll">
       <publishTime>03/02/2017 20:25:40</publishTime>
@@ -261,23 +261,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.SqlServer.Types.dll">
       <publishTime>12/10/2016 15:26:34</publishTime>
     </File>
+    <File Include="bin/Microsoft.VisualStudio.Designer.Interfaces.dll">
+      <publishTime>05/08/2020 10:46:42</publishTime>
+    </File>
     <File Include="bin/Microsoft.VisualStudio.OLE.Interop.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.Shell.Interop.8.0.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.Shell.Interop.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.TemplateWizardInterface.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.TextManager.Interop.8.0.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.TextManager.Interop.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>01/05/2012 11:08:46</publishTime>
@@ -487,16 +490,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="bin/stdole.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>02/11/2014 15:26:04</publishTime>
     </File>
     <File Include="bin/VSLangProj.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/VsWebSite.Interop.dll">
-      <publishTime>10/02/2018 08:27:08</publishTime>
+      <publishTime>05/08/2020 10:46:42</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/10/2013 17:28:38</publishTime>
@@ -3430,22 +3433,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>03/30/2020 09:56:11</publishTime>
+      <publishTime>05/07/2020 09:56:37</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
-      <publishTime>04/01/2020 10:00:15</publishTime>
+      <publishTime>04/13/2020 13:12:20</publishTime>
     </File>
     <File Include="equip/EquipAddList.aspx">
-      <publishTime>04/01/2020 10:03:03</publishTime>
+      <publishTime>06/04/2020 08:46:35</publishTime>
+    </File>
+    <File Include="equip/EquipCheck.aspx">
+      <publishTime>05/01/2020 11:10:56</publishTime>
+    </File>
+    <File Include="equip/EquipCheckList.aspx">
+      <publishTime>04/27/2020 11:27:43</publishTime>
     </File>
     <File Include="equip/EquipDefault.aspx">
-      <publishTime>04/04/2020 12:24:15</publishTime>
+      <publishTime>04/10/2020 11:27:51</publishTime>
     </File>
     <File Include="equip/EquipMain.aspx">
-      <publishTime>03/10/2020 09:03:14</publishTime>
+      <publishTime>06/02/2020 14:09:34</publishTime>
     </File>
     <File Include="equip/EquipNewTrans.aspx">
-      <publishTime>04/03/2020 15:36:00</publishTime>
+      <publishTime>05/05/2020 09:32:48</publishTime>
     </File>
     <File Include="equip/EquipReportPage.aspx">
       <publishTime>12/25/2019 15:08:21</publishTime>
@@ -3457,10 +3466,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/30/2020 11:13:00</publishTime>
     </File>
     <File Include="equip/EquipTranGetList.aspx">
-      <publishTime>03/01/2020 15:54:35</publishTime>
+      <publishTime>05/20/2020 11:34:34</publishTime>
+    </File>
+    <File Include="equip/EquipTranGetout.aspx">
+      <publishTime>06/04/2020 10:40:45</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>03/01/2020 15:54:26</publishTime>
+      <publishTime>04/28/2020 14:00:27</publishTime>
+    </File>
+    <File Include="equip/EquipTranOutList.aspx">
+      <publishTime>05/21/2020 09:00:58</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>10/01/2018 16:43:50</publishTime>

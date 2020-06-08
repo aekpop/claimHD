@@ -22,11 +22,13 @@ namespace ClaimProject.equip
                 Session.Add("BackWhat", "");
                 Session.Add("LineTran", "");
                 Session["BackWhat"] = "";
+               
             }
-            if (Session["UserPrivilegeId"].ToString() != "2" && Session["UserPrivilegeId"].ToString() != "4")
+            string levelwho = Session["UserPrivilegeId"].ToString();
+            if (levelwho != "2" && levelwho != "4")
             {
                 string userrrrr = Session["UserName"].ToString();
-               if (Session["UserPrivilegeId"].ToString() == "5")
+               if (levelwho == "5")
                 {
                   /* if(userrrrr != "นางสาวสาวิตรี  มะโนรัตน์" && userrrrr != "นางสาวสุภาพร ดาราศาสตร์" &&
                         userrrrr != "นางสาววัชรี วงศ์สุรินทร์" && userrrrr != "นางสาวพรวิมล โคมขาว")
@@ -34,10 +36,12 @@ namespace ClaimProject.equip
                         if (Session["UserCpoint"].ToString() == "0")
                         {
                             divaddnew.Visible = true;
+                            divcheckk.Visible = true;
                         }
                         else
                         {
                             divaddnew.Visible = false;
+                           divcheckk.Visible = false;
                         }
                  /*   }
                     else
@@ -47,6 +51,11 @@ namespace ClaimProject.equip
                     }
                  */   
                     
+                }
+               else if (levelwho == "0" || levelwho == "1")
+                {
+                    divaddnew.Visible = true;
+                    divcheckk.Visible = true;
                 }
             }
             else 

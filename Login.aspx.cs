@@ -14,8 +14,7 @@ namespace ClaimProject
             if (!this.IsPostBack)
             {
                 string sql = "SELECT * FROM tbl_cpoint WHERE cpoint_login = '1' ORDER BY cpoint_id";
-                function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
-                
+                function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id"); 
             }
         }
 
@@ -65,8 +64,7 @@ namespace ClaimProject
                         Session.Add("UserPrivilege", function.GetLevel(int.Parse(rs.GetString("level"))));
                         Session.Add("UserCpoint", cpoint);
                         Session.Timeout = 28800;
-                        
-                        
+
                         
                         //Response.Charset = "UTF-8";
                         HttpCookie newCookie = new HttpCookie("ClaimLogin");

@@ -55,9 +55,9 @@
                             <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข" Font-Size="16px" CssClass="fas text-warning" OnCommand="lbtneditAdd_Command">&#xf044;</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่เริ่มบันทึก" ControlStyle-Width="85px">
+                    <asp:TemplateField HeaderText="วันที่รับ" ControlStyle-Width="85px">
                         <ItemTemplate>
-                            <asp:Label ID="lbDateStart" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.NewEQ_Date") %>' ></asp:Label>
+                            <asp:Label ID="lbDateStart" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" ControlStyle-Width="200px">

@@ -466,8 +466,6 @@ namespace ClaimProject.Claim
                 car3has = "0";
             }
 
-
-
             string strNote = "เนื่องด้วยเมื่อวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก" + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
             if (cabinet != "") { strNote += " ตู้ " + cabinet; }
             strNote += " " + direction + " ได้แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงได้แจ้งรองผู้จัดการด่านฯ ประจำผลัด คือ " + supper + " ให้ทราบ";
@@ -510,7 +508,7 @@ namespace ClaimProject.Claim
                         }
                         else
                         {
-                            strNote += " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
                             if (licenseEng != "")
                             {
                                 strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";

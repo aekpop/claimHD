@@ -28,7 +28,7 @@ namespace ClaimProject.equip
                 Session["BackWhat"] = "Get";
                 function.getListItem(ddlsearchEndToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                 function.getListItem(ddlsearchType, "SELECT * FROM tbl_transfer_status Order by trans_stat_id ASC ", "trans_stat_name", "trans_stat_id");
-                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '1' AND complete_id != '4'  AND complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");
+                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '1' AND complete_id != '4'  AND complete_id != '5' AND complete_id != '6'  order by complete_id asc ", "complete_name", "complete_id");
                 ddlsearchEndToll.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
@@ -61,66 +61,79 @@ namespace ClaimProject.equip
             string type = ddlsearchType.SelectedValue; string EndState = ddlsearchEndToll.SelectedValue; string status = ddlsearchStat.SelectedValue;
             if (Session["UserCpoint"].ToString() == "0")
             {
-                sqlsendSearch += " WHERE (toll_recieve = '9200' or toll_recieve = '555')  ";
+                sqlsendSearch += " WHERE (toll_recieve = '9200' OR toll_recieve = '9300' OR toll_recieve = '9400' OR toll_recieve = '9500')  ";
             }
             else
             {
                 if(Session["UserCpoint"].ToString() == "701")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7010' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='7010' ) ";
                 }
                 else if(Session["UserCpoint"].ToString() == "702")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7020' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='7020' )  ";
                 }
                 else if (Session["UserCpoint"].ToString() == "703")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7031' or toll_recieve ='7032' or toll_recieve ='7033' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='7031' or toll_recieve ='7032' or toll_recieve ='7033' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "704")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7041' or toll_recieve ='7042' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='7041' or toll_recieve ='7042' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "706")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7051' or toll_recieve ='7052' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='7051' or toll_recieve ='7052' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "707")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7061' or toll_recieve ='7062' " +
-                        "or toll_recieve ='7063' or toll_recieve ='7064'";
+                    sqlsendSearch += "WHERE ( toll_recieve ='7061' or toll_recieve ='7062' " +
+                        "or toll_recieve ='7063' or toll_recieve ='7064' )";
                 }
                 else if (Session["UserCpoint"].ToString() == "708")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7071' or toll_recieve ='7072' " +
+                    sqlsendSearch += "WHERE (toll_recieve ='7071' or toll_recieve ='7072' " +
                         "or toll_recieve ='7073' or toll_recieve ='7074' or toll_recieve ='7075' " +
-                        "or toll_recieve ='7076' ";
+                        "or toll_recieve ='7076' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "709")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7081' or toll_recieve ='7082' " +
-                        "or toll_recieve ='7083' or toll_recieve ='7084'";
+                    sqlsendSearch += "WHERE (toll_recieve ='7081' or toll_recieve ='7082' " +
+                        "or toll_recieve ='7083' or toll_recieve ='7084' )";
                 }
                 else if (Session["UserCpoint"].ToString() == "710")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='7090' ";
+                    sqlsendSearch += "WHERE toll_recieve ='7090'  ";
+                }
+                else if (Session["UserCpoint"].ToString() == "711")
+                {
+                    sqlsendSearch += "WHERE toll_recieve ='7100'  ";
+                }
+                else if (Session["UserCpoint"].ToString() == "712")
+                {
+                    sqlsendSearch += "WHERE toll_recieve ='7110'  ";
+                }
+                else if (Session["UserCpoint"].ToString() == "713")
+                {
+                    sqlsendSearch += "WHERE (toll_recieve ='7120' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "902")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='9010' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='9010' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "903")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='9020' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='9020' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "904")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='9030' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='9030' ) ";
                 }
                 else if (Session["UserCpoint"].ToString() == "905")
                 {
-                    sqlsendSearch += "WHERE toll_recieve ='9040' ";
+                    sqlsendSearch += "WHERE (toll_recieve ='9040' ) ";
                 }
+
             }
 
             if (EndState == "0") // ทุกปลายทาง
@@ -131,11 +144,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
                     }
@@ -163,7 +176,7 @@ namespace ClaimProject.equip
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                        
 
@@ -191,11 +204,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -220,11 +233,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -359,5 +372,6 @@ namespace ClaimProject.equip
         {
             Response.Redirect("/equip/EquipMain");
         }
+        
     }
 }

@@ -266,10 +266,12 @@ namespace ClaimProject.equip
             MySqlDataReader rttt = function.MySqlSelect(sqlEdit);
             if (rttt.Read())
             {
+                
                 ddlEditCompany.SelectedValue = rttt.GetString("company_id");
                 ddlEditLocate.SelectedValue = rttt.GetString("locate_id");
                 ddlEditStat.SelectedValue = rttt.GetString("Estatus_id");
                 ddlEditCpoint.SelectedValue = rttt.GetString("toll_id");
+                string departt = rttt.GetString("toll_id");
                 string imgg = rttt.GetString("equipment_img");
                 if(rttt.GetString("person_name") != "")
                 {
@@ -299,11 +301,21 @@ namespace ClaimProject.equip
                     txtEditPrice.Text = rttt.GetString("equipment_price_unit");
                     
                     
-                    
                 }
                 catch { }
                     
-                
+                if(departt == "9300" || departt == "9400" || departt == "9500")
+                {
+                    btnUpdateEQ.Visible = false;
+                    ddlEditCpoint.Enabled = false;
+                    diveditpic.Visible = false;
+                }
+                else
+                {
+                    btnUpdateEQ.Visible = true;
+                    ddlEditCpoint.Enabled = true;
+                    diveditpic.Visible = true;
+                }
             }
         }
 

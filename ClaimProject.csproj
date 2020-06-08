@@ -1212,16 +1212,20 @@
     <Content Include="Device\DeviceForm.aspx" />
     <Content Include="Device\GroupDeviceForm.aspx" />
     <Content Include="equip\EquipAddAll.aspx" />
+    <Content Include="equip\EquipCheck.aspx" />
+    <Content Include="equip\EquipCheckList.aspx" />
     <Content Include="equip\EquipDefault.aspx" />
     <Content Include="equip\EquipReportPage.aspx" />
     <Content Include="equip\EquipReportTran.aspx" />
     <Content Include="equip\EquipStatistics.aspx" />
     <Content Include="equip\EquipTranGetList.aspx" />
+    <Content Include="equip\EquipTranGetout.aspx" />
     <Content Include="equip\EquipTranList.aspx" />
     <Content Include="equip\EquipAdd.aspx" />
     <Content Include="equip\EquipAddList.aspx" />
     <Content Include="equip\EquipMain.aspx" />
     <Content Include="equip\EquipNewTrans.aspx" />
+    <Content Include="equip\EquipTranOutList.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1654,6 +1658,20 @@
     <Compile Include="equip\EquipAddAll.aspx.designer.cs">
       <DependentUpon>EquipAddAll.aspx</DependentUpon>
     </Compile>
+    <Compile Include="equip\EquipCheck.aspx.cs">
+      <DependentUpon>EquipCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipCheck.aspx.designer.cs">
+      <DependentUpon>EquipCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipCheckList.aspx.cs">
+      <DependentUpon>EquipCheckList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipCheckList.aspx.designer.cs">
+      <DependentUpon>EquipCheckList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="equip\EquipDefault.aspx.cs">
       <DependentUpon>EquipDefault.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1695,6 +1713,13 @@
     <Compile Include="equip\EquipTranGetList.aspx.designer.cs">
       <DependentUpon>EquipTranGetList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="equip\EquipTranGetout.aspx.cs">
+      <DependentUpon>EquipTranGetout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipTranGetout.aspx.designer.cs">
+      <DependentUpon>EquipTranGetout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="equip\EquipTranList.aspx.cs">
       <DependentUpon>EquipTranList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1729,6 +1754,13 @@
     </Compile>
     <Compile Include="equip\EquipNewTrans.aspx.designer.cs">
       <DependentUpon>EquipNewTrans.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipTranOutList.aspx.cs">
+      <DependentUpon>EquipTranOutList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipTranOutList.aspx.designer.cs">
+      <DependentUpon>EquipTranOutList.aspx</DependentUpon>
     </Compile>
     <Compile Include="equip\ReportTran.cs">
       <AutoGen>True</AutoGen>

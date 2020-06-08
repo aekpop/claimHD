@@ -13,9 +13,9 @@ namespace ClaimProject.equip
     public partial class EquipAddList : System.Web.UI.Page
     {
         ClaimFunction function = new ClaimFunction();
-        public string alertType = "";
-        public string icon = "";
-        public string alert = "";
+        public string alerts = "";
+        public string alertTypes = "";
+        public string icons = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] == null)
@@ -227,21 +227,21 @@ namespace ClaimProject.equip
             {
                 if(txtAddContractNum.Text != "" && txtAddDateGet.Text != "" && txtAddPrize.Text != "" && txtAddUnit.Text != ""  )
                 {
-                    string EQPKTYPE = Session["NewEQPKtype"].ToString();
+                    
                     for (int i = 0; i < Gridview1.Rows.Count; i++)
                     {
-                        Num1 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox1")).Text;
-                        Num2 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox2")).Text;
+                        Num1 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox1")).Text.Trim();
+                        Num2 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox2")).Text.Trim();
                         string resultChk = CheckDupli(Num1, Num2);
-
+                        string EQPKTYPE = Session["NewEQPKtype"].ToString();
                         if (resultChk == "ok")
                         {
                             if (i == (Gridview1.Rows.Count - 1)) //แถวสุดท้าย
                             {
                                 if (Num1 == "")
                                 {
-                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('รายการที่ " + (i + 1).ToString() + " ไม่ใส่เลขครุภัณฑ์!!')", true);
-                                    //AlertPop("รายการที่ "+i.ToString()+" ไม่บันทึก!!", "Error");
+                                    ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('รายการที่ " + (i + 1).ToString() + " ไม่ใส่เลขครุภัณฑ์!!')", true);
+                                    //AlertPop("รายการที่ " + (i + 1).ToString() + " ไม่ใส่เลขครุภัณฑ์!!", "Error");
                                 }
                                 else
                                 {
@@ -254,11 +254,11 @@ namespace ClaimProject.equip
                                     {
                                         newEQref = "INSERT INTO tbl_newequipment " +
                                         "(NewEQ_id,NewEQ_Date,NewEQ_Time,NewEQ_User,NewEQ_Comment,AddNameth,AddNameEng,AddBrand,AddSeries,AddConNum," +
-                                        "AddCpoint,AddDateGet,AddPrize,AddUnit,AddCompany,AddStat) VALUES" +
+                                        "AddCpoint,AddDateGet,AddPrize,AddUnit,AddCompany,AddStat,N_budget,N_month) VALUES" +
                                         " ('"+ Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "','" + Session["User"].ToString() + "','-','" + txtAddTH.Text + "'" +
                                         ",'" + txtAddENG.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.Text + "'" +
                                         ",'" + ddlAddCpoint.SelectedValue + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddUnit.Text + "'" +
-                                        ",'" + ddlAddCompany.SelectedValue + "','" + ddlAddStat.SelectedValue + "')";
+                                        ",'" + ddlAddCompany.SelectedValue + "','" + ddlAddStat.SelectedValue + "','"+ function.getBudgetYear(txtAddDateGet.Text) + "','"+ GetThaiMonth(txtAddDateGet.Text) + "')";
                                     }
                                     else if(EQPKTYPE == "old")
                                     {
@@ -267,25 +267,25 @@ namespace ClaimProject.equip
                                         ",NewEQ_Comment = '-',AddNameth='" + txtAddTH.Text + "',AddNameEng='"+ txtAddENG.Text + "',AddBrand='"+ txtAddBrand.Text + "'" +
                                         ",AddSeries='"+ txtAddSeries.Text + "',AddConNum='"+ txtAddContractNum.Text + "'," +
                                         "AddCpoint='"+ ddlAddCpoint.SelectedValue + "',AddDateGet='"+ txtAddDateGet.Text + "',AddPrize='"+ txtAddPrize.Text + "'" +
-                                        ",AddUnit='"+ txtAddUnit.Text + "',AddCompany='"+ ddlAddCompany.SelectedValue + "',AddStat='"+ ddlAddStat.SelectedValue + "' " +
+                                        ",AddUnit='"+ txtAddUnit.Text + "',AddCompany='"+ ddlAddCompany.SelectedValue + "',AddStat='"+ ddlAddStat.SelectedValue + "',N_budget='" + function.getBudgetYear(txtAddDateGet.Text) + "',N_month='"+ GetThaiMonth(txtAddDateGet.Text) + "' " +
                                         " where NewEQ_id = '" + Session["NewEQPK"].ToString() + "'";
                                     }
                                     SQLPMM = "INSERT INTO tbl_equipment " +
                                         "(equipment_img,locate_id,equipment_name,equipment_nameth,equipment_no,equipment_serial,equipment_brand" +
                                         ",equipment_series,equipment_buy_date,equipment_price_unit,equipment_contract_no,equipment_unit" +
                                         ",toll_id,Estatus_id,company_id" +
-                                        ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment)"
+                                        ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month)"
                                       + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','555','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
                                       "          ,'" + txtAddSeries.Text + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddContractNum.Text + "'" +
                                       "          ,'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue + "','" + ddlAddStat.SelectedValue + "'" +
                                       "          ,'" + ddlAddCompany.SelectedValue + "','-','0','" + Session["User"].ToString() + "'" +
-                                      "          , '" + TimeNoww + "','" + DateNoww + "','0','-') ";
+                                      "          , '" + TimeNoww + "','" + DateNoww + "','0','-','"+ function.getBudgetYear(txtAddDateGet.Text) + "','"+ GetThaiMonth(txtAddDateGet.Text) + "') ";
                                     
                                     eqaddList = "insert into tbl_neweq_list " +
-                                        " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll) " +
+                                        " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth) " +
                                         "values ('"+Num2+"','"+ Session["NewEQPK"].ToString() + "','"+DateNoww+"','"+TimeNoww+"'," +
                                         "'"+Num1+"','"+ txtAddTH.Text + "','"+ txtAddBrand.Text + "','"+ txtAddSeries.Text + "','"+ txtAddContractNum.Text + "'," +
-                                        " '"+ ddlAddCpoint.SelectedValue + "')";
+                                        " '"+ ddlAddCpoint.SelectedValue + "','"+ function.getBudgetYear(txtAddDateGet.Text) + "','"+ GetThaiMonth(txtAddDateGet.Text) + "')";
 
                                     if (function.MySqlQuery(SQLPMM))
                                     {
@@ -299,21 +299,24 @@ namespace ClaimProject.equip
                                             }
                                             else
                                             {
-                                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFinal ติดต่อเจ้าหน้าที่ ')", true);
+                                                ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('ErrorFinal ติดต่อเจ้าหน้าที่ ')", true);
+                                                //AlertPop("ErrorFinal ติดต่อเจ้าหน้าที่", "Error");
                                                 break;
                                             }
                                             
                                         }
                                         else
                                         {
-                                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error01 ติดต่อเจ้าหน้าที่ ')", true);
+                                            ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Error01 ติดต่อเจ้าหน้าที่ ')", true);
+                                            //AlertPop("Error01 ติดต่อเจ้าหน้าที่", "Error");
                                             break;
                                         }
 
                                     }
                                     else
                                     {
-                                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFirst ติดต่อเจ้าหน้าที่ ')", true);
+                                        ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('ErrorFirst ติดต่อเจ้าหน้าที่ ')", true);
+                                        //AlertPop("ErrorFirst ติดต่อเจ้าหน้าที่", "Error");
                                         doOrnot = 0; break;
                                     }
                                 }
@@ -322,8 +325,8 @@ namespace ClaimProject.equip
                             {
                                 if (Num1 == "")
                                 {
-                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('รายการที่ " + (i + 1).ToString() + " ไม่ใส่หมายเลขครุภัณฑ์!!')", true);
-                                    // AlertPop("รายการที่ "+i.ToString()+" ไม่ใส่หมายเลขครุภัณฑ์!!", "Error");
+                                    ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('รายการที่ " + (i + 1).ToString() + " ไม่ใส่หมายเลขครุภัณฑ์!!')", true);
+                                    //AlertPop("รายการที่ " + (i + 1).ToString() + " ไม่ใส่หมายเลขครุภัณฑ์!!", "Error");
                                 }
                                 else
                                 {
@@ -331,21 +334,21 @@ namespace ClaimProject.equip
                                         "(equipment_img,locate_id,equipment_name,equipment_nameth,equipment_no,equipment_serial,equipment_brand" +
                                         ",equipment_series,equipment_buy_date,equipment_price_unit,equipment_contract_no,equipment_unit" +
                                         ",toll_id,Estatus_id,company_id" +
-                                        ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment)"
+                                        ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month)"
                                       + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','555','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
                                       "          ,'" + txtAddSeries.Text + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddContractNum.Text + "'" +
                                       "          ,'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue.ToString() + "','" + ddlAddStat.SelectedValue.ToString() + "'" +
                                       "          ,'" + ddlAddCompany.SelectedValue.ToString() + "','-','0','" + Session["User"].ToString() + "'" +
-                                      "          , '" + TimeNoww + "','" + DateNoww + "','0','-') ";
+                                      "          , '" + TimeNoww + "','" + DateNoww + "','0','-','"+ function.getBudgetYear(txtAddDateGet.Text) + "','"+ GetThaiMonth(txtAddDateGet.Text) + "') ";
                                     if (EQPKTYPE == "new")
                                     {
                                         newEQref = "INSERT INTO tbl_newequipment " +
-                                        "(NewEQ_Date,NewEQ_Time,NewEQ_User,NewEQ_Comment,AddNameth,AddNameEng,AddBrand,AddSeries,AddConNum," +
-                                        "AddCpoint,AddDateGet,AddPrize,AddUnit,AddCompany,AddStat) VALUES" +
-                                        " ('" + DateNoww + "','" + TimeNoww + "','" + Session["User"].ToString() + "','-','" + txtAddTH.Text + "'" +
+                                        "(NewEQ_id,NewEQ_Date,NewEQ_Time,NewEQ_User,NewEQ_Comment,AddNameth,AddNameEng,AddBrand,AddSeries,AddConNum," +
+                                        "AddCpoint,AddDateGet,AddPrize,AddUnit,AddCompany,AddStat,N_budget,N_month) VALUES" +
+                                        " ('" + Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "','" + Session["User"].ToString() + "','-','" + txtAddTH.Text + "'" +
                                         ",'" + txtAddENG.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.Text + "'" +
                                         ",'" + ddlAddCpoint.SelectedValue + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddUnit.Text + "'" +
-                                        ",'" + ddlAddCompany.SelectedValue + "','" + ddlAddStat.SelectedValue + "')";
+                                        ",'" + ddlAddCompany.SelectedValue + "','" + ddlAddStat.SelectedValue + "','"+ function.getBudgetYear(txtAddDateGet.Text) + "','"+ GetThaiMonth(txtAddDateGet.Text) + "')";
                                     }
                                     else if (EQPKTYPE == "old")
                                     {
@@ -354,31 +357,33 @@ namespace ClaimProject.equip
                                         ",NewEQ_Comment = '-',AddNameth='" + txtAddTH.Text + "',AddNameEng='" + txtAddENG.Text + "',AddBrand='" + txtAddBrand.Text + "'" +
                                         ",AddSeries='" + txtAddSeries.Text + "',AddConNum='" + txtAddContractNum.Text + "'," +
                                         "AddCpoint='" + ddlAddCpoint.SelectedValue + "',AddDateGet='" + txtAddDateGet.Text + "',AddPrize='" + txtAddPrize.Text + "'" +
-                                        ",AddUnit='" + txtAddUnit.Text + "',AddCompany='" + ddlAddCompany.SelectedValue + "',AddStat='" + ddlAddStat.SelectedValue + "' " +
+                                        ",AddUnit='" + txtAddUnit.Text + "',AddCompany='" + ddlAddCompany.SelectedValue + "',AddStat='" + ddlAddStat.SelectedValue + "',N_budget='" + function.getBudgetYear(txtAddDateGet.Text) + "',N_month='"+ GetThaiMonth(txtAddDateGet.Text) + "' " +
                                         " where NewEQ_id = '" + Session["NewEQPK"].ToString() + "'";
                                     }
                                     eqaddList = "insert into tbl_neweq_list " +
-                                        " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll) " +
+                                        " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth) " +
                                         "values ('"+Num2+"','" + Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "'," +
-                                        "'" + Num1 + "','" + txtAddTH.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.ToString() + "'," +
-                                        " '" + ddlAddCpoint.SelectedValue + "')";
+                                        "'" + Num1 + "','" + txtAddTH.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.Text + "'," +
+                                        " '" + ddlAddCpoint.SelectedValue + "','"+ function.getBudgetYear(txtAddDateGet.Text) + "','"+ GetThaiMonth(txtAddDateGet.Text) + "')";
                                     if (function.MySqlQuery(SQLPMM))
                                     {
                                         if(function.MySqlQuery(newEQref))
                                         {
                                             if(function.MySqlQuery(eqaddList))
                                             {
-                                                
+                                                Session["NewEQPKtype"] = "old";
                                             }
                                             else
                                             {
-                                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFinal2 ติดต่อเจ้าหน้าที่ ')", true);
+                                                ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('ErrorFinal2 ติดต่อเจ้าหน้าที่ ')", true);
+                                                //AlertPop("ErrorFinal2 ติดต่อเจ้าหน้าที่", "error");
                                                 break;
                                             }
                                         }
                                         else
                                         {
-                                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error02 ติดต่อเจ้าหน้าที่ ')", true);
+                                            ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Error02 ติดต่อเจ้าหน้าที่ ')", true);
+                                            //AlertPop("Error02 ติดต่อเจ้าหน้าที่ ", "error");
                                             break;
                                         }
                                     }
@@ -389,23 +394,28 @@ namespace ClaimProject.equip
                         }
                         else if (resultChk == "no")
                         {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!')", true);
+                            ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!')", true);
+                            //AlertPop("เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!", "error");
                             break;
                         }
-                        else { ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ดูแลระบบ')", true); break; }
+                        else
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ดูแลระบบ')", true); 
+                            //AlertPop("บันทึกล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ดูแลระบบ", "error"); break;
+                        }
 
                     }
                 }
                 else
                 {
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)')", true);
-                    
+                    ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)')", true);
+                    //AlertPop("บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)", "error");
                 }
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)')", true);
-                
+                ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)')", true);
+                //AlertPop("บันทึกล้มเหลว ข้อมูลไม่ควรเว้นว่าง กรุณาใส่เครื่องหมาย - (แดท)", "error");
             }
                 
                /* if (doOrnot != 0) { Response.Redirect("/equip/EquipAddList"); }
@@ -455,21 +465,38 @@ namespace ClaimProject.equip
             divAdd.Visible = false;
             btnAgain.Visible = true;
         }
-
+        public string GetThaiMonth(string fulldate)
+        {
+            string[] subfuldate = fulldate.Split('-');
+            string result = "";
+            if (subfuldate[1] == "01") { result = "มกราคม"; }
+            else if (subfuldate[1] == "02") { result = "กุมภาพันธ์"; }
+            else if (subfuldate[1] == "03") { result = "มีนาคม"; }
+            else if (subfuldate[1] == "04") { result = "เมษายน"; }
+            else if (subfuldate[1] == "05") { result = "พฤษภาคม"; }
+            else if (subfuldate[1] == "06") { result = "มิถุนายน"; }
+            else if (subfuldate[1] == "07") { result = "กรกฎาคม"; }
+            else if (subfuldate[1] == "08") { result = "สิงหาคม"; }
+            else if (subfuldate[1] == "09") { result = "กันยายน"; }
+            else if (subfuldate[1] == "10") { result = "ตุลาคม"; }
+            else if (subfuldate[1] == "11") { result = "พฤศจิกายน"; }
+            else if (subfuldate[1] == "12") { result = "ธันวาคม"; }
+            return result;
+        }
         public void AlertPop(string msg, string type)
         {
             switch (type)
             {
                 case "success":
-                    icon = "add_alert";
-                    alertType = "success";
+                    icons = "add_alert";
+                    alertTypes = "success";
                     break;
                 case "error":
-                    icon = "error";
-                    alertType = "danger";
+                    icons = "error";
+                    alertTypes = "danger";
                     break;
             }
-            alert = msg;
+            alerts = msg;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -565,14 +592,16 @@ namespace ClaimProject.equip
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!')", true);
+                        ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!')", true);
+                        //AlertPop("Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!", "error");
                     }
 
                     gridadded.EditIndex = -1;
                 }
                 else
                 {
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ลบรายการล้มเหลว!! ติดต่อเจ้าหน้าที่!!')", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('ลบรายการล้มเหลว!! ติดต่อเจ้าหน้าที่!!')", true);
+                    //AlertPop("ลบรายการล้มเหลว!! ติดต่อเจ้าหน้าที่!!", "error");
                 }
                 
             }
@@ -604,7 +633,8 @@ namespace ClaimProject.equip
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete EQ_num: "+numGet+" ติดต่อเจ้าหน้าที่!!')", true);
+                        ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Can't Delete EQ_num: "+numGet+" ติดต่อเจ้าหน้าที่!!')", true);
+                        //AlertPop("Can't Delete EQ_num: " + numGet + " ติดต่อเจ้าหน้าที่!!", "error");
                         break;
                     }
 
@@ -622,14 +652,16 @@ namespace ClaimProject.equip
                         }
                         else
                         {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!')", true);
+                            ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!')", true);
+                            //AlertPop("Can't Delete neweq_list ติดต่อเจ้าหน้าที่!!", "error");
                             break;
                         }
                         
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Can't Delete newequipment ติดต่อเจ้าหน้าที่!!')", true);
+                        ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Can't Delete newequipment ติดต่อเจ้าหน้าที่!!')", true);
+                        //AlertPop("Can't Delete newequipment ติดต่อเจ้าหน้าที่!!", "error");
                         break;
                     }
                     

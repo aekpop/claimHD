@@ -238,6 +238,7 @@ namespace ClaimProject.ReportView
                     Chart1.Height = 590;
                 }
                 Chart1.Series["Series1"].ChartType = SeriesChartType.Bar;
+                //Chart1.Series["Series1"].ChartType = SeriesChartType.Line;
                 Chart1.Series["Series1"].Color = Color.DarkOrange;
                 Chart1.Series["Series1"].LabelForeColor = Color.Black;
                 Chart1.Series["Series1"].IsValueShownAsLabel = true;
@@ -304,6 +305,7 @@ namespace ClaimProject.ReportView
                     Chart1.Height = 590;
                 }
                 Chart1.Series["Series1"].ChartType = SeriesChartType.Column;
+                //Chart1.Series["Series1"].ChartType = SeriesChartType.Line;
                 Chart1.Series["Series1"].Color = Color.DarkOrange;
                 Chart1.Series["Series1"].LabelForeColor = Color.Black;
                 Chart1.Series["Series1"].IsValueShownAsLabel = true;

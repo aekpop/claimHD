@@ -18,7 +18,7 @@
                 
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3" id="divaddnew" runat="server">
+        <div class="col-lg-3 col-md-3 col-sm-3" id="divaddnew" runat="server" visible="false">
             <div class="card card-stats">
                 <div class="card-header card-header-icon">
                     <div class="card-icon" style="background-color:#ba0239">
@@ -62,10 +62,22 @@
                         <a class="nav-link" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
                     </h4>
                 </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3" >
+            <div class="card card-stats">
+                <div class="card-header   card-header-icon">
+                    <div class="card-icon" style="background-color:#0242ab">
+                        <i class="fas fa-share" style="font-size:40px;background-color:#0242ab"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/equip/EquipTranOutList">รับจากภายนอก</a>
+                    </h4>
+                    
+                </div>
                 
             </div>
         </div>
-
         <div class="col-lg-3 col-md-3 col-sm-3" >
             <div class="card card-stats">
                 <div class="card-header   card-header-icon">
@@ -81,7 +93,26 @@
         </div>
 
     </div>
+    <div class="row" runat="server" id="divcheckk" visible ="false">
+        <div class="col-lg-3 col-md-3 col-sm-3" >
+            <div class="card card-stats">
+                <div class="card-header   card-header-icon">
+                    <div class="card-icon" style="background-color:#fcd200">
+                        <i class="fas fa-search-plus" style="font-size:40px;background-color:#fcd200"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/equip/EquipCheckList">ตรวจสอบด่านฯ</a>
+                    </h4>
+                    
+                </div>
+                
+            </div>
+        </div>
 
+        
+
+
+    </div>
 
     
 

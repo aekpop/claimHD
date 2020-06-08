@@ -4,14 +4,14 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักครุภัณฑ์"  OnClick="btnMainEQ_Click" CssClass="btn" />
-    <asp:Button runat="server" ID="btnMainTranSend" Visible="false" Font-Bold="true" BackColor="#02acbd" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้ารายการ(ส่ง)ครุภัณฑ์"  OnClick="btnMainTranSend_Click" CssClass="btn" />
-    <asp:Button runat="server" ID="btnMainTranGet" Visible="false" Font-Bold="true" BackColor="#02acbd" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้ารายการ(รับ)ครุภัณฑ์"  OnClick="btnMainTranGet_Click" CssClass="btn" />
+    <asp:Button runat="server" ID="btnMainTranSend" Visible="false" Font-Bold="true" BackColor="#01914b" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้ารายการ(ส่ง)ครุภัณฑ์"  OnClick="btnMainTranSend_Click" CssClass="btn" />
+    <asp:Button runat="server" ID="btnMainTranGet" Visible="false" Font-Bold="true" BackColor="#64a102" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้ารายการ(รับ)ครุภัณฑ์"  OnClick="btnMainTranGet_Click" CssClass="btn" />
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
         <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</h3>
         
         <div id="divtranFirst" class="card-body table-responsive" style="padding-top:1px" runat="server">
-           <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" Font-Size="Large" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" CssClass="" Font-Size="Medium" ></asp:Label></h3>
+           <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" Font-Size="Large" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" CssClass="" Font-Size="Medium" ></asp:Label><asp:Label runat="server" Text=" )" CssClass="" Font-Size="Medium" ></asp:Label></h3>
             <div class="row" id="divhitback" runat="server" visible="false" style="padding:1px 1px 1px 20px;height:60px"  >
                 <asp:TextBox ID="NoteHitback" BackColor="#ffffcc" BorderColor="#e1e1e1" runat="server" Width="800px"  ForeColor="Red" Font-Bold="true" Font-Size="Large"  TextMode="MultiLine"></asp:TextBox>
             </div>
@@ -21,8 +21,8 @@
                        <asp:DropDownList ID="ddlTypeEQQ" OnSelectedIndexChanged="ddlTypeEQQ_SelectedIndexChanged" AutoPostBack="true" runat="server" BackColor="#dbfff8" ForeColor="Black"  CssClass="form-control"  ></asp:DropDownList>
                 </div>
                 <div class="form-group bmd-form-group col-md-2" id="divfirst" runat="server"  style="padding:1px 1px 1px 15px;">
-                       <label class="bmd-label-floating" style="font-size:20px;height:5px">ต้นทาง</label>
-                       <asp:DropDownList ID="ddlStartEQ" runat="server"  CssClass="form-control"  ></asp:DropDownList>
+                       <label class="bmd-label-floating" style="font-size:20px;height:5px">ต้นทาง.</label>
+                       <asp:DropDownList ID="ddlStartEQ" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStartEQ_SelectedIndexChanged" CssClass="form-control"  ></asp:DropDownList>
                   </div>
                 <div class="form-group bmd-form-group col-md-2" id="divsecond" runat="server" visible="false" style="padding:1px 1px 1px 15px;">
                        <label class="bmd-label-floating" style="font-size:20px;height:5px">ต้นทาง</label>
@@ -32,10 +32,7 @@
                        <label class="bmd-label-floating" style="font-size:20px;height:5px">ปลายทาง</label>
                        <asp:DropDownList ID="ddlTollEQ" runat="server"  CssClass="form-control"  ></asp:DropDownList>
                   </div>
-                <div class="form-group bmd-form-group col-md-3" id="divcompany" runat="server" visible="false" style="padding:1px 1px 1px 15px;">
-                       <label class="bmd-label-floating" style="font-size:20px;height:5px">ส่งซ่อม</label>
-                       <asp:DropDownList ID="ddlcompany" runat="server"  CssClass="form-control"  ></asp:DropDownList>
-                  </div>
+               
                 <div class="form-group bmd-form-group col-md-2"  style="padding:1px 15px 1px 15px;" >
                      <label class="bmd-label-floating" style="font-size:large;height:10px">วันที่โอนย้าย</label>
                      <asp:TextBox runat="server" ID="txtDateSend"  CssClass="form-control datepicker" ></asp:TextBox>

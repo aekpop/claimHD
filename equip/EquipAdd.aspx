@@ -117,9 +117,9 @@
                             <asp:Label ID="lbequipchk"  runat="server" Font-Size="16px"  Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField HeaderText="หมายเหตุ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                    <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
-                            <asp:Label ID="lbequipnote"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.equip_comment") %>'></asp:Label>
+                            <asp:Label ID="lbequipnote"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
                 </Columns>
@@ -171,7 +171,7 @@
                         <div class="col-md-3">
                             <asp:Image ID="ImgEditEQ" runat="server" Width="60%" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" runat="server" id="diveditpic">
                             <label class="bmd-label-floating">เปลี่ยนภาพครุภัณฑ์ใหม่(ขนาดไฟล์ไม่เกิน 4 MB)</label>
                             <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file" lang="en" />
                         </div>

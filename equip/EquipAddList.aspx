@@ -11,7 +11,9 @@
             
         </div>
         <div class="card-body table-responsive" runat="server" id="divAdd" >
-                <div class="row" style="height: 85px;padding:1px 1px 1px 1px; " >
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                <div class="row" style="height: 110px;padding:1px 1px 1px 1px; " >
                         <div class="col-md-3" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ชื่อครุภัณฑ์(ไทย)</label>
@@ -46,7 +48,7 @@
                          
                     </div>
                     
-                    <div class="row" style="height: 120px;">
+                    <div class="row" style="height: 140px;">
                         <div class="col-md-2" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ด่านฯ</label>
@@ -56,7 +58,7 @@
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">วันที่รับ</label>
-                                <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" />
+                                <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker"  />
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 2px 2px 2px" >
@@ -101,7 +103,7 @@
 
                         <asp:TemplateField HeaderText="เลขทะเบียน" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
-                                <asp:TextBox ID="TextBox2"  runat="server" CssClass="form-control text-center"></asp:TextBox>
+                                <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center"></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
@@ -122,7 +124,7 @@
             <br />
             <div class="row">
                 <div class="col-md  text-center">
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-rose" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึกรายการทั้งหมด" />
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-rose" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึกรายการทั้งหมด" OnClientClick="return UpdteConfirm('ยืนยันเพิ่มรายการ ใช่หรือไม่');" />
                 
                 </div>
                     
@@ -191,6 +193,12 @@
                 
                 </asp:gridview>
 
+
+
+                    </ContentTemplate>
+            </asp:UpdatePanel>
+
+
     </div>
         <div class="row">
                 <div class="col-md text-center">
@@ -221,4 +229,30 @@
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+        <% if (alerts != "")
+        { %>
+            demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
+        <% } %>
+        });
+        function UpdteConfirm(msg) {
+            var str1 = "1";
+            var str2 = "2";
+
+            if (str1 === str2) {
+                // your logic here
+
+                return false;
+            } else {
+                // your logic here
+
+                return confirm(msg);
+            }
+        }
+        
+    </script>
+
+
 </asp:Content>

@@ -825,3 +825,5 @@ E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\ClaimProject.csproj.CoreCompile
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\ClaimProject.csproj.CopyComplete
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\ClaimProject.dll
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\ClaimProject.pdb
+E:\claim_bak\ClaimProject\ClaimProject\bin\Microsoft.VisualStudio.Designer.Interfaces.dll
+E:\claim_bak\ClaimProject\ClaimProject\bin\Microsoft.VisualStudio.Designer.Interfaces.xml

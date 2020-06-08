@@ -148,24 +148,6 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.DropDownList ddlTollEQ;
         
         /// <summary>
-        /// divcompany control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divcompany;
-        
-        /// <summary>
-        /// ddlcompany control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcompany;
-        
-        /// <summary>
         /// txtDateSend control.
         /// </summary>
         /// <remarks>

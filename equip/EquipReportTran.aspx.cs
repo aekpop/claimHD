@@ -38,6 +38,10 @@ namespace ClaimProject.equip
                 {
                     sendToll = "กองทางหลวงพิเศษระหว่างเมือง";
                 }
+                else if(sendToll == "ฝ่ายบำรุงรักษาทรัพย์สิน")
+                {
+                    sendToll = "ฝ่ายบำรุงรักษาทรัพย์สิน";
+                }
                 else
                 {
                     sendToll = "ด่านฯ " + sendToll;
@@ -75,6 +79,10 @@ namespace ClaimProject.equip
                 else if(gettoll == "กองทางหลวงพิเศษฯ")
                 {
                     gettoll = "กองทางหลวงพิเศษระหว่างเมือง";
+                }
+                else if (gettoll == "ฝ่ายบำรุงรักษาทรัพย์สิน")
+                {
+                    gettoll = "ฝ่ายบำรุงรักษาทรัพย์สิน";
                 }
                 else
                 {
