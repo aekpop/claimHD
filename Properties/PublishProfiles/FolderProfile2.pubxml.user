@@ -25,7 +25,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:43:58</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
-      <publishTime>08/22/2013 22:09:14</publishTime>
+      <publishTime>10/30/2013 12:43:26</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.jQuery.dll">
       <publishTime>07/16/2013 20:06:22</publishTime>
@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>06/04/2020 14:12:24</publishTime>
+      <publishTime>06/22/2020 09:57:06</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>06/04/2020 14:12:24</publishTime>
+      <publishTime>06/22/2020 09:57:06</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>06/04/2020 14:12:25</publishTime>
+      <publishTime>06/22/2020 09:57:08</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>08/31/2017 05:21:24</publishTime>
@@ -669,17 +669,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap-reboot.min.css.map">
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>06/18/2020 12:14:24</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>06/16/2020 08:40:22</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>06/18/2020 12:14:24</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>06/16/2020 08:40:22</publishTime>
+    </File>
     <File Include="Content/bootstrap.css">
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>10/01/2018 16:44:52</publishTime>
+      <publishTime>06/16/2020 08:40:22</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css.map">
-      <publishTime>10/01/2018 16:44:52</publishTime>
+      <publishTime>06/16/2020 08:40:21</publishTime>
     </File>
     <File Include="Content/brands.css">
       <publishTime>01/14/2019 11:34:42</publishTime>
@@ -3433,13 +3445,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>05/07/2020 09:56:37</publishTime>
+      <publishTime>06/11/2020 14:40:23</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
       <publishTime>04/13/2020 13:12:20</publishTime>
     </File>
     <File Include="equip/EquipAddList.aspx">
-      <publishTime>06/04/2020 08:46:35</publishTime>
+      <publishTime>06/18/2020 09:36:52</publishTime>
     </File>
     <File Include="equip/EquipCheck.aspx">
       <publishTime>05/01/2020 11:10:56</publishTime>
@@ -3460,7 +3472,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2019 15:08:21</publishTime>
     </File>
     <File Include="equip/EquipReportTran.aspx">
-      <publishTime>02/11/2020 11:28:26</publishTime>
+      <publishTime>06/22/2020 09:34:22</publishTime>
     </File>
     <File Include="equip/EquipStatistics.aspx">
       <publishTime>03/30/2020 11:13:00</publishTime>
@@ -3472,7 +3484,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2020 10:40:45</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>04/28/2020 14:00:27</publishTime>
+      <publishTime>06/22/2020 09:44:30</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>05/21/2020 09:00:58</publishTime>
@@ -3499,16 +3511,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:47:12</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
-      <publishTime>10/01/2018 16:43:54</publishTime>
+      <publishTime>06/18/2020 12:14:24</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>10/01/2018 16:43:54</publishTime>
+      <publishTime>06/18/2020 12:14:24</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>10/01/2018 16:43:54</publishTime>
+      <publishTime>06/18/2020 12:14:24</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
-      <publishTime>10/01/2018 16:43:54</publishTime>
+      <publishTime>06/18/2020 12:14:24</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>06/16/2020 08:40:21</publishTime>
     </File>
     <File Include="fonts/THSarabun Bold Italic.ttf">
       <publishTime>10/20/2018 15:06:32</publishTime>
@@ -3676,13 +3691,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:44:50</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>10/01/2018 16:44:50</publishTime>
+      <publishTime>06/18/2020 12:14:24</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js.map">
       <publishTime>10/01/2018 16:44:50</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>10/01/2018 16:44:52</publishTime>
+      <publishTime>06/18/2020 12:14:23</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js.map">
       <publishTime>10/01/2018 16:44:52</publishTime>
@@ -3985,7 +4000,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>12/04/2019 08:27:45</publishTime>
+      <publishTime>06/19/2020 14:38:04</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
       <publishTime>11/30/2018 13:50:36</publishTime>
@@ -4000,7 +4015,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:43:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/07/2019 13:03:04</publishTime>
+      <publishTime>06/18/2020 12:15:09</publishTime>
     </File>
     <File Include="webfonts/fa-brands-400.eot">
       <publishTime>01/14/2019 11:34:42</publishTime>

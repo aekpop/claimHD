@@ -26,7 +26,8 @@
         <asp:Panel id="dvReport" runat="server">
             <CR:CrystalReportViewer ID="CRSEquipviewer" runat="server"
                 EnableParameterPrompt="False" 
-                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="Pdf" AutoDataBind="true" EnableDatabaseLogonPrompt="False" />
+                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" 
+                PrintMode="ActiveX" AutoDataBind="true" EnableDatabaseLogonPrompt="False" />
         </asp:Panel>
     </form>
 </body>

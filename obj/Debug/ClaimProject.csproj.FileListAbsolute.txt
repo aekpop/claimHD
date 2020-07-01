@@ -817,7 +817,6 @@ E:\claim_bak\ClaimProject\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.WinFor
 E:\claim_bak\ClaimProject\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.WinForms.resources.dll
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\ClaimProject.csprojAssemblyReference.cache
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\Interop.CrystalActiveXReportViewerLib13.dll
-E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\Interop.CrystalAnalysisCommonControlsLib.dll
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\Interop.CrystalReportViewerExportLib.dll
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\Interop.CrystalReportViewerWebReportSourceLib.dll
 E:\claim_bak\ClaimProject\ClaimProject\obj\Debug\ClaimProject.csproj.ResolveComReference.cache

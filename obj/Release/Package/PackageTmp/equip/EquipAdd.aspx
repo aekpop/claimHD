@@ -325,8 +325,6 @@
             <%}%>
             
         });
-        
-
 
         function UpdteConfirm(msg) {
             var str1 = "1";

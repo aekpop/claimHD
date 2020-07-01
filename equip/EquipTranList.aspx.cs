@@ -266,7 +266,7 @@ namespace ClaimProject
                 
             }
             LinkButton lbtnprintTran = (LinkButton)(e.Row.FindControl("lbtnprintTran"));
-            if (lbstat != null)
+            if (lbtnprintTran != null)
             {
                 lbtnprintTran.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "trans_id");
                 if (DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "แจ้งใหม่" ||
@@ -278,7 +278,6 @@ namespace ClaimProject
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[0].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                 e.Row.Cells[1].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             }
            
@@ -308,7 +307,8 @@ namespace ClaimProject
 
         protected void lbtnprintTran_Command(object sender, CommandEventArgs e)
         {
-            ReModal = e.CommandName; 
+            ReModal = e.CommandName;
+            string pktoPrint = Session["TransID"].ToString();
             string checkcommand = e.CommandName;
             Session["TranRepId"] = e.CommandName;
             
@@ -398,6 +398,11 @@ namespace ClaimProject
             {
                 AlertPop("Error Report!! ติดต่อเจ้าหน้าที่", "error");
             }
+        }
+
+        protected void gridTranlist_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
         }
     }
 }
