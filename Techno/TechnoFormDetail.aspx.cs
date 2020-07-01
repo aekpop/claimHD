@@ -1038,7 +1038,6 @@ namespace ClaimProject.Techno
 
         protected void btnDownloadOrderSend_Click(object sender, EventArgs e)
         {
-            
         }
 
         void getDataStatus5()
@@ -1054,15 +1053,6 @@ namespace ClaimProject.Techno
                 {
                     lbFineOrder.Text = "ไม่มีค่าปรับ";
                 }
-                string quaimg = "SELECT * FROM tbl_quotations " +
-                         " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
-
-                MySqlDataAdapter da = function.MySqlSelectDataSet(quaimg);
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                gridComplete.DataSource = ds.Tables[0];
-                gridComplete.DataBind();
-
             }
             rs.Close();
             function.Close();
@@ -1294,71 +1284,6 @@ namespace ClaimProject.Techno
                 //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
-        }
-
-        protected void gridComplete_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            Image imgquaComplete = (Image)e.Row.FindControl("imgquaComplete");
-            if (imgquaComplete != null)
-            {
-                imgquaComplete.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
-                if (imgquaComplete.ImageUrl == "")
-                {
-                    imgquaComplete.Visible = false;
-                }
-            }
-
-
-            LinkButton lbtnloadCom = (LinkButton)(e.Row.FindControl("lbtnloadCom"));
-            if (lbtnloadCom != null)
-            {
-                lbtnloadCom.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
-            }
-        }
-
-        protected void gridComplete_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            string sql = "UPDATE FROM tbl_quotations SET quotations_doc_img_send = '0' WHERE quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'";
-            //string script = "";
-            if (function.MySqlQuery(sql))
-            {
-                //script = "บันทึกสำเร็จ";
-            }
-            string quaimgCom = "SELECT * FROM tbl_quotations " +
-                         " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
-
-            MySqlDataAdapter da = function.MySqlSelectDataSet(quaimgCom);
-            System.Data.DataSet ds = new System.Data.DataSet();
-            da.Fill(ds);
-            gridComplete.DataSource = ds.Tables[0];
-            gridComplete.DataBind();
-        }
-        public void DownLoadComplete(string FName)
-        {
-            try
-            {
-                string strURL = FName;
-                string[] typeFile = FName.Split('/');
-                WebClient req = new WebClient();
-                HttpResponse response = HttpContext.Current.Response;
-                response.Clear();
-                response.ClearContent();
-                response.ClearHeaders();
-                response.Buffer = true;
-                response.AddHeader("Content-Disposition", "attachment;filename=\"" + function.getMd5Hash(Session["CodePK"].ToString() + DateTime.Now) + "." + typeFile[typeFile.Length - 1].Split('.')[1] + "\"");
-                byte[] data = req.DownloadData(Server.MapPath(strURL));
-                response.BinaryWrite(data);
-                response.End();
-            }
-            catch
-            {
-
-            }
-        }
-
-        protected void lbtnloadCom_Command(object sender, CommandEventArgs e)
-        {
-            DownLoadComplete(e.CommandName.ToString());
         }
     }
 }

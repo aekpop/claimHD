@@ -396,29 +396,6 @@
                         <asp:LinkButton ID="btnDownloadOrderSend" CssClass="btn btn-outline-info btn-sm" Font-Size="15px" runat="server" OnClick="btnDownloadOrderSend_Click">ดาวน์โหลด</asp:LinkButton>
                     </div>
                 </div>
-                <asp:GridView id="gridComplete" runat="server"  GridLines="Both"
-                    DataKeyNames="quotations_id" AutoGenerateColumns="False"
-                    CssClass="table table-hover table-sm"
-                    HeaderStyle-Font-Bold="true"
-                    BorderColor="White"
-                    OnRowDataBound="gridComplete_RowDataBound"  OnRowDeleting="gridComplete_RowDeleting"
-                 >
-                    <Columns>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:Image ID="imgquaComplete" runat="server" Width="200px" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbtnloadCom" runat="server" Font-Size="Larger" CssClass="fa" OnCommand="lbtnloadCom_Command">&#xf0ed;</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
-                    </Columns>
-                </asp:GridView>
-
-
             </div>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>

@@ -55,15 +55,8 @@
                     DataKeyNames="trans_id" 
                     OnRowDataBound="gridTranlist_RowDataBound"
                     GridLines="Both" BorderColor="White"  Font-Size="20px" 
-                    OnPageIndexChanging="gridTranlist_PageIndexChanging" PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
-            PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"  AllowPaging="true" 
                     ><AlternatingRowStyle BackColor="#f0fbff" />
                     <Columns>
-                        <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="50px" ControlStyle-Font-Size="12px">
-                        <ItemTemplate >
-                            <%# Container.DataItemIndex + 1+"." %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                         <asp:TemplateField HeaderText="คลิก" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center"  ControlStyle-Width="35px">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
@@ -89,7 +82,7 @@
                                 <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ประเภทรายการ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="120px">
+                        <asp:TemplateField HeaderText="ประเภทรายการ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="180px">
                             <ItemTemplate>
                                 <asp:Label ID="lbtypetrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name") %>' ></asp:Label>
                             </ItemTemplate>
@@ -118,8 +111,6 @@
                     </Columns>
                     <FooterStyle BackColor="#b8ecff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
                     <HeaderStyle BackColor="#b8ecff" CssClass="text-center"   ForeColor="#031f91" />
-                    <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="#2461BF" ForeColor="White" />
-                    <PagerStyle HorizontalAlign="Center" BackColor="White" ForeColor="#026b14"  />
                     <RowStyle BackColor="#def4fc"  />
                 </asp:GridView>
 

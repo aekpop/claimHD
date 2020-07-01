@@ -45,29 +45,13 @@ namespace ClaimProject
                     if (!rs.IsDBNull(0))
                     {
                         string cpoint = "";
-                        string userN = rs.GetString("username");
                         if (rs.GetString("user_cpoint") == "0")
                         {
                             cpoint = "0";
                         }
                         else
                         {
-                            if(userN == "ty1motorway"){ cpoint = "904"; }
-                            else if(userN == "ty2motorway"){ cpoint = "905"; }
-                            else if (userN == "tc1motorway") { cpoint = "902"; }
-                            else if (userN == "tc2motorway") { cpoint = "903"; }
-                            else if (userN == "lbmotorway") { cpoint = "701"; }
-                            else if (userN == "bbmotorway") { cpoint = "702"; }
-                            else if (userN == "bkmotorway") { cpoint = "703"; }
-                            else if (userN == "pnmotorway") { cpoint = "704"; }
-                            else if (userN == "bgmotorway") { cpoint = "706"; }
-                            else if (userN == "bpmotorway") { cpoint = "707"; }
-                            else if (userN == "nkmotorway") { cpoint = "708"; }
-                            else if (userN == "pomotorway") { cpoint = "709"; }
-                            else if (userN == "pymotorway") { cpoint = "710"; }
-                            else if (userN == "utmotorway") { cpoint = "713"; }
-                            else { cpoint = txtCpoint.SelectedValue; }
-                            
+                            cpoint = txtCpoint.SelectedValue;
                         }
                         // Storee Session
                         Session.Add("EQAddAlert", "");

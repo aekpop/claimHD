@@ -23,14 +23,10 @@
 </head>
 <body style="font-family: 'THSarabun,THSarabunIT๙'">
     <form id="form1" runat="server">
-        
         <asp:Panel id="dvReport" runat="server">
-            <asp:Button ID="btnprint" runat="server" CssClass="fas fa-print" Text="พิมพ์" ToolTip="พิมพ์ทันที" Font-Size="Larger" ForeColor="#ff0000" OnCommand="btnprint_Command" />
             <CR:CrystalReportViewer ID="CRSEquipviewer" runat="server"
                 EnableParameterPrompt="False" 
-                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" 
-                PrintMode="ActiveX" AutoDataBind="true" HasPrintButton="True" EnableDatabaseLogonPrompt="False" />
-
+                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="Pdf" AutoDataBind="true" EnableDatabaseLogonPrompt="False" />
         </asp:Panel>
     </form>
 </body>

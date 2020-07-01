@@ -147,7 +147,7 @@
                                     <%# Container.DataItemIndex + 1+"." %>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="240px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="180px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:Label ID="lbEQnumber"   runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_number") %>' ></asp:Label>
                             </ItemTemplate>
@@ -175,7 +175,7 @@
                                 <asp:label ID="lbEQSeries"  runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortTextCom(DataBinder.Eval(Container, "DataItem.list_series").ToString()) %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="วันที่บันทึกระบบ" ItemStyle-Width="220px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="วันที่บันทึกระบบ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:label ID="lbdatesys"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Date_added") %>' ></asp:label>
                             </ItemTemplate>

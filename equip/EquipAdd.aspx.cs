@@ -54,15 +54,6 @@ namespace ClaimProject.equip
                                         "WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By tbl_toll.toll_id ASC";
                     function.getListItem(ddlserchToll, cpointToll, "toll_name", "toll_id");
                     function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By toll_id ASC", "toll_name", "toll_id");
-                    if (chk == "701" || chk == "702" || chk == "710" || chk == "713" || chk == "902" || chk == "903" || chk == "904" || chk == "905")
-                    {
-                        
-                    }
-                    else
-                    {
-                        ddlserchToll.Items.Insert(0, new ListItem("ทุกด่าน", "0"));
-                    }
-                    
                 }
                 else
                 {
@@ -84,7 +75,7 @@ namespace ClaimProject.equip
                     }
                     else
                     {
-                        
+                      
                         function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                         function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                         if(username == "pornwimon")
@@ -93,10 +84,8 @@ namespace ClaimProject.equip
                             btnUpdateEQ.Visible = false;
                         }
                     }
-                    
-                     ddlserchToll.Items.Insert(0, new ListItem("ทุกด่าน", "0"));
-                   
-                    
+
+                    ddlserchToll.Items.Insert(0, new ListItem("ทุกด่าน", "0"));
                 }
 
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
@@ -355,7 +344,6 @@ namespace ClaimProject.equip
         {
             divSagain.Visible = true;
             divsearch.Visible = false;
-            string tolll = Session["UserCpoint"].ToString();
             string statt = ddlsearchStat.SelectedValue;
             string Snameth = txtsearchth.Text; string SNum = txtsearchNum.Text; string SToll = ddlserchToll.SelectedValue; string txtTollz = ddlserchToll.SelectedItem.ToString();
             string Ssql = "SELECT * FROM tbl_equipment d "
@@ -373,6 +361,7 @@ namespace ClaimProject.equip
                                  " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id ";
             
 
+
             if (SToll == "0") //ค้นทุกด่านฯ
             {
                 if (Snameth != "") 
@@ -381,10 +370,8 @@ namespace ClaimProject.equip
                     {
                         if(statt != "0")
                         {
-
                             Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
                                 "AND d.equipment_no LIKE '%" + SNum + "%' AND Estatus_id = '"+statt;
-
                             SsqlReport += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
                                 "AND d.equipment_no LIKE '%" + SNum + "%' AND Estatus_id = '" + statt;
 
@@ -411,17 +398,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += "AND tbl_toll.cpoint_id = '" + tolll + "'  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "'  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQq"] = Ssql;
@@ -456,17 +434,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += "  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                }
-   
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQ"] = Ssql.ToString();
@@ -504,17 +473,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += "  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQ"] = Ssql.ToString();
@@ -549,17 +509,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += "  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
 
 
@@ -603,17 +554,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += "  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
 
 
@@ -651,17 +593,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += "  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
@@ -705,17 +638,8 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                if (tolll == "0")
-                                {
-                                    Ssql += "  Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += "  Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                else
-                                {
-                                    Ssql += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + tolll + "' Order by d.toll_id ASC,d.equipment_no";
-                                }
-                                
+                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQ"] = Ssql.ToString();
