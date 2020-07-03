@@ -695,6 +695,8 @@ namespace ClaimProject.Model {
             
             private global::System.Data.DataColumn columnamount;
             
+            private global::System.Data.DataColumn columnnote;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public tranActDataTable() {
@@ -762,6 +764,14 @@ namespace ClaimProject.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn noteColumn {
+                get {
+                    return this.columnnote;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -797,13 +807,14 @@ namespace ClaimProject.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public tranActRow AddtranActRow(string eqnameth, string eqnumber, string eqserial, string amount) {
+            public tranActRow AddtranActRow(string eqnameth, string eqnumber, string eqserial, string amount, string note) {
                 tranActRow rowtranActRow = ((tranActRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         eqnameth,
                         eqnumber,
                         eqserial,
-                        amount};
+                        amount,
+                        note};
                 rowtranActRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtranActRow);
                 return rowtranActRow;
@@ -830,6 +841,7 @@ namespace ClaimProject.Model {
                 this.columneqnumber = base.Columns["eqnumber"];
                 this.columneqserial = base.Columns["eqserial"];
                 this.columnamount = base.Columns["amount"];
+                this.columnnote = base.Columns["note"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -843,6 +855,8 @@ namespace ClaimProject.Model {
                 base.Columns.Add(this.columneqserial);
                 this.columnamount = new global::System.Data.DataColumn("amount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnamount);
+                this.columnnote = new global::System.Data.DataColumn("note", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnote);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1344,6 +1358,22 @@ namespace ClaimProject.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string note {
+                get {
+                    try {
+                        return ((string)(this[this.tabletranAct.noteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'note\' in table \'tranAct\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletranAct.noteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IseqnamethNull() {
                 return this.IsNull(this.tabletranAct.eqnamethColumn);
             }
@@ -1388,6 +1418,18 @@ namespace ClaimProject.Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetamountNull() {
                 this[this.tabletranAct.amountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnoteNull() {
+                return this.IsNull(this.tabletranAct.noteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnoteNull() {
+                this[this.tabletranAct.noteColumn] = global::System.Convert.DBNull;
             }
         }
         

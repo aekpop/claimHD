@@ -95,7 +95,7 @@ namespace ClaimProject
             string type = ddlsearchType.SelectedValue; string EndState = ddlsearchEndToll.SelectedValue; string status = ddlsearchStat.SelectedValue;
             if (Session["UserCpoint"].ToString() == "0")
             {
-                sqlsendSearch += " WHERE cpoint_id = '920'   ";
+                sqlsendSearch += " WHERE cpoint_id = '920' AND user_send = '"+ Session["UserName"].ToString() + "'   ";
             }
             else
             {
@@ -398,6 +398,12 @@ namespace ClaimProject
             {
                 AlertPop("Error Report!! ติดต่อเจ้าหน้าที่", "error");
             }
+        }
+
+        protected void gridTranlist_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridTranlist.PageIndex = e.NewPageIndex;
+            LoadPaging();
         }
     }
 }

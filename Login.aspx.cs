@@ -62,6 +62,71 @@ namespace ClaimProject
                         Session.Add("UserName", rs.GetString("name"));
                         Session.Add("UserPrivilegeId", rs.GetString("level"));
                         Session.Add("UserPrivilege", function.GetLevel(int.Parse(rs.GetString("level"))));
+                        string userrr = txtUser.Text;
+                        if (userrr == "lbmotorway")
+                        {
+                            cpoint = "701";
+                        }
+                        else if(userrr == "bbmotorway")
+                        {
+                            cpoint = "702";
+                        }
+                        else if (userrr == "bkmotorway")
+                        {
+                            cpoint = "703";
+                        }
+                        else if (userrr == "pnmotorway")
+                        {
+                            cpoint = "704";
+                        }
+                        else if (userrr == "bgmotorway")
+                        {
+                            cpoint = "706";
+                        }
+                        else if (userrr == "bpmotorway")
+                        {
+                            cpoint = "707";
+                        }
+                        else if (userrr == "nkmotorway")
+                        {
+                            cpoint = "708";
+                        }
+                        else if (userrr == "pomotorway")
+                        {
+                            cpoint = "709";
+                        }
+                        else if (userrr == "pymotorway")
+                        {
+                            cpoint = "710";
+                        }
+                        else if (userrr == "hymotorway")
+                        {
+                            cpoint = "711";
+                        }
+                        else if (userrr == "kcmotorway")
+                        {
+                            cpoint = "712";
+                        }
+                        else if (userrr == "utmotorway")
+                        {
+                            cpoint = "713";
+                        }
+                        else if (userrr == "tc1motorway")
+                        {
+                            cpoint = "902";
+                        }
+                        else if (userrr == "tc2motorway")
+                        {
+                            cpoint = "903";
+                        }
+                        else if (userrr == "ty1motorway")
+                        {
+                            cpoint = "904";
+                        }
+                        else if (userrr == "ty2motorway")
+                        {
+                            cpoint = "905";
+                        }
                         Session.Add("UserCpoint", cpoint);
                         Session.Timeout = 28800;
 

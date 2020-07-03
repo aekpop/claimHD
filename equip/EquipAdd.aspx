@@ -39,7 +39,15 @@
                      </div>
                     <div class="col-md" style="padding:1px 1px 1px 1px">
                             <div class="form-group" >
-                                <asp:Label ID="Label3" runat="server" Text="ด่านฯ :" Font-Size="Large" Font-Bold="true" ></asp:Label>
+                                <asp:Label ID="Label5" runat="server" Text="ด่านฯ :" Font-Size="Large" Font-Bold="true" ></asp:Label>
+                                <asp:DropDownList ID="ddlcpoint" runat="server"  OnSelectedIndexChanged="ddlcpoint_SelectedIndexChanged" AutoPostBack="true"  CssClass="form-control" Width="150px" ></asp:DropDownList>
+                                </div>
+                     </div>
+
+
+                     <div class="col-md" style="padding:1px 1px 1px 1px">
+                            <div id="divAnex" runat="server" visible="false" class="form-group"  >
+                                <asp:Label ID="Label3" runat="server" Text="อาคาร :" Font-Size="Large" Font-Bold="true" ></asp:Label>
                                 <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="form-control" Width="150px" ></asp:DropDownList>
                                 </div>
                      </div>

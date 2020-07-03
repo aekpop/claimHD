@@ -47,37 +47,51 @@ namespace ClaimProject.equip
                 function.getListItem(ddlEditStat, "SELECT * FROM tbl_equipment_status Order By status_id ASC", "status_name", "status_id");
                 function.getListItem(ddlEditLocate, "SELECT * FROM tbl_location Order By locate_id ", "locate_name", "locate_id");
                 function.getListItem(ddlsearchStat, "SELECT * FROM tbl_equipment_status Order By status_id ", "status_name", "status_id");
-                if (Session["UserCpoint"].ToString() != "0" )
+                
+
+                if (Session["UserCpoint"].ToString() != "0" ) //คนด่านฯ
                 {
                     string cpointToll = "SELECT * FROM tbl_toll " +
                                         "JOIN tbl_cpoint ON tbl_cpoint.cpoint_id = tbl_toll.cpoint_id " +
                                         "WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By tbl_toll.toll_id ASC";
+                    function.getListItem(ddlcpoint, "select * from tbl_cpoint where cpoint_id = '"+Session["UserCpoint"] +"'", "cpoint_name","cpoint_id");
+                    divAnex.Visible = true;
                     function.getListItem(ddlserchToll, cpointToll, "toll_name", "toll_id");
+                    ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
                     function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By toll_id ASC", "toll_name", "toll_id");
                 }
-                else
+                else //อื่นๆที่ไม่ใช่รหัสคนด่านฯ
                 {
+                    
+
                     if (username == "sawitree")
                     {
+                        function.getListItem(ddlcpoint, "select * from tbl_cpoint where eq_gr='1' order by cpoint_id ASC", "cpoint_name", "cpoint_id");
                         function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '1' Order By toll_id ASC", "toll_name", "toll_id");
-                        function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '1' Order By toll_id ASC", "toll_name", "toll_id");
+                        Tollchange();
+                        //function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '1' Order By toll_id ASC", "toll_name", "toll_id");
 
                     }
                     else if(username == "supaporn")
                     {
+                        function.getListItem(ddlcpoint, "select * from tbl_cpoint where eq_gr='2' order by cpoint_id ASC", "cpoint_name", "cpoint_id");
                         function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '2' Order By toll_id ASC", "toll_name", "toll_id");
-                        function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '2' Order By toll_id ASC", "toll_name", "toll_id");
+                        Tollchange();
+                        //function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '2' Order By toll_id ASC", "toll_name", "toll_id");
                     }
                     else if(username == "watcharee")
                     {
+                        function.getListItem(ddlcpoint, "select * from tbl_cpoint where eq_gr='3' order by cpoint_id ASC", "cpoint_name", "cpoint_id");
                         function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '3'  Order By toll_id ASC", "toll_name", "toll_id");
-                        function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '3'  Order By toll_id ASC", "toll_name", "toll_id");
+                        Tollchange();
+                        //function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '3'  Order By toll_id ASC", "toll_name", "toll_id");
                     }
                     else
                     {
-                      
+                        function.getListItem(ddlcpoint, "select * from tbl_cpoint  order by cpoint_id ASC", "cpoint_name", "cpoint_id");
                         function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
-                        function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
+                        Tollchange();
+                        //function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                         if(username == "pornwimon")
                         {
                             FileEditEQ.Visible = false;
@@ -85,7 +99,7 @@ namespace ClaimProject.equip
                         }
                     }
 
-                    ddlserchToll.Items.Insert(0, new ListItem("ทุกด่าน", "0"));
+                    
                 }
 
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
@@ -362,12 +376,14 @@ namespace ClaimProject.equip
             
 
 
-            if (SToll == "0") //ค้นทุกด่านฯ
+            if (SToll == "0") //ค้นทุกอาคาร
             {
+
                 if (Snameth != "") 
                 {
                     if (SNum != "")//มีชื่อ+มีเลข+ทุกด่าน
                     {
+
                         if(statt != "0")
                         {
                             Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
@@ -381,25 +397,18 @@ namespace ClaimProject.equip
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             }
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if(Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if(Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '"+ddlcpoint.SelectedValue+ "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQq"] = Ssql;
@@ -417,25 +426,18 @@ namespace ClaimProject.equip
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             }
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQ"] = Ssql.ToString();
@@ -456,25 +458,18 @@ namespace ClaimProject.equip
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             }
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree'' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQ"] = Ssql.ToString();
@@ -492,25 +487,18 @@ namespace ClaimProject.equip
                             }
 
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn'' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
 
 
@@ -537,25 +525,18 @@ namespace ClaimProject.equip
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             }
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
 
 
@@ -576,25 +557,18 @@ namespace ClaimProject.equip
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             }
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
@@ -621,25 +595,18 @@ namespace ClaimProject.equip
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             }
 
-                            if (Session["User"].ToString() == "sawitree")
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
-                                Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "supaporn")
-                            {
-                                Ssql += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                                SsqlReport += " AND tbl_toll.user_depart = 'supaporn' Order by d.toll_id ASC,d.equipment_no ";
-                            }
-                            else if (Session["User"].ToString() == "watcharee")
-                            {
-                                Ssql += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
-                                SsqlReport += "AND tbl_toll.user_depart = 'watcharee'  Order by d.toll_id ASC,d.equipment_no  ";
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+
                             }
                             else
                             {
-                                Ssql += " Order by d.toll_id ASC,d.equipment_no";
-                                SsqlReport += " Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
 
                             Session["SQLEQ"] = Ssql.ToString();
@@ -655,7 +622,7 @@ namespace ClaimProject.equip
                     }
                 }
             }
-            else //เลือกด่านฯ
+            else //เลือกอาคาร
             {
                 if (Snameth != "")
                 {
@@ -1042,6 +1009,56 @@ namespace ClaimProject.equip
         {
             GridEquipAdd.PageIndex = e.NewPageIndex;
             SearchBind();
+        }
+
+        protected void ddlcpoint_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Tollchange();
+        }
+        protected void Tollchange ()
+        {
+            if (ddlcpoint.SelectedValue == "703")
+            {
+                divAnex.Visible = true;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '703' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
+
+            }
+            else if (ddlcpoint.SelectedValue == "704")
+            {
+                divAnex.Visible = true;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '704' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
+            }
+            else if (ddlcpoint.SelectedValue == "706")
+            {
+                divAnex.Visible = true;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '706' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
+            }
+            else if (ddlcpoint.SelectedValue == "707")
+            {
+                divAnex.Visible = true;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '707' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
+            }
+            else if (ddlcpoint.SelectedValue == "708")
+            {
+                divAnex.Visible = true;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '708' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
+            }
+            else if (ddlcpoint.SelectedValue == "709")
+            {
+                divAnex.Visible = true;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '709' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
+            }
+            else
+            {
+                divAnex.Visible = false;
+            }
         }
     }
 }

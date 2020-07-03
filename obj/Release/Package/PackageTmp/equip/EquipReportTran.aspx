@@ -23,6 +23,7 @@
 </head>
 <body style="font-family: 'THSarabun,THSarabunIT๙'">
     <form id="form1" runat="server">
+        <asp:Button ID="btnprint" runat="server" CssClass="fas fa-print" Text="พิมพ์" ToolTip="พิมพ์ทันที" Font-Size="Larger" ForeColor="#ff0000" OnCommand="btnprint_Command" />
         <asp:Panel id="dvReport" runat="server">
             <CR:CrystalReportViewer ID="CRSEquipviewer" runat="server"
                 EnableParameterPrompt="False" 

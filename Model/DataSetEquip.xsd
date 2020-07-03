@@ -12,7 +12,7 @@
   <xs:element name="DataSetEquip" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetEquip" msprop:Generator_UserDSName="DataSetEquip">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="EquipRe" msprop:Generator_TableClassName="EquipReDataTable" msprop:Generator_TableVarName="tableEquipRe" msprop:Generator_TablePropName="EquipRe" msprop:Generator_RowDeletingName="EquipReRowDeleting" msprop:Generator_RowChangingName="EquipReRowChanging" msprop:Generator_RowEvHandlerName="EquipReRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipReRowDeleted" msprop:Generator_UserTableName="EquipRe" msprop:Generator_RowChangedName="EquipReRowChanged" msprop:Generator_RowEvArgName="EquipReRowChangeEvent" msprop:Generator_RowClassName="EquipReRow">
+        <xs:element name="EquipRe" msprop:Generator_TableClassName="EquipReDataTable" msprop:Generator_TableVarName="tableEquipRe" msprop:Generator_RowChangedName="EquipReRowChanged" msprop:Generator_TablePropName="EquipRe" msprop:Generator_RowDeletingName="EquipReRowDeleting" msprop:Generator_RowChangingName="EquipReRowChanging" msprop:Generator_RowEvHandlerName="EquipReRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipReRowDeleted" msprop:Generator_RowClassName="EquipReRow" msprop:Generator_UserTableName="EquipRe" msprop:Generator_RowEvArgName="EquipReRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Enameth" msprop:Generator_ColumnVarNameInTable="columnEnameth" msprop:Generator_ColumnPropNameInRow="Enameth" msprop:Generator_ColumnPropNameInTable="EnamethColumn" msprop:Generator_UserColumnName="Enameth" type="xs:string" minOccurs="0" />
@@ -28,13 +28,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tranAct" msprop:Generator_TableClassName="tranActDataTable" msprop:Generator_TableVarName="tabletranAct" msprop:Generator_TablePropName="tranAct" msprop:Generator_RowDeletingName="tranActRowDeleting" msprop:Generator_RowChangingName="tranActRowChanging" msprop:Generator_RowEvHandlerName="tranActRowChangeEventHandler" msprop:Generator_RowDeletedName="tranActRowDeleted" msprop:Generator_UserTableName="tranAct" msprop:Generator_RowChangedName="tranActRowChanged" msprop:Generator_RowEvArgName="tranActRowChangeEvent" msprop:Generator_RowClassName="tranActRow">
+        <xs:element name="tranAct" msprop:Generator_TableClassName="tranActDataTable" msprop:Generator_TableVarName="tabletranAct" msprop:Generator_RowChangedName="tranActRowChanged" msprop:Generator_TablePropName="tranAct" msprop:Generator_RowDeletingName="tranActRowDeleting" msprop:Generator_RowChangingName="tranActRowChanging" msprop:Generator_RowEvHandlerName="tranActRowChangeEventHandler" msprop:Generator_RowDeletedName="tranActRowDeleted" msprop:Generator_RowClassName="tranActRow" msprop:Generator_UserTableName="tranAct" msprop:Generator_RowEvArgName="tranActRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="eqnameth" msprop:Generator_ColumnVarNameInTable="columneqnameth" msprop:Generator_ColumnPropNameInRow="eqnameth" msprop:Generator_ColumnPropNameInTable="eqnamethColumn" msprop:Generator_UserColumnName="eqnameth" type="xs:string" minOccurs="0" />
               <xs:element name="eqnumber" msprop:Generator_ColumnVarNameInTable="columneqnumber" msprop:Generator_ColumnPropNameInRow="eqnumber" msprop:Generator_ColumnPropNameInTable="eqnumberColumn" msprop:Generator_UserColumnName="eqnumber" type="xs:string" minOccurs="0" />
               <xs:element name="eqserial" msprop:Generator_ColumnVarNameInTable="columneqserial" msprop:Generator_ColumnPropNameInRow="eqserial" msprop:Generator_ColumnPropNameInTable="eqserialColumn" msprop:Generator_UserColumnName="eqserial" type="xs:string" minOccurs="0" />
               <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:string" minOccurs="0" />
+              <xs:element name="note" msprop:Generator_ColumnVarNameInTable="columnnote" msprop:Generator_ColumnPropNameInRow="note" msprop:Generator_ColumnPropNameInTable="noteColumn" msprop:Generator_UserColumnName="note" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
