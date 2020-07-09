@@ -55,6 +55,9 @@
                     DataKeyNames="trans_id" 
                     OnRowDataBound="gridTranlist_RowDataBound"
                     GridLines="Both" BorderColor="White"  Font-Size="20px" 
+                    OnPageIndexChanging="gridTranlist_PageIndexChanging" PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
+            PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
+            AllowPaging="true" 
                     ><AlternatingRowStyle BackColor="#f0fbff" />
                     <Columns>
                         <asp:TemplateField HeaderText="คลิก" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center"  ControlStyle-Width="35px">
@@ -112,6 +115,7 @@
                     <FooterStyle BackColor="#b8ecff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
                     <HeaderStyle BackColor="#b8ecff" CssClass="text-center"   ForeColor="#031f91" />
                     <RowStyle BackColor="#def4fc"  />
+                    <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="white" ForeColor="#990000" />
                 </asp:GridView>
 
 

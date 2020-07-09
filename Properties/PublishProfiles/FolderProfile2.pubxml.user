@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>07/03/2020 11:05:28</publishTime>
+      <publishTime>07/03/2020 16:38:00</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>07/03/2020 11:05:28</publishTime>
+      <publishTime>07/03/2020 16:38:00</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>07/03/2020 11:05:30</publishTime>
+      <publishTime>07/03/2020 16:38:02</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -3433,7 +3433,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>07/01/2020 11:46:47</publishTime>
+      <publishTime>07/03/2020 15:31:09</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
       <publishTime>04/13/2020 13:12:22</publishTime>
@@ -3472,7 +3472,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2020 10:40:46</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>07/01/2020 11:46:47</publishTime>
+      <publishTime>07/03/2020 14:13:24</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>05/21/2020 09:01:00</publishTime>
@@ -3586,10 +3586,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 13:25:24</publishTime>
     </File>
     <File Include="Model/DataSetEquip.xsc">
-      <publishTime>02/12/2020 16:03:28</publishTime>
+      <publishTime>07/03/2020 13:13:55</publishTime>
     </File>
     <File Include="Model/DataSetEquip.xss">
-      <publishTime>02/12/2020 16:03:28</publishTime>
+      <publishTime>07/03/2020 13:13:55</publishTime>
     </File>
     <File Include="PM/AdminPMReport.aspx">
       <publishTime>07/10/2019 14:27:02</publishTime>

@@ -168,7 +168,7 @@ namespace ClaimProject.equip
                         string locate_idd = ""; string eqidd = ""; string oldtoll = ""; string old_name = "";
                         string oldnameth = ""; string oldserial = ""; string oldtype = ""; string oldbrand = "";
                         string actNote = "-"; string oldseries = ""; string oldno = ""; string user = ""; string oldStatus = "";
-                        string completeStat = "3";
+                        string completeStat = "1";
                         if (ser.Read())
                         {
                             oldno = ser.GetString("equipment_no");
@@ -190,7 +190,7 @@ namespace ClaimProject.equip
                             
 
                             string today = DateTime.Now.ToString("dd-MM-yyyy HH.mm.ss");
-                            string sqx = "SELECT * FROM tbl_transfer WHERE trans_id = '" + Session["TransID"].ToString() + "'";
+                            string sqx = "SELECT * FROM tbl_transfer WHERE trans_id = '" + Session["TransOutID"].ToString() + "'";
                             string datesss = GetThaiMonth(txtDateGet.Text);
                             MySqlDataReader rs = function.MySqlSelect(sqx);
                             if (!rs.Read())  //กรณียังไม่มีเลข Ref 
@@ -211,7 +211,8 @@ namespace ClaimProject.equip
                                         " '" + oldtype + "','" + oldno + "','" + user + "','" + oldbrand + "','no','" + function.getBudgetYear(txtDateGet.Text) + "','" + datesss + "','" + txtDateGet.Text + "')";
                                     if (function.MySqlQuery(sqltranAct))
                                     {
-                                       if (function.MySqlQuery(sqlUpEQ))
+                                        sqlUpEQ += "update tbl_equipment trans_complete = '1' ,transfer_idnow = '" + Session["TransOutID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
+                                        if (function.MySqlQuery(sqlUpEQ))
                                        {
                                            Response.Redirect("/equip/EquipNewTrans");
                                        }
@@ -251,6 +252,8 @@ namespace ClaimProject.equip
                                 if (function.MySqlQuery(sqltranAct))
                                 {
 
+
+                                    sqlUpEQ += "update tbl_equipment trans_complete = '1' ,transfer_idnow = '" + Session["TransOutID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
                                     if (function.MySqlQuery(sqlUpEQ))
                                     {
 

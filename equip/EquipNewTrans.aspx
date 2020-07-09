@@ -410,7 +410,7 @@
     </div>
        
     <div class="modal fade " id="modalConfirmGet"   tabindex="-1" role="dialog" aria-labelledby="modalConfirmGet" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered " style="width:1000px" role="form">
+        <div class="modal-dialog modal-lg modal-dialog-centered " style="width:320px" role="form">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title"> กรุณาเลือกตำแหน่งของท่านเพื่อยืนยัน</h4>
@@ -435,7 +435,7 @@
         </div>
     </div>
     <div class="modal fade " id="modalHitBack"   tabindex="-1" role="dialog" aria-labelledby="modalHitBack" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered "  style="width:600px" role="form">
+        <div class="modal-dialog modal-lg modal-dialog-centered "  style="width:320px" role="form">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title"> กรุณาใส่หมายเหตุการตีกลับต้นทาง</h4>
@@ -446,8 +446,8 @@
                 <div class="modal-body" style="line-height: inherit;">
                     
                     <div class="row" style="height: 120px">
-                        <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เหตุผลการตีกลับเอกสาร</label>
+                        <div class="form-group bmd-form-group col-md text-center">
+                                <!--<label class="bmd-label-floating">เหตุผลการตีกลับเอกสาร</label>-->
                                 <asp:TextBox ID="txtEditNote"  runat="server" Font-Size="Medium" TextMode="MultiLine" CssClass="form-control time" />
                         </div>
                     </div>
