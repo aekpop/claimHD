@@ -54,7 +54,11 @@
                     GridLines="Both" BorderColor="White"   Font-Size="20px" 
                     ><AlternatingRowStyle BackColor="#f0fbff" />
                     <Columns>
-                        
+                        <asp:TemplateField HeaderText="พิมพ์" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center"  ControlStyle-Width="35px">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="fa fa-print" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#cc0000" OnCommand="lbtnprintTran_Command"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="คลิก" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center"  ControlStyle-Width="35px">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
@@ -63,6 +67,11 @@
                         <asp:TemplateField HeaderText="เลขอ้างอิง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="120px">
                             <ItemTemplate>
                                 <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="70px">
+                            <ItemTemplate>
+                                <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="วันที่รับ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="80px">

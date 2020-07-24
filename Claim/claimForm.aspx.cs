@@ -624,7 +624,7 @@ namespace ClaimProject.Claim
                     doc_num = rs.GetString("claim_doc_num");
                     noteTo1 = rs.GetString("claim_doc_to");
                     listDoc += "เอกสารประกอบการพิจารณาแนบ ดังนี้";
-                    listDoc += "\r\n                      1. บันทึกข้อความ " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
+                    listDoc += "\r\n                      1. บันทึกข้อความ จำนวน " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
                     listDoc += "\r\n                      2. หนังสือยอมรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
                     listDoc += "\r\n                      3. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
                     listDoc += "\r\n                      4. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";

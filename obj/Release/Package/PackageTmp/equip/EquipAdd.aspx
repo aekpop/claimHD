@@ -9,6 +9,7 @@
         <div class="card-header card-header-warning">
             <h3 class="card-title">ค้นหา/แก้ไขรายการครุภัณฑ์</h3>
         </div>
+        
             <div class="card-body table-responsive table-sm">
                 
                 <div id="divsearch" runat="server" class="row"  style="background-color:peachpuff;height:130px;padding:1px 1px 1px 1px;" >
@@ -44,7 +45,6 @@
                                 </div>
                      </div>
 
-
                      <div class="col-md" style="padding:1px 1px 1px 1px">
                             <div id="divAnex" runat="server" visible="false" class="form-group"  >
                                 <asp:Label ID="Label3" runat="server" Text="อาคาร :" Font-Size="Large" Font-Bold="true" ></asp:Label>
@@ -55,6 +55,8 @@
                          <asp:Button ID="searchEquip" runat="server" Text="ค้นหา" CssClass="btn btn-warning btn-sm" Font-Bold="true" Font-Size="Large" OnClick="searchEquip_Click" /> 
                      </div>
                     </div>
+              
+
                 <div id="divSagain" runat="server" visible="false">
                     <asp:Button ID="btnSagain" runat="server" Text="ค้นหาใหม่"  CssClass="btn btn-dark btn-sm" Font-Bold="true" Font-Size="Large" OnClick="btnSagain_Click" />
                     <asp:Label ID="chkS" runat="server" ></asp:Label>
@@ -143,7 +145,15 @@
                   
    </asp:Panel>   
 
+
+
+
+
+
+
+
             </div>
+            
         </div>
    <div class="modal fade" id="EquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

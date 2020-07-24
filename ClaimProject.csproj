@@ -302,6 +302,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="car\car.aspx" />
     <Content Include="Claim\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Claim\claimDetailForm.aspx" />
     <Content Include="Claim\ClaimDevice.aspx" />
@@ -1215,6 +1216,7 @@
     <Content Include="equip\EquipCheck.aspx" />
     <Content Include="equip\EquipCheckList.aspx" />
     <Content Include="equip\EquipDefault.aspx" />
+    <Content Include="equip\EquipLoanList.aspx" />
     <Content Include="equip\EquipReportPage.aspx" />
     <Content Include="equip\EquipReportTran.aspx" />
     <Content Include="equip\EquipStatistics.aspx" />
@@ -1524,6 +1526,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="car\car.aspx.cs">
+      <DependentUpon>car.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="car\car.aspx.designer.cs">
+      <DependentUpon>car.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Claim\claimDetailForm.aspx.cs">
       <DependentUpon>claimDetailForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1678,6 +1687,13 @@
     </Compile>
     <Compile Include="equip\EquipDefault.aspx.designer.cs">
       <DependentUpon>EquipDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipLoanList.aspx.cs">
+      <DependentUpon>EquipLoanList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipLoanList.aspx.designer.cs">
+      <DependentUpon>EquipLoanList.aspx</DependentUpon>
     </Compile>
     <Compile Include="equip\EquipReport.cs">
       <AutoGen>True</AutoGen>

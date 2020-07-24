@@ -172,11 +172,51 @@ namespace ClaimProject.equip
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
             gridOutget.DataSource = ds.Tables[0];
+            gridOutget.DataBind();
             lbresult.Text = "พบ "+(ds.Tables[0].Rows.Count).ToString() + " รายการ";
         }
         protected void gridOutget_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            LinkButton lbtntrans = (LinkButton)(e.Row.FindControl("lbtntrans"));
+            if (lbtntrans != null)
+            {
+                lbtntrans.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "trans_id");
+            }
 
+            Label lbEndtrans = (Label)(e.Row.FindControl("lbEndtrans"));
+            if (lbEndtrans != null)
+            {
+                string gettollname = "SELECT toll_name from tbl_toll where toll_id = '" + lbEndtrans.Text + "' ";
+                MySqlDataReader namee = function.MySqlSelect(gettollname);
+                if (namee.Read())
+                {
+                    lbEndtrans.Text = namee.GetString("toll_name");
+                }
+                else { lbEndtrans.Text = "ยังไม่ระบุ"; }
+            }
+            Label lbstat = (Label)(e.Row.FindControl("lbstat"));
+            if (lbstat != null)
+            {
+                lbstat.CssClass = "badge badge-" + (string)DataBinder.Eval(e.Row.DataItem, "complete_badge");
+                lbtntrans.CssClass = (string)DataBinder.Eval(e.Row.DataItem, "complete_link");
+
+            }
+            LinkButton lbtnprintTran = (LinkButton)(e.Row.FindControl("lbtnprintTran"));
+            if (lbstat != null)
+            {
+                lbtnprintTran.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "trans_id");
+                if (DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "แจ้งใหม่" ||
+                    DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "สำเร็จ")
+                {
+                    lbtnprintTran.Visible = true;
+                }
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                e.Row.Cells[1].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            }
 
         }
 
@@ -206,7 +246,6 @@ namespace ClaimProject.equip
                 Response.Redirect("/equip/EquipTranGetout");
             }
 
-            
         }
 
         protected void lbtnSearchGet_Command(object sender, CommandEventArgs e)
@@ -217,7 +256,14 @@ namespace ClaimProject.equip
 
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {
+            Session["TransOutID"] = e.CommandName;
+            Session["TransOutNew"] = "1";
+            Response.Redirect("/equip/EquipTranGetout");
 
+        }
+
+        protected void lbtnprintTran_Command(object sender, CommandEventArgs e)
+        {
 
         }
     }

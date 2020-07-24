@@ -34,6 +34,14 @@ namespace ClaimProject.equip
             function.getListItem(ddlcompout, "SELECT * FROM tbl_toll WHERE toll_id = '9300' or toll_id = '9400' or toll_id = '9500' Order by toll_id ASC ", "toll_name", "toll_id");
             if(Session["TransOutNew"].ToString() != "0")//ไม่ใช่รายการใหม่
             {
+                if (Session["UserCpoint"].ToString() == "0")
+                {
+                    function.getListItem(ddlcompGet, "SELECT * FROM tbl_toll WHERE toll_id = '9200' ", "toll_name", "toll_id");
+                }
+                else
+                {
+                    function.getListItem(ddlcompGet, "SELECT * FROM tbl_toll WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "' ", "toll_name", "toll_id");
+                }
                 string completeStat = "";
                 string selectData = "SELECT * FROM tbl_transfer " +
                     " JOIN tbl_trans_complete ON tbl_trans_complete.complete_id = tbl_transfer.complete_stat  " +
@@ -45,13 +53,15 @@ namespace ClaimProject.equip
                     ddlcompGet.SelectedValue = rGet.GetInt32("toll_recieve").ToString();
                     txtDateGet.Text = rGet.GetString("date_send");
                     completeStat = rGet.GetString("complete_stat");
-                    if(completeStat != "1")//สถานะสำเร็จแล้ว
+                    refnoo.Text = "(เลขอ้างอิง : "+Session["TransOutID"].ToString()+")";
+                    if (completeStat != "1")//สถานะสำเร็จแล้ว
                     {
                         btnPlanSheet.Visible = false;
                         btnFinalSubmit.Visible = false;
                         div3.Visible = false;
                         divbtnNext.Visible = false;
                         ddlcompout.Enabled = false;
+                        ddlcompGet.Enabled = false;
                     }
                     else
                     {
@@ -61,6 +71,7 @@ namespace ClaimProject.equip
                         divbtnNext.Visible = false;
                         btnDeleteALL.Visible = true;
                         ddlcompout.Enabled = false;
+                        ddlcompGet.Enabled = false;
                     }
                 }
                 else
@@ -196,7 +207,7 @@ namespace ClaimProject.equip
                             if (!rs.Read())  //กรณียังไม่มีเลข Ref 
                             {
                                 string toll_end = ddlcompGet.SelectedValue;
-
+                                
                                 sqltran = "INSERT INTO tbl_transfer (company_repair,thai_month,position_sender,trans_note,trans_id,trans_stat,date_send,time_send,user_send,name_send,toll_send,toll_recieve,complete_stat,trans_budget)" +
                                  "VALUES ('556','" + datesss + "','-','" + actNote + "','" + Session["TransOutID"].ToString() + "','1','" + txtDateGet.Text + "','" + today + "','" + Session["UserName"].ToString() + "'" +
                                  ",'" + Session["UserName"].ToString() + "','" + ddlcompout.SelectedValue + "','" + toll_end + "','" + completeStat + "','" + function.getBudgetYear(txtDateGet.Text) + "')";
@@ -211,7 +222,7 @@ namespace ClaimProject.equip
                                         " '" + oldtype + "','" + oldno + "','" + user + "','" + oldbrand + "','no','" + function.getBudgetYear(txtDateGet.Text) + "','" + datesss + "','" + txtDateGet.Text + "')";
                                     if (function.MySqlQuery(sqltranAct))
                                     {
-                                        sqlUpEQ += "update tbl_equipment trans_complete = '1' ,transfer_idnow = '" + Session["TransOutID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
+                                        sqlUpEQ += "update tbl_equipment set trans_complete = '1' ,transfer_idnow = '" + Session["TransOutID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
                                         if (function.MySqlQuery(sqlUpEQ))
                                        {
                                            Response.Redirect("/equip/EquipNewTrans");
@@ -237,7 +248,7 @@ namespace ClaimProject.equip
                             else
                             {
                                 string toll_end = ddlcompGet.SelectedValue;
-
+                                
                                 sqltran = "INSERT INTO tbl_transfer (company_repair,thai_month,position_sender,trans_note,trans_id,trans_stat,date_send,time_send,user_send,name_send,toll_send,toll_recieve,complete_stat,trans_budget)" +
                                  "VALUES ('556','" + datesss + "','-','" + actNote + "','" + Session["TransOutID"].ToString() + "','1','" + txtDateGet.Text + "','" + today + "','" + Session["UserName"].ToString() + "'" +
                                  ",'" + Session["UserName"].ToString() + "','" + ddlcompout.SelectedValue + "','" + toll_end + "','" + completeStat + "','" + function.getBudgetYear(txtDateGet.Text) + "')";
@@ -249,27 +260,36 @@ namespace ClaimProject.equip
                                         "'" + oldtoll + "','" + old_name + "','" + oldnameth + "','" + oldserial + "','" + oldseries + "'," +
                                         " '" + oldtype + "','" + oldno + "','" + oldbrand + "','no','" + function.getBudgetYear(txtDateGet.Text) + "','" + datesss + "','" + txtDateGet.Text + "')";
 
-                                if (function.MySqlQuery(sqltranAct))
+                                if(function.MySqlQuery(sqltran))
                                 {
-
-
-                                    sqlUpEQ += "update tbl_equipment trans_complete = '1' ,transfer_idnow = '" + Session["TransOutID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
-                                    if (function.MySqlQuery(sqlUpEQ))
+                                    if (function.MySqlQuery(sqltranAct))
                                     {
 
-                                        Response.Redirect("/equip/EquipNewTrans");
+
+                                        sqlUpEQ += "update tbl_equipment set trans_complete = '1' ,transfer_idnow = '" + Session["TransOutID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
+                                        if (function.MySqlQuery(sqlUpEQ))
+                                        {
+
+                                            Response.Redirect("/equip/EquipNewTrans");
+
+                                        }
+                                        else
+                                        {
+                                            AlertPop("ERROR upMainEquipment!! บันทึกข้อมูลล้มเหลว", "error");
+                                        }
 
                                     }
                                     else
                                     {
-                                        AlertPop("ERROR upMainEquipment!! บันทึกข้อมูลล้มเหลว", "error");
+                                        AlertPop("ERROR 4100 บันทึกข้อมูลล้มเหลว", "error");
                                     }
-
                                 }
                                 else
                                 {
-                                    AlertPop("ERROR 4100 บันทึกข้อมูลล้มเหลว", "error");
+                                    AlertPop("ERROR 4500 บันทึกข้อมูลล้มเหลว", "error");
                                 }
+
+
                             }
                             ser.Close();
                         }

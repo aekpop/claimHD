@@ -10,177 +10,132 @@
 namespace ClaimProject.equip {
     
     
-    public partial class EquipTranGetout {
+    public partial class EquipLoanList {
         
         /// <summary>
-        /// btnMainGetout control.
+        /// btnMainEQ control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainGetout;
+        protected global::System.Web.UI.WebControls.Button btnMainEQ;
         
         /// <summary>
-        /// divtranSecond control.
+        /// AddPM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtranSecond;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AddPM;
         
         /// <summary>
-        /// refnoo control.
+        /// divSendSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label refnoo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSendSearch;
         
         /// <summary>
-        /// div1 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// ddlcompout control.
+        /// txtRefTran control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcompout;
+        protected global::System.Web.UI.WebControls.TextBox txtRefTran;
         
         /// <summary>
-        /// div2 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// ddlcompGet control.
+        /// ddlsearchType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcompGet;
+        protected global::System.Web.UI.WebControls.DropDownList ddlsearchType;
         
         /// <summary>
-        /// txtDateGet control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateGet;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// divbtnNext control.
+        /// ddlsearchEndToll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divbtnNext;
+        protected global::System.Web.UI.WebControls.DropDownList ddlsearchEndToll;
         
         /// <summary>
-        /// btnNext control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// div3 control.
+        /// ddlsearchStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div3;
+        protected global::System.Web.UI.WebControls.DropDownList ddlsearchStat;
         
         /// <summary>
-        /// divnormal control.
+        /// lbtnSearchSend control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divnormal;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnSearchSend;
         
         /// <summary>
-        /// lbEQtranAdd control.
+        /// lbAmountgrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbEQtranAdd;
+        protected global::System.Web.UI.WebControls.Label lbAmountgrid;
         
         /// <summary>
-        /// txtEquipGet control.
+        /// gridTranlist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtEquipGet;
-        
-        /// <summary>
-        /// btnAddGet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAddGet;
-        
-        /// <summary>
-        /// GridAddGet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridAddGet;
-        
-        /// <summary>
-        /// btnPlanSheet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPlanSheet;
-        
-        /// <summary>
-        /// btnFinalSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFinalSubmit;
-        
-        /// <summary>
-        /// btnDeleteALL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteALL;
+        protected global::System.Web.UI.WebControls.GridView gridTranlist;
     }
 }

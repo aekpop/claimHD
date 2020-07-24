@@ -6,13 +6,13 @@
     <asp:Button runat="server" ID="btnMainGetout"  Font-Bold="true" BackColor="#005ebd" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักรายการ"  OnClick="btnMainGetout_Click" CssClass="btn" />
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server">
 
-        <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:#0242ab">&nbsp;&nbsp;รับโอนย้ายจากหน่วยงานภาพนอก</h3>
+        <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:#0242ab">&nbsp;&nbsp;รับโอนย้ายจากหน่วยงานภายนอก</h3>
 
         <div id="divtranSecond"  class="card-body table-responsive"  runat="server">
-            <h3 class="card-title alert-warning" style="font-size:22px;background-color:#eeffd9;">ส่วนที่1 : ข้อมูลเบื้องต้น</h3> 
+            <h3 class="card-title alert-warning" style="font-size:22px;background-color:#eeffd9;">ส่วนที่1 : ข้อมูลเบื้องต้น <asp:Label ID="refnoo" runat="server" Font-Size="Large" CssClass="text-right"></asp:Label></h3> 
             <div class="row" style="height:110px" >
 
-                <div class="form-group bmd-form-group col-md-3" id="div1" runat="server"  style="padding:1px 1px 1px 15px;">
+                <div class="form-group bmd-form-group col-md-2" id="div1" runat="server"  style="padding:1px 1px 1px 15px;">
                        <label class="bmd-label-floating" style="font-size:20px;height:5px">จากหน่วยงาน</label>
                        <asp:DropDownList ID="ddlcompout" runat="server" Width="240px" AutoPostBack="true" OnSelectedIndexChanged="ddlcompout_SelectedIndexChanged"  CssClass="form-control"  ></asp:DropDownList>
                 </div>
@@ -37,7 +37,7 @@
             <h3 class="card-title alert-warning" style="font-size:22px;background-color:#eeffd9;">ส่วนที่2 : รายการครุภัณฑ์</h3> 
             <div class="row " id="divnormal" runat="server"  style="padding:15px 1px 1px 15px;background-color:#d4efff;height:80px">
                 <div class="col-md-2" style="padding:1px 5px 1px 8px;width:100px">
-                    <asp:Label ID="lbEQtranAdd" runat="server" Text="เพิ่มรายการครุภัณฑ์ ->" ForeColor="#001e80" Font-Bold="true"  ></asp:Label>
+                    <asp:Label ID="lbEQtranAdd" runat="server" Text="เพิ่มรายการครุภัณฑ์" ForeColor="#001e80" Font-Bold="true"  ></asp:Label>
                 </div>
                 <div class="col-md-3" style="padding-left:5px;width:180px;enable-background:initial;">
                     <asp:DropDownList ID="txtEquipGet" runat="server" CssClass="combobox form-control custom-select" ></asp:DropDownList>

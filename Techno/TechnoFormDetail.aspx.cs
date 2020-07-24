@@ -1285,5 +1285,36 @@ namespace ClaimProject.Techno
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
         }
+
+        //โหลดภาพ ส่งงาาน
+        protected void gridFinal_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image imgfinal = (Image)e.Row.FindControl("imgfinal");
+            if (imgfinal != null)
+            {
+                imgfinal.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+                if (imgfinal.ImageUrl == "")
+                {
+                    imgfinal.Visible = false;
+                }
+            }
+
+
+            LinkButton lbtnload = (LinkButton)(e.Row.FindControl("lbtnload"));
+            if (lbtnload != null)
+            {
+                lbtnload.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+            }
+        }
+
+        protected void gridFinal_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void lbtnloadfinal_Command(object sender, CommandEventArgs e)
+        {
+
+        }
     }
 }
