@@ -106,7 +106,7 @@ namespace ClaimProject.car
 
         protected void CarGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            TextBox txtECar = (TextBox)CarGridView.Rows[e.RowIndex].FindControl("txtEDevice");
+            TextBox txtECar = (TextBox)CarGridView.Rows[e.RowIndex].FindControl("txtECar");
 
             string sql = "UPDATE tbl_brandcar SET brandcar_name='" + txtECar.Text + "' WHERE brandcar_id = '" + CarGridView.DataKeys[e.RowIndex].Value + "'";
             string script = "";

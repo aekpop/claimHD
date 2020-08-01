@@ -1049,6 +1049,13 @@ namespace ClaimProject.Techno
             if (rs.Read())
             {
                 lbFineOrder.Text = double.Parse(rs.GetString("quotations_fine")).ToString("#,##0.00") + " บาท";
+                string imgfinal =  "SELECT* FROM tbl_quotations " +
+                          " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
+                MySqlDataAdapter da = function.MySqlSelectDataSet(imgfinal);
+                System.Data.DataSet ds = new System.Data.DataSet();
+                da.Fill(ds);
+                gridFinal.DataSource = ds.Tables[0];
+                gridFinal.DataBind();
                 if (lbFineOrder.Text == "0.00 บาท")
                 {
                     lbFineOrder.Text = "ไม่มีค่าปรับ";
@@ -1292,7 +1299,7 @@ namespace ClaimProject.Techno
             Image imgfinal = (Image)e.Row.FindControl("imgfinal");
             if (imgfinal != null)
             {
-                imgfinal.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+                imgfinal.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
                 if (imgfinal.ImageUrl == "")
                 {
                     imgfinal.Visible = false;
@@ -1303,7 +1310,7 @@ namespace ClaimProject.Techno
             LinkButton lbtnload = (LinkButton)(e.Row.FindControl("lbtnload"));
             if (lbtnload != null)
             {
-                lbtnload.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+                lbtnload.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
             }
         }
 
