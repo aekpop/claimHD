@@ -1220,6 +1220,7 @@ namespace ClaimProject.equip
         }
         protected void Tollchange ()
         {
+            //ด่านมี annex
             if (ddlcpoint.SelectedValue == "703")
             {
                 divAnex.Visible = true;
@@ -1257,6 +1258,74 @@ namespace ClaimProject.equip
                 function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '709' Order By toll_id ASC", "toll_name", "toll_id");
                 ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
             }
+            //ด่านไม่มี annex
+            else if (ddlcpoint.SelectedValue == "701")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '701' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "7010"));
+            }
+            else if (ddlcpoint.SelectedValue == "702")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '702' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "7020"));
+            }
+            else if (ddlcpoint.SelectedValue == "710")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '710' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "7090"));
+            }
+            else if (ddlcpoint.SelectedValue == "711")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '711' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "7100"));
+            }
+            else if (ddlcpoint.SelectedValue == "712")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '712' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "7110"));
+            }
+            else if (ddlcpoint.SelectedValue == "713")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '713' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "7120"));
+            }
+            else if (ddlcpoint.SelectedValue == "902")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '902' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "9010"));
+            }
+            else if (ddlcpoint.SelectedValue == "903")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '903' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "9020"));
+            }
+            else if (ddlcpoint.SelectedValue == "904")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '904' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "9030"));
+            }
+            else if (ddlcpoint.SelectedValue == "905")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '905' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "9040"));
+            }
+            else if (ddlcpoint.SelectedValue == "920")
+            {
+                divAnex.Visible = false;
+                function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '920' Order By toll_id ASC", "toll_name", "toll_id");
+                ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "9200"));
+            }
+
             else
             {
                 divAnex.Visible = false;

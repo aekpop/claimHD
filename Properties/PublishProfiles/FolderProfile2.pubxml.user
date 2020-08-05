@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>07/16/2020 14:30:29</publishTime>
+      <publishTime>08/03/2020 08:47:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>07/16/2020 14:30:29</publishTime>
+      <publishTime>08/03/2020 08:47:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>07/16/2020 14:30:31</publishTime>
+      <publishTime>08/03/2020 08:47:38</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -578,6 +578,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Bundle.config">
       <publishTime>10/01/2018 16:43:50</publishTime>
+    </File>
+    <File Include="car/car.aspx">
+      <publishTime>07/24/2020 09:04:50</publishTime>
     </File>
     <File Include="Claim/300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg">
       <publishTime>10/04/2018 10:56:04</publishTime>
@@ -3964,7 +3967,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/09/2019 15:36:04</publishTime>
     </File>
     <File Include="settingPage.aspx">
-      <publishTime>01/14/2019 11:18:44</publishTime>
+      <publishTime>07/23/2020 15:40:44</publishTime>
     </File>
     <File Include="Site.Master">
       <publishTime>02/19/2020 14:04:48</publishTime>
@@ -3988,7 +3991,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>07/15/2020 14:03:45</publishTime>
+      <publishTime>08/01/2020 15:47:53</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
       <publishTime>11/30/2018 13:50:36</publishTime>

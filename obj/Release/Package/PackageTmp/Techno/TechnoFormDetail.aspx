@@ -202,7 +202,8 @@
                     <div class="col-md-5">
                         <asp:GridView ID="FileNoteGridView" runat="server"
                             DataKeyNames="claim_img_id"
-                            GridLines="None"
+                            GridLines="both"
+                            BorderColor="White"
                             OnRowDataBound="FileNoteGridView_RowDataBound"
                             AutoGenerateColumns="False"
                             CssClass="table table-hover table-sm"
@@ -350,12 +351,12 @@
                     OnRowDataBound="gridquatation_RowDataBound"  OnRowDeleting="gridquatation_RowDeleting"
                  >
                     <Columns>
-                        <asp:TemplateField>
+                        <asp:TemplateField  HeaderText="เอกสารแนบ">
                             <ItemTemplate>
                                 <asp:Image ID="imgqua" runat="server" Width="200px" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  HeaderText="ดาวน์โหลด">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtnload" runat="server" Font-Size="Larger" CssClass="fa" OnCommand="lbtnload_Command">&#xf0ed;</asp:LinkButton>
                             </ItemTemplate>
@@ -404,12 +405,12 @@
                     OnRowDataBound="gridFinal_RowDataBound"  OnRowDeleting="gridFinal_RowDeleting"
                  >
                     <Columns>
-                        <asp:TemplateField>
+                        <asp:TemplateField HeaderText="เอกสารแนบ">
                             <ItemTemplate>
-                                <asp:Image ID="imgfinal" runat="server" Width="200px" />
+                                <asp:Image ID="imgfinal" runat="server" Width="200px"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  HeaderText="ดาวน์โหลด">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtnloadfinal" runat="server" Font-Size="Larger" CssClass="fa" OnCommand="lbtnloadfinal_Command">&#xf0ed;</asp:LinkButton>
                             </ItemTemplate>
@@ -417,9 +418,6 @@
                         <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
                     </Columns>
                 </asp:GridView>
-
-
-
             </div>
             
             <asp:UpdatePanel runat="server">

@@ -1038,6 +1038,7 @@ namespace ClaimProject.Techno
 
         protected void btnDownloadOrderSend_Click(object sender, EventArgs e)
         {
+           
         }
 
         void getDataStatus5()
@@ -1307,21 +1308,70 @@ namespace ClaimProject.Techno
             }
 
 
-            LinkButton lbtnload = (LinkButton)(e.Row.FindControl("lbtnload"));
-            if (lbtnload != null)
+            LinkButton lbtnloadfinal = (LinkButton)(e.Row.FindControl("lbtnloadfinal"));
+            if (lbtnloadfinal != null)
             {
-                lbtnload.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
+                lbtnloadfinal.CommandName = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
             }
         }
 
         protected void gridFinal_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            string sql = "UPDATE tbl_quotations SET quotations_doc_img_send = '0' WHERE quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'";
+            //string script = "";
+            if (function.MySqlQuery(sql))
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('System : Delete Success')", true);
+            }
+            string imgfinal = "SELECT * FROM tbl_quotations " +
+                         " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_doc_img_send != '0'";
 
+            MySqlDataAdapter da = function.MySqlSelectDataSet(imgfinal);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            gridFinal.DataSource = ds.Tables[0];
+            gridFinal.DataBind();
         }
 
         protected void lbtnloadfinal_Command(object sender, CommandEventArgs e)
         {
+            DownLoad(e.CommandName.ToString());
+        }
+        protected void lbtnchangefinalimg_Command(object sender, CommandEventArgs e)
+        {
+            String NewFileDocName = "";
+            if (FileOrder.HasFile)
+            {
+                string typeFile = FileOrder.FileName.Split('.')[FileOrder.FileName.Split('.').Length - 1];
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                {
+                    NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
+                    NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                    FileOrder.SaveAs(Server.MapPath(NewFileDocName.ToString()));
 
+                    string sqlpf = "UPDATE tbl_quotations SET quotations_order='1', quotations_doc_img_send='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
+
+                    if (function.MySqlQuery(sqlpf))
+                    {
+
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ErrorFinal : แนบรูปภาพล้มเหลวติดต่อโปรแกรมเมอร์')", true);
+                    }
+
+                }
+                else
+                {
+                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                }
+            }
+            else
+            {
+                //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
+            }
         }
     }
 }

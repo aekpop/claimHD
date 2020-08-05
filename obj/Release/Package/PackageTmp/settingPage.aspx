@@ -31,6 +31,12 @@
                         <p>รายการบริษัท</p>
                     </a>
                 </div>
+                <div class="col-md-2">
+                    <a class="nav-link" href="/car/car">
+                        <i class="fa fa-car" style="font-size: 22px;"></i>
+                        <p>ยี่ห้อรถ</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
