@@ -19,7 +19,7 @@
 
             <br />
             <div class="row">
-                <div class="col-lg col-md col-sm" style="padding:1px 1px 1px 10px;">
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
                     <div class="card card-stats" >
                         <div class="card-header card-header-success card-header-icon" >
                             <div class="card-icon " style="width:60px;height:62px;">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg col-md col-sm" style="padding:1px 1px 1px 2px;">
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div1">
                     <div class="card card-stats" >
                         <div class="card-header card-header-danger card-header-icon" >
                             <div class="card-icon" style="width:60px;height:62px;">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg col-md col-sm" style="padding:1px 1px 1px 2px;" >
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div2" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-warning card-header-icon" >
                             <div class="card-icon" style="width:60px;height:62px;">
@@ -85,8 +85,9 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg col-md col-sm" style="padding:1px 1px 1px 2px;" >
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div3" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-secondary card-header-icon" >
                             <div class="card-icon" style="width:60px;height:62px;">
@@ -107,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg col-md col-sm" style="padding:1px 1px 1px 2px;" >
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div4" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-info card-header-icon" >
                             <div class="card-icon" style="width:60px;height:62px;">
@@ -128,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg col-md col-sm" style="padding:1px 1px 1px 2px;" >
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div5" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-rose card-header-icon" >
                             <div class="card-icon" style="width:60px;height:62px;">
@@ -151,8 +152,7 @@
                 </div>
                 </div>
 
-            <div class="row" >
-
+           <!-- <div class="row" >
                 <asp:Chart ID="Chart1" runat="server"  BackImageAlignment="Center" Width="1000" Height="400"  >
                                <Series>
                                    <asp:Series Name="Series1" BorderWidth="2" >
@@ -172,12 +172,9 @@
                                    <asp:ChartArea Name="ChartArea1"  >
                                    </asp:ChartArea>
                                </ChartAreas>
-
                               </asp:Chart>
-
             </div>
-            
-            
+            -->           
         </ContentTemplate>
     </asp:UpdatePanel>
     <script type="text/javascript">

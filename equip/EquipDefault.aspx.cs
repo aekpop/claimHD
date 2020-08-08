@@ -276,27 +276,27 @@ namespace ClaimProject.equip
 
         protected void lbtnTranDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipStatistics");
+            Response.Redirect("/equip/EquipTranList");
         }
 
         protected void lbtnSendHeadDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipStatistics");
+            Response.Redirect("/equip/EquipMain");
         }
 
         protected void lbtnSellDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipStatistics");
+            Response.Redirect("/equip/EquipMain");
         }
 
         protected void lbtnRepairDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipStatistics");
+            Response.Redirect("/equip/EquipMain");
         }
 
         protected void lbtnCopyDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipStatistics");
+            Response.Redirect("/equip/EquipMain");
         }
 
         protected void btnMainEQtt_Click(object sender, EventArgs e)
