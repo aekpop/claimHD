@@ -19,8 +19,14 @@ namespace ClaimProject.equip
         ClaimFunction function = new ClaimFunction();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("/");
+            }
             if (!this.IsPostBack)
             {
+               // Session.Add("BackWhat", "");
+                Session.Add("LineTran", "");
                 loadingpage();
             }
 
@@ -28,9 +34,27 @@ namespace ClaimProject.equip
         
         protected void loadingpage()
         {
+
             function.getListItem(txtBudgetYear, "SELECT trans_budget FROM tbl_transfer GROUP BY trans_budget ORDER BY trans_budget DESC", "trans_budget", "trans_budget");
-            string tran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '1' AND complete_stat = '3' ";
-            string tranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '1' AND num_success = 'yes'";
+            string newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            MySqlDataReader ttr = function.MySqlSelect(newTran);
+            if (ttr.Read())
+            {
+                lbnew.Text = ttr.GetInt32("num").ToString() + " รายการ";
+                ttr.Close();
+                MySqlDataReader tract = function.MySqlSelect(newTranact);
+                if (tract.Read())
+                {
+                    lbnew1.Text = tract.GetInt32("devv").ToString() + " อุปกรณ์";
+                    tract.Close();
+                }
+            }
+
+
+
+            string tran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '1' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string tranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '1' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader tr = function.MySqlSelect(tran);
             if(tr.Read())
             {
@@ -44,8 +68,8 @@ namespace ClaimProject.equip
                 }
             }
 
-            string send = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '6' AND complete_stat = '3' AND trans_budget = '"+txtBudgetYear.SelectedValue+"' ";
-            string sendact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '6' AND num_success = 'yes'";
+            string send = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '6' AND complete_stat = '3'  AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string sendact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '6' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader snd = function.MySqlSelect(send);
             if (snd.Read())
             {
@@ -59,8 +83,8 @@ namespace ClaimProject.equip
                 }
             }
 
-            string sell = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '3' AND complete_stat = '3' ";
-            string sellact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '3' AND num_success = 'yes'";
+            string sell = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '3' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string sellact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '3' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader see = function.MySqlSelect(sell);
             if (see.Read())
             {
@@ -75,8 +99,8 @@ namespace ClaimProject.equip
 
             }
 
-            string rep = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '4' AND complete_stat = '3' ";
-            string repact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '4' AND num_success = 'repair'";
+            string rep = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '4' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string repact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '4' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader ree = function.MySqlSelect(rep);
             if (ree.Read())
             {
@@ -91,8 +115,8 @@ namespace ClaimProject.equip
 
             }
 
-            string copy = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '5' AND complete_stat = '3' ";
-            string copact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '5' AND num_success = 'yes'";
+            string copy = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '5' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string copact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '5' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader pee = function.MySqlSelect(copy);
             if (pee.Read())
             {
@@ -107,8 +131,8 @@ namespace ClaimProject.equip
 
             }
 
-            string seee = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '2' AND complete_stat = '3' ";
-            string seeer = "SELECT COUNT(*) AS devv FROM tbl_transfer_action WHERE tran_type = '2' AND num_success = 'yes'";
+            string seee = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '2' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string seeer = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '2' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader sert = function.MySqlSelect(seee);
             if (sert.Read())
             {
@@ -119,6 +143,22 @@ namespace ClaimProject.equip
                 {
                     Label3.Text = seeact.GetInt32("devv").ToString() + " อุปกรณ์";
                     seeact.Close();
+                }
+
+            }
+
+            string seeto = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat BETWEEN '1' AND '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string seetot = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE user_send ='" + Session["UserName"].ToString() + "' ";
+            MySqlDataReader seert = function.MySqlSelect(seeto);
+            if (seert.Read())
+            {
+                lbTotal.Text = seert.GetInt32("num").ToString() + " รายการ";
+                seert.Close();
+                MySqlDataReader seeeer = function.MySqlSelect(seetot);
+                if (seeeer.Read())
+                {
+                    lbTotal2.Text = seeeer.GetInt32("devv").ToString() + " อุปกรณ์";
+                    seeeer.Close();
                 }
 
             }
@@ -268,20 +308,24 @@ namespace ClaimProject.equip
               Chart1.ChartAreas["ChartArea1"].AxisY.Title = "จำนวน";
               Chart1.DataBind(); 
         }
-
+        
         protected void txtBudgetYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void lbtnTranDetail_Click(object sender, EventArgs e)
         {
+            Session.Add("ddlsearchStat", "3");
+            Session.Add("ddlsearchType", "1");
             Response.Redirect("/equip/EquipTranList");
         }
 
         protected void lbtnSendHeadDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipMain");
+            Session.Add("ddlsearchStat" , "0");
+            Session.Add("ddlsearchType" , "6");
+            Response.Redirect("/equip/EquipTranList");
         }
 
         protected void lbtnSellDetail_Click(object sender, EventArgs e)
@@ -302,6 +346,20 @@ namespace ClaimProject.equip
         protected void btnMainEQtt_Click(object sender, EventArgs e)
         {
             Response.Redirect("/equip/EquipMain");
+        }
+
+        protected void lbtnNewTranDetail_Click(object sender, EventArgs e)
+        {
+            Session.Add("ddlsearchType" , "0");
+            Session.Add("ddlsearchStat" , "2");
+            Response.Redirect("/equip/EquipTranList");
+        }
+
+        protected void lbtnTotalDetail_Click(object sender, EventArgs e)
+        {
+            Session.Add("ddlsearchType", "0");
+            Session.Add("ddlsearchStat", "0");
+            Response.Redirect("/equip/EquipTranList");
         }
     }
 }

@@ -40,11 +40,14 @@ namespace ClaimProject
                 function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '4' AND complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");
                 ddlsearchEndToll.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
+                ddlsearchType.SelectedItem.Value = Session["ddlsearchType"].ToString();
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
+                ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
             }
             LineTran();
             LoadPaging();
-            
+            Session["ddlsearchType"] = "0";
+            Session["ddlsearchStat"] = "0";
         }
         protected void LineTran ()
         {
@@ -53,8 +56,7 @@ namespace ClaimProject
                  SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                  serviceLine.MessageToServer("wDLRWPWgBvJRMEk69ebQVGumxOfiTKCgXoUwKeKPQyh", Session["LineTran"].ToString(), "", 1, 41);
                  Session["LineTran"] = "";
-            }
-           
+            }                   
         }
         protected void btnnewTranpage_Click(object sender, EventArgs e)
         {
@@ -92,7 +94,9 @@ namespace ClaimProject
                          " JOIN tbl_transfer_status on tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id" +
                          " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
-            string type = ddlsearchType.SelectedValue; string EndState = ddlsearchEndToll.SelectedValue; string status = ddlsearchStat.SelectedValue;
+            string type = ddlsearchType.SelectedValue;
+            string EndState = ddlsearchEndToll.SelectedValue;
+            string status = ddlsearchStat.SelectedValue ;
             if (Session["UserCpoint"].ToString() == "0")
             {
                 sqlsendSearch += " WHERE cpoint_id = '920' AND user_send = '"+ Session["UserName"].ToString() + "'   ";
@@ -297,8 +301,8 @@ namespace ClaimProject
 
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
         {
+            
             LoadPaging();
-
         }
 
         protected void btnMainEQ_Click(object sender, EventArgs e)

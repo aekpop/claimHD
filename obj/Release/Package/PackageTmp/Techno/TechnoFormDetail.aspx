@@ -219,7 +219,7 @@
                                         <asp:LinkButton ID="btnDownload" runat="server" Font-Size="Small" CssClass="fa" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                                <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
                             </Columns>
                         </asp:GridView>
                     </div>
@@ -351,17 +351,17 @@
                     OnRowDataBound="gridquatation_RowDataBound"  OnRowDeleting="gridquatation_RowDeleting"
                  >
                     <Columns>
-                        <asp:TemplateField  HeaderText="เอกสารแนบ">
+                        <asp:TemplateField  HeaderText="ใบสั่งจ้าง">
                             <ItemTemplate>
                                 <asp:Image ID="imgqua" runat="server" Width="200px" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  HeaderText="ดาวน์โหลด">
+                        <asp:TemplateField  HeaderText="Download">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtnload" runat="server" Font-Size="Larger" CssClass="fa" OnCommand="lbtnload_Command">&#xf0ed;</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                        <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
                     </Columns>
                 </asp:GridView>
                 <hr />
@@ -389,12 +389,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2 text-right">
-                        ใบส่งงาน : 
+                    <div class="col-md-3 text-right">
+                        อัพไฟล์ภาพใบส่งงานใหม่ --> 
                     </div>
+                    <asp:FileUpload ID="FileUpload2" runat="server"  CssClass="custom-file" lang="en" />
+                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="fa" OnCommand="lbtnchangefinalimg_Command"></asp:LinkButton>
+                </div>
+                
+                <div class="row">
+                    <!--<div class="col-md-2 text-right">
+                        ใบส่งงาน : 
+                    </div>-->
                     <div class="col-md-2">
                         <asp:Image ID="ImageOrderSend" runat="server" Width="300px" />
-                        <asp:LinkButton ID="btnDownloadOrderSend" CssClass="btn btn-outline-info btn-sm" Font-Size="15px" runat="server" OnClick="btnDownloadOrderSend_Click">ดาวน์โหลด</asp:LinkButton>
+                        <asp:LinkButton ID="btnDownloadOrderSend" Visible="false" CssClass="btn btn-outline-info btn-sm" Font-Size="15px" runat="server" OnClick="btnDownloadOrderSend_Click">ดาวน์โหลด</asp:LinkButton>
                     </div>
                 </div>
                 <asp:GridView id="gridFinal" runat="server"  GridLines="Both"
@@ -405,17 +413,17 @@
                     OnRowDataBound="gridFinal_RowDataBound"  OnRowDeleting="gridFinal_RowDeleting"
                  >
                     <Columns>
-                        <asp:TemplateField HeaderText="เอกสารแนบ">
+                        <asp:TemplateField HeaderText="ใบส่งงาน">
                             <ItemTemplate>
                                 <asp:Image ID="imgfinal" runat="server" Width="200px"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  HeaderText="ดาวน์โหลด">
+                        <asp:TemplateField  HeaderText="Download">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtnloadfinal" runat="server" Font-Size="Larger" CssClass="fa" OnCommand="lbtnloadfinal_Command">&#xf0ed;</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                        <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
                     </Columns>
                 </asp:GridView>
             </div>

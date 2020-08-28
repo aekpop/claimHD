@@ -70,5 +70,10 @@ namespace ClaimProject.equip
         {
 
         }
+
+        protected void btnLoan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

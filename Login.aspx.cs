@@ -144,7 +144,7 @@ namespace ClaimProject
                         //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language = 'javascript'>alert('dd')</script>");
                         if(Session["UserPrivilegeId"].ToString() == "5" )
                         {
-                            Response.Redirect("/equip/EquipMain");
+                            Response.Redirect("/equip/EquipDefault");
                         }
                         else
                         {

@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
-    <script src="/Scripts/HRSProjectScript.js"></script>
     <asp:Button runat="server" ID="btnBackHome" Text="กลับหน้าหลัก" OnClick="btnBackHome_Click" CssClass="btn btn-default " />
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
@@ -58,7 +57,7 @@
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">วันที่รับ</label>
-                                <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker"  />
+                                <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 2px 2px 2px" >
@@ -225,10 +224,8 @@
 </div>
 
 
-
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
-    <script src="/Scripts/ClaimProjectScript.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -236,7 +233,14 @@
         { %>
             demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
         <% } %>
-        });
+            $('#txtAddDateGet').datepicker($.datepicker.regional["th"]);
+            if ($('#txtAddDateGet').val() == "") {
+                $('#txtAddDateGet').datepicker("setDate", new Date());
+            }
+
+            $('#txtAddDateGet').attr('maxlength', '10');
+
+        });      
         function UpdteConfirm(msg) {
             var str1 = "1";
             var str2 = "2";
@@ -250,9 +254,7 @@
 
                 return confirm(msg);
             }
-        }
-        
+        }       
     </script>
-
 
 </asp:Content>

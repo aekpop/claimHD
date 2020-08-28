@@ -3,21 +3,20 @@
     changeYear: true,
     //defaultDate: GetFxupdateDate(FxRateDateAndUpdate.d[0].Day),
     yearOffSet: 543,
-    buttonImageOnly: true,
+    //buttonImageOnly: true,
     dateFormat: 'dd-mm-yy',
     dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
     dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
     monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
     monthNamesShort: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'],
-    constrainInput: true,
-
-    prevText: 'ก่อนหน้า',
-    nextText: 'ถัดไป',
-    yearRange: '-60:+1',
-    buttonText: 'เลือก',
+    //constrainInput: true,
+    yearRange: '-60:+1'
 
 };
 $.datepicker.setDefaults($.datepicker.regional['th']);
+
+
+
 
 function getAge(oject) {
     var dayBirth = oject;
@@ -41,7 +40,7 @@ function getDateDiff(strDate1, strDate2) {
     var date2 = strDate2;
     date1 = date1.split("-");
     date2 = date2.split("-");
-    sDate = new Date((date1[2]-543), date1[1] - 1, date1[0]);
+    sDate = new Date((date1[2] - 543), date1[1] - 1, date1[0]);
     eDate = new Date((date2[2] - 543), date2[1] - 1, date2[0]);
 
     // Copy date objects so don't modify originals
@@ -59,18 +58,18 @@ function getDateDiff(strDate1, strDate2) {
     var wholeWeeks = totalDays / 7 | 0;
 
     // Estimate business days as number of whole weeks * 5
-    var days = wholeWeeks * 5+1;
+    var days = wholeWeeks * 5 + 1;
 
     // If not even number of weeks, calc remaining weekend days
     if (totalDays % 7) {
         s.setDate(s.getDate() + wholeWeeks * 7);
-        
+
         while (s < e) {
-            s.setDate(s.getDate()+1);
+            s.setDate(s.getDate() + 1);
 
             // If day isn't a Sunday or Saturday, add to business days
             //if (s.getDay() != 0 && s.getDay() != 6) {
-                ++days;
+            ++days;
             //}
         }
     }

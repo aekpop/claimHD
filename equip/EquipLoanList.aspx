@@ -5,7 +5,7 @@
     <script src="/Scripts/HRSProjectScript.js"></script>
 
     <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักครุภัณฑ์"  OnClick="btnMainEQ_Click" CssClass="btn" />
-
+    <asp:Button runat="server" ID="btnnewTranpage" Font-Bold="true" BackColor="#990303" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="ยืม"  OnClick="btnLoan_Click" CssClass="btn" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
         <div class="card-header "  style="background-color:#26115c;height:60px">
             <h3 class="card-title" style="color:white;height:35px;font-size:30px">รายการยืมครุภัณฑ์</h3>

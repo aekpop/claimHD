@@ -13,7 +13,7 @@
 
     prevText: 'ก่อนหน้า',
     nextText: 'ถัดไป',
-    yearRange: '-5:+0',
+    yearRange: '-60:+1',
     buttonText: 'เลือก',
 
 };

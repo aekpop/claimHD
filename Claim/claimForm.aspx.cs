@@ -466,20 +466,20 @@ namespace ClaimProject.Claim
                 car3has = "0";
             }
 
-            string strNote = "เนื่องด้วยเมื่อวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก" + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
+            string strNote = "เนื่องด้วยวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก " + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
             if (cabinet != "") { strNote += " ตู้ " + cabinet; }
-            strNote += " " + direction + " ได้แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงได้แจ้งรองผู้จัดการด่านฯ ประจำผลัด คือ " + supper + " ให้ทราบ";
-            strNote += " หลังจากได้รับแจ้งเหตุเจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ลงไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;
+            strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ";
+            strNote += " เมื่อได้รับแจ้งเหตุ เจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;
 
             if(car2has == "1")
             {
-                strNote += "พบคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
+                strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
                     +" โดยมี"+driver2+" เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " หมายเลขโทรศัพท์ " + tel2 : "") + "" +
                     " และคันที่ ๒ เป็น"+car;
             }
             else
             {
-                strNote += "พบคู่กรณีเป็น " + car;
+                strNote += " พบว่าคู่กรณีเป็น " + car;
             }
 
             if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-" )
@@ -499,11 +499,11 @@ namespace ClaimProject.Claim
                             if (licenseEng != "")
                             {
                                 strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn 
-                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                             else
                             {
-                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                         }
                         else
@@ -511,11 +511,11 @@ namespace ClaimProject.Claim
                             strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
                             if (licenseEng != "")
                             {
-                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                             else
                             {
-                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                         }
                    
@@ -524,18 +524,18 @@ namespace ClaimProject.Claim
                 {
                     if (licenseEng != "")
                     {
-                        strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                        strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                     }
                     else
                     {
-                        strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับรถยนต์คันดังกล่าว";
+                        strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                     }
                 }
                 
                 
                 if (insurer.Trim() == "" || insurer.Trim() == "-")
                 {
-                    strNote += " ซึ่งรถยนต์คันดังกล่าวไม่ได้ทำประกันไว้";
+                    strNote += " ซึ่งรถยนต์คันดังกล่าวไม่ได้ทำประกันภัยไว้กับบริษัทใด";
                 }
                 else
                 {
@@ -584,7 +584,7 @@ namespace ClaimProject.Claim
                 {
                     if (i == 1)
                     {
-                        dev += "จากการลงไปตรวจสอบเบื้องต้นพบทรัพย์สินของทางราชการเสียหาย ดังนี้\r\n                      ";
+                        dev += "จากการตรวจสอบเบื้องต้นพบทรัพย์สินของทางราชการเสียหาย ดังนี้\r\n                      ";
                         dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
                     }
                     else

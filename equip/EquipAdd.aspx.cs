@@ -385,13 +385,11 @@ namespace ClaimProject.equip
 
             string usernamee = Session["User"].ToString();
             if (SToll == "0") //ค้นทุกอาคาร
-            {
-              
+            {              
                 if (Snameth != "") 
                 {
                     if (SNum != "")//มีชื่อ+มีเลข+ทุกด่าน
                     {
-
                         if(statt != "0")
                         {
                             Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
@@ -753,19 +751,19 @@ namespace ClaimProject.equip
                         if (statt != "0")
                         {
 
-                            AlertPop("กรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !!!", "error");
+                            AlertPop("กรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !", "error");
 
                         }
-                        else if(txtsearchSerial.Text != "")
+                        else if(txtsearchSerial.Text == "")
                         {
                             Ssql += " WHERE  d.equipment_no LIKE '%" + SNum + "%'  ";
                             SsqlReport += " WHERE  d.equipment_no LIKE '%" + SNum + "%'  ";
 
-                            if (txtsearchSerial.Text != "")
-                            {
-                                Ssql += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
-                                SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
-                            }
+                            //if (txtsearchSerial.Text != "")
+                            //{
+                            //    Ssql += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            //    SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            //}
 
                             if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
@@ -815,7 +813,7 @@ namespace ClaimProject.equip
                         }
                         else
                         {
-                            AlertPop("กรุณากรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !!!","error");
+                            AlertPop("กรุณากรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !!","error");
                         }
 
                     }
@@ -971,7 +969,9 @@ namespace ClaimProject.equip
         public void SearchBind()
         {
             string ccount = "";
-            string Snameth = txtsearchth.Text; string SNum = txtsearchNum.Text; string txtTollz = ddlserchToll.SelectedItem.ToString();
+            string Snameth = txtsearchth.Text;
+            string SNum = txtsearchNum.Text;
+            string txtTollz = ddlserchToll.SelectedItem.ToString();
             string qqq = Session["SQLEQ"].ToString();
             MySqlDataAdapter da = function.MySqlSelectDataSet(qqq);
             System.Data.DataSet ds = new System.Data.DataSet();
@@ -1229,7 +1229,7 @@ namespace ClaimProject.equip
                 divAnex.Visible = true;
                 function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '703' Order By toll_id ASC", "toll_name", "toll_id");
                 ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
-
+                
             }
             else if (ddlcpoint.SelectedValue == "704")
             {

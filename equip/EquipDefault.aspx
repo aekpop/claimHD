@@ -5,7 +5,7 @@
     <br />
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div class="row" style="height:100px">
+            <!--<div class="row" style="height:100px">
                 <div class="col-md " >
                     <div class="form-group" style="padding:1px 1px 1px 30px">
                         <asp:Label ID="Label1" runat="server" Text="ปีงบประมาณ :"></asp:Label>
@@ -15,17 +15,40 @@
                     
                 </div>
                 
-            </div>
+            </div>-->
 
             <br />
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div7">
+                    <div class="card card-stats" >
+                        <div class="card-header card-header-danger card-header-icon" >
+                            <div class="card-icon ">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <h4 class="card-category" style="font-size:32px;">แจ้งใหม่</h4>
+                            <h4 class="card-title">
+                                
+                                <asp:Label ID="lbnew" runat="server"  ForeColor="Black" Text=""></asp:Label>
+                                <br />
+                                <asp:Label ID="lbnew1" runat="server" ForeColor="Black" Text=""></asp:Label>
+                            </h4>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="fa fa-th-list"></i>&nbsp
+                        <asp:LinkButton ID="lbtnNewTranDetail" runat="server" OnClick="lbtnNewTranDetail_Click">รายละเอียด</asp:LinkButton>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div6">
                     <div class="card card-stats" >
                         <div class="card-header card-header-success card-header-icon" >
-                            <div class="card-icon " style="width:60px;height:62px;">
-                                <i class="fas fa-exchange-alt" style="font-size:24px;"></i>
+                            <div class="card-icon ">
+                                <i class="fas fa-exchange-alt"></i>
                             </div>
-                            <h4 class="card-category" style="color:#006600;font-size:24px;">โอนย้าย</h4>
+                            <h4 class="card-category" style="font-size:32px;">โอนย้าย</h4>
                             <h4 class="card-title">
                                 
                                 <asp:Label ID="lbTran" runat="server"  ForeColor="Black" Text=""></asp:Label>
@@ -44,11 +67,11 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div1">
                     <div class="card card-stats" >
-                        <div class="card-header card-header-danger card-header-icon" >
-                            <div class="card-icon" style="width:60px;height:62px;">
-                                <i class="fas fa-luggage-cart" style="font-size:22px;"></i>
+                        <div class="card-header card-header-warning card-header-icon" >
+                            <div class="card-icon">
+                                <i class="fas fa-luggage-cart"></i>
                             </div>
-                            <h5 class="card-category" style="color:#b00202;font-size:22px;">ส่งคืนกองฯ</h5>
+                            <h5 class="card-category" style="font-size:32px;">ส่งคืนกองฯ</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbSendHead" runat="server" ForeColor="Black" Text=""></asp:Label>
                                 <br />
@@ -67,10 +90,10 @@
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div2" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-warning card-header-icon" >
-                            <div class="card-icon" style="width:60px;height:62px;">
-                                <i class="fas fa-truck-loading" style="font-size:22px;"></i>
+                            <div class="card-icon" >
+                                <i class="fas fa-truck-loading"></i>
                             </div>
-                            <h5 class="card-category" style="color:#e6870b;font-size:21px;">แทงจำหน่าย</h5>
+                            <h5 class="card-category" style="font-size:32px;">แทงจำหน่าย</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbSell" runat="server" ForeColor="Black" ></asp:Label>
                                 <br />
@@ -86,14 +109,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row"> 
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div3" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-secondary card-header-icon" >
-                            <div class="card-icon" style="width:60px;height:62px;">
-                                <i class="fa fa-wrench" style="font-size:24px;"></i>
+                            <div class="card-icon" >
+                                <i class="fa fa-wrench"></i>
                             </div>
-                            <h5 class="card-category" style="color:#8a8988;font-size:24px;">ส่งซ่อม</h5>
+                            <h5 class="card-category" style="font-size:32px;">ส่งซ่อม</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
                                 <br /> 
@@ -108,13 +131,15 @@
                         </div>
                     </div>
                 </div>
+            
+              
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div4" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-info card-header-icon" >
-                            <div class="card-icon" style="width:60px;height:62px;">
-                                <i class="fas fa-sync" style="font-size:24px;"></i>
+                            <div class="card-icon">
+                                <i class="fas fa-sync" ></i>
                             </div>
-                            <h5 class="card-category" style="color:#05e0e8;font-size:24px;">ทดแทน</h5>
+                            <h5 class="card-category" style="font-size:32px;">ทดแทน</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbCopy" runat="server" ForeColor="Black" ></asp:Label>
                                 <br />
@@ -132,10 +157,10 @@
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div5" >
                     <div class="card card-stats" >
                         <div class="card-header card-header-rose card-header-icon" >
-                            <div class="card-icon" style="width:60px;height:62px;">
-                                <i class="fas fa-people-carry" style="font-size:24px;"></i>
+                            <div class="card-icon">
+                                <i class="fas fa-people-carry" ></i>
                             </div>
-                            <h5 class="card-category" style="color:#e02d84;font-size:22px;">ส่งคืนฝ่ายฯ</h5>
+                            <h5 class="card-category" style="font-size:32px;">ส่งคืนฝ่ายฯ</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="Label2" runat="server" ForeColor="Black" ></asp:Label>
                                 <br />
@@ -146,6 +171,27 @@
                             <div class="stats">
                                 <i class="fa fa-th-list"></i>&nbsp
                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="lbtnCopyDetail_Click">รายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div8" >
+                    <div class="card card-stats" >
+                        <div class="card-header card-header-dark card-header-icon" >
+                            <div class="card-icon">
+                                <i class="fas fa-align-justify" ></i>
+                            </div>
+                            <h5 class="card-category" style="font-size:32px;">รวมทั้งหมด</h5>
+                            <h4 class="card-title">
+                                <asp:Label ID="lbTotal" runat="server" ForeColor="Black" ></asp:Label>
+                                <br />
+                                <asp:Label ID="lbTotal2" runat="server" ForeColor="Black" ></asp:Label>
+                            </h4>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="fa fa-th-list"></i>&nbsp
+                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="lbtnTotalDetail_Click">รายละเอียด</asp:LinkButton>
                             </div>
                         </div>
                     </div>
