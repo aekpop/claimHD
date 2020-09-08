@@ -56,6 +56,18 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div7">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/CM/CMReport">รายงานสรุป CM</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
     </div>
     <div runat="server" id="divpm" >
         <h3 class="bg-primary " style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Preventive Maintenance : PM</h3>

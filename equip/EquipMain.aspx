@@ -92,7 +92,7 @@
         </div>
     </div>
     
-    <h3 class="bg form-control"   style="background-color:#c9ad0e;font-size:25px;color:white;height:45px">&nbsp;&nbsp;การโอนย้ายครุภัณฑ์</h3>
+    
     <div class="row" runat="server" id="divcheckk" visible ="false">
         <div class="col-lg-3 col-md-3 col-sm-3" >
             <div class="card card-stats">
@@ -106,20 +106,7 @@
                 </div>              
             </div>
         </div>
-    
-
-        <div class="col-lg-3 col-md-3 col-sm-3" >
-            <div class="card card-stats">
-                <div class="card-header   card-header-icon">
-                    <div class="card-icon" style="background-color:#a5ba02">
-                        <i class="fas fa-chart-pie" style="font-size:40px;background-color:#a5ba02"></i>
-                    </div>
-                    <h4 class="card-category">
-                        <a class="nav-link" href="/equip/EquipDefault">รายงานสรุป</a>
-                    </h4>
-                </div>               
-            </div>
-        </div>
+      
     </div>
 
 

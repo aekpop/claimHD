@@ -42,6 +42,7 @@ namespace ClaimProject.Techno
                         txtDateSendOrder_TextChanged(null, null);
                     }
                     txtDateRecive.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
+                    txtDateQuotations.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
                     PageLoadData();
                     string sql = "SELECT * FROM tbl_company ORDER BY company_name";
                     function.getListItem(txtCompany, sql, "company_name", "company_id");
@@ -317,7 +318,9 @@ namespace ClaimProject.Techno
 
         protected void btnSaveQuotations_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','0','" + txtNoteNumber.Text + "','0','" + function.ConvertDateTimeEB(DateTime.Now.ToString("dd-MM-yyyy")).ToString("dd-MM-yyyy") + "','0','0','0','0')";
+            if (txtDateQuotations.Text.Trim() != "")
+            {       
+            string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','0','" + txtNoteNumber.Text + "','0','" + txtDateQuotations.Text.Trim() + "','0','0','0','0')";
             //string script = "";
             if (function.MySqlQuery(sql))
             {
@@ -328,7 +331,7 @@ namespace ClaimProject.Techno
                 {
                     rs.Close();
                     function.Close();
-                    sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('3','" + Session["codePK"].ToString() + "','" + function.ConvertDateTimeEB(DateTime.Now.ToString("dd-MM-yyyy")).ToString("dd-MM-yyyy") + "','" + function.ConvertDateTime(function.ConvertDateTimeEB(DateTime.Now.ToString("dd-MM-yyyy")).ToString("dd-MM-yyyy"), Quotations) + "')";
+                    sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('3','" + Session["codePK"].ToString() + "','" + txtDateQuotations.Text.Trim() + "','" + function.ConvertDateTime(txtDateQuotations.Text.Trim() , Quotations) + "')";
                     if (function.MySqlQuery(sql))
                     {
                         sql = "UPDATE tbl_claim SET claim_status = '3' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
@@ -344,7 +347,12 @@ namespace ClaimProject.Techno
             }
             BindConpaney();
             //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
-
+            }
+            else
+            {
+                //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาใส่วันที่')", true);
+            }
         }
 
         void BindConpaney()

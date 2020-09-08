@@ -32,10 +32,11 @@ namespace ClaimProject.equip
                 ddlsearchEndToll.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
+                ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
             }
             LineGetTran();
             LoadPaging();
-            
+            Session["ddlsearchStat"] = "0";
 
         }
         protected void LineGetTran()
@@ -58,10 +59,27 @@ namespace ClaimProject.equip
                          " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
 
-            string type = ddlsearchType.SelectedValue; string EndState = ddlsearchEndToll.SelectedValue; string status = ddlsearchStat.SelectedValue;
+            string type = ddlsearchType.SelectedValue;
+            string EndState = ddlsearchEndToll.SelectedValue;
+            string status = ddlsearchStat.SelectedValue;
             if (Session["UserCpoint"].ToString() == "0")
             {
-                sqlsendSearch += " WHERE (toll_recieve = '9200' OR toll_recieve = '9300' OR toll_recieve = '9400' OR toll_recieve = '9500')  ";
+                if (Session["User"].ToString() == "sawitree")
+                {
+                    sqlsendSearch += "WHERE (toll_recieve ='7010' or toll_recieve ='9010' " +
+                        "or toll_recieve ='9020' or toll_recieve ='9030' )";
+                }
+                else if (Session["User"].ToString() == "supaporn")
+                {
+                    sqlsendSearch += "WHERE (toll_recieve ='7020' or toll_recieve ='7031' " +
+                        "or toll_recieve ='7032' or toll_recieve ='7033' or toll_recieve ='7041' " +
+                        "or toll_recieve ='7042' or toll_recieve ='7051' " +
+                        "or toll_recieve ='7052' ) ";
+                }
+                else
+                {
+                    sqlsendSearch += " WHERE (toll_recieve = '9200' OR toll_recieve = '9300' OR toll_recieve = '9400' OR toll_recieve = '9500')  ";
+                }
             }
             else
             {
@@ -133,7 +151,6 @@ namespace ClaimProject.equip
                 {
                     sqlsendSearch += "WHERE (toll_recieve ='9040' ) ";
                 }
-
             }
 
             if (EndState == "0") // ทุกปลายทาง
@@ -340,7 +357,7 @@ namespace ClaimProject.equip
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[0].BackColor = System.Drawing.ColorTranslator.FromHtml("#f2ffd9");
+                //e.Row.Cells[0].BackColor = System.Drawing.ColorTranslator.FromHtml("#f2ffd9");
             }
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -349,6 +366,13 @@ namespace ClaimProject.equip
                     e.Row.Cells[0].Visible = false;
                 }
             }
+
+            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            if (lbRowNum != null)
+            {
+                lbRowNum.Text = (gridTranlist.Rows.Count + 1).ToString() + ".";
+            }
+       
         }
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {

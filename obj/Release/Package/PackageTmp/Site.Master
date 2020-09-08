@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="main-panel" >
-                <nav class="navbar navbar-expand-sm navbar-transparent navbar-absolute fixed-top " style="height:80px" >
+                <nav class="navbar navbar-expand-sm navbar-transparent navbar-absolute fixed-top " style="height:60px" >
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
                             <a class="navbar-brand" href="#pablo"><%:Page.Title %></a>

@@ -175,15 +175,6 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSagain;
         
         /// <summary>
-        /// btnSagain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSagain;
-        
-        /// <summary>
         /// chkS control.
         /// </summary>
         /// <remarks>
@@ -191,15 +182,6 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label chkS;
-        
-        /// <summary>
-        /// titlegrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label titlegrid;
         
         /// <summary>
         /// lbtnTollReport control.
@@ -218,6 +200,15 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnDepartReport;
+        
+        /// <summary>
+        /// titlegrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titlegrid;
         
         /// <summary>
         /// Panel1 control.

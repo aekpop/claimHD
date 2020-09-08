@@ -89,7 +89,11 @@ namespace ClaimProject.equip
             {
                 lbtneditAdd.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "NewEQ_id").ToString();
             }
-
+            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            if (lbRowNum != null)
+            {
+                lbRowNum.Text = (GridAddAll.Rows.Count + 1).ToString() + ".";
+            }
         }
         protected void lbtneditAdd_Command(object sender, CommandEventArgs e)
         {

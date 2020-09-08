@@ -54,12 +54,18 @@
                                 <asp:DropDownList ID="ddlAddCpoint" runat="server" Font-Size="Large" CssClass="form-control " />
                             </div>
                         </div>
-                        <div class="col-md-2" style="padding:1px 5px 1px 5px">
+                        <style type ="text/css">
+                            .ui-datepicker {
+                                font-size: 11pt
+                            } 
+                        </style>
+                       <div class="col-md-2" style="padding:1px 5px 1px 5px" >
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">วันที่รับ</label>
                                 <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
                             </div>
                         </div>
+
                         <div class="col-md-2" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <label class="bmd-label-floating" style="font-size:large;height:5px">ราคา</label>
@@ -239,7 +245,8 @@
             }
 
             $('#txtAddDateGet').attr('maxlength', '10');
-
+            $('#txtAddDateGet').css('font-size', '8');
+            
         });      
         function UpdteConfirm(msg) {
             var str1 = "1";

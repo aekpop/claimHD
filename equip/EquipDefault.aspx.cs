@@ -25,9 +25,20 @@ namespace ClaimProject.equip
             }
             if (!this.IsPostBack)
             {
-               // Session.Add("BackWhat", "");
-                Session.Add("LineTran", "");
-                loadingpage();
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    if (Session["User"].ToString() != "supaporn" && Session["User"].ToString() != "watcharee" && Session["User"].ToString() != "sawitree" && Session["User"].ToString() != "yuiequip")
+                    {
+                        div1.Visible = false;
+                        div2.Visible = false;
+                        div4.Visible = false;
+                        div6.Visible = false;
+                    }
+                    
+                }               
+                   // Session.Add("BackWhat", "");
+                    Session.Add("LineTran", "");
+                    loadingpage();
             }
 
         }
@@ -38,16 +49,116 @@ namespace ClaimProject.equip
             function.getListItem(txtBudgetYear, "SELECT trans_budget FROM tbl_transfer GROUP BY trans_budget ORDER BY trans_budget DESC", "trans_budget", "trans_budget");
             string newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
             string newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string sqlcpSearch = "";
+
+
+            if (Session["UserCpoint"].ToString() == "0")
+            {
+                if(Session["User"].ToString() == "sawitree")
+                {
+                    sqlcpSearch += " 7010' OR toll_recieve = '9010' OR toll_recieve = '9020' OR toll_recieve ='9030' OR toll_recieve ='9040 ";
+                }
+                else if (Session["User"].ToString() == "supaporn")
+                {
+                    sqlcpSearch += " 7020 or 7031 or 7032 or 7033 or 7041 or 7042 or 7051 or 7052 ";
+                }
+            }
+            else if (Session["UserCpoint"].ToString() == "701")
+            {
+                sqlcpSearch += " 7010 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "702")
+            {
+                sqlcpSearch += " 7020 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "703")
+            {
+                sqlcpSearch += "7031 or 7032 or 7033";
+            }
+            else if (Session["UserCpoint"].ToString() == "704")
+            {
+                sqlcpSearch += "7041 or 7042 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "706")
+            {
+                sqlcpSearch += " 7051 or 7052 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "707")
+            {
+                sqlcpSearch += " 7061 or 7062 or 7063 or 7064 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "708")
+            {
+                sqlcpSearch += " 7071 or 7072 or 7073 or 7074 or 7075 or 7076 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "709")
+            {
+                sqlcpSearch += "7081 or 7082 or 7083 or 7084 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "710")
+            {
+                sqlcpSearch += " 7090 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "711")
+            {
+                sqlcpSearch += " 7100 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "712")
+            {
+                sqlcpSearch += " 7110 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "713")
+            {
+                sqlcpSearch += " 7120 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "902")
+            {
+                sqlcpSearch += " 9010 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "903")
+            {
+                sqlcpSearch += " 9020 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "904")
+            {
+                sqlcpSearch += "9030 ";
+            }
+            else if (Session["UserCpoint"].ToString() == "905")
+            {
+                sqlcpSearch += " 9040 ";
+            }
+
             MySqlDataReader ttr = function.MySqlSelect(newTran);
+
             if (ttr.Read())
             {
-                lbnew.Text = ttr.GetInt32("num").ToString() + " รายการ";
-                ttr.Close();
+                if (ttr.GetInt32("num") != 0)
+                {
+                    lbnew.ForeColor = System.Drawing.Color.Red;
+                    lbnew.Text = ttr.GetInt32("num").ToString() + " รายการ";
+                    ttr.Close();
+                }
+                else
+                {
+                    lbnew.Text = ttr.GetInt32("num").ToString() + " รายการ";
+                    ttr.Close();
+                }            
+                
                 MySqlDataReader tract = function.MySqlSelect(newTranact);
                 if (tract.Read())
                 {
-                    lbnew1.Text = tract.GetInt32("devv").ToString() + " อุปกรณ์";
-                    tract.Close();
+                    if (tract.GetInt32("devv") != 0)
+                    {
+                        lbnew1.ForeColor = System.Drawing.Color.Red;
+                        lbnew1.Text = tract.GetInt32("devv").ToString() + " อุปกรณ์";
+                        tract.Close();
+                    }
+                    else
+                    {
+                        lbnew1.Text = tract.GetInt32("devv").ToString() + " อุปกรณ์";
+                        tract.Close();
+                    }
+                        
                 }
             }
 
@@ -163,7 +274,21 @@ namespace ClaimProject.equip
 
             }
 
+            string seereceipt = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (toll_recieve ='" + sqlcpSearch + "') ";
+            string seereceiptt = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND (toll_recieve ='" + sqlcpSearch + "') ";
+            MySqlDataReader seerre = function.MySqlSelect(seereceipt);
+            if (seerre.Read())
+            {
+                lbreceive.Text = seerre.GetInt32("num").ToString() + " รายการ";
+                seerre.Close();
+                MySqlDataReader seeeere = function.MySqlSelect(seereceiptt);
+                if (seeeere.Read())
+                {
+                    lbreceive2.Text = seeeere.GetInt32("devv").ToString() + " อุปกรณ์";
+                    seeeere.Close();
+                }
 
+            }
 
             loadChart();
 
@@ -330,17 +455,23 @@ namespace ClaimProject.equip
 
         protected void lbtnSellDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipMain");
+            Session.Add("ddlsearchType", "0");
+            Session.Add("ddlsearchStat", "0");
+            Response.Redirect("/equip/EquipTranList");
         }
 
         protected void lbtnRepairDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipMain");
+            Session.Add("ddlsearchType", "4");
+            Session.Add("ddlsearchStat", "3");
+            Response.Redirect("/equip/EquipTranList");
         }
 
         protected void lbtnCopyDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipMain");
+            Session.Add("ddlsearchType", "2"); //tran
+            Session.Add("ddlsearchStat", "3"); //complete
+            Response.Redirect("/equip/EquipTranList");
         }
 
         protected void btnMainEQtt_Click(object sender, EventArgs e)
@@ -360,6 +491,13 @@ namespace ClaimProject.equip
             Session.Add("ddlsearchType", "0");
             Session.Add("ddlsearchStat", "0");
             Response.Redirect("/equip/EquipTranList");
+        }
+
+        protected void lbtnReceiveDetail_Click(object sender, EventArgs e)
+        {
+
+            Session.Add("ddlsearchStat", "2");
+            Response.Redirect("/equip/EquipTranGetList");
         }
     }
 }

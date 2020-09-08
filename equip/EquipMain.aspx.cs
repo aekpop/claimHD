@@ -19,6 +19,7 @@ namespace ClaimProject.equip
             }
             if (!this.IsPostBack)
             {
+                Session.Add("ddlsearchType", "0");
                 Session.Add("ddlsearchStat", "0");
                 Session.Add("BackWhat", "");
                 Session.Add("LineTran", "");

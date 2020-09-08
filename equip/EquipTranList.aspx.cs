@@ -282,10 +282,17 @@ namespace ClaimProject
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[0].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                e.Row.Cells[1].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                //e.Row.Cells[0].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                //e.Row.Cells[1].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                //e.Row.Attributes["onmouseover"] = "onMouseOver('" + (e.Row.RowIndex + 1) + "')";
+                //e.Row.Attributes["onmouseout"] = "onMouseOut('" + (e.Row.RowIndex + 1) + "')";
             }
-           
+            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            if (lbRowNum != null)
+            {
+                lbRowNum.Text = (gridTranlist.Rows.Count + 1).ToString() + ".";
+            }
+         
         }
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {

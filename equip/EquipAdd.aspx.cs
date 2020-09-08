@@ -263,13 +263,18 @@ namespace ClaimProject.equip
         }
         protected void GridEquipAdd_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            LinkButton btnEditEquip = (LinkButton)(e.Row.FindControl("btnEditEquip"));
-            if (btnEditEquip != null)
+            LinkButton lbEquipthai = (LinkButton)(e.Row.FindControl("lbEquipthai"));
+            if (lbEquipthai != null)
             {
-                btnEditEquip.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
-
+                lbEquipthai.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
             }
-          
+
+            LinkButton lbequipNo = (LinkButton)(e.Row.FindControl("lbequipNo"));
+            if (lbequipNo != null)
+            {
+                lbequipNo.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
+            }
+
         }
 
         protected void btnEditEquip_Command(object sender, CommandEventArgs e)
@@ -361,7 +366,7 @@ namespace ClaimProject.equip
         protected void searchEquip_Click(object sender, EventArgs e)
         {
             divSagain.Visible = true;
-            divsearch.Visible = false;
+            divsearch.Visible = true;
             string statt = ddlsearchStat.SelectedValue;
             string Snameth = txtsearchth.Text;
             string SNum = txtsearchNum.Text;

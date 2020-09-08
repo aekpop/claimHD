@@ -477,12 +477,19 @@
                             <div class="row">
                                 <div class="col-md-3 text-right">เลขที่หนังสือ : </div>
                                 <div class="col-md">
-                                    <asp:TextBox ID="txtNoteNumber" runat="server" CssClass="form-control col-md-2"></asp:TextBox>
+                                    <asp:TextBox ID="txtNoteNumber" runat="server" CssClass="form-control col-md-4"></asp:TextBox>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md text-center">
-                                    <asp:Button ID="btnSaveQuotations" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" Text="ส่งเสนอราคา" OnClick="btnSaveQuotations_Click" />
+                                                      
+                                    <div class="col-md-3 text-right">วันที่ : </div>
+                                    <div class="col-md">
+                                        <asp:TextBox ID="txtDateQuotations" runat="server" CssClass="form-control datepicker col-md-8"></asp:TextBox>
+                                    </div>
+                           </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md text-center">
+                                        <asp:Button ID="btnSaveQuotations" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" Text="ส่งเสนอราคา" OnClick="btnSaveQuotations_Click" />
+                                    </div>
                                 </div>
                             </div>
                             <hr />

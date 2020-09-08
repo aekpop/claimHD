@@ -21,6 +21,7 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
+                
                 BindData("");
             }
         }

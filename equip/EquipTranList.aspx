@@ -17,35 +17,34 @@
                     <div class="row" >
                         <div class="col-md" style="padding:1px 1px 1px 50px" >
                             <div class="form-group">
-                            <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                                <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
                                 <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control" Width="120px" ></asp:TextBox>
                            </div>
                         </div>
                         <div class="col-md" style="padding:1px 1px 1px 5px" >
                             <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" Text="ประเภทการโอนย้าย : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
-                           </div>
+                                <asp:Label ID="Label1" runat="server" Text="ประเภทการโอนย้าย : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                                <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                            </div>
                         </div>
                         <div class="col-md" style="padding:1px 1px 1px 5px" >
                             <div class="form-group">
-                            <asp:Label ID="Label2" runat="server" Text="ด่านปลายทาง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                                <asp:Label ID="Label2" runat="server" Text="ด่านปลายทาง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                                <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
                            </div>
                         </div>
                         <div class="col-md" style="padding:1px 1px 1px 5px">
                             <div class="form-group">
-                            <asp:Label ID="Label3" runat="server" Text="สถานะ : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                                <asp:Label ID="Label3" runat="server" Text="สถานะ : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                                <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
                            </div>
                         </div>
                         <div class="col-md" style="padding:30px 1px 1px 15px">
                             <div class="form-group">
-                            <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
-                           </div>
+                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
+                            </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="row" style="padding-left:20px;" >
                     <asp:Label ID="lbAmountgrid" runat="server" Font-Size="19px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
@@ -56,29 +55,19 @@
                     OnRowDataBound="gridTranlist_RowDataBound"
                     CssClass="table table-hover table-condensed table-sm"
                     GridLines="None" 
-                    AllowSorting="true"
-                    
+                    AllowSorting="true"                   
                     Font-Size="19px" 
                     OnPageIndexChanging="gridTranlist_PageIndexChanging" 
                     PagerSettings-Mode="NumericFirstLast"  
                     PageSize="100" 
             PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย" AllowPaging="true" >
-                    <AlternatingRowStyle BackColor="#FFFFFF" />
+                    
                     <Columns>
-                        <asp:TemplateField HeaderText="ดู/แก้ไข" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="พิมพ์" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="fa fa-print" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#cc0000" OnCommand="lbtnprintTran_Command"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width ="45px" ControlStyle-Font-Size ="Medium">
-                            <ItemTemplate>
-                                <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
-                            </ItemTemplate>
+                        
+                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="เลขอ้างอิง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
@@ -110,16 +99,26 @@
                                 <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="หมายเหตุ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width ="45px" ControlStyle-Font-Size ="Medium">
                             <ItemTemplate>
-                                <asp:Label ID="lbnoteGetlist" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_note") %>' ></asp:Label>
+                                <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ดู/แก้ไข" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="พิมพ์" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="fa fa-print" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#cc0000" OnCommand="lbtnprintTran_Command"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                     </Columns>
                     <FooterStyle BackColor="#FFFFFF" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
                     <HeaderStyle BackColor="#FFFFFF" CssClass="text-center"   ForeColor="#031f91" />
-                    <RowStyle BackColor="#ffffff"  />
+                    
                     <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="white" ForeColor="#990000" />
                 </asp:GridView>
 
@@ -201,6 +200,6 @@
                 return confirm(msg);
             }
         }
-
+               
     </script>
 </asp:Content>

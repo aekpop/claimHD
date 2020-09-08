@@ -3,16 +3,16 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <asp:Button runat="server" ID="btnBackHomeADDEQ" Text="กลับหน้าหลัก" OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default " />
+    <!--<asp:Button runat="server" ID="btnBackHomeADDEQ" Text="กลับหน้าหลัก" OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default " />-->
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header card-header-warning">
-            <h3 class="card-title">ค้นหา/แก้ไขรายการครุภัณฑ์</h3>
+            <h2 class="card-title">ค้นหา/แก้ไขรายการครุภัณฑ์</h2>
         </div>
         
             <div class="card-body table-responsive table-sm">
                 
-                <div id="divsearch" runat="server" class="row"  style="background-color:peachpuff;height:130px;padding:1px 1px 1px 1px;" >
+                <div id="divsearch" runat="server" class="row"  style="height:140px;padding:1px 1px 1px 1px;" >
                     <div class="col-md" style="padding:1px 2px 2px 20px">
                             <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="ชื่อครุภัณฑ์(ไทย):" Font-Size="Large" Font-Bold="true" ></asp:Label>
@@ -51,95 +51,96 @@
                                 <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="form-control" Width="150px" ></asp:DropDownList>
                                 </div>
                      </div>
-                     <div class="col-md" style="padding:50px 1px 1px 5px">
-                         <asp:Button ID="searchEquip" runat="server" Text="ค้นหา" CssClass="btn btn-warning btn-sm" Font-Bold="true" Font-Size="Large" OnClick="searchEquip_Click" /> 
                      </div>
-                    </div>
-              
-
-                <div id="divSagain" runat="server" visible="false">
-                    <asp:Button ID="btnSagain" runat="server" Text="ค้นหาใหม่"  CssClass="btn btn-dark btn-sm" Font-Bold="true" Font-Size="Large" OnClick="btnSagain_Click" />
-                    <asp:Label ID="chkS" runat="server" ></asp:Label>
-                </div>
+                   
+                        <div class="row">
+                            <div class="col-md-6 text-right" >                               
+                                   <asp:Button ID="searchEquip" runat="server" Text="ค้นหา" CssClass="btn btn-warning btn-sm" Font-Bold="true" Font-Size="Large" OnClick="searchEquip_Click" />                                
+                            </div>                                                   
+                                <div id="divSagain" runat="server" visible="false" class="col-md-6">
+                                         <asp:Label ID="chkS" runat="server" font-size="Small" ></asp:Label>
+                                                 <asp:LinkButton ID="lbtnTollReport"  runat="server" Text="พิมพ์เอกสาร" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm" Font-Bold="true" Font-Size="Large"  OnCommand="lbtnTollReport_Command"></asp:LinkButton>
+                                                        <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="พิมพ์เอกสาร1" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
+                                </div>
+                         </div>
+                    
+               
                 <br />
                 <div class="row" style="padding-left:20px">
-                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false" Font-Bold="true" Font-Size="Large" ></asp:Label>
+                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false" Font-Bold="true" Font-Size="Large" ></asp:Label>               
+                        
                 </div>
-                <div class="row" style="padding-left:20px">
-                        <asp:LinkButton ID="lbtnTollReport"  runat="server"  Visible="false" ToolTip="พิมพ์" CssClass="fa fa-print" Font-Size="40px" ForeColor="#006600" OnCommand="lbtnTollReport_Command"></asp:LinkButton>
-                        <asp:LinkButton ID="lbtnDepartReport" runat="server"  Visible="false" ToolTip="พิมพ์" CssClass="fa fa-print"  Font-Size="40px"  ForeColor="#990000" OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
-                </div>
+                <hr />
 
-          <asp:Panel ID="Panel1" runat="server" ScrollBars="Both"  BorderStyle="Solid" BorderColor="#ffcc99"  Height="850px" > 
+          <asp:Panel ID="Panel1" runat="server" > 
               
             <asp:GridView ID="GridEquipAdd" runat="server"
             DataKeyNames="equipment_id"
             OnRowDataBound="GridEquipAdd_RowDataBound"
             CssClass="table table-hover table-sm " 
-            AutoGenerateColumns="False" OnPageIndexChanging="GridEquipAdd_PageIndexChanging" PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
+            AutoGenerateColumns="False" 
+                OnPageIndexChanging="GridEquipAdd_PageIndexChanging" 
+                PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
             PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
             AllowPaging="true" 
-            HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#333333" GridLines="Both">
-                <AlternatingRowStyle BackColor="#f3ffe0" />
+            HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#000000" GridLines="None">
+                
                 <Columns>
-                    <asp:TemplateField HeaderText="แก้ไข" ControlStyle-Width="35px">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="btnEditEquip" runat="server" Text="แก้ไข" Font-Size="12px" CssClass="fas text-warning" OnCommand="btnEditEquip_Command">&#xf044;</asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="50px" ControlStyle-Font-Size="12px">
+                    
+                    <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="10px" ControlStyle-Font-Size="12px">
                         <ItemTemplate >
                             <%# Container.DataItemIndex + 1+"." %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" ControlStyle-Width="200px">
+                    <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" >
                         <ItemTemplate>
-                            <asp:Label ID="lbEquipthai" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_nameth") %>' ></asp:Label>
+                            <asp:LinkButton ID="lbEquipthai" runat="server"  Font-Size="19px" ForeColor="Black" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_nameth") %>' OnCommand="btnEditEquip_Command" ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="เลขครุภัณฑ์" ControlStyle-Width="140px">
+                    <asp:TemplateField HeaderText="เลขครุภัณฑ์" >
                         <ItemTemplate>
-                            <asp:Label ID="lbequipNo" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_no") %>'></asp:Label>
+                            <asp:LinkButton ID="lbequipNo" runat="server" Font-Size="19px" ForeColor="Black" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_no") %>' OnCommand="btnEditEquip_Command" ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="เลขทะเบียน" ControlStyle-Width="140px" >
+                    <asp:TemplateField HeaderText="เลขทะเบียน" >
                         <ItemTemplate>
-                            <asp:Label ID="lbequipSe" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_serial") %>'></asp:Label>
+                            <asp:Label ID="lbequipSe" runat="server" Font-Size="19px" Text='<%# DataBinder.Eval(Container, "DataItem.equipment_serial") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="ยี่ห้อ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="150px">
+                    <asp:TemplateField HeaderText="ยี่ห้อ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                         <ItemTemplate>
-                            <asp:Label ID="lbequipbrand"  runat="server" Font-Size="16px"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_brand") %>'></asp:Label>
+                            <asp:Label ID="lbequipbrand"  runat="server" Font-Size="19px"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_brand") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     
                     <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
-                            <asp:Label ID="lbequipToll"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
+                            <asp:Label ID="lbequipToll"  runat="server" Font-Size="19px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
                     
                     <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="70px">
                         <ItemTemplate>
-                            <asp:Label ID="lbequipchk"  runat="server" Font-Size="16px"  Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
+                            <asp:Label ID="lbequipchk"  runat="server" Font-Size="19px"  Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
                     <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
-                            <asp:Label ID="lbequipnote"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
+                            <asp:Label ID="lbequipnote"  runat="server" Font-Size="19px"  Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField> 
+                    </asp:TemplateField>
+                    
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle CssClass="text-center" BackColor="#25660d"  ForeColor="White" ></HeaderStyle>
+                <HeaderStyle CssClass="text-center" BackColor="#ffffff"  ForeColor="000000" ></HeaderStyle>
                 <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="#2461BF" ForeColor="White" />
-                <RowStyle CssClass="text-center" BackColor="#deffad"></RowStyle>
+                
                 <SelectedRowStyle BackColor="#a2fca5" Font-Bold="True" ForeColor="#333333" />
                 <SortedAscendingCellStyle BackColor="#baf7b2" />
-                <SortedDescendingHeaderStyle BackColor="#5abe48"/>
+                <SortedDescendingHeaderStyle BackColor="#5abe48"/>              
                 <PagerStyle HorizontalAlign="Center" BackColor="White" ForeColor="#026b14"  />
         </asp:GridView>
                   
@@ -174,10 +175,10 @@
 
 
     <div class="modal fade " id="UpdateEquipModal"   tabindex="-1" role="dialog" aria-labelledby="UpdateEquipModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered " style="overflow-y: scroll; max-height:100%; max-width:70%; " role="form">
+        <div class="modal-dialog modal-lg modal-dialog-centered " style="width:100%" role="form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">แก้ไขรายการครุภัณฑ์ : 
+                    <h4 class="modal-title">ครุภัณฑ์ : 
                         <asp:Label ID="lbEQIDModal" runat="server" Text="" CssClass="text-dark"></asp:Label></h4>
                     <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -190,7 +191,7 @@
                             <asp:Image ID="ImgEditEQ" runat="server" Width="60%" />
                         </div>
                         <div class="col-md-6" runat="server" id="diveditpic">
-                            <label class="bmd-label-floating">เปลี่ยนภาพครุภัณฑ์ใหม่(ขนาดไฟล์ไม่เกิน 4 MB)</label>
+                            <label class="bmd-label-floating">เปลี่ยนภาพใหม่ (ขนาดไฟล์ไม่เกิน 4 MB)</label>
                             <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
@@ -198,25 +199,25 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ชื่อครุภัณฑ์(ไทย)</label>
-                                <asp:TextBox ID="txtEditTH" Enabled="false"  runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditTH" Enabled="false"  runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ชื่อครุภัณฑ์(อังกฤษ)</label>
-                                <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เลขครุภัณฑ์</label>
-                                <asp:TextBox ID="txtEditNo" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditNo" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เลขทะเบียน</label>
-                                <asp:TextBox ID="txtEditNoform" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditNoform" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                     </div>
@@ -225,25 +226,25 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ยี่ห้อ</label>
-                                <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">รุ่น</label>
-                                <asp:TextBox ID="txtEditSeries" Enabled="false" TextMode="MultiLine" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditSeries" Enabled="false" TextMode="MultiLine" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ราคา</label>
-                                <asp:TextBox ID="txtEditPrice" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditPrice" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">หน่วยนับ</label>
-                                <asp:TextBox ID="txtEditcUnit" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditcUnit" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                     </div>
@@ -252,25 +253,25 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">วันที่รับ</label>
-                                <asp:TextBox ID="txtEditDate" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control datepicker" />
+                                <asp:TextBox ID="txtEditDate" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control datepicker" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เลขสัญญา</label>
-                                <asp:TextBox ID="txtEditContract" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditContract" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">สถานะ</label>
-                                <asp:DropDownList ID="ddlEditStat"  runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:DropDownList ID="ddlEditStat"  runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ด่านฯ</label>
-                                <asp:DropDownList ID="ddlEditCpoint"  runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:DropDownList ID="ddlEditCpoint"  runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         
@@ -280,29 +281,29 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">สถานที่ตั้ง</label>
-                                <asp:DropDownList ID="ddlEditLocate" runat="server" Font-Size="Medium" CssClass="form-control timeline" />
+                                <asp:DropDownList ID="ddlEditLocate" runat="server" Font-Size="21px" CssClass="form-control timeline" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">บริษัทที่รับผิดชอบ</label>
-                                <asp:DropDownList ID="ddlEditCompany" Enabled="false" runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:DropDownList ID="ddlEditCompany" Enabled="false" runat="server" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ผู้รับผิดชอบหรือผู้ใช้งาน</label>
-                                <asp:TextBox ID="txtEditPerson" runat="server" Font-Size="Medium"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditPerson" runat="server" Font-Size="21px"  CssClass="form-control time" />
                             </div>
                         </div>
                         
 
                     </div>
-                    <div class="row" style="height: 90px">
-                        <div class="col-md">
+                    <div class="row" style="height: 120px">
+                        <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">หมายเหตุ</label>
-                                <asp:TextBox ID="txtEditNote"  runat="server" TextMode="MultiLine" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditNote"  runat="server" TextMode="MultiLine" Font-Size="21px" CssClass="form-control time" />
                             </div>
                         </div>
 

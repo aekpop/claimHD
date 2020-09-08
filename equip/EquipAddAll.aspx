@@ -40,57 +40,53 @@
                 <div class="row" style="padding-left:35px;" >
                     <asp:Label ID="lbamountEQ" runat="server" ></asp:Label>
                 </div>
-          <asp:Panel ID="Panel1" CssClass="col-md text-center" runat="server" ScrollBars="Both"  BorderStyle="Solid" BorderColor="#fcd7e4"  Height="800px" > 
+          <asp:Panel ID="Panel1" CssClass="col-md text-center" runat="server" > 
               
             <asp:GridView ID="GridAddAll" runat="server"
             DataKeyNames="NewEQ_id" 
             OnRowDataBound="GridAddAll_RowDataBound"
             CssClass="table table-hover table-sm col-md text-center" 
             AutoGenerateColumns="False"
-            HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#333333" GridLines="Both">
-                <AlternatingRowStyle BackColor="#f3ffe0" />
+            HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="#ffffff" />
                 <Columns>
-                    <asp:TemplateField HeaderText="แก้ไข" ControlStyle-Width="35px">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข" Font-Size="16px" CssClass="fas text-warning" OnCommand="lbtneditAdd_Command">&#xf044;</asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่รับ" ControlStyle-Width="85px">
+                    
+                    <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                </ItemTemplate>
+                        </asp:TemplateField>
+                    <asp:TemplateField HeaderText="วันที่รับ" >
                         <ItemTemplate>
                             <asp:Label ID="lbDateStart" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" ControlStyle-Width="200px">
+                    <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" >
                         <ItemTemplate>
                             <asp:Label ID="lbThname" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddNameth") %>' ></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ยี่ห้อ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="160px">
+                    </asp:TemplateField>                                      
+                    <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                         <ItemTemplate>
-                            <asp:Label ID="lbBrandAdd"  runat="server" Font-Size="16px"  Text='<%# DataBinder.Eval(Container, "DataItem.AddBrand") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รุ่น" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="160px">
-                        <ItemTemplate>
-                            <asp:Label ID="lbseriesAdd"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.AddSeries") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="100px">
-                        <ItemTemplate>
-                            <asp:Label ID="lbtolladd"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
+                            <asp:Label ID="lbtolladd"  runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField HeaderText="ผู้บันทึก" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="120px">
+                    <asp:TemplateField HeaderText="เลขที่สัญญา" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                         <ItemTemplate>
-                            <asp:Label ID="lbuseradd"  runat="server" Font-Size="16px" Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
+                            <asp:Label ID="lbAddConNum"  runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddConNum") %>'></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField> 
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="แก้ไข" >
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข" Font-Size="16px" CssClass="fas text-warning" OnCommand="lbtneditAdd_Command">&#xf044;</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle CssClass="text-center" BackColor="#25660d"  ForeColor="White" ></HeaderStyle>
+                <HeaderStyle CssClass="text-center" BackColor="#ffffff"  ForeColor="000000" ></HeaderStyle>
                 <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="#2461BF" ForeColor="White" />
-                <RowStyle CssClass="text-center" BackColor="#deffad"></RowStyle>
+                <RowStyle CssClass="text-center" BackColor="#ffffff"></RowStyle>
                 <SelectedRowStyle BackColor="#a2fca5" Font-Bold="True" ForeColor="#333333" />
                 <SortedAscendingCellStyle BackColor="#baf7b2" />
                 <SortedDescendingHeaderStyle BackColor="#5abe48"/>
