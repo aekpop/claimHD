@@ -27,9 +27,9 @@
                             <h4 class="card-category" style="font-size:32px;">แจ้งใหม่</h4>
                             <h4 class="card-title">
                                 
-                                <asp:Label ID="lbnew" runat="server"  ForeColor="Black" Text=""></asp:Label>
+                                <asp:Label ID="lbnew" runat="server"   Text=""></asp:Label>
                                 <br />
-                                <asp:Label ID="lbnew1" runat="server" ForeColor="Black" Text=""></asp:Label>
+                                <asp:Label ID="lbnew1" runat="server"  Text=""></asp:Label>
                             </h4>
                         </div>
                         <div class="card-footer">

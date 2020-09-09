@@ -29,6 +29,11 @@
                                     <label class="bmd-label-floating">ปีงบประมาณ : </label>
                                     <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
                                 </div>
+
+                            <div class="col-md-2">
+                                    <label class="bmd-label-floating">สถานะ : </label>
+                                    <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
+                                </div>
                             
                         <div class="col-md-2">
                             <asp:Button ID="btnSearchEdit" runat="server" Text="ค้นหา" CssClass="btn btn-success" OnClick="btnSearchEdit_Click"/>

@@ -186,16 +186,16 @@
                     </button>
                 </div>
                 <div class="modal-body" style="line-height: inherit;">
-                    <div class="row" style="height: 150px">
+                    <div class="row" style="height: 140px">
                         <div class="col-md-3">
-                            <asp:Image ID="ImgEditEQ" runat="server" Width="60%" />
+                            <asp:Image ID="ImgEditEQ" runat="server" Width="100%"  />
                         </div>
-                        <div class="col-md-6" runat="server" id="diveditpic">
-                            <label class="bmd-label-floating">เปลี่ยนภาพใหม่ (ขนาดไฟล์ไม่เกิน 4 MB)</label>
-                            <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file" lang="en" />
+                        <div class="col-md-2" runat="server" id="diveditpic">
+                            <label class="bmd-label-floating"></label>
+                            <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file" Font-Size="Medium" lang="en" />
                         </div>
                     </div>
-                    <div class="row" style="height: 90px">
+                    <div class="row" >
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ชื่อครุภัณฑ์(ไทย)</label>
@@ -345,7 +345,6 @@
             
         });
         
-
 
         function UpdteConfirm(msg) {
             var str1 = "1";

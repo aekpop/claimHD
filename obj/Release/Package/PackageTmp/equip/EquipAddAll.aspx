@@ -51,6 +51,11 @@
                 <AlternatingRowStyle BackColor="#ffffff" />
                 <Columns>
                     
+                    <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                </ItemTemplate>
+                        </asp:TemplateField>
                     <asp:TemplateField HeaderText="วันที่รับ" >
                         <ItemTemplate>
                             <asp:Label ID="lbDateStart" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
@@ -60,22 +65,17 @@
                         <ItemTemplate>
                             <asp:Label ID="lbThname" runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddNameth") %>' ></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ยี่ห้อ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                        <ItemTemplate>
-                            <asp:Label ID="lbBrandAdd"  runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddBrand") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รุ่น" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                        <ItemTemplate>
-                            <asp:Label ID="lbseriesAdd"  runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddSeries") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>                                      
                     <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                         <ItemTemplate>
                             <asp:Label ID="lbtolladd"  runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
+                    <asp:TemplateField HeaderText="เลขที่สัญญา" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <ItemTemplate>
+                            <asp:Label ID="lbAddConNum"  runat="server" Font-Size="16px" Text='<%# DataBinder.Eval(Container, "DataItem.AddConNum") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="แก้ไข" >
                         <ItemTemplate>
                             <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข" Font-Size="16px" CssClass="fas text-warning" OnCommand="lbtneditAdd_Command">&#xf044;</asp:LinkButton>

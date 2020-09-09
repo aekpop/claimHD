@@ -56,11 +56,12 @@ namespace ClaimProject.equip
             {
                 if(Session["User"].ToString() == "sawitree")
                 {
-                    sqlcpSearch += " 7010' OR toll_recieve = '9010' OR toll_recieve = '9020' OR toll_recieve ='9030' OR toll_recieve ='9040 ";
+                    sqlcpSearch += " 7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040 ";
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
-                    sqlcpSearch += " 7020 or 7031 or 7032 or 7033 or 7041 or 7042 or 7051 or 7052 ";
+                    sqlcpSearch += " 7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
+                        "OR toll_send ='7061' OR toll_send = ' 7062 ' OR toll_send = ' 7063 ' OR toll_send = ' 7064 ";
                 }
             }
             else if (Session["UserCpoint"].ToString() == "701")
@@ -73,27 +74,27 @@ namespace ClaimProject.equip
             }
             else if (Session["UserCpoint"].ToString() == "703")
             {
-                sqlcpSearch += "7031 or 7032 or 7033";
+                sqlcpSearch += " 9200' AND toll_recieve ='7031' OR toll_recieve = '7032' OR toll_recieve = '7033";
             }
             else if (Session["UserCpoint"].ToString() == "704")
             {
-                sqlcpSearch += "7041 or 7042 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7041' OR toll_recieve = ' 7042 ";
             }
             else if (Session["UserCpoint"].ToString() == "706")
             {
-                sqlcpSearch += " 7051 or 7052 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7051' OR toll_recieve = ' 7052 ";
             }
             else if (Session["UserCpoint"].ToString() == "707")
             {
-                sqlcpSearch += " 7061 or 7062 or 7063 or 7064 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7061' OR toll_recieve = ' 7062 ' OR toll_recieve = ' 7063 ' OR toll_recieve = ' 7064 ";
             }
             else if (Session["UserCpoint"].ToString() == "708")
             {
-                sqlcpSearch += " 7071 or 7072 or 7073 or 7074 or 7075 or 7076 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7071' OR toll_recieve = ' 7072 ' OR toll_recieve = ' 7073 ' OR toll_recieve = ' 7074 ' OR toll_recieve = ' 7075 ' OR toll_recieve = ' 7076 ";
             }
             else if (Session["UserCpoint"].ToString() == "709")
             {
-                sqlcpSearch += "7081 or 7082 or 7083 or 7084 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7081' OR toll_recieve = ' 7082 ' OR toll_recieve = ' 7083 ' OR toll_recieve = ' 7084 ";
             }
             else if (Session["UserCpoint"].ToString() == "710")
             {
@@ -274,8 +275,8 @@ namespace ClaimProject.equip
 
             }
 
-            string seereceipt = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (toll_recieve ='" + sqlcpSearch + "') ";
-            string seereceiptt = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND (toll_recieve ='" + sqlcpSearch + "') ";
+            string seereceipt = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (toll_send ='" + sqlcpSearch + "') ";
+            string seereceiptt = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND (toll_send ='" + sqlcpSearch + "') ";
             MySqlDataReader seerre = function.MySqlSelect(seereceipt);
             if (seerre.Read())
             {

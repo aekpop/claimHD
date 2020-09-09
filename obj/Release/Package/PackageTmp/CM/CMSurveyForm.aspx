@@ -14,67 +14,67 @@
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="19px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="Ref." ControlStyle-Width="50px">
+                            <asp:TemplateField HeaderText="Ref." >
                                 <ItemTemplate>
                                     <asp:Label ID="lbref" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_id") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ด่านฯ" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="ด่านฯ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ช่องทาง" ControlStyle-Width="150px">
+                            <asp:TemplateField HeaderText="ช่องทาง" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_channel") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="450px">
+                            <asp:TemplateField HeaderText="อุปกรณ์" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" ControlStyle-Width="350px">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แจ้งซ่อม" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="วันที่แจ้งซ่อม" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แก้ไข" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="วันที่แก้ไข" >
                                 <ItemTemplate>
                                     <asp:Label ID="btnDateEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาที่แก้ไข" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="เวลาที่แก้ไข" >
                                 <ItemTemplate>
                                     <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="สถานะ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbStatus" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วิธีแก้ไข" ControlStyle-Width="200px">
+                            <asp:TemplateField HeaderText="วิธีแก้ไข" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbMethod" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_method") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="หมายเหตุ" ControlStyle-Width="200px">
+                            <asp:TemplateField HeaderText="หมายเหตุ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbNote" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_note") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อนุมัติ" ControlStyle-Width="50px">
+                            <asp:TemplateField HeaderText="อนุมัติ" >
                                 <ItemTemplate>
                                     <div class="row">
                                         <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="fas text-success">&#xf058;</asp:LinkButton>
@@ -90,7 +90,7 @@
 
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
 
-                        <RowStyle CssClass="text-center" BackColor="#EFF3FB"></RowStyle>
+                        <RowStyle CssClass="text-center" BackColor="#ffffff"></RowStyle>
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />

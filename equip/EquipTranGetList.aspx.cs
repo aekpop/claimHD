@@ -66,15 +66,16 @@ namespace ClaimProject.equip
             {
                 if (Session["User"].ToString() == "sawitree")
                 {
-                    sqlsendSearch += "WHERE (toll_recieve ='7010' or toll_recieve ='9010' " +
-                        "or toll_recieve ='9020' or toll_recieve ='9030' )";
+                    sqlsendSearch += "WHERE (toll_send ='7010' or toll_send ='9010' " +
+                        "or toll_send ='9020' or toll_send ='9030' )";
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
-                    sqlsendSearch += "WHERE (toll_recieve ='7020' or toll_recieve ='7031' " +
-                        "or toll_recieve ='7032' or toll_recieve ='7033' or toll_recieve ='7041' " +
-                        "or toll_recieve ='7042' or toll_recieve ='7051' " +
-                        "or toll_recieve ='7052' ) ";
+                    sqlsendSearch += "WHERE (toll_send ='7020' or toll_send ='7031' " +
+                        "or toll_send ='7032' or toll_send ='7033' or toll_send ='7041' " +
+                        "or toll_send ='7042' or toll_send ='7051' " +
+                        "or toll_send ='7052' or toll_send ='7061' or toll_send ='7062' " +
+                        "or toll_send ='7063' or toll_send ='7064') ";
                 }
                 else
                 {
