@@ -13,7 +13,7 @@
             <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
             </div>
-            <div class="card-body table-responsive table-sm" style="font-family:'Times New Roman', Times, serif; font-size:small">
+            <div class="card-body table-responsive table-sm" >
                 <div class="row">
                     
                         <label class="bmd-label-floating">ด่านฯ : </label>
@@ -29,32 +29,43 @@
                             <asp:ListItem Value="5">5</asp:ListItem>
                             <asp:ListItem Value="6">6</asp:ListItem>
                         </asp:DropDownList>
+                    <label class="bmd-label-floating">ผลัด : </label>
+                    <asp:DropDownList ID="ddlShift" runat="server" CssClass="control-form">
+                            <asp:ListItem Value="0">ผลัดที่ 1 (22.00 - 06.00)</asp:ListItem>
+                            <asp:ListItem Value="1">ผลัดที่ 2 (06.00 - 14.00)</asp:ListItem>
+                            <asp:ListItem Value="2">ผลัดที่ 3 (14.00 - 22.00)</asp:ListItem>
+                    </asp:DropDownList>
+
                         <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" OnClick="btnrecm_Click"  /> &nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnBack" runat="server" Text="กลับหน้าหลัก" OnClick="btnBack_Click"  />
                 
                 </div>
-                    
-                    <div class="col-md" >
-                        
-                    </div>
+                                      
                     <div class="col-md" >
                         <asp:Button ID="printimg" runat="server" Text="photo" Visible="false" OnClick="printimg_Click"  />
                     </div>
                 </div>
                 <br />
                 
-                    <asp:Label ID="lbHeadToll" runat="server" Font-Bold="true" Font-Size="X-Large" ></asp:Label>
-                
+                    <asp:Label ID="lbHeadToll" runat="server" Font-Bold="true" Font-Size="X-Large" Visible="false"></asp:Label>
+                    &nbsp;<asp:Label ID="lbShift" runat="server" Font-Bold="true" Font-Size="X-Large" Visible="false" ></asp:Label>
+                    &nbsp;<asp:Label ID="date" runat="server" Font-Bold="true" Font-Size="X-Large" Text="วันที่" Visible="false"></asp:Label>
+                    &nbsp;<asp:Label ID="lbDateNow" runat="server" Font-Bold="true" Font-Size="X-Large" Visible="false"></asp:Label>
                 
                     <asp:GridView ID="gridHeadToll" runat="server">
 
                     </asp:GridView>
+
                     <asp:GridView ID="gridCMLine" runat="server" 
-                        AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
-                        HeaderStyle-CssClass="" HeaderStyle-BackColor="ActiveBorder" 
-                        OnRowDataBound="gridCMLine_RowDataBound" Font-Size="13px" Font-Names="Arial Narrow" CellPadding="4" 
-                        ForeColor="#333333" GridLines="Both" BorderColor="Black">
-                        <AlternatingRowStyle BackColor="White"  />
+                        AutoGenerateColumns="False" 
+                        CssClass="col table table-striped table-hover"                         
+                        HeaderStyle-BackColor="ActiveBorder" 
+                        OnRowDataBound="gridCMLine_RowDataBound" 
+                        Font-Size="13px"  CellPadding="4" 
+                        ForeColor="#333333" GridLines="Both" 
+                        BorderColor="Black" OnRowCreated="gridCMLine_RowCreated">
+                        
+                        <AlternatingRowStyle BackColor="White"  />                                             
                         <Columns>
                             <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="25px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
@@ -96,7 +107,7 @@
                         </Columns>
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#507CD1"  Font-Bold="True" ForeColor="White"></HeaderStyle>
+                        <HeaderStyle BackColor="#507CD1"  Font-Bold="True" ForeColor="White" Font-Size="Larger" />
                         <PagerStyle BackColor="#2461BF" ForeColor="White" />
                         <RowStyle BackColor="#EFF3FB"></RowStyle>
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -105,13 +116,41 @@
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
-                
+                </br>
+                        <asp:HiddenField ID="hfImageData" runat="server" />
+                        <asp:Button ID="btnExport" Text="Export to Image" runat="server" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
             </div>
         </div>
 
-
-
-        </div>
-    </form>
-</body>
+     
+    <script src="/Scripts/html2canvas.js"></script> 
+    <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/Scripts/ClaimProjectScript.js"></script>
+    <script type="text/javascript">
+    function ConvertToImage(btnExport) {
+        html2canvas($("[id*=gridCMLine]")[0]).then(function (canvas) {
+            var base64 = canvas.toDataURL();
+            $("[id*=hfImageData]").val(base64);
+            __doPostBack(btnExport.name, "");
+        });
+        return false;
+        }
+                $("#btnExport").on('click', function() {             
+                    var imgageData =  
+                    getCanvas.toDataURL("image/png"); 
+              
+                // Now browser starts downloading  
+                // it instead of just showing it 
+                var newData = imgageData.replace( 
+                /^data:image\/png/, "data:application/octet-stream"); 
+                
+                $("#btnExport").attr( 
+                "download", "GeeksForGeeks.png").attr( 
+                "href", newData); 
+            }); 
+</script>        
+    </form>    
+</body>    
 </html>

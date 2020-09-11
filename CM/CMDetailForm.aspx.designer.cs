@@ -40,15 +40,6 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.TextBox txtPoint;
         
         /// <summary>
-        /// ddlChanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlChanel;
-        
-        /// <summary>
         /// txtSDate control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSTime;
+        
+        /// <summary>
+        /// ddlChanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlChanel;
         
         /// <summary>
         /// txtDeviceAdd control.
@@ -85,15 +85,6 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.TextBox txtProblem;
         
         /// <summary>
-        /// fileImg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileImg;
-        
-        /// <summary>
         /// txtNote control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNote;
+        
+        /// <summary>
+        /// fileImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileImg;
         
         /// <summary>
         /// btnSaveCM control.

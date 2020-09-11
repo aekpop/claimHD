@@ -216,6 +216,11 @@ namespace ClaimProject.CM
                     btnEditCM.Visible = false;
                 }
             }
+            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            if (lbRowNum != null)
+            {
+                lbRowNum.Text = (CMGridView.Rows.Count + 1).ToString() + ".";
+            }
         }
 
         protected void btnEdit_Command(object sender, CommandEventArgs e)

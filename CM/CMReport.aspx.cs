@@ -28,7 +28,13 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
-                function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");               
+                function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                
+                txtCMStatus.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+                txtCMStatus.Items.Insert(1, new ListItem("รอการแก้ไข", "0"));
+                txtCMStatus.Items.Insert(2, new ListItem("รอการตรวจสอบ", "1"));
+                txtCMStatus.Items.Insert(3, new ListItem("ใช้งานได้ปกติ", "2"));
+
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
@@ -50,22 +56,47 @@ namespace ClaimProject.CM
         {
             string sql = "";
             string checkCpoint = txtCpointSearch.SelectedValue;
+            string CMStatus = txtCMStatus.SelectedValue;
             if (checkCpoint == "")
             {
-                sql += "SELECT * FROM tbl_cm_detail cm " +
+                if (CMStatus == "")
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
-                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    "ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
+                else
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
+                   " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                   " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
+                   " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
+
             }
             else
             {
-                sql += "SELECT * FROM tbl_cm_detail cm " +
+                if (CMStatus == "")
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
+                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                    "AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
+                    "ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
+                else
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
-                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                   " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
             }
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
