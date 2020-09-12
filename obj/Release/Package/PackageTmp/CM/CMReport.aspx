@@ -19,23 +19,23 @@
                     <div runat="server">
 
                         <div class="row">
-                            <div class="col-md-4">
+                                                       
+                                <div class="col-md-3">
+                                    <label class="bmd-label-floating">ปีงบประมาณ : </label>
+                                    <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select col-md-4" ></asp:DropDownList>
+                                </div>
+                            <div class="col-md-3">
                                 <!--<div class="form-group bmd-form-group">-->
                                     <label class="bmd-label-floating">ด่านฯ : </label>
-                                    <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
-                                </div>
-                            
-                                <div class="col-md-4">
-                                    <label class="bmd-label-floating">ปีงบประมาณ : </label>
-                                    <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
+                                    <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select col-md-4"></asp:DropDownList>
                                 </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                     <label class="bmd-label-floating">สถานะ : </label>
-                                    <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
+                                    <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select col-md-5" ></asp:DropDownList>
                                 </div>
                             
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <asp:Button ID="btnSearchEdit" runat="server" Text="ค้นหา" CssClass="btn btn-success" OnClick="btnSearchEdit_Click"/>
                         </div>
                         </div>

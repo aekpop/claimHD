@@ -5,23 +5,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <!-- Bootstrap core CSS -->
+    
+    
+    <!-- Custom styles for this template -->
+    
+    
+
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
             <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
             </div>
-            <div class="card-body table-responsive table-sm" >
+            <div class="card-body table-responsive table-md" >
                 <div class="row">
-                    
+                      <div class="form-group bmd-form-group" >
                         <label class="bmd-label-floating">ด่านฯ : </label>
                         
-                        <asp:DropDownList ID="ddlCMLine" runat="server" CssClass="form-control custom-select" OnSelectedIndexChanged="ddlCMLine_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
+                        <asp:DropDownList ID="ddlCMLine" runat="server" CssClass="form-control custom-select " OnSelectedIndexChanged="ddlCMLine_SelectedIndexChanged" AutoPostBack="true"  Font-Size="large" ></asp:DropDownList>
                         
-                        <asp:Label ID="lbBuild" runat="server" Visible="false" Text="อาคาร :" ></asp:Label> 
-                        <asp:DropDownList ID="ddlAnnex" runat="server" Visible="false" CssClass="control-form" >
+                        <asp:Label ID="lbBuild" runat="server" Visible="false" Text="อาคาร :" Font-Size="large" ></asp:Label> 
+                        <asp:DropDownList ID="ddlAnnex" runat="server" Visible="false" CssClass="control-form" Font-Size="large" >
                             <asp:ListItem Value="1">1</asp:ListItem>
                             <asp:ListItem Value="2">2</asp:ListItem>
                             <asp:ListItem Value="3">3</asp:ListItem>
@@ -29,16 +36,26 @@
                             <asp:ListItem Value="5">5</asp:ListItem>
                             <asp:ListItem Value="6">6</asp:ListItem>
                         </asp:DropDownList>
-                    <label class="bmd-label-floating">ผลัด : </label>
-                    <asp:DropDownList ID="ddlShift" runat="server" CssClass="control-form">
+                    <label class="bmd-label-floating" >ผลัด : </label>
+                    <asp:DropDownList ID="ddlShift" runat="server" CssClass="control-form" Font-Size="large">
                             <asp:ListItem Value="0">ผลัดที่ 1 (22.00 - 06.00)</asp:ListItem>
                             <asp:ListItem Value="1">ผลัดที่ 2 (06.00 - 14.00)</asp:ListItem>
                             <asp:ListItem Value="2">ผลัดที่ 3 (14.00 - 22.00)</asp:ListItem>
                     </asp:DropDownList>
-
-                        <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" OnClick="btnrecm_Click"  /> &nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnBack" runat="server" Text="กลับหน้าหลัก" OnClick="btnBack_Click"  />
-                
+                          
+                                <label class="bmd-label-floating" style="font-size:large;">วันที่</label>
+                                <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
+                            </div>
+                    <br />
+                    <div class="form-group bmd-form-group" >
+                        <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click"  />
+                        <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" Font-Size="large" OnClick="btnrecm_Click"  /> 
+                        
+                        <asp:HiddenField ID="hfImageData" runat="server" />
+                        <asp:Button ID="btnExport" Text="Export to Image" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
+                        <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select"  Visible="false" ></asp:DropDownList>
+                    </div>
+                   
                 </div>
                                       
                     <div class="col-md" >
@@ -61,7 +78,7 @@
                         CssClass="col table table-striped table-hover"                         
                         HeaderStyle-BackColor="ActiveBorder" 
                         OnRowDataBound="gridCMLine_RowDataBound" 
-                        Font-Size="13px"  CellPadding="4" 
+                        Font-Size="14px"  CellPadding="4" 
                         ForeColor="#333333" GridLines="Both" 
                         BorderColor="Black" OnRowCreated="gridCMLine_RowCreated">
                         
@@ -117,8 +134,7 @@
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
                 </br>
-                        <asp:HiddenField ID="hfImageData" runat="server" />
-                        <asp:Button ID="btnExport" Text="Export to Image" runat="server" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
+                        
             </div>
         </div>
 
@@ -127,7 +143,7 @@
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/moment.min.js"></script>
-    <script src="/Scripts/ClaimProjectScript.js"></script>
+    
     <script type="text/javascript">
     function ConvertToImage(btnExport) {
         html2canvas($("[id*=gridCMLine]")[0]).then(function (canvas) {
@@ -148,7 +164,15 @@
                 
                 $("#btnExport").attr( 
                 "download", "GeeksForGeeks.png").attr( 
-                "href", newData); 
+                "href", newData);
+
+                    $('#lbDateNow').datepicker($.datepicker.regional["th"]);
+                        if ($('#lbDatep').val() == "") {
+                                $('#lbDatep').datepicker("setDate", new Date());
+                    }
+
+                    $('#lbDatep').attr('maxlength', '10');
+                   $('#lbDatep').css('font-size', '8');   
             }); 
 </script>        
     </form>    

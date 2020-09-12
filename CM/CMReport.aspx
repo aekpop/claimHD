@@ -68,15 +68,15 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ช่องทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lbChannel" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_channel") %>'></asp:Label>
+                                    <asp:Label ID="lbChannel" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>

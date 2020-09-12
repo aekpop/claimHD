@@ -25,6 +25,7 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
+                function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
 
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
@@ -39,12 +40,15 @@ namespace ClaimProject.CM
                     function.getListItem(ddlCMLine, sql, "cpoint_name", "cpoint_id");
 
                 }
+                ddlCMLine.Items.Insert(0, new ListItem("เลือกด่านฯ", "0"));
             }
+
+            
 
         }
 
         public void Binddee()
-        {
+        {           
             string cpointt = ddlCMLine.SelectedValue;
             colortoll = cpointt;
             AnnexZZ = ddlAnnex.SelectedValue;
@@ -54,7 +58,7 @@ namespace ClaimProject.CM
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
-                    " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    " AND cm.cm_budget = '"+ ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
@@ -66,8 +70,8 @@ namespace ClaimProject.CM
                 string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE (cm.cm_detail_status_id='0' OR cm.cm_detail_status_id='1')  AND c.cpoint_id = '" + cpointt + "'  " +
-                    " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
+                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
@@ -94,7 +98,7 @@ namespace ClaimProject.CM
                 lbStt.Text = function.GetStatusCM(DataBinder.Eval(e.Row.DataItem, "cm_detail_status_id").ToString());
             }
 
-            lbDateNow.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
+            
 
 
             Label lbSDate = (Label)(e.Row.FindControl("lbSDate"));
@@ -439,6 +443,7 @@ namespace ClaimProject.CM
 
         protected void btnrecm_Click(object sender, EventArgs e)
         {
+
             Binddee();
         }
 
@@ -584,6 +589,21 @@ namespace ClaimProject.CM
                     lbHeadToll.Text = "ด่านฯ พัทยา ";
                     lbShift.Text = ddlShift.SelectedItem.Text;
                 }
+                else if (colortoll == "711")
+                {
+                    lbHeadToll.Text = "ด่านฯ ห้วยใหญ่ ";
+                    lbShift.Text = ddlShift.SelectedItem.Text;
+                }
+                else if (colortoll == "712")
+                {
+                    lbHeadToll.Text = "ด่านฯ เขาชีโอน ";
+                    lbShift.Text = ddlShift.SelectedItem.Text;
+                }
+                else if (colortoll == "713")
+                {
+                    lbHeadToll.Text = "ด่านฯ อู่ตาเภา ";
+                    lbShift.Text = ddlShift.SelectedItem.Text;
+                }
                 else if (colortoll == "902")
                 {
 
@@ -618,6 +638,7 @@ namespace ClaimProject.CM
                     lbShift.Text = ddlShift.SelectedItem.Text;
                 }
 
+                HeaderCell = new TableCell();
                 HeaderCell.Text = lbHeadToll.Text;
                 HeaderCell.ColumnSpan = 2;
                 HeaderGridRow.Cells.Add(HeaderCell);
@@ -627,9 +648,9 @@ namespace ClaimProject.CM
                 HeaderCell.ColumnSpan = 2;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
-                lbDateNow.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
+                
                 HeaderCell = new TableCell();
-                HeaderCell.Text = lbDateNow.Text;
+                HeaderCell.Text = lbDatep.Text;
                 HeaderCell.ColumnSpan = 3;
                 HeaderGridRow.Cells.Add(HeaderCell);
 

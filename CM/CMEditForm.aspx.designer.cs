@@ -22,6 +22,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivCMGridView;
         
         /// <summary>
+        /// ddlCMBudget control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCMBudget;
+        
+        /// <summary>
         /// txtCpointSearch control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.DropDownList txtCpointSearch;
         
         /// <summary>
-        /// ddlCMBudget control.
+        /// ddlAnnex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCMBudget;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAnnex;
         
         /// <summary>
         /// btnSearchEdit control.

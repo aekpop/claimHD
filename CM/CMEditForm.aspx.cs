@@ -24,12 +24,23 @@ namespace ClaimProject.CM
                 Response.Redirect("/");
             }
 
-            if (txtETime.Text == "") { txtETime.Text = DateTime.Now.ToString("HH.mm"); }
+            if (txtETime.Text == "")
+            {
+                txtETime.Text = DateTime.Now.ToString("HH.mm");
+            }
+
+            if (Session["UserCpoint"].ToString() == "703" || Session["UserCpoint"].ToString() == "704" || Session["UserCpoint"].ToString() == "706" || Session["UserCpoint"].ToString() == "707" 
+                || Session["UserCpoint"].ToString() == "708" || Session["UserCpoint"].ToString() == "709")
+            {
+                ddlAnnex.Visible = true;
+            }
 
             if (!this.IsPostBack)
             {
                 function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                function.getListItem(ddlAnnex, "SELECT cm_point FROM tbl_cm_detail  GROUP BY cm_point ORDER by cm_point ASC", "cm_point", "cm_point");
                 
+
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
@@ -53,21 +64,38 @@ namespace ClaimProject.CM
         {
             string sql = "";
             string checkCpoint = txtCpointSearch.SelectedValue;
-            if(checkCpoint == "")
+            string checkPoint = ddlAnnex.SelectedValue;
+            if (checkCpoint == "")
             {
-                sql += "SELECT * FROM tbl_cm_detail cm " +
+                if(checkPoint == "")
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                     " WHERE cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
                     " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
+                else
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
+                   " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                   " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
+                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
+                
             }
             else
             {
                 sql += "SELECT * FROM tbl_cm_detail cm " +
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                    " WHERE cm.cm_cpoint = '"+checkCpoint+"' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
                 
@@ -132,12 +160,12 @@ namespace ClaimProject.CM
             cm_id = e.CommandName;
             Label1.Text = "#" + cm_id;
             lbcmid.Text = cm_id;
-            string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON c.cpoint_id=cm.cm_cpoint WHERE cm.cm_detail_id = '" + cm_id + "'";
+            string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON c.cpoint_id=cm.cm_cpoint JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id WHERE cm.cm_detail_id = '" + cm_id + "'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
                 Label5.Text = rs.GetString("cpoint_name") + " " + rs.GetString("cm_point");
-                Label2.Text = rs.GetString("cm_detail_channel");
+                Label2.Text = rs.GetString("locate_name");
                 Label3.Text = rs.GetString("device_name");
                 Label4.Text = rs.GetString("cm_detail_problem");
                 if (!rs.IsDBNull(8)) { txtEDate.Text = rs.GetString("cm_detail_edate"); } else { txtEDate.Text = ""; }

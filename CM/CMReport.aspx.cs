@@ -64,6 +64,7 @@ namespace ClaimProject.CM
                     sql += "SELECT * FROM tbl_cm_detail cm " +
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                     " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
                     "ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
@@ -72,6 +73,7 @@ namespace ClaimProject.CM
                     sql += "SELECT * FROM tbl_cm_detail cm " +
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                    " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
                    " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
@@ -84,6 +86,7 @@ namespace ClaimProject.CM
                     sql += "SELECT * FROM tbl_cm_detail cm " +
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                     " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                     "AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
                     "ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
@@ -93,6 +96,7 @@ namespace ClaimProject.CM
                     sql += "SELECT * FROM tbl_cm_detail cm " +
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
                    " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
