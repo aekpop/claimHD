@@ -69,9 +69,7 @@
                     &nbsp;<asp:Label ID="date" runat="server" Font-Bold="true" Font-Size="X-Large" Text="วันที่" Visible="false"></asp:Label>
                     &nbsp;<asp:Label ID="lbDateNow" runat="server" Font-Bold="true" Font-Size="X-Large" Visible="false"></asp:Label>
                 
-                    <asp:GridView ID="gridHeadToll" runat="server">
-
-                    </asp:GridView>
+                    
 
                     <asp:GridView ID="gridCMLine" runat="server" 
                         AutoGenerateColumns="False" 
@@ -89,12 +87,12 @@
                                     <asp:Label ID="lbnoo" runat="server" ></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แจ้งซ่อม" ControlStyle-Width="70px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="วันที่" ControlStyle-Width="70px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_sdate") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" ControlStyle-Width="70px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="เวลา" ControlStyle-Width="70px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
@@ -132,7 +130,7 @@
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                    </asp:GridView>
+                    </asp:GridView>                                             
                 </br>
                         
             </div>

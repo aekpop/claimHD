@@ -86,28 +86,28 @@
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์</h3>
+                <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์ (รอการแก้ไข)</h3>
             </div>
             <div class="card-body table-responsive table-sm">
-                <div class="row">
-                    <div class="col-md">
-                        <label class="bmd-label-floating">ด่านฯ : </label>
+                <!--<div class="row">
+                    <div class="col-md" >
+                        <label ID="lbTollz" class="bmd-label-floating">ด่านฯ : </label>
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select" ></asp:DropDownList>
                     </div>
                     <div class="col-md">
-                        <label class="bmd-label-floating">ปีงบประมาณ : </label>
-                        <asp:DropDownList ID="ddlBudgetcc" runat="server" CssClass="form-control custom-select"  ></asp:DropDownList>
+                        <label ID="lbBudgetz" class="bmd-label-floating">ปีงบประมาณ : </label>
+                        <asp:DropDownList ID="ddlBudgetcc" runat="server" CssClass="form-control custom-select" ></asp:DropDownList>
                     </div>
                     <div class="col-md">
                         <br />
-                        <asp:Button ID="btnSearchAddd" runat="server" Text="ค้นหา"  CssClass="btn btn-success" OnClick="btnSearchAddd_Click"/>
+                        <asp:Button ID="btnSearchAddd" runat="server" Text="ค้นหา" Visible="false" CssClass="btn btn-success" OnClick="btnSearchAddd_Click"/>
                     </div>
 
                     <div class="col-md" >
                         <br />
-                        <asp:Button ID="btnToReport" runat="server" Text="ไปยังหน้ารายงาน"  CssClass="btn btn-warning" OnClick="btnToReport_Click"/>
+                        <asp:Button ID="btnToReport" runat="server" Text="ไปยังหน้ารายงาน" Visible="false" CssClass="btn btn-warning" OnClick="btnToReport_Click"/>
                     </div>
-                </div>
+                </div>-->
                 <br />
                 <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
@@ -121,7 +121,7 @@
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ด่านฯ" ControlStyle-Width="80px">
+                            <asp:TemplateField HeaderText="ด่านฯ" ControlStyle-Width="100px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
@@ -151,9 +151,9 @@
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" >
+                            <asp:TemplateField HeaderText="ผู้แจ้ง" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lbStatus" runat="server"></asp:Label>
+                                    <asp:Label ID="lbcmUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="แก้ไข" ControlStyle-Width="50px">

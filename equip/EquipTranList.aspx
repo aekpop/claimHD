@@ -4,8 +4,8 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
-    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักครุภัณฑ์"  OnClick="btnMainEQ_Click" CssClass="btn" />
-    <asp:Button runat="server" ID="btnnewTranpage" Font-Bold="true" BackColor="#990303" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="แจ้งรายการใหม่ คลิก!"  OnClick="btnnewTranpage_Click" CssClass="btn" />
+    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn" />
+    <asp:Button runat="server" ID="btnnewTranpage" Font-Bold="true" BackColor="#990303" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="แจ้งใหม่"  OnClick="btnnewTranpage_Click" CssClass="btn" OnClientClick="return CheckIsRepeat();"/>
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header "  style="background-color:#01914b;height:60px">
@@ -109,9 +109,10 @@
                                 <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="พิมพ์" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <asp:TemplateField HeaderText="พิมพ์เอกสาร" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="fa fa-print" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#cc0000" OnCommand="lbtnprintTran_Command"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="btn btn-sm btn-outline-warning" ToolTip="ใบรับ-ส่ง" Font-Size="15px" OnCommand="lbtnprintTran_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                                <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="false" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -200,6 +201,13 @@
                 return confirm(msg);
             }
         }
-               
+        var submit = 0;
+        function CheckIsRepeat() {
+            if (++submit > 1) {
+                alert('ห้ามกดดับเบิ้ลคลิก ... กรุณากด ตกลง เพื่อทำรายการต่อไป');
+                return false;
+            }
+        }
+        
     </script>
 </asp:Content>

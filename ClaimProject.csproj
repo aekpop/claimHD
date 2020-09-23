@@ -307,6 +307,7 @@
     <Content Include="Claim\claimDetailForm.aspx" />
     <Content Include="Claim\ClaimDevice.aspx" />
     <Content Include="Claim\claimForm.aspx" />
+    <Content Include="Claim\claimLine.aspx" />
     <Content Include="Claim\DefaultClaim.aspx" />
     <Content Include="Claim\Upload\chrome_installer.exe" />
     <Content Include="CM\CMDetailForm.aspx" />
@@ -1556,6 +1557,13 @@
     <Compile Include="Claim\claimForm.aspx.designer.cs">
       <DependentUpon>claimForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Claim\claimLine.aspx.cs">
+      <DependentUpon>claimLine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claim\claimLine.aspx.designer.cs">
+      <DependentUpon>claimLine.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Claim\DefaultClaim.aspx.cs">
       <DependentUpon>DefaultClaim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1779,6 +1787,12 @@
     </Compile>
     <Compile Include="equip\EquipTranOutList.aspx.designer.cs">
       <DependentUpon>EquipTranOutList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\reportDocuTran.cs">
+      <DependentUpon>reportDocuTran.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="equip\ReportTran.cs">
       <AutoGen>True</AutoGen>
@@ -2060,6 +2074,10 @@
     <EmbeddedResource Include="equip\EquipReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>EquipReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="equip\reportDocuTran.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reportDocuTran.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="equip\ReportTran.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div3">
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div3">
             <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
@@ -48,6 +48,19 @@
                     </div>
                     <h4 class="card-category">
                         <a class="nav-link" href="/Claim/ClaimDevice">รายงานอุปกรณ์ค้างซ่อม</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div4">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="fab fa-line"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/Claim/claimLine">ส่งรายงาน Line</a>
                     </h4>
                 </div>
             </div>

@@ -502,6 +502,7 @@ namespace ClaimProject.equip
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             SaveAllRow();
+
         }
 
         protected void btnAgain_Click(object sender, EventArgs e)

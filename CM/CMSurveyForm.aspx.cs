@@ -36,7 +36,7 @@ namespace ClaimProject.CM
             }
             try
             {
-                sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id WHERE cm.cm_detail_status_id='1' " + sqlPlus + " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id JOIN tbl_location l ON cm.cm_detail_channel = l.locate_id WHERE cm.cm_detail_status_id='1' " + sqlPlus + " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);

@@ -137,64 +137,65 @@
           
 
             <hr />
-            <div class="row" style="padding-left:30px;" >
+            <div class="row" style="padding-left:20px;" >
                 <div class="text-center" >
                     <asp:Label ID="resulttt" runat="server" Font-Bold="true" ></asp:Label>
                 </div>
             </div>
             <asp:gridview ID="gridadded" runat="server" DataKeyNames="newlist_id"
-                    ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="20px" 
+                    ShowFooter="true"  GridLines="None" BorderColor="White"  Font-Size="20px" PageSize="100" 
+                    CssClass="table table-hover table-condensed table-sm"
                     AutoGenerateColumns="false" OnRowDataBound="gridadded_RowDataBound" OnRowDeleting="gridadded_RowDeleting"> 
-                    <AlternatingRowStyle BackColor="#e3e3e3" />
+                    <AlternatingRowStyle BackColor="#ffffff" />
                     <Columns>
-                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="ลำดับ"  ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <%# Container.DataItemIndex + 1+"." %>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="180px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เลขครุภัณฑ์"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:Label ID="lbEQnumber"   runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_number") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="เลขทะเบียน" ItemStyle-Width="180px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เลขทะเบียน"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:Label ID="lbEQSerial"   runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_serial") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="ชื่อครุภัณฑ์" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="ชื่อครุภัณฑ์"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:Label ID="lbEQthname"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_thname") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="ยี่ห้อ" ItemStyle-Width="180px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="ยี่ห้อ"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:label ID="lbEQBrand"  runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortTextCom(DataBinder.Eval(Container, "DataItem.list_brand").ToString()) %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="รุ่น/ซีรีย์" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="รุ่น/ซีรีย์"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:label ID="lbEQSeries"  runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortTextCom(DataBinder.Eval(Container, "DataItem.list_series").ToString()) %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="วันที่บันทึกระบบ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="วันที่บันทึกระบบ"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:label ID="lbdatesys"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Date_added") %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="เวลาที่บันทึกระบบ" ItemStyle-Width="200px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เวลาที่บันทึกระบบ"  ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:label ID="lbtimesys"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Time_added") %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField  ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                        <asp:CommandField  ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
                     </Columns>
                     <FooterStyle BackColor="#ffffff" Font-Bold="True" CssClass="text-center" ForeColor="#ffffff" />
                     <HeaderStyle BackColor="#ab0c56" CssClass="text-center"   ForeColor="#ffffff" />
-                    <RowStyle BackColor="#fff0fa"  />
+                    <RowStyle BackColor="#ffffff"  />
                 
                 </asp:gridview>
 

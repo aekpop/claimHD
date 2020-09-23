@@ -20,9 +20,8 @@
                 <div class="col-md-1">
                     <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-            </div>
-            <br />
-            <div class="row">
+           
+            
                 <div class="col-md-2 text-right">
                     <asp:Label ID="Label5" runat="server" Text="สถานะ : "></asp:Label>
                 </div>

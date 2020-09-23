@@ -40,48 +40,122 @@ namespace ClaimProject.CM
                     function.getListItem(ddlCMLine, sql, "cpoint_name", "cpoint_id");
 
                 }
-                ddlCMLine.Items.Insert(0, new ListItem("เลือกด่านฯ", "0"));
-            }
-
-            
-
-        }
-
+                ddlCMLine.Items.Insert(0, new ListItem("เลือกด่านฯ", "0"));                
+            }          
+        }            
         public void Binddee()
-        {           
+        {             
             string cpointt = ddlCMLine.SelectedValue;
             colortoll = cpointt;
             AnnexZZ = ddlAnnex.SelectedValue;
-            if (lbBuild.Visible == true)
             {
-                string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                if (lbBuild.Visible == true)
+                {
+                    string sqlchN = "SELECT COUNT(*) AS num FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
-                    " AND cm.cm_budget = '"+ ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
-                MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                gridCMLine.DataSource = ds.Tables[0];
-                gridCMLine.DataBind();
-            }
-            else
-            {
-                string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
+                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
+                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    MySqlDataReader chK = function.MySqlSelect(sqlchN);
+                    if (chK.Read())
+                    {
+                        if (chK.GetInt32("num") != 0)
+                        {
+                            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+                            System.Data.DataSet ds = new System.Data.DataSet();
+                            da.Fill(ds);
+                            gridCMLine.DataSource = ds.Tables[0];
+                            gridCMLine.DataBind();
+                        }
+                        else
+                        {
+                            // สร้าง ตารางเสมือน Datatableพร้อม กำหนดฟิล
+                            DataTable dtt = new DataTable();
+                            dtt.Columns.Add(new DataColumn("cm_detail_id", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_sdate", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_stime", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("locate_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_problem", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
+                            //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
+                            DataRow drr = null;
+                            // สร้างแถวใหม่พร้อมกำหนดค่าลงไป
+                            drr = dtt.NewRow();
+                            drr["cm_detail_id"] = string.Empty;
+                            drr["cm_detail_sdate"] = string.Empty;
+                            drr["cm_detail_stime"] = string.Empty;
+                            drr["locate_name"] = string.Empty;
+                            drr["device_name"] = " ไม่มีอุปกรณ์เสียหาย ";
+                            drr["cm_detail_problem"] = string.Empty;
+                            drr["cm_detail_status_id"] = string.Empty;
+                            dtt.Rows.Add(drr);
+                            gridCMLine.DataSource = dtt;
+                            gridCMLine.DataBind();
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    string sqlchNN = "SELECT COUNT(*) AS num FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
                     " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
-                MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                gridCMLine.DataSource = ds.Tables[0];
-                gridCMLine.DataBind();
+                    string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
+                    " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
+                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    MySqlDataReader chKNN = function.MySqlSelect(sqlchNN);
+                    if (chKNN.Read())
+                    {
+                        if (chKNN.GetInt32("num") != 0)
+                        {
+
+                            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+                            System.Data.DataSet ds = new System.Data.DataSet();
+                            da.Fill(ds);
+                            gridCMLine.DataSource = ds.Tables[0];
+                            gridCMLine.DataBind();
+                        }
+                        else
+                        {
+                            // สร้าง ตารางเสมือน Datatableพร้อม กำหนดฟิล
+                            DataTable dtt = new DataTable();
+                            dtt.Columns.Add(new DataColumn("cm_detail_id", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_sdate", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_stime", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("locate_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_problem", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
+                            //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
+                            DataRow drr = null;
+                            // สร้างแถวใหม่พร้อมกำหนดค่าลงไป
+                            drr = dtt.NewRow();
+                            drr["cm_detail_id"] = string.Empty;
+                            drr["cm_detail_sdate"] = string.Empty;
+                            drr["cm_detail_stime"] = string.Empty;
+                            drr["locate_name"] = string.Empty;
+                            drr["device_name"] = " ไม่มีอุปกรณ์เสียหาย ";
+                            drr["cm_detail_problem"] = string.Empty;
+                            drr["cm_detail_status_id"] = string.Empty;
+                            dtt.Rows.Add(drr);
+                            gridCMLine.DataSource = dtt;
+                            gridCMLine.DataBind();
+                        }
+                    }
+                }
+            
             }
-
-
-
-
         }
 
         public void gridCMLine_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -656,6 +730,6 @@ namespace ClaimProject.CM
 
                 gridCMLine.Controls[0].Controls.AddAt(0, HeaderGridRow);
             }
-        }
+        }     
     }
 }

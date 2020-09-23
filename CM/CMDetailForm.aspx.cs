@@ -78,7 +78,7 @@ namespace ClaimProject.CM
 
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                     {
-                        btnDeleteCM.Visible = true;
+                        btnDeleteCM.Visible = true;                       
                     }
                     else
                     {
@@ -91,7 +91,7 @@ namespace ClaimProject.CM
                     btnSaveCM.Visible = true;
                     btnEditCM.Visible = false;
                     btnCancelCM.Visible = false;
-                    btnDeleteCM.Visible = false;
+                    btnDeleteCM.Visible = false;                   
                 }
             }
 
@@ -108,6 +108,7 @@ namespace ClaimProject.CM
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                    " JOIN tbl_user u ON cm.cm_user = u.username" +
                     " WHERE cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlBudgetcc.SelectedValue + "' " +
                     " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
@@ -117,6 +118,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                   " JOIN tbl_user u ON cm.cm_user = u.username" +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                    " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlBudgetcc.SelectedValue + "' " +
                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";

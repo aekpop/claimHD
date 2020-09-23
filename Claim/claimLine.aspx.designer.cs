@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.CM {
+namespace ClaimProject.Claim {
     
     
-    public partial class CMLine {
+    public partial class claimLine {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ddlCMLine control.
+        /// ddlClaimLine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCMLine;
+        protected global::System.Web.UI.WebControls.DropDownList ddlClaimLine;
         
         /// <summary>
         /// lbBuild control.
@@ -103,13 +103,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Button btnExport;
         
         /// <summary>
-        /// ddlCMBudget control.
+        /// ddlClaimBudget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCMBudget;
+        protected global::System.Web.UI.WebControls.DropDownList ddlClaimBudget;
         
         /// <summary>
         /// printimg control.
@@ -157,12 +157,12 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbDateNow;
         
         /// <summary>
-        /// gridCMLine control.
+        /// gridClaimLine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridCMLine;
+        protected global::System.Web.UI.WebControls.GridView gridClaimLine;
     }
 }

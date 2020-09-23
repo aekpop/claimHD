@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
+using ClaimProject.Model;
 
 namespace ClaimProject
 {
@@ -18,6 +19,8 @@ namespace ClaimProject
         public string alertTypes = "";
         public string icons = "";
         public string ReModal = "";
+        public string key = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] == null)
@@ -292,7 +295,19 @@ namespace ClaimProject
             {
                 lbRowNum.Text = (gridTranlist.Rows.Count + 1).ToString() + ".";
             }
-         
+
+            LinkButton printReport1 = (LinkButton)(e.Row.FindControl("printReport1"));
+            if (printReport1 != null)
+            {
+                printReport1.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "trans_id");
+                if (DataBinder.Eval(e.Row.DataItem, "complete_stat").ToString() == "1")
+                {
+                    printReport1.Visible = false;
+                }
+                //printReport1.OnClientClick = "document.forms[0].target ='_blank';";
+                //printReport1.t
+            }
+
         }
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {
@@ -415,6 +430,94 @@ namespace ClaimProject
         {
             gridTranlist.PageIndex = e.NewPageIndex;
             LoadPaging();
+        }
+
+        protected void printReport1_Command(object sender, CommandEventArgs e)
+        {
+            GetReport(e.CommandName, 0);           
+        }
+
+        void GetReport(string key, int report)
+        {
+            string startDate = "";
+            string transStat = "";
+            string cpointName = "";            
+            string doc_num = "";
+            //string noteNumber = "";
+            string title = "";
+            string noteTo = "";
+            //string cpointDate = "";
+            string name = "";
+            string cpoint_title = "";
+
+            string sql = "SELECT * FROM tbl_transfer tf JOIN tbl_transfer_status ON trans_stat = trans_stat_id JOIN tbl_toll t ON tf.toll_send = t.toll_id WHERE tf.trans_id = '" + key + "'";
+                     
+            MySqlDataReader rs = function.MySqlSelect(sql);
+            if(rs.Read())
+            {
+                startDate = rs.GetString("date_send");
+                transStat = rs.GetString("trans_stat_name");
+                cpointName = rs.GetString("toll_name");
+                //doc_num = rs.GetString("");
+                //noteNumber = rs.GetString("");
+                //title = rs.GetString("");
+                //noteTo = rs.GetString("");
+            }
+            rs.Close();
+            function.Close();
+
+            string tablelist = "SELECT equipment_nameth AS eqnameth,equipment_no AS eqnumber,equipment_serial AS eqserial " +
+                    " FROM tbl_transfer_action " +
+                    " JOIN tbl_equipment ON tbl_equipment.equipment_id = tbl_transfer_action.trans_equip_id" +
+                    " WHERE transfer_id = '" + key + "'  ";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(tablelist);
+
+            DataSetEquip dts = new DataSetEquip();
+            da.Fill(dts, "tranAct");
+            
+            string strNote = "";
+            title = "ขอ" + transStat + " รายการครุภัณฑ์";
+
+            ReportDocument rpt = new ReportDocument();
+            rpt.Load(Server.MapPath("/equip/reportDocuTran.rpt"));            
+            rpt.SetDataSource(dts);
+
+            rpt.SetParameterValue("txt_to", noteTo);
+            rpt.SetParameterValue("note_title", title);
+            rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));
+
+            if (report == 0)
+            {
+
+                if (Session["UserCpoint"].ToString() == "0")
+                {
+                    cpoint_title += "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร. 02 360 7865";
+                    strNote = cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
+                    name = "นายเผชิญ หุนตระนี";
+                }
+                else
+                {
+                    cpoint_title += "ด่านฯ " + cpointName + " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+                    strNote = "ด่านฯ " + cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
+                    name = "ผจด.";
+                }
+
+                rpt.SetParameterValue("name", name);
+                rpt.SetParameterValue("cpoint_title", cpoint_title);
+                rpt.SetParameterValue("num_title", doc_num);
+                rpt.SetParameterValue("note_text", strNote);
+                rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
+
+            }
+            else if(report == 1)
+            {
+
+            }
+
+            //CRSEquipviewer.ReportSource = rpt;            
+            Session["Report"] = rpt;
+            Session["ReportTitle"] = "บันทึกข้อความ";
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
         }
     }
 }

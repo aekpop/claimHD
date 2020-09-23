@@ -8,21 +8,20 @@
             </div>
             <div class="card-body table-responsive table-sm">
                 <div class="row" >
-                    <div class="col-md">
+                    <!--<div class="col-md">
                         <label class="bmd-label-floating">ปีงบประมาณ : </label>
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
+                    </div>-->
+                    <div class="col-md-3">
+                        <!--<label class="bmd-label-floating">ด่านฯ : </label> -->
+                        <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "  ></asp:DropDownList>
                     </div>
-                    <div class="col-md">
-                        <label class="bmd-label-floating">ด่านฯ : </label>
-                        <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select"  ></asp:DropDownList>
-                    </div>
-                    <div class="col-md" >
-                        <label class="bmd-label-floating" >อาคาร : </label>
-                        <asp:DropDownList ID="ddlAnnex" runat="server" CssClass="form-control custom-select" Visible="false" ></asp:DropDownList>
+                    <div class="col-md-2" >
+                        <!--<label class="bmd-label-floating" >อาคาร : </label> -->
+                        <asp:DropDownList ID="ddlAnnex" runat="server" CssClass="form-control custom-select " Visible="false" ></asp:DropDownList>
                     </div>                   
-                    <div class="col-md">
-                        <br />
-                        <asp:Button ID="btnSearchEdit" runat="server" Text="ค้นหา" CssClass="btn btn-success" OnClick="btnSearchEdit_Click"/>
+                    <div class="col-md-2">                      
+                        <asp:Button ID="btnSearchEdit" runat="server" font-size="Medium" CssClass="btn btn-success " OnClick="btnSearchEdit_Click" Text="ค้นหา"/>
                     </div>
 
                 </div>
@@ -30,7 +29,7 @@
                 <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
-                        HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
+                        HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="21px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
@@ -69,30 +68,16 @@
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แก้ไข" >
-                                <ItemTemplate>
-                                    <asp:Label ID="btnDateEditCM" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาที่แก้ไข" >
-                                <ItemTemplate>
-                                    <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" >
-                                <ItemTemplate>
-                                    <asp:Label ID="lbStatus" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            
                         </Columns>
                         <EditRowStyle BackColor="#ffffff" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
 
-                        <HeaderStyle BackColor="#507CD1" CssClass="text-center" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                        <HeaderStyle Font-Bold="True" ></HeaderStyle>
 
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
 
-                        <RowStyle CssClass="text-center" BackColor="#ffffff"></RowStyle>
+                        <RowStyle CssClass="text-left" BackColor="#ffffff"></RowStyle>
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
