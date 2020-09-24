@@ -13,7 +13,7 @@
                         <i class="fas fa-wrench"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMDetailForm">แจ้งซ่อมอุปกรณ์ CM</a>
+                        <a class="nav-link" href="/CM/CMDetailForm">แจ้งซ่อม</a>
                     </h4>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                         <i class="fas fa-tools"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMEditForm">บริษัทเข้าซ่อม CM</a>
+                        <a class="nav-link" href="/CM/CMEditForm">บริษัทเข้าซ่อม</a>
                     </h4>
                 </div>
             </div>
@@ -39,19 +39,19 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบผลการ CM</a>
+                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบผล</a>
                     </h4>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div1">
             <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
+                <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fab fa-line"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMLine">รายงานแจ้งซ่อม CM</a>
+                        <a class="nav-link" href="/CM/CMLine">ส่งรายงาน Line</a>
                     </h4>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMReport">รายงานสรุป CM</a>
+                        <a class="nav-link" href="/CM/CMReport">รายงานสรุปรวม</a>
                     </h4>
                 </div>
             </div>

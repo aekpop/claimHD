@@ -116,16 +116,16 @@
                         </Columns>
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#507CD1"  Font-Bold="True" ForeColor="White" Font-Size="Larger" />
+                        <HeaderStyle BackColor="#d63152"  Font-Bold="True" ForeColor="White" Font-Size="Larger" />
                         <PagerStyle BackColor="#2461BF" ForeColor="White" />
-                        <RowStyle BackColor="#EFF3FB"></RowStyle>
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        
+                        <SelectedRowStyle BackColor="#eddde0" Font-Bold="True"  />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>                                             
-                </br>
+                
                         
             </div>
         </div>
