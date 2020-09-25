@@ -11,29 +11,55 @@
                     <asp:Label ID="Label6" runat="server" Text="ด่านฯ : "></asp:Label>
                 </div>
                 <div class="col-md-2">
-                    <asp:DropDownList ID="txtSearchCpoint" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
+                    <asp:DropDownList ID="txtSearchCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
                 <div class="col-md-1 text-right">
-                    <asp:Label ID="Label1" runat="server" Text="Annex :"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="อาคารย่อย :"></asp:Label>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
+                <div class="col-md-1 text-right">
+                    <asp:Label ID="lbChannel" runat="server" Text="ตู้ :"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control"></asp:DropDownList>
+                </div>
            
-            
-                <div class="col-md-2 text-right">
+                <div class="col-md-1 text-right">
                     <asp:Label ID="Label5" runat="server" Text="สถานะ : "></asp:Label>
                 </div>
                 <div class="col-md-2">
                     <asp:DropDownList ID="txtSearchStatus" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-1">
+                <!--<div class="col-md-1">
                     <asp:CheckBox ID="CheckDeviceNotDamaged" runat="server" />
-                    <label>ยกเว้น</label>
+                    <label-->
+            </div>
+            </br>
+
+            <div class="row">
+                <div class="col-md-1 text-right">
+                    <asp:Label ID="lbDateStart" runat="server" Text="ตั้งแต่วันที่ : "></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker"></asp:TextBox>
+                </div>
+                <div class="col-md-1 text-right">
+                    <asp:Label ID="lbDateEnd" runat="server" Text="ถึงวันที่ : "></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker"></asp:TextBox>
+                </div>
+                <div class="col-md-1 text-right">
+                    <asp:Label ID="lbDeviceDamage" runat="server" Text="อุปกรณ์ :"></asp:Label>
+                </div>
+                <div class="col-md-5">
+                    <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select"></asp:DropDownList>
                 </div>
             </div>
+            </br>
             <div class="row">
                 <div class="col-md-6 text-right">
                     <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
@@ -49,7 +75,8 @@
             <div class="card-body table-responsive table-sm">
                 <asp:GridView ID="ClaimGridView" runat="server"
                     AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
-                    HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
+                    HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" 
+                    RowStyle-CssClass="text-left" GridLines="None"
                     OnRowDataBound="ClaimGridView_RowDataBound" Font-Size="19px">
                     <Columns>
                         <asp:TemplateField HeaderText="ลำดับ">

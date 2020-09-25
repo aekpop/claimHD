@@ -5,7 +5,7 @@
         <h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>
 
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
             <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                     
@@ -13,57 +13,58 @@
                         <i class="fas fa-wrench"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMDetailForm">แจ้งซ่อมอุปกรณ์ CM</a>
+                        <a class="nav-link" href="/CM/CMDetailForm">แจ้งซ่อม</a>
                     </h4>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div4">
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div4">
             <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
+                <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
                         <i class="fas fa-tools"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMEditForm">บริษัทเข้าซ่อม CM</a>
+                        <a class="nav-link" href="/CM/CMEditForm">บริษัทเข้าซ่อม</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div1">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="fab fa-line"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/CM/CMLine">ส่งรายงาน Line</a>
                     </h4>
                 </div>
             </div>
         </div>
     </div>
     <div class="row" style="height:100px">
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div6">
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div6">
             <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
+                <div class="card-header card-header-danger card-header-icon">
                     <div class="card-icon">
                         <i class="fas fa-eye"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบผลการ CM</a>
+                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบผล</a>
                     </h4>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div1">
+        
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div7">
             <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
+                <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMLine">รายงานแจ้งซ่อม CM</a>
-                    </h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div7">
-            <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                    <div class="card-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMReport">รายงานสรุป CM</a>
+                        <a class="nav-link" href="/CM/CMReport">รายงานสรุปรวม</a>
                     </h4>
                 </div>
             </div>
@@ -76,7 +77,7 @@
     
 
     <div class="row" runat="server" id="divpm2">
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div2">
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div2">
             <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
@@ -88,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div5">
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div5">
             <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
@@ -100,9 +101,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6" runat="server" id="Div3">
+    
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div3">
             <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
@@ -115,4 +115,5 @@
             </div>
         </div>
     </div>
+    
 </asp:Content>

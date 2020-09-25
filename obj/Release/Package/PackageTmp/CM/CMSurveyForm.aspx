@@ -7,10 +7,10 @@
                 <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์</h3>
             </div>
             <div class="card-body table-responsive table-sm">
-                <asp:Panel ID="Panel1" runat="server" ScrollBars="Both" Height="450px">
+                <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
-                        HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
+                        HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder" 
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="19px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
@@ -26,7 +26,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ช่องทาง" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_channel") %>'></asp:Label>
+                                    <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="อุปกรณ์" >
@@ -59,26 +59,18 @@
                                     <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" >
-                                <ItemTemplate>
-                                    <asp:Label ID="lbStatus" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            
                             <asp:TemplateField HeaderText="วิธีแก้ไข" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbMethod" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_method") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="หมายเหตุ" >
-                                <ItemTemplate>
-                                    <asp:Label ID="lbNote" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_note") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            
                             <asp:TemplateField HeaderText="อนุมัติ" >
                                 <ItemTemplate>
-                                    <div class="row">
-                                        <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="fas text-success">&#xf058;</asp:LinkButton>
-                                        <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancel_Command" OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');" CssClass="fas text-danger">&#xf057;</asp:LinkButton>
+                                    <div class="row" >
+                                        <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="fas text-success m-1">&#xf058;</asp:LinkButton>
+                                        <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancel_Command" OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');" CssClass="fas text-danger m-1">&#xf057;</asp:LinkButton>
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -86,11 +78,11 @@
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
 
-                        <HeaderStyle BackColor="#507CD1" CssClass="text-center" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                        <HeaderStyle CssClass="text-left" Font-Bold="True"></HeaderStyle>
 
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
 
-                        <RowStyle CssClass="text-center" BackColor="#ffffff"></RowStyle>
+                        <RowStyle CssClass="text-left" BackColor="#ffffff"></RowStyle>
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />

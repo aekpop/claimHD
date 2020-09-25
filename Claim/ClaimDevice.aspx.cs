@@ -25,11 +25,16 @@ namespace ClaimProject.Claim
                 function.getListItem(txtSearchStatus, "SELECT * FROM tbl_status ORDER by status_id", "status_name", "status_id");
                 txtSearchStatus.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 string sql = "";
+                string sqlCh = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
                     function.getListItem(txtSearchCpoint, sql, "cpoint_name", "cpoint_id");
                     txtSearchCpoint.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+
+                    sqlCh = "SELECT * FROM tbl_location where locate_group = '1' ORDER BY locate_id";
+                    function.getListItem(txtSearchChannel, sqlCh, "locate_name", "locate_id");
+                    txtSearchChannel.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 }
                 else
                 {
@@ -37,6 +42,12 @@ namespace ClaimProject.Claim
                     function.getListItem(txtSearchCpoint, sql, "cpoint_name", "cpoint_id");
                     BindData(txtSearchCpoint.SelectedValue, txtPoint.Text.Trim(), 0);
                 }
+
+                string sql_Device = "SELECT * FROM tbl_device ORDER BY device_name";
+                function.getListItem(txtDeviceDamage, sql_Device, "device_name", "device_id");
+
+
+                txtDeviceDamage.Items.Insert(0, new ListItem("ทั้งหมด", ""));
             }
         }
 
@@ -62,10 +73,46 @@ namespace ClaimProject.Claim
             }
             try
             {
-                sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
-                      "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
-                      "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
-                      "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
+                if (txtSearchChannel.SelectedValue == "")
+                {
+                    if(txtDeviceDamage.SelectedValue == "")
+                    {
+                        sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
+                                "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
+                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +                                
+                                "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
+                    }
+                    else
+                    {
+                        sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
+                                "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
+                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
+                                "AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + "  " +
+                                "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
+                    }
+                    
+                }
+                else
+                {
+                    if (txtDeviceDamage.SelectedValue == "")
+                    {
+                        sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
+                                "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
+                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
+                                "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' " +
+                                "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
+                    }
+                    else
+                    {
+                        sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
+                                "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
+                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
+                                "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + " " +
+                                "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
+                    }
+                    
+                }
+                
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);

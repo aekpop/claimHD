@@ -725,7 +725,12 @@ namespace ClaimProject.CM
                 
                 HeaderCell = new TableCell();
                 HeaderCell.Text = lbDatep.Text;
-                HeaderCell.ColumnSpan = 3;
+                HeaderCell.ColumnSpan = 1;
+                HeaderGridRow.Cells.Add(HeaderCell);
+
+                HeaderCell = new TableCell();
+                HeaderCell.Text = "รายงานแจ้งซ่อมอุปกรณ์ CM";
+                HeaderCell.ColumnSpan = 2;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
                 gridCMLine.Controls[0].Controls.AddAt(0, HeaderGridRow);
