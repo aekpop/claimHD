@@ -12,6 +12,8 @@ namespace ClaimProject.CM
     public partial class CMSurveyForm : System.Web.UI.Page
     {
         ClaimFunction function = new ClaimFunction();
+        public string EditModal = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] == null)
@@ -92,6 +94,36 @@ namespace ClaimProject.CM
             {
                 btnCancel.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
             }
+
+            LinkButton lbref = (LinkButton)(e.Row.FindControl("lbref"));
+            if (lbref != null)
+            {
+                lbref.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
+            }
+
+            LinkButton lbCpoint = (LinkButton)(e.Row.FindControl("lbCpoint"));
+            if (lbCpoint != null)
+            {
+                lbCpoint.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
+            }
+
+            LinkButton lbChannel = (LinkButton)(e.Row.FindControl("lbChannel"));
+            if (lbChannel != null)
+            {
+                lbChannel.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
+            }
+
+            LinkButton lbDeviceName = (LinkButton)(e.Row.FindControl("lbDeviceName"));
+            if (lbDeviceName != null)
+            {
+                lbDeviceName.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
+            }
+
+            LinkButton lbtnStatusUpdateModal = (LinkButton)(e.Row.FindControl("lbtnStatusUpdateModal"));
+            if (lbtnStatusUpdateModal != null)
+            {
+                lbtnStatusUpdateModal.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
+            }
         }
 
         protected void btnStatusUpdate_Command(object sender, CommandEventArgs e)
@@ -111,6 +143,54 @@ namespace ClaimProject.CM
         protected void btnCancel_Command(object sender, CommandEventArgs e)
         {
             string sql = "UPDATE tbl_cm_detail SET cm_detail_edate='',cm_detail_etime='',cm_detail_method ='',cm_detail_status_id = '0' WHERE cm_detail_id = '" + e.CommandName + "'";
+            if (function.MySqlQuery(sql))
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                BindData("");
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
+            }
+        }
+
+        protected void lbref_Command(object sender, CommandEventArgs e)
+        {
+            string imgS = "";
+            string imgE = "";
+            EditModal = e.CommandName;
+            pkeq.Text = EditModal;
+
+            string sqlEdit = "SELECT * FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
+                " JOIN tbl_cpoint e ON c.cm_cpoint = e.cpoint_id JOIN tbl_location f ON c.cm_detail_channel = f.locate_id " +
+                " JOIN tbl_user g ON c.cm_user = g.username WHERE cm_detail_id = '"+ pkeq.Text + "' ";
+
+            MySqlDataReader rt = function.MySqlSelect(sqlEdit);
+            if(rt.Read())
+            {
+                imgS = rt.GetString("cm_detail_simg");
+                imgE = rt.GetString("cm_detail_eimg");
+                ImgEditEQ.ImageUrl = "~" + imgS;
+                ImgEditEQE.ImageUrl = "~" + imgE;
+                lbrefRecheck.Text = rt.GetString("cm_detail_id");
+                lbCpointRecheck.Text = rt.GetString("cpoint_name");
+                lbPointRecheck.Text = rt.GetString("cm_point");
+                lbChannelRecheck.Text = rt.GetString("locate_name");
+                lbdeviceRecheck.Text = rt.GetString("device_name");
+                lbProblemRecheck.Text = rt.GetString("cm_detail_problem");
+                lbMethodRecheck.Text = rt.GetString("cm_detail_method");
+                lbNodeRecheck.Text = rt.GetString("cm_detail_note");
+                lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
+                lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น.";
+                lbDateERecheck.Text = rt.GetString("cm_detail_edate");
+                lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
+                lbUserRecheck.Text = rt.GetString("name");
+            }
+        }
+
+        protected void lbtnStatusUpdateModal_Command(object sender, CommandEventArgs e)
+        {
+            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '2' WHERE cm_detail_id = '" + pkeq.Text + "'";
             if (function.MySqlQuery(sql))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);

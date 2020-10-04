@@ -512,7 +512,7 @@ namespace ClaimProject.equip
 
         protected void btnBackHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/equip/EquipAddAll.aspx");
+            Response.Redirect("/equip/EquipMain.aspx");
         }
 
         protected void lbtnDeleteRow_Click(object sender, EventArgs e)

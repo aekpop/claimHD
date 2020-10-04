@@ -150,7 +150,8 @@ namespace ClaimProject.User.Add
                 MySqlDataReader rs = function.MySqlSelect(sql_check);
                 if (!rs.Read())
                 {
-                    string sql = "INSERT INTO tbl_user (username,password,name,level,user_cpoint,delete_status) VALUES ('" + txtUser.Text.Trim() + "','" + txtPass.Text.Trim() + "','" + txtName.Text + "','" + txtLevel.SelectedValue + "','" + cpoint + "','0')";
+                    string sql = "INSERT INTO tbl_user (username,password,name,level,eq_level,user_cpoint,delete_status) VALUES ('" + txtUser.Text.Trim() + "','" + txtPass.Text.Trim() + "'" +
+                        ",'" + txtName.Text + "','" + txtLevel.SelectedValue + "','0','" + cpoint + "','0')";
                     if (function.MySqlQuery(sql))
                     {
                         script = "บันทึกข้อมูลสำเร็จ";

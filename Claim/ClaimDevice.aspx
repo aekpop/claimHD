@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimDevice.aspx.cs" Inherits="ClaimProject.Claim.ClaimDevice" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="card" style="z-index: 0">
+    <div Id="lbSearch" class="card" style="z-index: 0; font-size: medium">
         <div class="card-header card-header-warning">
             <h3 class="card-title">รายการอุปกรณ์ค้างซ่อม</h3>
         </div>
@@ -40,6 +40,10 @@
             </br>
 
             <div class="row">
+                <div class =" col-md-1 text-right">
+                    <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged"/>
+                    <asp:Label Id ="lbCheckAllDay" runat="server" Text="AllDay" ></asp:Label> 
+                </div>
                 <div class="col-md-1 text-right">
                     <asp:Label ID="lbDateStart" runat="server" Text="ตั้งแต่วันที่ : "></asp:Label>
                 </div>
@@ -55,29 +59,37 @@
                 <div class="col-md-1 text-right">
                     <asp:Label ID="lbDeviceDamage" runat="server" Text="อุปกรณ์ :"></asp:Label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select"></asp:DropDownList>
                 </div>
             </div>
-            </br>
-            <div class="row">
+           
+            <div class="row">              
                 <div class="col-md-6 text-right">
                     <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
                 </div>
+
+                <div class="col-md-6 text-left">
+                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnExport_Click">&#xf1c3; Export To Excel</asp:LinkButton>
+                </div>
             </div>
+            <asp:Label ID="lbClaimNull" runat="server" Text=""></asp:Label>
         </div>
-    </div>
-    <div id="Div1" runat="server">
-        <div class="card" style="z-index: 0">
-            <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการอุบัติเหตุ</h3>
-            </div>
-            <div class="card-body table-responsive table-sm">
+        <hr />
+   </div>
+    <div id="Div1" runat="server" >
+        <!--<div class="card" style="z-index: 0"> -->           
+            <!--<div class="card-body table-responsive table-sm">-->
+
                 <asp:GridView ID="ClaimGridView" runat="server"
-                    AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
-                    HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" 
-                    RowStyle-CssClass="text-left" GridLines="None"
-                    OnRowDataBound="ClaimGridView_RowDataBound" Font-Size="19px">
+                    AutoGenerateColumns="False" 
+                    CssClass="table table-hover table-sm"
+                    HeaderStyle-CssClass="text-left" 
+                    HeaderStyle-BackColor="ActiveBorder" 
+                    RowStyle-CssClass="text-left" 
+                    GridLines="None"                    
+                    OnRowDataBound="ClaimGridView_RowDataBound" 
+                    Font-Size="14px">
                     <Columns>
                         <asp:TemplateField HeaderText="ลำดับ">
                             <ItemTemplate>
@@ -114,14 +126,29 @@
                                 <asp:Label ID="lbClaimSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_detail_time")+" น." %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="นับเวลา">
+                        <ItemTemplate>
+                            <asp:Label ID="lbDay" runat="server"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                         <asp:TemplateField HeaderText="สถานะ">
                             <ItemTemplate>
                                 <asp:Label ID="lbClaimStatus" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                    </Columns>
+                    </Columns>                    
                 </asp:GridView>
             </div>
-        </div>
-    </div>
+        <!--</div>-->
+   <!-- </div> -->
+    <script>
+            function btnSearch_Click() {
+                var x = document.getElementById("lbSearch");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+</script>
 </asp:Content>

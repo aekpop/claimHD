@@ -1,18 +1,26 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="claimLine.aspx.cs" Inherits="ClaimProject.Claim.claimLine" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="claimLine.aspx.cs" Inherits="ClaimProject.Claim.claimLine"  %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>ClaimLine</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        
+
+
+
+
+ <form id="form1" runat="server">
+       
             <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
+
+
+    
 
             <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
+                <h3 class="card-title">ส่ง Line</h3>
             </div>
             <div class="card-body table-responsive table-md" >
                 <div class="row">
@@ -71,7 +79,7 @@
                         HeaderStyle-BackColor="ActiveBorder" 
                         OnRowDataBound="gridClaimLine_RowDataBound" 
                         Font-Size="14px"  CellPadding="4" 
-                        ForeColor="#333333" GridLines="Both" 
+                        ForeColor="#333333" GridLines="Both"                         
                         BorderColor="Black" OnRowCreated="gridClaimLine_RowCreated">
                         
                         <AlternatingRowStyle BackColor="White"  />                                             
@@ -96,7 +104,7 @@
                                     <asp:Label ID="lbChannel"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_detail_cb_claim") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="400px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="400px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
@@ -130,7 +138,7 @@
             </div>
         </div>
 
-        <script src="/Scripts/html2canvas.js"></script> 
+    <script src="/Scripts/html2canvas.js"></script> 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -168,6 +176,7 @@
             }); 
     </script>        
 
-    </form>
+   </form>
 </body>
 </html>
+

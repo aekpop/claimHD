@@ -4,10 +4,13 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Hosting;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+
 
 namespace ClaimProject.Config
 {
@@ -18,6 +21,12 @@ namespace ClaimProject.Config
         public MySqlConnection conn;
                                                                                     //charset=tis620
         string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+
+        internal void getListItem(HtmlGenericControl ddlCMBudget, string v1, string v2, string v3)
+        {
+            throw new NotImplementedException();
+        }
+
         //string strConnString = "Server=10.6.3.201;User Id=claimtwo; Password=123456789;charset=utf8; Database=db_claim; Pooling=false";
         //string strConnString = "Server=10.6.3.213;User Id=heaven; Password=admin1234;charset=utf8; Database=db_claim; Pooling=false";  
         //string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
@@ -647,5 +656,15 @@ namespace ClaimProject.Config
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
         }*/
-    }
+
+        public class StatCM
+        {            
+            public int cm_cpoint { get; set; }
+            public int cm_point { get; set; }
+            public int cm_budget { get; set; }
+            public int cm_detail_status_id { get; set; }
+            public int cm_detail_driver_id { get; set; }
+        }
+
+    }  
 }

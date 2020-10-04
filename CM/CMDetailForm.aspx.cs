@@ -28,7 +28,7 @@ namespace ClaimProject.CM
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
                 function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group = '1' Order By locate_id ASC", "locate_name", "locate_id");
                 BindData();
-                function.getListItem(ddlBudgetcc, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                //function.getListItem(ddlBudgetcc, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
@@ -109,8 +109,8 @@ namespace ClaimProject.CM
                     " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_user u ON cm.cm_user = u.username" +
-                    " WHERE cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlBudgetcc.SelectedValue + "' " +
-                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    " WHERE cm.cm_detail_status_id='0' " +
+                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
             else
             {
@@ -120,8 +120,8 @@ namespace ClaimProject.CM
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                    " JOIN tbl_user u ON cm.cm_user = u.username" +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlBudgetcc.SelectedValue + "' " +
-                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                   " AND cm.cm_detail_status_id='0' " +
+                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
@@ -153,7 +153,7 @@ namespace ClaimProject.CM
             }
             else
             {
-                return "0";
+                return "/CM/Upload/NoImageAvailable.jpg";
             }
             
         }

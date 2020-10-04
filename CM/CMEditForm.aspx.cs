@@ -37,7 +37,7 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
-                function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                //function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 function.getListItem(ddlAnnex, "SELECT cm_point FROM tbl_cm_detail  GROUP BY cm_point ORDER by cm_point ASC", "cm_point", "cm_point");
                 
 
@@ -73,7 +73,8 @@ namespace ClaimProject.CM
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                    " WHERE cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " +
+                    " JOIN tbl_user u ON cm.cm_user = u.username " + 
+                    " WHERE cm.cm_detail_status_id='0' " +
                     " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
                 else
@@ -82,8 +83,9 @@ namespace ClaimProject.CM
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                   " JOIN tbl_user u ON cm.cm_user = u.username " +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
                 
@@ -94,8 +96,9 @@ namespace ClaimProject.CM
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                   " WHERE cm.cm_cpoint = '"+checkCpoint+"' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
+                   " JOIN tbl_user u ON cm.cm_user = u.username " +
+                   " WHERE cm.cm_cpoint = '" +checkCpoint+"' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
                 

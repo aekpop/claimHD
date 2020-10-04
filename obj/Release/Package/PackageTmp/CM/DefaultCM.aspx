@@ -25,7 +25,7 @@
                         <i class="fas fa-tools"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMEditForm">บริษัทเข้าซ่อม</a>
+                        <a class="nav-link" href="/CM/CMEditForm">การแก้ไข</a>
                     </h4>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <i class="fab fa-line"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMLine">ส่งรายงาน Line</a>
+                        <a class="nav-link" href="/CM/CMLine">ส่ง Line</a>
                     </h4>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบผล</a>
+                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบ</a>
                     </h4>
                 </div>
             </div>
@@ -64,11 +64,25 @@
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMReport">รายงานสรุปรวม</a>
+                        <a class="nav-link" href="/CM/CMReport">สรุปรายการ</a>
                     </h4>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div8">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/CM/CMStatForm">สถิติ</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div runat="server" id="divpm" >
         <h3 class="bg-primary " style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Preventive Maintenance : PM</h3>

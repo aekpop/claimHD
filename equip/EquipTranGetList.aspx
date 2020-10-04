@@ -3,7 +3,7 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักครุภัณฑ์"  OnClick="btnMainEQ_Click" CssClass="btn" />
+    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header "  style="background-color:#559101;height:60px">
@@ -11,33 +11,33 @@
         </div>
             <div class="card-body table-responsive table-sm">
 
-                <div class="row" id="divSendSearch"  runat="server" style="background-color:#eaffc4;height:120px;padding:1px 1px 1px 1px;" >
+                <div class="row" id="divSendSearch"  runat="server" >
                     <div class="row" >
-                        <div class="col-md" style="padding:1px 1px 1px 50px" >
+                        <div class="col-md"  >
                             <div class="form-group">
-                            <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
                                 <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control" Width="120px" ></asp:TextBox>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:1px 1px 1px 5px" >
+                        <div class="col-md" >
                             <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" Text="ประเภทการโอนย้าย : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="ประเภทโอนย้าย : " ></asp:Label>
                             <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:1px 1px 1px 5px" >
+                        <div class="col-md"  >
                             <div class="form-group">
-                            <asp:Label ID="Label2" runat="server" Text="ด่านต้นทาง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="ด่านต้นทาง : "  ></asp:Label>
                             <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:1px 1px 1px 5px">
+                        <div class="col-md" >
                             <div class="form-group">
-                            <asp:Label ID="Label3" runat="server" Text="สถานะ : " Font-Size="Large" Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text="สถานะ : "  ></asp:Label>
                             <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:30px 1px 1px 15px">
+                        <div class="col-md" >
                             <div class="form-group">
                             <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
                            </div>

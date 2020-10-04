@@ -4,44 +4,46 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
-    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn" />
-    <asp:Button runat="server" ID="btnnewTranpage" Font-Bold="true" BackColor="#990303" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="แจ้งใหม่"  OnClick="btnnewTranpage_Click" CssClass="btn" OnClientClick="return CheckIsRepeat();"/>
+    <div class="container-fluid">
+    
+    <asp:Button runat="server" ID="btnMainEQ" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
+    <asp:Button runat="server" ID="btnnewTranpage" Text="แจ้งใหม่"  OnClick="btnnewTranpage_Click" CssClass="btn btn-danger" OnClientClick="return CheckIsRepeat();"/>
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
-        <div class="card-header "  style="background-color:#01914b;height:60px">
-            <h3 class="card-title" style="color:white;height:35px;font-size:30px">รายการโอนย้ายครุภัณฑ์ (ส่งออก)</h3>
+        <div class="card-header bg-success " >
+            <h3 class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่งออก)</h3>
         </div>
             <div class="card-body table-responsive table-sm">
 
-                <div class="row" id="divSendSearch"  runat="server" style="background-color:#cdfae4;height:120px;padding:1px 1px 1px 1px;" >
+                <div class="row" style="font-size:medium;" id="divSendSearch"  runat="server"  >
                     <div class="row" >
-                        <div class="col-md" style="padding:1px 1px 1px 50px" >
+                        <div class="col-md-3"  >
                             <div class="form-group">
-                                <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control" Width="120px" ></asp:TextBox>
+                                <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
+                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto"  ></asp:TextBox>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:1px 1px 1px 5px" >
+                        <div class="col-md-3" >
                             <div class="form-group">
-                                <asp:Label ID="Label1" runat="server" Text="ประเภทการโอนย้าย : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                                <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                                <asp:Label ID="Label1" runat="server" Text="ประเภทการโอนย้าย : "  ></asp:Label>
+                                <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control col-auto" ></asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-md" style="padding:1px 1px 1px 5px" >
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <asp:Label ID="Label2" runat="server" Text="ด่านปลายทาง : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                                <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                                <asp:Label ID="Label2" runat="server" Text="ด่านปลายทาง : " ></asp:Label>
+                                <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control col-auto"  ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:1px 1px 1px 5px">
+                        <div class="col-md-2" >
                             <div class="form-group">
-                                <asp:Label ID="Label3" runat="server" Text="สถานะ : " Font-Size="Large" Font-Bold="true" ></asp:Label>
-                                <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                                <asp:Label ID="Label3" runat="server" Text="สถานะ : "  ></asp:Label>
+                                <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control col-auto"  ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" style="padding:30px 1px 1px 15px">
+                        <div class="col-md-1" >
                             <div class="form-group">
-                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search bottom" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
                             </div>
                         </div>
                     </div>
@@ -54,9 +56,10 @@
                     DataKeyNames="trans_id" 
                     OnRowDataBound="gridTranlist_RowDataBound"
                     CssClass="table table-hover table-condensed table-sm"
+                    HeaderStyle-Font-Size="18px"
                     GridLines="None" 
                     AllowSorting="true"                   
-                    Font-Size="19px" 
+                    Font-Size="16px" 
                     OnPageIndexChanging="gridTranlist_PageIndexChanging" 
                     PagerSettings-Mode="NumericFirstLast"  
                     PageSize="100" 
@@ -99,7 +102,7 @@
                                 <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width ="45px" ControlStyle-Font-Size ="Medium">
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
                             </ItemTemplate>
@@ -163,7 +166,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>

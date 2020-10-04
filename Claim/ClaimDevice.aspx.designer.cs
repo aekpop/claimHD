@@ -94,6 +94,24 @@ namespace ClaimProject.Claim {
         protected global::System.Web.UI.WebControls.CheckBox CheckDeviceNotDamaged;
         
         /// <summary>
+        /// CheckAllDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckAllDay;
+        
+        /// <summary>
+        /// lbCheckAllDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCheckAllDay;
+        
+        /// <summary>
         /// lbDateStart control.
         /// </summary>
         /// <remarks>
@@ -155,6 +173,24 @@ namespace ClaimProject.Claim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        
+        /// <summary>
+        /// btnExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnExport;
+        
+        /// <summary>
+        /// lbClaimNull control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbClaimNull;
         
         /// <summary>
         /// Div1 control.

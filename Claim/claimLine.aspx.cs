@@ -25,7 +25,7 @@ namespace ClaimProject.Claim
 
             if (!this.IsPostBack)
             {
-                function.getListItem(ddlClaimBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                //function.getListItem(ddlClaimBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
 
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
@@ -52,16 +52,16 @@ namespace ClaimProject.Claim
             {
                 if (lbBuild.Visible == true)
                 {
-                    string sqlchN = "SELECT COUNT(*) AS num FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
-                    " AND cm.cm_budget = '" + ddlClaimBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
-                    string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
-                    " AND cm.cm_budget = '" + ddlClaimBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    string sqlchN = "SELECT COUNT(*) AS num FROM tbl_claim cl JOIN  tbl_cpoint cp ON cl.claim_cpoint = cp.cpoint_id " +
+                    "JOIN tbl_device_damaged d ON d.claim_id = cl.claim_id JOIN tbl_claim_com t ON cl.claim_id = t.claim_id " +
+                    "JOIN tbl_device v ON v.device_id = d.device_id JOIN tbl_status s ON cl.claim_status = s.status_id " +
+                    " WHERE cl.claim_status BETWEEN 1 AND 4 AND cp.cpoint_id = '" + cpointt + "'  AND d.device_damaged_delete = '0' " +
+                    " AND cl.claim_point LIKE '%" + ddlAnnex.SelectedValue + "%'  ORDER BY STR_TO_DATE(cl.claim_start_date, '%d-%m-%Y') DESC";
+                    string sql = "SELECT * FROM tbl_claim cl JOIN  tbl_cpoint cp ON cl.claim_cpoint = cp.cpoint_id " +
+                    "JOIN tbl_device_damaged d ON d.claim_id = cl.claim_id JOIN tbl_claim_com t ON cl.claim_id = t.claim_id " +
+                    "JOIN tbl_device v ON v.device_id = d.device_id JOIN tbl_status s ON cl.claim_status = s.status_id " +
+                    " WHERE cl.claim_status BETWEEN 1 AND 4 AND cp.cpoint_id = '" + cpointt + "' AND d.device_damaged_delete = '0' " +
+                    " AND cl.claim_point LIKE '%" + ddlAnnex.SelectedValue + "%' ORDER BY STR_TO_DATE(cl.claim_start_date, '%d-%m-%Y') DESC";
                     MySqlDataReader chK = function.MySqlSelect(sqlchN);
                     if (chK.Read())
                     {
@@ -77,24 +77,24 @@ namespace ClaimProject.Claim
                         {
                             // สร้าง ตารางเสมือน Datatableพร้อม กำหนดฟิล
                             DataTable dtt = new DataTable();
-                            dtt.Columns.Add(new DataColumn("cm_detail_id", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_sdate", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_stime", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("locate_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_id", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_start_date", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_detail_time", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_detail_cb_claim", typeof(string)));
                             dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_problem", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("device_damaged", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("status_name", typeof(string)));
                             //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
                             DataRow drr = null;
                             // สร้างแถวใหม่พร้อมกำหนดค่าลงไป
                             drr = dtt.NewRow();
-                            drr["cm_detail_id"] = string.Empty;
-                            drr["cm_detail_sdate"] = string.Empty;
-                            drr["cm_detail_stime"] = string.Empty;
-                            drr["locate_name"] = string.Empty;
+                            drr["claim_id"] = string.Empty;
+                            drr["claim_start_date"] = string.Empty;
+                            drr["claim_detail_time"] = string.Empty;
+                            drr["claim_detail_cb_claim"] = string.Empty;
                             drr["device_name"] = " ไม่มีอุปกรณ์เสียหาย ";
-                            drr["cm_detail_problem"] = string.Empty;
-                            drr["cm_detail_status_id"] = string.Empty;
+                            drr["device_damaged"] = string.Empty;
+                            drr["status_name"] = string.Empty;
                             dtt.Rows.Add(drr);
                             gridClaimLine.DataSource = dtt;
                             gridClaimLine.DataBind();
@@ -131,24 +131,24 @@ namespace ClaimProject.Claim
                         {
                             // สร้าง ตารางเสมือน Datatableพร้อม กำหนดฟิล
                             DataTable dtt = new DataTable();
-                            dtt.Columns.Add(new DataColumn("cm_detail_id", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_sdate", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_stime", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("locate_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_id", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_start_date", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_detail_time", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("claim_detail_cb_claim", typeof(string)));
                             dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_problem", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("device_damaged", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
                             //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
                             DataRow drr = null;
                             // สร้างแถวใหม่พร้อมกำหนดค่าลงไป
                             drr = dtt.NewRow();
-                            drr["cm_detail_id"] = string.Empty;
-                            drr["cm_detail_sdate"] = string.Empty;
-                            drr["cm_detail_stime"] = string.Empty;
-                            drr["locate_name"] = string.Empty;
+                            drr["claim_id"] = string.Empty;
+                            drr["claim_start_date"] = string.Empty;
+                            drr["claim_detail_time"] = string.Empty;
+                            drr["claim_detail_cb_claim"] = string.Empty;
                             drr["device_name"] = " ไม่มีอุปกรณ์เสียหาย ";
-                            drr["cm_detail_problem"] = string.Empty;
-                            drr["cm_detail_status_id"] = string.Empty;
+                            drr["device_damaged"] = string.Empty;
+                            drr["status_name"] = string.Empty;
                             dtt.Rows.Add(drr);
                             gridClaimLine.DataSource = dtt;
                             gridClaimLine.DataBind();
@@ -161,7 +161,41 @@ namespace ClaimProject.Claim
 
         protected void ddlClaimLine_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ddlClaimLine.SelectedValue == "703")
+            {
+                lbBuild.Visible = true;
+                ddlAnnex.Visible = true;
+            }
+            else if (ddlClaimLine.SelectedValue == "704")
+            {
+                lbBuild.Visible = true;
+                ddlAnnex.Visible = true;
+            }
+            else if (ddlClaimLine.SelectedValue == "706")
+            {
+                lbBuild.Visible = true;
+                ddlAnnex.Visible = true;
+            }
+            else if (ddlClaimLine.SelectedValue == "707")
+            {
+                lbBuild.Visible = true;
+                ddlAnnex.Visible = true;
+            }
+            else if (ddlClaimLine.SelectedValue == "708")
+            {
+                lbBuild.Visible = true;
+                ddlAnnex.Visible = true;
+            }
+            else if (ddlClaimLine.SelectedValue == "709")
+            {
+                lbBuild.Visible = true;
+                ddlAnnex.Visible = true;
+            }
+            else
+            {
+                lbBuild.Visible = false;
+                ddlAnnex.Visible = false;
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

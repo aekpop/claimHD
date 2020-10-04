@@ -364,6 +364,15 @@ namespace ClaimProject.Claim {
         protected global::System.Web.UI.WebControls.TextBox txtInsurer;
         
         /// <summary>
+        /// txtInform control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInform;
+        
+        /// <summary>
         /// txtPolicyholders control.
         /// </summary>
         /// <remarks>
@@ -380,15 +389,6 @@ namespace ClaimProject.Claim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtClemence;
-        
-        /// <summary>
-        /// txtInform control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInform;
         
         /// <summary>
         /// txtSup control.

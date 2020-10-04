@@ -27,8 +27,8 @@
                             <h4 class="card-category" style="font-size:32px;">แจ้งใหม่</h4>
                             <h4 class="card-title">
                                 
-                                <asp:Label ID="lbnew" runat="server"   Text=""></asp:Label>
-                                <br />
+                                <asp:Label ID="lbnew" runat="server"   Text=""></asp:Label>/
+                                
                                 <asp:Label ID="lbnew1" runat="server"  Text=""></asp:Label>
                             </h4>
                         </div>
@@ -52,7 +52,7 @@
                             <h4 class="card-title">
                                 
                                 <asp:Label ID="lbreceive" runat="server"  ForeColor="Black" Text=""></asp:Label>
-                                <br />
+                                /
                                 <asp:Label ID="lbreceive2" runat="server" ForeColor="Black" Text=""></asp:Label>
                             </h4>
                         </div>
@@ -77,7 +77,7 @@
                             <h4 class="card-title">
                                 
                                 <asp:Label ID="lbTran" runat="server"  ForeColor="Black" Text=""></asp:Label>
-                                <br />
+                                 /
                                 <asp:Label ID="lbTran2" runat="server" ForeColor="Black" Text=""></asp:Label>
                             </h4>
                         </div>
@@ -100,7 +100,7 @@
                             <h5 class="card-category" style="font-size:32px;">ส่งซ่อม</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                <br /> 
+                                 / 
                                 <asp:Label ID="lbRepair2" runat="server" ForeColor="Black" Text=""></asp:Label>
                             </h4>
                         </div>
@@ -122,7 +122,7 @@
                             <h5 class="card-category" style="font-size:32px;">ส่งคืน</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="Label2" runat="server" ForeColor="Black" ></asp:Label>
-                                <br />
+                                /
                                 <asp:Label ID="Label3" runat="server" ForeColor="Black" ></asp:Label>
                             </h4>
                         </div>
@@ -146,7 +146,7 @@
                             <h5 class="card-category" style="font-size:32px;">ส่งคืนกองฯ</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbSendHead" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                <br />
+                                 /
                                 <asp:Label ID="lbSendHead2" runat="server" ForeColor="Black" Text=""></asp:Label>
                             </h4>
                         </div>
@@ -170,7 +170,7 @@
                             <h5 class="card-category" style="font-size:32px;">ทดแทน</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbCopy" runat="server" ForeColor="Black" ></asp:Label>
-                                <br />
+                                 /
                                 <asp:Label ID="lbCopy2" runat="server" ForeColor="Black" ></asp:Label>
                             </h4>
                         </div>
@@ -192,7 +192,7 @@
                             <h5 class="card-category" style="font-size:32px;">แทงจำหน่าย</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbSell" runat="server" ForeColor="Black" ></asp:Label>
-                                <br />
+                                 /
                                 <asp:Label ID="lbSell2" runat="server" ForeColor="Black" ></asp:Label>
                             </h4>
                         </div>
@@ -215,7 +215,7 @@
                             <h5 class="card-category" style="font-size:32px;">รายการส่งออกทั้งหมด</h5>
                             <h4 class="card-title">
                                 <asp:Label ID="lbTotal" runat="server" ForeColor="Black" ></asp:Label>
-                                <br />
+                                 /
                                 <asp:Label ID="lbTotal2" runat="server" ForeColor="Black" ></asp:Label>
                             </h4>
                         </div>

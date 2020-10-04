@@ -2,11 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
-    <asp:Button runat="server" ID="btnBackHome" Text="กลับหน้าหลัก" OnClick="btnBackHome_Click" CssClass="btn btn-default " />
+    <div class="container-fluid">
+
+    
+    <asp:Button runat="server" ID="btnBackHome" Text="หน้าหลัก" OnClick="btnBackHome_Click" CssClass="btn btn-default " />
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
         <div class="card-header card-header-rose" style="height:60px" >
-            <h3 class="card-title" style="font-style:initial;font-size:24px;">เพิ่มรายการครุภัณฑ์ <asp:Label ID="statsave" runat="server" ForeColor="Black"  CssClass="badge badge" Font-Size="Medium" ></asp:Label></h3>
+            <h3 class="card-title" style="font-style:initial;font-size:24px;">เพิ่มครุภัณฑ์ <asp:Label ID="statsave" runat="server" ForeColor="Black"  CssClass="badge badge" Font-Size="Medium" ></asp:Label></h3>
             
         </div>
         <div class="card-body table-responsive" runat="server" id="divAdd" >
@@ -15,32 +18,32 @@
                 <div class="row" style="height: 110px;padding:1px 1px 1px 1px; " >
                         <div class="col-md-3" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">ชื่อครุภัณฑ์(ไทย)</label>
+                                <p class="bmd-label-floating">ชื่อครุภัณฑ์(ไทย)</p>
                                 <asp:TextBox ID="txtAddTH" runat="server" text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-3" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">ชื่อครุภัณฑ์(อังกฤษ)</label>
+                                <p class="bmd-label-floating" >ชื่อครุภัณฑ์(อังกฤษ)</p>
                                 <asp:TextBox ID="txtAddENG" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">ยี่ห้อ</label>
+                                <p class="bmd-label-floating" >ยี่ห้อ</p>
                                 <asp:TextBox ID="txtAddBrand" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control time" />
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">รุ่น</label>
+                                <p class="bmd-label-floating" >รุ่น</p>
                                 <asp:TextBox ID="txtAddSeries" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         
                         <div class="col-md-2" style="padding:1px 10px 1px 5px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">เลขสัญญา</label>
+                                <p class="bmd-label-floating" >เลขสัญญา</p>
                                 <asp:TextBox ID="txtAddContractNum" runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Text="-" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
@@ -50,7 +53,7 @@
                     <div class="row" style="height: 140px;">
                         <div class="col-md-2" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">ด่านฯ</label>
+                                <p class="bmd-label-floating" >ด่านฯ</p>
                                 <asp:DropDownList ID="ddlAddCpoint" runat="server" Font-Size="Large" CssClass="form-control " />
                             </div>
                         </div>
@@ -61,32 +64,32 @@
                         </style>
                        <div class="col-md-2" style="padding:1px 5px 1px 5px" >
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">วันที่รับ</label>
+                                <p class="bmd-label-floating" >วันที่รับ</p>
                                 <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
                             </div>
                         </div>
 
                         <div class="col-md-2" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">ราคา</label>
+                                <p class="bmd-label-floating" >ราคา</p>
                                 <asp:TextBox ID="txtAddPrize" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-1" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">หน่วย</label>
+                                <p class="bmd-label-floating" >หน่วย</p>
                                 <asp:TextBox ID="txtAddUnit" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="col-md-3" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">บริษัทที่รับผิดชอบ</label>
+                                <p class="bmd-label-floating" >บริษัทที่รับผิดชอบ</p>
                                 <asp:DropDownList ID="ddlAddCompany" runat="server" Font-Size="Medium" CssClass="form-control " />
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 2px 2px 2px">
                             <div class="form-group bmd-form-group" >
-                                <label class="bmd-label-floating" style="font-size:large;height:5px">สถานะอุปกรณ์</label>
+                                <p class="bmd-label-floating" >สถานะอุปกรณ์</p>
                                 <asp:DropDownList ID="ddlAddStat" runat="server" Font-Size="Large" CssClass="form-control" />
                             </div>
                         </div>
@@ -95,24 +98,24 @@
             <asp:Label ID="checkRowNum" runat="server" Visible="false"></asp:Label>
        
                 <asp:gridview ID="Gridview1" runat="server" CssClass="col-md text-center"
-                    ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="20px" 
+                    ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="16px" 
                     AutoGenerateColumns="false" > 
                     <AlternatingRowStyle BackColor="#edebec" />
                     <Columns>
-                        <asp:BoundField DataField="RowNumber" HeaderText="ลำดับ" ItemStyle-Width="100px" HeaderStyle-CssClass="text-center"  ItemStyle-CssClass="text-center" />
-                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                        <asp:BoundField DataField="RowNumber" HeaderText="ลำดับ" HeaderStyle-Font-Size="18px" ItemStyle-Width="30px" HeaderStyle-CssClass="text-center"  ItemStyle-CssClass="text-center" />
+                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" HeaderStyle-Font-Size="18px" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:TextBox ID="TextBox1"   runat="server" CssClass="form-control text-center"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="เลขทะเบียน" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เลขทะเบียน" HeaderStyle-Font-Size="18px" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center"></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
-                             <asp:Button ID="btnNewrow" runat="server" Font-Size="Large" Font-Bold="true"   BackColor="#035405" ForeColor="White" CssClass="btn btn-sm " Text="(+) เพิ่มแถว" OnClick="btnNewrow_Click" />
+                             <asp:Button ID="btnNewrow" runat="server" Font-Size="Medium" Font-Bold="true"   BackColor="#035405" ForeColor="White" CssClass="btn btn-sm " Text="(+) เพิ่มแถว" OnClick="btnNewrow_Click" />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField  ItemStyle-Width="45px" ItemStyle-CssClass="text-center">
@@ -129,7 +132,7 @@
             <br />
             <div class="row">
                 <div class="col-md  text-center">
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-rose" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึกรายการทั้งหมด" OnClientClick="return UpdteConfirm('ยืนยันเพิ่มรายการ ใช่หรือไม่');" />
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-rose" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึก" OnClientClick="return UpdteConfirm('ยืนยันเพิ่มรายการ ใช่หรือไม่');" />
                 
                 </div>
                     
@@ -143,7 +146,7 @@
                 </div>
             </div>
             <asp:gridview ID="gridadded" runat="server" DataKeyNames="newlist_id"
-                    ShowFooter="true"  GridLines="None" BorderColor="White"  Font-Size="20px" PageSize="100" 
+                    ShowFooter="true"  GridLines="None" BorderColor="White"  Font-Size="16px" PageSize="100" 
                     CssClass="table table-hover table-condensed table-sm"
                     AutoGenerateColumns="false" OnRowDataBound="gridadded_RowDataBound" OnRowDeleting="gridadded_RowDeleting"> 
                     <AlternatingRowStyle BackColor="#ffffff" />
@@ -208,7 +211,7 @@
     </div>
         <div class="row">
                 <div class="col-md text-center">
-                    <asp:Button ID="deleteAll" runat="server" Visible="false" CssClass="btn btn-danger" Font-Bold="true" OnClick="deleteAll_Click" Text="ลบรายการที่เพิ่มไปแล้วทั้งหมด" />
+                    <asp:Button ID="deleteAll" runat="server" Visible="false" CssClass="btn btn-danger" Font-Bold="true" OnClick="deleteAll_Click" Text="ลบทั้งหมด" />
                 </div>
                     
                 
@@ -227,7 +230,7 @@
        
         
         
-
+</div>
 </div>
 
 

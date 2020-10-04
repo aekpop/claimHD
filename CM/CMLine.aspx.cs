@@ -25,7 +25,7 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
-                function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+                //function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
 
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
@@ -55,12 +55,12 @@ namespace ClaimProject.CM
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
-                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
-                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     MySqlDataReader chK = function.MySqlSelect(sqlchN);
                     if (chK.Read())
                     {
@@ -108,12 +108,12 @@ namespace ClaimProject.CM
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
-                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
                     " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
-                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
+                    " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     MySqlDataReader chKNN = function.MySqlSelect(sqlchNN);
                     if (chKNN.Read())
                     {
