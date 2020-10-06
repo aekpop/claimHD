@@ -19,7 +19,7 @@
 
     <!--<div class="container-fluid" >-->
     
-    <div class="card" style="z-index: 0">
+    <div class="card" style="z-index: 0; font-size:medium; ">
         <div class="card-header card-header-primary">
             <h3 class="card-title">รายงานการซ่อมอุปกรณ์ CM </h3>
         </div>       
@@ -45,16 +45,23 @@
                                         <div class=" col-md-1 ">
                                             <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                        <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
+                                        <div class="col-md-1 text-right">
+                                            <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์ : "></asp:Label>
                                             </div>
-                                        <div class=" col-md-3">
-                                            <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select " ></asp:DropDownList>
+                                        <div class="col-md-3">
+                                            <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select "></asp:DropDownList>
                                         </div>
+                                        
                                         
                         </div>
                         <br />
                         <div class="row">
+                                        <div class="col-md-1 text-right">
+                                            <asp:Label ID="lbChannel" runat="server" text="ตู้ :" ></asp:Label>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
+                                        </div>
                                         <div class =" col-md-1 text-right">
                                             <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged"/>
                                             <asp:Label Id ="lbCheckAllDay" runat="server" Text="AllDay" ></asp:Label> 
@@ -62,7 +69,7 @@
                                         <div class=" col-md-1 text-right">
                                             <asp:Label ID="lbDayS" runat="server" Text="ตั้งแต่วันที่ : "></asp:Label>
                                             </div>
-                                        <div class=" col-md-1">
+                                        <div class=" col-md-2">
                                             <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>
                                         <div class=" col-md-1 text-right">
@@ -71,19 +78,15 @@
                                         <div class=" col-md-2">
                                             <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>                            
-                                        <div class="col-md-1 text-right">
-                                            <asp:Label ID="lbChannel" runat="server" text="ตู้ :" ></asp:Label>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
-                                        </div>
-                                        <div class="col-md-1 text-right">
-                                            <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์ : "></asp:Label>
+                                        <div class=" col-md-1 text-right">
+                                            <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
                                             </div>
-                                        <div class="col-md-3">
-                                            <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select "></asp:DropDownList>
+                                        <div class=" col-md-2">
+                                            <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select " ></asp:DropDownList>
                                         </div>
-                        </div>                                          
+                                        
+                        </div>                  
+                        <br />
                                         <div class="row">  
                                             <div class="col-xl-6 text-right">
                                                       <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa" Font-Size="Medium" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
@@ -104,14 +107,14 @@
                         <asp:GridView ID="GridView1" runat="server"    
                             HeaderStyle-BackColor="#ffffff" 
                             HeaderStyle-CssClass="align-content-center"
-                            HeaderStyle-Font-Size="Larger"   
+                            HeaderStyle-Font-Size="18px"   
                             OnRowDataBound="GridView1_RowDataBound" 
                             AlternatingRowStyle-CssClass="align-content-left" 
                             AutoGenerateColumns="false" 
                             AllowPaging="false"
                             PageSize="20"
                             GridLines="None"
-                            Font-Size="19px"
+                            Font-Size="15px"
                             CssClass="table table-hover table-condensed table-sm"     
                             >                      
                             <Columns>
@@ -121,7 +124,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-left" >
                                 <ItemTemplate>
                                             <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
@@ -177,7 +180,7 @@
                 </asp:GridView>         
             </asp:Panel>
           <!------------------------------------------------------------------------------------------------------------>
-    <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" ">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -187,7 +190,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                 </div>
-                            <div class="container">                              
+                            <div class="container" style="font-size:medium; ">                              
                                 <div class="modal-body" style="line-height: inherit;">
                                     <div class="row" style="height: 380px">
                                         <div class="col-xl">
@@ -207,25 +210,25 @@
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">       
                                         <span class = "label label-primary">Ref. </span>
-                                        <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server"   />
                                     </div>
                                 </div>
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">
                                         <span class = "label label-primary">ด่านฯ : </span>
-                                        <asp:Label ID="lbCpointRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbCpointRecheck" Enabled="false" runat="server"   />
                                     </div>
                                 </div>
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">
                                         <span class = "label label-primary">อาคารย่อย : </span>
-                                        <asp:Label ID="lbPointRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbPointRecheck" Enabled="false" runat="server"   />
                                     </div>
                                 </div>
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">
                                         <span class = "label label-primary">ตู้ : </span>
-                                        <asp:Label ID="lbChannelRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbChannelRecheck" Enabled="false" runat="server"   />
                                     </div>
                                 </div>
                             </div>
@@ -234,13 +237,13 @@
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">       
                                             <span class = "label label-primary">อุปกรณ์ : </span>
-                                            <asp:Label ID="lbdeviceRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbdeviceRecheck" Enabled="false"  runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">อาการเสีย : </span>
-                                            <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                 </div>
@@ -249,13 +252,13 @@
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">วิธีแก้ไข : </span>
-                                            <asp:Label ID="lbMethodRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbMethodRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">หมายเหตุ : </span>
-                                            <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                 </div>
@@ -263,26 +266,26 @@
                                 <div class="row" >
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">       
-                                            <span class = "label label-primary">วันที่แจ้งซ่อม : </span>
-                                            <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                            <span class = "label label-primary">วันที่แจ้ง : </span>
+                                            <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
-                                            <span class = "label label-primary">เวลาแจ้งซ่อม : </span>
-                                            <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <span class = "label label-primary">เวลาแจ้ง : </span>
+                                            <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server"  />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">วันที่แก้ไข : </span>
-                                            <asp:Label ID="lbDateERecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbDateERecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">เวลาแก้ไข : </span>
-                                            <asp:Label ID="lbTimeERecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbTimeERecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                 </div>
@@ -291,7 +294,7 @@
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">       
                                             <span class = "label label-primary">ผู้แจ้งซ่อม : </span>
-                                            <asp:Label ID="lbUserRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbUserRecheck" Enabled="false"  runat="server"   />
                                         </div>
                                     </div>                                                                      
                                 </div>

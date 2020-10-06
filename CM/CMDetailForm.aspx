@@ -64,22 +64,27 @@
                             <p class="bmd-label-floating">หมายเหตุ</p>
                             <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" />
                         </div>
-                    </div>           
+                    </div>  
+                    
+                    <!-- แนบรูป -->
                     <div class="col-md-3">
                        <div class="form-group bmd-form-group">
-                        <div class="custom-file">        
-                            <label class="custom-file-label" for="customFile">แนบรูปภาพ</label>
-                            <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file-input" lang="en" />
+                           <p class="bmd-label-floating">แนบรูปภาพ</p>
+                           <div class="col" runat="server" id="diveditpic">
+                                <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
+                            </div>
+                         <div class="col-md-3">
+                                 <asp:Label ID="pkeq" runat="server" visible="true" Font-Size="Smaller" ></asp:Label>
+                          </div>
                         </div>
-                    </div>
-                
-                </div>
+                     </div>
+
                 <div class="row">
                     <div class="col-md text-center">
                         <asp:LinkButton ID="btnSaveCM" runat="server" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click">แจ้งซ่อม</asp:LinkButton>
-                        <asp:LinkButton ID="btnEditCM" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnEditCM_Click">แก้ไขแจ้งซ่อม</asp:LinkButton>
+                        <asp:LinkButton ID="btnEditCM" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnEditCM_Click">แก้ไข</asp:LinkButton>
                         <asp:LinkButton ID="btnCancelCM" runat="server" Font-Size="20px" CssClass="btn btn-dark btn-sm" OnClick="btnCancelCM_Click">ยกเลิก</asp:LinkButton>
-                        <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบข้อมูลการแจ้งซ่อม</asp:LinkButton>
+                        <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบ</asp:LinkButton>
                     </div>
                 </div>
             </div>
@@ -184,6 +189,7 @@
         </div>
     </div>
         </div>
+    
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -205,5 +211,6 @@
                 return confirm(msg);
             }
         }
+        
     </script>
 </asp:Content>

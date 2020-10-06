@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimDevice.aspx.cs" Inherits="ClaimProject.Claim.ClaimDevice" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div Id="lbSearch" class="card" style="z-index: 0">
+    <div Id="lbSearch" class="card" style="z-index: 0; font-size: medium">
         <div class="card-header card-header-warning">
             <h3 class="card-title">รายการอุปกรณ์ค้างซ่อม</h3>
         </div>
@@ -10,13 +10,13 @@
                 <div class="col-md-1 text-right">
                     <asp:Label ID="Label6" runat="server" Text="ด่านฯ : "></asp:Label>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <asp:DropDownList ID="txtSearchCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
                 <div class="col-md-1 text-right">
                     <asp:Label ID="Label1" runat="server" Text="อาคารย่อย :"></asp:Label>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-1 text-right">
@@ -76,20 +76,20 @@
             <asp:Label ID="lbClaimNull" runat="server" Text=""></asp:Label>
         </div>
         <hr />
-    <!--</div>-->
-    <div id="Div1" runat="server">
+   </div>
+    <div id="Div1" runat="server" >
         <!--<div class="card" style="z-index: 0"> -->           
-            <div class="card-body table-responsive table-sm">
+            <!--<div class="card-body table-responsive table-sm">-->
 
                 <asp:GridView ID="ClaimGridView" runat="server"
                     AutoGenerateColumns="False" 
-                    CssClass="col table table-striped table-hover"
+                    CssClass="table table-hover table-sm"
                     HeaderStyle-CssClass="text-left" 
                     HeaderStyle-BackColor="ActiveBorder" 
                     RowStyle-CssClass="text-left" 
                     GridLines="None"                    
                     OnRowDataBound="ClaimGridView_RowDataBound" 
-                    Font-Size="19px">
+                    Font-Size="14px">
                     <Columns>
                         <asp:TemplateField HeaderText="ลำดับ">
                             <ItemTemplate>
@@ -139,7 +139,7 @@
                     </Columns>                    
                 </asp:GridView>
             </div>
-        </div>
+        <!--</div>-->
    <!-- </div> -->
     <script>
             function btnSearch_Click() {

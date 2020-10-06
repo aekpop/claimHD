@@ -15,7 +15,7 @@
         <div class="card-header card-header-warning">
             <h3 class="card-title">รายการอุบัติเหตุ</h3>
         </div>
-        <div class="card-body table-responsive table-sm">
+        <div class="card-body table-responsive table-sm" style="font-size: medium;">
             <div class="row">
                 <div class="col-md-2 text-right">
                     <asp:Label ID="Label1" runat="server" Text="ปีงบประมาณ : "></asp:Label>
@@ -70,13 +70,14 @@
                 </div>
             </div>
             <hr />
+            <div style="font-size: medium;">
             <asp:GridView ID="ClaimGridView" runat="server"
                 DataKeyNames="claim_id"
                 GridLines="None"
                 OnRowDataBound="ClaimGridView_RowDataBound"
                 AutoGenerateColumns="False"
                 CssClass="table table-hover table-sm"
-                Font-Size="19px"
+                Font-Size="14px"
                 AllowSorting="true"
                 AllowPaging="true"
                 PageSize="50"
@@ -137,7 +138,7 @@
             <asp:Label ID="lbClaimNull" runat="server" Text=""></asp:Label>
         </div>
     </div>
-
+    </div>
     <!-- -------------------------------------------------------------------- -->
     <div class="modal fade" id="NoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

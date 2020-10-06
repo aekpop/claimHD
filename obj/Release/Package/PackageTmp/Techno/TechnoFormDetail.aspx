@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="รายละเอียดอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TechnoFormDetail.aspx.cs" Inherits="ClaimProject.Techno.TechnoFormDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="card">
+    <div class="card" style="font-size:21px; font-family:'TH SarabunPSK'">
         <div class="card-header card-header-warning">
             <div class="col-md-2">
                 <h3 class="card-title">รายละเอียดอุบัติเหตุ</h3>
@@ -139,10 +139,10 @@
                 </div>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-                        <div class="row">
+                        <div class="row" >
                             <div class="col-md-3 text-right">เลขที่หนังสือ : </div>
                             <div class="col-md-2">
-                                <asp:TextBox ID="txtNoteNumTo" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtNoteNumTo" runat="server" CssClass="form-control "></asp:TextBox>
                             </div>
                             <div class="col-md-3 text-right">วันที่ : </div>
                             <div class="col-md-2">
@@ -151,12 +151,14 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                <br />
                 <div class="row">
-                    <div class="col-md-3 text-right">เรื่อง : </div>
+                    <div class="col-md-3 text-right ">เรื่อง : </div>
                     <div class="col-md">
                         <asp:TextBox ID="txtNoteTitleTo" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-md-3 text-right">เรียน : </div>
                     <div class="col-md">
@@ -173,9 +175,9 @@
                 <br />
                 <div class="row">
                     <div class="col-md text-center">
-                        <asp:Button ID="btnSaveNoteTo" CssClass="btn btn-info btn-sm" Font-Size="20px" runat="server" Text="บันทึก" OnClick="btnSaveNoteTo_Click" />
+                        <asp:Button ID="btnSaveNoteTo" CssClass="btn btn-success btn-sm" Font-Size="20px" runat="server" Text="บันทึก" OnClick="btnSaveNoteTo_Click" />
                         <asp:Button ID="btnNoteTo" CssClass="btn btn-info btn-sm" Font-Size="20px" runat="server" Text="พิมพ์ตัวจริง" OnClick="btnNoteTo_Click" />
-                        <asp:Button ID="btnNoteToCpoy" CssClass="btn btn-info btn-sm" Font-Size="20px" runat="server" Text="พิมพ์สำเนา" OnClick="btnNoteToCpoy_Click" />
+                        <asp:Button ID="btnNoteToCpoy" CssClass="btn btn-default btn-sm" Font-Size="20px" runat="server" Text="พิมพ์สำเนา" OnClick="btnNoteToCpoy_Click" />
                     </div>
 
                 </div>
@@ -198,6 +200,7 @@
                         <asp:LinkButton ID="btnUploadNote" runat="server" Text="&#xf0c6; อัพโหลดใบปะหน้า" Font-Size="Small" CssClass="btn btn-success btn-sm fa" OnClick="btnUploadNote_Click" />
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-md-5">
                         <asp:GridView ID="FileNoteGridView" runat="server"
@@ -219,7 +222,7 @@
                                         <asp:LinkButton ID="btnDownload" runat="server" Font-Size="Small" CssClass="fa" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                                <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" DeleteText="&#xf014; " ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" />
                             </Columns>
                         </asp:GridView>
                     </div>
@@ -549,18 +552,21 @@
                             <asp:Label ID="lbCompany" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
+                    <br />
                     <div class="row">
-                        <div class="col-md-4 text-right">วันที่รับใบเสนอะราคา : </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4 text-right">วันที่รับใบเสนอราคา : </div>
+                        <div class="col-md-4">
                             <asp:TextBox ID="txtDateRecive" runat="server" CssClass="form-control datepicker"></asp:TextBox>
                         </div>
                     </div>
+                     <br />
                     <div class="row">
                         <div class="col-md-4 text-right">ราคาที่บริษัทเสนอ : </div>
                         <div class="col-md">
                             <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
+                     <br />
                     <div class="row">
                         <div class="col-md-4 text-right">แนบรูปภาพ : </div>
                         <div class="col-md">
@@ -570,6 +576,7 @@
                             </div>
                         </div>
                     </div>
+                     <br />
                     <div class="row">
                         <div class="col-md text-center">
                             <asp:Button ID="btnSaveRecive" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" Text="ส่งเสนอราคา" OnClick="btnSaveRecive_Click" />

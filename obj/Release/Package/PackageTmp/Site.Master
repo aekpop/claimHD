@@ -23,6 +23,7 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <link href="/Content/lightbox.css" rel="stylesheet" />
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
 </head>
 <body>
@@ -55,34 +56,36 @@
                     <a  class="simple-text logo-normal">
                         <img src="/img/j4.png" width="40%" /><br />
 
-                        <span>ระบบการจัดการบริหารการจัดเก็บฯ</span><br />
-                        <span style="font-size: 20px;">Toll Management System (TMS)</span></a>
+                        <h4>ระบบการจัดการบริหารการจัดเก็บฯ</h4>
+                        <h4> Management System (TMS)</h4></a>
+                        <!--<span style="font-size: 24px;">ระบบการจัดการบริหารการจัดเก็บฯ</span><br />
+                        <span style="font-size: 16px;">Toll Management System (TMS)</span></a>-->
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
                         <li class="nav-item" runat="server" id="nav0">
                             <a class="nav-link" href="/">
                                 <i class="fa fa-home" style="font-size: 22px;"></i>
-                                <p>หน้าหลัก</p>
+                                <h4>หน้าหลัก</h4>
                             </a>
                         </li>
                         <li class="nav-item" runat="server" id="nav1">
                             <a class="nav-link" href="/Claim/DefaultClaim"  >
                                 <i class="fa fa-table" style="font-size: 22px;"></i>
-                                <p>งานอุบัติเหตุ</p>
+                                <h4>งานอุบัติเหตุ</h4>
                             </a>
                         </li>
                         <li class="nav-item" runat="server" id="Li2">
                             <a class="nav-link" href="/CM/DefaultCM" >
                                 <i class="fas fa-tools" style="font-size: 22px;"></i>
-                                <p>งาน MA</p>
+                                <h4>งาน MA</h4>
                             </a>
                         </li>
                       
                         <li class="nav-item" runat="server" id="equipDiv" >
                             <a class="nav-link" href="/equip/EquipDefault" >
                                 <i class="fas fa-magic" style="font-size: 22px;"></i>
-                                <p>งานครุภัณฑ์</p>
+                                <h4>งานครุภัณฑ์</h4>
                             </a>
                         </li>
                   
@@ -90,46 +93,49 @@
                         <li class="nav-item" runat="server" id="nav2">
                             <a class="nav-link" href="/User/UserForm">
                                 <i class="fa fa-refresh" style="font-size: 22px;"></i>
-                                <p>เปลี่ยนรหัสผ่าน</p>
+                                <h4>เปลี่ยนรหัสผ่าน</h4>
                             </a>
                         </li>   
                         <li class="nav-item" runat="server" id="nav3" >
                             <a class="nav-link" href="/settingPage">
                                 <i class="fa fa-gear" style="font-size: 22px;"></i>
-                                <p>Setting/Admin</p>
+                                <h4>Setting/Admin</h4>
                             </a>
                         </li>
                         <li class="nav-item" runat="server" id="Li1">
                             <a class="nav-link" href="http://192.168.101.91:90/webboard/viewforum.php?f=4&sid=b612e1a12b01c2f0acc3094666e19434" target="_blank">
                                 <i class="fa fa-copy" style="font-size: 22px;"></i>
-                                <p>ถาม-ตอบปัญหาการใช้งาน</p>
+                                <h4>ถาม-ตอบปัญหาการใช้งาน</h4>
                             </a>
                         </li>
                         <li class="nav-item" runat="server" id="searchEn" >
                             <a class="nav-link" href="/Search/searchmain">
                                 <i class="far fa-lightbulb" style="font-size: 22px;"></i>
-                                <p>รายการบัตรผิดปกติ</p>
+                                <h4>รายการบัตรผิดปกติ</h4>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="main-panel" >
-                <nav class="navbar navbar-expand-sm navbar-transparent navbar-absolute fixed-top "  >
+
+           
+
+                <nav class="navbar navbar-expand-sm navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
-                        <div class="navbar-wrapper">                            
+                        <div class="navbar-wrapper">
                             <a class="navbar-brand" href="#pablo"><%:Page.Title %></a>
-                            </div>
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="navbar-toggler-icon icon-bar"></span>
-                                        <span class="navbar-toggler-icon icon-bar"></span>
-                                        <span class="navbar-toggler-icon icon-bar"></span>
-                                    </button>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                        </button>
                         <div class="collapse navbar-collapse justify-content-end">
-                                <div class="collapse navbar-collapse justify-content-end ">
-                                    <ul class="navbar-nav">
-                                        <!--<li>
+                            <div class="collapse navbar-collapse justify-content-end ">
+                                <ul class="navbar-nav">
+                                    <!--<li>
                                             <div class="input-group no-border">
                                                 <input type="text" value="" class="form-control" placeholder="Search...">
                                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -138,19 +144,21 @@
                                                 </button>
                                             </div>
                                         </li>-->
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">
+                                    <li class="nav-item">
+                                        <h3>
+                                           <a class="nav-link" href="#">
                                                 <i class="fa fa-user-circle-o"></i>&nbsp<asp:Label ID="lbUser" runat="server" Text="" Font-Size="16px" ForeColor="Black"></asp:Label>
                                             </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-danger btn-sm fa" Font-Size="XX-Small" OnClick="btnLogout_Click">&#xf13e; Logout</asp:LinkButton>
-                                        </li>
-                                    </ul>
-                                </div>
+                                       </h3>
+                                    </li>
+                                    <li class="nav-item">
+                                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-danger btn-sm fa" Font-Size="XX-Small" OnClick="btnLogout_Click">&#xf13e; Logout</asp:LinkButton>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </nav>
+                    </div>
+                </nav>
                 <!-- End Navbar -->
                 <div class="content">
                     <div class="container-fluid">
@@ -201,6 +209,7 @@
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">   
         $(function () {
             //datepicker
@@ -278,7 +287,7 @@
                         .appendTo(this.wrapper)
                         .val(value)
                         .attr("title", "")
-                        .addClass("custom-combobox-input form-control ui-state-default ui-corner-left")
+                        .addClass("custom-combobox-input form-control ui-state-default ui-conner-right")
                         .autocomplete({
                             delay: 0,
                             minLength: 0,
@@ -318,7 +327,8 @@
                             text: false
                         })
                         .removeClass("ui-corner-all")
-                        .addClass("custom-combobox-toggle ui-corner-right")
+                        .addClass("custom-combobox-toggle ui-corner-right")                        
+
                         .on("mousedown", function () {
                             wasOpen = input.autocomplete("widget").is(":visible");
                         })

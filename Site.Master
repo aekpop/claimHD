@@ -23,7 +23,7 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <link href="/Content/lightbox.css" rel="stylesheet" />
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
 </head>
 <body>
@@ -287,7 +287,7 @@
                         .appendTo(this.wrapper)
                         .val(value)
                         .attr("title", "")
-                        .addClass("custom-combobox-input form-control ui-state-default ui-corner-left")
+                        .addClass("custom-combobox-input form-control ui-state-default ui-conner-right")
                         .autocomplete({
                             delay: 0,
                             minLength: 0,
@@ -327,7 +327,8 @@
                             text: false
                         })
                         .removeClass("ui-corner-all")
-                        .addClass("custom-combobox-toggle ui-corner-right")
+                        .addClass("custom-combobox-toggle ui-corner-right")                        
+
                         .on("mousedown", function () {
                             wasOpen = input.autocomplete("widget").is(":visible");
                         })

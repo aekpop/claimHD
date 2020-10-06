@@ -641,12 +641,13 @@ namespace ClaimProject.Techno
 
             // textbox needs a unique id to maintain state information
             newTextbox.ID = "txtDoc_" + controlNumber;
-            newTextbox.CssClass = "form-control text-center col-md-3";
+            newTextbox.CssClass = "form-control text-center col-md-1";
 
 
             newLabel.Text = text + " ";
             newLabel.CssClass = "col-md-6";
             newLabelEnd.Text = " ฉบับ";
+            newLabelEnd.CssClass = "col-md-1";
 
             // add the label and textbox to the panel, then add the panel to the form
             Div.Controls.Add(new LiteralControl("<il class='row'>"));

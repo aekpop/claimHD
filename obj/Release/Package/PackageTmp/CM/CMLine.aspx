@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>CMLine</title>
     <!-- Bootstrap core CSS -->
     
     
@@ -15,11 +15,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
             <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
             </div>
+                <div class="card-header card-header-warning">
+                    <h2 class="card-title">ส่ง Line งาน Corrective Maintenance : CM</h2>
+                </div>
+                <div class="form-group bmd-form-group" >
+                        <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click" CssClass="btn" />
+                        <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />  
+                        
+                        <asp:HiddenField ID="hfImageData" runat="server" />
+                        
+                        <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select"  Visible="false" ></asp:DropDownList>
+                    </div>
+                <br />
             <div class="card-body table-responsive table-md" >
                 <div class="row">
                       <div class="form-group bmd-form-group" >
@@ -44,17 +55,13 @@
                     </asp:DropDownList>
                           
                                 <label class="bmd-label-floating" style="font-size:large;">วันที่</label>
-                                <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
+                                <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" />
+                                <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" Font-Size="large" OnClick="btnrecm_Click"  /> 
                             </div>
+                     
+
                     <br />
-                    <div class="form-group bmd-form-group" >
-                        <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click"  />
-                        <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" Font-Size="large" OnClick="btnrecm_Click"  /> 
-                        
-                        <asp:HiddenField ID="hfImageData" runat="server" />
-                        <asp:Button ID="btnExport" Text="Export to Image" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
-                        <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select"  Visible="false" ></asp:DropDownList>
-                    </div>
+                    
                    
                 </div>
                                       
@@ -131,10 +138,9 @@
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>                                             
-                </br>
-                        
+                <br />
+                     
             </div>
-        </div>
 
      
     <script src="/Scripts/html2canvas.js"></script> 

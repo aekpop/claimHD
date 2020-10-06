@@ -1067,3 +1067,15 @@ D:\Software\ClaimProjectBS4\ClaimProject\obj\Release\ClaimProject.csproj.CopyCom
 D:\Software\ClaimProjectBS4\ClaimProject\obj\Release\ClaimProject.dll
 D:\Software\ClaimProjectBS4\ClaimProject\obj\Release\ClaimProject.pdb
 D:\Software\ClaimProjectBS4\ClaimProject\obj\Release\ClaimProject.XmlSerializers.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.Helpers.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.Mvc.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.Razor.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.WebPages.Deployment.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.WebPages.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.WebPages.Razor.dll
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.Helpers.xml
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.Mvc.xml
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.Razor.xml
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.WebPages.xml
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.WebPages.Deployment.xml
+D:\Software\ClaimProjectBS4\ClaimProject\bin\System.Web.WebPages.Razor.xml

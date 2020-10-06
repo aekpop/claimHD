@@ -46,7 +46,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text fa fa-user-circle-o" style="font-size: x-large; width: 50px;"></span>
                                 </div>
-                                <asp:TextBox ID="txtUser" runat="server" CssClass="form-control" placeholder="Username" MaxLength="20"></asp:TextBox>
+                                <asp:TextBox ID="txtUser" runat="server" CssClass="form-control " placeholder="Username" MaxLength="20"></asp:TextBox>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

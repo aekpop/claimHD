@@ -17,7 +17,7 @@ namespace ClaimProject.Claim
         public string AnnexZZ = "";
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             if (Session["user"] == null)
             {
                 Response.Redirect("/");
@@ -137,7 +137,7 @@ namespace ClaimProject.Claim
                             dtt.Columns.Add(new DataColumn("claim_detail_cb_claim", typeof(string)));
                             dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
                             dtt.Columns.Add(new DataColumn("device_damaged", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("status_name", typeof(string)));
                             //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
                             DataRow drr = null;
                             // สร้างแถวใหม่พร้อมกำหนดค่าลงไป
@@ -327,7 +327,7 @@ namespace ClaimProject.Claim
                 }
                 else if (colortoll == "713")
                 {
-                    lbHeadToll.Text = "ด่านฯ อู่ตาเภา ";
+                    lbHeadToll.Text = "ด่านฯ อู่ตะเภา ";
                     lbShift.Text = ddlShift.SelectedItem.Text;
                 }
                 else if (colortoll == "902")

@@ -82,15 +82,16 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <br />
     <div runat="server" id="divpm" >
-        <h3 class="bg-primary " style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Preventive Maintenance : PM</h3>
+        <h3 class="bg-primary " style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;</h3>
     </div>
      
     
 
-    <div class="row" runat="server" id="divpm2">
+    <!--<div class="row" runat="server" id="divpm2">
         <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div2">
             <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
@@ -129,5 +130,5 @@
             </div>
         </div>
     </div>
-    
+    -->
 </asp:Content>

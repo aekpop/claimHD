@@ -15,6 +15,7 @@ namespace ClaimProject.CM
     public partial class CMDetailForm : System.Web.UI.Page
     {
         ClaimFunction function = new ClaimFunction();
+        public string EditModal = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] == null)
@@ -227,6 +228,16 @@ namespace ClaimProject.CM
 
         protected void btnEdit_Command(object sender, CommandEventArgs e)
         {
+            EditModal = e.CommandName;
+            pkeq.Text = EditModal;
+            string sqlEdit = "SELECT * FROM tbl_cm_detail  "
+                            + " WHERE cm_detail_id ='" + pkeq.Text + "' ";
+            MySqlDataReader rttt = function.MySqlSelect(sqlEdit);
+            if (rttt.Read())
+            {
+                string imgg = rttt.GetString("cm_detail_simg");
+            }
+
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
         }
 
@@ -310,5 +321,7 @@ namespace ClaimProject.CM
         {
             Response.Redirect("/CM/CMLine.aspx");
         }
+
+        
     }
 }

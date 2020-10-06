@@ -30,7 +30,7 @@
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
                         HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
-                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="21px" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="16px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField HeaderText="อัพเดท" >
@@ -66,6 +66,11 @@
                             <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ผู้แจ้ง" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             

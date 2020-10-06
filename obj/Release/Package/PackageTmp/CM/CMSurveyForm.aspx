@@ -17,9 +17,10 @@
                         AutoGenerateColumns="False" 
                         CssClass="col table table-striped table-hover"
                         HeaderStyle-CssClass="text-center" 
-                        HeaderStyle-BackColor="ActiveBorder" 
+                        HeaderStyle-BackColor="ActiveBorder"
+                        HeaderStyle-Font-Size="18px"
                         OnRowDataBound="CMGridView_RowDataBound" 
-                        Font-Size="19px" 
+                        Font-Size="15px" 
                         CellPadding="4" 
                         ForeColor="#333333" 
                         GridLines="None">
@@ -134,25 +135,25 @@
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">       
                                         <span class = "label label-primary">Ref. </span>
-                                        <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server"   />
                                     </div>
                                 </div>
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">
                                         <span class = "label label-primary">ด่านฯ : </span>
-                                        <asp:Label ID="lbCpointRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbCpointRecheck" Enabled="false" runat="server"   />
                                     </div>
                                 </div>
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">
                                         <span class = "label label-primary">อาคารย่อย : </span>
-                                        <asp:Label ID="lbPointRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbPointRecheck" Enabled="false" runat="server"   />
                                     </div>
                                 </div>
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">
                                         <span class = "label label-primary">ตู้ : </span>
-                                        <asp:Label ID="lbChannelRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                        <asp:Label ID="lbChannelRecheck" Enabled="false" runat="server"   />
                                     </div>
                                 </div>
                             </div>
@@ -161,13 +162,13 @@
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">       
                                             <span class = "label label-primary">อุปกรณ์ : </span>
-                                            <asp:Label ID="lbdeviceRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbdeviceRecheck" Enabled="false"  runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">อาการเสีย : </span>
-                                            <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                 </div>
@@ -176,13 +177,13 @@
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">วิธีแก้ไข : </span>
-                                            <asp:Label ID="lbMethodRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbMethodRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">หมายเหตุ : </span>
-                                            <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server"  />
                                         </div>
                                     </div>
                                 </div>
@@ -190,26 +191,26 @@
                                 <div class="row" >
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">       
-                                            <span class = "label label-primary">วันที่แจ้งซ่อม : </span>
-                                            <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                            <span class = "label label-primary">วันที่แจ้ง : </span>
+                                            <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
-                                            <span class = "label label-primary">เวลาแจ้งซ่อม : </span>
-                                            <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <span class = "label label-primary">เวลาแจ้ง : </span>
+                                            <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">วันที่แก้ไข : </span>
-                                            <asp:Label ID="lbDateERecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbDateERecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">เวลาแก้ไข : </span>
-                                            <asp:Label ID="lbTimeERecheck" Enabled="false" runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbTimeERecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +219,7 @@
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">       
                                             <span class = "label label-primary">ผู้แจ้งซ่อม : </span>
-                                            <asp:Label ID="lbUserRecheck" Enabled="false"  runat="server" Font-Size="21px"  />
+                                            <asp:Label ID="lbUserRecheck" Enabled="false"  runat="server"   />
                                         </div>
                                     </div>                                                                      
                                 </div>

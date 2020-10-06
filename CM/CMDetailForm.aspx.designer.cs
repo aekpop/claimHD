@@ -94,6 +94,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.TextBox txtNote;
         
         /// <summary>
+        /// diveditpic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl diveditpic;
+        
+        /// <summary>
         /// fileImg control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileImg;
+        
+        /// <summary>
+        /// pkeq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label pkeq;
         
         /// <summary>
         /// btnSaveCM control.

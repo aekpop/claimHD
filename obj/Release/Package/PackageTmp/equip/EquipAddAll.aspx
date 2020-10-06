@@ -3,8 +3,8 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <asp:Button runat="server" ID="btnBackHomeADDEQ" Text="กลับหน้าหลัก" OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default " />
-    <asp:Button runat="server" ID="btnCreatenew" Text="สร้างรายการเพิ่มใหม่!!" BackColor="#db005b" ForeColor="White" OnClick="btnCreatenew_Click" CssClass="btn btn-default " />
+    <asp:Button runat="server" ID="btnBackHomeADDEQ" Text="หน้าหลัก" OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default " />
+    <asp:Button runat="server" ID="btnCreatenew" Text="เพิ่มครุภัณฑ์ใหม่" BackColor="#db005b" ForeColor="White" OnClick="btnCreatenew_Click" CssClass="btn btn-default " />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header " style="background-color:#960238;">

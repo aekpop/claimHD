@@ -6,175 +6,180 @@
     <div class="tab-content">
         <div class="card" style="font-size: 19px; z-index: 0;" runat="server" id="cardBody">
             <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการอุบัติเหตุ</h3>
+                <h2 class="card-title">รายการอุบัติเหตุ</h2>
             </div>
             <div class="card-body table-responsive">
                 <div runat="server" id="divCom">
                     <h3 class="card-title alert-warning">รายละเอียดการเกิดอุบัติเหตุ (เจ้าหน้าที่คอม) <asp:Label ID="statheader" runat="server" CssClass="" ></asp:Label></h3>
-                    <div class="row">
-                        <div class="col-md-2">
+                    
+                    <div style="font-size: medium;" class="row">
+                        <div class="col-md-2 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ด่านฯ </label>
-                                <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
+                                <p class="font-weight-normal" >ด่านฯ </p>
+                                <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select col-md-2 col-xl-auto "></asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Annex </label>
-                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control col-md-3" MaxLength="1" ToolTip="Annex เช่น 1 หรือ 2 หรือเว้นว่าง" />
+                                <p class="bmd-label-floating">อาคารย่อย </p>
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control col-md-2 col-xl-auto" MaxLength="1" ToolTip="Annex เช่น 1 หรือ 2 หรือเว้นว่าง" />
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เลขที่บันทึกเจ้าหน้าที่คอม 4 หลัก</label>
-                                <asp:TextBox ID="txtCpointNote" runat="server" CssClass="form-control col-md-3" />
+                                <p class="bmd-label-floating">เลขที่บันทึกเจ้าหน้าที่คอม 4 หลัก</p>
+                                <asp:TextBox ID="txtCpointNote" runat="server" CssClass="form-control col-md-3 col-xl-auto" />
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ลงวันที่</label>
-                                <asp:TextBox ID="txtCpointDate" runat="server" CssClass="form-control datepicker" />
+                                <p class="bmd-label-floating">ลงวันที่</p>
+                                <asp:TextBox ID="txtCpointDate" runat="server" CssClass="form-control datepicker col-xl-auto" />
                             </div>
                         </div>
-                        <div class="col-md-4">
+                   </div>
+
+                    <div style="font-size: medium;" class="row">
+                        <div class="col-md-6 col-xl-6">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ชื่อเรื่อง : เช่น อุบัติเหตุรถชนไม้คานกั้นอัตโนมัติ ALB ตู้ EN ๐๑ </label>
-                                <asp:TextBox ID="txtEquipment" runat="server" CssClass="form-control"></asp:TextBox>
+                                <p class="bmd-label-floating">ชื่อเรื่อง : เช่น อุบัติเหตุรถชนไม้คานกั้นอัตโนมัติ ALB ตู้ EN ๐๑ </p>
+                                <asp:TextBox ID="txtEquipment" runat="server" CssClass="form-control col-xl-auto"></asp:TextBox>
                             </div>
                         </div>
-                        <!--</div>
-            <div class="row">-->
-                        <div class="col-md-2">
+                       
+                        <div class="col-md-2 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">วันที่เกิดเหตุ</label>
+                                <p class="bmd-label-floating">วันที่เกิดเหตุ</p>
                                 <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control datepicker" />
                             </div>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เวลา</label>
+                                <p class="bmd-label-floating">เวลา</p>
                                 <asp:TextBox ID="txtTime" runat="server" CssClass="form-control" MaxLength="5" ToolTip="เวลา เช่น 10.30 ไม่ต้องใส่ น." />
                             </div>
                         </div>
-                        <div class="col-md-3">
+                    </div>
+                      
+                    <div style="font-size: medium;" class="row">
+                        <div class="col-md-3 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ผลัด </label>
+                                <p class="bmd-label-floating">ผลัด </p>
                                 <asp:DropDownList ID="txtAround" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        </div>                    
+                        <div class="col-md-4 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เรียน เช่น ผจท. ผ่าน ผจด.</label>
-                                <asp:TextBox ID="txtNoteTo" runat="server" CssClass="form-control"></asp:TextBox>
+                                <p class="bmd-label-floating">เรียน เช่น ผจท. ผ่าน ผจด.</p>
+                                <asp:TextBox ID="txtNoteTo" runat="server" CssClass="form-control col-xl-auto"></asp:TextBox>
                             </div>
                         </div>
-                        <!--</div>
-            <div class="row">-->
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ได้รับแจ้งจาก</label>
+                                <p class="bmd-label-floating">ได้รับแจ้งจาก</p>
                                 <asp:TextBox ID="txtNameAleat" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ตำแหน่ง </label>
+                                <p class="bmd-label-floating">ตำแหน่ง </p>
                                 <asp:DropDownList ID="txtPosAleat" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <label class="bmd-label-floating">ประจำตู้</label>
+                   </div>
+                    <hr />
+                     <div style="font-size: medium;" class="row">
+                        <div class="col-md-1 col-xl-2">
+                            <p class="bmd-label-floating">ประจำตู้</p>
                             <asp:DropDownList ID="txtCB" runat="server" CssClass="combobox form-control"></asp:DropDownList>
                         </div>
-                        <!--</div>
-            <div class="row">-->
-                        <div class="col-md-4">
+                   
+           
+                        <div class="col-md-4 col-xl-4">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">แจ้งว่าเกิดอุบัติเหตุ...</label>
+                                <p class="bmd-label-floating">แจ้งว่าเกิดอุบัติเหตุ...</p>
                                 <asp:TextBox ID="txtDetail" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <label class="bmd-label-floating">ตู้ที่เกิดอุบัติเหตุ</label>
+                        <div class="col-md-2 col-xl-3">
+                            <p class="bmd-label-floating">ตู้ที่เกิดอุบัติเหตุ</p>
                             <asp:DropDownList ID="txtCBClaim" runat="server" CssClass="combobox form-control"></asp:DropDownList>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ฝั่ง เช่น ขาเข้าระบบ หรือ ขาออกระบบ</label>
+                                <p class="bmd-label-floating">ฝั่ง เช่น ขาเข้าระบบ หรือ ขาออกระบบ</p>
                                 <asp:TextBox ID="txtDirection" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-2">
+
+                    <div style="font-size: medium;" class="row">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">รถคู่กรณีเป็นรถ</label>
+                                <p class="bmd-label-floating">รถคู่กรณีเป็นรถ</p>
                                 <asp:DropDownList ID="txtTypeCar" runat="server" CssClass="combobox form-control"></asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ยี่ห้อ</label>
+                                <p class="bmd-label-floating">ยี่ห้อ</p>
                                 <asp:DropDownList ID="txtBrandCar" runat="server" CssClass="combobox form-control"></asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">สีรถ</label>
+                                <p class="bmd-label-floating">สีรถ</p>
                                 <asp:TextBox ID="txtColorCar" runat="server" ToolTip="ใส่เฉพาะสี เช่น แดง" CssClass="form-control"></asp:TextBox>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
+                        </div>                                       
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เลขทะเบียน</label>
+                                <p class="bmd-label-floating">เลขทะเบียน</p>
                                 <asp:TextBox ID="txtLicensePlate" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
                             </div>
-                        </div>
-                        
-                        
-                        <div class="col-md-2">
+                        </div>                                             
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">จังหวัด</label>
+                                <p class="bmd-label-floating">จังหวัด</p>
                                 <asp:TextBox ID="txtProvince" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เลขทะเบียนส่วงพ่วง</label>
+                                <p class="bmd-label-floating">เลขทะเบียนส่วงพ่วง</p>
                                 <asp:TextBox ID="txtLp2" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                    </div>
+
+                    <div style="font-size: medium;" class="row">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">จังหวัดส่วนพ่วง</label>
+                                <p class="bmd-label-floating">จังหวัดส่วนพ่วง</p>
                                 <asp:TextBox ID="txtProvince22" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เลขทะเบียนอังกฤษ(ถ้ามี)</label>
+                                <p class="bmd-label-floating">เลขทะเบียนอังกฤษ(ถ้ามี)</p>
                                 <asp:TextBox ID="txtLiEng" runat="server" MaxLength="50" ToolTip="ไม่มีไม่ต้องใส่" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xl-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">จังหวัดอังกฤษ(ถ้ามี)</label>
+                                <p class="bmd-label-floating">จังหวัดอังกฤษ(ถ้ามี)</p>
                                 <asp:TextBox ID="txtProEng" runat="server" MaxLength="50" ToolTip="ไม่มีไม่ต้องใส่" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">วิ่งมาจาก</label>
+                                <p class="bmd-label-floating">วิ่งมาจาก</p>
                                 <asp:TextBox ID="txtComeFrom" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">มุ่งหน้า</label>
+                                <p class="bmd-label-floating">มุ่งหน้า</p>
                                 <asp:TextBox ID="txtDirectionIn" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
@@ -182,13 +187,13 @@
             <div class="row">-->
                         <div class="col-md-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ขับขี่โดย</label>
+                                <p class="bmd-label-floating">ขับขี่โดย</p>
                                 <asp:TextBox ID="txtNameDrive" runat="server" MaxLength="100" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เลขบัตรประจำตัวประชาชน 13 หลัก (เฉพาะตัวเลข)</label>
+                                <p class="bmd-label-floating">เลขบัตรประจำตัวประชาชน 13 หลัก (เฉพาะตัวเลข)</p>
                                 <asp:TextBox ID="txtIdcard" runat="server" CssClass="form-control" MaxLength="13" ToolTip="ไม่มีขีด เช่น 1234567890123"></asp:TextBox>
                             </div>
                         </div>
@@ -196,13 +201,13 @@
             <div class="row">-->
                         <div class="col-md-2">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เบอร์โทรคู่กรณี</label>
+                                <p class="bmd-label-floating">เบอร์โทรคู่กรณี</p>
                                 <asp:TextBox ID="txtTelDrive" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ที่อยู่คู่กรณี</label>
+                                <p class="bmd-label-floating">ที่อยู่คู่กรณี</p>
                                 <asp:TextBox ID="txtAddressDriver" runat="server" MaxLength="255" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                             </div>
                             
@@ -218,62 +223,67 @@
                         
                     </div>
                     <hr />
-                </div>
+                </div>            
                 <div id="divSup" runat="server">
                     <h3 class="card-title alert-warning">รายละเอียดอุบัติเหตุ (รองผู้จัดการด่านฯ)</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">บริษัทประกันภัย</label>
-                                <asp:TextBox ID="txtInsurer" runat="server" CssClass="form-control"></asp:TextBox>
+                    <div style="font-size: medium;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <p class="bmd-label-floating">บริษัทประกันภัย</p>
+                                    <asp:TextBox ID="txtInsurer" runat="server" CssClass="form-control col-xl-auto"></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">หมายเลขกรมธรรม์</label>
-                                <asp:TextBox ID="txtPolicyholders" runat="server" CssClass="form-control"></asp:TextBox>
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <p class="bmd-label-floating">สถานีตำรวจที่แจ้งความ</p>
+                                    <asp:TextBox ID="txtInform" runat="server" CssClass="form-control col-xl-auto"></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">หมายเลขเคลม</label>
-                                <asp:TextBox ID="txtClemence" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">สถานีตรวจที่แจ้งความ</label>
-                                <asp:TextBox ID="txtInform" runat="server" CssClass="form-control"></asp:TextBox>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <p class="bmd-label-floating">หมายเลขกรมธรรม์</p>
+                                    <asp:TextBox ID="txtPolicyholders" runat="server" CssClass="form-control col-xl-auto"></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <p class="bmd-label-floating">หมายเลขเคลม</p>
+                                    <asp:TextBox ID="txtClemence" runat="server" CssClass="form-control col-xl-auto"></asp:TextBox>
+                                </div>
+                            </div>
+                          </div>  
+                        </div>                   
                     <hr />
                 </div>
                 <h3 class="card-title alert-warning">พนักงานที่ปฏิบัติงาน</h3>
-                <div class="row">
+                <div style="font-size: medium;" class="row">
                     <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">รองผู้จัดการด่านฯ ประจำผลัด</label>
+                            <p class="bmd-label-floating">รองผู้จัดการด่านฯ ประจำผลัด</p>
                             <asp:TextBox ID="txtSup" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">ตำแหน่ง </label>
+                            <p class="bmd-label-floating">ตำแหน่ง </p>
                             <asp:DropDownList ID="txtPosSup" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div style="font-size: medium;" class="row">
                     <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">พนักงานควบคุมระบบที่ปฏิบัติหน้าที่</label>
+                            <p class="bmd-label-floating">พนักงานควบคุมระบบที่ปฏิบัติหน้าที่</p>
                             <asp:TextBox ID="txtComName" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">ตำแหน่ง </label>
+                            <p class="bmd-label-floating">ตำแหน่ง </p>
                             <asp:DropDownList ID="txtPosCom" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
                         </div>
                     </div>
@@ -281,7 +291,7 @@
                         <asp:LinkButton ID="btnAddCom" runat="server" Text="&#xf234; เพิ่ม พ.ควบคุมระบบที่ปฏิบัติหน้าที่" CssClass="btn btn-success btn-sm fa" OnClick="btnAddCom_Click"></asp:LinkButton>
                     </div>
                 </div>
-                <div class="row">
+                <div style="font-size: medium;" class="row">
                     <div class="col-md-5">
                         <asp:GridView ID="ComGridView" runat="server"
                             DataKeyNames="com_working_id"
@@ -309,7 +319,7 @@
                 </div>
                 <hr />
                 <h3 class="card-title alert-warning">รายการอุปกรณ์ที่ได้รับความเสียหาย</h3>
-                <div class="row" >
+                <div style="font-size: medium;" class="row" >
                     <div class="col-md-2">
                         <asp:RadioButton ID="rbtNormal" runat="server"  AutoPostBack="true" GroupName="NormalOrKnow" OnCheckedChanged="rbtNormal_CheckedChanged" />
                         <label>แจ้งอุบัติเหตุปกติ</label>
@@ -320,7 +330,7 @@
                     </div>
                     <asp:Label ID="chkClaimm" runat="server" Visible="false"></asp:Label>
                 </div>
-                <div class="row" id="DivNoDamage" runat="server" visible="false">
+                <div style="font-size: medium;" class="row" id="DivNoDamage" runat="server" visible="false">
                         <div class="col-md-2">
                         <asp:CheckBox ID="CheckDeviceNotDamaged" runat="server"  AutoPostBack="true" OnCheckedChanged="CheckDeviceNotDamaged_CheckedChanged" />
                         <label>อุปกรณ์ไม่ได้รับความเสียหาย</label>

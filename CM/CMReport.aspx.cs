@@ -542,43 +542,45 @@ namespace ClaimProject.CM
             
                 if (rt.Read())
                 {
-                if(!rt.IsDBNull(11))
-                {
-                    imgS = rt.GetString("cm_detail_simg");
-                    imgE = rt.GetString("cm_detail_eimg");
-                    ImgEditEQ.ImageUrl = "~" + imgS;
-                    ImgEditEQE.ImageUrl = "~" + imgE;
-                    lbrefRecheck.Text = rt.GetString("cm_detail_id");
-                    lbCpointRecheck.Text = rt.GetString("cpoint_name");
-                    lbPointRecheck.Text = rt.GetString("cm_point");
-                    lbChannelRecheck.Text = rt.GetString("locate_name");
-                    lbdeviceRecheck.Text = rt.GetString("device_name");
-                    lbProblemRecheck.Text = rt.GetString("cm_detail_problem");
-                    lbMethodRecheck.Text = rt.GetString("cm_detail_method");
-                    lbNodeRecheck.Text = rt.GetString("cm_detail_note");
-                    lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
-                    lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น.";
-                    lbDateERecheck.Text = rt.GetString("cm_detail_edate");
-                    lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
-                    lbUserRecheck.Text = rt.GetString("name");
-                }
-                else
-                { 
-                    ImgEditEQ.ImageUrl = "~" + imgS;
-                    ImgEditEQE.ImageUrl = "~" + imgE;
-                    lbrefRecheck.Text = rt.GetString("cm_detail_id");
-                    lbCpointRecheck.Text = rt.GetString("cpoint_name");
-                    lbPointRecheck.Text = rt.GetString("cm_point");
-                    lbChannelRecheck.Text = rt.GetString("locate_name");
-                    lbdeviceRecheck.Text = rt.GetString("device_name");
-                    lbProblemRecheck.Text = rt.GetString("cm_detail_problem");                    
-                    lbNodeRecheck.Text = rt.GetString("cm_detail_note");
-                    lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
-                    lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น."; 
-                    lbUserRecheck.Text = rt.GetString("name");
-                }
+                    if(!rt.IsDBNull(11))
+                    {
+                        imgS = rt.GetString("cm_detail_simg");
+                        imgE = rt.GetString("cm_detail_eimg");
+                        ImgEditEQ.ImageUrl = "~" + imgS;
+                        ImgEditEQE.ImageUrl = "~" + imgE;
+                        lbrefRecheck.Text = rt.GetString("cm_detail_id");
+                        lbCpointRecheck.Text = rt.GetString("cpoint_name");
+                        lbPointRecheck.Text = rt.GetString("cm_point");
+                        lbChannelRecheck.Text = rt.GetString("locate_name");
+                        lbdeviceRecheck.Text = rt.GetString("device_name");
+                        lbProblemRecheck.Text = rt.GetString("cm_detail_problem");
+                        lbMethodRecheck.Text = rt.GetString("cm_detail_method");
+                        lbNodeRecheck.Text = rt.GetString("cm_detail_note");
+                        lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
+                        lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น.";
+                        lbDateERecheck.Text = rt.GetString("cm_detail_edate");
+                        lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
+                        lbUserRecheck.Text = rt.GetString("name");
+                    }
+                    else
+                    {
+                        imgS = rt.GetString("cm_detail_simg");
+                        //imgE = rt.GetString("cm_detail_eimg");
+                        ImgEditEQ.ImageUrl = "~" + imgS;
+                        ImgEditEQE.ImageUrl = "~" + imgE;
+                        lbrefRecheck.Text = rt.GetString("cm_detail_id");
+                        lbCpointRecheck.Text = rt.GetString("cpoint_name");
+                        lbPointRecheck.Text = rt.GetString("cm_point");
+                        lbChannelRecheck.Text = rt.GetString("locate_name");
+                        lbdeviceRecheck.Text = rt.GetString("device_name");
+                        lbProblemRecheck.Text = rt.GetString("cm_detail_problem");                    
+                        lbNodeRecheck.Text = rt.GetString("cm_detail_note");
+                        lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
+                        lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น."; 
+                        lbUserRecheck.Text = rt.GetString("name");
+                    }
         
-            }
+                }
         }
     }
 

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div class="card" style="z-index: 0">
+            <div class="card" style="z-index: 0; font-size:21px; font-family:'TH SarabunPSK'">
                 <div class="card-header card-header-warning">
                     <h3 class="card-title">รายการ<%= new ClaimProject.Config.ClaimFunction().GetSelectValue("tbl_status","status_id = '"+status+"'","status_name") %></h3>
                 </div>
@@ -23,7 +23,7 @@
                         OnRowDataBound="ClaimGridView_RowDataBound"
                         AutoGenerateColumns="False"
                         CssClass="table table-hover table-sm"
-                        Font-Size="19px"
+                        Font-Size="21px"
                         AllowSorting="true"
                         AllowPaging="true"
                         PageSize="50"

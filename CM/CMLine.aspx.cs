@@ -675,7 +675,7 @@ namespace ClaimProject.CM
                 }
                 else if (colortoll == "713")
                 {
-                    lbHeadToll.Text = "ด่านฯ อู่ตาเภา ";
+                    lbHeadToll.Text = "ด่านฯ อู่ตะเภา ";
                     lbShift.Text = ddlShift.SelectedItem.Text;
                 }
                 else if (colortoll == "902")

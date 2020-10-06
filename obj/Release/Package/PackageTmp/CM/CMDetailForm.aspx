@@ -3,88 +3,92 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <div class="card" style="z-index: 0">
-        <div class="card-header card-header-warning">
-            <h3 class="card-title">แจ้งซ่อมอุปกรณ์</h3>
-        </div>
-        <div class="card-body table-responsive table-sm">
-            <asp:HiddenField ID="txtRef" runat="server" />
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating">ด่านฯ :</label>
-                        <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
-                    </div>
-                </div>
-               <div class="col-lg-3">
+
+    <div class="container-fluid">
+   
+        <div class="card" style="z-index: 0; font-size:medium; ">
+            <div class="card-header card-header-warning">
+                <h3 class="card-title">แจ้งซ่อมอุปกรณ์</h3>
+            </div>
+            <div class="card-body table-responsive table-sm">
+                <asp:HiddenField ID="txtRef" runat="server" />
+                <div class="row">
+                    <div class="col-md-3">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating ">Annex :</label>
-                            <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="Annex"/>
+                            <p class="bmd-label-floating">ด่านฯ :</p>
+                            <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
                         </div>
-                </div>
+                    </div>
+                   <div class="col-md-2">
+                            <div class="form-group bmd-form-group">
+                                <p class="bmd-label-floating ">อาคารย่อย :</p>
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="อาคารย่อย" MaxLength="1"/>
+                            </div>
+                    </div>
                 
-                <div class="col-lg-2">
-                    <div class="form-group bmd-form-group ">
-                        <label class="bmd-label-floating ">วันที่ :</label>
-                        <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" />
+                    <div class="col-md-2">
+                        <div class="form-group bmd-form-group ">
+                            <p class="bmd-label-floating ">วันที่ :</p>
+                            <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" />
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="form-group bmd-form-group ">
-                        <label class="bmd-label-floating ">เวลา :</label>
-                        <asp:TextBox ID="txtSTime" runat="server" CssClass="form-control time" />
+                    <div class="col-md-2">
+                        <div class="form-group bmd-form-group ">
+                            <p class="bmd-label-floating ">เวลา :</p>
+                            <asp:TextBox ID="txtSTime" runat="server" CssClass="form-control time" />
+                        </div>
                     </div>
+                                    
+                    <div class="col-md-3">
+                        <div class="form-group bmd-form-group">
+                            <p class="bmd-label-floating ">ช่องทาง</p>
+                            <asp:DropDownList ID="ddlChanel" Width="90px" runat="server" CssClass="form-control" ></asp:DropDownList>
+                        </div>
+                    </div>    
                 </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group bmd-form-group">
+                            <p class="bmd-label-floating">อุปกรณ์</p>
+                            <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group bmd-form-group">
+                            <p class="bmd-label-floating">ปัญหา/อาการ</p>
+                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group bmd-form-group">
+                            <p class="bmd-label-floating">หมายเหตุ</p>
+                            <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" />
+                        </div>
+                    </div>           
+                    <div class="col-md-3">
+                       <div class="form-group bmd-form-group">
+                        <div class="custom-file">        
+                            <label class="custom-file-label" for="customFile">แนบรูปภาพ</label>
+                            <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file-input" lang="en" />
+                        </div>
+                    </div>
                 
-            
-           
-            <div class="col-lg-2">
-                    <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating ">ช่องทาง</label>
-                        <asp:DropDownList ID="ddlChanel" Width="90px" runat="server" CssClass="form-control" ></asp:DropDownList>
-                    </div>
-                </div>    
-            </div>
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating">อุปกรณ์</label>
-                        <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" />
-                    </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating">ปัญหา/อาการ</label>
-                        <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" />
+                <div class="row">
+                    <div class="col-md text-center">
+                        <asp:LinkButton ID="btnSaveCM" runat="server" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click">แจ้งซ่อม</asp:LinkButton>
+                        <asp:LinkButton ID="btnEditCM" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnEditCM_Click">แก้ไขแจ้งซ่อม</asp:LinkButton>
+                        <asp:LinkButton ID="btnCancelCM" runat="server" Font-Size="20px" CssClass="btn btn-dark btn-sm" OnClick="btnCancelCM_Click">ยกเลิก</asp:LinkButton>
+                        <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบข้อมูลการแจ้งซ่อม</asp:LinkButton>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating">หมายเหตุ</label>
-                        <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" />
-                    </div>
-                </div>           
-                <div class="col-lg-3">
-                    <br />
-                    <label class="bmd-label-floating">แนบไฟล์อุปกรณ์ที่เสียหาย</label>
-                    <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-md text-center">
-                    <asp:LinkButton ID="btnSaveCM" runat="server" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click">แจ้งซ่อม</asp:LinkButton>
-                    <asp:LinkButton ID="btnEditCM" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnEditCM_Click">แก้ไขแจ้งซ่อม</asp:LinkButton>
-                    <asp:LinkButton ID="btnCancelCM" runat="server" Font-Size="20px" CssClass="btn btn-dark btn-sm" OnClick="btnCancelCM_Click">ยกเลิก</asp:LinkButton>
-                    <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบข้อมูลการแจ้งซ่อม</asp:LinkButton>
                 </div>
             </div>
         </div>
+        <br />
     </div>
-    <br />
 
     <div id="DivCMGridView" runat="server" class="col-12">
-        <div class="card" style="z-index: 0">
+        <div class="card" style="z-index: 0" >
             <div class="card-header card-header-warning">
                 <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์ (รอการแก้ไข)</h3>
             </div>
@@ -112,8 +116,10 @@
                 <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover "
-                        HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
-                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="21px" CellPadding="4" ForeColor="#000033" GridLines="None" PageSize="1">
+                        HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder"
+                        HeaderStyle-Font-Size="18px"
+                        RowStyle-CssClass="text-center"
+                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#000033" GridLines="None" PageSize="1">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField HeaderText="ลำดับ" >
@@ -121,7 +127,7 @@
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ด่านฯ" ControlStyle-Width="100px">
+                            <asp:TemplateField HeaderText="ด่านฯ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
@@ -133,7 +139,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="อุปกรณ์" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lbDeviceName" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
+                                    <asp:Label ID="lbDeviceName" runat="server"  Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.device_name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="อาการที่ชำรุด" >
@@ -151,9 +157,9 @@
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ผู้แจ้ง" >
+                            <asp:TemplateField HeaderText="ผู้แจ้ง" ControlStyle-Width="150px">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbcmUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
+                                    <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="แก้ไข" ControlStyle-Width="50px">
@@ -164,7 +170,7 @@
                         </Columns>
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="White" CssClass="text-left" Font-Bold="True" ForeColor="#000033" Font-Size="23px" />
+                        <HeaderStyle BackColor="White" CssClass="text-left" Font-Bold="True" ForeColor="#000033"  />
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                         <RowStyle BackColor="White" CssClass="text-left" />
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -177,7 +183,7 @@
             </div>
         </div>
     </div>
-
+        </div>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>

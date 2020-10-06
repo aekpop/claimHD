@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>10/01/2020 13:42:20</publishTime>
+      <publishTime>10/05/2020 14:05:22</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>10/01/2020 13:42:20</publishTime>
+      <publishTime>10/05/2020 14:05:22</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>10/01/2020 13:42:22</publishTime>
+      <publishTime>10/05/2020 14:05:24</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -492,8 +492,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/stdole.dll">
       <publishTime>06/30/2020 13:03:25</publishTime>
     </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/28/2018 12:59:46</publishTime>
+    </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>02/11/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/28/2018 13:00:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
     </File>
     <File Include="bin/VSLangProj.dll">
       <publishTime>06/30/2020 13:03:25</publishTime>
@@ -586,43 +604,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/04/2018 10:56:04</publishTime>
     </File>
     <File Include="Claim/claimDetailForm.aspx">
-      <publishTime>02/05/2020 10:08:16</publishTime>
+      <publishTime>10/02/2020 13:38:42</publishTime>
     </File>
     <File Include="Claim/ClaimDevice.aspx">
-      <publishTime>09/29/2020 14:29:20</publishTime>
+      <publishTime>10/02/2020 13:59:20</publishTime>
     </File>
     <File Include="Claim/claimForm.aspx">
-      <publishTime>08/26/2019 08:30:24</publishTime>
+      <publishTime>10/02/2020 13:46:32</publishTime>
     </File>
     <File Include="Claim/claimLine.aspx">
-      <publishTime>09/24/2020 14:24:01</publishTime>
+      <publishTime>10/05/2020 09:53:45</publishTime>
     </File>
     <File Include="Claim/DefaultClaim.aspx">
-      <publishTime>09/24/2020 15:43:22</publishTime>
+      <publishTime>10/05/2020 13:37:55</publishTime>
     </File>
     <File Include="Claim/Upload/chrome_installer.exe">
       <publishTime>11/29/2018 09:04:02</publishTime>
     </File>
     <File Include="CM/CMDetailForm.aspx">
-      <publishTime>10/01/2020 13:17:20</publishTime>
+      <publishTime>10/02/2020 17:21:01</publishTime>
     </File>
     <File Include="CM/CMEditForm.aspx">
-      <publishTime>09/23/2020 12:46:09</publishTime>
+      <publishTime>10/02/2020 16:06:29</publishTime>
     </File>
     <File Include="CM/CMLine.aspx">
-      <publishTime>09/23/2020 15:38:45</publishTime>
+      <publishTime>10/05/2020 09:49:46</publishTime>
     </File>
     <File Include="CM/CMReport.aspx">
-      <publishTime>10/01/2020 12:03:47</publishTime>
+      <publishTime>10/02/2020 18:11:56</publishTime>
     </File>
     <File Include="CM/CMStatForm.aspx">
       <publishTime>10/01/2020 12:50:21</publishTime>
     </File>
     <File Include="CM/CMSurveyForm.aspx">
-      <publishTime>09/30/2020 16:36:20</publishTime>
+      <publishTime>10/02/2020 17:10:32</publishTime>
     </File>
     <File Include="CM/DefaultCM.aspx">
-      <publishTime>10/01/2020 11:56:17</publishTime>
+      <publishTime>10/02/2020 11:47:43</publishTime>
     </File>
     <File Include="Company/CompanyForm.aspx">
       <publishTime>01/02/2019 10:54:22</publishTime>
@@ -697,7 +715,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 11:34:42</publishTime>
     </File>
     <File Include="Content/CM.css">
-      <publishTime>09/28/2020 14:10:01</publishTime>
+      <publishTime>10/04/2020 22:56:10</publishTime>
     </File>
     <File Include="Content/dashboard.css">
       <publishTime>10/01/2018 16:44:52</publishTime>
@@ -1006,7 +1024,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
     <File Include="Content/jquery-ui-1.11.4.custom.css">
-      <publishTime>08/18/2020 13:03:20</publishTime>
+      <publishTime>10/05/2020 10:50:37</publishTime>
     </File>
     <File Include="Content/jquery-ui.css">
       <publishTime>10/01/2018 16:44:52</publishTime>
@@ -3445,13 +3463,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>09/28/2020 15:26:01</publishTime>
+      <publishTime>10/02/2020 18:15:34</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
-      <publishTime>09/08/2020 12:06:56</publishTime>
+      <publishTime>10/02/2020 23:20:51</publishTime>
     </File>
     <File Include="equip/EquipAddList.aspx">
-      <publishTime>09/14/2020 10:43:41</publishTime>
+      <publishTime>10/02/2020 23:43:03</publishTime>
     </File>
     <File Include="equip/EquipCheck.aspx">
       <publishTime>05/01/2020 11:10:58</publishTime>
@@ -3460,7 +3478,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/27/2020 11:27:44</publishTime>
     </File>
     <File Include="equip/EquipDefault.aspx">
-      <publishTime>09/08/2020 12:30:22</publishTime>
+      <publishTime>10/02/2020 23:13:22</publishTime>
     </File>
     <File Include="equip/EquipLoanList.aspx">
       <publishTime>08/17/2020 09:40:54</publishTime>
@@ -3481,13 +3499,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/30/2020 11:13:02</publishTime>
     </File>
     <File Include="equip/EquipTranGetList.aspx">
-      <publishTime>08/31/2020 12:56:40</publishTime>
+      <publishTime>10/04/2020 18:09:45</publishTime>
     </File>
     <File Include="equip/EquipTranGetout.aspx">
       <publishTime>07/16/2020 09:49:44</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>09/23/2020 10:22:45</publishTime>
+      <publishTime>10/03/2020 00:26:15</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>07/10/2020 11:27:55</publishTime>
@@ -3592,7 +3610,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/21/2019 19:06:30</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>09/21/2020 11:22:41</publishTime>
+      <publishTime>10/05/2020 11:35:50</publishTime>
     </File>
     <File Include="Model/DataSetClaim.xsc">
       <publishTime>11/19/2018 13:25:24</publishTime>
@@ -3702,14 +3720,35 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/bootstrap.min.js.map">
       <publishTime>09/28/2020 09:15:06</publishTime>
     </File>
+    <File Include="Scripts/Chart.min.js">
+      <publishTime>11/15/2019 01:37:30</publishTime>
+    </File>
     <File Include="Scripts/chartist.min.js">
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
     <File Include="Scripts/ClaimProjectScript.js">
       <publishTime>08/18/2020 17:31:16</publishTime>
     </File>
+    <File Include="Scripts/cldr.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/cldr/event.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/cldr/supplemental.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/cldr/unresolved.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
     <File Include="Scripts/demo.js">
       <publishTime>11/08/2018 09:39:24</publishTime>
+    </File>
+    <File Include="Scripts/dx.viz.debug.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
+    </File>
+    <File Include="Scripts/dx.viz.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
     </File>
     <File Include="Scripts/esm/popper-utils.js">
       <publishTime>09/28/2020 09:15:06</publishTime>
@@ -3771,11 +3810,35 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/fontawesome/v4-shims.min.js">
       <publishTime>01/14/2019 11:34:42</publishTime>
     </File>
+    <File Include="Scripts/globalize.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/currency.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/date.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/message.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/number.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/plural.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/relative-time.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
+    <File Include="Scripts/globalize/unit.js">
+      <publishTime>10/02/2020 08:36:52</publishTime>
+    </File>
     <File Include="Scripts/HRSProjectScript.js">
       <publishTime>10/20/2018 13:29:58</publishTime>
     </File>
     <File Include="Scripts/html2canvas.js">
-      <publishTime>09/10/2020 17:48:47</publishTime>
+      <publishTime>10/05/2020 08:12:29</publishTime>
     </File>
     <File Include="Scripts/index.js.flow">
       <publishTime>09/28/2020 09:15:06</publishTime>
@@ -4128,6 +4191,33 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/umd/popper.min.js.map">
       <publishTime>09/28/2020 09:14:12</publishTime>
     </File>
+    <File Include="Scripts/vectormap-data/africa.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-data/canada.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-data/eurasia.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-data/europe.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-data/usa.js">
+      <publishTime>10/02/2020 08:36:57</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-data/world.js">
+      <publishTime>10/02/2020 08:36:56</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-utils/dx.vectormaputils.debug.js">
+      <publishTime>10/02/2020 08:36:56</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-utils/dx.vectormaputils.js">
+      <publishTime>10/02/2020 08:36:56</publishTime>
+    </File>
+    <File Include="Scripts/vectormap-utils/dx.vectormaputils.node.js">
+      <publishTime>10/02/2020 08:36:56</publishTime>
+    </File>
     <File Include="Scripts/WebForms/DetailsView.js">
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
@@ -4198,7 +4288,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2020 15:40:44</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>09/29/2020 22:49:27</publishTime>
+      <publishTime>10/05/2020 11:18:57</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/01/2018 16:43:56</publishTime>
@@ -4219,10 +4309,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>08/31/2020 09:26:06</publishTime>
+      <publishTime>10/05/2020 12:31:05</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
-      <publishTime>11/30/2018 13:50:36</publishTime>
+      <publishTime>10/05/2020 11:43:48</publishTime>
     </File>
     <File Include="User/Add/userForm.aspx">
       <publishTime>01/02/2019 10:54:14</publishTime>
@@ -4230,11 +4320,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="User/UserForm.aspx">
       <publishTime>10/30/2018 08:25:54</publishTime>
     </File>
+    <File Include="Views/chart/ViewStat.cshtml">
+      <publishTime>10/02/2020 09:36:46</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>10/02/2020 09:04:04</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/02/2020 09:04:03</publishTime>
+    </File>
     <File Include="ViewSwitcher.ascx">
       <publishTime>10/01/2018 16:43:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/29/2020 09:11:27</publishTime>
+      <publishTime>10/04/2020 23:00:19</publishTime>
     </File>
     <File Include="webfonts/fa-brands-400.eot">
       <publishTime>01/14/2019 11:34:42</publishTime>

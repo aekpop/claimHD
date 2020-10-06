@@ -1,52 +1,60 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="claimLine.aspx.cs" Inherits="ClaimProject.Claim.claimLine" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="claimLine.aspx.cs" Inherits="ClaimProject.Claim.claimLine"  %>
 
 <!DOCTYPE html>
+<!--<link href="../Content/material-dashboard.css" rel="stylesheet" />-->
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" />
+    <title>ClaimLine</title>
+
 </head>
 <body>
-    <form id="form1" runat="server">
-        
-            <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
+ <form id="form1" runat="server">       
+            <div  class="card" style="font-size: 19px; z-index: 0;">
+                <div class="card-header card-header-warning">
+                    <h3 class="card-title">ส่ง Line งานอุบัติเหตุ</h3>
+                </div>
 
-            <div class="card" style="z-index: 0">
-            <div class="card-header card-header-warning">
-            </div>
-            <div class="card-body table-responsive table-md" >
-                <div class="row">
-                      <div class="form-group bmd-form-group" >
-                        <label class="bmd-label-floating">ด่านฯ : </label>
+                <div class="card-body">
+                     <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click"  />
+                     <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
+                </div>
+                <br />
+                <div class="card-body table-responsive table-md" >
+                    <div class="row">
+                          <div class="form-group bmd-form-group" >
+                            <label class="bmd-label-floating">ด่านฯ : </label>
                         
-                        <asp:DropDownList ID="ddlClaimLine" runat="server" CssClass="form-control custom-select " OnSelectedIndexChanged="ddlClaimLine_SelectedIndexChanged" AutoPostBack="true"  Font-Size="large" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlClaimLine" runat="server" CssClass="form-control custom-select " OnSelectedIndexChanged="ddlClaimLine_SelectedIndexChanged" AutoPostBack="true"  Font-Size="large" ></asp:DropDownList>
                         
-                        <asp:Label ID="lbBuild" runat="server" Visible="false" Text="อาคาร :" Font-Size="large" ></asp:Label> 
-                        <asp:DropDownList ID="ddlAnnex" runat="server" Visible="false" CssClass="control-form" Font-Size="large" >
-                            <asp:ListItem Value="1">1</asp:ListItem>
-                            <asp:ListItem Value="2">2</asp:ListItem>
-                            <asp:ListItem Value="3">3</asp:ListItem>
-                            <asp:ListItem Value="4">4</asp:ListItem>
-                            <asp:ListItem Value="5">5</asp:ListItem>
-                            <asp:ListItem Value="6">6</asp:ListItem>
+                            <asp:Label ID="lbBuild" runat="server" Visible="false" Text="อาคาร :" Font-Size="large" ></asp:Label> 
+                            <asp:DropDownList ID="ddlAnnex" runat="server" Visible="false" CssClass="control-form" Font-Size="large" >
+                                <asp:ListItem Value="1">1</asp:ListItem>
+                                <asp:ListItem Value="2">2</asp:ListItem>
+                                <asp:ListItem Value="3">3</asp:ListItem>
+                                <asp:ListItem Value="4">4</asp:ListItem>
+                                <asp:ListItem Value="5">5</asp:ListItem>
+                                <asp:ListItem Value="6">6</asp:ListItem>
+                            </asp:DropDownList>
+                        <label class="bmd-label-floating" >ผลัด : </label>
+                        <asp:DropDownList ID="ddlShift" runat="server" CssClass="control-form" Font-Size="large">
+                                <asp:ListItem Value="0">ผลัดที่ 1 (22.00 - 06.00)</asp:ListItem>
+                                <asp:ListItem Value="1">ผลัดที่ 2 (06.00 - 14.00)</asp:ListItem>
+                                <asp:ListItem Value="2">ผลัดที่ 3 (14.00 - 22.00)</asp:ListItem>
                         </asp:DropDownList>
-                    <label class="bmd-label-floating" >ผลัด : </label>
-                    <asp:DropDownList ID="ddlShift" runat="server" CssClass="control-form" Font-Size="large">
-                            <asp:ListItem Value="0">ผลัดที่ 1 (22.00 - 06.00)</asp:ListItem>
-                            <asp:ListItem Value="1">ผลัดที่ 2 (06.00 - 14.00)</asp:ListItem>
-                            <asp:ListItem Value="2">ผลัดที่ 3 (14.00 - 22.00)</asp:ListItem>
-                    </asp:DropDownList>
                           
-                                <label class="bmd-label-floating" style="font-size:large;">วันที่</label>
-                                <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
-                            </div>
+                                    <label class="bmd-label-floating" style="font-size:large;">วันที่</label>
+                                    <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" />
+                                    <asp:Button ID="btnrecm" runat="server" Text="แสดงตาราง" Font-Size="large" OnClick="btnrecm_Click"  /> 
+                                </div>
                     <br />
                     <div class="form-group bmd-form-group" >
-                        <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click"  />
-                        <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" Font-Size="large" OnClick="btnrecm_Click"  /> 
+                       
+
                         
                         <asp:HiddenField ID="hfImageData" runat="server" />
-                        <asp:Button ID="btnExport" Text="Export to Image" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
+                        
                         <asp:DropDownList ID="ddlClaimBudget" runat="server"  CssClass="form-control custom-select"  Visible="false" ></asp:DropDownList>
                     </div>
                    
@@ -71,7 +79,7 @@
                         HeaderStyle-BackColor="ActiveBorder" 
                         OnRowDataBound="gridClaimLine_RowDataBound" 
                         Font-Size="14px"  CellPadding="4" 
-                        ForeColor="#333333" GridLines="Both" 
+                        ForeColor="#333333" GridLines="Both"                         
                         BorderColor="Black" OnRowCreated="gridClaimLine_RowCreated">
                         
                         <AlternatingRowStyle BackColor="White"  />                                             
@@ -96,7 +104,7 @@
                                     <asp:Label ID="lbChannel"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_detail_cb_claim") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="400px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="400px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
@@ -124,13 +132,11 @@
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                    </asp:GridView>                                             
+                    </asp:GridView> 
+                <br />
                 
-                        
-            </div>
-        </div>
-
-        <script src="/Scripts/html2canvas.js"></script> 
+            </div>       
+    <script src="/Scripts/html2canvas.js"></script> 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -168,6 +174,7 @@
             }); 
     </script>        
 
-    </form>
+   </form>
 </body>
 </html>
+
