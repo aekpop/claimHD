@@ -976,6 +976,7 @@ namespace ClaimProject.equip
             string ccount = "";
             string Snameth = txtsearchth.Text;
             string SNum = txtsearchNum.Text;
+            string txtCpoint = ddlcpoint.SelectedItem.ToString();
             string txtTollz = ddlserchToll.SelectedItem.ToString();
             string qqq = Session["SQLEQ"].ToString();
             MySqlDataAdapter da = function.MySqlSelectDataSet(qqq);
@@ -983,7 +984,7 @@ namespace ClaimProject.equip
             da.Fill(ds);
             GridEquipAdd.DataSource = ds.Tables[0];
             ccount = (ds.Tables[0].Rows.Count).ToString();
-            titlegrid.Text = "ผลการค้นหา ( ชื่อครุภัณฑ์: " + Snameth + " | เลขครุภัณฑ์: " + SNum + " | ด่านฯ: " + txtTollz + "  ) พบ " + ccount + " รายการ";
+            titlegrid.Text = "ผลการค้นหา ( ชื่อครุภัณฑ์: " + Snameth + " | เลขครุภัณฑ์: " + SNum + " | ด่านฯ: " + txtCpoint + " | อาคารย่อย: " + txtTollz + "  ) พบ " + ccount + " รายการ";
             titlegrid.Visible = true;
             
             GridEquipAdd.DataBind();

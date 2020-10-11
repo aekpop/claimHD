@@ -131,6 +131,7 @@ namespace ClaimProject.CM
             CMGridView.DataSource = ds.Tables[0];
             CMGridView.DataBind();
             if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
+            function.Close();
         }
 
         protected string ChkPicInsert ()
@@ -180,7 +181,7 @@ namespace ClaimProject.CM
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว กรุณาติดต่อผู้ดูแล')", true);
                 }
-
+                function.Close();
             }
         }
 
@@ -224,12 +225,14 @@ namespace ClaimProject.CM
             {
                 lbRowNum.Text = (CMGridView.Rows.Count + 1).ToString() + ".";
             }
+
         }
 
         protected void btnEdit_Command(object sender, CommandEventArgs e)
         {
             EditModal = e.CommandName;
             pkeq.Text = EditModal;
+
             string sqlEdit = "SELECT * FROM tbl_cm_detail  "
                             + " WHERE cm_detail_id ='" + pkeq.Text + "' ";
             MySqlDataReader rttt = function.MySqlSelect(sqlEdit);
@@ -237,8 +240,9 @@ namespace ClaimProject.CM
             {
                 string imgg = rttt.GetString("cm_detail_simg");
             }
-
-            Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
+            rttt.Close();
+            function.Close();
+            Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);           
         }
 
         protected void btnEditCM_Click(object sender, EventArgs e)
@@ -281,12 +285,15 @@ namespace ClaimProject.CM
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);
                 BindData();
+
+                //Response.Redirect("/CM/CMDetailForm");
                 //ClearDate();
             }
             else
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
             }
+            function.Close();
         }
 
         protected void btnCancelCM_Click(object sender, EventArgs e)
@@ -310,6 +317,7 @@ namespace ClaimProject.CM
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
             }
+            function.Close();
         }
 
         protected void btnSearchAddd_Click(object sender, EventArgs e)
@@ -322,6 +330,20 @@ namespace ClaimProject.CM
             Response.Redirect("/CM/CMLine.aspx");
         }
 
-        
+        protected void btnEditCMM_Command(object sender, CommandEventArgs e)
+        {
+            EditModal = e.CommandName;
+            string pkedit = EditModal;
+            string sqlEdit = "SELECT * FROM tbl_cm_detail  "
+                            + " WHERE cm_detail_id ='" + pkedit + "' ";
+            MySqlDataReader rttt = function.MySqlSelect(sqlEdit);
+            if (rttt.Read())
+            {
+                string imgg = rttt.GetString("cm_detail_simg");
+            }
+            rttt.Close();
+            function.Close();
+            Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
+        }
     }
 }

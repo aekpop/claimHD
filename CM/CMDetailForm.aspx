@@ -1,4 +1,4 @@
-﻿<%@ Page Title="รายการ CM" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMDetailForm.aspx.cs" Inherits="ClaimProject.CM.CMDetailForm" %>
+﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMDetailForm.aspx.cs" Inherits="ClaimProject.CM.CMDetailForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="/Scripts/bootbox.js"></script>
@@ -22,7 +22,7 @@
                    <div class="col-md-2">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating ">อาคารย่อย :</p>
-                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="อาคารย่อย" MaxLength="1"/>
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="อาคารย่อยถ้ามี" MaxLength="1" />
                             </div>
                     </div>
                 
@@ -95,7 +95,7 @@
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0" >
             <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์ (รอการแก้ไข)</h3>
+                <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์</h3>
             </div>
             <div class="card-body table-responsive table-sm">
                 <!--<div class="row">
@@ -169,7 +169,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="แก้ไข" ControlStyle-Width="50px">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnEditCM" runat="server" CssClass="fas text-warning" OnCommand="btnEdit_Command">&#xf303;</asp:LinkButton>
+                                    <asp:LinkButton ID="btnEditCM" runat="server"  CssClass="fas text-warning" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขรายการใช่หรือไม่')">&#xf303;</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -188,6 +188,34 @@
             </div>
         </div>
     </div>
+        <!--model confirm-->
+            <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <asp:Label ID="pkedit" runat="server" visible="true" Font-Size="Smaller" ></asp:Label>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="H3"></h4>
+                        </div>
+                        <asp:UpdatePanel ID="upDel" runat="server">
+
+                    <ContentTemplate>
+                        <div class="modal-body">
+                            คุณต้องการแก้ไขรายการนี้ใช่ หรือ ไม่
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <asp:Button ID="btnEditCMM" runat="server"  CssClass="btn btn-success" Text="Confirm" OnCommand="btnEditCMM_Command"/>
+                        </div>
+                        </ContentTemplate>
+
+                    
+
+                </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+
         </div>
     
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
@@ -211,6 +239,11 @@
                 return confirm(msg);
             }
         }
+        function ComfirmEdit() 
+            {
+              $('#EditModal').modal(); // initialized with defaults
+              return false;
+            }
         
     </script>
 </asp:Content>

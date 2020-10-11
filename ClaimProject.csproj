@@ -1283,10 +1283,12 @@
     <Content Include="Report\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Report\report.aspx" />
     <Content Include="Report\reportView.aspx" />
+    <Content Include="Scripts\base64js.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\canvas2image.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
@@ -1465,6 +1467,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\printThis.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />

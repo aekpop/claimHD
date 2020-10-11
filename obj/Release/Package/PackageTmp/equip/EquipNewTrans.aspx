@@ -3,9 +3,9 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" BackColor="#c44602" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้าหลักครุภัณฑ์"  OnClick="btnMainEQ_Click" CssClass="btn" />
-    <asp:Button runat="server" ID="btnMainTranSend" Visible="false" Font-Bold="true" BackColor="#01914b" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้ารายการ(ส่ง)ครุภัณฑ์"  OnClick="btnMainTranSend_Click" CssClass="btn" />
-    <asp:Button runat="server" ID="btnMainTranGet" Visible="false" Font-Bold="true" BackColor="#64a102" Height="45px" Width="160px" ForeColor="white" Font-Size="18px" Text="หน้ารายการ(รับ)ครุภัณฑ์"  OnClick="btnMainTranGet_Click" CssClass="btn" />
+    <asp:Button runat="server" ID="btnMainEQ" Text="หน้าหลัก" OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
+    <asp:Button runat="server" ID="btnMainTranSend" Visible="false" Text="(ส่ง)ครุภัณฑ์"  OnClick="btnMainTranSend_Click" CssClass="btn btn-primary" />
+    <asp:Button runat="server" ID="btnMainTranGet" Visible="false" Text="(รับ)ครุภัณฑ์"  OnClick="btnMainTranGet_Click" CssClass="btn btn-warning" />
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
         <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</h3>

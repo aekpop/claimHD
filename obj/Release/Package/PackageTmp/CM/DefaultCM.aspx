@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultCM.aspx.cs" Inherits="ClaimProject.CM.DefaultCM" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-        <h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>
+   <div class="container-fluid"> 
+        <!--<h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>-->
 
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
@@ -59,7 +59,7 @@
         
         <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div7">
             <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
+                <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
                         <i class="fas fa-file-alt"></i>
                     </div>
@@ -72,7 +72,7 @@
 
         <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div8">
             <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
+                <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
@@ -85,13 +85,15 @@
     </div>
 
     <br />
-    <div runat="server" id="divpm" >
+
+    <!-- content PM -->
+    <!--<div runat="server" id="divpm" >
         <h3 class="bg-primary " style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;</h3>
     </div>
      
     
 
-    <!--<div class="row" runat="server" id="divpm2">
+    <div class="row" runat="server" id="divpm2">
         <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div2">
             <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
@@ -131,4 +133,92 @@
         </div>
     </div>
     -->
+               <!-- Content Row -->
+              <div class="row">
+
+                <!-- Earnings (Monthly) Card Example -->
+                  <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">วันนี้</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                              <div class="col-auto">
+                                  <i class="fas fa-clock fa-2x text-gray-300"></i>
+                              </div>
+                           </div> 
+                         <div class="col-auto">
+                              <asp:Label ID="lbCMStatDay" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">เดือน
+                              <asp:Label ID="lbCMNameMonthly" runat="server" ></asp:Label>
+                               
+                          </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                              <div class="col-auto">
+                                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                              </div>
+                           </div> 
+                         <div class="col-auto">
+                              <asp:Label ID="lbCMStatMonthly" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              
+            
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">ปีงบประมาณ 
+                              <asp:Label ID="lbCMNameBudget" runat="server" ></asp:Label>
+                          </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-bell fa-2x text-gray-300">
+                          
+                          </i>
+                        </div>
+                      </div>
+                         <asp:Label ID="lbCMStatBudget" runat="server" Font-Bold="true" CssClass="text-gray " Font-Size="XX-Large"></asp:Label>
+                    </div>
+                  </div>
+                </div>
+              
+                  <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ทั้งหมด</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-history fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                        <div class="col-auto">
+                              <asp:Label ID="lbCMStatOverall" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+       </div>
 </asp:Content>

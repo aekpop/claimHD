@@ -71,7 +71,7 @@ namespace ClaimProject.Claim
                     ddlbrandcar2.Items.Insert(0, new ListItem("", ""));
 
 
-                    string sql_Device = "SELECT * FROM tbl_device WHERE davice_delete = '1' ORDER BY device_name";
+                    string sql_Device = "SELECT * FROM tbl_device WHERE davice_delete = '0' ORDER BY device_name";
                     function.getListItem(txtDevice, sql_Device, "device_name", "device_id");
                     
                     

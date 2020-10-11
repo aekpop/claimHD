@@ -142,8 +142,7 @@
                      
             </div>
 
-     
-    <script src="/Scripts/html2canvas.js"></script> 
+    <script src="/Scripts/html2canvas.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -166,7 +165,7 @@
                 // it instead of just showing it 
                 var newData = imgageData.replace( 
                 /^data:image\/png/, "data:application/octet-stream"); 
-                
+
                 $("#btnExport").attr( 
                 "download", "GeeksForGeeks.png").attr( 
                 "href", newData);

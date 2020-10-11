@@ -46,8 +46,10 @@ namespace ClaimProject.CM
                 CMGridView.DataBind();
                 if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
                 //lbCMNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
+                function.Close();
             }
             catch (Exception e) { e.ToString(); }
+            function.Close();
         }
 
         protected void CMGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -138,11 +140,13 @@ namespace ClaimProject.CM
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
             }
+            function.Close();
         }
 
         protected void btnCancel_Command(object sender, CommandEventArgs e)
         {
-            string sql = "UPDATE tbl_cm_detail SET cm_detail_edate='',cm_detail_etime='',cm_detail_method ='',cm_detail_status_id = '0' WHERE cm_detail_id = '" + e.CommandName + "'";
+            //string sql = "UPDATE tbl_cm_detail SET cm_detail_edate='',cm_detail_etime='',cm_detail_method ='',cm_detail_status_id = '0' WHERE cm_detail_id = '" + e.CommandName + "'";
+            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '0' WHERE cm_detail_id = '" + e.CommandName + "'";
             if (function.MySqlQuery(sql))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
@@ -152,12 +156,15 @@ namespace ClaimProject.CM
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
             }
+            function.Close();
+
         }
 
         protected void lbref_Command(object sender, CommandEventArgs e)
         {
             string imgS = "";
             string imgE = "";
+            string imgSer = "";
             EditModal = e.CommandName;
             pkeq.Text = EditModal;
 
@@ -170,8 +177,10 @@ namespace ClaimProject.CM
             {
                 imgS = rt.GetString("cm_detail_simg");
                 imgE = rt.GetString("cm_detail_eimg");
+                imgSer = rt.GetString("cm_detail_Service_img");
                 ImgEditEQ.ImageUrl = "~" + imgS;
                 ImgEditEQE.ImageUrl = "~" + imgE;
+                ImgImageDocSer.ImageUrl = "~" + imgSer;
                 lbrefRecheck.Text = rt.GetString("cm_detail_id");
                 lbCpointRecheck.Text = rt.GetString("cpoint_name");
                 lbPointRecheck.Text = rt.GetString("cm_point");
@@ -184,8 +193,12 @@ namespace ClaimProject.CM
                 lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น.";
                 lbDateERecheck.Text = rt.GetString("cm_detail_edate");
                 lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
+                lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
+                lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime") + " น.";
                 lbUserRecheck.Text = rt.GetString("name");
+                lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
             }
+            rt.Close();
         }
 
         protected void lbtnStatusUpdateModal_Command(object sender, CommandEventArgs e)
@@ -200,6 +213,24 @@ namespace ClaimProject.CM
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
             }
+            function.Close();
         }
+
+        protected void btnCancelModal_Command(object sender, CommandEventArgs e)
+        {
+            //string sql = "UPDATE tbl_cm_detail SET cm_detail_edate='',cm_detail_etime='',cm_detail_method ='',cm_detail_status_id = '0' WHERE cm_detail_id = '" + pkeq.Text + "'";
+            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '0' WHERE cm_detail_id = '" + pkeq.Text + "'";
+            if (function.MySqlQuery(sql))
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                BindData("");
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
+            }
+            function.Close();
+        }
+
     }
 }

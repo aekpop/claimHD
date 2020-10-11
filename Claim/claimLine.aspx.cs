@@ -100,6 +100,8 @@ namespace ClaimProject.Claim
                             gridClaimLine.DataBind();
                         }
                     }
+                    //chK.Close();
+                    function.Close();
 
 
                 }
@@ -154,6 +156,8 @@ namespace ClaimProject.Claim
                             gridClaimLine.DataBind();
                         }
                     }
+                    //chKNN.Close();
+                    function.Close();
                 }
 
             }

@@ -666,5 +666,6 @@ namespace ClaimProject.Config
             public int cm_detail_driver_id { get; set; }
         }
 
+
     }  
 }

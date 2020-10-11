@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimDevice.aspx.cs" Inherits="ClaimProject.Claim.ClaimDevice" %>
+﻿<%@ Page Title="งานอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimDevice.aspx.cs" Inherits="ClaimProject.Claim.ClaimDevice" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div Id="lbSearch" class="card" style="z-index: 0; font-size: medium">

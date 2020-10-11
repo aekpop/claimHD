@@ -198,6 +198,7 @@
         </div>
     </form>
     <script src="/Scripts/popper.min.js"></script>
+    <script src="Scripts/umd/popper.js"></script>
     <script src="/Scripts/bootstrap-material-design.min.js"></script>
     <script src="/Scripts/perfect-scrollbar.jquery.min.js"></script>
     <script src="/Scripts/bootstrap-notify.js"></script>
@@ -210,6 +211,7 @@
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+
     <script type="text/javascript">   
         $(function () {
             //datepicker

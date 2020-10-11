@@ -175,6 +175,8 @@ namespace ClaimProject.CM
                 if (!rs.IsDBNull(9)) { txtETime.Text = rs.GetString("cm_detail_etime"); } else { txtETime.Text = DateTime.Now.ToString("HH.mm"); }
                 if (!rs.IsDBNull(11)) { txtMethod.Text = rs.GetString("cm_detail_method"); } else { txtMethod.Text = ""; }
                 if (!rs.IsDBNull(12)) { txtNote.Text = rs.GetString("cm_detail_note"); } else { txtNote.Text = ""; }
+                if (!rs.IsDBNull(19)) { txtEJDate.Text = rs.GetString("cm_detail_ejdate"); } else { txtEJDate.Text = ""; }
+                if (!rs.IsDBNull(20)) { txtEJTime.Text = rs.GetString("cm_detail_ejtime"); } else { txtEJTime.Text = DateTime.Now.ToString("HH.mm"); }
             }
             rs.Close();
             function.Close();
@@ -182,11 +184,12 @@ namespace ClaimProject.CM
 
         protected void btnUpdateCM_Command(object sender, CommandEventArgs e)
         {
-            if (txtEDate.Text != "" && txtETime.Text != "")
+            if (txtEDate.Text != "" && txtETime.Text != "" && txtEJTime.Text != "" && txtEJDate.Text != "")
             {
                 bool chk_time = false;
                 try
                 {
+                    double.Parse(txtEJTime.Text);
                     double.Parse(txtETime.Text);
                     chk_time = true;
                 }
@@ -195,17 +198,31 @@ namespace ClaimProject.CM
                 if (chk_time)
                 {
                     String NewFileDocName = "";
+                    String NewFileDocNameService = "";
                     if (txtMethod.Text != "")
                     {
-                        if (fileImg.HasFile)
+                        if (fileImg.HasFile  && fileDocService.HasFile)
                         {
                             string typeFile = fileImg.FileName.Split('.')[fileImg.FileName.Split('.').Length - 1];
-                            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                            string typeFileDoc = fileDocService.FileName.Split('.')[fileDocService.FileName.Split('.').Length - 1];
+                            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFileDoc == "jpg" || typeFileDoc == "jpeg" || typeFileDoc == "png")
                             {
                                 NewFileDocName = "E_" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileImg.FileName.Split('.')[0];
                                 NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
                                 fileImg.SaveAs(Server.MapPath(NewFileDocName.ToString()));
-                                string sql = "UPDATE tbl_cm_detail SET cm_detail_edate = '" + txtEDate.Text + "', cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', cm_detail_status_id = '1',cm_detail_eimg='" + NewFileDocName + "',cm_detail_method='" + txtMethod.Text + "' WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
+
+                                NewFileDocNameService = "E_" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileDocService.FileName.Split('.')[0];
+                                NewFileDocNameService = "/CM/Upload/" + function.getMd5Hash(NewFileDocNameService) + "." + typeFile;
+                                fileDocService.SaveAs(Server.MapPath(NewFileDocNameService.ToString()));
+
+
+                                string sql = "UPDATE tbl_cm_detail SET cm_detail_edate = '" + txtEDate.Text + "', " +
+                                    "cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', " +
+                                    "cm_detail_status_id = '1',cm_detail_eimg = '" + NewFileDocName + "',cm_detail_method = '" + txtMethod.Text + "', " +
+                                    "cm_detail_ejdate = '"+ txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '"+ txtEJTime.Text.Trim() + "' , cm_user_endjob = '"+ Session["UserName"].ToString() + "', " +
+                                    "cm_detail_Service_img = '"+ NewFileDocNameService + "' " +
+                                    "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
+
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
@@ -215,6 +232,7 @@ namespace ClaimProject.CM
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
                                 }
+                                function.Close();
                             }
                             else
                             {
@@ -256,6 +274,7 @@ namespace ClaimProject.CM
             {
                 AlertPop("ลบรายการแจ้งซ่อมล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ ", "error");
             }
+            function.Close();
             BindData();
         }
 

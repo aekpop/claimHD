@@ -1,4 +1,4 @@
-﻿<%@ Page Title="บริษัทเข้าซ่อม CM" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMEditForm.aspx.cs" Inherits="ClaimProject.CM.CMEditForm" %>
+﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMEditForm.aspx.cs" Inherits="ClaimProject.CM.CMEditForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="DivCMGridView" runat="server" class="col-12">
@@ -97,7 +97,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">บริษัทเข้าแก้ไข
+                    <h4 class="modal-title">แก้ไข
                         <asp:Label ID="Label1" runat="server" Text="Label1" CssClass="text-dark"></asp:Label></h4>
                     <asp:Label ID="lbcmid" runat="server" Visible="false" ></asp:Label>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -146,8 +146,22 @@
                         </div>
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เวลา</label>
-                                <asp:TextBox ID="txtETime" runat="server" CssClass="form-control time" />
+                                <label class="bmd-label-floating">เวลาเข้าซ่อม</label>
+                                <asp:TextBox ID="txtETime" runat="server" CssClass="form-control time" MaxLength="5"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="height: 80px">
+                        <div class="col-lg">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">วันที่ซ่อมเสร็จ</label>
+                                <asp:TextBox ID="txtEJDate" runat="server" CssClass="form-control datepicker" />
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">เวลาซ่อมเสร็จ</label>
+                                <asp:TextBox ID="txtEJTime" runat="server" CssClass="form-control time" MaxLength="5"/>
                             </div>
                         </div>
                     </div>
@@ -170,8 +184,15 @@
                     <div class="row">
                         <div class="col-lg">
                             <br />
-                            <label class="bmd-label-floating">แนบไฟล์อุปกรณ์ที่เสียหาย</label>
+                            <label class="bmd-label-floating">แนบภาพแก้ไขแล้ว (ขนาดไฟล์ไม่เกิน 4mb)</label>
                             <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg">
+                            <br />
+                            <label class="bmd-label-floating">แนบภาพใบ Service (ขนาดไฟล์ไม่เกิน 4mb)</label>
+                            <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
                 </div>

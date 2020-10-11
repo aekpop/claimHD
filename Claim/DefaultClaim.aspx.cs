@@ -26,15 +26,14 @@ namespace ClaimProject.Claim
             if (!this.IsPostBack)
             {
                 loadingpage();
-            }
-
-            
+            } 
         }
 
         protected void loadingpage()
         {
             string sqlConst = "";
             string sqlcpSearch = "";
+
 
             if (Session["UserCpoint"].ToString() == "701")
             {
@@ -101,27 +100,73 @@ namespace ClaimProject.Claim
                 sqlcpSearch += " 9040 ";
             }
 
-            string ClMouthly = "SELECT COUNT(*) AS numm FROM tbl_claim WHERE claim_cpoint = '"+ Session["UserCpoint"] + "' ";
-            string ClBudget = "SELECT COUNT(*) AS numb FROM tbl_claim WHERE claim_cpoint = '" + Session["UserCpoint"] + "' ";
+            int i = 0;
+            string MonthFullList = "ตุลาคม-มกราคม-กุมภาพันธ์-มีนาคม-เมษายน-พฤษภาคม-มิถุนายน-กรกฎาคม-สิงหาคม-กันยายน-ตุลาคม-พฤศจิกายน-ธันวาคม";
+            string[] MonthList = MonthFullList.Split('-');
+
+            int Nowbudget = 0;
+            if (Nowmonth > 9)
+            {
+                Nowbudget = Nowyear + 1;
+            }
+
+            string ClMouthly = "SELECT COUNT(*) AS numm FROM tbl_claim WHERE claim_cpoint = '"+ Session["UserCpoint"] + "' AND claim_budget_year = '"+ Nowbudget +"' AND claim_month = '" + MonthList[i]+"' ";
+            string ClBudget = "SELECT COUNT(*) AS numb FROM tbl_claim WHERE claim_cpoint = '" + Session["UserCpoint"] + "' AND claim_budget_year = '"+ Nowbudget +"' ";
             string ClAllDay = "SELECT COUNT(*) AS numa FROM tbl_claim WHERE claim_cpoint = '" + Session["UserCpoint"] + "' ";
 
+            //แสดงเดือน ปี
+            lbClaimNameMonthly.Text = MonthList[i];
+            string lbBudget = Nowbudget.ToString();
+            lbClaimNameBudget.Text = lbBudget;
+            
 
             MySqlDataReader tr = function.MySqlSelect(ClAllDay);
             if (tr.Read())
             {
                 if(tr.GetInt32("numa") != 0)
                 {
-                    lbClaimStatOverall.Text = tr.GetInt32("numa").ToString() + " ครั้ง";
+                    lbClaimStatOverall.Text = tr.GetInt32("numa").ToString() ;
                     tr.Close();
                 }
                 else
                 {
-                    lbClaimStatOverall.Text = "ไม่มีอุบัติเหตุ";
+                    lbClaimStatOverall.Text = "0";
                     tr.Close();
                 }
-                
             }
-            
+            function.Close();
+
+            MySqlDataReader trbg = function.MySqlSelect(ClBudget);
+            if (trbg.Read())
+            {
+                if (trbg.GetInt32("numb") != 0)
+                {
+                    lbClaimStatBudget.Text = trbg.GetInt32("numb").ToString() ;
+                    trbg.Close();
+                }
+                else
+                {
+                    lbClaimStatBudget.Text = "0";
+                    trbg.Close();
+                }
+            }
+            function.Close();
+
+            MySqlDataReader trmn = function.MySqlSelect(ClMouthly);
+            if (trmn.Read())
+            {
+                if (trmn.GetInt32("numm") != 0)
+                {
+                    lbClaimStatMonthly.Text = trmn.GetInt32("numm").ToString();
+                    trmn.Close();
+                }
+                else
+                {
+                    lbClaimStatMonthly.Text = "0";
+                    trmn.Close();
+                }
+            }
+            function.Close();
         }
     }
 }

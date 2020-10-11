@@ -99,6 +99,7 @@ namespace ClaimProject.CM
                             gridCMLine.DataBind();
                         }
                     }
+                    chK.Close();
 
 
                 }
@@ -153,6 +154,7 @@ namespace ClaimProject.CM
                             gridCMLine.DataBind();
                         }
                     }
+                    chKNN.Close();
                 }
             
             }

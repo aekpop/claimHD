@@ -1,4 +1,4 @@
-﻿<%@ Page Title="รายการอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="claimDetailForm.aspx.cs" Inherits="ClaimProject.Claim.claimDetailForm" %>
+﻿<%@ Page Title="งานอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="claimDetailForm.aspx.cs" Inherits="ClaimProject.Claim.claimDetailForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="/Scripts/bootbox.js"></script>

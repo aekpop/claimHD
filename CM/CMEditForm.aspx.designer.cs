@@ -148,6 +148,24 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.TextBox txtETime;
         
         /// <summary>
+        /// txtEJDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEJDate;
+        
+        /// <summary>
+        /// txtEJTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEJTime;
+        
+        /// <summary>
         /// txtMethod control.
         /// </summary>
         /// <remarks>
@@ -173,6 +191,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileImg;
+        
+        /// <summary>
+        /// fileDocService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileDocService;
         
         /// <summary>
         /// btnUpdateCM control.
