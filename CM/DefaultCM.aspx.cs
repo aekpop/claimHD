@@ -61,6 +61,7 @@ namespace ClaimProject.CM
                 //Div2.Visible = false;
             }
             loadingpage();
+            databind();
         }
 
         protected void loadingpage()
@@ -215,6 +216,37 @@ namespace ClaimProject.CM
                     troa.Close();
                 }
             }
+            function.Close();
+        }
+
+        protected void lsTodayGridview_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lbDevice = (Label)(e.Row.FindControl("lbDevice"));
+            if (lbDevice != null)
+            {
+                lbDevice.Text = (string)DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+            }
+
+            Label lbAmount = (Label)(e.Row.FindControl("lbAmount"));
+            if (lbAmount != null)
+            {
+                lbAmount.Text = (string)DataBinder.Eval(e.Row.DataItem, "num").ToString();
+            }
+
+        }
+
+        protected void databind()
+        {
+            string cpoint = Session["UserCpoint"].ToString();
+            string sqlLsTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
+                " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
+                " WHERE cm_cpoint = '"+ cpoint + "' GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sqlLsTotal);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            lsTodayGridview.DataSource = ds.Tables[0];
+            lsTodayGridview.DataBind();
             function.Close();
         }
     }

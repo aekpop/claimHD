@@ -689,7 +689,7 @@ namespace ClaimProject.equip
             
             amountrow = dt.Rows.Count;
             lbchkTotal.Text = amountrow.ToString();
-            lbshowamount.Text = "พบรายการครุภัณฑ์ "+amountrow.ToString() + " รายการ";
+            lbshowamount.Text = "พบครุภัณฑ์ "+amountrow.ToString() + " รายการ";
             GridRepair.DataBind();
         }
 
@@ -707,14 +707,14 @@ namespace ClaimProject.equip
             {
                 GridAddTran.DataSource = dt;
                 amountrow = dt.Rows.Count;
-                lbshowamount.Text = "พบรายการครุภัณฑ์ " + amountrow.ToString() +" รายการ" ;
+                lbshowamount.Text = "พบครุภัณฑ์ " + amountrow.ToString() +" รายการ" ;
                 GridAddTran.DataBind();
             }
             else
             {
                 gridreplace.DataSource = dt;
                 amountrow = dt.Rows.Count;
-                lbshowamount.Text = "พบรายการครุภัณฑ์ " + amountrow.ToString() + " รายการ";
+                lbshowamount.Text = "พบครุภัณฑ์ " + amountrow.ToString() + " รายการ";
                 gridreplace.DataBind();
             }
                 
@@ -1512,12 +1512,14 @@ namespace ClaimProject.equip
                     {
                         if(function.MySqlQuery(loge))
                         {
-                            Response.Redirect("/equip/EquipTranList");
+                            //Response.Redirect("/equip/EquipTranList");
+                            //AlertPop("ลบรายการสำเร็จ", "error");
+                            Response.Write("<script language='javascript'>window.alert('ลบรายการสำเร็จ');window.location='EquipTranList.aspx';</script>");
                             break;
                         }
                         else
                         {
-                            Response.Redirect("/equip/EquipTranList");
+                            Response.Write("<script language='javascript'>window.alert('ลบรายการสำเร็จ');window.location='EquipTranList.aspx';</script>");
                             break;
                         }
                         
@@ -1593,7 +1595,8 @@ namespace ClaimProject.equip
                                            "trans_note='" + txtactnote.Text + "',position_sender='" + ddlPosition.SelectedValue + "' WHERE trans_id = '" + Session["TransID"].ToString() + "' ";
                 if (function.MySqlQuery(upTrans))
                 {
-                    Response.Redirect("/equip/EquipNewTrans");
+                    AlertPop("บันทึกสำเร็จ" , "success");
+                    //Response.Redirect("/equip/EquipNewTrans");
                 }
                 else
                 {

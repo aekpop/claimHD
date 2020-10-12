@@ -75,7 +75,7 @@ namespace ClaimProject.CM
                     " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                     " JOIN tbl_user u ON cm.cm_user = u.username " + 
                     " WHERE cm.cm_detail_status_id='0' " +
-                    " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_user u ON cm.cm_user = u.username " +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                    " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
-                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
                 
             }
@@ -99,7 +99,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_user u ON cm.cm_user = u.username " +
                    " WHERE cm.cm_cpoint = '" +checkCpoint+"' " +
                    " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
-                   " ORDER BY cm_cpoint,cm_point,cm_detail_channel,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
                 
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);

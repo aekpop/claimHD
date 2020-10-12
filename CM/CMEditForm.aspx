@@ -35,7 +35,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="อัพเดท" >
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="fas text-primary">&#xf0aa;</asp:LinkButton>
+                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="fas text-primary" Font-Size="Larger">&#xf0aa;</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ด่านฯ" >
@@ -97,7 +97,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">แก้ไข
+                    <h4 class="modal-title">กรอกรายละเอียดการแก้ไข
                         <asp:Label ID="Label1" runat="server" Text="Label1" CssClass="text-dark"></asp:Label></h4>
                     <asp:Label ID="lbcmid" runat="server" Visible="false" ></asp:Label>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -105,7 +105,7 @@
                     </button>
                 </div>
                 <div class="modal-body" style="line-height: inherit;">
-                    <div class="row" style="height: 30px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ด่านฯ : </label>
@@ -113,7 +113,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 30px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ช่องทาง : </label>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 30px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">อุปกรณ์ : </label>
@@ -129,7 +129,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 30px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">อาการ : </label>
@@ -137,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 80px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">วันที่เข้าซ่อม</label>
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 80px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">วันที่ซ่อมเสร็จ</label>
@@ -165,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 80px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">วิธีแก้ไข</label>
@@ -173,7 +173,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="height: 80px">
+                    <div class="row" >
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">หมายเหตุ</label>

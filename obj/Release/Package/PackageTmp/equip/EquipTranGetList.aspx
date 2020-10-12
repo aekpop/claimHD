@@ -3,50 +3,55 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
-    <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
-        <div class="card-header "  style="background-color:#559101;height:60px">
-            <h3 class="card-title" style="color:white;height:35px;font-size:30px">รายการโอนย้ายครุภัณฑ์  (รับมา)</h3>
+    <div class="container-fluid">
+
+    
+    <asp:Button runat="server" ID="btnMainEQ"  Font-Bold="true" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
+    <div id="AddPM" runat="server" class="card" style="z-index: 0; ">
+
+        <div class="card-header bg-success" >
+            <h3 class="card-title" style="color:white;">รายการโอนย้ายครุภัณฑ์  (รับ)</h3>
         </div>
             <div class="card-body table-responsive table-sm">
 
-                <div class="row" id="divSendSearch"  runat="server" >
+                <div class="row" id="divSendSearch" style="font-size:medium;" runat="server" >
                     <div class="row" >
-                        <div class="col-md"  >
+                        <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
                             <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
-                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control" Width="120px" ></asp:TextBox>
+                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto"  ></asp:TextBox>
                            </div>
                         </div>
-                        <div class="col-md" >
+                        <div class="col-md-6 col-xl-3" >
                             <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="ประเภทโอนย้าย : " ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md"  >
+                        <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
                             <asp:Label ID="Label2" runat="server" Text="ด่านต้นทาง : "  ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control"  ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" >
+                        <div class="col-md-6 col-xl-3" >
                             <div class="form-group">
                             <asp:Label ID="Label3" runat="server" Text="สถานะ : "  ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" Width="160px" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control"  ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md" >
+                        <div class="col text-center" >
                             <div class="form-group">
-                            <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
+                            <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-secondary" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
                            </div>
                         </div>
                     </div>
-
+                    
                 </div>
+                <hr />
                 <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="19px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" ForeColor="#0022ff" ></asp:Label>
                 </div>
                 <asp:GridView ID="gridTranlist" runat="server" 
                     AutoGenerateColumns="false" 
@@ -54,9 +59,10 @@
                     OnRowDataBound="gridTranlist_RowDataBound"
                     GridLines="None" 
                     CssClass="table table-hover table-condensed table-sm"
-                    Font-Size="19px"
+                    HeaderStyle-Font-Size="18px"
+                    Font-Size="15px"
                     AllowSorting="true"
-                    PageSize="100" >
+                    PageSize="30" >
 
                     
                     <Columns>
@@ -105,7 +111,7 @@
                         
                         
 
-                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width ="45px" ControlStyle-Font-Size ="Medium" >
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Font-Size ="Medium" >
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
                             </ItemTemplate>
@@ -127,7 +133,7 @@
             </div>
 
     </div>
-
+</div>
 
 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>

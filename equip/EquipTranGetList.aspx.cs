@@ -222,11 +222,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -235,11 +235,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By  STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%' AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By  STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -251,11 +251,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -264,12 +264,12 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By  STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By  STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
 
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By  STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By  STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
 
                         }
 

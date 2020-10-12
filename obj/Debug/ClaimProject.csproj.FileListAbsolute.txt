@@ -1142,7 +1142,6 @@ D:\Software\ClaimProjectBS4\ClaimProject\bin\Assembly.Software.Profile.dll
 D:\Software\ClaimProjectBS4\ClaimProject\bin\Microsoft.VisualStudio.Shell.Interop.dll
 D:\Software\ClaimProjectBS4\ClaimProject\bin\Microsoft.VisualStudio.OLE.Interop.dll
 D:\Software\ClaimProjectBS4\ClaimProject\bin\Microsoft.VisualStudio.TemplateWizardInterface.dll
-D:\Software\ClaimProjectBS4\ClaimProject\bin\EnvDTE.dll
 D:\Software\ClaimProjectBS4\ClaimProject\bin\Microsoft.VisualStudio.Designer.Interfaces.dll
 D:\Software\ClaimProjectBS4\ClaimProject\bin\VSLangProj.dll
 D:\Software\ClaimProjectBS4\ClaimProject\bin\VsWebSite.Interop.dll

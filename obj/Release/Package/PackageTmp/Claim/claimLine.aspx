@@ -19,6 +19,7 @@
                 <div class="card-body">
                      <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click"  />
                      <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />
+                    
                 </div>
                 <br />
                 <div class="card-body table-responsive table-md" >
@@ -134,13 +135,20 @@
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView> 
                 <br />
-                
-            </div>       
+                  
+            </div>
+     <div id="img-out"></div>
+
+    
+
+   </form>
+</body>
     <script src="/Scripts/html2canvas.js"></script> 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/moment.min.js"></script>
-    
+     
+
     <script type="text/javascript">
                 function ConvertToImage(btnExport) {
                     html2canvas($("[id*=gridClaimLine]")[0]).then(function (canvas) {
@@ -151,30 +159,46 @@
                     return false;
                 }
 
-                $("#btnExport").on('click', function() {             
-                    var imgageData =  
-                    getCanvas.toDataURL("image/png"); 
-              
-                // Now browser starts downloading  
-                // it instead of just showing it 
-                var newData = imgageData.replace( 
-                /^data:image\/png/, "data:application/octet-stream"); 
-                
-                $("#btnExport").attr( 
-                "download", "GeeksForGeeks.png").attr( 
-                "href", newData);
+        $("#btnExport").on('click', function () {
+            var imgageData =
+                getCanvas.toDataURL("image/png");
 
-                    $('#lbDateNow').datepicker($.datepicker.regional["th"]);
-                        if ($('#lbDatep').val() == "") {
-                                $('#lbDatep').datepicker("setDate", new Date());
-                    }
+            // Now browser starts downloading  
+            // it instead of just showing it 
+            var newData = imgageData.replace(
+                /^data:image\/png/, "data:application/octet-stream");
+
+
+            $("#btnExport").attr(
+                "download", "GeeksForGeeks.png").attr(
+                    "href", newData);
+
+            $('#lbDateNow').datepicker($.datepicker.regional["th"]);
+            if ($('#lbDatep').val() == "") {
+                $('#lbDatep').datepicker("setDate", new Date());
+            }
 
                     $('#lbDatep').attr('maxlength', '10');
-                   $('#lbDatep').css('font-size', '8');   
-            }); 
-    </script>        
+                    $('#lbDatep').css('font-size', '8');   
+        });
 
-   </form>
-</body>
+        $(function() { 
+            $("#btnSave").click(function() { 
+                html2canvas($("[id*=gridClaimLine]"), {
+                    onrendered: function(canvas) {
+                        theCanvas = canvas;
+                        document.body.appendChild(canvas);
+
+                        // Convert and download as image 
+                        Canvas2Image.saveAsPNG(canvas); 
+                        $("#img-out").append(canvas);
+                        // Clean up 
+                        //document.body.removeChild(canvas);
+                    }
+                });
+            });
+        }); 
+
+    </script>        
 </html>
 

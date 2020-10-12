@@ -70,18 +70,6 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div8">
-            <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMStatForm">สถิติ</a>
-                    </h4>
-                </div>
-            </div>
-        </div>
     </div>
 
     <br />
@@ -220,5 +208,47 @@
                   </div>
                 </div>
             </div>
+       <div class="row">
+           <div class="col-xl-6 col-md">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                      <div class="card-header" style="font-size:small" >รายการอุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำด่านฯ</div>
+                      <div class="card-body">
+                          <div class="card-body table-responsive table-sm" >
+                         <asp:Panel ID="Panel1" runat="server" >
+                             <asp:GridView id="lsTodayGridview" runat="server"
+                                    CssClass="col table table-striped table-hover"
+                                     
+                                    HeaderStyle-BackColor="ActiveBorder"
+                                    HeaderStyle-Font-Size="18px"
+                                    
+                                    OnRowDataBound="lsTodayGridview_RowDataBound" 
+                                    Font-Size="15px" 
+                                    CellPadding="4" 
+                                    GridLines="None"
+                                    AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="รายการ" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="จำนวน" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.num") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        
+                                     </Columns>
+                             </asp:GridView>
+                         </asp:Panel>
+                    </div>
+                      </div>
+                      </div>
+               </div>
        </div>
+
+       </div>
+
+    <script src="/Scripts/bootstrap.bundle.js"></script>
+
 </asp:Content>

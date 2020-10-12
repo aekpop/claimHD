@@ -1,20 +1,32 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CMLine.aspx.cs" Inherits="ClaimProject.CM.CMLine" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CMLine.aspx.cs" Inherits="ClaimProject.CM.CMLine" %>
 
-<asp:Content runat="server" ContentPlaceHolderID="MainContent">
+<!DOCTYPE html>
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>CMLine</title>
+    <!-- Bootstrap core CSS -->
+    
+    
+    <!-- Custom styles for this template -->
+    
+    
 
-    <div class="card" style="z-index: 0">
+</head>
+<body>
+    <form id="form1" runat="server">
+
+            <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
             </div>
                 <div class="card-header card-header-warning">
                     <h2 class="card-title">ส่ง Line งาน Corrective Maintenance : CM</h2>
                 </div>
                 <div class="form-group bmd-form-group" >
-                        <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click" CssClass="btn badge-info" />
+                        <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click" CssClass="btn" />
+                        <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />  
+                        
                         <asp:HiddenField ID="hfImageData" runat="server" />
-                        <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)" CssClass="btn btn-default" />  
-                        
-                        
                         
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select"  Visible="false" ></asp:DropDownList>
                     </div>
@@ -127,29 +139,28 @@
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>                                             
                 <br />
-            <div id="img-out"></div>         
+                     
             </div>
 
     <script src="/Scripts/html2canvas.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/moment.min.js"></script>
-    <script src="../Scripts/jquery-3.5.1.js"></script>
+    
     <script type="text/javascript">
-
-         function ConvertToImage(btnExport) {
+                function ConvertToImage(btnExport) {
                     html2canvas($("[id*=gridCMLine]")[0]).then(function (canvas) {
                     var base64 = canvas.toDataURL();
-                        $("[id*=hfImageData]").val(base64);
-                            __doPostBack(btnExport.name, "");
-                     });
+                $("[id*=hfImageData]").val(base64);
+                    __doPostBack(btnExport.name, "");
+                });
                     return false;
-         }
+                }
 
-        $("#btnExport").on('click', function () {
-            var imgageData =
-                getCanvas.toDataURL("image/png");
-        
+                $("#btnExport").on('click', function() {             
+                    var imgageData =  
+                    getCanvas.toDataURL("image/png"); 
+              
                 // Now browser starts downloading  
                 // it instead of just showing it 
                 var newData = imgageData.replace( 
@@ -166,23 +177,8 @@
 
                     $('#lbDatep').attr('maxlength', '10');
                    $('#lbDatep').css('font-size', '8');   
-        }); 
-
-        $(function() { 
-            $("#btnSave").click(function() { 
-                html2canvas($("#widget"), {
-                    onrendered: function(canvas) {
-                        theCanvas = canvas;
-                        document.body.appendChild(canvas);
-
-                        // Convert and download as image 
-                        Canvas2Image.saveAsPNG(canvas); 
-                        $("#img-out").append(canvas);
-                        // Clean up 
-                        //document.body.removeChild(canvas);
-                    }
-                });
-            });
-        }); 
+            }); 
 </script>        
-</asp:Content>
+    </form>    
+</body>    
+</html>

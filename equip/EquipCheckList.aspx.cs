@@ -261,7 +261,7 @@ namespace ClaimProject.equip
             gridTranlist.DataSource = ds.Tables[0];
             //int countt = ds.Tables[0].Rows.Count;
             gridTranlist.DataBind();
-
+            function.Close();
         }
         protected string finalwhere (string annex,string cpoint)
         {
@@ -330,7 +330,43 @@ namespace ClaimProject.equip
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {
             Session["CheckTran"] = e.CommandName;
-            Response.Redirect("/equip/EquipCheck");
+            pkeq.Text = e.CommandName;
+            string sqlChklist = "SELECT * FROM tbl_transfer t JOIN tbl_toll c ON t.toll_send = c.toll_id LEFT JOIN tbl_transfer_action a ON t.trans_id = a.transfer_id " +
+                "WHERE trans_id = '"+ pkeq.Text + "' ";
+            MySqlDataReader rt = function.MySqlSelect(sqlChklist);
+            
+                if (rt.Read())
+                {
+                    if (!rt.IsDBNull(8) && !rt.IsDBNull(11))
+                    {
+                        txtchkSend.Text = rt.GetString("toll_name");
+                        txtchkRecieve.Text = rt.GetString("toll_recieve");
+                        txtchkDatesend.Text = rt.GetString("date_send");
+                        txtchkUsersend.Text = rt.GetString("name_send");
+                        txtchkDateRecieve.Text = rt.GetString("date_recieve");
+                        txtchkUserRecieve.Text = rt.GetString("name_recieve");
+                        rt.Close();
+                        function.Close();
+                    }
+                    else
+                    {
+                        txtchkSend.Text = rt.GetString("toll_name");
+                        txtchkRecieve.Text = rt.GetString("toll_recieve");
+                        txtchkDatesend.Text = rt.GetString("date_send");
+                        txtchkUsersend.Text = rt.GetString("name_send");
+                        txtchkDateRecieve.Text = "-";
+                        txtchkUserRecieve.Text = "-";
+                        rt.Close();
+                        function.Close();
+                    }                    
+                }
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sqlChklist);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            TranchkGridview.DataSource = ds.Tables[0];
+            TranchkGridview.DataBind();            
+            function.Close();
         }
 
         protected void ddlsearchEndToll_SelectedIndexChanged(object sender, EventArgs e)
@@ -473,6 +509,32 @@ namespace ClaimProject.equip
                 ddlannex.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
             }
 
+        }
+
+        protected void btnUpdateEQ_Command(object sender, CommandEventArgs e)
+        {
+
+        }
+
+        protected void TranchkGridview_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lbNameth = (Label)(e.Row.FindControl("lbNameth"));
+            if (lbNameth != null)
+            {
+                lbNameth.Text = (string)DataBinder.Eval(e.Row.DataItem, "old_nameth").ToString();
+            }
+
+            Label lbNo = (Label)(e.Row.FindControl("lbNo"));
+            if (lbNo != null)
+            {
+                lbNo.Text = (string)DataBinder.Eval(e.Row.DataItem, "old_no").ToString();
+            }
+
+            Label lbSerial = (Label)(e.Row.FindControl("lbSerial"));
+            if (lbSerial != null)
+            {
+                lbSerial.Text = (string)DataBinder.Eval(e.Row.DataItem, "old_serial").ToString();
+            }
         }
     }
 }

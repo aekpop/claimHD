@@ -321,11 +321,11 @@ namespace ClaimProject.equip
                     txtEditBrand.Text = rttt.GetString("equipment_brand");
                     txtEditSeries.Text = rttt.GetString("equipment_series");
                     txtEditDate.Text = rttt.GetString("equipment_buy_date");
-                    txtEditPrice.Text = rttt.GetString("equipment_price_unit");
-                    
-                    
+                    txtEditPrice.Text = rttt.GetString("equipment_price_unit");  
                 }
                 catch { }
+                rttt.Close();
+                function.Close();
                     
                 if(departt == "9300" || departt == "9400" || departt == "9500")
                 {
@@ -990,6 +990,8 @@ namespace ClaimProject.equip
             GridEquipAdd.DataBind();
             if (Session["UserCpoint"].ToString() == "0"){ lbtnDepartReport.Visible = true; }
             else { lbtnTollReport.Visible = true; }
+            function.Close();
+            AlertPop("เสร็จสิ้น", "success");
         }
         protected void btnSagain_Click(object sender, EventArgs e)
         {

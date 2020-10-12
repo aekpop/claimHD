@@ -337,6 +337,7 @@
             demo.showNotification('top', 'center', '<%=icon%>', '<%=alertType%>', '<%=alert%>');
         <% } %>
         });
+
         $(function () {
             <% if (EditModal != "")
         {%>
@@ -345,8 +346,7 @@
         else
         {%>
             $("#UpdateEquipModal").modal('hide');
-            <%}%>
-            
+            <%}%>  
         });
         
 

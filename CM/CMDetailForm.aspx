@@ -5,7 +5,9 @@
     <script src="/Scripts/HRSProjectScript.js"></script>
 
     <div class="container-fluid">
-   
+        
+        
+
         <div class="card" style="z-index: 0; font-size:medium; ">
             <div class="card-header card-header-warning">
                 <h3 class="card-title">แจ้งซ่อมอุปกรณ์</h3>
@@ -42,7 +44,7 @@
                     <div class="col-md-3">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating ">ช่องทาง</p>
-                            <asp:DropDownList ID="ddlChanel" Width="90px" runat="server" CssClass="form-control" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlChanel" Width="90px" runat="server" CssClass="form-control " ></asp:DropDownList>
                         </div>
                     </div>    
                 </div>

@@ -11,39 +11,39 @@
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header bg-success " >
-            <h3 class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่งออก)</h3>
+            <h3 class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่ง)</h3>
         </div>
             <div class="card-body table-responsive table-sm">
 
                 <div class="row" style="font-size:medium;" id="divSendSearch"  runat="server"  >
                     <div class="row" >
-                        <div class="col-md-3"  >
+                        <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
                                 <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
                                 <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto"  ></asp:TextBox>
                            </div>
                         </div>
-                        <div class="col-md-3" >
+                        <div class="col-md-6 col-xl-3" >
                             <div class="form-group">
                                 <asp:Label ID="Label1" runat="server" Text="ประเภทการโอนย้าย : "  ></asp:Label>
                                 <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control col-auto" ></asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-xl-3">
                             <div class="form-group">
                                 <asp:Label ID="Label2" runat="server" Text="ด่านปลายทาง : " ></asp:Label>
                                 <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control col-auto"  ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md-2" >
+                        <div class="col-md-6 col-xl-3" >
                             <div class="form-group">
                                 <asp:Label ID="Label3" runat="server" Text="สถานะ : "  ></asp:Label>
                                 <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control col-auto"  ></asp:DropDownList>
                            </div>
                         </div>
-                        <div class="col-md-1" >
+                        <div class="col text-center" >
                             <div class="form-group">
-                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search bottom" OnCommand="lbtnSearchSend_Command"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-secondary" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
                             </div>
                         </div>
                     </div>

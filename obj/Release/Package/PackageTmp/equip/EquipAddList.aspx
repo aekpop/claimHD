@@ -10,7 +10,6 @@
 
         <div class="card-header card-header-rose" style="height:60px" >
             <h3 class="card-title" style="font-style:initial;font-size:24px;">เพิ่มครุภัณฑ์ <asp:Label ID="statsave" runat="server" ForeColor="Black"  CssClass="badge badge" Font-Size="Medium" ></asp:Label></h3>
-            
         </div>
         <div class="card-body table-responsive" runat="server" id="divAdd" >
             <asp:UpdatePanel runat="server">
@@ -105,13 +104,13 @@
                         <asp:BoundField DataField="RowNumber" HeaderText="ลำดับ" HeaderStyle-Font-Size="18px" ItemStyle-Width="30px" HeaderStyle-CssClass="text-center"  ItemStyle-CssClass="text-center" />
                         <asp:TemplateField HeaderText="เลขครุภัณฑ์" HeaderStyle-Font-Size="18px" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
-                                <asp:TextBox ID="TextBox1"   runat="server" CssClass="form-control text-center"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1"  runat="server" CssClass="form-control text-center" ></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="เลขทะเบียน" HeaderStyle-Font-Size="18px" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
-                                <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center"></asp:TextBox>
+                                <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center" ></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
@@ -265,7 +264,17 @@
 
                 return confirm(msg);
             }
-        }       
+        }
+        function clsAlphaNoOnly (e) {  // Accept only alpha numerics, no special characters 
+            var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+
+            e.preventDefault();
+            return false;
+        }
     </script>
 
 </asp:Content>
