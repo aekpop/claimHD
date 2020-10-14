@@ -1345,5 +1345,17 @@ namespace ClaimProject.equip
                 ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
             }
         }
+
+        protected void lbequipHistory_Command(object sender, CommandEventArgs e)
+        {
+            EditModal = e.CommandName;
+            pkeq.Text = EditModal;
+
+            string sqleqHis = "SELECT * FROM tbl_transfer_action WHERE trans_equip_id ='"+ pkeq.Text + "'";
+            
+
+        }
+
+        
     }
 }

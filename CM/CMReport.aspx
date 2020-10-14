@@ -106,7 +106,7 @@
                         <asp:GridView ID="GridView1" runat="server"    
                             HeaderStyle-BackColor="#ffffff" 
                             HeaderStyle-CssClass="align-content-center"
-                            HeaderStyle-Font-Size="18px"   
+                            HeaderStyle-Font-Size="16px"   
                             OnRowDataBound="GridView1_RowDataBound" 
                             AlternatingRowStyle-CssClass="align-content-left" 
                             AutoGenerateColumns="false" 
@@ -143,22 +143,22 @@
                                    <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แจ้งซ่อม" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="แจ้งซ่อมวันที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แก้ไข" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="แก้ไขวันที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="btnDateEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาที่แก้ไข" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>

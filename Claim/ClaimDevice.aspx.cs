@@ -88,11 +88,11 @@ namespace ClaimProject.Claim
                     {
                         if (CheckDeviceNotDamaged.Checked)
                         {
-                            conCpoint += "AND c.claim_status <> '" + except + "'";
+                            conCpoint += "AND c.claim_status <> '" + except + "' AND ";
                         }
                         else
                         {
-                            conCpoint += "AND c.claim_status = '" + except + "'";
+                            conCpoint += "AND c.claim_status = '" + except + "' ";
                         }
 
                     }
@@ -105,11 +105,11 @@ namespace ClaimProject.Claim
                     {
                         if (CheckDeviceNotDamaged.Checked)
                         {
-                            conCpoint += "AND c.claim_status <> '" + except + "'";
+                            conCpoint += "AND c.claim_status <> '" + except + "' ";
                         }
                         else
                         {
-                            conCpoint += "AND c.claim_status = '" + except + "'";
+                            conCpoint += "AND c.claim_status = '" + except + "' ";
                         }
 
                     }
@@ -122,7 +122,7 @@ namespace ClaimProject.Claim
                 {
                     if (txtSearchStatus.SelectedValue == "0")
                     {
-                        conCpoint = " ";
+                        conCpoint = " AND cc.claim_detail_number != 2";
                     }
                     else
                     {

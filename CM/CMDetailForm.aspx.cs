@@ -68,7 +68,7 @@ namespace ClaimProject.CM
                         txtSTime.Text = rs.GetString("cm_detail_stime");
                         txtDeviceAdd.SelectedValue = rs.GetString("cm_detail_driver_id");
                         txtProblem.Text = rs.GetString("cm_detail_problem");
-                        txtNote.Text = rs.GetString("cm_detail_note");
+                        //txtNote.Text = rs.GetString("cm_detail_note");
                     }
                     rs.Close();
                     function.Close();
@@ -170,7 +170,7 @@ namespace ClaimProject.CM
             else
             {
                 string bgy = function.getBudgetYear(txtSDate.Text);
-                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_detail_note,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtNote.Text + "','" + txtCpoint.SelectedValue + "','" + txtPoint.Text.Trim() + "','" + Session["User"].ToString() + "')";
+                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + txtPoint.Text.Trim() + "','" + Session["User"].ToString() + "')";
                 if(function.MySqlQuery(sql_insert))
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
@@ -192,7 +192,7 @@ namespace ClaimProject.CM
             txtDeviceAdd.SelectedIndex = 0;
             txtProblem.Text = "";
             //txtChannel.Text = "";
-            txtNote.Text = "";
+            //txtNote.Text = "";
             txtSDate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
             txtSTime.Text = DateTime.Now.ToString("HH.mm");
         }
@@ -280,7 +280,7 @@ namespace ClaimProject.CM
                 img = "cm_detail_simg = '" + NewFileDocName + "',";
             }
 
-            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_driver_id = '" + txtDeviceAdd.SelectedValue + "',cm_detail_problem='" + txtProblem.Text + "',cm_detail_channel='" + ddlChanel.SelectedValue.ToString() + "',cm_detail_sdate='" + txtSDate.Text + "',cm_detail_stime='" + txtSTime.Text + "'," + img + "cm_detail_note='" + txtNote.Text + "',cm_cpoint='" + txtCpoint.SelectedValue + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
+            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_driver_id = '" + txtDeviceAdd.SelectedValue + "',cm_detail_problem='" + txtProblem.Text + "',cm_detail_channel='" + ddlChanel.SelectedValue.ToString() + "',cm_detail_sdate='" + txtSDate.Text + "',cm_detail_stime='" + txtSTime.Text + "'," + img + "',cm_cpoint='" + txtCpoint.SelectedValue + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
             if (function.MySqlQuery(sql_insert))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);

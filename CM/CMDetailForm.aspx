@@ -61,12 +61,8 @@
                             <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" />
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group bmd-form-group">
-                            <p class="bmd-label-floating">หมายเหตุ</p>
-                            <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" />
-                        </div>
-                    </div>  
+
+                     
                     
                     <!-- แนบรูป -->
                     <div class="col-md-3">
@@ -80,7 +76,7 @@
                           </div>
                         </div>
                      </div>
-
+                  </div>
                 <div class="row">
                     <div class="col-md text-center">
                         <asp:LinkButton ID="btnSaveCM" runat="server" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click">แจ้งซ่อม</asp:LinkButton>
@@ -89,8 +85,7 @@
                         <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบ</asp:LinkButton>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>       
         <br />
     </div>
 

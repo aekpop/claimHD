@@ -136,6 +136,11 @@
                             <asp:Label ID="lbequipnote"  runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ประวัติโอนย้าย" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbequipHistory"  runat="server" OnCommand="lbequipHistory_Command">*-*</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
@@ -310,7 +315,6 @@
                                 <asp:TextBox ID="txtEditNote"  runat="server" TextMode="MultiLine"  CssClass="form-control time" />
                             </div>
                         </div>
-
                     </div>
 
 
@@ -323,7 +327,8 @@
         </div>
     </div>
 
-
+    
+    
 
 
 
@@ -348,7 +353,7 @@
             $("#UpdateEquipModal").modal('hide');
             <%}%>  
         });
-        
+           
 
         function UpdteConfirm(msg) {
             var str1 = "1";

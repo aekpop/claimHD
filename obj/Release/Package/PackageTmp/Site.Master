@@ -26,7 +26,7 @@
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
 </head>
-<body>
+<body style="padding-top:20px">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -50,7 +50,7 @@
         </asp:ScriptManager>
         <script src="/Scripts/offcanvas.js"></script>
         <div class="wrapper ">
-            <div class="sidebar" data-color="purple" data-background-color="white" data-image="/img/7877268095078.jpg" >
+            <div class="sidebar" style="width:240px;" data-color="purple" data-background-color="white" data-image="/img/7877268095078.jpg" >
                 
                 <div id="divlogo" runat="server" class="logo">
                     <a  class="simple-text logo-normal">
@@ -61,7 +61,7 @@
                         <!--<span style="font-size: 24px;">ระบบการจัดการบริหารการจัดเก็บฯ</span><br />
                         <span style="font-size: 16px;">Toll Management System (TMS)</span></a>-->
                 </div>
-                <div class="sidebar-wrapper">
+                <div class="sidebar-wrapper" style="width:240px;" >
                     <ul class="nav">
                         <li class="nav-item" runat="server" id="nav0">
                             <a class="nav-link" href="/">
@@ -147,7 +147,7 @@
                                     <li class="nav-item">
                                         <h3>
                                            <a class="nav-link" href="#">
-                                                <i class="fa fa-user-circle-o"></i>&nbsp<asp:Label ID="lbUser" runat="server" Text="" Font-Size="16px" ForeColor="Black"></asp:Label>
+                                                <i class="fa fa-user-circle-o"></i>&nbsp<asp:Label ID="lbUser" runat="server" Text="" Font-Size="18px" ForeColor="Black"></asp:Label>
                                             </a>
                                        </h3>
                                     </li>
