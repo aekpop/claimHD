@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultCM.aspx.cs" Inherits="ClaimProject.CM.DefaultCM" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <meta http-equiv="refresh" content="60">
+
    <div class="container-fluid"> 
         <!--<h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>-->
 
@@ -174,7 +178,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">ปีงบประมาณ 
+                          <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> ปีงบประมาณ 
                               <asp:Label ID="lbCMNameBudget" runat="server" ></asp:Label>
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
@@ -210,13 +214,50 @@
                 </div>
             </div>
        <div class="row">
-           <div class="col-xl-6 col-md">
+           <div class="col-xl-4 col-md">
                   <div class="card border-left-warning shadow h-100 py-2">
-                      <div class="card-header" style="font-size:small" >รายการอุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำด่านฯ</div>
+                      <div class="card-header" style="font-size:small" >อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำด่านฯ</div>
                       <div class="card-body">
                           <div class="card-body table-responsive table-sm" >
                          <asp:Panel ID="Panel1" runat="server" >
                              <asp:GridView id="lsTodayGridview" runat="server"
+                                    CssClass="col table table-striped table-hover"
+                                     
+                                    HeaderStyle-BackColor="ActiveBorder"
+                                    HeaderStyle-Font-Size="18px"
+                                    
+                                    OnRowDataBound="lsTodayGridview_RowDataBound" 
+                                    Font-Size="15px" 
+                                    CellPadding="4" 
+                                    GridLines="None"
+                                    AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="รายการ" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="จำนวน" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.num") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        
+                                     </Columns>
+                             </asp:GridView>
+                         </asp:Panel>
+                    </div>
+                      </div>
+                      </div>
+               </div>
+
+           <div class="col-xl-4 col-md">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                      <div class="card-header" style="font-size:small" >อุปกรณ์ค้างซ่อมล่าช้าที่สุด 5 อันดับแรก</div>
+                      <div class="card-body">
+                          <div class="card-body table-responsive table-sm" >
+                         <asp:Panel ID="Panel2" runat="server" >
+                             <asp:GridView id="GridView1" runat="server"
                                     CssClass="col table table-striped table-hover"
                                      
                                     HeaderStyle-BackColor="ActiveBorder"

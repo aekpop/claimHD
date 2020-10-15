@@ -30,10 +30,10 @@
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
                         HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center"
-                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="16px" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="อัพเดท" >
+                            <asp:TemplateField HeaderText="" ControlStyle-Width="25px">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="fas text-primary" Font-Size="Larger">&#xf0aa;</asp:LinkButton>
                                 </ItemTemplate>
@@ -94,7 +94,7 @@
         </div>
     </div>
     <div class="modal fade" id="UpdateStatusModal" tabindex="-1" role="dialog" aria-labelledby="UpdateStatusModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">กรอกรายละเอียดการแก้ไข
@@ -112,8 +112,7 @@
                                 <asp:Label ID="Label5" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" >
+                    
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ช่องทาง : </label>
@@ -128,11 +127,10 @@
                                 <asp:Label ID="Label3" runat="server" CssClass="text-dark"></asp:Label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" >
+                    
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">อาการ : </label>
+                                <label class="bmd-label-floating">อาการเสีย : </label>
                                 <asp:Label ID="Label4" runat="server" CssClass="text-dark"></asp:Label>
                             </div>
                         </div>
@@ -191,15 +189,15 @@
                     <div class="row">
                         <div class="col-lg">
                             <br />
-                            <label class="bmd-label-floating">แนบภาพใบ Service (ขนาดไฟล์ไม่เกิน 4mb)</label>
+                            <label class="bmd-label-floating">แนบภาพใบService (ขนาดไฟล์ไม่เกิน 4mb)</label>
                             <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="btnUpdateCM" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateCM_Command" OnClientClick="return CompareConfirm('ยืนยันบันทึกข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>
-                    <asp:LinkButton ID="btnDeleteCM" runat="server" CssClass="btn btn-danger btn-sm" Font-Size="Medium" OnCommand="btnDeleteCM_Command" OnClientClick="return CompareConfirm('ยืนยันลบข้อมูล ใช่หรือไม่');">ลบข้อมูล</asp:LinkButton>
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>
+                    <asp:LinkButton ID="btnDeleteCM" runat="server" CssClass="btn btn-danger btn-sm" Font-Size="Medium" OnCommand="btnDeleteCM_Command" OnClientClick="return CompareConfirm('ยืนยันลบข้อมูล ใช่หรือไม่');">ลบ</asp:LinkButton>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>
                 </div>
             </div>
         </div>

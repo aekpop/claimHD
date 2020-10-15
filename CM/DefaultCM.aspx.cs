@@ -15,6 +15,8 @@ namespace ClaimProject.CM
         public int Nowmonth = int.Parse(DateTime.Now.ToString("MM"));
         public int Nowyear = int.Parse((DateTime.Now.Year + 543).ToString());
         public string Nowday = DateTime.Now.ToString("dd");
+        public string sqlcp = "";
+        public string cpoint = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,7 +52,8 @@ namespace ClaimProject.CM
             if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
             {
                 Div6.Visible = true;
-
+                sqlcp = " ";
+                cpoint = " ";
             }
             else
             {
@@ -59,6 +62,8 @@ namespace ClaimProject.CM
                 divpm2.Visible = false;
                 Div3.Visible = false;
                 //Div2.Visible = false;
+                sqlcp = "AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
+                cpoint = " WHERE cm_cpoint = '" + Session["UserCpoint"] + "' ";
             }
             loadingpage();
             databind();
@@ -132,6 +137,7 @@ namespace ClaimProject.CM
             {
                 sqlcpSearch += " 9040 ";
             }
+            
 
             int i = 0;
             string now = Nowday + "-" + Nowmonth.ToString() + "-" + Nowyear.ToString();
@@ -144,10 +150,27 @@ namespace ClaimProject.CM
                 Nowbudget = Nowyear + 1;
             }
 
-            string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_detail_sdate ='"+ now +"' ";
-            string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
-            string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '"+ Nowbudget +"' ";
-            string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
+            //string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_detail_sdate ='"+ now +"' ";
+            //string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
+            //string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '"+ Nowbudget +"' ";
+            //string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
+            //ค้างซ่อม
+            //string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_detail_sdate ='" + now + "' ";
+            //string CMsqlMonthNot = "SELECT COUNT(*) AS nummn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
+            //string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
+            //string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
+
+            string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '"+ sqlcp +"' AND cm_detail_sdate ='" + now + "' ";
+            string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '" + sqlcp + "' ";
+            //ค้างซ่อม
+            string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' AND cm_detail_sdate ='" + now + "' ";
+            string CMsqlMonthNot = "SELECT COUNT(*) AS nummn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' ";
+
+
 
             //แสดงเดือน ปี
             lbCMNameMonthly.Text = MonthList[i];
@@ -159,12 +182,26 @@ namespace ClaimProject.CM
             {
                 if (trdd.GetInt32("numd") != 0)
                 {
-                    lbCMStatDay.Text = trdd.GetInt32("numd").ToString();
-                    trdd.Close();
+                    MySqlDataReader trddn = function.MySqlSelect(CMsqlDayNot);
+                    if (trddn.Read())
+                    {
+                        if (trddn.GetInt32("numdn") != 0)
+                        {
+                            lbCMStatDay.Text = trdd.GetInt32("numd").ToString() + " / " + trddn.GetInt32("numdn").ToString();
+                            trdd.Close();
+                            trddn.Close();
+                        }
+                        else
+                        {
+                            lbCMStatDay.Text = trdd.GetInt32("numd").ToString() + " / 0";
+                            trdd.Close();
+                            trddn.Close();
+                        }
+                    }
                 }
                 else
                 {
-                    lbCMStatDay.Text = "0";
+                    lbCMStatDay.Text = "0 / 0";
                     trdd.Close();
                 }
             }
@@ -175,12 +212,27 @@ namespace ClaimProject.CM
             {
                 if (trmm.GetInt32("numm") != 0)
                 {
-                    lbCMStatMonthly.Text = trmm.GetInt32("numm").ToString();
-                    trmm.Close();
+                    MySqlDataReader trmmn = function.MySqlSelect(CMsqlMonthNot);
+                    if (trmmn.Read())
+                    {
+                        if (trmmn.GetInt32("nummn") != 0)
+                        {
+                            lbCMStatMonthly.Text = trmm.GetInt32("numm").ToString() + " / " + trmmn.GetInt32("nummn").ToString();
+                            trmm.Close();
+                            trmmn.Close();
+                        }
+                        else
+                        {
+
+                            lbCMStatMonthly.Text = trmm.GetInt32("numm").ToString() + " / 0";
+                            trmm.Close();
+                            trmmn.Close();
+                        }
+                    }
                 }
                 else
                 {
-                    lbCMStatMonthly.Text = "0";
+                    lbCMStatMonthly.Text = "0 / 0";
                     trmm.Close();
                 }
             }
@@ -191,12 +243,26 @@ namespace ClaimProject.CM
             {
                 if (trbg.GetInt32("numb") != 0)
                 {
-                    lbCMStatBudget.Text = trbg.GetInt32("numb").ToString();
-                    trbg.Close();
+                    MySqlDataReader trbgn = function.MySqlSelect(CMsqlBudgetNot);
+                    if (trbgn.Read())
+                    {
+                        if (trbgn.GetInt32("numbn") != 0)
+                        {
+                            lbCMStatBudget.Text = trbg.GetInt32("numb").ToString() + " / " + trbgn.GetInt32("numbn").ToString();
+                            trbg.Close();
+                            trbgn.Close();
+                        }
+                        else
+                        {
+                            lbCMStatBudget.Text = trbg.GetInt32("numb").ToString() + " / 0";
+                            trbg.Close();
+                            trbgn.Close();
+                        }
+                    }                       
                 }
                 else
                 {
-                    lbCMStatBudget.Text = "0";
+                    lbCMStatBudget.Text = "0 / 0";
                     trbg.Close();
                 }
             }
@@ -207,12 +273,26 @@ namespace ClaimProject.CM
             {
                 if (troa.GetInt32("numa") != 0)
                 {
-                    lbCMStatOverall.Text = troa.GetInt32("numa").ToString();
-                    troa.Close();
+                    MySqlDataReader troan = function.MySqlSelect(CMsqlOverallNot);
+                    if (troan.Read())
+                    {
+                        if (troan.GetInt32("numan") != 0)
+                        {
+                            lbCMStatOverall.Text = troa.GetInt32("numa").ToString() + " / " + troan.GetInt32("numan").ToString();
+                            troa.Close();
+                            troan.Close();
+                        }
+                        else
+                        {
+                            lbCMStatOverall.Text = troa.GetInt32("numa").ToString() + " / 0 ";
+                            troa.Close();
+                            troan.Close();
+                        }
+                    }
                 }
                 else
                 {
-                    lbCMStatOverall.Text = "0";
+                    lbCMStatOverall.Text = "0 / 0";
                     troa.Close();
                 }
             }
@@ -237,10 +317,9 @@ namespace ClaimProject.CM
 
         protected void databind()
         {
-            string cpoint = Session["UserCpoint"].ToString();
             string sqlLsTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
                 " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
-                " WHERE cm_cpoint = '"+ cpoint + "' GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+                " "+ cpoint + " GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sqlLsTotal);
             System.Data.DataSet ds = new System.Data.DataSet();

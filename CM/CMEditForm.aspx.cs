@@ -18,7 +18,7 @@ namespace ClaimProject.CM
         public string icon = "";
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {           
             if (Session["user"] == null)
             {
                 Response.Redirect("/");
@@ -33,6 +33,11 @@ namespace ClaimProject.CM
                 || Session["UserCpoint"].ToString() == "708" || Session["UserCpoint"].ToString() == "709")
             {
                 ddlAnnex.Visible = true;
+            }
+
+            if(Session["user_cpoint"].ToString() == "1")
+            {
+                btnDeleteCM.Visible = false;
             }
 
             if (!this.IsPostBack)

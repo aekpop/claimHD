@@ -41,21 +41,21 @@
                         </div>
                     </div>
                                     
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating ">ช่องทาง</p>
-                            <asp:DropDownList ID="ddlChanel" Width="90px" runat="server" CssClass="form-control " ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control " ></asp:DropDownList>
                         </div>
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">อุปกรณ์</p>
                             <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" />
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ปัญหา/อาการ</p>
                             <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" />
@@ -65,18 +65,28 @@
                      
                     
                     <!-- แนบรูป -->
-                    <div class="col-md-3">
+                    
+                  </div>
+                <div class="row">
+                    <div class="card border-white col-xl-4">
+                        <asp:Image ID="ImgUpload" runat="server" CssClass="img-thumbnail" Visible="false"/>
+                    </div>
+
+                    <div class="col-md-4">
                        <div class="form-group bmd-form-group">
                            <p class="bmd-label-floating">แนบรูปภาพ</p>
                            <div class="col" runat="server" id="diveditpic">
                                 <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
                             </div>
-                         <div class="col-md-3">
+                         <div class="col-md-1">
                                  <asp:Label ID="pkeq" runat="server" visible="true" Font-Size="Smaller" ></asp:Label>
                           </div>
                         </div>
                      </div>
-                  </div>
+
+                </div>
+                <hr />
+
                 <div class="row">
                     <div class="col-md text-center">
                         <asp:LinkButton ID="btnSaveCM" runat="server" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click">แจ้งซ่อม</asp:LinkButton>

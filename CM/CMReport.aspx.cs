@@ -562,9 +562,9 @@ namespace ClaimProject.CM
                         imgE = rt.GetString("cm_detail_eimg");
                         lbMethodRecheck.Text = rt.GetString("cm_detail_method");                       
                         lbDateERecheck.Text = rt.GetString("cm_detail_edate");
-                        lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
+                        lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
                         lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
-                        lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
+                        lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime") + " น.";
                         lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
                         lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                         imgSer = rt.GetString("cm_detail_Service_img");
@@ -574,9 +574,9 @@ namespace ClaimProject.CM
                     imgE = rt.GetString("cm_detail_eimg");
                     lbMethodRecheck.Text = rt.GetString("cm_detail_method");
                     lbDateERecheck.Text = rt.GetString("cm_detail_edate");
-                    lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
+                    lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
                     lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
-                    lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
+                    lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime") + " น.";
                     lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
                     lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                     imgSer = rt.GetString("cm_detail_Service_img");

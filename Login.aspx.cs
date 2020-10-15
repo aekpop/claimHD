@@ -62,6 +62,8 @@ namespace ClaimProject
                         Session.Add("UserName", rs.GetString("name"));
                         Session.Add("UserPrivilegeId", rs.GetString("level"));
                         Session.Add("UserPrivilege", function.GetLevel(int.Parse(rs.GetString("level"))));
+                        Session.Add("user_cpoint", rs.GetString("user_cpoint"));
+
                         string userrr = txtUser.Text;
                         if (userrr == "lbmotorway")
                         {

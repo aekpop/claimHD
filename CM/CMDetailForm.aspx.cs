@@ -79,11 +79,13 @@ namespace ClaimProject.CM
 
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                     {
-                        btnDeleteCM.Visible = true;                       
+                        btnDeleteCM.Visible = true;
+                        ImgUpload.Visible = true;
                     }
                     else
                     {
                         btnDeleteCM.Visible = false;
+                        ImgUpload.Visible = false;
                     }
 
                 }
@@ -239,10 +241,13 @@ namespace ClaimProject.CM
             if (rttt.Read())
             {
                 string imgg = rttt.GetString("cm_detail_simg");
+                ImgUpload.ImageUrl = "~" + imgg;
             }
             rttt.Close();
             function.Close();
-            Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);           
+            Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
+            
+
         }
 
         protected void btnEditCM_Click(object sender, EventArgs e)
@@ -347,5 +352,6 @@ namespace ClaimProject.CM
             function.Close();
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
         }
+
     }
 }
