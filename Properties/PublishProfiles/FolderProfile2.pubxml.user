@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>10/14/2020 17:00:37</publishTime>
+      <publishTime>10/14/2020 22:36:52</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>10/14/2020 17:00:37</publishTime>
+      <publishTime>10/14/2020 22:36:52</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>10/14/2020 17:00:39</publishTime>
+      <publishTime>10/14/2020 22:36:54</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>

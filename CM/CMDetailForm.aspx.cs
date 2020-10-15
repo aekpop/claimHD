@@ -277,10 +277,12 @@ namespace ClaimProject.CM
             string img = "";
             if (NewFileDocName != "")
             {
-                img = "cm_detail_simg = '" + NewFileDocName + "',";
+                img = " ,cm_detail_simg = '" + NewFileDocName + "' ";
             }
 
-            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_driver_id = '" + txtDeviceAdd.SelectedValue + "',cm_detail_problem='" + txtProblem.Text + "',cm_detail_channel='" + ddlChanel.SelectedValue.ToString() + "',cm_detail_sdate='" + txtSDate.Text + "',cm_detail_stime='" + txtSTime.Text + "'," + img + "',cm_cpoint='" + txtCpoint.SelectedValue + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
+            string sql_insert = "UPDATE tbl_cm_detail SET cm_detail_driver_id = '" + txtDeviceAdd.SelectedValue + "',cm_detail_problem='" + txtProblem.Text + "',cm_detail_channel='" 
+                + ddlChanel.SelectedValue.ToString() + "',cm_detail_sdate='" + txtSDate.Text + "',cm_detail_stime='" + txtSTime.Text + "' "+ img +" ,cm_cpoint='" + txtCpoint.SelectedValue 
+                + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
             if (function.MySqlQuery(sql_insert))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);

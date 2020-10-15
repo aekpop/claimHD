@@ -554,6 +554,7 @@ namespace ClaimProject.CM
                         lbDateEJRecheck.Text = "-";
                         lbTimeEJRecheck.Text = "-";
                         lbUserEJRecheck.Text = "-";
+                    lbNodeRecheck.Text = " - ";
                     }
                     else if(Chk == "1")
                     {
@@ -565,6 +566,7 @@ namespace ClaimProject.CM
                         lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
                         lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
                         lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
+                        lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                         imgSer = rt.GetString("cm_detail_Service_img");
                     }
                     else if(Chk == "2")
@@ -576,6 +578,7 @@ namespace ClaimProject.CM
                     lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
                     lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
                     lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
+                    lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                     imgSer = rt.GetString("cm_detail_Service_img");
                     }
                 }
@@ -590,7 +593,6 @@ namespace ClaimProject.CM
             lbChannelRecheck.Text = rt.GetString("locate_name");
             lbdeviceRecheck.Text = rt.GetString("device_name");
             lbProblemRecheck.Text = rt.GetString("cm_detail_problem");
-            lbNodeRecheck.Text = rt.GetString("cm_detail_note");
             lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
             lbTimesRecheck.Text = rt.GetString("cm_detail_stime") + " น.";
             lbUserRecheck.Text = rt.GetString("name");
