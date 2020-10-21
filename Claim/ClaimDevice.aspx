@@ -63,19 +63,19 @@
                     <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select"></asp:DropDownList>
                 </div>
             </div>
-           
+           <hr />
             <div class="row">              
                 <div class="col-md-6 text-right">
-                    <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
+                    <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-default fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
                 </div>
 
                 <div class="col-md-6 text-left">
                     <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnExport_Click">&#xf1c3; Export To Excel</asp:LinkButton>
                 </div>
             </div>
-            <asp:Label ID="lbClaimNull" runat="server" Text=""></asp:Label>
+            <asp:Label ID="lbClaimNull" runat="server" Text="" CssClass="text-success"></asp:Label>
         </div>
-        <hr />
+        
    </div>
     <div id="Div1" runat="server" >
         <!--<div class="card" style="z-index: 0"> -->           
@@ -98,9 +98,9 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="เลขที่(ด่านฯ)">
+                        <asp:TemplateField HeaderText="เลขที่(ฝ่ายฯ)">
                             <ItemTemplate>
-                                <asp:Label ID="lbNumdocT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_cpoint_note") %>'></asp:Label>
+                                <asp:Label ID="lbTechnoNumdoc" runat="server" Text='<%#DataBinder.Eval(Container, "DataItem.techno_doc_num")+" /"+DataBinder.Eval(Container, "DataItem.techno_doc_date") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 

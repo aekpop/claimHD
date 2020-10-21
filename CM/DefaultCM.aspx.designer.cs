@@ -58,6 +58,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div6;
         
         /// <summary>
+        /// lbSurveyNoti control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSurveyNoti;
+        
+        /// <summary>
         /// divpm control.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbCMStatDay;
         
         /// <summary>
+        /// lbFixBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFixBack;
+        
+        /// <summary>
         /// lbCMNameMonthly control.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCMStatMonthly;
+        
+        /// <summary>
+        /// lbFixbackMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFixbackMonth;
         
         /// <summary>
         /// lbCMNameBudget control.
@@ -148,6 +175,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbCMStatBudget;
         
         /// <summary>
+        /// lbFixbackyear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFixbackyear;
+        
+        /// <summary>
         /// lbCMStatOverall control.
         /// </summary>
         /// <remarks>
@@ -155,6 +191,24 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCMStatOverall;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// lbFixbackOverall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFixbackOverall;
         
         /// <summary>
         /// Panel1 control.

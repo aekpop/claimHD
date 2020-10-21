@@ -1350,6 +1350,8 @@
     <Content Include="crystalreportviewers13\ActiveXControls\crviewer.dep" />
     <Content Include="crystalreportviewers13\crsmarttag.jsp" />
     <Content Include="crystalreportviewers13\preview.jsp" />
+    <Content Include="fonts\Kanit-Light.ttf" />
+    <Content Include="fonts\Prompt-Light.ttf" />
     <None Include="Model\DataSetClaim.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

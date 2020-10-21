@@ -24,6 +24,7 @@ namespace ClaimProject
                 Session.Add("UserPrivilegeId", function.GetSelectValue("tbl_user", "username = '" + Request.Cookies["ClaimLogin"]["User"] + "'", "level"));
                 Session.Add("UserPrivilege", function.GetLevel(int.Parse(Session["UserPrivilegeId"].ToString())));
                 Session.Add("UserCpoint", Request.Cookies["ClaimLogin"]["UserCpoint"]);
+                Session.Add("Userpoint", Request.Cookies["ClaimLogin"]["Userpoint"]);
                 Session.Timeout = 28800;
             }
 
@@ -33,7 +34,7 @@ namespace ClaimProject
             }
             else
             {
-                lbUser.Text = "ยินดีต้อนรับ : " + Session["UserName"].ToString() + " : " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name");
+                lbUser.Text = "ยินดีต้อนรับ : " + Session["UserName"].ToString() + " : " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name" ) +" "+ function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
                 if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                 {
                     if(Session["UserPrivilegeId"].ToString() == "4")

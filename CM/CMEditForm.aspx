@@ -1,10 +1,18 @@
 ﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMEditForm.aspx.cs" Inherits="ClaimProject.CM.CMEditForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
+
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์</h3>
+                <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
             </div>
             <div class="card-body table-responsive table-sm">
                 <div class="row" >
@@ -12,13 +20,13 @@
                         <label class="bmd-label-floating">ปีงบประมาณ : </label>
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
                     </div>-->
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xl-2">
                         <!--<label class="bmd-label-floating">ด่านฯ : </label> -->
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "  ></asp:DropDownList>
                     </div>
                     <div class="col-md-2" >
                         <!--<label class="bmd-label-floating" >อาคาร : </label> -->
-                        <asp:DropDownList ID="ddlAnnex" runat="server" CssClass="form-control custom-select " Visible="false" ></asp:DropDownList>
+                        <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" ></asp:TextBox>
                     </div>                   
                     <div class="col-md-2">                      
                         <asp:Button ID="btnSearchEdit" runat="server" font-size="Medium" CssClass="btn btn-success " OnClick="btnSearchEdit_Click" Text="ค้นหา"/>
@@ -97,8 +105,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">กรอกรายละเอียดการแก้ไข
-                        <asp:Label ID="Label1" runat="server" Text="Label1" CssClass="text-dark"></asp:Label></h4>
+                    <div class="modal-title">กรอกรายละเอียดการแก้ไข
+                        <asp:Label ID="Label1" runat="server" Text="Label1" CssClass="text-dark"></asp:Label></div>
                     <asp:Label ID="lbcmid" runat="server" Visible="false" ></asp:Label>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -182,17 +190,18 @@
                     <div class="row">
                         <div class="col-lg">
                             <br />
-                            <label class="bmd-label-floating">แนบภาพแก้ไขแล้ว (ขนาดไฟล์ไม่เกิน 4mb)</label>
+                            <label class="bmd-label-floating">แนบภาพแก้ไข (ขนาดไม่เกิน 4mb)</label>
                             <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg">
                             <br />
-                            <label class="bmd-label-floating">แนบภาพใบService (ขนาดไฟล์ไม่เกิน 4mb)</label>
+                            <label class="bmd-label-floating">แนบใบService (ขนาดไม่เกิน 4mb)</label>
                             <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
+                    <label class="bmd-label-floating" style="font-size:12px;">รองรับรูปภาพนามสกุล .jpg, .JPEG และ.PNG เท่านั้น</label>
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="btnUpdateCM" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateCM_Command" OnClientClick="return CompareConfirm('ยืนยันบันทึกข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>
@@ -248,4 +257,5 @@
 
         }
     </script>
+    </div>
 </asp:Content>

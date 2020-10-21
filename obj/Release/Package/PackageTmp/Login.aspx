@@ -60,6 +60,12 @@
                                 </div>
                                 <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text fa fa-building" style="font-size: x-large; width: 50px;"></span>
+                                </div>
+                                <asp:DropDownList ID="txtPoint" runat="server" CssClass="form-control" Visible="true" ></asp:DropDownList>
+                            </div>
                             <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-warning col-6" OnClick="btnSubmit_Click1" />
                             <br />
                             <asp:LinkButton ID="linkDownload" runat="server" OnClick="linkDownload_Click">Download Google Chrome</asp:LinkButton>
@@ -69,7 +75,7 @@
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <p style="font-size: 18px; text-align: center;">&copy; <%=DateTime.Now.Year%> - ฝ่ายจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่าเมือง กรมทางหลวง </p>
+                    <p style="font-size: 18px; text-align: center;">&copy; <%=DateTime.Now.Year%> - ฝ่ายจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง </p>
                 </div>
             </div>
         </div>

@@ -29,10 +29,9 @@ namespace ClaimProject.CM
                 txtETime.Text = DateTime.Now.ToString("HH.mm");
             }
 
-            if (Session["UserCpoint"].ToString() == "703" || Session["UserCpoint"].ToString() == "704" || Session["UserCpoint"].ToString() == "706" || Session["UserCpoint"].ToString() == "707" 
-                || Session["UserCpoint"].ToString() == "708" || Session["UserCpoint"].ToString() == "709")
+            if (Session["UserCpoint"].ToString() == "0")
             {
-                ddlAnnex.Visible = true;
+                txtAnnex.Enabled = true;
             }
 
             if(Session["user_cpoint"].ToString() == "1")
@@ -43,8 +42,8 @@ namespace ClaimProject.CM
             if (!this.IsPostBack)
             {
                 //function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
-                function.getListItem(ddlAnnex, "SELECT cm_point FROM tbl_cm_detail  GROUP BY cm_point ORDER by cm_point ASC", "cm_point", "cm_point");
-                
+                //function.getListItem(ddlAnnex, "SELECT cm_point FROM tbl_cm_detail  GROUP BY cm_point ORDER by cm_point ASC", "cm_point", "cm_point");
+                txtAnnex.Text = Session["Userpoint"].ToString();
 
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
@@ -69,7 +68,7 @@ namespace ClaimProject.CM
         {
             string sql = "";
             string checkCpoint = txtCpointSearch.SelectedValue;
-            string checkPoint = ddlAnnex.SelectedValue;
+            string checkPoint = Session["Userpoint"].ToString();
             if (checkCpoint == "")
             {
                 if(checkPoint == "")
@@ -90,7 +89,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                    " JOIN tbl_user u ON cm.cm_user = u.username " +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' " +
                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
                 
@@ -103,7 +102,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                    " JOIN tbl_user u ON cm.cm_user = u.username " +
                    " WHERE cm.cm_cpoint = '" +checkCpoint+"' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + ddlAnnex.SelectedValue + "' " +
+                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' " +
                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
                 

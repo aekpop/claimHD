@@ -85,21 +85,21 @@ namespace ClaimProject.CM
 
             if (CheckAllDay.Checked)
             {
-                if(channel == "")
+                if (channel == "")
                 {
-                    if(deviceDamage == "")
+                    if (deviceDamage == "")
                     {
                         consta = " ";
                     }
                     else
                     {
-                        consta = " AND d.device_id = '"+ deviceDamage + "' ";
+                        consta = " AND d.device_id = '" + deviceDamage + "' ";
                     }
-                    
+
                 }
                 else
                 {
-                    if(deviceDamage == "")
+                    if (deviceDamage == "")
                     {
                         consta = " AND cm_detail_channel = '" + channel + "' ";
                     }
@@ -107,15 +107,15 @@ namespace ClaimProject.CM
                     {
                         consta = " AND cm_detail_channel = '" + channel + "' AND d.device_id = '" + deviceDamage + "' ";
                     }
-                    
+
                 }
-                
+
             }
             else
             {
-                if(channel == "")
+                if (channel == "")
                 {
-                    if(deviceDamage == "")
+                    if (deviceDamage == "")
                     {
                         consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') ";
                     }
@@ -123,11 +123,11 @@ namespace ClaimProject.CM
                     {
                         consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
                                  " AND d.device_id = '" + deviceDamage + "' ";
-                    }   
+                    }
                 }
                 else
                 {
-                    if(deviceDamage == "")
+                    if (deviceDamage == "")
                     {
                         consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
                              "AND cm_detail_channel = '" + channel + "' ";
@@ -139,57 +139,157 @@ namespace ClaimProject.CM
                     }
                 }
             }
-            
-                if (checkBudget != "")
+
+            if (checkBudget != "")
+            {
+                if (checkCpoint == "")
                 {
-                    if (checkCpoint == "")
+                    if (checkPoint == "")
                     {
-                        if (checkPoint == "")
+                        if (CMStatus == "")
                         {
-                            if (CMStatus == "")
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                                " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                                " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                                " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                                " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' "+ consta + " " +
-                                " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                                " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                            else
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                               " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                               " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                               " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                               " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
-                               " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                            " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                            " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                            " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                            " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                            " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
-                            if (CMStatus == "")
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                                " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                                " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                                " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                                " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                                " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                                " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                            else
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                               " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                               " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                               " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                               " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                               " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                           " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                           " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                           " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                           " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
+                    }
+                    else
+                    {
+                        if (CMStatus == "")
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                            " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                            " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                            " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                            " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                            " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                        else
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                           " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                           " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                           " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                           " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                    }
 
 
+                }
+                else
+                {
+                    if (CMStatus == "")
+                    {
+                        sql += "SELECT * FROM tbl_cm_detail cm " +
+                        " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                        " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                        " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                        " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                        " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                        " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
+                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    }
+                    else
+                    {
+                        sql += "SELECT * FROM tbl_cm_detail cm " +
+                       " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                       " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                       " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                       " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                       " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    }
+                }
+            }
+            else
+            {
+                if (checkCpoint == "") //ไม่เลือก ปีงบ
+                {
+                    if (checkPoint == "")
+                    {
+                        if (CMStatus == "")
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                            " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                            " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                            " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                            " Where d.`davice_delete` = 0 " + consta + " " +
+                            " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                        else
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                           " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                           " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                           " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                           " Where d.`davice_delete` = 0 " + consta + " " +
+                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                    }
+                    else
+                    {
+                        if (CMStatus == "")
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                            " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                            " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                            " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                            " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                            " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                        else
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                           " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                           " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                           " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                           " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    if (checkPoint == "")
+                    {
+                        if (CMStatus == "")
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                            " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                            " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                            " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                            " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
+                            " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
+                        else
+                        {
+                            sql += "SELECT * FROM tbl_cm_detail cm " +
+                           " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                           " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                           " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                           " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
+                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        }
                     }
                     else
                     {
@@ -200,7 +300,7 @@ namespace ClaimProject.CM
                             " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                             " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                             " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                            " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                            " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
                             " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
@@ -211,114 +311,14 @@ namespace ClaimProject.CM
                            " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                            " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                            " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                           " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                           " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
                            " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                     }
+
                 }
-                else
-                {
-                    if (checkCpoint == "") //ไม่เลือก ปีงบ
-                    {
-                        if (checkPoint == "")
-                        {
-                            if (CMStatus == "")
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                                " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                                " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                                " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                                " Where d.`davice_delete` = 0 " + consta + " " +
-                                " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                                " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                            else
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                               " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                               " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                               " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                               " Where d.`davice_delete` = 0 " + consta + " " +
-                               " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                        }
-                        else
-                        {
-                            if (CMStatus == "")
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                                " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                                " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                                " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                                " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                                " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                                " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                            else
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                               " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                               " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                               " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                               " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                               " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                        }
+            }
 
-
-                    }
-                    else
-                    {
-                        if (checkPoint == "")
-                        {
-                            if (CMStatus == "")
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                                " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                                " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                                " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                                " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
-                                " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                                " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                            else
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                               " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                               " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                               " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                               " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
-                               " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                        }
-                        else
-                        {
-                            if (CMStatus == "")
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                                " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                                " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                                " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                                " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                                " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                                " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                                " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                            else
-                            {
-                                sql += "SELECT * FROM tbl_cm_detail cm " +
-                               " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                               " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                               " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                               " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                               " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                               " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
-                            }
-                        }
-
-                    }
-                }
-            
 
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
@@ -400,11 +400,11 @@ namespace ClaimProject.CM
             if (lbStatus != null)
             {
                 lbStatus.Text = function.GetStatusCM(DataBinder.Eval(e.Row.DataItem, "cm_detail_status_id").ToString());
-                if(lbStatus.Text == "รอการแก้ไข")
+                if (lbStatus.Text == "รอการแก้ไข")
                 {
                     lbStatus.CssClass = "badge badge-danger";
                 }
-                else if(lbStatus.Text == "รอการตรวจสอบ")
+                else if (lbStatus.Text == "รอการตรวจสอบ")
                 {
                     lbStatus.CssClass = "badge badge-warning";
                 }
@@ -412,7 +412,7 @@ namespace ClaimProject.CM
                 {
                     lbStatus.CssClass = "badge badge-success";
                 }
-             
+
             }
 
             Label btnDateEditCM = (Label)(e.Row.FindControl("btnDateEditCM"));
@@ -438,26 +438,42 @@ namespace ClaimProject.CM
             if (lbDay != null)
             {
                 string[] data = DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate").ToString().Split('-');
-                DateTime dateStart = DateTime.ParseExact(data[0] + "-" + data[1] + "-" + (int.Parse(data[2]) - 543), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                string[] times = DataBinder.Eval(e.Row.DataItem, "cm_detail_stime").ToString().Split('.',':');
+                DateTime dateStart = DateTime.ParseExact(data[0] + "-" + data[1] + "-" + (int.Parse(data[2]) - 543) +" "+ times[0] + ":" + times[1], "dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture);              
                 DateDifference differnce = new DateDifference(dateStart);
 
-                if (differnce.ToString() == "")
+                
+
+                if (lbStatus.Text != "ใช้งานได้ปกติ")
                 {
-                    lbDay.CssClass = "badge badge-danger";
-                    lbDay.Text = "NEW!!";
-                }
-                else
-                {
-                    if(differnce.Month > 1)
+                    if (differnce.ToString() == "")
                     {
-                        lbDay.Text = differnce.ToString();
-                        lbDay.ForeColor = System.Drawing.Color.Red;
+                        lbDay.CssClass = "badge badge-danger";
+                        lbDay.Text = "NEW!!";
                     }
                     else
                     {
-                        lbDay.Text = differnce.ToString();
+                        if (differnce.Month > 1)
+                        {
+                            lbDay.Text = differnce.ToString();
+                            lbDay.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            lbDay.Text = differnce.ToString();
+                        }
+
                     }
-                    
+                }
+                else
+                {
+                    //ยังไม่สำเร็จ
+                    string[] dateE = DataBinder.Eval(e.Row.DataItem, "cm_detail_edate").ToString().Split('-');
+                    string[] timeE = DataBinder.Eval(e.Row.DataItem, "cm_detail_etime").ToString().Split('.', ':');
+                    DateTime dateEnd = DateTime.ParseExact(dateE[0] + "-" + dateE[1] + "-" + (int.Parse(dateE[2]) - 543) + " " + times[0] + ":" + times[1], "dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture);
+                    DateDifference diffComp = new DateDifference(dateStart,dateEnd);
+                    lbDay.Text = diffComp.ToString();
+                    lbDay.ForeColor = System.Drawing.Color.Green;
                 }
             }
 
@@ -465,6 +481,14 @@ namespace ClaimProject.CM
             if (lbDeviceName != null)
             {
                 lbDeviceName.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
+                lbDeviceName.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
+                lbDeviceName.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+            }
+
+            Label lbProblem = (Label)(e.Row.FindControl("lbProblem"));
+            if(lbProblem != null)
+            {
+                lbProblem.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "cm_detail_problem").ToString());
             }
         }
 

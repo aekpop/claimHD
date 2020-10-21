@@ -57,7 +57,7 @@
                         <img src="/img/j4.png" width="40%" /><br />
 
                         <h4>ระบบการจัดการบริหารการจัดเก็บฯ</h4>
-                        <h4> Management System (TMS)</h4></a>
+                        <h5> Toll Management System (TMS)</h5></a>
                         <!--<span style="font-size: 24px;">ระบบการจัดการบริหารการจัดเก็บฯ</span><br />
                         <span style="font-size: 16px;">Toll Management System (TMS)</span></a>-->
                 </div>
@@ -146,8 +146,8 @@
                                         </li>-->
                                     <li class="nav-item">
                                         <h3>
-                                           <a class="nav-link" href="#">
-                                                <i class="fa fa-user-circle-o"></i>&nbsp<asp:Label ID="lbUser" runat="server" Text="" Font-Size="18px" ForeColor="Black"></asp:Label>
+                                           <a class="nav-link" href="#" >
+                                                <i class="fa fa-user-circle-o"></i>&nbsp<asp:Label ID="lbUser" runat="server" Text="" Font-Size="20px" ForeColor="Black" ></asp:Label>
                                             </a>
                                        </h3>
                                     </li>
@@ -198,7 +198,7 @@
         </div>
     </form>
     <script src="/Scripts/popper.min.js"></script>
-    <script src="Scripts/umd/popper.js"></script>
+    <script src="/Scripts/umd/popper.js"></script>
     <script src="/Scripts/bootstrap-material-design.min.js"></script>
     <script src="/Scripts/perfect-scrollbar.jquery.min.js"></script>
     <script src="/Scripts/bootstrap-notify.js"></script>
@@ -210,7 +210,7 @@
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
+
 
     <script type="text/javascript">   
         $(function () {

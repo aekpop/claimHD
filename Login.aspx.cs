@@ -14,7 +14,10 @@ namespace ClaimProject
             if (!this.IsPostBack)
             {
                 string sql = "SELECT * FROM tbl_cpoint WHERE cpoint_login = '1' ORDER BY cpoint_id";
-                function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id"); 
+                function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
+                string sqlp = "SELECT * FROM tbl_annex ";
+                function.getListItem(txtPoint, sqlp, "Annex_name", "Annex_id");
+
             }
         }
 
@@ -45,6 +48,7 @@ namespace ClaimProject
                     if (!rs.IsDBNull(0))
                     {
                         string cpoint = "";
+                        string point = "";
                         if (rs.GetString("user_cpoint") == "0")
                         {
                             cpoint = "0";
@@ -52,6 +56,14 @@ namespace ClaimProject
                         else
                         {
                             cpoint = txtCpoint.SelectedValue;
+                            if (cpoint == "703" || cpoint == "704" || cpoint == "706" || cpoint == "707" || cpoint == "708" || cpoint == "709")
+                            {
+                                point = txtPoint.SelectedValue;
+                            }
+                            else
+                            {
+                                point = " ";
+                            }
                         }
                         // Storee Session
                         Session.Add("EQAddAlert", "");
@@ -63,6 +75,7 @@ namespace ClaimProject
                         Session.Add("UserPrivilegeId", rs.GetString("level"));
                         Session.Add("UserPrivilege", function.GetLevel(int.Parse(rs.GetString("level"))));
                         Session.Add("user_cpoint", rs.GetString("user_cpoint"));
+
 
                         string userrr = txtUser.Text;
                         if (userrr == "lbmotorway")
@@ -130,9 +143,11 @@ namespace ClaimProject
                             cpoint = "905";
                         }
                         Session.Add("UserCpoint", cpoint);
+                        Session.Add("Userpoint", point);
                         Session.Timeout = 28800;
 
                         
+
                         //Response.Charset = "UTF-8";
                         HttpCookie newCookie = new HttpCookie("ClaimLogin");
                         newCookie["User"] = txtUser.Text;
@@ -140,6 +155,7 @@ namespace ClaimProject
                         newCookie["UserPrivilegeId"] = rs.GetString("level");
                         newCookie["UserPrivilege"] = function.GetLevel(int.Parse(rs.GetString("level")));
                         newCookie["UserCpoint"] = cpoint;
+                        newCookie["Userpoint"] = point;
                         //newCookie.Expires = DateTime.Now.AddDays(1);
                         newCookie.Expires = DateTime.Now.AddSeconds(30);
                         Response.Cookies.Add(newCookie);

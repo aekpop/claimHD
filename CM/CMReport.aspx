@@ -2,6 +2,12 @@
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
@@ -16,19 +22,19 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
 
-    <div class="container-fluid" >
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
     
-    <div id="MainBody" class="card" style="z-index: 0; font-size:medium; ">
+    <div id="MainBody" class="card" style="z-index: 0; ">
         <div class="card-header card-header-primary">
-            <h3 class="card-title">รายงานสรุปแจ้งซ่อมอุปกรณ์</h3>
+            <div class="card-title">รายงานสรุปแจ้งซ่อมอุปกรณ์</div>
         </div>       
         <div class="card-body table-responsive"> 
                     <div runat="server">                        
                         <div class="row">                                       
-                                        <div class="col-md-1 text-right">
-                                            <asp:Label ID="lbBudget" runat="server" Text="ปีงบประมาณ : "></asp:Label>
+                                        <div class="col-md-1 text-left">
+                                            <asp:Label ID="lbBudget" runat="server" Text="ปีงบฯ : "></asp:Label>
                                         </div>
-                                        <div class=" col-md-2">
+                                        <div class=" col-md-2 text-left">
                                             <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
                                         </div>
                                         <div class=" col-md-1 text-right">
@@ -39,7 +45,7 @@
                                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
                                         </div>
                                         <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbAnnex" runat="server" Text="อาคารย่อย : "></asp:Label>
+                                            <asp:Label ID="lbAnnex" runat="server" Text="อาคารย่อย"></asp:Label>
                                         </div>
                                         <div class=" col-md-1 ">
                                             <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
@@ -55,24 +61,24 @@
                         </div>
                         <br />
                         <div class="row">
-                                        <div class="col-md-1 text-right">
-                                            <asp:Label ID="lbChannel" runat="server" text="ตู้ :" ></asp:Label>
+                                        <div class="col-md-1 text-left">
+                                            <asp:Label ID="lbChannel" runat="server" text="  ตู้ :" ></asp:Label>
                                         </div>
                                         <div class="col-md-1">
                                             <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
                                         </div>
                                         <div class =" col-md-1 text-right">
-                                            <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged"/>
+                                            <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged" CssClass="checkbox-danger"/>
                                             <asp:Label Id ="lbCheckAllDay" runat="server" Text="AllDay" ></asp:Label> 
                                         </div>
                                         <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbDayS" runat="server" Text="ตั้งแต่วันที่ : "></asp:Label>
+                                            <asp:Label ID="lbDayS" runat="server" Text="ตั้งแต่วันที่"></asp:Label>
                                             </div>
                                         <div class=" col-md-2">
                                             <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>
                                         <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbDayE" runat="server" Text="ถึงวันที่ : "></asp:Label>
+                                            <asp:Label ID="lbDayE" runat="server" Text="ถึงวันที่ "></asp:Label>
                                         </div>
                                         <div class=" col-md-2">
                                             <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
@@ -163,7 +169,7 @@
                                     <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="นับเวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" Visible="false">
+                            <asp:TemplateField  HeaderText="นับเวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" Visible="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDay" runat="server"></asp:Label>
                                 </ItemTemplate>
@@ -183,7 +189,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อมอุปกรณ์ CM</h5>
+                    <div class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อมอุปกรณ์ CM</div>
                         <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

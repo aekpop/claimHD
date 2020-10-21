@@ -1,30 +1,37 @@
 ﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMDetailForm.aspx.cs" Inherits="ClaimProject.CM.CMDetailForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
+
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         
         
 
-        <div class="card" style="z-index: 0; font-size:medium; ">
+        <div class="card" style="z-index: 0; ">
             <div class="card-header card-header-warning">
-                <h3 class="card-title">แจ้งซ่อมอุปกรณ์</h3>
+                <div class="card-title">แจ้งซ่อมอุปกรณ์</div>
             </div>
             <div class="card-body table-responsive table-sm">
                 <asp:HiddenField ID="txtRef" runat="server" />
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xl-2">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ด่านฯ :</p>
-                            <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
+                            <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select" Enabled="false"></asp:DropDownList>
                         </div>
                     </div>
                    <div class="col-md-2">
                             <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating ">อาคารย่อย :</p>
-                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="อาคารย่อยถ้ามี" MaxLength="1" />
+                                <p Class="bmd-label-floating ">อาคารย่อย :</p>
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"  MaxLength="1" Enabled="false"/>
                             </div>
                     </div>
                 
@@ -61,17 +68,8 @@
                             <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" />
                         </div>
                     </div>
-
-                     
-                    
-                    <!-- แนบรูป -->
-                    
-                  </div>
-                <div class="row">
-                    <div class="card border-white col-xl-4">
-                        <asp:Image ID="ImgUpload" runat="server" CssClass="img-thumbnail" Visible="false"/>
-                    </div>
-
+                                         
+                    <!-- แนบรูป -->                                      
                     <div class="col-md-4">
                        <div class="form-group bmd-form-group">
                            <p class="bmd-label-floating">แนบรูปภาพ</p>
@@ -83,7 +81,6 @@
                           </div>
                         </div>
                      </div>
-
                 </div>
                 <hr />
 
@@ -102,7 +99,7 @@
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0" >
             <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการแจ้งซ่อมอุปกรณ์</h3>
+                <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
             </div>
             <div class="card-body table-responsive table-sm">
                 <!--<div class="row">
@@ -250,7 +247,8 @@
             {
               $('#EditModal').modal(); // initialized with defaults
               return false;
-            }
+        }
+
         
     </script>
 </asp:Content>

@@ -24,8 +24,7 @@ namespace ClaimProject.CM
             }
 
             if (!this.IsPostBack)
-            {
-                
+            {    
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
                 function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group = '1' Order By locate_id ASC", "locate_name", "locate_id");
                 BindData();
@@ -38,6 +37,8 @@ namespace ClaimProject.CM
                     function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+                    txtCpoint.Enabled = true;
+                    txtPoint.Enabled = true;
                 }
                 else
                 {
@@ -47,10 +48,11 @@ namespace ClaimProject.CM
                     //txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 }
 
-                string sql_Device = "SELECT * FROM tbl_device ORDER BY device_name";
+                string sql_Device = "SELECT * FROM tbl_device Where davice_delete = '0' ORDER BY device_name";
                 function.getListItem(txtDeviceAdd, sql_Device, "device_name", "device_id");
                 txtDeviceAdd.Items.Insert(0, new ListItem("", ""));
                 txtSTime.Text = DateTime.Now.ToString("HH.mm");
+                txtPoint.Text = Session["Userpoint"].ToString();
                 BindData();
 
                 if (Request["ref"] != null)
@@ -80,12 +82,14 @@ namespace ClaimProject.CM
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                     {
                         btnDeleteCM.Visible = true;
-                        ImgUpload.Visible = true;
+                        //ImgUpload.Visible = true;
+                        txtCpoint.Enabled = true;
+                        txtPoint.Enabled = true;
                     }
                     else
                     {
                         btnDeleteCM.Visible = false;
-                        ImgUpload.Visible = false;
+                        //ImgUpload.Visible = false;
                     }
 
                 }
@@ -122,7 +126,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                    " JOIN tbl_user u ON cm.cm_user = u.username" +
-                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' AND cm.cm_point = '"+ txtPoint.Text + "' " +
                    " AND cm.cm_detail_status_id='0' " +
                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
@@ -172,7 +176,8 @@ namespace ClaimProject.CM
             else
             {
                 string bgy = function.getBudgetYear(txtSDate.Text);
-                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + txtPoint.Text.Trim() + "','" + Session["User"].ToString() + "')";
+                string point = Session["Userpoint"].ToString();
+                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
                 if(function.MySqlQuery(sql_insert))
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
@@ -190,7 +195,7 @@ namespace ClaimProject.CM
         private void ClearDate()
         {
             txtCpoint.SelectedIndex = 0;
-            txtPoint.Text = "";
+            //txtPoint.Text = "";
             txtDeviceAdd.SelectedIndex = 0;
             txtProblem.Text = "";
             //txtChannel.Text = "";
@@ -241,7 +246,7 @@ namespace ClaimProject.CM
             if (rttt.Read())
             {
                 string imgg = rttt.GetString("cm_detail_simg");
-                ImgUpload.ImageUrl = "~" + imgg;
+                //ImgUpload.ImageUrl = "~" + imgg;
             }
             rttt.Close();
             function.Close();
@@ -290,11 +295,11 @@ namespace ClaimProject.CM
                 + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
             if (function.MySqlQuery(sql_insert))
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect", "alert('แก้ไขข้อมูลสำเร็จ'); window.location='/CM/CMDetailForm';", true);
                 BindData();
-
                 //Response.Redirect("/CM/CMDetailForm");
-                //ClearDate();
+                ClearDate();
             }
             else
             {

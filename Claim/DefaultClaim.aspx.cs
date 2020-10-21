@@ -15,6 +15,7 @@ namespace ClaimProject.Claim
         ClaimFunction function = new ClaimFunction();
         public int Nowmonth = int.Parse(DateTime.Now.ToString("MM"));
         public int Nowyear = int.Parse((DateTime.Now.Year + 543).ToString());
+        public string sqlcp = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,13 +26,15 @@ namespace ClaimProject.Claim
             }
             if (!this.IsPostBack)
             {
+                if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
+                { sqlcp = " "; } else { sqlcp = "AND claim_cpoint = " + Session["UserCpoint"] + " "; }
                 loadingpage();
             } 
         }
 
         protected void loadingpage()
         {
-            string sqlConst = "";
+            //string sqlConst = "";
             string sqlcpSearch = "";
 
 
@@ -110,22 +113,29 @@ namespace ClaimProject.Claim
                 Nowbudget = Nowyear + 1;
             }
 
-            string ClMouthly = "SELECT COUNT(*) AS numm FROM tbl_claim WHERE claim_cpoint = '"+ Session["UserCpoint"] + "' AND claim_budget_year = '"+ Nowbudget +"' AND claim_month = '" + MonthList[i]+"' ";
-            string ClBudget = "SELECT COUNT(*) AS numb FROM tbl_claim WHERE claim_cpoint = '" + Session["UserCpoint"] + "' AND claim_budget_year = '"+ Nowbudget +"' ";
-            string ClAllDay = "SELECT COUNT(*) AS numa FROM tbl_claim WHERE claim_cpoint = '" + Session["UserCpoint"] + "' ";
+            string ClMouthly = "SELECT COUNT(*) AS numm FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_budget_year = '" + Nowbudget + "' AND claim_month = '" + MonthList[i] + "' ";
+            string ClBudget = "SELECT COUNT(*) AS numb FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_budget_year = '" + Nowbudget + "' ";
+            string ClAllDay = "SELECT COUNT(*) AS numa FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " ";
+
+            string sqltotalSta1 = "SELECT COUNT(*) AS numTo1 FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_status = 1 ";
+            string sqltotalSta2 = "SELECT COUNT(*) AS numTo2 FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_status = 2 ";
+            string sqltotalSta3 = "SELECT COUNT(*) AS numTo3 FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_status = 3 ";
+            string sqltotalSta4 = "SELECT COUNT(*) AS numTo4 FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_status = 4 ";
+            string sqltotalSta5 = "SELECT COUNT(*) AS numTo5 FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_status = 5 ";
+            string sqltotalSta6 = "SELECT COUNT(*) AS numTo6 FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_status = 6 ";
 
             //แสดงเดือน ปี
             lbClaimNameMonthly.Text = MonthList[i];
             string lbBudget = Nowbudget.ToString();
             lbClaimNameBudget.Text = lbBudget;
-            
+
 
             MySqlDataReader tr = function.MySqlSelect(ClAllDay);
             if (tr.Read())
             {
-                if(tr.GetInt32("numa") != 0)
+                if (tr.GetInt32("numa") != 0)
                 {
-                    lbClaimStatOverall.Text = tr.GetInt32("numa").ToString() ;
+                    lbClaimStatOverall.Text = tr.GetInt32("numa").ToString();
                     tr.Close();
                 }
                 else
@@ -141,7 +151,7 @@ namespace ClaimProject.Claim
             {
                 if (trbg.GetInt32("numb") != 0)
                 {
-                    lbClaimStatBudget.Text = trbg.GetInt32("numb").ToString() ;
+                    lbClaimStatBudget.Text = trbg.GetInt32("numb").ToString();
                     trbg.Close();
                 }
                 else
@@ -167,6 +177,96 @@ namespace ClaimProject.Claim
                 }
             }
             function.Close();
+
+            MySqlDataReader st1 = function.MySqlSelect(sqltotalSta1);
+            if (st1.Read())
+            {
+                if (st1.GetInt32("numTo1") != 0)
+                {
+                    lbTotalSta1.Text = st1.GetInt32("numTo1").ToString();
+                    st1.Close();
+                }
+                else
+                {
+                    lbTotalSta1.Text = "0";
+                    st1.Close();
+                }
+            }
+
+            MySqlDataReader st2 = function.MySqlSelect(sqltotalSta2);
+            if (st2.Read())
+            {
+                if (st2.GetInt32("numTo2") != 0)
+                {
+                    lbTotalSta2.Text = st2.GetInt32("numTo2").ToString();
+                    st2.Close();
+                }
+                else
+                {
+                    lbTotalSta2.Text = "0";
+                    st2.Close();
+                }
+            }
+
+            MySqlDataReader st3 = function.MySqlSelect(sqltotalSta3);
+            if (st3.Read())
+            {
+                if (st3.GetInt32("numTo3") != 0)
+                {
+                    lbTotalSta3.Text = st3.GetInt32("numTo3").ToString();
+                    st3.Close();
+                }
+                else
+                {
+                    lbTotalSta3.Text = "0";
+                    st3.Close();
+                }
+            }
+
+            MySqlDataReader st4 = function.MySqlSelect(sqltotalSta4);
+            if (st4.Read())
+            {
+                if (st4.GetInt32("numTo4") != 0)
+                {
+                    lbTotalSta4.Text = st4.GetInt32("numTo4").ToString();
+                    st4.Close();
+                }
+                else
+                {
+                    lbTotalSta4.Text = "0";
+                    st4.Close();
+                }
+            }
+
+            MySqlDataReader st5 = function.MySqlSelect(sqltotalSta5);
+            if (st5.Read())
+            {
+                if (st5.GetInt32("numTo5") != 0)
+                {
+                    lbTotalSta5.Text = st5.GetInt32("numTo5").ToString();
+                    st5.Close();
+                }
+                else
+                {
+                    lbTotalSta5.Text = "0";
+                    st5.Close();
+                }
+            }
+
+            MySqlDataReader st6 = function.MySqlSelect(sqltotalSta6);
+            if (st6.Read())
+            {
+                if (st6.GetInt32("numTo6") != 0)
+                {
+                    lbTotalSta6.Text = st6.GetInt32("numTo6").ToString();
+                    st6.Close();
+                }
+                else
+                {
+                    lbTotalSta6.Text = "0";
+                    st6.Close();
+                }
+            }
         }
     }
 }

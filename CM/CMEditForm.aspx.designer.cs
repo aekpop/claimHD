@@ -40,13 +40,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.DropDownList txtCpointSearch;
         
         /// <summary>
-        /// ddlAnnex control.
+        /// txtAnnex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAnnex;
+        protected global::System.Web.UI.WebControls.TextBox txtAnnex;
         
         /// <summary>
         /// btnSearchEdit control.

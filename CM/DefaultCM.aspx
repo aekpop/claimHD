@@ -2,10 +2,15 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
+    <meta http-equiv="refresh" content="120">
 
-    <meta http-equiv="refresh" content="60">
-
-   <div class="container-fluid"> 
+   <div class="container-fluid" style="font-family:'Prompt',sans-serif;"> 
         <!--<h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>-->
 
     <div class="row">
@@ -17,7 +22,7 @@
                         <i class="fas fa-wrench"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMDetailForm">แจ้งซ่อม</a>
+                        <a class="nav-link" href="/CM/CMDetailForm" style="font-family:'Prompt',sans-serif; ">แจ้งซ่อม</a>
                     </h4>
                 </div>
             </div>
@@ -29,7 +34,7 @@
                         <i class="fas fa-tools"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMEditForm">การแก้ไข</a>
+                        <a class="nav-link" href="/CM/CMEditForm" style="font-family:'Prompt',sans-serif;">การแก้ไข</a>
                     </h4>
                 </div>
             </div>
@@ -41,7 +46,7 @@
                         <i class="fab fa-line"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMLine">ส่ง Line</a>
+                        <a class="nav-link" href="/CM/CMLine" style="font-family:'Prompt',sans-serif;">ส่ง Line</a>
                     </h4>
                 </div>
             </div>
@@ -53,7 +58,7 @@
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMReport">สรุปรายการ</a>
+                        <a class="nav-link" href="/CM/CMReport" style="font-family:'Prompt',sans-serif;">สรุปรายการ</a>
                     </h4>
                 </div>
             </div>
@@ -67,7 +72,10 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <h4 class="card-category">
-                        <a class="nav-link" href="/CM/CMSurveyForm">ตรวจสอบ</a>
+                       
+                            <asp:Label ID="lbSurveyNoti" runat="server" ></asp:Label>
+                      
+                        <a class="nav-link" href="/CM/CMSurveyForm" style="font-family:'Prompt',sans-serif;">ตรวจสอบ</a>
                     </h4>
                 </div>
             </div>
@@ -77,7 +85,6 @@
 
     </div>
 
-    <br />
 
     <!-- content PM -->
     <!--<div runat="server" id="divpm" >
@@ -131,42 +138,47 @@
 
                 <!-- Earnings (Monthly) Card Example -->
                   <div class="col-xl-3 col-md-6 mb-4">
-                  <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card border-left-primary shadow h-70 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">วันนี้</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">วันนี้</div>                         
                         </div>
                               <div class="col-auto">
-                                  <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                  <i class="fas fa-clock fa-2x text-gray-300 text-danger"></i>
                               </div>
                            </div> 
-                         <div class="col-auto">
-                              <asp:Label ID="lbCMStatDay" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
-                          </div>
+                                <div class="col-auto">
+                                        <asp:Label ID="lbCMStatDay" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                                </div>                        
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                                            <div class="col-xl text-right">
+                                                <asp:Label ID="lbFixBack" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                                        </div>  
                         </div>
                       </div>
                     </div>
 
                 <div class="col-xl-3 col-md-6 mb-4">
-                  <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card border-left-primary shadow h-80 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">เดือน
-                              <asp:Label ID="lbCMNameMonthly" runat="server" ></asp:Label>
-                               
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">เดือน
+                              <asp:Label ID="lbCMNameMonthly" runat="server" ></asp:Label>   
                           </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
-                                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                  <i class="fas fa-calendar text-warning fa-2x text-gray-300"></i>
                               </div>
                            </div> 
                          <div class="col-auto">
                               <asp:Label ID="lbCMStatMonthly" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                           </div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                                            <div class="col-xl text-right">
+                                                <asp:Label ID="lbFixbackMonth" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                                        </div>  
                         </div>
                       </div>
                     </div>
@@ -174,48 +186,57 @@
             
 
                 <div class="col-xl-3 col-md-6 mb-4">
-                  <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card border-left-warning shadow h-80 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"> ปีงบประมาณ 
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> ปีงบประมาณ 
                               <asp:Label ID="lbCMNameBudget" runat="server" ></asp:Label>
                           </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
-                          <i class="fas fa-bell fa-2x text-gray-300">
-                          
-                          </i>
+                          <i class="fas fa-bell fa-2x text-gray-300 text-success"></i>
                         </div>
                       </div>
+                        <div class="col-auto">
                          <asp:Label ID="lbCMStatBudget" runat="server" Font-Bold="true" CssClass="text-gray " Font-Size="XX-Large"></asp:Label>
+                    </div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                                            <div class="col-xl text-right">
+                                                <asp:Label ID="lbFixbackyear" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                                        </div> 
                     </div>
                   </div>
                 </div>
               
                   <div class="col-xl-3 col-md-6 mb-4">
-                  <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card border-left-warning shadow h-80 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ทั้งหมด</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ทั้งหมด</div>     
                         </div>
                         <div class="col-auto">
-                          <i class="fas fa-history fa-2x text-gray-300"></i>
+                          <i class="fas fa-history fa-2x text-gray-300 text-info"></i>
                         </div>
                       </div>
                         <div class="col-auto">
                               <asp:Label ID="lbCMStatOverall" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                           </div>
+                        <div class="col-auto">
+                         <asp:Label ID="Label1" runat="server" Font-Bold="true" CssClass="text-gray " Font-Size="XX-Large"></asp:Label>
+                    </div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                                            <div class="col-xl text-right">
+                                                <asp:Label ID="lbFixbackOverall" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                                        </div> 
                     </div>
                   </div>
                 </div>
             </div>
        <div class="row">
            <div class="col-xl-4 col-md">
-                  <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card border-left-warning shadow h-80 py-2">
                       <div class="card-header" style="font-size:small" >อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำด่านฯ</div>
                       <div class="card-body">
                           <div class="card-body table-responsive table-sm" >
@@ -224,10 +245,10 @@
                                     CssClass="col table table-striped table-hover"
                                      
                                     HeaderStyle-BackColor="ActiveBorder"
-                                    HeaderStyle-Font-Size="18px"
+                                    HeaderStyle-Font-Size="14px"
                                     
                                     OnRowDataBound="lsTodayGridview_RowDataBound" 
-                                    Font-Size="15px" 
+                                    Font-Size="12px" 
                                     CellPadding="4" 
                                     GridLines="None"
                                     AutoGenerateColumns="False">
@@ -237,7 +258,7 @@
                                                 <asp:Label ID="lbDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' ></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="จำนวน" >
+                                        <asp:TemplateField HeaderText="ครั้ง" >
                                             <ItemTemplate>
                                                 <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.num") %>' ></asp:Label>
                                             </ItemTemplate>
@@ -252,17 +273,15 @@
                </div>
 
            <div class="col-xl-4 col-md">
-                  <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card border-left-warning shadow h-80 py-2">
                       <div class="card-header" style="font-size:small" >อุปกรณ์ค้างซ่อมล่าช้าที่สุด 5 อันดับแรก</div>
                       <div class="card-body">
                           <div class="card-body table-responsive table-sm" >
                          <asp:Panel ID="Panel2" runat="server" >
                              <asp:GridView id="GridView1" runat="server"
                                     CssClass="col table table-striped table-hover"
-                                     
                                     HeaderStyle-BackColor="ActiveBorder"
                                     HeaderStyle-Font-Size="18px"
-                                    
                                     OnRowDataBound="lsTodayGridview_RowDataBound" 
                                     Font-Size="15px" 
                                     CellPadding="4" 
@@ -283,14 +302,14 @@
                                      </Columns>
                              </asp:GridView>
                          </asp:Panel>
-                    </div>
+                        </div>
                       </div>
-                      </div>
+                   </div>
                </div>
-       </div>
-
+           </div>
        </div>
 
     <script src="/Scripts/bootstrap.bundle.js"></script>
+
 
 </asp:Content>

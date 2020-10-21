@@ -17,6 +17,7 @@ namespace ClaimProject.CM
         public string Nowday = DateTime.Now.ToString("dd");
         public string sqlcp = "";
         public string cpoint = "";
+        public string point = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,6 +55,7 @@ namespace ClaimProject.CM
                 Div6.Visible = true;
                 sqlcp = " ";
                 cpoint = " ";
+                point = " ";
             }
             else
             {
@@ -62,8 +64,17 @@ namespace ClaimProject.CM
                 divpm2.Visible = false;
                 Div3.Visible = false;
                 //Div2.Visible = false;
-                sqlcp = "AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
-                cpoint = " WHERE cm_cpoint = '" + Session["UserCpoint"] + "' ";
+                sqlcp = "AND cm_cpoint = " + Session["UserCpoint"] + " ";
+                cpoint = " WHERE cm_cpoint = " + Session["UserCpoint"] + " ";
+                if (Session["UserCpoint"].ToString() == "703" || Session["UserCpoint"].ToString() == "704" || Session["UserCpoint"].ToString() == "706" || Session["UserCpoint"].ToString() == "707" || Session["UserCpoint"].ToString() == "708" || Session["UserCpoint"].ToString() == "709")
+                {
+                    point = " AND cm_point = " + Session["Userpoint"] + " ";
+                }
+                else
+                {
+                    point = " ";
+                }
+                
             }
             loadingpage();
             databind();
@@ -150,6 +161,9 @@ namespace ClaimProject.CM
                 Nowbudget = Nowyear + 1;
             }
 
+            string mYconn = Nowmonth+"-"+ Nowyear;
+
+
             //string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_detail_sdate ='"+ now +"' ";
             //string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
             //string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '"+ Nowbudget +"' ";
@@ -160,16 +174,22 @@ namespace ClaimProject.CM
             //string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
             //string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
 
-            string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '"+ sqlcp +"' AND cm_detail_sdate ='" + now + "' ";
-            string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
-            string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
-            string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' '" + sqlcp + "' ";
+            string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' "+ sqlcp +" "+ point + " AND cm_detail_sdate = '" + now + "' ";
+            string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " "+ point +" AND cm_budget = '" + Nowbudget + "' AND cm_detail_sdate LIKE '%"+ mYconn + "' ";
+            string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " " + point +" ";
             //ค้างซ่อม
-            string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' AND cm_detail_sdate ='" + now + "' ";
-            string CMsqlMonthNot = "SELECT COUNT(*) AS nummn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
-            string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' AND cm_budget = '" + Nowbudget + "' ";
-            string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' '" + sqlcp + "' ";
+            string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + " AND cm_detail_sdate ='" + now + "' ";
+            string CMsqlMonthNot = "SELECT COUNT(*) AS nummn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' AND cm_detail_sdate LIKE '%" + mYconn + "' ";
+            string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + " ";
 
+            string CMsqlFixbacktoday = "SELECT COUNT(*) AS numfd FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_detail_edate = '" + now + "' ";
+            string CMsqlFixbackMouth = "SELECT COUNT(*) AS numfm FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' AND cm_detail_edate LIKE '%" + mYconn + "' ";
+            string CMsqlFixbackYear = "SELECT COUNT(*) AS numfy FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
+            string CMsqlFixbackOverall = "SELECT COUNT(*) AS numfo FROM tbl_cm_detail WHERE cm_detail_status_id = '2' "+ sqlcp + " " + point + " ";
+            //notication survey
+            string sqlNotiSur = "SELECT COUNT(*) AS numnoS FROM tbl_cm_detail WHERE cm_detail_status_id = '1' ";
 
 
             //แสดงเดือน ปี
@@ -297,6 +317,88 @@ namespace ClaimProject.CM
                 }
             }
             function.Close();
+
+            MySqlDataReader trfd = function.MySqlSelect(CMsqlFixbacktoday);
+            if (trfd.Read())
+            {
+                if (trfd.GetInt32("numfd") != 0)
+                {
+                    lbFixBack.Text = trfd.GetInt32("numfd").ToString();
+                    trfd.Close();
+                }
+                else
+                {
+                    lbFixBack.Text = "0";
+                    trfd.Close();
+                }
+            }
+            function.Close();
+
+            MySqlDataReader trfm = function.MySqlSelect(CMsqlFixbackMouth);
+            if (trfm.Read())
+            {
+                if (trfm.GetInt32("numfm") != 0)
+                {
+                    lbFixbackMonth.Text = trfm.GetInt32("numfm").ToString();
+                    trfm.Close();
+                }
+                else
+                {
+                    lbFixbackMonth.Text = "0";
+                    trfm.Close();
+                }
+            }
+            function.Close();
+
+            MySqlDataReader trfy = function.MySqlSelect(CMsqlFixbackYear);
+            if (trfy.Read())
+            {
+                if (trfy.GetInt32("numfy") != 0)
+                {
+                    lbFixbackyear.Text = trfy.GetInt32("numfy").ToString();
+                    trfy.Close();
+                }
+                else
+                {
+                    lbFixbackyear.Text = "0";
+                    trfy.Close();
+                }
+            }
+            function.Close();
+
+            MySqlDataReader trfo = function.MySqlSelect(CMsqlFixbackOverall);
+            if (trfo.Read())
+            {
+                if (trfo.GetInt32("numfo") != 0)
+                {
+                    lbFixbackOverall.Text = trfo.GetInt32("numfo").ToString();
+                    trfo.Close();
+                }
+                else
+                {
+                    lbFixbackOverall.Text = "0";
+                    trfo.Close();
+                }
+            }
+            function.Close();
+
+            MySqlDataReader trnos = function.MySqlSelect(sqlNotiSur);
+            if (trnos.Read())
+            {
+                if (trnos.GetInt32("numnoS") != 0)
+                {
+                    lbSurveyNoti.Text = trnos.GetInt32("numnoS").ToString();
+                    lbSurveyNoti.CssClass = "badge badge-danger";
+                    trnos.Close();
+                }
+                else
+                {
+                    lbSurveyNoti.Text = " ";
+                    trnos.Close();
+                }
+            }
+            function.Close();
+
         }
 
         protected void lsTodayGridview_RowDataBound(object sender, GridViewRowEventArgs e)
