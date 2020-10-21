@@ -136,11 +136,7 @@
                             <asp:Label ID="lbequipnote"  runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ประวัติโอนย้าย" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lbequipHistory"  runat="server" OnCommand="lbequipHistory_Command">*-*</asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    
                     
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
@@ -151,17 +147,8 @@
                 <SortedAscendingCellStyle BackColor="#baf7b2" />
                 <SortedDescendingHeaderStyle BackColor="#5abe48"/>              
                 <PagerStyle HorizontalAlign="Center" BackColor="White" ForeColor="#026b14"  />
-        </asp:GridView>
-                  
+        </asp:GridView>                
    </asp:Panel>   
-
-
-
-
-
-
-
-
             </div>
             
         </div>

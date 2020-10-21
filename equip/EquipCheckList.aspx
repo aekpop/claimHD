@@ -4,19 +4,26 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
 
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif">
     <asp:Button runat="server" ID="btnMainEQQ" Text="หน้าหลัก"  OnClick="btnMainEQQ_Click" CssClass="btn btn-default" />
-    <div class="container-fluid">
+    
 
     
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
-        <div class="card-header "  style="background-color:#ffdd00;">
-            <h3 class="card-title" >ตรวจสอบการโอนย้าย ด่านฯ</h3>
+        <div class="card-header card-header-warning" >
+            <div class="card-title" >ตรวจสอบการโอนย้าย ด่านฯ</div>
         </div>
             <div class="card-body table-responsive table-sm">
                
-                <div class="row" id="divSendSearch"  runat="server" >
+ 
                     <div class="row" >
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group">
@@ -24,7 +31,7 @@
                                 <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control"></asp:TextBox>
                            </div>
                         </div>
-                        <div class="col-md-6 col-xl-3">
+                        <div class="col-md-6 col-xl-2">
                             <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="ประเภทโอนย้าย : " ></asp:Label>
                             <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" ></asp:DropDownList>
@@ -53,12 +60,11 @@
                         <div class="row">                       
                             <div class="col text-center">
                                 <div class="form-group">
-                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-center text-secondary" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
+                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-center text-secondary border-success" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
                                </div>
                             </div>
                         </div>
 
-                </div>
                 <div class="row" style="padding-left:20px;" >
                     <asp:Label ID="lbAmountgrid" runat="server" Font-Size="15px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
                 </div>
@@ -115,11 +121,7 @@
                                 <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="หมายเหตุ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="200px">
-                            <ItemTemplate>
-                                <asp:Label ID="lbnoteGetlist" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_note") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        
 
                     </Columns>
                     <FooterStyle BackColor="#b8ecff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
@@ -234,6 +236,7 @@
         </div>
     </div>
     </div>
+        </div>
 
 
 

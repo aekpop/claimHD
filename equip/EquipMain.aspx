@@ -106,6 +106,19 @@
                 </div>              
             </div>
         </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3" >
+            <div class="card card-stats">
+                <div class="card-header   card-header-icon">
+                    <div class="card-icon" style="background-color:#147568">
+                        <i class="fas fa-history" style="font-size:40px;background-color:#147568"></i>
+                    </div>
+                    <h4 class="card-category">
+                        <a class="nav-link" href="/equip/EquipHistory">ประวัติโอนย้าย</a>
+                    </h4>                   
+                </div>              
+            </div>
+        </div>
       
     </div>
 

@@ -10,87 +10,51 @@
 namespace ClaimProject.equip {
     
     
-    public partial class WebForm1 {
+    public partial class EquipHistory {
         
         /// <summary>
-        /// eqHistory control.
+        /// btnMainEQQ control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl eqHistory;
+        protected global::System.Web.UI.WebControls.Button btnMainEQQ;
         
         /// <summary>
-        /// divsearch control.
+        /// txtSearchEq control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divsearch;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchEq;
         
         /// <summary>
-        /// Label1 control.
+        /// btnSearchEq control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Button btnSearchEq;
         
         /// <summary>
-        /// txtsearchNum control.
+        /// Panel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtsearchNum;
+        protected global::System.Web.UI.WebControls.Panel Panel;
         
         /// <summary>
-        /// Label4 control.
+        /// GridViewSearchEq control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-        
-        /// <summary>
-        /// txtsearchSerial control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtsearchSerial;
-        
-        /// <summary>
-        /// searchEquip control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button searchEquip;
-        
-        /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
-        /// HistoryEqGridview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView HistoryEqGridview;
+        protected global::System.Web.UI.WebControls.GridView GridViewSearchEq;
     }
 }

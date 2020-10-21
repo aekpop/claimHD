@@ -21,7 +21,7 @@ namespace ClaimProject.equip
             }
             if (!this.IsPostBack)
             {
-                Session.Add("CheckTran", "");
+                //Session.Add("CheckTran", "");
                 LoadPaging();
             }
         }
@@ -30,20 +30,20 @@ namespace ClaimProject.equip
         {
             //ddlsearchType   ddlsearchStat
             function.getListItem(ddlsearchType, "select * from tbl_transfer_status order by trans_stat_id ASC", "trans_stat_name", "trans_stat_id");
-            function.getListItem(ddlsearchStat, "select * from tbl_trans_complete where complete_id != '1' AND complete_id != '4' AND complete_id != '5' order by complete_id ASC ", "complete_name", "complete_id");
+            function.getListItem(ddlsearchStat, "select * from tbl_trans_complete where complete_id != '1' order by complete_id ASC ", "complete_name", "complete_id");
             string who = Session["User"].ToString();
             if(who == "watcharee")
             {
-                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '3' and eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
+                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '3' OR eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
                 
             }
             else if(who == "sawitree")
             {
-                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '1' and eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
+                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '1' OR eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
             }
             else if(who == "supaporn")
             {
-                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '2' and eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
+                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '2' OR eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
             }
             else //อื่นๆในฝ่าย
             {
@@ -53,7 +53,7 @@ namespace ClaimProject.equip
             ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
             ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
             showannex();
-            bindSearch();
+            //bindSearch();
         }
 
         protected void bindSearch ()
@@ -65,190 +65,195 @@ namespace ClaimProject.equip
             string RefText = txtRefTran.Text;
             string tollid = "";
             string whos = Session["User"].ToString();
-            if (typeValue == "0")//ทุกประเภท
-            {
-                if (RefText == "") //ไม่ระบุเลขอ้างอิง
+
+                if (typeValue == "0")//ทุกประเภท
                 {
-                    if (cpointValue == "0")//ทุกด่าน
+                    if (RefText == "") //ทุกเลขอ้างอิง
                     {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
+                        if (cpointValue == "0")//ทุกด่าน
                         {
-                            if (annexValue == "0")//เลือกทุกอาคาร
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
                             {
-                                if(whos != "watcharee" && whos != "sawitree" && whos != "supaporn")
+                                if (annexValue == "0")//ทุกอาคาร
                                 {
-                                    tollid = "where complete_stat != '1' order by complete_stat ASC";
+                                    if (whos != "watcharee" && whos != "sawitree" && whos != "supaporn")
+                                    {
+                                        tollid = "where complete_stat != '1' order by complete_stat ASC";
+                                    }
+                                    else
+                                    {
+                                        tollid += " where " + finalwhere(annexValue, cpointValue);
+                                    }
+
                                 }
-                                else
+                                else  //เลือกอาคาร
+                                {
+                                    if (whos != "watcharee" && whos != "sawitree" && whos != "supaporn")
+                                    {
+                                        tollid = " where toll_send = '" + annexValue + "'  order by complete_stat ASC";
+                                    }
+                                    tollid += " where " + finalwhere(annexValue, cpointValue);
+                                }
+
+                            }
+                            else //เลือกสถานะเอกสาร
+                            {
+                                tollid += " WHERE complete_stat = '" + StatusValue + "' AND ";
+                                if (annexValue == "0")//เลือกทุกด่านฯ
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
+                                else  //เลือกอาคาร
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
+                            }
+                        }
+                        else //เลือกด่านฯ
+                        {
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
+                            {
+                                if (annexValue == "0")//เลือกทุกด่านฯ
                                 {
                                     tollid += " where " + finalwhere(annexValue, cpointValue);
                                 }
-                                
-                            }
-                            else  //เลือกอาคาร
-                            {
-                                if (whos != "watcharee" && whos != "sawitree" && whos != "supaporn")
+                                else  //เลือกอาคาร
                                 {
-                                    tollid = " where toll_send = '"+annexValue+ "'  order by complete_stat ASC";
+                                    tollid += " where " + finalwhere(annexValue, cpointValue);
                                 }
-                                    tollid += " where "+ finalwhere(annexValue, cpointValue);
-                            }
 
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += " WHERE complete_stat = '"+StatusValue+"' ";
-                            if (annexValue == "0")//เลือกทุกด่านฯ
-                            {
-                                tollid +=  finalwhere(annexValue, cpointValue);
                             }
-                            else  //เลือกอาคาร
+                            else //เลือกสถานะเอกสาร
                             {
-                                tollid +=  finalwhere(annexValue, cpointValue);
+                                tollid += " WHERE complete_stat = '" + StatusValue + "' AND ";
+                                if (annexValue == "0")//เลือกทุกด่านฯ
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
+                                else  //เลือกอาคาร
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
                             }
                         }
+
                     }
-                    else //เลือกด่านฯ
+                    else  //ระบุเลขอ้างอิง
                     {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
+                        tollid += "where trans_id Like '%" + RefText + "%' AND ";
+                        if (cpointValue == "0")//ทุกด่าน
                         {
-                            if (annexValue == "0")//เลือกทุกด่านฯ
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
                             {
-                                tollid += " where " + finalwhere(annexValue, cpointValue);
-                            }
-                            else  //เลือกอาคาร
-                            {
-                                tollid += " where " + finalwhere(annexValue, cpointValue);
-                            }
+                                if (annexValue == "0")//เลือกทุกด่านฯ
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
+                                else  //เลือกอาคาร
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
 
+                            }
+                            else //เลือกสถานะเอกสาร
+                            {
+                                tollid += " complete_stat = '" + StatusValue + "' AND ";
+
+                                tollid += finalwhere(annexValue, cpointValue);
+
+                            }
                         }
-                        else //เลือกสถานะเอกสาร
+                        else //เลือกด่านฯ
                         {
-                            tollid += " WHERE complete_stat = '" + StatusValue + "' AND ";
-                            if (annexValue == "0")//เลือกทุกด่านฯ
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
                             {
                                 tollid += finalwhere(annexValue, cpointValue);
                             }
-                            else  //เลือกอาคาร
+                            else //เลือกสถานะเอกสาร
                             {
+                                tollid += "  complete_stat = '" + StatusValue + "' AND ";
+
+                                tollid += finalwhere(annexValue, cpointValue);
+
+                            }
+                        }
+                    }
+                }
+                else //เลือกประเภทโอนย้าย
+                {
+                    tollid += " where trans_stat= '" + typeValue + "' AND ";
+                    if (RefText == "") //ไม่ระบุเลขอ้างอิง
+                    {
+                        if (cpointValue == "0")//ทุกด่าน
+                        {
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
+                            {
+
+                                tollid += finalwhere(annexValue, cpointValue);
+
+                            }
+                            else //เลือกสถานะเอกสาร
+                            {
+                                tollid += "  complete_stat = '" + StatusValue + "' AND ";
+                                tollid += finalwhere(annexValue, cpointValue);
+
+                            }
+                        }
+                        else //เลือกด่านฯ
+                        {
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
+                            {
+                                if (annexValue == "0")//เลือกทุกด่านฯ
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
+                                else  //เลือกอาคาร
+                                {
+                                    tollid += finalwhere(annexValue, cpointValue);
+                                }
+
+                            }
+                            else //เลือกสถานะเอกสาร
+                            {
+                                tollid += " complete_stat = '" + StatusValue + "' AND ";
+                                tollid += finalwhere(annexValue, cpointValue);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        tollid += " trans_id Like '%" + RefText + "%' AND ";
+                        if (cpointValue == "0")//ทุกด่าน
+                        {
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
+                            {
+                                tollid += finalwhere(annexValue, cpointValue);
+                            }
+                            else //เลือกสถานะเอกสาร
+                            {
+                                tollid += " complete_stat = '" + StatusValue + "' AND ";
+                                tollid += finalwhere(annexValue, cpointValue);
+                            }
+                        }
+                        else //เลือกด่านฯ
+                        {
+                            if (StatusValue == "0")//ทุกสถานะเอกสาร
+                            {
+                                tollid += finalwhere(annexValue, cpointValue);
+                            }
+                            else //เลือกสถานะเอกสาร
+                            {
+                                tollid += " complete_stat = '" + StatusValue + "' AND ";
                                 tollid += finalwhere(annexValue, cpointValue);
                             }
                         }
                     }
-                    
                 }
-                else  //ระบุเลขอ้างอิง
-                {
-                    tollid += "where trans_id Like '%" + RefText + "%' AND ";
-                    if (cpointValue == "0")//ทุกด่าน
-                    {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
-                        {
-                            if (annexValue == "0")//เลือกทุกด่านฯ
-                            {
-                                tollid +=  finalwhere(annexValue, cpointValue);
-                            }
-                            else  //เลือกอาคาร
-                            {
-                                tollid +=  finalwhere(annexValue, cpointValue);
-                            }
-
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += " complete_stat = '" + StatusValue + "' AND ";
-                            
-                            tollid += finalwhere(annexValue, cpointValue);
-                            
-                        }
-                    }
-                    else //เลือกด่านฯ
-                    {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
-                        {
-                                tollid +=  finalwhere(annexValue, cpointValue);
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += "  complete_stat = '" + StatusValue + "' AND ";
-                            
-                            tollid += finalwhere(annexValue, cpointValue);
-                            
-                        }
-                    }
-                }
-            }
-            else //เลือกประเภทโอนย้าย
-            {
-                tollid += " where trans_stat= '"+typeValue+"' AND ";
-                if (RefText == "") //ไม่ระบุเลขอ้างอิง
-                {
-                    if (cpointValue == "0")//ทุกด่าน
-                    {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
-                        {
-                            
-                            tollid +=  finalwhere(annexValue, cpointValue);
-
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += "  complete_stat = '" + StatusValue + "' AND ";
-                            tollid += finalwhere(annexValue, cpointValue);
-                            
-                        }
-                    }
-                    else //เลือกด่านฯ
-                    {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
-                        {
-                            if (annexValue == "0")//เลือกทุกด่านฯ
-                            {
-                                tollid +=  finalwhere(annexValue, cpointValue);
-                            }
-                            else  //เลือกอาคาร
-                            {
-                                tollid +=  finalwhere(annexValue, cpointValue);
-                            }
-
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += " complete_stat = '" + StatusValue + "' AND ";
-                            tollid += finalwhere(annexValue, cpointValue);
-                        }
-                    }
-
-                }
-                else
-                {
-                    tollid += " trans_id Like '%" + RefText + "%' AND ";
-                    if (cpointValue == "0")//ทุกด่าน
-                    {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
-                        {
-                           tollid += finalwhere(annexValue, cpointValue);
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += " complete_stat = '" + StatusValue + "' AND ";
-                            tollid += finalwhere(annexValue, cpointValue);
-                        }
-                    }
-                    else //เลือกด่านฯ
-                    {
-                        if (StatusValue == "0")//ทุกสถานะเอกสาร
-                        {
-                             tollid += finalwhere(annexValue, cpointValue);
-                        }
-                        else //เลือกสถานะเอกสาร
-                        {
-                            tollid += " complete_stat = '" + StatusValue + "' AND ";
-                            tollid += finalwhere(annexValue, cpointValue);
-                        }
-                    }
-                }
-            }
+            
+                
+            
+            
 
             //must join toll
             string qrytable = "select * from tbl_transfer" +
@@ -261,7 +266,6 @@ namespace ClaimProject.equip
             gridTranlist.DataSource = ds.Tables[0];
             //int countt = ds.Tables[0].Rows.Count;
             gridTranlist.DataBind();
-            function.Close();
         }
         protected string finalwhere (string annex,string cpoint)
         {
@@ -272,16 +276,17 @@ namespace ClaimProject.equip
                 //แยกยูสเซอร์
                 
                 if (who == "watcharee")
-                { valueReturn += " toll_EQGroup = '3' AND toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
+                { valueReturn += " toll_EQGroup = '3' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
 
                 else if (who == "sawitree")
-                { valueReturn += " toll_EQGroup = '1' AND toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
+                { valueReturn += " toll_EQGroup = '1' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
 
                 else if (who == "supaporn")
-                { valueReturn += " toll_EQGroup = '2' AND toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
+                { valueReturn += " toll_EQGroup = '2' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
 
                 else
                 {
+                    //aeknofear
                     valueReturn += " complete_stat != '1'  order by complete_stat ASC ";
                 }
                          
@@ -376,6 +381,7 @@ namespace ClaimProject.equip
 
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
         {
+            pkeq.Text = "";
             bindSearch();
         }
 
@@ -499,7 +505,11 @@ namespace ClaimProject.equip
                     divannex.Visible = false;
                     function.getListItem(ddlannex, "select * from tbl_toll where cpoint_id = '905' order by toll_id ASC ", "toll_name", "toll_id");
                 }
-                
+                else if(idcpoint == "920")
+                {
+                    divannex.Visible = false;
+                    function.getListItem(ddlannex, "select * from tbl_toll where cpoint_id = '920' order by toll_id ASC ", "toll_name", "toll_id");
+                }
 
             }
             else

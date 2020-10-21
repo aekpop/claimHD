@@ -1240,6 +1240,7 @@
     <Content Include="equip\EquipCheck.aspx" />
     <Content Include="equip\EquipCheckList.aspx" />
     <Content Include="equip\EquipDefault.aspx" />
+    <Content Include="equip\EquipHistory.aspx" />
     <Content Include="equip\EquipLoanList.aspx" />
     <Content Include="equip\EquipReportPage.aspx" />
     <Content Include="equip\EquipReportTran.aspx" />
@@ -1817,6 +1818,13 @@
     </Compile>
     <Compile Include="equip\EquipDefault.aspx.designer.cs">
       <DependentUpon>EquipDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="equip\EquipHistory.aspx.cs">
+      <DependentUpon>EquipHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipHistory.aspx.designer.cs">
+      <DependentUpon>EquipHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="equip\EquipLoanList.aspx.cs">
       <DependentUpon>EquipLoanList.aspx</DependentUpon>
