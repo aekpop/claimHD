@@ -62,8 +62,8 @@ namespace ClaimProject.equip
             }
             else 
             {
-                divTransfer.Visible = false;
-                divEquip.Visible = false;
+                //divTransfer.Visible = false;
+                //divEquip.Visible = false;
             }
         }
     }

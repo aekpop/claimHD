@@ -66,11 +66,11 @@ namespace ClaimProject.equip
             }
             else if (Session["UserCpoint"].ToString() == "701")
             {
-                sqlcpSearch += " 7010 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7010 ";
             }
             else if (Session["UserCpoint"].ToString() == "702")
             {
-                sqlcpSearch += " 7020 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7020 ";
             }
             else if (Session["UserCpoint"].ToString() == "703")
             {
@@ -98,35 +98,35 @@ namespace ClaimProject.equip
             }
             else if (Session["UserCpoint"].ToString() == "710")
             {
-                sqlcpSearch += " 7090 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7090 ";
             }
             else if (Session["UserCpoint"].ToString() == "711")
             {
-                sqlcpSearch += " 7100 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7100 ";
             }
             else if (Session["UserCpoint"].ToString() == "712")
             {
-                sqlcpSearch += " 7110 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7110 ";
             }
             else if (Session["UserCpoint"].ToString() == "713")
             {
-                sqlcpSearch += " 7120 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='7120 ";
             }
             else if (Session["UserCpoint"].ToString() == "902")
             {
-                sqlcpSearch += " 9010 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='9010 ";
             }
             else if (Session["UserCpoint"].ToString() == "903")
             {
-                sqlcpSearch += " 9020 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='9020 ";
             }
             else if (Session["UserCpoint"].ToString() == "904")
             {
-                sqlcpSearch += "9030 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='9030 ";
             }
             else if (Session["UserCpoint"].ToString() == "905")
             {
-                sqlcpSearch += " 9040 ";
+                sqlcpSearch += " 9200' AND toll_recieve ='9040 ";
             }
 
             MySqlDataReader ttr = function.MySqlSelect(newTran);

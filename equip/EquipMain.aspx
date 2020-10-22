@@ -72,7 +72,7 @@
             </div>
         </div>
         <!-- ยืม -->
-        <div class="col-lg-3 col-md-3 col-sm-3" >
+        <!-- <div class="col-lg-3 col-md-3 col-sm-3" >
             <div class="card card-stats">
                 <div class="card-header   card-header-icon">
                     <div class="card-icon" style="background-color:#26115c">
@@ -97,7 +97,7 @@
                 </div>            
             </div>
         </div>
-    </div>
+    </div> -->
     
     
     <div class="row" runat="server" id="divcheckk" visible ="false">

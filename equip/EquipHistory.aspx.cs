@@ -57,6 +57,28 @@ namespace ClaimProject.equip
             {
                 lbDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "date_send"));
             }
+
+            Label lbStatus = (Label)(e.Row.FindControl("lbStatus"));
+            
+
+            if (lbStatus != null)
+            {
+                string Status = DataBinder.Eval(e.Row.DataItem, "num_success").ToString();
+                if (Status == "no")
+                {
+                    lbStatus.Text = "รออนุมัติ";
+                    lbStatus.CssClass = "text-danger";
+                }else if(Status == "yes")
+                {
+                    lbStatus.Text = "อนุมัติ";
+                    lbStatus.CssClass = "text-success";
+                }
+                else if (Status == "repair")
+                {
+                    lbStatus.Text = "ซ่อม";
+                    lbStatus.CssClass = "text-warning";
+                }
+            }
         }
         void BindData()
         {

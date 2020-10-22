@@ -66,7 +66,7 @@
                         </div>
 
                 <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="15px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="12px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
                 </div>
                 <br />
                 <asp:GridView ID="gridTranlist" runat="server" 

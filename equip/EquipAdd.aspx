@@ -3,7 +3,10 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <!--<asp:Button runat="server" ID="btnBackHomeADDEQ" Text="กลับหน้าหลัก" OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default " />-->
+    <div class="container-fluid">
+
+    
+    <asp:Button runat="server" ID="btnMainEQQ" Text="หน้าหลัก"  OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
 
         <div class="card-header card-header-warning">
@@ -361,5 +364,5 @@
 
 
 
-
+</div>
 </asp:Content>

@@ -78,7 +78,7 @@ namespace ClaimProject.equip
                                 {
                                     if (whos != "watcharee" && whos != "sawitree" && whos != "supaporn")
                                     {
-                                        tollid = "where complete_stat != '1' order by complete_stat ASC";
+                                        tollid = "where complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC";
                                     }
                                     else
                                     {
@@ -90,7 +90,7 @@ namespace ClaimProject.equip
                                 {
                                     if (whos != "watcharee" && whos != "sawitree" && whos != "supaporn")
                                     {
-                                        tollid = " where toll_send = '" + annexValue + "'  order by complete_stat ASC";
+                                        tollid = " where toll_send = '" + annexValue + "'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC";
                                     }
                                     tollid += " where " + finalwhere(annexValue, cpointValue);
                                 }
@@ -264,8 +264,8 @@ namespace ClaimProject.equip
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
             gridTranlist.DataSource = ds.Tables[0];
-            //int countt = ds.Tables[0].Rows.Count;
             gridTranlist.DataBind();
+            lbAmountgrid.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " รายการ";
         }
         protected string finalwhere (string annex,string cpoint)
         {
@@ -276,18 +276,18 @@ namespace ClaimProject.equip
                 //แยกยูสเซอร์
                 
                 if (who == "watcharee")
-                { valueReturn += " toll_EQGroup = '3' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
+                { valueReturn += " toll_EQGroup = '3' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
 
                 else if (who == "sawitree")
-                { valueReturn += " toll_EQGroup = '1' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
+                { valueReturn += " toll_EQGroup = '1' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
 
                 else if (who == "supaporn")
-                { valueReturn += " toll_EQGroup = '2' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC "; }
+                { valueReturn += " toll_EQGroup = '2' OR toll_EQGroup = '9' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
 
                 else
                 {
                     //aeknofear
-                    valueReturn += " complete_stat != '1'  order by complete_stat ASC ";
+                    valueReturn += " complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC";
                 }
                          
                 
@@ -298,29 +298,29 @@ namespace ClaimProject.equip
                 if (annex == "0")//ทุกอาคาร
                 {
 
-                    if (cpoint == "701") { valueReturn = "  toll_send = '7010' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "702") { valueReturn = "  toll_send = '7020' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "703") { valueReturn = "  cpoint_id = '703' AND complete_stat != '1'   order by complete_stat ASC "; }
-                    else if (cpoint == "704") { valueReturn = "  cpoint_id = '704' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "706") { valueReturn = "  cpoint_id = '706' AND complete_stat != '1'  order by complete_stat ASC "; }
-                    else if (cpoint == "707") { valueReturn = "  cpoint_id = '707' AND complete_stat != '1'  order by complete_stat ASC "; }
-                    else if (cpoint == "708") { valueReturn = "  cpoint_id = '708' AND complete_stat != '1'  order by complete_stat ASC "; }
-                    else if (cpoint == "709") { valueReturn = "  cpoint_id = '709' AND complete_stat != '1'  order by complete_stat ASC "; }
-                    else if (cpoint == "710") { valueReturn = "  cpoint_id = '710' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "711") { valueReturn = "  cpoint_id = '711' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "712") { valueReturn = "  cpoint_id = '712' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "713") { valueReturn = "  cpoint_id = '713' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "902") { valueReturn = "  cpoint_id = '902' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "903") { valueReturn = "  cpoint_id = '903' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "904") { valueReturn = "  cpoint_id = '904' AND complete_stat != '1' order by complete_stat ASC "; }
-                    else if (cpoint == "905") { valueReturn = "  cpoint_id = '905' AND complete_stat != '1' order by complete_stat ASC "; }
+                    if (cpoint == "701") { valueReturn = "  toll_send = '7010' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "702") { valueReturn = "  toll_send = '7020' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "703") { valueReturn = "  cpoint_id = '703' AND complete_stat != '1'   order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "704") { valueReturn = "  cpoint_id = '704' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "706") { valueReturn = "  cpoint_id = '706' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "707") { valueReturn = "  cpoint_id = '707' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "708") { valueReturn = "  cpoint_id = '708' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "709") { valueReturn = "  cpoint_id = '709' AND complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "710") { valueReturn = "  cpoint_id = '710' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "711") { valueReturn = "  cpoint_id = '711' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "712") { valueReturn = "  cpoint_id = '712' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "713") { valueReturn = "  cpoint_id = '713' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "902") { valueReturn = "  cpoint_id = '902' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "903") { valueReturn = "  cpoint_id = '903' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "904") { valueReturn = "  cpoint_id = '904' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
+                    else if (cpoint == "905") { valueReturn = "  cpoint_id = '905' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
                     else { valueReturn = "  toll_send = '0' "; }
 
 
                 }
                 else//เลือกอาคาร
                 {
-                    valueReturn = "  toll_send = '"+annex+"' AND complete_stat != '1' order by complete_stat ASC ";
+                    valueReturn = "  toll_send = '"+annex+ "' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC";
 
                 }
             }
@@ -345,25 +345,34 @@ namespace ClaimProject.equip
                     if (!rt.IsDBNull(8) && !rt.IsDBNull(11))
                     {
                         txtchkSend.Text = rt.GetString("toll_name");
-                        txtchkRecieve.Text = rt.GetString("toll_recieve");
+                        //txtchkRecieve.Text = rt.GetString("toll_recieve");
                         txtchkDatesend.Text = rt.GetString("date_send");
                         txtchkUsersend.Text = rt.GetString("name_send");
                         txtchkDateRecieve.Text = rt.GetString("date_recieve");
                         txtchkUserRecieve.Text = rt.GetString("name_recieve");
-                        rt.Close();
-                        function.Close();
+                        //rt.Close();
+                        //function.Close();
                     }
                     else
                     {
                         txtchkSend.Text = rt.GetString("toll_name");
-                        txtchkRecieve.Text = rt.GetString("toll_recieve");
+                        //txtchkRecieve.Text = rt.GetString("toll_recieve");
                         txtchkDatesend.Text = rt.GetString("date_send");
                         txtchkUsersend.Text = rt.GetString("name_send");
                         txtchkDateRecieve.Text = "-";
                         txtchkUserRecieve.Text = "-";
-                        rt.Close();
-                        function.Close();
-                    }                    
+                        //rt.Close();
+                        //function.Close();
+                    }
+
+                    string CpointRe = rt.GetString("toll_recieve");
+                    string sql = "SELECT * FROM tbl_toll WHERE toll_id =  '" + CpointRe + "' ";
+                    MySqlDataReader rs = function.MySqlSelect(sql);
+                    if (rs.Read())
+                    {
+                        txtchkRecieve.Text = rs.GetString("toll_name");
+                        rs.Close();
+                    }
                 }
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sqlChklist);
@@ -376,6 +385,7 @@ namespace ClaimProject.equip
 
         protected void ddlsearchEndToll_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pkeq.Text = "";
             showannex();
         }
 
@@ -544,7 +554,7 @@ namespace ClaimProject.equip
             if (lbSerial != null)
             {
                 lbSerial.Text = (string)DataBinder.Eval(e.Row.DataItem, "old_serial").ToString();
-            }
+            }            
         }
     }
 }
