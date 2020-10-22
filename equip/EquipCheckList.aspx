@@ -28,7 +28,7 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group">
                             <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
-                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                         <div class="col-md-6 col-xl-2">
@@ -254,5 +254,17 @@
             $("#UpdateEquipModal").modal('hide');
             <%}%>  
         });
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+	    }     
         </script>
 </asp:Content>

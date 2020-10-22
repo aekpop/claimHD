@@ -21,12 +21,10 @@
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
                     </div>-->
                     <div class="col-md-3 col-xl-2">
-                        <!--<label class="bmd-label-floating">ด่านฯ : </label> -->
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "  ></asp:DropDownList>
                     </div>
-                    <div class="col-md-2" >
-                        <!--<label class="bmd-label-floating" >อาคาร : </label> -->
-                        <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" ></asp:TextBox>
+                    <div class="col-md-1" >
+                        <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" placeholder="อาคารย่อย" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                     </div>                   
                     <div class="col-md-2">                      
                         <asp:Button ID="btnSearchEdit" runat="server" font-size="Medium" CssClass="btn btn-success " OnClick="btnSearchEdit_Click" Text="ค้นหา"/>
@@ -254,8 +252,20 @@
                     return true;
                 }
             }
-
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+		    
+	    }     
     </script>
     </div>
 </asp:Content>

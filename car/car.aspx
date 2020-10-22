@@ -4,7 +4,7 @@
     <div class="form-row">
         <div class="col-md-3">
             ยี่ห้อ : 
-            <asp:TextBox ID="txtCarName" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtCarName" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>    
     </div>
     <div class="form-row">
@@ -18,7 +18,7 @@
             <div class="form-row">
                 <div class="col-md-3">
                     ค้นหา 
-            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
                     <br />
@@ -47,7 +47,7 @@
                                         <asp:Label ID="lbCar" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.brandcar_name") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtECar" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.brandcar_name") %>' CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtECar" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.brandcar_name") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 
@@ -79,5 +79,18 @@
                 return confirm(msg);
             }
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }     
+
     </script>
 </asp:Content>

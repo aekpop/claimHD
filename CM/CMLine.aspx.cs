@@ -168,11 +168,11 @@ namespace ClaimProject.CM
                 lbnoo.Text = (gridCMLine.Rows.Count + 1).ToString() + ".";
             }
 
-            Label lbStt = (Label)(e.Row.FindControl("lbStt"));
-            if (lbStt != null)
-            {
-                lbStt.Text = function.GetStatusCM(DataBinder.Eval(e.Row.DataItem, "cm_detail_status_id").ToString());
-            }
+            //Label lbStt = (Label)(e.Row.FindControl("lbStt"));
+            //if (lbStt != null)
+            //{
+            //    lbStt.Text = function.GetStatusCM(DataBinder.Eval(e.Row.DataItem, "cm_detail_status_id").ToString());
+            //}
 
             
 
@@ -307,8 +307,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "702")
                 {
@@ -324,8 +324,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "703")
                 {
@@ -341,8 +341,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "704")
                 {
@@ -358,8 +358,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "706")
                 {
@@ -375,8 +375,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                   // e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "707")
                 {
@@ -392,8 +392,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "708")
                 {
@@ -409,8 +409,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "709")
                 {
@@ -426,8 +426,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "710")
                 {
@@ -443,8 +443,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "902")
                 {
@@ -460,8 +460,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "903")
                 {
@@ -477,8 +477,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "904")
                 {
@@ -494,8 +494,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
                 else if (colortoll == "905")
                 {
@@ -511,8 +511,8 @@ namespace ClaimProject.CM
                     e.Row.Cells[4].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     e.Row.Cells[5].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     e.Row.Cells[5].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    //e.Row.Cells[6].BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+                    //e.Row.Cells[6].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                 }
             }
         }
@@ -731,7 +731,7 @@ namespace ClaimProject.CM
                 HeaderGridRow.Cells.Add(HeaderCell);
 
                 HeaderCell = new TableCell();
-                HeaderCell.Text = "รายงานแจ้งซ่อมอุปกรณ์ CM";
+                HeaderCell.Text = "รายงานแจ้งซ่อมอุปกรณ์";
                 HeaderCell.ColumnSpan = 2;
                 HeaderGridRow.Cells.Add(HeaderCell);
 

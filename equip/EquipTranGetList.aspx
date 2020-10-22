@@ -26,7 +26,7 @@
                         <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
                             <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
-                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto"  ></asp:TextBox>
+                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                         <div class="col-md-6 col-xl-3" >
@@ -145,4 +145,18 @@
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
+    <script type="text/javascript">
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+	    }     
+        
+    </script>
 </asp:Content>

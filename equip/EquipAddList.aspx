@@ -18,32 +18,32 @@
                         <div class="col-md-3" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating">ชื่อครุภัณฑ์(ไทย)</p>
-                                <asp:TextBox ID="txtAddTH" runat="server" text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddTH" runat="server" text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md-3" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >ชื่อครุภัณฑ์(อังกฤษ)</p>
-                                <asp:TextBox ID="txtAddENG" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddENG" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >ยี่ห้อ</p>
-                                <asp:TextBox ID="txtAddBrand" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtAddBrand" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md-2" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating" >รุ่น</p>
-                                <asp:TextBox ID="txtAddSeries" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddSeries" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         
                         <div class="col-md-2" style="padding:1px 10px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >เลขสัญญา</p>
-                                <asp:TextBox ID="txtAddContractNum" runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Text="-" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddContractNum" runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Text="-" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                          
@@ -64,20 +64,20 @@
                        <div class="col-md-2" style="padding:1px 5px 1px 5px" >
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >วันที่รับ</p>
-                                <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" />                             
+                                <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>                             
                             </div>
                         </div>
 
                         <div class="col-md-2" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >ราคา</p>
-                                <asp:TextBox ID="txtAddPrize" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddPrize" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md-1" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >หน่วย</p>
-                                <asp:TextBox ID="txtAddUnit" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" />
+                                <asp:TextBox ID="txtAddUnit" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md-3" style="padding:1px 5px 1px 5px">
@@ -104,13 +104,13 @@
                         <asp:BoundField DataField="RowNumber" HeaderText="ลำดับ" HeaderStyle-Font-Size="18px" ItemStyle-Width="30px" HeaderStyle-CssClass="text-center"  ItemStyle-CssClass="text-center" />
                         <asp:TemplateField HeaderText="เลขครุภัณฑ์" HeaderStyle-Font-Size="18px" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
-                                <asp:TextBox ID="TextBox1"  runat="server" CssClass="form-control text-center" ></asp:TextBox>
+                                <asp:TextBox ID="TextBox1"  runat="server" CssClass="form-control text-center" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="เลขทะเบียน" HeaderStyle-Font-Size="18px" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
-                                <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center" ></asp:TextBox>
+                                <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
@@ -275,6 +275,18 @@
             e.preventDefault();
             return false;
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+	    }     
     </script>
 
 </asp:Content>
