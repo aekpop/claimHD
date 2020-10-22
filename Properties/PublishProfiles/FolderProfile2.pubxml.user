@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>10/22/2020 12:56:10</publishTime>
+      <publishTime>10/22/2020 17:42:57</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>10/22/2020 12:56:10</publishTime>
+      <publishTime>10/22/2020 17:42:57</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>10/22/2020 12:56:12</publishTime>
+      <publishTime>10/22/2020 17:42:59</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -3463,7 +3463,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>10/22/2020 10:29:33</publishTime>
+      <publishTime>10/22/2020 15:56:15</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
       <publishTime>10/08/2020 16:19:23</publishTime>
@@ -3487,7 +3487,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/17/2020 09:40:54</publishTime>
     </File>
     <File Include="equip/EquipMain.aspx">
-      <publishTime>10/22/2020 00:21:57</publishTime>
+      <publishTime>10/22/2020 16:10:20</publishTime>
     </File>
     <File Include="equip/EquipNewTrans.aspx">
       <publishTime>10/12/2020 10:48:24</publishTime>
@@ -3502,13 +3502,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/30/2020 11:13:02</publishTime>
     </File>
     <File Include="equip/EquipTranGetList.aspx">
-      <publishTime>10/12/2020 08:24:53</publishTime>
+      <publishTime>10/22/2020 16:13:42</publishTime>
     </File>
     <File Include="equip/EquipTranGetout.aspx">
       <publishTime>07/16/2020 09:49:44</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>10/12/2020 08:22:50</publishTime>
+      <publishTime>10/22/2020 16:07:33</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>07/10/2020 11:27:55</publishTime>

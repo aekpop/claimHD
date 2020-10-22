@@ -1,16 +1,24 @@
 ﻿<%@ Page Title="งานครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAdd.aspx.cs" Inherits="ClaimProject.equip.EquipAdd" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
+
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <div class="container-fluid">
+
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
 
     
     <asp:Button runat="server" ID="btnMainEQQ" Text="หน้าหลัก"  OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
 
         <div class="card-header card-header-warning">
-            <h2 class="card-title">ค้นหา/แก้ไขรายการครุภัณฑ์</h2>
+            <div class="card-title " style="font-size:larger">ค้นหา/แก้ไข ครุภัณฑ์</div>
         </div>
         
             <div class="card-body table-responsive table-sm">

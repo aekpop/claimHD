@@ -3,15 +3,21 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
     
     <asp:Button runat="server" ID="btnMainEQ" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
     <asp:Button runat="server" ID="btnnewTranpage" Text="แจ้งใหม่"  OnClick="btnnewTranpage_Click" CssClass="btn btn-danger" OnClientClick="return CheckIsRepeat();"/>
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
-        <div class="card-header bg-success " >
-            <h3 class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่ง)</h3>
+        <div class="card-header card-header-success " >
+            <div class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่ง)</div>
         </div>
             <div class="card-body table-responsive table-sm">
 
@@ -49,7 +55,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="19px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="12px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
                 </div>
                 <asp:GridView ID="gridTranlist" runat="server" 
                     AutoGenerateColumns="false" 
