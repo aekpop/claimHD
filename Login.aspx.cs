@@ -41,7 +41,7 @@ namespace ClaimProject
 
             if (mess == "")
             {
-                string sql = "SELECT * FROM tbl_user WHERE username ='" + txtUser.Text.Trim() + "' AND PASSWORD = '" + txtPass.Text.Trim() + "'";
+                string sql = "SELECT * FROM tbl_user WHERE username ='" + txtUser.Text.Trim() + "' AND PASSWORD = '" + txtPass.Text.Trim() + "' AND delete_status = '0' ";
                 MySqlDataReader rs = function.MySqlSelect(sql);
                 if (rs.Read())
                 {
