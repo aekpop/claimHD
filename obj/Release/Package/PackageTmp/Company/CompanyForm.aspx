@@ -4,7 +4,7 @@
     <div class="form-row">
         <div class="col-md-3">
             ชื่อบริษัท
-            <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
         <div class="col-md-3">
             <br />
@@ -17,7 +17,7 @@
             <div class="form-row">
                 <div class="col-md-3">
                     ค้นหา 
-            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
                     <br />
@@ -46,7 +46,7 @@
                                         <asp:Label ID="lbECompany" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.company_name") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtECompany" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.company_name") %>' CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtECompany" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.company_name") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
@@ -76,5 +76,18 @@
                 return confirm(msg);
             }
         }
+
+            function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+       }     
+
     </script>
 </asp:Content>

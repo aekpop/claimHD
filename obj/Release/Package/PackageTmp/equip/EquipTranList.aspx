@@ -26,7 +26,7 @@
                         <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
                                 <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
-                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto"  ></asp:TextBox>
+                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                         <div class="col-md-6 col-xl-3" >
@@ -152,13 +152,13 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ชื่อผู้ส่ง :</label>
-                                <asp:TextBox ID="txtSenderName"  runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtSenderName"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ตำแหน่งผู้ส่ง :</label>
-                                <asp:TextBox ID="txtPosSender"  runat="server" Font-Size="Medium" CssClass="form-control time" />
+                                <asp:TextBox ID="txtPosSender"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                     </div>
@@ -217,6 +217,18 @@
                 return false;
             }
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+	    }     
         
     </script>
 </asp:Content>

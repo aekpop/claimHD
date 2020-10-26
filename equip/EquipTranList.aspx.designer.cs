@@ -166,6 +166,15 @@ namespace ClaimProject {
         protected global::System.Web.UI.WebControls.TextBox txtPosSender;
         
         /// <summary>
+        /// txtNumto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumto;
+        
+        /// <summary>
         /// lbtnGoReport control.
         /// </summary>
         /// <remarks>
@@ -182,5 +191,14 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnGoReportCopy;
+        
+        /// <summary>
+        /// printReport1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton printReport1;
     }
 }

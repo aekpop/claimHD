@@ -8,8 +8,17 @@
         }
     </style>
 
+    <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
+    <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
+    <script src="../Scripts/printThis.js"></script>
+    <!-- CSS only -->
+    
+    <!-- JS, Popper.js, and jQuery -->    
+    <script src="../Scripts/jquery-3.5.1.js"></script>
+    <script src="../Scripts/umd/popper.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         
@@ -31,20 +40,20 @@
                    <div class="col-md-2">
                             <div class="form-group bmd-form-group">
                                 <p Class="bmd-label-floating ">อาคารย่อย :</p>
-                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"  MaxLength="1" Enabled="false"/>
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"  MaxLength="1" Enabled="false" onkeypress="return handleEnter(this, event)"/>
                             </div>
                     </div>
                 
                     <div class="col-md-2">
                         <div class="form-group bmd-form-group ">
                             <p class="bmd-label-floating ">วันที่ :</p>
-                            <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" />
+                            <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group bmd-form-group ">
                             <p class="bmd-label-floating ">เวลา :</p>
-                            <asp:TextBox ID="txtSTime" runat="server" CssClass="form-control time" />
+                            <asp:TextBox ID="txtSTime" runat="server" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
                                     
@@ -59,13 +68,13 @@
                     <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">อุปกรณ์</p>
-                            <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" />
+                            <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ปัญหา/อาการ</p>
-                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" />
+                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
                                          
@@ -243,12 +252,25 @@
                 return confirm(msg);
             }
         }
+
         function ComfirmEdit() 
             {
               $('#EditModal').modal(); // initialized with defaults
               return false;
         }
 
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+		    
+	    }      
         
     </script>
 </asp:Content>

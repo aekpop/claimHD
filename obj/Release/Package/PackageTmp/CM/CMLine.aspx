@@ -55,7 +55,7 @@
                     </asp:DropDownList>
                           
                                 <label class="bmd-label-floating" style="font-size:large;">วันที่</label>
-                                <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" />
+                                <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>
                                 <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" Font-Size="large" OnClick="btnrecm_Click"  /> 
                             </div>
                      
@@ -89,7 +89,7 @@
                         
                         <AlternatingRowStyle BackColor="White"  />                                             
                         <Columns>
-                            <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="25px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="#" ControlStyle-Width="25px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbnoo" runat="server" ></asp:Label>
                                 </ItemTemplate>
@@ -109,21 +109,17 @@
                                     <asp:Label ID="lbChannel"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="400px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="200px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" ControlStyle-Width="300px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" ControlStyle-Width="200px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" ControlStyle-Width="100px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
-                                <ItemTemplate>
-                                    <asp:Label ID="lbStt" runat="server" ></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            
                             
                             
                         </Columns>
@@ -177,7 +173,20 @@
 
                     $('#lbDatep').attr('maxlength', '10');
                    $('#lbDatep').css('font-size', '8');   
-            }); 
+        }); 
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+		    
+	    }     
 </script>        
     </form>    
 </body>    

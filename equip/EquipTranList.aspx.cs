@@ -439,85 +439,136 @@ namespace ClaimProject
 
         void GetReport(string key, int report)
         {
-            string startDate = "";
-            string transStat = "";
-            string cpointName = "";            
-            string doc_num = "";
-            //string noteNumber = "";
-            string title = "";
-            string noteTo = "";
-            //string cpointDate = "";
-            string name = "";
-            string cpoint_title = "";
+            key = Session["TranRepId"].ToString();
+            if (Session["TranRepId"].ToString() != "")
+            {
+                int i = 0;
+                string startDate = "";
+                string transStat = "";
+                string cpointName = "";
+                string doc_num = "";
+                string title = "";
+                string noteTo = "";
+                //string cpointDate = "";
+                string name = "";
+                string cpoint_title = "";
+                string dev = "";
+                string cpoint_manager = "";
 
-            string sql = "SELECT * FROM tbl_transfer tf JOIN tbl_transfer_status ON trans_stat = trans_stat_id JOIN tbl_toll t ON tf.toll_send = t.toll_id WHERE tf.trans_id = '" + key + "'";
+                string sql = "SELECT * FROM tbl_transfer tf JOIN tbl_transfer_status ON trans_stat = trans_stat_id JOIN tbl_toll t ON tf.toll_send = t.toll_id " +
+                    " JOIN tbl_cpoint cp ON t.cpoint_id = cp.cpoint_id WHERE tf.trans_id = '" + key + "'";
                      
-            MySqlDataReader rs = function.MySqlSelect(sql);
-            if(rs.Read())
-            {
-                startDate = rs.GetString("date_send");
-                transStat = rs.GetString("trans_stat_name");
-                cpointName = rs.GetString("toll_name");
-                //doc_num = rs.GetString("");
-                //noteNumber = rs.GetString("");
-                //title = rs.GetString("");
-                //noteTo = rs.GetString("");
-            }
-            rs.Close();
-            function.Close();
-
-            string tablelist = "SELECT equipment_nameth AS eqnameth,equipment_no AS eqnumber,equipment_serial AS eqserial " +
-                    " FROM tbl_transfer_action " +
-                    " JOIN tbl_equipment ON tbl_equipment.equipment_id = tbl_transfer_action.trans_equip_id" +
-                    " WHERE transfer_id = '" + key + "'  ";
-            MySqlDataAdapter da = function.MySqlSelectDataSet(tablelist);
-
-            DataSetEquip dts = new DataSetEquip();
-            da.Fill(dts, "tranAct");
-            
-            string strNote = "";
-            title = "ขอ" + transStat + " รายการครุภัณฑ์";
-
-            ReportDocument rpt = new ReportDocument();
-            rpt.Load(Server.MapPath("/equip/reportDocuTran.rpt"));            
-            rpt.SetDataSource(dts);
-
-            rpt.SetParameterValue("txt_to", noteTo);
-            rpt.SetParameterValue("note_title", title);
-            rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));
-
-            if (report == 0)
-            {
-
-                if (Session["UserCpoint"].ToString() == "0")
+                MySqlDataReader rs = function.MySqlSelect(sql);
+                if(rs.Read())
                 {
-                    cpoint_title += "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร. 02 360 7865";
-                    strNote = cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
-                    name = "นายเผชิญ หุนตระนี";
+                    startDate = rs.GetString("date_send");
+                    transStat = rs.GetString("trans_stat_name");
+                    cpointName = rs.GetString("Cpoint_name");
+                    cpoint_manager = rs.GetString("cpoint_manager");
+                    //doc_num = rs.GetString("");
+                    //noteNumber = rs.GetString("");
+                    //title = rs.GetString("");
+                    noteTo = rs.GetString("cpoint_control");
+                }
+                rs.Close();
+                function.Close();
+
+                string sql_list = "SELECT equipment_nameth AS eqnameth,equipment_no AS eqnumber,equipment_serial AS eqserial " +
+                        " FROM tbl_transfer_action " +
+                        " JOIN tbl_equipment ON tbl_equipment.equipment_id = tbl_transfer_action.trans_equip_id" +
+                        " WHERE transfer_id = '" + key + "'  ";
+                //MySqlDataAdapter da = function.MySqlSelectDataSet(tablelist);
+                //DataSetEquip dts = new DataSetEquip();
+                //da.Fill(dts, "tranAct");
+            
+                ReportDocument rpt = new ReportDocument();
+                rpt.Load(Server.MapPath("/equip/reportDocuTran.rpt"));            
+                //rpt.SetDataSource(dts);
+
+                string strNote = "";
+                title = "ขอ" + transStat + " รายการครุภัณฑ์";
+                      
+                rpt.SetParameterValue("note_title", title);
+                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));
+
+                string noteNumber = txtNumto.Text;
+                if (noteNumber != "")
+                {
+                    rpt.SetParameterValue("num_title", noteNumber);
                 }
                 else
                 {
-                    cpoint_title += "ด่านฯ " + cpointName + " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
-                    strNote = "ด่านฯ " + cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
-                    name = "ผจด.";
+                    noteNumber = "-";
+                }
+                
+
+                i = 1;
+                rs = function.MySqlSelect(sql_list);
+                while (rs.Read())
+                {
+                    if( i == 1)
+                    {
+                        dev = "\r\n          " + i +". " + rs.GetString("eqnameth") + "  " + rs.GetString("eqnumber") + "  " + rs.GetString("eqserial");
+                    }
+                    else
+                    {
+                        dev += "\r\n          " + i + ". " + rs.GetString("eqnameth") + "  " + rs.GetString("eqnumber") + "  " + rs.GetString("eqserial");
+                    }
+                    i++;
                 }
 
-                rpt.SetParameterValue("name", name);
-                rpt.SetParameterValue("cpoint_title", cpoint_title);
-                rpt.SetParameterValue("num_title", doc_num);
-                rpt.SetParameterValue("note_text", strNote);
-                rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
+                rpt.SetParameterValue("list_dev", dev);
+
+                if (report == 0)
+                {
+
+                    if (Session["UserCpoint"].ToString() == "0")
+                    {
+                        cpoint_title += "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร. 02 360 7865";
+                        strNote = cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
+                        name = " (นายเผชิญ หุนตระนี)\r\nผู้อำนวยการฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+
+                        sql = "SELECT * FROM tbl_transfer c JOIN tbl_toll t ON c.toll_recieve = t.toll_id JOIN `tbl_cpoint` p ON p.`cpoint_id` = t.`cpoint_id` WHERE c.`trans_id` = "+key;
+                        MySqlDataReader rss = function.MySqlSelect(sql);
+                        if (rss.Read())
+                        {
+                            string  CpointReName = rss.GetString("cpoint_name");
+                            noteTo = "ผจด. " + CpointReName;
+                            rss.Close();
+                            function.Close();
+                        }
+                    }
+                    else
+                    {
+                        cpoint_title += "ด่านฯ " + cpointName + " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+                        strNote = "ด่านฯ " + cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
+                        name = "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName + " ";
+                        noteTo = "ผจท. ผ่าน " + noteTo;
+                    }
+
+                    rpt.SetParameterValue("txt_to", noteTo);
+                    rpt.SetParameterValue("name", name);
+                    rpt.SetParameterValue("cpoint_title", cpoint_title);
+                    rpt.SetParameterValue("note_text", strNote);
+                    rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
+
+                }
+                else if(report == 1)
+                {
+
+                }
+
+                //CRSEquipviewer.ReportSource = rpt;            
+                Session["Report"] = rpt;
+                Session["ReportTitle"] = "บันทึกข้อความ";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
 
             }
-            else if(report == 1)
+            else
             {
-
+                AlertPop("Error Report!! ติดต่อเจ้าหน้าที่", "error");
             }
-
-            //CRSEquipviewer.ReportSource = rpt;            
-            Session["Report"] = rpt;
-            Session["ReportTitle"] = "บันทึกข้อความ";
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
+            
         }
     }
 }

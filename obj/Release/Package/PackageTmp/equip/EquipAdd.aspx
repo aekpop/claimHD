@@ -27,20 +27,20 @@
                     <div class="col-md-2 col-lg-2" >
                             <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="ชื่อครุภัณฑ์(ไทย):" Font-Bold="true" ></asp:Label>
-                            <asp:TextBox ID="txtsearchth"  CssClass="form-control" runat="server" BorderStyle="NotSet"  ></asp:TextBox>
+                            <asp:TextBox ID="txtsearchth"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                 
                     <div class="col-md-2 col-lg-2" >
                             <div class="form-group" >
                             <asp:Label ID="Label2" runat="server" Text="เลขครุภัณฑ์:"  Font-Bold="true" ></asp:Label>
-                            <asp:TextBox ID="txtsearchNum"  CssClass="form-control" runat="server" BorderStyle="NotSet"  ></asp:TextBox>
+                            <asp:TextBox ID="txtsearchNum"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                     <div class="col-md-2 col-lg-2" >
                             <div class="form-group" >
                             <asp:Label ID="Label4" runat="server" Text="เลขทะเบียน(Serial):" Font-Bold="true" ></asp:Label>
-                            <asp:TextBox ID="txtsearchSerial"  CssClass="form-control" runat="server" BorderStyle="NotSet"  ></asp:TextBox>
+                            <asp:TextBox ID="txtsearchSerial"  CssClass="form-control" runat="server" BorderStyle="NotSet"  onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                     <div class="col-md-2 col-lg-2" >
@@ -212,19 +212,19 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ชื่อครุภัณฑ์(อังกฤษ)</p>
-                                <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" F CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" F CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">เลขครุภัณฑ์</p>
-                                <asp:TextBox ID="txtEditNo" Enabled="false" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditNo" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">เลขทะเบียน</p>
-                                <asp:TextBox ID="txtEditNoform" Enabled="false" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditNoform" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                     </div>
@@ -233,25 +233,25 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ยี่ห้อ</p>
-                                <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">รุ่น</p>
-                                <asp:TextBox ID="txtEditSeries" Enabled="false" TextMode="MultiLine" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditSeries" Enabled="false" TextMode="MultiLine" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ราคา</p>
-                                <asp:TextBox ID="txtEditPrice" Enabled="false" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditPrice" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">หน่วยนับ</p>
-                                <asp:TextBox ID="txtEditcUnit" Enabled="false" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditcUnit" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                     </div>
@@ -260,13 +260,13 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">วันที่รับ</p>
-                                <asp:TextBox ID="txtEditDate" Enabled="false" runat="server"  CssClass="form-control datepicker" />
+                                <asp:TextBox ID="txtEditDate" Enabled="false" runat="server"  CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">เลขสัญญา</p>
-                                <asp:TextBox ID="txtEditContract" Enabled="false" runat="server"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditContract" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         <div class="col-md">
@@ -300,7 +300,7 @@
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ผู้รับผิดชอบหรือผู้ใช้งาน</p>
-                                <asp:TextBox ID="txtEditPerson" runat="server"   CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditPerson" runat="server"   CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                         
@@ -310,7 +310,7 @@
                         <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">หมายเหตุ</p>
-                                <asp:TextBox ID="txtEditNote"  runat="server" TextMode="MultiLine"  CssClass="form-control time" />
+                                <asp:TextBox ID="txtEditNote"  runat="server" TextMode="MultiLine"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
                     </div>
@@ -367,10 +367,19 @@
                 return confirm(msg);
             }
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+	    }     
         
     </script>
-
-
-
 </div>
 </asp:Content>

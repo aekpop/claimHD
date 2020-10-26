@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>10/22/2020 17:42:57</publishTime>
+      <publishTime>10/22/2020 20:20:33</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>10/22/2020 17:42:57</publishTime>
+      <publishTime>10/22/2020 20:20:33</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>10/22/2020 17:42:59</publishTime>
+      <publishTime>10/22/2020 20:20:35</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -598,7 +598,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:43:50</publishTime>
     </File>
     <File Include="car/car.aspx">
-      <publishTime>07/24/2020 09:04:50</publishTime>
+      <publishTime>10/22/2020 20:01:30</publishTime>
     </File>
     <File Include="Claim/300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg">
       <publishTime>10/04/2018 10:56:04</publishTime>
@@ -622,13 +622,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2018 09:04:02</publishTime>
     </File>
     <File Include="CM/CMDetailForm.aspx">
-      <publishTime>10/20/2020 12:45:43</publishTime>
+      <publishTime>10/22/2020 18:48:20</publishTime>
     </File>
     <File Include="CM/CMEditForm.aspx">
-      <publishTime>10/20/2020 13:09:03</publishTime>
+      <publishTime>10/22/2020 19:28:45</publishTime>
     </File>
     <File Include="CM/CMLine.aspx">
-      <publishTime>10/11/2020 22:50:47</publishTime>
+      <publishTime>10/22/2020 18:57:47</publishTime>
     </File>
     <File Include="CM/CMReport.aspx">
       <publishTime>10/21/2020 13:00:48</publishTime>
@@ -643,7 +643,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2020 10:51:12</publishTime>
     </File>
     <File Include="Company/CompanyForm.aspx">
-      <publishTime>01/02/2019 10:54:22</publishTime>
+      <publishTime>10/22/2020 20:00:15</publishTime>
     </File>
     <File Include="Config/AroundList.txt">
       <publishTime>10/04/2018 10:29:52</publishTime>
@@ -3457,25 +3457,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2019 11:14:12</publishTime>
     </File>
     <File Include="Device/DeviceForm.aspx">
-      <publishTime>01/14/2019 15:11:12</publishTime>
+      <publishTime>10/22/2020 19:58:33</publishTime>
     </File>
     <File Include="Device/GroupDeviceForm.aspx">
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>10/22/2020 15:56:15</publishTime>
+      <publishTime>10/22/2020 19:37:28</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
-      <publishTime>10/08/2020 16:19:23</publishTime>
+      <publishTime>10/22/2020 19:44:52</publishTime>
     </File>
     <File Include="equip/EquipAddList.aspx">
-      <publishTime>10/10/2020 14:10:11</publishTime>
+      <publishTime>10/22/2020 19:46:47</publishTime>
     </File>
     <File Include="equip/EquipCheck.aspx">
       <publishTime>05/01/2020 11:10:58</publishTime>
     </File>
     <File Include="equip/EquipCheckList.aspx">
-      <publishTime>10/22/2020 09:00:13</publishTime>
+      <publishTime>10/22/2020 19:53:18</publishTime>
     </File>
     <File Include="equip/EquipDefault.aspx">
       <publishTime>10/08/2020 08:43:30</publishTime>
@@ -3502,13 +3502,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/30/2020 11:13:02</publishTime>
     </File>
     <File Include="equip/EquipTranGetList.aspx">
-      <publishTime>10/22/2020 16:13:42</publishTime>
+      <publishTime>10/22/2020 19:51:54</publishTime>
     </File>
     <File Include="equip/EquipTranGetout.aspx">
       <publishTime>07/16/2020 09:49:44</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>10/22/2020 16:07:33</publishTime>
+      <publishTime>10/22/2020 19:50:02</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>07/10/2020 11:27:55</publishTime>
@@ -4321,13 +4321,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>10/05/2020 12:31:05</publishTime>
+      <publishTime>10/22/2020 20:18:46</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
       <publishTime>10/05/2020 11:43:48</publishTime>
     </File>
     <File Include="User/Add/userForm.aspx">
-      <publishTime>01/02/2019 10:54:14</publishTime>
+      <publishTime>10/22/2020 19:56:54</publishTime>
     </File>
     <File Include="User/UserForm.aspx">
       <publishTime>10/30/2018 08:25:54</publishTime>

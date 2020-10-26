@@ -4,7 +4,7 @@
     <div class="form-row">
         <div class="col-md-3">
             ชื่ออุปกรณ์ : 
-            <asp:TextBox ID="txtDeviceName" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtDeviceName" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
         <div class="col-md-3">
             กลุ่ม : 
@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-3">
             ระยะเวลาในการเข้าซ่อม/ชั่วโมง (CM) : 
-            <asp:TextBox ID="txtSchedule" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtSchedule" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
     </div>
     <div class="form-row">
@@ -26,7 +26,7 @@
             <div class="form-row">
                 <div class="col-md-3">
                     ค้นหา 
-            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
                     <br />
@@ -55,7 +55,7 @@
                                         <asp:Label ID="lbDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtEDevice" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtEDevice" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="กลุ่ม">
@@ -71,7 +71,7 @@
                                         <asp:Label ID="lbDeviceSchedule" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtEDeviceSchedule" size="3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>' CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtEDeviceSchedule" size="3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
@@ -101,5 +101,18 @@
                 return confirm(msg);
             }
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }    
+
     </script>
 </asp:Content>

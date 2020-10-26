@@ -142,11 +142,11 @@
                         <div class="row" >
                             <div class="col-md-3 text-right">เลขที่หนังสือ : </div>
                             <div class="col-md-2">
-                                <asp:TextBox ID="txtNoteNumTo" runat="server" CssClass="form-control "></asp:TextBox>
+                                <asp:TextBox ID="txtNoteNumTo" runat="server" CssClass="form-control " onkeypress="return handleEnter(this, event)"></asp:TextBox>
                             </div>
                             <div class="col-md-3 text-right">วันที่ : </div>
                             <div class="col-md-2">
-                                <asp:TextBox ID="txtDateNoteto" runat="server" AutoPostBack="true" CssClass="form-control datepicker" OnTextChanged="txtDateNoteto_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="txtDateNoteto" runat="server" AutoPostBack="true" CssClass="form-control datepicker" OnTextChanged="txtDateNoteto_TextChanged" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -155,14 +155,14 @@
                 <div class="row">
                     <div class="col-md-3 text-right ">เรื่อง : </div>
                     <div class="col-md">
-                        <asp:TextBox ID="txtNoteTitleTo" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtNoteTitleTo" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-3 text-right">เรียน : </div>
                     <div class="col-md">
-                        <asp:TextBox ID="txtNoteSendTo" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtNoteSendTo" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                     </div>
                 </div>
                 <br />
@@ -175,7 +175,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md text-center">
-                        <asp:Button ID="btnSaveNoteTo" CssClass="btn btn-success btn-sm" Font-Size="20px" runat="server" Text="บันทึก" OnClick="btnSaveNoteTo_Click" />
+                        <asp:Button ID="btnSaveNoteTo" CssClass="btn btn-success btn-sm" Font-Size="20px" runat="server" Text="บันทึก" OnClick="btnSaveNoteTo_Click" OnClientClick="return CompareConfirm('ยืนยันบันทึก ใช่หรือไม่');"/>
                         <asp:Button ID="btnNoteTo" CssClass="btn btn-info btn-sm" Font-Size="20px" runat="server" Text="พิมพ์ตัวจริง" OnClick="btnNoteTo_Click" />
                         <asp:Button ID="btnNoteToCpoy" CssClass="btn btn-default btn-sm" Font-Size="20px" runat="server" Text="พิมพ์สำเนา" OnClick="btnNoteToCpoy_Click" />
                     </div>
@@ -480,12 +480,12 @@
                             <div class="row">
                                 <div class="col-md-3 text-right">เลขที่หนังสือ : </div>
                                 <div class="col-md">
-                                    <asp:TextBox ID="txtNoteNumber" runat="server" CssClass="form-control col-md-4"></asp:TextBox>
+                                    <asp:TextBox ID="txtNoteNumber" runat="server" CssClass="form-control col-md-4" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                 </div>
                                                       
                                     <div class="col-md-3 text-right">วันที่ : </div>
                                     <div class="col-md">
-                                        <asp:TextBox ID="txtDateQuotations" runat="server" CssClass="form-control datepicker col-md-8"></asp:TextBox>
+                                        <asp:TextBox ID="txtDateQuotations" runat="server" CssClass="form-control datepicker col-md-8" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </div>
                            </div>
                             <div>
@@ -518,7 +518,7 @@
                                             <asp:Label ID="lbNote" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_note_number") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtENote" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_note_number") %>' CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtENote" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_note_number") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                     <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="แก้ไข" ControlStyle-Font-Size="Small" ControlStyle-CssClass="fa" />
@@ -556,14 +556,14 @@
                     <div class="row">
                         <div class="col-md-4 text-right">วันที่รับใบเสนอราคา : </div>
                         <div class="col-md-4">
-                            <asp:TextBox ID="txtDateRecive" runat="server" CssClass="form-control datepicker"></asp:TextBox>
+                            <asp:TextBox ID="txtDateRecive" runat="server" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                         </div>
                     </div>
                      <br />
                     <div class="row">
                         <div class="col-md-4 text-right">ราคาที่บริษัทเสนอ : </div>
                         <div class="col-md">
-                            <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                         </div>
                     </div>
                      <br />
@@ -609,7 +609,7 @@
                             <div class="row">
                                 <div class="col-md-3 text-right">ราคาจ้าง : </div>
                                 <div class="col-md-3">
-                                    <asp:TextBox ID="txtPriceOrder" runat="server" CssClass="form-control text-center"></asp:TextBox>
+                                    <asp:TextBox ID="txtPriceOrder" runat="server" CssClass="form-control text-center" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                 </div>
                                 <div class="col-md-2">
                                     <asp:Label ID="Label3" runat="server" Text=" บาท"></asp:Label>
@@ -621,14 +621,14 @@
                     <div class="row">
                         <div class="col-md-3 text-right">วันที่จ้าง : </div>
                         <div class="col-md-4">
-                            <asp:TextBox ID="txtDateOrder" runat="server" CssClass="datepicker form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDateOrder" runat="server" CssClass="datepicker form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                         </div>
                     </div>
                     <br />
                     <div class="row">
                         <div class="col-md-4 text-right">กำหนดส่งงานภายใน : </div>
                         <div class="col-md-2">
-                            <asp:TextBox ID="txtSendOrder" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtSendOrder" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                         </div>
                         <div class="col-md-2">
                             <asp:Label ID="Label1" runat="server" Text=" วัน"></asp:Label>
@@ -670,13 +670,14 @@
                             <div class="row">
                                 <div class="col-md-4 text-right">วันที่ส่งงาน : </div>
                                 <div class="col-md-3">
-                                    <asp:TextBox ID="txtDateSendOrder" AutoPostBack="true" runat="server" CssClass="form-control datepicker" OnTextChanged="txtDateSendOrder_TextChanged"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox1" AutoPostBack="true" runat="server" CssClass="form-control datepicker" OnTextChanged="txtDateSendOrder_TextChanged" ></asp:TextBox>
+                                    <asp:TextBox ID="txtDateSendOrder" AutoPostBack="true" runat="server" CssClass="form-control datepicker" OnTextChanged="txtDateSendOrder_TextChanged" ></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row" runat="server" id="DivFine">
                                 <div class="col-md-4 text-right">ค่าปรับ : </div>
                                 <div class="col-md-3">
-                                    <asp:TextBox ID="txtFine" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtFine" runat="server" CssClass="form-control" OnTextChanged="txtDateSendOrder_TextChanged"></asp:TextBox>
                                 </div>
                                 <div class="col-md-1">
                                     <asp:Label ID="Label2" runat="server" Text=" บาท"></asp:Label>
@@ -716,5 +717,18 @@
                 return confirm(msg);
             }
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }     
+
     </script>
 </asp:Content>

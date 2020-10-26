@@ -7,8 +7,8 @@
     <asp:Button runat="server" ID="btnCreatenew" Text="เพิ่มครุภัณฑ์" OnClick="btnCreatenew_Click" CssClass="btn btn-danger " />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
-        <div class="card-header " style="background-color:#960238;">
-            <h3 class="card-title" ><asp:Label ID="hhh" runat="server" Text="รายการเพิ่มครุภัณฑ์" ForeColor="White" ></asp:Label></h3>
+        <div class="card-header card-header-danger">
+            <div class="card-title" ><asp:Label ID="hhh" runat="server" Text="รายการเพิ่มครุภัณฑ์" ForeColor="White" ></asp:Label></div>
         </div>
             <div class="card-body table-responsive table-sm">
                 
@@ -16,7 +16,7 @@
                     <div class="col-lg-3 col-md-5" >
                             <div class="form-group" >
                                 <p class="lbdateAdd"  >วันที่เพิ่มครุภัณฑ์</p>
-                                <asp:TextBox ID="txtDatestart" runat="server" ToolTip="ตัวอย่าง 01-12-2563" CssClass="form-control " ></asp:TextBox>
+                                <asp:TextBox ID="txtDatestart" runat="server" ToolTip="ตัวอย่าง 01-12-2563" CssClass="form-control " onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                 </div>
                      </div>
                     <div class="col-lg-3 col-md-5" >
@@ -25,6 +25,8 @@
                                 <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="form-control" ></asp:DropDownList>
                                 </div>
                      </div>
+                    </div>
+                <div class="row">
                      <div class="col-lg-3 col-md-2" >
                          <asp:Button ID="btnsearchAdd" runat="server" Text="ค้นหา" CssClass="btn btn-success" Font-Bold="true" OnClick="btnsearchAdd_Click" /> 
                      </div>
@@ -40,12 +42,12 @@
                 <div class="row" style="padding-left:35px;" >
                     <asp:Label ID="lbamountEQ" runat="server" ></asp:Label>
                 </div>
-          <asp:Panel ID="Panel1" CssClass="col-md text-center" runat="server" > 
+          <asp:Panel ID="Panel1" CssClass="col-md " runat="server" > 
               
             <asp:GridView ID="GridAddAll" runat="server"
             DataKeyNames="NewEQ_id" 
             OnRowDataBound="GridAddAll_RowDataBound"
-            CssClass="table table-hover table-sm col-md text-center"
+            CssClass="table table-hover table-sm col-md "
             Font-Size="15px"
             HeaderStyle-Font-Size="18px"
             AutoGenerateColumns="False"
@@ -94,19 +96,9 @@
                 <SelectedRowStyle BackColor="#a2fca5" Font-Bold="True" ForeColor="#333333" />
                 <SortedAscendingCellStyle BackColor="#baf7b2" />
                 <SortedDescendingHeaderStyle BackColor="#5abe48"/>
-
-        </asp:GridView>
-                  
-   </asp:Panel>   
-
-                
+        </asp:GridView>                  
+   </asp:Panel>                   
             </div>
-
-
-
-
-
-
     </div>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -118,5 +110,18 @@
             demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
         <% } %>
         });
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }     
+
     </script>
 </asp:Content>

@@ -7,15 +7,15 @@
     <div class="form-row">
         <div class="col-md-2">
             Username 
-            <asp:TextBox ID="txtUser" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtUser" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
         <div class="col-md-2">
             Password 
-            <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+            <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
         <div class="col-md-2">
             Confirm Password 
-            <asp:TextBox ID="txtCPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+            <asp:TextBox ID="txtCPass" runat="server" CssClass="form-control" TextMode="Password" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
 
     </div>
@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-3">
             ชื่อ-สกุล
-            <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
         <div class="col-md-3">
             สิทธ์การใช้งาน
@@ -45,7 +45,7 @@
                     <div class="card-body table-responsive">
                         <div class="row">
                             <div class="col-md-3">
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                             </div>
                             <div class="col-md-1">
                                 <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark btn-sm" OnClick="btnSearch_Click"><i class="fa fa-search">ค้นหา</i></asp:LinkButton>
@@ -73,7 +73,7 @@
                                         <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.username") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtEUser" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.username") %>' CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtEUser" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.username") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ชื่อ-สกุล">
@@ -81,7 +81,7 @@
                                         <asp:Label ID="lbName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtEName" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>' CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtEName" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="สิทธ์การใช้งาน">
@@ -120,5 +120,18 @@
                 return confirm(msg);
             }
         }
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }     
+
     </script>
 </asp:Content>
