@@ -185,63 +185,57 @@
         <div class="modal-dialog modal-lg modal-dialog-centered " style="width:100%" role="form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">ครุภัณฑ์ : 
-                        <asp:Label ID="lbEQIDModal" runat="server" Text="" CssClass="text-dark"></asp:Label></h4>
+                    <div class="modal-title">
+                        <asp:Label ID="lbEQIDModal" runat="server" Font-Size="Medium" CssClass="text-dark"></asp:Label></div>
                     <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" style="line-height: inherit;">
-                    <div class="row" style="height: 140px">
-                        <div class="col-md-3">
-                            <asp:Image ID="ImgEditEQ" runat="server" Width="100%"  />
-                        </div>
-                        <div class="col-md-2" runat="server" id="diveditpic">
-                            <label class="bmd-label-floating"></label>
-                            <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file" Font-Size="15px" lang="en" />
-                        </div>
-                    </div>
                     <div class="row" >
-                        <div class="col-md">
+                        <div class="col-md-3">
                             <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">ชื่อครุภัณฑ์(ไทย)</p>
-                                <asp:TextBox ID="txtEditTH" Enabled="false"  runat="server"  CssClass="form-control time" />
+                                <div class="card border-info ">
+                                    <asp:Image ID="ImgEditEQ" runat="server" Width="100%"  />
+                                
+                        
+                                <div runat="server" id="diveditpic">
+                                    <label class="bmd-label-floating"></label>
+                                    <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file " Font-Size="12px" lang="en" />
+                                </div>
+                                    </div>
                             </div>
                         </div>
-                        <div class="col-md">
+                        
+                        <div class="col-md-4">
                             <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">ชื่อครุภัณฑ์(อังกฤษ)</p>
-                                <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" F CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                    <p class="bmd-label-floating">ชื่อครุภัณฑ์</p>
+                                    <asp:TextBox ID="txtEditTH" Enabled="false"  runat="server"  CssClass="form-control time" />
+                                 <br />
+                                    <p class="bmd-label-floating">เลขครุภัณฑ์</p>
+                                    <asp:TextBox ID="txtEditNo" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                 <br />
+                                    <p class="bmd-label-floating">เลขทะเบียน</p>
+                                    <asp:TextBox ID="txtEditNoform" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">เลขครุภัณฑ์</p>
-                                <asp:TextBox ID="txtEditNo" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">เลขทะเบียน</p>
-                                <asp:TextBox ID="txtEditNoform" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" style="height: 110px">
-                        <div class="col-md">
-                            <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">ยี่ห้อ</p>
-                                <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">รุ่น</p>
-                                <asp:TextBox ID="txtEditSeries" Enabled="false" TextMode="MultiLine" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
-                            </div>
-                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <p class="bmd-label-floating">ชื่อครุภัณฑ์อังกฤษ(ถ้ามี)</p>
+                                        <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" F CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                         <br />
+                                        <p class="bmd-label-floating">ยี่ห้อ</p>
+                                        <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                         <br />
+                                        <p class="bmd-label-floating">รุ่น</p>
+                                        <asp:TextBox ID="txtEditSeries" Enabled="false" TextMode="MultiLine" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                    </div>
+                                </div>    
+                      </div>
+                  
+                     
+                    <div class="row" >                                                
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ราคา</p>
@@ -254,9 +248,6 @@
                                 <asp:TextBox ID="txtEditcUnit" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row" style="height: 90px">
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">วันที่รับ</p>
@@ -269,6 +260,10 @@
                                 <asp:TextBox ID="txtEditContract" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row" >
+                        
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">สถานะ</p>
@@ -281,10 +276,6 @@
                                 <asp:DropDownList ID="ddlEditCpoint"  runat="server"  CssClass="form-control time" />
                             </div>
                         </div>
-                        
-                    </div>
-
-                    <div class="row" style="height: 90px">
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">สถานที่ตั้ง</p>
@@ -297,6 +288,10 @@
                                 <asp:DropDownList ID="ddlEditCompany" Enabled="false" runat="server"  CssClass="form-control time" />
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row" >
+                        
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ผู้รับผิดชอบหรือผู้ใช้งาน</p>
@@ -305,9 +300,8 @@
                         </div>
                         
 
-                    </div>
-                    <div class="row" style="height: 120px">
-                        <div class="col-md-12">
+                    
+                        <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">หมายเหตุ</p>
                                 <asp:TextBox ID="txtEditNote"  runat="server" TextMode="MultiLine"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
@@ -318,7 +312,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="btnUpdateEQ" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateEQ_Command" OnClientClick="return UpdteConfirm('ยืนยันแก้ไขข้อมูล ใช่หรือไม่');">ยืนยันแก้ไข</asp:LinkButton>
+                    <asp:LinkButton ID="btnUpdateEQ" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateEQ_Command" OnClientClick="return UpdteConfirm('ยืนยันแก้ไขข้อมูล ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>
                 </div>
             </div>

@@ -120,7 +120,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="พิมพ์เอกสาร" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="ใบรับ-ส่ง" Font-Size="15px" OnCommand="lbtnprintTran_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="ออกรายงานเอกสาร" Font-Size="15px" OnCommand="lbtnprintTran_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                                 <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="false" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -161,6 +161,8 @@
                                 <asp:TextBox ID="txtPosSender"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
+                        </div>
+                    <div class="row">
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เลขที่หนังสือ :</label>
@@ -172,8 +174,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnGoReport" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnGoReport_Command" >แสดงรายงาน</asp:LinkButton>
-                    <asp:LinkButton ID="lbtnGoReportCopy" runat="server" CssClass="btn btn-warning btn-sm" Font-Size="Medium" OnCommand="lbtnGoReportCopy_Command" >แสดงรายงาน(สำเนา)</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGoReport" runat="server" CssClass="btn btn-outline-success btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง" OnCommand="lbtnGoReport_Command" ><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGoReportCopy" runat="server" CssClass="btn btn-outline-warning btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง สำเนา" OnCommand="lbtnGoReportCopy_Command" ><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="true" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">X</button>
                 </div>
