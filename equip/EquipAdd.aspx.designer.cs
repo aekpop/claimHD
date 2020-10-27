@@ -301,15 +301,6 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.TextBox txtEditTH;
         
         /// <summary>
-        /// txtEditEng control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditEng;
-        
-        /// <summary>
         /// txtEditNo control.
         /// </summary>
         /// <remarks>
@@ -326,6 +317,15 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEditNoform;
+        
+        /// <summary>
+        /// txtEditEng control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditEng;
         
         /// <summary>
         /// txtEditBrand control.

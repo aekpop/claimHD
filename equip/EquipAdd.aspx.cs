@@ -179,8 +179,8 @@ namespace ClaimProject.equip
         public string UploadEquip2()
         {
 
-            int width = 720;
-            int height = 480;
+            //int width = 720;
+            //int height = 480;
             string NewFileDocName = "";
             if(FileEditEQ.HasFile)
             {
@@ -195,12 +195,11 @@ namespace ClaimProject.equip
                         Stream stream = FileEditEQ.PostedFile.InputStream;
 
                         Bitmap image = new Bitmap(stream);
-                        Bitmap target = new Bitmap(width, height);
-
-                        Graphics graphic = Graphics.FromImage(target);
-
-                        graphic.DrawImage(image, 0, 0, width, height);
-                        target.Save(Server.MapPath(NewFileDocName));
+                        //Bitmap target = new Bitmap(width, height);
+                        //Graphics graphic = Graphics.FromImage(target);
+                        //graphic.DrawImage(image, 0, 0, width, height);
+                        //target.Save(Server.MapPath(NewFileDocName));
+                        FileEditEQ.SaveAs(Server.MapPath(NewFileDocName.ToString()));
                         return NewFileDocName;
                     }
                     else
