@@ -135,9 +135,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div6">
-                    <asp:Label ID="Label2" runat="server" Text="ประกาศข่าวสารในไลน์"></asp:Label><br />
+                    <asp:Label ID="Label2" runat="server" Text="ประกาศข่าวสารในกลุ่มไลน์"></asp:Label><br />
                     <asp:DropDownList ID="DropDownList1" runat="server">
                         <asp:ListItem Text="Toll:อุบัติเหตุ" Value="uQQdUNuFfBphgSugC3OUa1lSjmovi4XINOAe2VwIczo"></asp:ListItem>
+                        <asp:ListItem Text="Toll:CM_M9" Value="TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F"></asp:ListItem>
                         <asp:ListItem Text="ทดสอบ" Value="g0Zinn2LGsXH7MqNl6LqRRAloneiupRMel3VaC3TVdJ"></asp:ListItem>
                     </asp:DropDownList><br />
                     ข้อความ 

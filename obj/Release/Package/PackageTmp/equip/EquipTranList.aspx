@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="งานครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipTranList.aspx.cs" Inherits="ClaimProject.EquipTranList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <style>
@@ -13,9 +14,8 @@
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
     
     <asp:Button runat="server" ID="btnMainEQ" Text="หน้าหลัก"  OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
-    <asp:Button runat="server" ID="btnnewTranpage" Text="แจ้งใหม่"  OnClick="btnnewTranpage_Click" CssClass="btn btn-danger" OnClientClick="return CheckIsRepeat();"/>
+    <asp:Button runat="server" ID="btnnewTranpage" Text="แจ้งใหม่" OnClick="btnnewTranpage_Click" CssClass="btn btn-danger" data-toggle="tooltip" data-placement="top" title="แจ้งรายการส่งครุภัณฑ์" OnClientClick="return CheckIsRepeat();"/>
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
-
         <div class="card-header card-header-success " >
             <div class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่ง)</div>
         </div>
@@ -120,7 +120,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="พิมพ์เอกสาร" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="btn btn-sm btn-outline-warning" ToolTip="ใบรับ-ส่ง" Font-Size="15px" OnCommand="lbtnprintTran_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                                <asp:LinkButton ID="lbtnprintTran" runat="server" Visible="false" CssClass="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="ใบรับ-ส่ง" Font-Size="15px" OnCommand="lbtnprintTran_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                                 <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="false" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -161,17 +161,27 @@
                                 <asp:TextBox ID="txtPosSender"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
+                        <div class="col-md">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">เลขที่หนังสือ :</label>
+                                <asp:TextBox ID="txtNumto"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                            </div>
+                        </div>
+                        
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="lbtnGoReport" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnGoReport_Command" >แสดงรายงาน</asp:LinkButton>
                     <asp:LinkButton ID="lbtnGoReportCopy" runat="server" CssClass="btn btn-warning btn-sm" Font-Size="Medium" OnCommand="lbtnGoReportCopy_Command" >แสดงรายงาน(สำเนา)</asp:LinkButton>
+                    <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="true" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">X</button>
                 </div>
             </div>
         </div>
     </div>
+
+
     </div>
 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
@@ -228,7 +238,11 @@
             {
                 return true;
             }
-	    }     
+        }
+
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
         
     </script>
 </asp:Content>

@@ -181,6 +181,9 @@ namespace ClaimProject.CM
                 if(function.MySqlQuery(sql_insert))
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งซ่อม จากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "วันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \n อุปกรณ์ : " + txtDeviceAdd.SelectedItem + " มีอาการชำรุด : " + txtProblem.Text + " " +
+                        " เรียบร้อยแล้ว \n ขอให้เจ้าหน้าที่ @Helpdesk งานเทคโนฯ เข้าตรวจสอบข้อมูลในระบบเพื่อความถูกต้องด้วย ";
+                    LineTran();
                     BindData();
                     ClearDate();
                 }
@@ -190,6 +193,9 @@ namespace ClaimProject.CM
                 }
                 function.Close();
             }
+
+            
+            
         }
 
         private void ClearDate()
@@ -356,6 +362,32 @@ namespace ClaimProject.CM
             rttt.Close();
             function.Close();
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
+        }
+
+        protected void LineTran()
+        {
+            string token = "";
+            if(txtCpoint.SelectedValue == "902" || txtCpoint.SelectedValue == "903" || txtCpoint.SelectedValue == "904" || txtCpoint.SelectedValue == "905")
+            {
+                token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
+            }else if(txtCpoint.SelectedValue == "701" || txtCpoint.SelectedValue == "702" || txtCpoint.SelectedValue == "703" || txtCpoint.SelectedValue == "704")
+            {
+                token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
+            }else if(txtCpoint.SelectedValue == "706" || txtCpoint.SelectedValue == "707" || txtCpoint.SelectedValue == "708" || txtCpoint.SelectedValue == "709" || txtCpoint.SelectedValue == "710")
+            {
+                token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
+            }
+            else
+            {
+                token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
+            }
+
+            if (Session["LineTran"].ToString() != "")
+            {
+                SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
+                serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
+                Session["LineTran"] = "";
+            }
         }
 
     }
