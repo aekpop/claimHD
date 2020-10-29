@@ -40,7 +40,7 @@ namespace ClaimProject
                 Session["BackWhat"] = "Send";
                 function.getListItem(ddlsearchEndToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                 function.getListItem(ddlsearchType, "SELECT * FROM tbl_transfer_status Order by trans_stat_id ASC ", "trans_stat_name", "trans_stat_id");
-                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '4' AND complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");
+                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");
                 ddlsearchEndToll.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.SelectedItem.Value = Session["ddlsearchType"].ToString();
@@ -443,13 +443,13 @@ namespace ClaimProject
             if (Session["TranRepId"].ToString() != "")
             {
                 int i = 0;
-                string startDate = "";
+                string startDate = txtDate.Text;
+                string noteNumber = txtNumto.Text;
                 string transStat = "";
                 string cpointName = "";
                 string doc_num = "";
                 string title = "";
                 string noteTo = "";
-                //string cpointDate = "";
                 string name = "";
                 string cpoint_title = "";
                 string dev = "";
@@ -461,13 +461,10 @@ namespace ClaimProject
                 MySqlDataReader rs = function.MySqlSelect(sql);
                 if(rs.Read())
                 {
-                    startDate = rs.GetString("date_send");
                     transStat = rs.GetString("trans_stat_name");
                     cpointName = rs.GetString("Cpoint_name");
                     cpoint_manager = rs.GetString("cpoint_manager");
                     //doc_num = rs.GetString("");
-                    //noteNumber = rs.GetString("");
-                    //title = rs.GetString("");
                     noteTo = rs.GetString("cpoint_control");
                 }
                 rs.Close();
@@ -489,18 +486,8 @@ namespace ClaimProject
                 title = "ขอ" + transStat + " รายการครุภัณฑ์";
                       
                 rpt.SetParameterValue("note_title", title);
-                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));
-
-                string noteNumber = txtNumto.Text;
-                if (noteNumber != "")
-                {
-                    rpt.SetParameterValue("num_title", noteNumber);
-                }
-                else
-                {
-                    noteNumber = "-";
-                }
-                
+                rpt.SetParameterValue("num_title", noteNumber);
+                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));                
 
                 i = 1;
                 rs = function.MySqlSelect(sql_list);

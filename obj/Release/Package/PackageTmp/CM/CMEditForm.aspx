@@ -176,8 +176,7 @@
                                 <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control time" />
                             </div>
                         </div>
-                    </div>
-                    <div class="row" >
+                    
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">หมายเหตุ</label>
@@ -186,20 +185,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg">
+                        <div class="col-lg col-xl">
+                            <asp:CheckBox id="ckeNoservice" runat="server" AutoPostBack="false" OnCheckedChanged="ckeNoservice_CheckedChanged"/>
+                            <label class="label-on-left">ติ๊กเลือกกรณีหายเอง หรือจ.คอมฯ แก้ไขเอง และไม่ต้องแนบรูปภาพใบ Service</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-10">
                             <br />
                             <label class="bmd-label-floating">แนบภาพแก้ไข (ขนาดไม่เกิน 4mb)</label>
                             <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg">
+                        <div class="col-lg-10 col-xl-10">
                             <br />
                             <label class="bmd-label-floating">แนบใบService (ขนาดไม่เกิน 4mb)</label>
                             <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" />
                         </div>
+
+                        
                     </div>
-                    <label class="bmd-label-floating" style="font-size:12px;">รองรับรูปภาพนามสกุล .jpg, .JPEG และ.PNG เท่านั้น</label>
+                    <label style="font-size:12px;">รองรับรูปภาพนามสกุล .jpg, .JPEG และ.PNG เท่านั้น</label>
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="btnUpdateCM" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateCM_Command" OnClientClick="return CompareConfirm('ยืนยันบันทึกข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>

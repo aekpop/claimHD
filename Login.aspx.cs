@@ -1,7 +1,9 @@
 ﻿using ClaimProject.Config;
 using MySql.Data.MySqlClient;
 using System;
+using System.IO;
 using System.Net;
+using System.Text;
 using System.Web;
 
 namespace ClaimProject
@@ -9,6 +11,8 @@ namespace ClaimProject
     public partial class Login : System.Web.UI.Page
     {
         ClaimFunction function = new ClaimFunction();
+        private string IPAddress;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -28,6 +32,11 @@ namespace ClaimProject
 
         protected void btnSubmit_Click1(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+            string filePath = "D:/equip/Log/";
+            string TimeNoww = DateTime.Now.ToString("HH:mm");
+            string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+            string IPAddress = GetIPAddress();
             string mess = "";
             if (txtUser.Text.Trim() == "")
             {
@@ -160,7 +169,10 @@ namespace ClaimProject
                         newCookie.Expires = DateTime.Now.AddSeconds(30);
                         Response.Cookies.Add(newCookie);
                         //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language = 'javascript'>alert('dd')</script>");
-                        if(Session["UserPrivilegeId"].ToString() == "5" )
+
+                        sb.Append("\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " Cp:" + cpoint + " p:" + point + " IP:" + IPAddress +" Login Success");
+                        
+                        if (Session["UserPrivilegeId"].ToString() == "5" )
                         {
                             Response.Redirect("/equip/EquipDefault");
                         }
@@ -172,13 +184,20 @@ namespace ClaimProject
                     }
                     else
                     {
+                        sb.Append("\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login Failure");
                         mess += "- Username หรือ Password ไม่ถูกต้อง";
                     }
                 }
                 else
                 {
+                    sb.Append("\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login Failure");
                     mess += "- Username หรือ Password ไม่ถูกต้อง";
                 }
+
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath + "Login_log.txt", sb.ToString());
+                sb.Clear();
+
                 rs.Close();
                 function.Close();
             }
@@ -191,6 +210,8 @@ namespace ClaimProject
             {
                 msgBox.Text = "";
             }
+
+            
 
         }
 
@@ -219,6 +240,24 @@ namespace ClaimProject
             {
 
             }
+        }
+
+        
+
+        public string GetIPAddress()
+        {
+            IPHostEntry Host = default(IPHostEntry);
+            string Hostname = null;
+            Hostname = System.Environment.MachineName;
+            Host = Dns.GetHostEntry(Hostname);
+            foreach (IPAddress IP in Host.AddressList)
+            {
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    IPAddress = Convert.ToString(IP);
+                }
+            }
+            return IPAddress;
         }
     }
 }

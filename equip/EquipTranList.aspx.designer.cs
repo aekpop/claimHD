@@ -175,6 +175,15 @@ namespace ClaimProject {
         protected global::System.Web.UI.WebControls.TextBox txtNumto;
         
         /// <summary>
+        /// txtDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        
+        /// <summary>
         /// lbtnGoReport control.
         /// </summary>
         /// <remarks>

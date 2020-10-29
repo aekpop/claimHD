@@ -140,15 +140,14 @@
         <div class="modal-dialog modal modal-dialog-centered " style=" max-height:85%;  margin-top: 50px; margin-bottom:50px;width:500px" role="form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">กรุณากรอกข้อมูล</h4>
+                    <div class="modal-title">#</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" style="line-height: inherit;">
-
+                    <div class="">กรอกรายละเอียด ใบส่งของ</div>
                     <div class="row" style="height: 90px">
-                        
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ชื่อผู้ส่ง :</label>
@@ -162,11 +161,15 @@
                             </div>
                         </div>
                         </div>
+                    <hr />
+                    <div class="">กรอกรายละเอียด ใบปะหน้า</div>
                     <div class="row">
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เลขที่หนังสือ :</label>
-                                <asp:TextBox ID="txtNumto"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                <asp:TextBox ID="txtNumto"  runat="server" Font-Size="Medium" CssClass="form-control " onkeypress="return handleEnter(this, event)"/>
+                                <label class="bmd-label-floating">วันที่หนังสือ :</label>
+                                <asp:TextBox ID="txtDate"  runat="server" Font-Size="Medium" CssClass="form-control " onkeypress="return handleEnter(this, event)" ToolTip="รูปแบบตัวอย่าง : 01-05-2563"/>
                             </div>
                         </div>
                         
@@ -225,7 +228,7 @@
         var submit = 0;
         function CheckIsRepeat() {
             if (++submit > 1) {
-                alert('ห้ามกดดับเบิ้ลคลิก ... กรุณากด ตกลง เพื่อทำรายการต่อไป');
+                alert('ระบบกำลังประมวลผล ... กรุณากด "ตกลง" เพื่อทำรายการต่อไป');
                 return false;
             }
         }

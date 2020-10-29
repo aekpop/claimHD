@@ -14,7 +14,7 @@
         <!--<h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>-->
 
     <div class="row">
-        <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
+        <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="boxUserSystem">
             <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                     
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="Div4">
+        <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="Div4">
             <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="Div1">
+        <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="Div1">
             <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="Div7">
+        <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="Div7">
             <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">

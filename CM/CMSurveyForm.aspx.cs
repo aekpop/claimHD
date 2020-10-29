@@ -175,9 +175,16 @@ namespace ClaimProject.CM
             MySqlDataReader rt = function.MySqlSelect(sqlEdit);
             if(rt.Read())
             {
+                if(!rt.IsDBNull(22))
+                {
+                    imgSer = rt.GetString("cm_detail_Service_img");
+                }
+                else
+                {
+                    imgSer = " ";
+                }
                 imgS = rt.GetString("cm_detail_simg");
                 imgE = rt.GetString("cm_detail_eimg");
-                imgSer = rt.GetString("cm_detail_Service_img");
                 ImgEditEQ.ImageUrl = "~" + imgS;
                 ImgEditEQE.ImageUrl = "~" + imgE;
                 ImgImageDocSer.ImageUrl = "~" + imgSer;

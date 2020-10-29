@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 using System.IO;
+using System.Text;
 
 namespace ClaimProject.equip
 {
@@ -1012,8 +1013,15 @@ namespace ClaimProject.equip
                                 " locate_id='" + ddlEditLocate.SelectedValue + "', equip_comment='" + txtEditNote.Text + "'," +
                                 " person_name='" + txtEditPerson.Text + "', equipment_unit = '" + txtEditcUnit.Text + "', " +
                                 " user_update = '" + Session["User"].ToString() +"',time_update='"+TimeNoww+"',date_update='"+DateNoww+"' ";
-            
-            if(picResult == "typeError")
+            string filePath = "D:/equip/Log/";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("\nU "+DateNoww +" "+ TimeNoww +" User:"+ Session["User"].ToString()+" No." + txtEditNo.Text +" Toll:" + ddlEditCpoint.SelectedValue + " Locate:"+ ddlEditLocate.SelectedValue + " Estatus:" + ddlEditStat.SelectedValue);
+
+            // flush every 20 seconds as you do it
+            File.AppendAllText(filePath + "log.txt", sb.ToString());
+            sb.Clear();
+
+            if (picResult == "typeError")
             {
                 ResultPop("แนบรูปภาพล้มเหลว!! ไฟล์ภาพต้องเป็น *.jpg *.jpeg *.png เท่านั้น", "error");
             }

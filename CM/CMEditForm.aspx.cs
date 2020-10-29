@@ -203,9 +203,11 @@ namespace ClaimProject.CM
                 {
                     String NewFileDocName = "";
                     String NewFileDocNameService = "";
+                    string sqlDocService = "";
                     if (txtMethod.Text != "")
                     {
-                        if (fileImg.HasFile  && fileDocService.HasFile)
+                        
+                        if (fileImg.HasFile  || fileDocService.HasFile)
                         {
                             string typeFile = fileImg.FileName.Split('.')[fileImg.FileName.Split('.').Length - 1];
                             string typeFileDoc = fileDocService.FileName.Split('.')[fileDocService.FileName.Split('.').Length - 1];
@@ -219,19 +221,25 @@ namespace ClaimProject.CM
                                 NewFileDocNameService = "/CM/Upload/" + function.getMd5Hash(NewFileDocNameService) + "." + typeFile;
                                 fileDocService.SaveAs(Server.MapPath(NewFileDocNameService.ToString()));
 
+                                if (ckeNoservice.Checked)
+                                {
+                                    sqlDocService = " ";
+                                }
+                                else
+                                {
+                                    sqlDocService = " ,cm_detail_Service_img = '" + NewFileDocNameService + "' ";
+                                }
 
                                 string sql = "UPDATE tbl_cm_detail SET cm_detail_edate = '" + txtEDate.Text + "', " +
                                     "cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', " +
                                     "cm_detail_status_id = '1',cm_detail_eimg = '" + NewFileDocName + "',cm_detail_method = '" + txtMethod.Text + "', " +
-                                    "cm_detail_ejdate = '"+ txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '"+ txtEJTime.Text.Trim() + "' , cm_user_endjob = '"+ Session["UserName"].ToString() + "', " +
-                                    "cm_detail_Service_img = '"+ NewFileDocNameService + "' " +
+                                    "cm_detail_ejdate = '"+ txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '"+ txtEJTime.Text.Trim() + "' , cm_user_endjob = '"+ Session["UserName"].ToString() + "' " + sqlDocService + " "+
                                     "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
 
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                                    Session["LineTran"] = "ระบบได้รับข้อมูลแก้ไข จากด่านฯ " + Label5.Text + " " + Label2.Text + "วันที่ " + txtEDate + " เวลา " + txtETime + " น. \n แก้ไขอุปกรณ์ : " + Label3 + " มีอาการชำรุด : " + Label4 + "แก้ไขโดย "+ txtMethod + " " +
-                                    " เรียบร้อยแล้ว \n ขอให้เจ้าหน้าที่ @Helpdesk งานเทคโนฯ เข้าตรวจสอบข้อมูลในระบบเพื่อความถูกต้องด้วย ";
+                                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งอุปกรณ์ใช้งานได้ปกติจากด่านฯ " + Label5.Text + " " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text +" ";
                                     LineTran();
                                     BindData();
                                 }
@@ -334,5 +342,9 @@ namespace ClaimProject.CM
             }
         }
 
+        protected void ckeNoservice_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -181,8 +181,7 @@ namespace ClaimProject.CM
                 if(function.MySqlQuery(sql_insert))
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งซ่อม จากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "วันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \n อุปกรณ์ : " + txtDeviceAdd.SelectedItem + " มีอาการชำรุด : " + txtProblem.Text + " " +
-                        " เรียบร้อยแล้ว \n ขอให้เจ้าหน้าที่ @Helpdesk งานเทคโนฯ เข้าตรวจสอบข้อมูลในระบบเพื่อความถูกต้องด้วย ";
+                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งซ่อมจากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + " วันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " มีอาการชำรุด : " + txtProblem.Text + " ";
                     LineTran();
                     BindData();
                     ClearDate();
