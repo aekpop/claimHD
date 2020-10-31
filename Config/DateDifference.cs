@@ -9,6 +9,8 @@ namespace ClaimProject.Config
         private int _Year = 0;
         private int _Month = 0;
         private int _Day = 0;
+        private int _Hour = 0;
+        private int _Minute = 0;
 
         public int Year
         {
@@ -24,6 +26,16 @@ namespace ClaimProject.Config
         {
             get { return _Day; }
             set { _Day = value; }
+        }
+        public int Hour
+        {
+            get { return _Hour; }
+            set { _Hour = value; }
+        }
+        public int Minute
+        {
+            get { return _Minute; }
+            set { _Minute = value; }
         }
         public DateTime FromDate
         {
@@ -76,12 +88,14 @@ namespace ClaimProject.Config
             TimeSpan ts = _ToDate - _FromDate;
             DateTime Age = DateTime.MinValue.AddDays(ts.Days);
 
+            this.Minute = Age.Minute ;
+            this.Hour = Age.Hour ;
             this.Day = Age.Day-1;
             this.Month = Age.Month-1;
             this.Year = Age.Year-1;
         }
 
-        public string ToString(string argYearUnit, string argMonthUnit, string argDayUnit)
+        public string ToString(string argYearUnit, string argMonthUnit, string argDayUnit, string argHourUnit, string argMinuteUnit)
         {
             string retStr = string.Empty;
             if (this.Year > 0)
@@ -90,12 +104,16 @@ namespace ClaimProject.Config
                 retStr = retStr + string.Format("{0} {1} ", this.Month.ToString("#,##0"), argMonthUnit);
             if (this.Day > 0)
                 retStr = retStr + string.Format("{0} {1} ", this.Day.ToString("#,##0"), argDayUnit);
+            if (this.Hour > 0)
+                retStr = retStr + string.Format("{0} {1} ", this.Hour.ToString("#,##0"), argHourUnit);
+            if (this.Minute > 0)
+                retStr = retStr + string.Format("{0} {1} ", this.Minute.ToString("#,##0"), argMinuteUnit);
             return retStr.Trim();
         }
 
         public override string ToString()
         {
-            return this.ToString(" ปี ", " เดือน ", " วัน");
+            return this.ToString(" ปี ", " เดือน ", " วัน " , " ชั่วโมง ", " นาที");
         }
     }
 }

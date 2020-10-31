@@ -112,10 +112,10 @@ namespace ClaimProject.Claim
                                      "JOIN tbl_device v ON v.device_id = d.device_id JOIN tbl_status s ON cl.claim_status = s.status_id " +
                     " WHERE cl.claim_status BETWEEN 1 AND 4 AND cp.cpoint_id = '" + cpointt + "'  AND d.device_damaged_delete = '0' " +
                     " ORDER BY STR_TO_DATE(cl.claim_start_date, '%d-%m-%Y') DESC";
-                    string sql = "SELECT * FROM tbl_claim cl JOIN  tbl_cpoint cp ON cl.claim_cpoint = cp.cpoint_id " +
+                    string sql = "SELECT claim_start_date,claim_detail_time,claim_detail_cb_claim,device_name,device_damaged,status_name FROM tbl_claim cl JOIN  tbl_cpoint cp ON cl.claim_cpoint = cp.cpoint_id " +
                                      "JOIN tbl_device_damaged d ON d.claim_id = cl.claim_id JOIN tbl_claim_com t ON cl.claim_id = t.claim_id " +
                                      "JOIN tbl_device v ON v.device_id = d.device_id JOIN tbl_status s ON cl.claim_status = s.status_id " +
-                    " WHERE cl.claim_status BETWEEN 1 AND 4 AND cp.cpoint_id = '" + cpointt + "' AND d.device_damaged_delete = '0' " +
+                    " WHERE cl.claim_status BETWEEN 1 AND 4 AND cp.cpoint_id = '" + cpointt + "' AND d.device_damaged_delete = '0' AND cl.claim_delete = '0' " +
                     " ORDER BY STR_TO_DATE(cl.claim_start_date, '%d-%m-%Y') DESC";
                     MySqlDataReader chKNN = function.MySqlSelect(sqlchNN);
                     if (chKNN.Read())

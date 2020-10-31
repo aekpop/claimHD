@@ -1,7 +1,9 @@
 ﻿using ClaimProject.Config;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -82,12 +84,23 @@ namespace ClaimProject
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+            string filePath = "D:/equip/Log/Login_log";
+            string IPAddress = ClaimFunction.GetIP();
+            string TimeNoww = DateTime.Now.ToString("HH:mm");
+            string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Logout_Success");
+            File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+            sb.Clear();
+
             Session.Abandon();
             Session.Clear();
             Session.Contents.RemoveAll();
             Session.RemoveAll();
             Response.Cookies["ClaimLogin"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/");
+
+            
         }
 
         protected void txtUrlchk_TextChanged(object sender, EventArgs e)

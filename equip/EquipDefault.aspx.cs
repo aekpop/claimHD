@@ -259,8 +259,8 @@ namespace ClaimProject.equip
 
             }
 
-            string seeto = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat BETWEEN '1' AND '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
-            string seetot = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE user_send ='" + Session["UserName"].ToString() + "' ";
+            string seeto = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat BETWEEN '2' AND '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string seetot = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat BETWEEN '2' AND '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader seert = function.MySqlSelect(seeto);
             if (seert.Read())
             {
@@ -291,7 +291,7 @@ namespace ClaimProject.equip
 
             }
 
-            loadChart();
+            //loadChart();
 
         }
         protected void loadChart ()

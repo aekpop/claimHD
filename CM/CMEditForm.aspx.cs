@@ -239,7 +239,7 @@ namespace ClaimProject.CM
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งอุปกรณ์ใช้งานได้ปกติจากด่านฯ " + Label5.Text + " " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text +" ";
+                                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งอุปกรณ์ใช้งานได้ปกติจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text +" ";
                                     LineTran();
                                     BindData();
                                 }

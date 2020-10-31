@@ -169,7 +169,7 @@
                                     <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField  HeaderText="นับเวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" Visible="false">
+                            <asp:TemplateField HeaderText="นับเวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbDay" runat="server"></asp:Label>
                                 </ItemTemplate>

@@ -1013,12 +1013,12 @@ namespace ClaimProject.equip
                                 " locate_id='" + ddlEditLocate.SelectedValue + "', equip_comment='" + txtEditNote.Text + "'," +
                                 " person_name='" + txtEditPerson.Text + "', equipment_unit = '" + txtEditcUnit.Text + "', " +
                                 " user_update = '" + Session["User"].ToString() +"',time_update='"+TimeNoww+"',date_update='"+DateNoww+"' ";
-            string filePath = "D:/equip/Log/";
+            string filePath = "D:/equip/Log/EqUpdate_log";
             StringBuilder sb = new StringBuilder();
-            sb.Append("\nU "+DateNoww +" "+ TimeNoww +" User:"+ Session["User"].ToString()+" No." + txtEditNo.Text +" Toll:" + ddlEditCpoint.SelectedValue + " Locate:"+ ddlEditLocate.SelectedValue + " Estatus:" + ddlEditStat.SelectedValue);
+            sb.Append("\r\n" + DateNoww +" "+ TimeNoww +" User:"+ Session["User"].ToString()+" No." + txtEditNo.Text +" Toll:" + ddlEditCpoint.SelectedValue + " Locate:"+ ddlEditLocate.SelectedValue + " Estatus:" + ddlEditStat.SelectedValue +" Update_Success");
 
             // flush every 20 seconds as you do it
-            File.AppendAllText(filePath + "log.txt", sb.ToString());
+            File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
             sb.Clear();
 
             if (picResult == "typeError")

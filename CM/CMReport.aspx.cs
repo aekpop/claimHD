@@ -434,46 +434,57 @@ namespace ClaimProject.CM
                 }
             }
 
-            Label lbDay = (Label)(e.Row.FindControl("lbDay"));
-            if (lbDay != null)
+            if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
             {
-                string[] data = DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate").ToString().Split('-');
-                string[] times = DataBinder.Eval(e.Row.DataItem, "cm_detail_stime").ToString().Split('.',':');
-                DateTime dateStart = DateTime.ParseExact(data[0] + "-" + data[1] + "-" + (int.Parse(data[2]) - 543) +" "+ times[0] + ":" + times[1], "dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture);              
-                DateDifference differnce = new DateDifference(dateStart);
-
-                
-
-                if (lbStatus.Text != "ใช้งานได้ปกติ")
+                Label lbDay = (Label)(e.Row.FindControl("lbDay"));
+                if (lbDay != null)
                 {
-                    if (differnce.ToString() == "")
+                    string[] data = DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate").ToString().Split('-');
+                    string[] times = DataBinder.Eval(e.Row.DataItem, "cm_detail_stime").ToString().Split('.', ':');
+                    DateTime dateStart = DateTime.ParseExact(data[0] + "-" + data[1] + "-" + (int.Parse(data[2]) - 543) + " " + times[0] + ":" + times[1], "dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture);
+                    DateDifference differnce = new DateDifference(dateStart);
+
+
+
+                    if (lbStatus.Text != "ใช้งานได้ปกติ")
                     {
-                        lbDay.CssClass = "badge badge-danger";
-                        lbDay.Text = "NEW!!";
-                    }
-                    else
-                    {
-                        if (differnce.Month > 1)
+                        if (differnce.ToString() == "")
                         {
-                            lbDay.Text = differnce.ToString();
-                            lbDay.ForeColor = System.Drawing.Color.Red;
+                            lbDay.CssClass = "badge badge-danger";
+                            lbDay.Text = "NEW!!";
                         }
                         else
                         {
-                            lbDay.Text = differnce.ToString();
-                        }
+                            if (differnce.Month > 1)
+                            {
+                                lbDay.Text = differnce.ToString();
+                                lbDay.ForeColor = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                lbDay.Text = differnce.ToString();
+                            }
 
+                        }
+                    }
+                    else
+                    {
+                        //ยังไม่สำเร็จ
+                        string[] dateE = DataBinder.Eval(e.Row.DataItem, "cm_detail_edate").ToString().Split('-');
+                        string[] timeE = DataBinder.Eval(e.Row.DataItem, "cm_detail_etime").ToString().Split('.', ':');
+                        DateTime dateEnd = DateTime.ParseExact(dateE[0] + "-" + dateE[1] + "-" + (int.Parse(dateE[2]) - 543) + " " + times[0] + ":" + times[1], "dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture);
+                        DateDifference diffComp = new DateDifference(dateStart, dateEnd);
+                        lbDay.Text = diffComp.ToString();
+                        lbDay.ForeColor = System.Drawing.Color.Green;
                     }
                 }
-                else
+            }
+            else
+            {
+                Label lbDay = (Label)(e.Row.FindControl("lbDay"));
+                if (lbDay != null)
                 {
-                    //ยังไม่สำเร็จ
-                    string[] dateE = DataBinder.Eval(e.Row.DataItem, "cm_detail_edate").ToString().Split('-');
-                    string[] timeE = DataBinder.Eval(e.Row.DataItem, "cm_detail_etime").ToString().Split('.', ':');
-                    DateTime dateEnd = DateTime.ParseExact(dateE[0] + "-" + dateE[1] + "-" + (int.Parse(dateE[2]) - 543) + " " + times[0] + ":" + times[1], "dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture);
-                    DateDifference diffComp = new DateDifference(dateStart,dateEnd);
-                    lbDay.Text = diffComp.ToString();
-                    lbDay.ForeColor = System.Drawing.Color.Green;
+                    lbDay.Text = "-";
                 }
             }
 

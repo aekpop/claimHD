@@ -33,18 +33,26 @@ namespace ClaimProject
         protected void btnSubmit_Click1(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            string filePath = "D:/equip/Log/";
+            string filePath = "D:/equip/Log/Login_log";
             string TimeNoww = DateTime.Now.ToString("HH:mm");
             string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
-            string IPAddress = GetIPAddress();
+            string IPAddress = GetIP();
             string mess = "";
             if (txtUser.Text.Trim() == "")
             {
+                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " IP:" + IPAddress + " Login_Failure");
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath +  "_" + DateNoww + ".txt" , sb.ToString());
+                sb.Clear();
                 mess += "- กรุณาป้อน Username<br/>";
             }
 
             if (txtPass.Text.Trim() == "")
             {
+                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login_Failure");
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                sb.Clear();
                 mess += "- กรุณาป้อน Password<br/>";
             }
 
@@ -170,8 +178,11 @@ namespace ClaimProject
                         Response.Cookies.Add(newCookie);
                         //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language = 'javascript'>alert('dd')</script>");
 
-                        sb.Append("\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " Cp:" + cpoint + " p:" + point + " IP:" + IPAddress +" Login Success");
-                        
+                        sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " Cp:" + cpoint + " p:" + point + " IP:" + IPAddress +" Login_Success");
+                        // flush every 20 seconds as you do it
+                        File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                        sb.Clear();
+
                         if (Session["UserPrivilegeId"].ToString() == "5" )
                         {
                             Response.Redirect("/equip/EquipDefault");
@@ -184,23 +195,26 @@ namespace ClaimProject
                     }
                     else
                     {
-                        sb.Append("\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login Failure");
+                        sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login_Failure");
+                        // flush every 20 seconds as you do it
+                        File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                        sb.Clear();
                         mess += "- Username หรือ Password ไม่ถูกต้อง";
                     }
                 }
                 else
                 {
-                    sb.Append("\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login Failure");
+                    sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + txtUser.Text.Trim() + " IP:" + IPAddress + " Login_Failure");
+                    // flush every 20 seconds as you do it
+                    File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                    sb.Clear();
                     mess += "- Username หรือ Password ไม่ถูกต้อง";
                 }
-
-                // flush every 20 seconds as you do it
-                File.AppendAllText(filePath + "Login_log.txt", sb.ToString());
-                sb.Clear();
 
                 rs.Close();
                 function.Close();
             }
+            
 
             if (mess != "")
             {
@@ -258,6 +272,19 @@ namespace ClaimProject
                 }
             }
             return IPAddress;
+        }
+
+        public static String GetIP()
+        {
+            String ip =
+                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (string.IsNullOrEmpty(ip))
+            {
+                ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            }
+
+            return ip;
         }
     }
 }

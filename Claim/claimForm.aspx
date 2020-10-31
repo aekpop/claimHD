@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="งานอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="claimForm.aspx.cs" Inherits="ClaimProject.Claim.claimForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
+
     <div class="row">
         <div class="col-md">
             <asp:LinkButton ID="btnAddClaim" runat="server" CssClass="btn btn-info btn-sm fa" Font-Size="Medium" OnClick="btnAddClaim_Click">&#xf0a2; แจ้งอุบัติเหตุ</asp:LinkButton>
@@ -115,7 +116,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
-                            <asp:Label ID="lbStatus" Font-Size="16px" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
+                            <asp:Label ID="lbStatus" Font-Size="12px" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:DropDownList ID="txtStatusEdit" runat="server" CssClass="form-control"></asp:DropDownList>
@@ -355,6 +356,11 @@
             $("#NoteModal").modal('show');
 
         }
+
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
+
     </script>
 
 </asp:Content>

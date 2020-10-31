@@ -7,6 +7,7 @@ using System.Net;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -666,6 +667,17 @@ namespace ClaimProject.Config
             public int cm_detail_driver_id { get; set; }
         }
 
+        public static String GetIP()
+        {
+            String ip =
+                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
+            if (string.IsNullOrEmpty(ip))
+            {
+                ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            }
+
+            return ip;
+        }
     }  
 }
