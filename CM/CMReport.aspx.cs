@@ -54,6 +54,7 @@ namespace ClaimProject.CM
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+                    
                 }
                 else
                 {
@@ -564,6 +565,11 @@ namespace ClaimProject.CM
 
         protected void lbDeviceName_Command(object sender, CommandEventArgs e)
         {
+            if(function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
+            {
+                lbtechno.Visible = true;
+            }
+            
             string imgS = "/CM/Upload/NoImageAvailable.jpg";
             string imgE = "/CM/Upload/NoImageAvailable.jpg";
             string imgSer = "/CM/Upload/NoImageAvailable.jpg";

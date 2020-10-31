@@ -274,26 +274,32 @@
                                     </div>
                                 </div>
 
+                                
+                                    <asp:Label ID="lbtechno" runat="server" Visible="false">
+                                        <div class="row" >
+                                            <div class="col-xl">
+                                                <div class="form-group bmd-form-group">       
+                                                    <span class = "label label-primary">วันที่แจ้ง : </span>
+                                                    <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server"   />
+                                                </div>
+                                            </div>
+                                            <div class="col-xl">
+                                                <div class="form-group bmd-form-group">
+                                                    <span class = "label label-primary">เวลา : </span>
+                                                    <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server"   />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </asp:Label>
+                                
                                 <div class="row" >
-                                    <div class="col-lg">
-                                        <div class="form-group bmd-form-group">       
-                                            <span class = "label label-primary">วันที่แจ้ง : </span>
-                                            <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server"   />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg">
+                                    <div class="col-xl">
                                         <div class="form-group bmd-form-group">
-                                            <span class = "label label-primary">เวลา : </span>
-                                            <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server"   />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg">
-                                        <div class="form-group bmd-form-group">
-                                            <span class = "label label-primary">วันที่เข้า :</span>
+                                            <span class = "label label-primary">วันที่เข้าแก้ไข :</span>
                                             <asp:Label ID="lbDateERecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
-                                    <div class="col-lg">
+                                    <div class="col-xl">
                                         <div class="form-group bmd-form-group">
                                             <span class = "label label-primary">เวลา :</span>
                                             <asp:Label ID="lbTimeERecheck" Enabled="false" runat="server"   />
@@ -310,11 +316,11 @@
                                     </div>
                                     <div class="col-xl">
                                         <div class="form-group bmd-form-group">
-                                            <span class = "label label-primary">เวลาแก้ไขเสร็จ : </span>
+                                            <span class = "label label-primary">เวลา : </span>
                                             <asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server"   />
                                         </div>
                                     </div>
-                                    </div>
+                                </div>
 
                                     <div class="row">
                                         <div class="col-xl">
