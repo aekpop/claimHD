@@ -151,6 +151,7 @@ namespace ClaimProject.CM
             
 
             int i = 0;
+            i = Nowmonth;
             string now = Nowday + "-" + Nowmonth.ToString() + "-" + Nowyear.ToString();
             string MonthFullList = "ตุลาคม-มกราคม-กุมภาพันธ์-มีนาคม-เมษายน-พฤษภาคม-มิถุนายน-กรกฎาคม-สิงหาคม-กันยายน-ตุลาคม-พฤศจิกายน-ธันวาคม";
             string[] MonthList = MonthFullList.Split('-');

@@ -104,6 +104,7 @@ namespace ClaimProject.Claim
             }
 
             int i = 0;
+            i = Nowmonth;
             string MonthFullList = "ตุลาคม-มกราคม-กุมภาพันธ์-มีนาคม-เมษายน-พฤษภาคม-มิถุนายน-กรกฎาคม-สิงหาคม-กันยายน-ตุลาคม-พฤศจิกายน-ธันวาคม";
             string[] MonthList = MonthFullList.Split('-');
 
