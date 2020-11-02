@@ -237,7 +237,7 @@
        <div class="row">
            <div class="col-xl-4 col-md">
                   <div class="card border-left-warning shadow h-80 py-2">
-                      <div class="card-header" style="font-size:small" >อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำด่านฯ</div>
+                      <div class="card-header" style="font-size:small" >อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก</div>
                       <div class="card-body">
                           <div class="card-body table-responsive table-sm" >
                          <asp:Panel ID="Panel1" runat="server" >
@@ -274,28 +274,66 @@
 
            <div class="col-xl-4 col-md">
                   <div class="card border-left-warning shadow h-80 py-2">
-                      <div class="card-header" style="font-size:small" >อุปกรณ์ค้างซ่อมล่าช้าที่สุด 5 อันดับแรก</div>
+                      <div class="card-header" style="font-size:small" >อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำเดือน
+                          <asp:Label ID="lbTop5CMMonthly" runat="server" ></asp:Label>
+                      </div>
                       <div class="card-body">
                           <div class="card-body table-responsive table-sm" >
                          <asp:Panel ID="Panel2" runat="server" >
-                             <asp:GridView id="GridView1" runat="server"
+                             <asp:GridView id="GridViewNoService" runat="server"
                                     CssClass="col table table-striped table-hover"
                                     HeaderStyle-BackColor="ActiveBorder"
-                                    HeaderStyle-Font-Size="18px"
-                                    OnRowDataBound="lsTodayGridview_RowDataBound" 
-                                    Font-Size="15px" 
+                                    HeaderStyle-Font-Size="14px"
+                                    OnRowDataBound="GridViewNoService_RowDataBound" 
+                                    Font-Size="12px" 
                                     CellPadding="4" 
                                     GridLines="None"
                                     AutoGenerateColumns="False">
                                     <Columns>
                                         <asp:TemplateField HeaderText="รายการ" >
                                             <ItemTemplate>
-                                                <asp:Label ID="lbDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' ></asp:Label>
+                                                <asp:Label ID="lbMonthDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' ></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="จำนวน" >
+                                        <asp:TemplateField HeaderText="ครั้ง" >
                                             <ItemTemplate>
-                                                <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.num") %>' ></asp:Label>
+                                                <asp:Label ID="lbMonthAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.num") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        
+                                     </Columns>
+                             </asp:GridView>
+                         </asp:Panel>
+                        </div>
+                      </div>
+                   </div>
+               </div>
+
+                <div class="col-xl-4 col-md">
+                  <div class="card border-left-warning shadow h-80 py-2">
+                      <div class="card-header" style="font-size:small" >อุปกรณ์ค้างซ่อมล่าช้า 5 อันดับแรก
+                      </div>
+                      <div class="card-body">
+                          <div class="card-body table-responsive table-sm" >
+                         <asp:Panel ID="Panel3" runat="server" >
+                             <asp:GridView id="GridViewNoFix" runat="server"
+                                    CssClass="col table table-striped table-hover"
+                                    HeaderStyle-BackColor="ActiveBorder"
+                                    HeaderStyle-Font-Size="14px"
+                                    OnRowDataBound="GridViewNoFix_RowDataBound" 
+                                    Font-Size="12px" 
+                                    CellPadding="4" 
+                                    GridLines="None"
+                                    AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="รายการ" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbnofixDevice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="วันที่" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbDaynoFix" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_sdate") %>' ></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         
@@ -310,6 +348,6 @@
        </div>
 
     <script src="/Scripts/bootstrap.bundle.js"></script>
-
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
 
 </asp:Content>

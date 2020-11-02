@@ -153,7 +153,7 @@ namespace ClaimProject.Claim
                     {
                         sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
                                 "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
-                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
+                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` LEFT JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
                                 " WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +                                
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
                     }
@@ -161,7 +161,7 @@ namespace ClaimProject.Claim
                     {
                         sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
                                 "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
-                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
+                                "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` LEFT JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
                                 " WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
                                 "AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + "  " +
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
@@ -175,7 +175,7 @@ namespace ClaimProject.Claim
                         sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
                                 "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
                                 "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
-                                "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
+                                "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' LEFT JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
                     }
                     else
@@ -183,7 +183,7 @@ namespace ClaimProject.Claim
                         sql = "SELECT * FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
                                 "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
                                 "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
-                                "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + " JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
+                                "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + " LEFT JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
                     }
                     
@@ -208,11 +208,6 @@ namespace ClaimProject.Claim
                 lbClaimSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "claim_start_date"));
             }
 
-            //Label lbTechnoNumdoc = (Label)(e.Row.FindControl("lbTechnoNumdoc"));
-            //if (lbTechnoNumdoc != null)
-            //{
-            //    lbTechnoNumdoc.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "techno_doc_date"));
-            //}
 
             Label lbDay = (Label)(e.Row.FindControl("lbDay"));
             if (lbDay != null)

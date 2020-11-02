@@ -493,14 +493,15 @@ namespace ClaimProject.CM
             if (lbDeviceName != null)
             {
                 lbDeviceName.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
-                lbDeviceName.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
-                lbDeviceName.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+                //lbDeviceName.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
+                //lbDeviceName.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
             }
 
             Label lbProblem = (Label)(e.Row.FindControl("lbProblem"));
             if(lbProblem != null)
             {
-                lbProblem.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "cm_detail_problem").ToString());
+                //lbProblem.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "cm_detail_problem").ToString());
+                //lbProblem.ToolTip = DataBinder.Eval(e.Row.DataItem, "cm_detail_problem").ToString();
             }
         }
 
@@ -521,7 +522,8 @@ namespace ClaimProject.CM
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            
+            GridView1.PageIndex = e.NewPageIndex;
+            BindData();
         }
 
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -639,6 +641,7 @@ namespace ClaimProject.CM
             lbUserRecheck.Text = rt.GetString("name");
             rt.Close();
         }
+
     }
 
 }

@@ -40,7 +40,7 @@
                    <div class="col-md-2">
                             <div class="form-group bmd-form-group">
                                 <p Class="bmd-label-floating ">อาคารย่อย :</p>
-                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"  MaxLength="1" Enabled="false" onkeypress="return handleEnter(this, event)"/>
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"  MaxLength="1" Enabled="false" ToolTip="กรณีไม่มีอาคารย่อย ให้เว้นว่าง" onkeypress="return handleEnter(this, event)"/>
                             </div>
                     </div>
                 
@@ -221,16 +221,12 @@
                             <asp:Button ID="btnEditCMM" runat="server"  CssClass="btn btn-success" Text="Confirm" OnCommand="btnEditCMM_Command"/>
                         </div>
                         </ContentTemplate>
-
-                    
-
                 </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
-
         </div>
-    
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -268,9 +264,12 @@
             else
             {
                 return true;
-            }
-		    
-	    }      
+            }  
+        }
+
+         $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
         
     </script>
 </asp:Content>

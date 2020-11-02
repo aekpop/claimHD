@@ -18,6 +18,8 @@ namespace ClaimProject.CM
         public string sqlcp = "";
         public string cpoint = "";
         public string point = "";
+        public string sqlmonth = "";
+        public string sqlnofix = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,6 +58,8 @@ namespace ClaimProject.CM
                 sqlcp = " ";
                 cpoint = " ";
                 point = " ";
+                sqlmonth = " WHERE cm_detail_sdate LIKE '%" + Nowmonth + "-" + Nowyear + "' ";
+                sqlnofix = " WHERE cm_detail_status_id = '0' ";
             }
             else
             {
@@ -66,6 +70,9 @@ namespace ClaimProject.CM
                 //Div2.Visible = false;
                 sqlcp = "AND cm_cpoint = " + Session["UserCpoint"] + " ";
                 cpoint = " WHERE cm_cpoint = " + Session["UserCpoint"] + " ";
+                sqlmonth = "AND cm_detail_sdate LIKE '%" + Nowmonth + "-" + Nowyear + "' ";
+                sqlnofix = " AND cm_detail_status_id = '0' ";
+
                 if (Session["UserCpoint"].ToString() == "703" || Session["UserCpoint"].ToString() == "704" || Session["UserCpoint"].ToString() == "706" || Session["UserCpoint"].ToString() == "707" || Session["UserCpoint"].ToString() == "708" || Session["UserCpoint"].ToString() == "709")
                 {
                     point = " AND cm_point = " + Session["Userpoint"] + " ";
@@ -195,6 +202,7 @@ namespace ClaimProject.CM
 
             //แสดงเดือน ปี
             lbCMNameMonthly.Text = MonthList[i];
+            lbTop5CMMonthly.Text = MonthList[i];
             string lbBudget = Nowbudget.ToString();
             lbCMNameBudget.Text = lbBudget;
 
@@ -408,6 +416,8 @@ namespace ClaimProject.CM
             if (lbDevice != null)
             {
                 lbDevice.Text = (string)DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+                lbDevice.Text = function.ShortText(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
+                lbDevice.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
             }
 
             Label lbAmount = (Label)(e.Row.FindControl("lbAmount"));
@@ -430,6 +440,57 @@ namespace ClaimProject.CM
             lsTodayGridview.DataSource = ds.Tables[0];
             lsTodayGridview.DataBind();
             function.Close();
+
+            string sqlTopMoTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
+                " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
+                " " + cpoint + " " + sqlmonth + "  GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+
+            MySqlDataAdapter dA = function.MySqlSelectDataSet(sqlTopMoTotal);
+            System.Data.DataSet dS = new System.Data.DataSet();
+            dA.Fill(dS);
+            GridViewNoService.DataSource = dS.Tables[0];
+            GridViewNoService.DataBind();
+            function.Close();
+
+            string sqlNofix = "SELECT device_name,cm_detail_sdate,locate_name  " +
+                " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id JOIN tbl_location l ON c.cm_detail_channel = l.locate_id " +
+                " " + cpoint + " "+ sqlnofix + " ORDER BY STR_TO_DATE(cm_detail_sdate,'%d-%m-%Y') ASC LIMIT 5 ";
+
+            MySqlDataAdapter DA = function.MySqlSelectDataSet(sqlNofix);
+            System.Data.DataSet DS = new System.Data.DataSet();
+            DA.Fill(DS);
+            GridViewNoFix.DataSource = DS.Tables[0];
+            GridViewNoFix.DataBind();
+            function.Close();
+        }
+
+        protected void GridViewNoService_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lbMonthDevice = (Label)(e.Row.FindControl("lbDevice"));
+            if (lbMonthDevice != null)
+            {
+                lbMonthDevice.Text = (string)DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+                lbMonthDevice.Text = function.ShortText(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
+                lbMonthDevice.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+            }
+
+            Label lbMonthAmount = (Label)(e.Row.FindControl("lbAmount"));
+            if (lbMonthAmount != null)
+            {
+                lbMonthAmount.Text = (string)DataBinder.Eval(e.Row.DataItem, "num").ToString();
+            }
+        }
+
+        protected void GridViewNoFix_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lbnofixDevice = (Label)(e.Row.FindControl("lbnofixDevice"));
+            if (lbnofixDevice != null)
+            {
+                lbnofixDevice.Text = (string)DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+                lbnofixDevice.Text = function.ShortText(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
+                string locate = DataBinder.Eval(e.Row.DataItem, "locate_name").ToString();
+                lbnofixDevice.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name" ).ToString() + " " + locate ;
+            }
         }
     }
 }

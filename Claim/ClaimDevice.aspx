@@ -114,7 +114,7 @@
                                 <asp:Label ID="lbClaimChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_detail_cb_claim") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="อุปกรณ์"  ControlStyle-Width="250px">
+                        <asp:TemplateField HeaderText="อุปกรณ์"  ControlStyle-Width="300px">
                             <ItemTemplate>
                                 <asp:Label ID="lbClaimDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                             </ItemTemplate>
