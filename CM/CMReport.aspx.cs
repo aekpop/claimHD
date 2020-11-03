@@ -571,6 +571,10 @@ namespace ClaimProject.CM
             {
                 lbtechno.Visible = true;
             }
+            else
+            {
+                lbtechno.Visible = true;
+            }
             
             string imgS = "/CM/Upload/NoImageAvailable.jpg";
             string imgE = "/CM/Upload/NoImageAvailable.jpg";
@@ -610,7 +614,15 @@ namespace ClaimProject.CM
                         lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime") + " น.";
                         lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
                         lbNodeRecheck.Text = rt.GetString("cm_detail_note");
-                        imgSer = rt.GetString("cm_detail_Service_img");
+                            if (!rt.IsDBNull(22))
+                            {
+                                imgSer = rt.GetString("cm_detail_Service_img");
+                            }
+                            else
+                            {
+                                imgSer = " ";
+                            }
+                    
                     }
                     else if(Chk == "2")
                     {

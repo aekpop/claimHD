@@ -14,6 +14,7 @@
     <script src="/Scripts/HRSProjectScript.js"></script>
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
     <script src="../Scripts/printThis.js"></script>
+    
     <!-- CSS only -->
     
     <!-- JS, Popper.js, and jQuery -->    
@@ -48,7 +49,7 @@
                                             <asp:Label ID="lbAnnex" runat="server" Text="อาคารย่อย"></asp:Label>
                                         </div>
                                         <div class=" col-md-1 ">
-                                            <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="ใส่หมายเลข" ToolTip="ถ้าไม่มี ให้เว้นว่าง"></asp:TextBox>
                                         </div>
                                         <div class="col-md-1 text-right">
                                             <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์ : "></asp:Label>
@@ -97,7 +98,7 @@
                                                       <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa" Font-Size="Medium" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
                                                 </div>
                                             <div class="col-xl-6 text-left">
-                                                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnExport_Click">&#xf1c3; Export To Excel</asp:LinkButton>
+                                                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" ToolTip="Export To Excel" OnClick="btnExport_Click">&#xf1c3; Export</asp:LinkButton>
                                                 </div>
                                         </div>
                         </div>
@@ -105,23 +106,25 @@
            </div>
    
                    <asp:Label ID="lbCMNull" runat="server" Text=""></asp:Label>
-                   <hr />
+                   
                                         
 
                    <asp:Panel ID="Panel1" runat="server" >
-                        <asp:GridView ID="GridView1" runat="server"    
-                            HeaderStyle-BackColor="#ffffff" 
-                            HeaderStyle-CssClass="align-content-center"
-                            HeaderStyle-Font-Size="16px"   
-                            OnRowDataBound="GridView1_RowDataBound" 
-                            AlternatingRowStyle-CssClass="align-content-left" 
-                            AutoGenerateColumns="false" 
-                            AllowPaging="false"
-                            PageSize="20"
-                            GridLines="None"
-                            Font-Size="15px"
-                            CssClass="table table-hover table-condensed table-sm"     
-                            >                      
+                       <asp:GridView ID="GridView1" runat="server"
+                           HeaderStyle-BackColor="#ffffff"
+                           HeaderStyle-CssClass="align-content-center"
+                           HeaderStyle-Font-Size="16px"
+                           OnRowDataBound="GridView1_RowDataBound"
+                           AlternatingRowStyle-CssClass="align-content-left"
+                           AutoGenerateColumns="false"
+                           PageSize="20"
+                           GridLines="None"
+                           Font-Size="15px"
+                           CssClass="table table-hover table-condensed table-sm"
+                           OnPageIndexChanging="GridView1_PageIndexChanging"
+                           PagerSettings-Mode="NumericFirstLast"
+                           PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
+                           AllowPaging="false">                      
                             <Columns>
                             <asp:TemplateField HeaderText="ลำดับ">
                                 <ItemTemplate>
@@ -129,59 +132,58 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-left" >
+                            <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
                                 <ItemTemplate>
                                             <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ช่องทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <asp:TemplateField HeaderText="ช่องทาง" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
                                 <ItemTemplate>
                                             <asp:Label ID="lbChannel" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="250px" HeaderStyle-Width="250px">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' OnCommand="lbDeviceName_Command"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="250px" HeaderStyle-Width="250px">
                                 <ItemTemplate>
                                    <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="แจ้งซ่อมวันที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="วันแจ้งซ่อม" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="แก้ไขวันที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="วันแก้ไข" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
                                     <asp:Label ID="btnDateEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
                                     <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="นับเวลา" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                            <asp:TemplateField HeaderText="นับเวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbDay" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
                                     <asp:Label ID="lbStatus" runat="server"></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField> 
-                                    
+                            </asp:TemplateField>      
                             </Columns>
-
+                           <PagerStyle HorizontalAlign="Center" CssClass="GridPager"  ForeColor="#ef8a00" />
                 </asp:GridView>         
             </asp:Panel>
           <!------------------------------------------------------------------------------------------------------------>
@@ -349,7 +351,7 @@
 
 
     
-
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -381,6 +383,11 @@
                 printDelay: 333,            
                 header: null,             
                 formValues: true          
-            }); 
+        });
+
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
+
     </script>
 </asp:Content>
