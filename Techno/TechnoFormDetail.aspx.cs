@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.UI;
@@ -49,7 +50,7 @@ namespace ClaimProject.Techno
                     //lbTitle.Text = Session["codePK"].ToString();
                     sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_delete = '0'";
                     function.getListItem(txtCompanyOrder, sql, "company_name", "company_id");
-
+                   
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 2)
@@ -1116,14 +1117,29 @@ namespace ClaimProject.Techno
 
         protected void btns0_Click(object sender, EventArgs e)
         {
+            string TimeNoww = DateTime.Now.ToString("HH:mm:ss");
+            string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+            string IPAddress = GetIP();
+            StringBuilder sb = new StringBuilder();
+            string filePath = "D:/Claim/Log/Delete_log";
             string sql = "UPDATE tbl_claim SET claim_delete = '1' WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
             if (function.MySqlQuery(sql))
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success : ลบข้อมูลสำเร็จ')", true);
-                Response.Redirect("/");
+                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Delete_Success_" +Session["CodePK"].ToString());
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                sb.Clear();
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success : ลบข้อมูลสำเร็จ ')", true);
+                Response.Redirect("/");    
             }
             else
             {
+                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Delete_Failure_"+Session["CodePK"].ToString());
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                sb.Clear();
+
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ลบข้อมูลล้มเหลว ')", true);
             }
         }
@@ -1381,6 +1397,18 @@ namespace ClaimProject.Techno
                 //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
+        }
+
+        public static String GetIP()
+        {
+            String ip =
+                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (string.IsNullOrEmpty(ip))
+            {
+                ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            return ip;
         }
     }
 }
