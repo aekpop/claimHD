@@ -350,11 +350,14 @@
 
     <script src="/Scripts/bootstrap.bundle.js"></script>
     <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
-    <script>
+    <script type = "text/javascript">
          function refresh() {
                  window.location.reload(true);
          }
         setTimeout(refresh, 30000);
 
+        history.pushState(null, null, window.location.href);
+        history.back();
+        window.onpopstate = () => history.forward();
     </script>
 </asp:Content>

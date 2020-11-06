@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMEditForm.aspx.cs" Inherits="ClaimProject.CM.CMEditForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
     <style>
         @font-face {
             font-family: 'Prompt';
@@ -112,14 +113,25 @@
                 </div>
                 <div class="modal-body" style="line-height: inherit;">
                     <div class="row" >
-                        <div class="col-lg">
+                        <div class="col-lg-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">วันที่ : </label>
+                                <asp:Label ID="lbsDate" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">เวลา : </label>
+                                <asp:Label ID="lbsTime" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ด่านฯ : </label>
                                 <asp:Label ID="Label5" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
                             </div>
                         </div>
-                    
-                        <div class="col-lg">
+                        <div class="col-lg-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">ช่องทาง : </label>
                                 <asp:Label ID="Label2" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
@@ -228,7 +240,7 @@
         {%>
         $('#UpdateStatusModal').modal("hide");
         <%}%>
-</script>
+    </script>
     <script type="text/javascript"> 
         function CompareConfirm(msg) {
             var str1 = "1";
@@ -272,7 +284,9 @@
                 return true;
             }
 		    
-	    }     
+        }
+
+       
     </script>
     </div>
 </asp:Content>
