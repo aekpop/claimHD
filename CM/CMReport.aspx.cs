@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -569,6 +570,7 @@ namespace ClaimProject.CM
             if(function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
             {
                 lbtechno.Visible = true;
+                btnReverb.Visible = true;
             }
             
             
@@ -657,6 +659,50 @@ namespace ClaimProject.CM
             rt.Close();
         }
 
+        protected void btnReverb_Command(object sender, CommandEventArgs e)
+        {
+            string TimeNoww = DateTime.Now.ToString("HH:mm");
+            string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+            string sqlReverb = " UPDATE tbl_cm_detail SET cm_detail_status_id = 1 WHERE cm_detail_id = '" + lbrefRecheck.Text + "' " ;
+            if (function.MySqlQuery(sqlReverb))
+            {
+                string filePath = "D:/log/CM/Update_log";
+                StringBuilder sb = new StringBuilder();
+                sb.Append("\r\n" + DateNoww + "," + TimeNoww + "," + Session["User"].ToString() + "," + pkeq.Text + ",Reverb_Success");
+
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                sb.Clear();
+                ResultPop("ย้อนกลับสำเร็จ", "success");
+                DataBind();
+            }
+            else
+            {
+                ResultPop("ล้มเหลว", "error");
+            }
+            
+        }
+
+        public void ResultPop(string msg, string type)
+        {
+            switch (type)
+            {
+                case "success":
+                    icon = "add_alert";
+                    alertType = "success";
+                    break;
+                case "error":
+                    icon = "error";
+                    alertType = "danger";
+                    break;
+                case "warning":
+                    icon = "warning";
+                    alertType = "warning";
+                    break;
+            }
+            //alertType = type;
+            alert = msg;
+        }
     }
 
 }

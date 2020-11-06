@@ -343,11 +343,17 @@
                                             </div>
                                         </div>       
                                     </div>
+                                    <div class="row">
+                                        <div class="col-2" >
+                                            <asp:Button Id="btnReverb" runat="server" Text="ย้อนกลับ" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false"/>
+                                        </div>
+                                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
         </div>
     <!------------------------------------------------------------------------------------------------------------>                  
                    
@@ -361,6 +367,13 @@
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
     <script>
+        $(function () {
+        <% if (alert != "")
+        { %>
+            demo.showNotification('top', 'center', '<%=icon%>', '<%=alertType%>', '<%=alert%>');
+        <% } %>
+        });
+
             $('.datepicker').datepicker({
                 format: 'dd/mm/yyyy',
                 startDate: '-3d'
@@ -394,5 +407,6 @@
           $('[data-toggle="tooltip"]').tooltip();   
         });
 
+        
     </script>
 </asp:Content>
