@@ -324,6 +324,23 @@ namespace ClaimProject.equip
                     txtEditPrice.Text = rttt.GetString("equipment_price_unit");  
                 }
                 catch { }
+
+                string TimeNoww = DateTime.Now.ToString("HH:mm");
+                string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+                string filePath = "D:/log/equip/EqUpdate_log";
+                StringBuilder sb = new StringBuilder();
+                sb.Append("\r\n" + DateNoww + "," + TimeNoww +"," + Session["User"].ToString() + "," + txtEditEng.Text + "," + txtEditTH.Text + "," +
+                        " " + txtEditNo.Text + "," + txtEditNoform.Text + "," +
+                        " " + txtEditBrand.Text + "," + txtEditSeries.Text + "," +
+                        " " + txtEditDate.Text + "," + txtEditPrice.Text + "," +
+                        " " + txtEditContract.Text + "," + ddlEditCpoint.SelectedValue + "," +
+                        " " + ddlEditStat.SelectedValue + "," + ddlEditCompany.SelectedValue + "," +
+                        " " + ddlEditLocate.SelectedValue + "," + txtEditNote.Text + "," +
+                        " " + txtEditPerson.Text + "," + txtEditcUnit.Text + "," + pkeq.Text + ",Read_Success");
+
+                // flush every 20 seconds as you do it
+                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                sb.Clear();
                 rttt.Close();
                 function.Close();
                     
@@ -1013,13 +1030,7 @@ namespace ClaimProject.equip
                                 " locate_id='" + ddlEditLocate.SelectedValue + "', equip_comment='" + txtEditNote.Text + "'," +
                                 " person_name='" + txtEditPerson.Text + "', equipment_unit = '" + txtEditcUnit.Text + "', " +
                                 " user_update = '" + Session["User"].ToString() +"',time_update='"+TimeNoww+"',date_update='"+DateNoww+"' ";
-            string filePath = "D:/equip/Log/EqUpdate_log";
-            StringBuilder sb = new StringBuilder();
-            sb.Append("\r\n" + DateNoww +" "+ TimeNoww +" User:"+ Session["User"].ToString()+" No." + txtEditNo.Text +" Toll:" + ddlEditCpoint.SelectedValue + " Locate:"+ ddlEditLocate.SelectedValue + " Estatus:" + ddlEditStat.SelectedValue +" Update_Success");
-
-            // flush every 20 seconds as you do it
-            File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
-            sb.Clear();
+            
 
             if (picResult == "typeError")
             {
@@ -1051,7 +1062,22 @@ namespace ClaimProject.equip
                 {
                     if (function.MySqlQuery(updateEqSQL))
                     {
-                        ResultPop("อัพเดทข้อมูลสำเร็จเรียบร้อย", "success");
+                        string filePath = "D:/log/equip/EqUpdate_log";
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("\r\n" + DateNoww + "," + TimeNoww + "," + Session["User"].ToString() + "," + txtEditEng.Text + "," + txtEditTH.Text + "," +
+                        " " + txtEditNo.Text + "," + txtEditNoform.Text + "," +
+                        " " + txtEditBrand.Text + "," + txtEditSeries.Text + "," +
+                        " " + txtEditDate.Text + "," + txtEditPrice.Text + "," +
+                        " " + txtEditContract.Text + "," + ddlEditCpoint.SelectedValue + "," +
+                        " " + ddlEditStat.SelectedValue + "," + ddlEditCompany.SelectedValue + "," +
+                        " " + ddlEditLocate.SelectedValue + "," + txtEditNote.Text + "," +
+                        " " + txtEditPerson.Text + "," + txtEditcUnit.Text + "," + pkeq.Text + ",Update_Success");
+
+                        // flush every 20 seconds as you do it
+                        File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                        sb.Clear();
+
+                        ResultPop("อัพเดทสำเร็จ", "success");
                         SearchBind();
                     }
                 }

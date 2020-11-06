@@ -94,6 +94,24 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbcmid;
         
         /// <summary>
+        /// lbsDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbsDate;
+        
+        /// <summary>
+        /// lbsTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbsTime;
+        
+        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>

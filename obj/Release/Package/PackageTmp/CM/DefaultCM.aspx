@@ -8,7 +8,8 @@
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
     </style>
-    <meta http-equiv="refresh" content="120">
+    
+    
 
    <div class="container-fluid" style="font-family:'Prompt',sans-serif;"> 
         <!--<h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>-->
@@ -21,9 +22,9 @@
                     <div class="card-icon">
                         <i class="fas fa-wrench"></i>
                     </div>
-                    <h4 class="card-category">
+                    <div class="card-category">
                         <a class="nav-link" href="/CM/CMDetailForm" style="font-family:'Prompt',sans-serif; ">แจ้งซ่อม</a>
-                    </h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -349,5 +350,11 @@
 
     <script src="/Scripts/bootstrap.bundle.js"></script>
     <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
+    <script>
+         function refresh() {
+                 window.location.reload(true);
+         }
+        setTimeout(refresh, 30000);
 
+    </script>
 </asp:Content>

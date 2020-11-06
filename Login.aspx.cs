@@ -33,7 +33,7 @@ namespace ClaimProject
         protected void btnSubmit_Click1(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            string filePath = "D:/equip/Log/Login_log";
+            string filePath = "D:/log/login/Login_log";
             string TimeNoww = DateTime.Now.ToString("HH:mm");
             string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
             string IPAddress = GetIP();

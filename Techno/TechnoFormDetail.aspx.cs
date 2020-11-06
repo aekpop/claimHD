@@ -1121,7 +1121,7 @@ namespace ClaimProject.Techno
             string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
             string IPAddress = GetIP();
             StringBuilder sb = new StringBuilder();
-            string filePath = "D:/Claim/Log/Delete_log";
+            string filePath = "D:/log/claim/Delete_log";
             string sql = "UPDATE tbl_claim SET claim_delete = '1' WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
             if (function.MySqlQuery(sql))
             {

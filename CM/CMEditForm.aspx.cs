@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -171,6 +172,8 @@ namespace ClaimProject.CM
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
+                lbsDate.Text = rs.GetString("cm_detail_sdate");
+                lbsTime.Text = rs.GetString("cm_detail_stime");
                 Label5.Text = rs.GetString("cpoint_name") + " " + rs.GetString("cm_point");
                 Label2.Text = rs.GetString("locate_name");
                 Label3.Text = rs.GetString("device_name");
@@ -198,6 +201,7 @@ namespace ClaimProject.CM
                     chk_time = true;
                 }
                 catch { ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาใส่เวลาให้ถูกต้อง ไม่ต้องใส่ น.')", true); }
+
 
                 if (chk_time)
                 {

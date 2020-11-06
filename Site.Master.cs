@@ -84,7 +84,7 @@ namespace ClaimProject
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-            string filePath = "D:/equip/Log/Login_log";
+            string filePath = "D:/log/login/Login_log";
             string IPAddress = ClaimFunction.GetIP();
             string TimeNoww = DateTime.Now.ToString("HH:mm");
             string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);

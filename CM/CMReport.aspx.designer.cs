@@ -67,6 +67,24 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.TextBox txtPoint;
         
         /// <summary>
+        /// lbChannel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbChannel;
+        
+        /// <summary>
+        /// txtSearchChannel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtSearchChannel;
+        
+        /// <summary>
         /// lbdevice control.
         /// </summary>
         /// <remarks>
@@ -85,22 +103,22 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.DropDownList txtDeviceDamage;
         
         /// <summary>
-        /// lbChannel control.
+        /// lbStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbChannel;
+        protected global::System.Web.UI.WebControls.Label lbStatus;
         
         /// <summary>
-        /// txtSearchChannel control.
+        /// txtCMStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtSearchChannel;
+        protected global::System.Web.UI.WebControls.DropDownList txtCMStatus;
         
         /// <summary>
         /// CheckAllDay control.
@@ -155,24 +173,6 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateEnd;
-        
-        /// <summary>
-        /// lbStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbStatus;
-        
-        /// <summary>
-        /// txtCMStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtCMStatus;
         
         /// <summary>
         /// btnSearchEdit1 control.

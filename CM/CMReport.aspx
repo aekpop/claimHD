@@ -32,64 +32,69 @@
         <div class="card-body table-responsive"> 
                     <div runat="server">                        
                         <div class="row">                                       
-                                        <div class="col-md-1 text-left">
+                                        <div class="col-md-1 ">
+                                            <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbBudget" runat="server" Text="ปีงบฯ : "></asp:Label>
-                                        </div>
-                                        <div class=" col-md-2 text-left">
                                             <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
+                                                </div>
                                         </div>
-                                        <div class=" col-md-1 text-right">
-                                        <!--<div class="form-group bmd-form-group">-->
-                                            <asp:Label ID="lbToll" runat="server" Text="ด่านฯ : "></asp:Label>
-                                            </div>
-                                        <div class=" col-md-2">
+                                        <div class=" col-md-2 ">
+                                         <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lbToll" runat="server" Text="ด่านฯ : "></asp:Label>                                            
                                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
-                                        </div>
-                                        <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbAnnex" runat="server" Text="อาคารย่อย"></asp:Label>
+                                             </div>
                                         </div>
                                         <div class=" col-md-1 ">
+                                             <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lbAnnex" runat="server" Text="อาคารย่อย"></asp:Label>                                       
                                             <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="ใส่หมายเลข" ToolTip="ถ้าไม่มี ให้เว้นว่าง"></asp:TextBox>
+                                                 </div>
                                         </div>
-                                        <div class="col-md-1 text-right">
-                                            <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์ : "></asp:Label>
+                                        <div class="col-md-2">
+                                             <div class="form-group bmd-form-group">
+                                                        <asp:Label ID="lbChannel" runat="server" text="  ตู้ :" ></asp:Label>
+                                                        <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
+                                                    </div>
                                             </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4 ">
+                                             <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์ : "></asp:Label>                                            
                                             <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select "></asp:DropDownList>
+                                                 </div>
                                         </div>
-                                        
+                                         <div class=" col-md-2 ">
+                                             <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
+                                            <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select " ></asp:DropDownList>
+                                                 </div>
+                                        </div>
                                         
                         </div>
                         <br />
+                        
                         <div class="row">
-                                        <div class="col-md-1 text-left">
-                                            <asp:Label ID="lbChannel" runat="server" text="  ตู้ :" ></asp:Label>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
-                                        </div>
-                                        <div class =" col-md-1 text-right">
+                                        
+                                        <div class =" col-md-2 ">
+                                              <div class="form-group bmd-form-group">
+                                             <div class="label-on-left" >วันเวลาแจ้งซ่อม</div>
                                             <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged" CssClass="checkbox-danger"/>
-                                            <asp:Label Id ="lbCheckAllDay" runat="server" Text="AllDay" ></asp:Label> 
+                                            <asp:Label Id ="lbCheckAllDay" runat="server" Text="เลือกทั้งหมด" ></asp:Label> 
+                                                  </div>
                                         </div>
-                                        <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbDayS" runat="server" Text="ตั้งแต่วันที่"></asp:Label>
-                                            </div>
-                                        <div class=" col-md-2">
+                                        
+                                        <div class=" col-md-2 ">
+                                             <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lbDayS" runat="server" Text="เลือกช่วงเวลาตั้งแต่ "></asp:Label>
                                             <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>
-                                        <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbDayE" runat="server" Text="ถึงวันที่ "></asp:Label>
-                                        </div>
-                                        <div class=" col-md-2">
-                                            <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
-                                        </div>                            
-                                        <div class=" col-md-1 text-right">
-                                            <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
                                             </div>
                                         <div class=" col-md-2">
-                                            <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select " ></asp:DropDownList>
-                                        </div>
+                                              <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lbDayE" runat="server" Text="ถึง "></asp:Label>
+                                            <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
+                                                  </div>
+                                        </div>                            
+                                       
                                         
                         </div>                  
                         <br />

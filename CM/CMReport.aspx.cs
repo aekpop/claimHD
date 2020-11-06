@@ -435,8 +435,8 @@ namespace ClaimProject.CM
                 }
             }
 
-            if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
-            {
+            //if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
+            //{
                 Label lbDay = (Label)(e.Row.FindControl("lbDay"));
                 if (lbDay != null)
                 {
@@ -479,15 +479,8 @@ namespace ClaimProject.CM
                         lbDay.ForeColor = System.Drawing.Color.Green;
                     }
                 }
-            }
-            else
-            {
-                Label lbDay = (Label)(e.Row.FindControl("lbDay"));
-                if (lbDay != null)
-                {
-                    lbDay.Text = "-";
-                }
-            }
+            //}
+            
 
             LinkButton lbDeviceName = (LinkButton)(e.Row.FindControl("lbDeviceName"));
             if (lbDeviceName != null)
@@ -550,13 +543,19 @@ namespace ClaimProject.CM
         {
             if(CheckAllDay.Checked)
             {
-                txtDateStart.Enabled = false;
-                txtDateEnd.Enabled = false;
+                txtDateStart.Visible = false;
+                txtDateEnd.Visible = false;
+                //lbCheckSometime.Visible = false;
+                lbDayS.Visible = false;
+                lbDayE.Visible = false;
             }
             else
             {
-                txtDateStart.Enabled = true;
-                txtDateEnd.Enabled = true;
+                txtDateStart.Visible = true;
+                txtDateEnd.Visible = true;
+                //lbCheckSometime.Visible = true;
+                lbDayS.Visible = true;
+                lbDayE.Visible = true;
             }
         }
 
@@ -571,10 +570,7 @@ namespace ClaimProject.CM
             {
                 lbtechno.Visible = true;
             }
-            else
-            {
-                lbtechno.Visible = true;
-            }
+            
             
             string imgS = "/CM/Upload/NoImageAvailable.jpg";
             string imgE = "/CM/Upload/NoImageAvailable.jpg";
