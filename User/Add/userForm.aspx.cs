@@ -25,6 +25,8 @@ namespace ClaimProject.User.Add
             {
                 function.GetListLevel(txtLevel, int.Parse(Session["UserPrivilegeId"].ToString()));
                 BindData();
+                function.getListItem(ddlCpoint, "SELECT cpoint_id,cpoint_name FROM tbl_cpoint order by cpoint_id ASC", "cpoint_name", "cpoint_id");
+                ddlCpoint.Items.Insert(0, new ListItem("เลือกด่านฯ", ""));
             }
         }
 
@@ -36,11 +38,11 @@ namespace ClaimProject.User.Add
             //string search = "";
             if (Session["UserPrivilegeId"].ToString() != "0")
             {
-                sql = "SELECT * FROM tbl_user where level <> 0 and delete_status = '0' and username <> '" + Session["User"].ToString() + "' AND (username LIKE '%" + TextBox1.Text + "%' OR NAME LIKE '%" + TextBox1.Text + "%' OR LEVEL LIKE '%" + TextBox1.Text + "%' OR user_cpoint LIKE '%" + TextBox1.Text + "%')";
+                sql = "SELECT * FROM tbl_user LEFT JOIN tbl_cpoint ON tbl_cpoint.cpoint_id = tbl_user.cpoint_id where level <> 0 and delete_status = '0' and username <> '" + Session["User"].ToString() + "' AND (username LIKE '%" + TextBox1.Text + "%' OR NAME LIKE '%" + TextBox1.Text + "%' OR LEVEL LIKE '%" + TextBox1.Text + "%' OR user_cpoint LIKE '%" + TextBox1.Text + "%')";
             }
             else
             {
-                sql = "SELECT * FROM tbl_user where delete_status = '0' AND username <> '" + Session["User"].ToString() + "' AND (username LIKE '%" + TextBox1.Text + "%' OR NAME LIKE '%" + TextBox1.Text + "%' OR LEVEL LIKE '%" + TextBox1.Text + "%' OR user_cpoint LIKE '%" + TextBox1.Text + "%')";
+                sql = "SELECT * FROM tbl_user LEFT JOIN tbl_cpoint ON tbl_cpoint.cpoint_id = tbl_user.cpoint_id where delete_status = '0' AND username <> '" + Session["User"].ToString() + "' AND (username LIKE '%" + TextBox1.Text + "%' OR NAME LIKE '%" + TextBox1.Text + "%' OR LEVEL LIKE '%" + TextBox1.Text + "%' OR user_cpoint LIKE '%" + TextBox1.Text + "%')";
             }
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             System.Data.DataSet ds = new System.Data.DataSet();
@@ -71,9 +73,19 @@ namespace ClaimProject.User.Add
                 }
                 catch { }
             }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlCpoint = (DropDownList)e.Row.FindControl("ddlCpoint");
+                if (ddlCpoint != null)
+                {
+                    function.getListItem(ddlCpoint, "SELECT cpoint_id,cpoint_name FROM tbl_cpoint ", "cpoint_name", "cpoint_id");
+                    ddlCpoint.SelectedIndex = ddlCpoint.Items.IndexOf(ddlCpoint.Items.FindByValue((string)DataBinder.Eval(e.Row.DataItem, "cpoint_id").ToString()));
+                }
+            }
         }
 
-        protected void UserGridView_RowEditing(object sender, GridViewEditEventArgs e)
+            protected void UserGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
             UserGridView.EditIndex = e.NewEditIndex;
             BindData();
@@ -95,13 +107,14 @@ namespace ClaimProject.User.Add
             }
             TextBox txtEName = (TextBox)UserGridView.Rows[e.RowIndex].FindControl("txtEName");
             DropDownList txtEPrivilege = (DropDownList)UserGridView.Rows[e.RowIndex].FindControl("txtEPrivilege");
+            DropDownList ddlCpoint = (DropDownList)UserGridView.Rows[e.RowIndex].FindControl("ddlCpoint");
             string cpoint = "1";
-            if (txtEPrivilege.SelectedValue != "2" && txtEPrivilege.SelectedValue != "3")
+            if (txtEPrivilege.SelectedValue != "2" && txtEPrivilege.SelectedValue != "3" && txtEPrivilege.SelectedValue != "5")
             {
                 cpoint = "0";
             }
 
-            string sql = "UPDATE tbl_user SET " + sqlUser + " name='" + txtEName.Text + "',level='" + txtEPrivilege.SelectedValue + "',user_cpoint = '" + cpoint + "' WHERE id = '" + UserGridView.DataKeys[e.RowIndex].Value + "'";
+            string sql = "UPDATE tbl_user SET " + sqlUser + " name='" + txtEName.Text + "',level='" + txtEPrivilege.SelectedValue + "',user_cpoint = '" + cpoint + "',cpoint_id = '"+ ddlCpoint.SelectedValue + "' WHERE id = '" + UserGridView.DataKeys[e.RowIndex].Value + "'";
             string script = "";
             if (function.MySqlQuery(sql))
             {
@@ -143,15 +156,15 @@ namespace ClaimProject.User.Add
                 string sql_check = "SELECT * FROM tbl_user WHERE username = '" + txtUser.Text.Trim() + "'";
                 string script = "";
                 string cpoint = "1";
-                if (txtLevel.SelectedValue != "2" && txtLevel.SelectedValue != "3")
+                if (txtLevel.SelectedValue != "2" && txtLevel.SelectedValue != "3" && txtLevel.SelectedValue != "5")
                 {
                     cpoint = "0";
                 }
                 MySqlDataReader rs = function.MySqlSelect(sql_check);
                 if (!rs.Read())
                 {
-                    string sql = "INSERT INTO tbl_user (username,password,name,level,eq_level,user_cpoint,delete_status) VALUES ('" + txtUser.Text.Trim() + "','" + txtPass.Text.Trim() + "'" +
-                        ",'" + txtName.Text + "','" + txtLevel.SelectedValue + "','0','" + cpoint + "','0')";
+                    string sql = "INSERT INTO tbl_user (username,password,name,level,eq_level,user_cpoint,delete_status,cpoint_id) VALUES ('" + txtUser.Text.Trim() + "','" + txtPass.Text.Trim() + "'" +
+                        ",'" + txtName.Text + "','" + txtLevel.SelectedValue + "','0','" + cpoint + "','0','"+ ddlCpoint.SelectedValue + "')";
                     if (function.MySqlQuery(sql))
                     {
                         script = "บันทึกข้อมูลสำเร็จ";

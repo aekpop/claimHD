@@ -42,7 +42,7 @@ namespace ClaimProject.equip
             }
 
         }
-        
+
         protected void loadingpage()
         {
 
@@ -50,83 +50,110 @@ namespace ClaimProject.equip
             string newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
             string newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
             string sqlcpSearch = "";
+            string sqlcpSearchtotal = "";
 
 
             if (Session["UserCpoint"].ToString() == "0")
             {
-                if(Session["User"].ToString() == "sawitree")
+                if (Session["User"].ToString() == "sawitree")
                 {
                     sqlcpSearch += " 7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040 ";
+                    sqlcpSearchtotal = "7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040 ";
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
                     sqlcpSearch += " 7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
                         "OR toll_send ='7061' OR toll_send = ' 7062 ' OR toll_send = ' 7063 ' OR toll_send = ' 7064 ";
+                    sqlcpSearchtotal = " 7020' OR toll_id = '7031' OR toll_id = '7032' OR toll_id = '7033' OR toll_id = '7041' OR toll_id = '7042' OR toll_id = '7051' OR toll_id = '7052'" +
+                        "OR toll_id ='7061' OR toll_id = ' 7062 ' OR toll_id = ' 7063 ' OR toll_id = ' 7064 ";
+                }
+                else if (Session["User"].ToString() == "watcharee")
+                {
+                    sqlcpSearch += " 7071' OR toll_send = '7072' OR toll_send = '7073' OR toll_send = '7074' OR toll_send = '7075' OR toll_send = '7076' OR toll_send = '7081' OR toll_send = '7082'" +
+                        "OR toll_send ='7083' OR toll_send = ' 7084 ' OR toll_send = ' 7090 ' OR toll_send = ' 7100 ' OR toll_send = ' 7110 ' OR toll_send = ' 7120 ";
+                    sqlcpSearchtotal = " 7071' OR toll_id = '7072' OR toll_id = '7073' OR toll_id = '7074' OR toll_id = '7075' OR toll_id = '7076' OR toll_id = '7081' OR toll_id = '7082'" +
+                        "OR toll_id ='7083' OR toll_id = ' 7084 ' OR toll_id = ' 7090 ' OR toll_id = ' 7100 ' OR toll_id = ' 7110 ' OR toll_id = ' 7120 ";
                 }
             }
             else if (Session["UserCpoint"].ToString() == "701")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7010 ";
+                sqlcpSearchtotal = "7010 ";
             }
             else if (Session["UserCpoint"].ToString() == "702")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7020 ";
+                sqlcpSearchtotal = "7020 ";
             }
             else if (Session["UserCpoint"].ToString() == "703")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7031' OR toll_recieve = '7032' OR toll_recieve = '7033";
+                sqlcpSearchtotal = "7031' OR toll_id = '7032' OR toll_id = '7033";
             }
             else if (Session["UserCpoint"].ToString() == "704")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7041' OR toll_recieve = ' 7042 ";
+                sqlcpSearchtotal = "7041' OR toll_id = '7042";
             }
             else if (Session["UserCpoint"].ToString() == "706")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7051' OR toll_recieve = ' 7052 ";
+                sqlcpSearchtotal = "7051' OR toll_id = '7052";
             }
             else if (Session["UserCpoint"].ToString() == "707")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7061' OR toll_recieve = ' 7062 ' OR toll_recieve = ' 7063 ' OR toll_recieve = ' 7064 ";
+                sqlcpSearchtotal = "7061' OR toll_id = ' 7062 ' OR toll_id = ' 7063 ' OR toll_id = ' 7064 ";
             }
             else if (Session["UserCpoint"].ToString() == "708")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7071' OR toll_recieve = ' 7072 ' OR toll_recieve = ' 7073 ' OR toll_recieve = ' 7074 ' OR toll_recieve = ' 7075 ' OR toll_recieve = ' 7076 ";
+                sqlcpSearchtotal = "7071' OR toll_id = ' 7072 ' OR toll_id = ' 7073 ' OR toll_id = ' 7074 ' OR toll_id = ' 7075 ' OR toll_id = ' 7076 ";
             }
             else if (Session["UserCpoint"].ToString() == "709")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7081' OR toll_recieve = ' 7082 ' OR toll_recieve = ' 7083 ' OR toll_recieve = ' 7084 ";
+                sqlcpSearchtotal = "7081' OR toll_id = ' 7082 ' OR toll_id = ' 7083 ' OR toll_id = ' 7084 ";
             }
             else if (Session["UserCpoint"].ToString() == "710")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7090 ";
+                sqlcpSearchtotal = "7090 ";
             }
             else if (Session["UserCpoint"].ToString() == "711")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7100 ";
+                sqlcpSearchtotal = "7100 ";
             }
             else if (Session["UserCpoint"].ToString() == "712")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7110 ";
+                sqlcpSearchtotal = "7110 ";
             }
             else if (Session["UserCpoint"].ToString() == "713")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7120 ";
+                sqlcpSearchtotal = "7120 ";
             }
             else if (Session["UserCpoint"].ToString() == "902")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9010 ";
+                sqlcpSearchtotal = "9010 ";
             }
             else if (Session["UserCpoint"].ToString() == "903")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9020 ";
+                sqlcpSearchtotal = "9020 ";
             }
             else if (Session["UserCpoint"].ToString() == "904")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9030 ";
+                sqlcpSearchtotal = "9030 ";
             }
             else if (Session["UserCpoint"].ToString() == "905")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9040 ";
+                sqlcpSearchtotal = "9040 ";
             }
 
             MySqlDataReader ttr = function.MySqlSelect(newTran);
@@ -143,8 +170,8 @@ namespace ClaimProject.equip
                 {
                     lbnew.Text = ttr.GetInt32("num").ToString() + " รายการ";
                     ttr.Close();
-                }            
-                
+                }
+
                 MySqlDataReader tract = function.MySqlSelect(newTranact);
                 if (tract.Read())
                 {
@@ -159,7 +186,7 @@ namespace ClaimProject.equip
                         lbnew1.Text = tract.GetInt32("devv").ToString() + " อุปกรณ์";
                         tract.Close();
                     }
-                        
+
                 }
             }
 
@@ -168,12 +195,12 @@ namespace ClaimProject.equip
             string tran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '1' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
             string tranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '1' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
             MySqlDataReader tr = function.MySqlSelect(tran);
-            if(tr.Read())
+            if (tr.Read())
             {
                 lbTran.Text = tr.GetInt32("num").ToString() + " รายการ";
                 tr.Close();
                 MySqlDataReader tract = function.MySqlSelect(tranact);
-                if(tract.Read())
+                if (tract.Read())
                 {
                     lbTran2.Text = tract.GetInt32("devv").ToString() + " อุปกรณ์";
                     tract.Close();
@@ -291,8 +318,28 @@ namespace ClaimProject.equip
 
             }
 
-            //loadChart();
 
+            string eqTotal = "SELECT COUNT(*) AS num FROM tbl_equipment WHERE toll_id = '" + sqlcpSearchtotal + "' ";
+            string eqNormal = "SELECT COUNT(*) AS numn FROM tbl_equipment WHERE (toll_id = '" + sqlcpSearchtotal + "' )AND Estatus_id = '1'";
+            string eqBroken = "SELECT COUNT(*) AS numb FROM tbl_equipment WHERE (toll_id = '" + sqlcpSearchtotal + "' )AND Estatus_id = '2'";
+            MySqlDataReader rt = function.MySqlSelect(eqTotal);
+            if (rt.Read())
+            {
+                lbEqTotal.Text = rt.GetInt32("num").ToString() + " รายการ";
+                rt.Close();
+            }
+            MySqlDataReader rt1 = function.MySqlSelect(eqNormal);
+            if (rt1.Read())
+            {
+                lbEqNorm.Text = rt1.GetInt32("numn").ToString() + " รายการ";
+                rt1.Close();
+            }
+            MySqlDataReader rt2 = function.MySqlSelect(eqBroken);
+            if (rt2.Read())
+            {
+                lbEqBork.Text = rt2.GetInt32("numb").ToString() + " รายการ";
+                rt2.Close();
+            }
         }
         protected void loadChart ()
         {

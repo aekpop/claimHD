@@ -229,6 +229,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label pkeq;
         
         /// <summary>
+        /// lbrefRecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbrefRecheck;
+        
+        /// <summary>
         /// lbImageStart control.
         /// </summary>
         /// <remarks>
@@ -283,13 +292,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Image ImgImageDocSer;
         
         /// <summary>
-        /// lbrefRecheck control.
+        /// lbStatusRecheck control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbrefRecheck;
+        protected global::System.Web.UI.WebControls.Label lbStatusRecheck;
         
         /// <summary>
         /// lbCpointRecheck control.
@@ -355,13 +364,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbNodeRecheck;
         
         /// <summary>
-        /// lbtechno control.
+        /// lbDates control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbtechno;
+        protected global::System.Web.UI.WebControls.Label lbDates;
         
         /// <summary>
         /// lbDatesRecheck control.
@@ -371,6 +380,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDatesRecheck;
+        
+        /// <summary>
+        /// lbTimes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTimes;
         
         /// <summary>
         /// lbTimesRecheck control.

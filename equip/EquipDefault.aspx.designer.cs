@@ -40,6 +40,60 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.DropDownList txtBudgetYear;
         
         /// <summary>
+        /// lbEqTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEqTotal;
+        
+        /// <summary>
+        /// lbEqNorm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEqNorm;
+        
+        /// <summary>
+        /// lbEqBork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEqBork;
+        
+        /// <summary>
+        /// lbStaSent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaSent;
+        
+        /// <summary>
+        /// lbStaClaim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaClaim;
+        
+        /// <summary>
+        /// lbStaTransfer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaTransfer;
+        
+        /// <summary>
         /// Div7 control.
         /// </summary>
         /// <remarks>

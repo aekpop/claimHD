@@ -196,8 +196,9 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อมอุปกรณ์ CM</div>
+                    <div class="modal-title">รายละเอียดการแจ้งซ่อมอุปกรณ์ #</div>
                         <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
+                            <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server"   />
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -227,8 +228,8 @@
                             <div class="row" >
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">       
-                                        <span class = "label label-primary">Ref. </span>
-                                        <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server"   />
+                                        <span class = "label label-primary">สถานะ. </span>
+                                           <asp:Label ID="lbStatusRecheck" Enabled="false" runat="server"></asp:Label>
                                     </div>
                                 </div>
                                 <div class="col-xl">
@@ -282,22 +283,22 @@
                                 </div>
 
                                 
-                                    <asp:Label ID="lbtechno" runat="server" Visible="false">
+                                    
                                         <div class="row" >
                                             <div class="col-xl">
                                                 <div class="form-group bmd-form-group">       
-                                                    <span class = "label label-primary">วันที่แจ้ง : </span>
-                                                    <asp:Label ID="lbDatesRecheck" Enabled="false"  runat="server"   />
+                                                    <asp:Label ID="lbDates" Enabled="false" runat="server" Visible="false">วันที่แจ้ง : </asp:Label>
+                                                    <asp:Label ID="lbDatesRecheck" Enabled="false" runat="server" Visible="false" />
                                                 </div>
                                             </div>
                                             <div class="col-xl">
                                                 <div class="form-group bmd-form-group">
-                                                    <span class = "label label-primary">เวลา : </span>
-                                                    <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server"   />
+                                                    <asp:Label ID="lbTimes" Enabled="false" runat="server" Visible="false">เวลา : </asp:Label>
+                                                    <asp:Label ID="lbTimesRecheck" Enabled="false" runat="server" Visible="false" />
                                                 </div>
                                             </div>
                                         </div>
-                                    </asp:Label>
+                                  
                                 
                                 <div class="row" >
                                     <div class="col-xl">
@@ -345,7 +346,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2" >
-                                            <asp:Button Id="btnReverb" runat="server" Text="ย้อนกลับ" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false"/>
+                                            <asp:Button Id="btnReverb" runat="server" Text="Reverb" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');"/>
                                         </div>
                                     </div>
                     </div>
@@ -367,17 +368,17 @@
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
     <script>
-        $(function () {
-        <% if (alert != "")
-        { %>
-            demo.showNotification('top', 'center', '<%=icon%>', '<%=alertType%>', '<%=alert%>');
-        <% } %>
-        });
+            $(function () {
+            <% if (alert != "")
+            { %>
+                demo.showNotification('top', 'center', '<%=icon%>', '<%=alertType%>', '<%=alert%>');
+            <% } %>
+            });
 
             $('.datepicker').datepicker({
                 format: 'dd/mm/yyyy',
                 startDate: '-3d'
-        });
+            });
 
             $(function () {
                 <% if (EditModal != "")
@@ -388,7 +389,7 @@
             {%>
                 $("#ApprovCMModal").modal('hide');
                 <%}%>       
-        });
+            });
 
             $("#ApprovCMModal").printThis({ 
                 debug: false,              
@@ -401,12 +402,23 @@
                 printDelay: 333,            
                 header: null,             
                 formValues: true          
-        });
+            });
 
-        $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();   
-        });
+            $(document).ready(function(){
+              $('[data-toggle="tooltip"]').tooltip();   
+            });
 
-        
+            function CompareConfirm(msg) {
+                var str1 = "1";
+                var str2 = "2";
+
+                if (str1 === str2) {
+                    // your logic here
+                    return false;
+                } else {
+                    // your logic here
+                    return confirm(msg);
+                }
+            }
     </script>
 </asp:Content>

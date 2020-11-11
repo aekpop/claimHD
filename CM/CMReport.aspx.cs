@@ -55,7 +55,6 @@ namespace ClaimProject.CM
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
-                    
                 }
                 else
                 {
@@ -567,13 +566,14 @@ namespace ClaimProject.CM
 
         protected void lbDeviceName_Command(object sender, CommandEventArgs e)
         {
-            if(function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
+            if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
             {
-                lbtechno.Visible = true;
-                btnReverb.Visible = true;
+                lbDates.Visible = true;
+                lbDatesRecheck.Visible = true;
+                lbTimes.Visible = true;
+                lbTimesRecheck.Visible = true;
             }
-            
-            
+
             string imgS = "/CM/Upload/NoImageAvailable.jpg";
             string imgE = "/CM/Upload/NoImageAvailable.jpg";
             string imgSer = "/CM/Upload/NoImageAvailable.jpg";
@@ -591,9 +591,14 @@ namespace ClaimProject.CM
                 {
                 //if(!rt.IsDBNull(11) && !rt.IsDBNull(14) && !rt.IsDBNull(19) && !rt.IsDBNull(20) && !rt.IsDBNull(21) && !rt.IsDBNull(22))
                 string Chk = rt.GetString("cm_detail_status_id");
+
                     if (Chk == "0")
                     {
-                        lbMethodRecheck.Text = "-";
+                        if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
+                        {
+                            btnReverb.Visible = false;
+                        }
+                    lbMethodRecheck.Text = "-";
                         lbDateERecheck.Text = "-";
                         lbTimeERecheck.Text = "-";
                         lbDateEJRecheck.Text = "-";
@@ -603,8 +608,11 @@ namespace ClaimProject.CM
                     }
                     else if(Chk == "1")
                     {
-
-                        imgE = rt.GetString("cm_detail_eimg");
+                        if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
+                        {
+                            btnReverb.Visible = false;
+                        }
+                    imgE = rt.GetString("cm_detail_eimg");
                         lbMethodRecheck.Text = rt.GetString("cm_detail_method");                       
                         lbDateERecheck.Text = rt.GetString("cm_detail_edate");
                         lbTimeERecheck.Text = rt.GetString("cm_detail_etime") + " น.";
@@ -624,6 +632,10 @@ namespace ClaimProject.CM
                     }
                     else if(Chk == "2")
                     {
+                        if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
+                        {
+                            btnReverb.Visible = true;
+                        }
                     imgE = rt.GetString("cm_detail_eimg");
                     lbMethodRecheck.Text = rt.GetString("cm_detail_method");
                     lbDateERecheck.Text = rt.GetString("cm_detail_edate");
@@ -647,6 +659,7 @@ namespace ClaimProject.CM
             ImgEditEQ.ImageUrl = "~" + imgS;
             ImgEditEQE.ImageUrl = "~" + imgE;
             ImgImageDocSer.ImageUrl = "~" + imgSer;
+            lbStatusRecheck.Text = function.GetStatusCM(rt.GetString("cm_detail_status_id").ToString());
             lbrefRecheck.Text = rt.GetString("cm_detail_id");
             lbCpointRecheck.Text = rt.GetString("cpoint_name");
             lbPointRecheck.Text = rt.GetString("cm_point");
@@ -663,7 +676,7 @@ namespace ClaimProject.CM
         {
             string TimeNoww = DateTime.Now.ToString("HH:mm");
             string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
-            string sqlReverb = " UPDATE tbl_cm_detail SET cm_detail_status_id = 1 WHERE cm_detail_id = '" + lbrefRecheck.Text + "' " ;
+            string sqlReverb = " UPDATE tbl_cm_detail SET cm_detail_status_id = 1 WHERE cm_detail_id = '" + pkeq.Text + "' " ;
             if (function.MySqlQuery(sqlReverb))
             {
                 string filePath = "D:/log/CM/Update_log";
