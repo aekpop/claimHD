@@ -72,15 +72,22 @@ namespace ClaimProject
                         }
                         else
                         {
-                            cpoint = txtCpoint.SelectedValue;
-                            if (cpoint == "703" || cpoint == "704" || cpoint == "706" || cpoint == "707" || cpoint == "708" || cpoint == "709")
+                            if (rs.GetString("level") == "5" && rs.GetString("user_cpoint") == "1")
                             {
-                                point = txtPoint.SelectedValue;
+                                cpoint = rs.GetString("cpoint_id");
                             }
                             else
                             {
-                                point = " ";
-                            }
+                                cpoint = txtCpoint.SelectedValue;
+                                if (cpoint == "703" || cpoint == "704" || cpoint == "706" || cpoint == "707" || cpoint == "708" || cpoint == "709")
+                                {
+                                    point = txtPoint.SelectedValue;
+                                }
+                                else
+                                {
+                                    point = " ";
+                                }
+                            } 
                         }
                         // Storee Session
                         Session.Add("EQAddAlert", "");
@@ -159,6 +166,8 @@ namespace ClaimProject
                         {
                             cpoint = "905";
                         }
+
+                        
                         Session.Add("UserCpoint", cpoint);
                         Session.Add("Userpoint", point);
                         Session.Timeout = 28800;
@@ -185,6 +194,7 @@ namespace ClaimProject
 
                         if (Session["UserPrivilegeId"].ToString() == "5" )
                         {
+
                             Response.Redirect("/equip/EquipDefault");
                         }
                         else
