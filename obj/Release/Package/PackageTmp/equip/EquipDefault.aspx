@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="งานครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipDefault.aspx.cs" Inherits="ClaimProject.equip.EquipDefault" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
    
         <asp:Button runat="server" ID="btnMainEQtt" Text="หน้าหลัก"  OnClick="btnMainEQtt_Click" CssClass="btn btn-default" />
         <br />
@@ -17,10 +23,107 @@
                     </div>
                 
                 </div>-->
-
-                <br />
+                 <!-- ตารางสถานปัจจุบัน-->
+               <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะปัจจุบัน
+                                        
+                          </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                              <div class="col-auto">
+                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
+                              </div>
+                           </div> 
+                         <div class="row">
+                             <div class="container mb-2">
+                                        <div class="table-responsive-sm">
+                                        <table class="table table-sm table-hover">                                          
+                                            <tbody>
+                                                <tr class="">
+                                                    <th scope="row" class="text-center"></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์รวม</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbEqTotal" runat="server" ></asp:Label>
+                                                    </td>
+                                                    </tr>
+                                                 <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์สภาพดี</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbEqNorm" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                 <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์ชำรุด</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbEqBork" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            </table>   
+                                         </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                             </div>
+                       </div>
+                   <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">โอนย้าย      
+                          </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                              <div class="col-auto">
+                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
+                              </div>
+                           </div> 
+                         <div class="row">
+                             <div class="container mb-2">
+                                        <div class="table-responsive-sm">
+                                        <table class="table table-sm table-hover">                                          
+                                            <tbody>
+                                                <tr class="">
+                                                    <th scope="row" class="text-center"></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งคืน</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaSent" runat="server" ></asp:Label>
+                                                    </td>
+                                                    </tr>
+                                                 <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งซ่อม</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaClaim" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                 <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">โอนย้าย</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaTransfer" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            </table>   
+                                         </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                             </div>
+                       </div>
+                </div>
+              
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div7">
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="Div7">
                         <div class="card card-stats" >
                             <div class="card-header card-header-danger card-header-icon" >
                                 <div class="card-icon ">
@@ -44,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="receive">
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="receive">
                         <div class="card card-stats" >
                             <div class="card-header card-header-warning card-header-icon" >
                                 <div class="card-icon ">
@@ -69,7 +172,7 @@
                     </div>
              </div>
                 <div class="row"> 
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div6">
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div6">
                         <div class="card card-stats" >
                             <div class="card-header card-header-success card-header-icon" >
                                 <div class="card-icon ">
@@ -93,7 +196,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div3" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div3" >
                         <div class="card card-stats" >
                             <div class="card-header card-header-secondary card-header-icon" >
                                 <div class="card-icon" >
@@ -115,7 +218,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div5" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div5" >
                         <div class="card card-stats" >
                             <div class="card-header card-header-rose card-header-icon" >
                                 <div class="card-icon">
@@ -139,7 +242,7 @@
 
                 
                 
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div1">
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div1">
                         <div class="card card-stats" >
                             <div class="card-header card-header-warning card-header-icon" >
                                 <div class="card-icon">
@@ -163,7 +266,7 @@
 
           
               
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div4" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div4" >
                         <div class="card card-stats" >
                             <div class="card-header card-header-info card-header-icon" >
                                 <div class="card-icon">
@@ -185,7 +288,7 @@
                         </div>
                     </div>
  
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div2" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div2" >
                         <div class="card card-stats" >
                             <div class="card-header card-header-warning card-header-icon" >
                                 <div class="card-icon" >
@@ -208,7 +311,7 @@
                     </div>
 
                 
-                    <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="div8" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div8" >
                         <div class="card card-stats" >
                             <div class="card-header card-header-dark card-header-icon" >
                                 <div class="card-icon">
@@ -230,7 +333,7 @@
                         </div>
                     </div>
                     </div>
-
+               
                <!-- <div class="row" >
                     <asp:Chart ID="Chart1" runat="server"  BackImageAlignment="Center" Width="1000" Height="400"  >
                                    <Series>

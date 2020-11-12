@@ -73,7 +73,7 @@ namespace ClaimProject.Claim
                         "JOIN tbl_status ON status_id = claim_status " +
                         "LEFT JOIN tbl_user ON username=claim_user_start_claim " +
                         "JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status " +
-                        "WHERE claim_delete = '0' AND (cpoint_id Like '%" + Session["UserCpoint"].ToString() + "%' AND claim_cpoint_note LIKE '%" + txtSearchComNumber.Text + "%' " +
+                        "WHERE claim_delete = '0' AND (tbl_cpoint.cpoint_id Like '%" + Session["UserCpoint"].ToString() + "%' AND claim_cpoint_note LIKE '%" + txtSearchComNumber.Text + "%' " +
                         "AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' " +
                         "AND claim_start_date LIKE '%" + month + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%' ) " +
                         "ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
@@ -81,7 +81,12 @@ namespace ClaimProject.Claim
                 }
                 else
                 {
-                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' AND (cpoint_id Like '%" + txtSearchCpoint.SelectedValue + "%' AND claim_cpoint_note LIKE '%" + txtSearchComNumber.Text + "%' AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' AND claim_start_date LIKE '%" + txtSearchDate.Text + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%') ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
+                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status LEFT JOIN tbl_user ON username = claim_user_start_claim " +
+                          " JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' " +
+                          " AND (tbl_cpoint.cpoint_id Like '%" + txtSearchCpoint.SelectedValue + "%' AND claim_cpoint_note LIKE '%" + txtSearchComNumber.Text + "%' " +
+                          " AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' " +
+                          " AND claim_start_date LIKE '%" + txtSearchDate.Text + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%') " +
+                          " ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
                     Session["sql"] = sql;
                 }
             }

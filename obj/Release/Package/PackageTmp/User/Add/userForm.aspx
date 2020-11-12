@@ -5,15 +5,15 @@
     <script src="/Scripts/HRSProjectScript.js"></script>
 
     <div class="form-row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             Username 
             <asp:TextBox ID="txtUser" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             Password 
             <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             Confirm Password 
             <asp:TextBox ID="txtCPass" runat="server" CssClass="form-control" TextMode="Password" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
@@ -30,7 +30,13 @@
             <asp:DropDownList ID="txtLevel" runat="server" CssClass="form-control"></asp:DropDownList>
         </div>
         <div class="col-md-3">
-            <br />
+            ด่านฯ
+            <asp:DropDownList ID="ddlCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
+        </div>
+            </div>
+                <br />
+        <div class="row">
+             <div class="col text-center">
             <asp:Button ID="btnUserAdd" runat="server" Text="&#xf067; เพิ่ม" Font-Size="Medium" CssClass="btn btn-success btn-sm align-items-end fa" OnClick="btnUserAdd_Click" OnClientClick="return CompareConfirm('ยืนยันเพิ่มผู้ใช้งาน ใช่หรือไม่');"/>
         </div>
     </div>
@@ -48,7 +54,7 @@
                                 <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                             </div>
                             <div class="col-md-1">
-                                <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark btn-sm" OnClick="btnSearch_Click"><i class="fa fa-search">ค้นหา</i></asp:LinkButton>
+                                <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark btn-sm" OnClick="btnSearch_Click"><i class="fa fa-search"></i></asp:LinkButton>
                             </div>
                         </div>
                         <br />
@@ -92,7 +98,15 @@
                                         <asp:DropDownList ID="txtEPrivilege" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
+                                <asp:TemplateField HeaderText="ด่านฯ">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbCpoint" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name").ToString() %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:DropDownList ID="ddlCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="ตกลง" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
                                 <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="btn btn-outline-danger btn-sm fa" ControlStyle-Font-Size="Small" />
                             </Columns>
                             <PagerStyle HorizontalAlign="Center" CssClass="GridPager" />
