@@ -408,18 +408,18 @@ namespace ClaimProject.equip
             string usernamee = Session["User"].ToString();
             if (SToll == "0") //ค้นทุกอาคาร
             {              
-                if (Snameth != "") 
+                if (Snameth != "") //มีชื่อครุ+ทุกด่านฯ
                 {
-                    if (SNum != "")//มีชื่อ+มีเลข+ทุกด่าน
+                    if (SNum != "") //มีเลขครุ+มีชื่อครุ+ทุกด่านฯ
                     {
-                        if(statt != "0")
+                        if(statt != "0") //มีสถานะ+มีเลขครุ+มีชื่อครุ+ทุกด่านฯ
                         {
                             Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
                                 "AND d.equipment_no LIKE '%" + SNum + "%' AND Estatus_id = '"+statt;
                             SsqlReport += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
                                 "AND d.equipment_no LIKE '%" + SNum + "%' AND Estatus_id = '" + statt;
 
-                            if (txtsearchSerial.Text != "")
+                            if (txtsearchSerial.Text != "") //มีserail+มีสถานะ+มีเลขครุ+มีชื่อครุ+ทุกด่านฯ
                             {
                                 Ssql += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
@@ -772,8 +772,47 @@ namespace ClaimProject.equip
                     {
                         if (statt != "0")
                         {
-
-                            AlertPop("กรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !", "error");
+                            Ssql += " WHERE d.Estatus_id = '" + statt + "' ";
+                            SsqlReport += " WHERE d.Estatus_id = '" + statt + "' ";
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
+                            {
+                                if (cpointtt != "0")
+                                {
+                                    Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                }
+                                else
+                                {
+                                    if (usernamee == "sawitree")
+                                    {
+                                        Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
+                                        SsqlReport += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
+                                    }
+                                    else if (usernamee == "supaporn")
+                                    {
+                                        Ssql += " AND tbl_toll.toll_EQGroup = '2' order by d.equipment_no ASC ";
+                                        SsqlReport += " AND tbl_toll.toll_EQGroup = '2' order by d.equipment_no ASC ";
+                                    }
+                                    else if (usernamee == "watcharee")
+                                    {
+                                        Ssql += " AND tbl_toll.toll_EQGroup = '3' order by d.equipment_no ASC ";
+                                        SsqlReport += " AND tbl_toll.toll_EQGroup = '3' order by d.equipment_no ASC ";
+                                    }
+                                    else
+                                    {
+                                        Ssql += " order by d.equipment_no ASC ";
+                                        SsqlReport += " order by d.equipment_no ASC ";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                            }
+                            Session["SQLEQ"] = Ssql.ToString();
+                            Session["sqlreEQ"] = SsqlReport;
+                            SearchBind();
 
                         }
                         else if(txtsearchSerial.Text == "")
@@ -835,19 +874,56 @@ namespace ClaimProject.equip
                         }
                         else
                         {
-                            AlertPop("กรุณากรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !!","error");
+                            //AlertPop("กรุณากรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !!","error");
+                            Ssql += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
+                            {
+                                //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //SsqlReport += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
+                                //Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                //SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                if (cpointtt != "0")
+                                {
+                                    Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                    SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' order by d.equipment_no ASC ";
+                                }
+                                else
+                                {
+                                    if (usernamee == "sawitree")
+                                    {
+                                        Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
+                                        SsqlReport += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
+                                    }
+                                    else if (usernamee == "supaporn")
+                                    {
+                                        Ssql += " AND tbl_toll.toll_EQGroup = '2' order by d.equipment_no ASC ";
+                                        SsqlReport += " AND tbl_toll.toll_EQGroup = '2' order by d.equipment_no ASC ";
+                                    }
+                                    else if (usernamee == "watcharee")
+                                    {
+                                        Ssql += " AND tbl_toll.toll_EQGroup = '3' order by d.equipment_no ASC ";
+                                        SsqlReport += " AND tbl_toll.toll_EQGroup = '3' order by d.equipment_no ASC ";
+                                    }
+                                    else
+                                    {
+                                        Ssql += " order by d.equipment_no ASC ";
+                                        SsqlReport += " order by d.equipment_no ASC ";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                            }
+                            Session["SQLEQ"] = Ssql.ToString();
+                            Session["sqlreEQ"] = SsqlReport;
+                            SearchBind();
                         }
-
                     }
                 }
             }
-
-
-
-
-
-
-
             else //เลือกอาคาร
             {
                 if (Snameth != "")
@@ -995,13 +1071,15 @@ namespace ClaimProject.equip
             string SNum = txtsearchNum.Text;
             string txtCpoint = ddlcpoint.SelectedItem.ToString();
             string txtTollz = ddlserchToll.SelectedItem.ToString();
+            string txtSerial = txtsearchSerial.Text;
+            string txtStatus = ddlsearchStat.SelectedItem.ToString();
             string qqq = Session["SQLEQ"].ToString();
             MySqlDataAdapter da = function.MySqlSelectDataSet(qqq);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
             GridEquipAdd.DataSource = ds.Tables[0];
             ccount = (ds.Tables[0].Rows.Count).ToString();
-            titlegrid.Text = "ผลการค้นหา ( ชื่อครุภัณฑ์: " + Snameth + " | เลขครุภัณฑ์: " + SNum + " | ด่านฯ: " + txtCpoint + " | อาคารย่อย: " + txtTollz + "  ) พบ " + ccount + " รายการ";
+            titlegrid.Text = "ผลการค้นหา ( ชื่อครุภัณฑ์ : " + Snameth + " | เลขครุภัณฑ์ : " + SNum + " | เลขทะเบียน(Serial) : "+ txtSerial + " | สถานะ : "+ txtStatus + " | ด่านฯ : " + txtCpoint + " | อาคารย่อย : " + txtTollz + "  ) พบ " + ccount + " รายการ";
             titlegrid.Visible = true;
             
             GridEquipAdd.DataBind();
