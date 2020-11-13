@@ -67,6 +67,87 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.Label lbEqBork;
         
         /// <summary>
+        /// tblToll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tblToll;
+        
+        /// <summary>
+        /// lbStaRecieptToll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaRecieptToll;
+        
+        /// <summary>
+        /// lbStaSentToll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaSentToll;
+        
+        /// <summary>
+        /// lbeqSentToll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbeqSentToll;
+        
+        /// <summary>
+        /// lbStaClaimToll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaClaimToll;
+        
+        /// <summary>
+        /// lbeqClaimToll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbeqClaimToll;
+        
+        /// <summary>
+        /// tblClerical control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tblClerical;
+        
+        /// <summary>
+        /// lbStaTransfer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStaTransfer;
+        
+        /// <summary>
+        /// lbStatrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStatrans;
+        
+        /// <summary>
         /// lbStaSent control.
         /// </summary>
         /// <remarks>
@@ -85,13 +166,22 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.Label lbStaClaim;
         
         /// <summary>
-        /// lbStaTransfer control.
+        /// lbStaRent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbStaTransfer;
+        protected global::System.Web.UI.WebControls.Label lbStaRent;
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
         /// Div7 control.
@@ -416,6 +506,15 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        
+        /// <summary>
+        /// lbAmountWait control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAmountWait;
         
         /// <summary>
         /// Chart1 control.
