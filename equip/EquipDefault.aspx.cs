@@ -206,12 +206,12 @@ namespace ClaimProject.equip
                 if (ttr.GetInt32("num") != 0)
                 {
                     lbnew.ForeColor = System.Drawing.Color.Red;
-                    lbnew.Text = ttr.GetInt32("num").ToString() + " ครั้ง";
+                    lbnew.Text = ttr.GetInt32("num").ToString();
                     ttr.Close();
                 }
                 else
                 {
-                    lbnew.Text = ttr.GetInt32("num").ToString() + " ครั้ง";
+                    lbnew.Text = ttr.GetInt32("num").ToString();
                     ttr.Close();
                 }
 
@@ -240,7 +240,7 @@ namespace ClaimProject.equip
             MySqlDataReader tr = function.MySqlSelect(tran);
             if (tr.Read())
             {
-                lbTran.Text = tr.GetInt32("num").ToString() + " ครั้ง";
+                lbTran.Text = tr.GetInt32("num").ToString();
                 tr.Close();
                 MySqlDataReader tract = function.MySqlSelect(tranact);
                 if (tract.Read())
@@ -255,7 +255,7 @@ namespace ClaimProject.equip
             MySqlDataReader snd = function.MySqlSelect(send);
             if (snd.Read())
             {
-                lbSendHead.Text = snd.GetInt32("num").ToString() + " ครั้ง";
+                lbSendHead.Text = snd.GetInt32("num").ToString();
                 snd.Close();
                 MySqlDataReader sndact = function.MySqlSelect(sendact);
                 if (sndact.Read())
@@ -270,7 +270,7 @@ namespace ClaimProject.equip
             MySqlDataReader see = function.MySqlSelect(sell);
             if (see.Read())
             {
-                lbSell.Text = see.GetInt32("num").ToString() + " ครั้ง";
+                lbSell.Text = see.GetInt32("num").ToString();
                 see.Close();
                 MySqlDataReader sella = function.MySqlSelect(sellact);
                 if (sella.Read())
@@ -286,7 +286,7 @@ namespace ClaimProject.equip
             MySqlDataReader ree = function.MySqlSelect(rep);
             if (ree.Read())
             {
-                lbRepair.Text = ree.GetInt32("num").ToString() + " ครั้ง";
+                lbRepair.Text = ree.GetInt32("num").ToString();
                 ree.Close();
                 MySqlDataReader reeact = function.MySqlSelect(repact);
                 if (reeact.Read())
@@ -302,7 +302,7 @@ namespace ClaimProject.equip
             MySqlDataReader pee = function.MySqlSelect(copy);
             if (pee.Read())
             {
-                lbCopy.Text = pee.GetInt32("num").ToString() + " ครั้ง";
+                lbCopy.Text = pee.GetInt32("num").ToString();
                 pee.Close();
                 MySqlDataReader peeact = function.MySqlSelect(copact);
                 if (peeact.Read())
@@ -318,7 +318,7 @@ namespace ClaimProject.equip
             MySqlDataReader sert = function.MySqlSelect(seee);
             if (sert.Read())
             {
-                Label2.Text = sert.GetInt32("num").ToString() + " ครั้ง";
+                Label2.Text = sert.GetInt32("num").ToString();
                 pee.Close();
                 MySqlDataReader seeact = function.MySqlSelect(seeer);
                 if (seeact.Read())
@@ -334,7 +334,7 @@ namespace ClaimProject.equip
             MySqlDataReader seert = function.MySqlSelect(seeto);
             if (seert.Read())
             {
-                lbTotal.Text = seert.GetInt32("num").ToString() + " ครั้ง";
+                lbTotal.Text = seert.GetInt32("num").ToString();
                 seert.Close();
                 MySqlDataReader seeeer = function.MySqlSelect(seetot);
                 if (seeeer.Read())

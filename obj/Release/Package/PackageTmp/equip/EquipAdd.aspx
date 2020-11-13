@@ -26,20 +26,20 @@
                 <div id="divsearch" runat="server" class="row"  >
                     <div class="col-md-2 col-lg-2" >
                             <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" Text="ชื่อครุภัณฑ์(ไทย):" Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="ชื่อครุภัณฑ์(ไทย) :" Font-Bold="true" ></asp:Label>
                             <asp:TextBox ID="txtsearchth"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                 
                     <div class="col-md-2 col-lg-2" >
                             <div class="form-group" >
-                            <asp:Label ID="Label2" runat="server" Text="เลขครุภัณฑ์:"  Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="เลขครุภัณฑ์ :"  Font-Bold="true" ></asp:Label>
                             <asp:TextBox ID="txtsearchNum"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
                     <div class="col-md-2 col-lg-2" >
                             <div class="form-group" >
-                            <asp:Label ID="Label4" runat="server" Text="เลขทะเบียน(Serial):" Font-Bold="true" ></asp:Label>
+                            <asp:Label ID="Label4" runat="server" Text="เลขทะเบียน(Serial) :" Font-Bold="true" ></asp:Label>
                             <asp:TextBox ID="txtsearchSerial"  CssClass="form-control" runat="server" BorderStyle="NotSet"  onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
@@ -74,16 +74,14 @@
                                                         <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="Export" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
                                 </div>
                          </div>
-                    
-               
-                
+               <br />
                 <div class="row" style="padding-left:20px; font-size:small">
                     <asp:Label ID="titlegrid" runat="server" text="" Visible="false"  ></asp:Label>               
                         
                 </div>
            </div>
         
-        <div class="card-body" style="font-size:medium; ">
+        <div class="card-body" style="font-size:medium; font-family:'TH SarabunPSK';">
 
           <asp:Panel ID="Panel1" runat="server" > 
               
@@ -91,8 +89,8 @@
             DataKeyNames="equipment_id"
             OnRowDataBound="GridEquipAdd_RowDataBound"
             CssClass="table table-hover table-sm "
-            HeaderStyle-Font-Size="18px"
-            Font-Size="15px"
+            HeaderStyle-Font-Size="22px"
+            Font-Size="19px"
             AutoGenerateColumns="False" 
             OnPageIndexChanging="GridEquipAdd_PageIndexChanging" 
             PagerSettings-Mode="NumericFirstLast"  PageSize="20" 

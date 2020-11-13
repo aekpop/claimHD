@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>11/12/2020 08:12:40</publishTime>
+      <publishTime>11/13/2020 15:02:32</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>11/12/2020 08:12:40</publishTime>
+      <publishTime>11/13/2020 15:02:32</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>11/12/2020 08:12:42</publishTime>
+      <publishTime>11/13/2020 15:02:35</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -3463,7 +3463,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 10:07:24</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>10/27/2020 13:50:08</publishTime>
+      <publishTime>11/12/2020 16:28:22</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
       <publishTime>10/22/2020 19:44:52</publishTime>
@@ -3478,7 +3478,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2020 19:53:18</publishTime>
     </File>
     <File Include="equip/EquipDefault.aspx">
-      <publishTime>11/09/2020 17:19:34</publishTime>
+      <publishTime>11/13/2020 14:48:29</publishTime>
     </File>
     <File Include="equip/EquipHistory.aspx">
       <publishTime>10/22/2020 12:36:15</publishTime>

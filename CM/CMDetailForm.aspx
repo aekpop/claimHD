@@ -180,9 +180,9 @@
                                     <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="แก้ไข" ControlStyle-Width="50px">
+                            <asp:TemplateField HeaderText="Edit" HeaderStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnEditCM" runat="server"  CssClass="fas text-warning" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขรายการใช่หรือไม่')">&#xf303;</asp:LinkButton>
+                                    <asp:LinkButton ID="btnEditCM" runat="server"  CssClass="btn btn-sm btn-outline-warning"  Font-Size="15px" ToolTip="แก้ไขรายละเอียดการแจ้งซ่อม" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขรายการใช่หรือไม่')"><i class="fas fa-edit"></i></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

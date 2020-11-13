@@ -30,7 +30,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะปัจจุบัน
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะครุภัณฑ์
                                         
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
@@ -73,12 +73,12 @@
                                     </div>
                              </div>
                        </div>
-                   <div class="col-xl-3 col-md-6 mb-4">
+                   <div class="col-xl-3 col-md-6 mb-4" id="tblToll" runat="server" >
                   <div class="card border-left-primary shadow h-70 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">โอนย้าย      
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ด่านฯ)      
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
@@ -93,23 +93,85 @@
                                             <tbody>
                                                 <tr class="">
                                                     <th scope="row" class="text-center"></th>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งคืน</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">รับเข้า</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaRecieptToll" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr class="">
+                                                    <th scope="row" class="text-center"></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งคืนฝ่ายฯ</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaSentToll" runat="server" ></asp:Label> / <asp:Label ID="lbeqSentToll" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                 <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งซ่อม</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaClaimToll" runat="server" ></asp:Label> / <asp:Label ID="lbeqClaimToll" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>                                                
+                                            </tbody>
+                                            </table>   
+                                         </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                             </div>
+                       </div>
+                   
+                <div class="col-xl-3 col-md-6 mb-4" id="tblClerical" runat="server">
+                  <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ฝ่ายฯ)     
+                          </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                              <div class="col-auto">
+                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
+                              </div>
+                           </div> 
+                         <div class="row">
+                             <div class="container mb-2">
+                                        <div class="table-responsive-sm">
+                                        <table class="table table-sm table-hover" >                                          
+                                            <tbody>
+                                                <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">รับเข้า</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStaTransfer" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr class="">
+                                                    <th scope="row" class="text-center" ></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">โอนย้าย(ส่งออก)</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                        <asp:Label ID="lbStatrans" runat="server" ></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr class="">
+                                                    <th scope="row" class="text-center"></th>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งคืนกองฯ</td>
                                                     <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
                                                         <asp:Label ID="lbStaSent" runat="server" ></asp:Label>
                                                     </td>
-                                                    </tr>
-                                                 <tr class="">
+                                                </tr>
+                                                <tr class="">
                                                     <th scope="row" class="text-center" ></th>
                                                     <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ส่งซ่อม</td>
                                                     <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
                                                         <asp:Label ID="lbStaClaim" runat="server" ></asp:Label>
                                                     </td>
                                                 </tr>
-                                                 <tr class="">
+                                                <tr class="">
                                                     <th scope="row" class="text-center" ></th>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">โอนย้าย</td>
+                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ยืม</td>
                                                     <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
-                                                        <asp:Label ID="lbStaTransfer" runat="server" ></asp:Label>
+                                                        <asp:Label ID="lbStaRent" runat="server" ></asp:Label><asp:Label ID="Label4" runat="server" ></asp:Label>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -120,6 +182,7 @@
                                     </div>
                              </div>
                        </div>
+                
                 </div>
               
                 <div class="row">
@@ -332,8 +395,34 @@
                             </div>
                         </div>
                     </div>
+                 </div>
+
+               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                    data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                ขณะนี้มีรายการรอรับครุภัณฑ์จำนวน <asp:Label runat="server" ID="lbAmountWait" CssClass="text text-danger"></asp:Label>
+                                รายการ <br /> กรุณาตรวจสอบและทำรายการต่อไป 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">
+                                    close
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
                     </div>
-               
+                    <!-- /.modal -->
+                </div>
                <!-- <div class="row" >
                     <asp:Chart ID="Chart1" runat="server"  BackImageAlignment="Center" Width="1000" Height="400"  >
                                    <Series>
@@ -372,6 +461,10 @@
                     return confirm(msg);
                 }
             }
+
+            function openModal() {
+            $('#myModal').modal('show');
+            }   
         </script>
 
 

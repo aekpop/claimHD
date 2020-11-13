@@ -42,6 +42,8 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
+                function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group = '1' Order By locate_id ASC", "locate_name", "locate_id");
+                ddlChanel.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 //function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 //function.getListItem(ddlAnnex, "SELECT cm_point FROM tbl_cm_detail  GROUP BY cm_point ORDER by cm_point ASC", "cm_point", "cm_point");
                 txtAnnex.Text = Session["Userpoint"].ToString();
@@ -70,42 +72,86 @@ namespace ClaimProject.CM
             string sql = "";
             string checkCpoint = txtCpointSearch.SelectedValue;
             string checkPoint = Session["Userpoint"].ToString();
-            if (checkCpoint == "")
+            string checkChanel = ddlChanel.SelectedValue;
+            if(checkChanel == "")
             {
-                if(checkPoint == "")
+                if (checkCpoint == "")
                 {
-                    sql += "SELECT * FROM tbl_cm_detail cm " +
-                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                    " JOIN tbl_user u ON cm.cm_user = u.username " + 
-                    " WHERE cm.cm_detail_status_id='0' " +
-                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    if (checkPoint == "")
+                    {
+                        sql += "SELECT * FROM tbl_cm_detail cm " +
+                        " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                        " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                        " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                        " JOIN tbl_user u ON cm.cm_user = u.username " +
+                        " WHERE cm.cm_detail_status_id='0' " +
+                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    }
+                    else
+                    {
+                        sql += "SELECT * FROM tbl_cm_detail cm " +
+                       " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                       " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                       " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                       " JOIN tbl_user u ON cm.cm_user = u.username " +
+                       " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                       " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' " +
+                       " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    }
+
                 }
                 else
                 {
                     sql += "SELECT * FROM tbl_cm_detail cm " +
-                   " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                   " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                   " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                   " JOIN tbl_user u ON cm.cm_user = u.username " +
-                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' " +
-                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                       " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                       " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                       " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                       " JOIN tbl_user u ON cm.cm_user = u.username " +
+                       " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                       " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' " +
+                       " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
-                
             }
             else
             {
-                sql += "SELECT * FROM tbl_cm_detail cm " +
-                   " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
-                   " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                   " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
-                   " JOIN tbl_user u ON cm.cm_user = u.username " +
-                   " WHERE cm.cm_cpoint = '" +checkCpoint+"' " +
-                   " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' " +
-                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                if (checkCpoint == "")
+                {
+                    if (checkPoint == "")
+                    {
+                        sql += "SELECT * FROM tbl_cm_detail cm " +
+                        " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                        " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                        " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                        " JOIN tbl_user u ON cm.cm_user = u.username " +
+                        " WHERE cm.cm_detail_status_id='0' AND cm.cm_detail_channel = '"+ checkChanel +"' " +
+                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    }
+                    else
+                    {
+                        sql += "SELECT * FROM tbl_cm_detail cm " +
+                       " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                       " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                       " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                       " JOIN tbl_user u ON cm.cm_user = u.username " +
+                       " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                       " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' AND cm.cm_detail_channel = '" + checkChanel + "' " +
+                       " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                    }
+
+                }
+                else
+                {
+                    sql += "SELECT * FROM tbl_cm_detail cm " +
+                       " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
+                       " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
+                       " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
+                       " JOIN tbl_user u ON cm.cm_user = u.username " +
+                       " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                       " AND cm.cm_detail_status_id='0' AND cm.cm_point = '" + checkPoint + "' AND cm.cm_detail_channel = '" + checkChanel + "' " +
+                       " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                }
             }
+            
                 
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();

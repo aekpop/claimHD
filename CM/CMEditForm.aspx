@@ -10,7 +10,7 @@
     </style>
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
 
-    <div id="DivCMGridView" runat="server" class="col-12">
+    <div id="DivCMGridView" runat="server" >
         <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
                 <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
@@ -25,12 +25,17 @@
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "  ></asp:DropDownList>
                     </div>
                     <div class="col-md-1" >
-                        <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" placeholder="อาคารย่อย" onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                    </div>                   
+                        <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" placeholder="อาคาร" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                    </div>
+                    <div class="col-md-3 col-xl-2">
+                        <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control custom-select " placeholder="ช่องทาง" ></asp:DropDownList>
+                    </div>
+                </div>
+                <br />
+                    <div class="row">
                     <div class="col-md-2">                      
                         <asp:Button ID="btnSearchEdit" runat="server" font-size="Medium" CssClass="btn btn-success " OnClick="btnSearchEdit_Click" Text="ค้นหา"/>
                     </div>
-
                 </div>
                 <br />
                 <asp:Panel ID="Panel1" runat="server" >
@@ -40,9 +45,9 @@
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="" ControlStyle-Width="25px">
+                            <asp:TemplateField HeaderText="" >
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="fas text-primary" Font-Size="Larger">&#xf0aa;</asp:LinkButton>
+                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="btn btn-sm btn-outline-success" Font-Size="18px" ToolTip="อัพเดตสถานะการซ่อม"><i class="fa text-center">&#xf0aa;</i></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ด่านฯ" >
@@ -55,12 +60,12 @@
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" >
+                            <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="300px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" >
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" ItemStyle-Width="300px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
@@ -228,6 +233,7 @@
             </div>
         </div>
     </div>
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -286,6 +292,9 @@
 		    
         }
 
+         $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
        
     </script>
     </div>
