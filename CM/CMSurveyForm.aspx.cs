@@ -146,7 +146,8 @@ namespace ClaimProject.CM
         protected void btnCancel_Command(object sender, CommandEventArgs e)
         {
             //string sql = "UPDATE tbl_cm_detail SET cm_detail_edate='',cm_detail_etime='',cm_detail_method ='',cm_detail_status_id = '0' WHERE cm_detail_id = '" + e.CommandName + "'";
-            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '0' WHERE cm_detail_id = '" + e.CommandName + "'";
+            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '0' ,cm_detail_ejdate = '' ,cm_detail_ejtime = '' ,cm_user_endjob = '' ,cm_detail_Service_img = '' " +
+                " ,cm_detail_edate = '' ,cm_detail_etime = '' ,cm_detail_eimg = '' ,cm_detail_method = '' WHERE cm_detail_id = '" + e.CommandName + "'";
             if (function.MySqlQuery(sql))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
@@ -226,7 +227,8 @@ namespace ClaimProject.CM
         protected void btnCancelModal_Command(object sender, CommandEventArgs e)
         {
             //string sql = "UPDATE tbl_cm_detail SET cm_detail_edate='',cm_detail_etime='',cm_detail_method ='',cm_detail_status_id = '0' WHERE cm_detail_id = '" + pkeq.Text + "'";
-            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '0' WHERE cm_detail_id = '" + pkeq.Text + "'";
+            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '0' ,cm_detail_ejdate = '' ,cm_detail_ejtime = '' ,cm_user_endjob = '' " +
+                ",cm_detail_Service_img = '' ,cm_detail_edate = '' ,cm_detail_etime = '' ,cm_detail_eimg = '' ,cm_detail_method= '' WHERE cm_detail_id = '" + pkeq.Text + "'";
             if (function.MySqlQuery(sql))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);

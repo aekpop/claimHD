@@ -200,7 +200,7 @@ namespace ClaimProject.CM
                     {
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
                         Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " +txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
-                        //LineTran();
+                        LineTran();
                         BindData();
                         ClearDate();
                     }
