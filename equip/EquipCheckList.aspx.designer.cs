@@ -13,13 +13,31 @@ namespace ClaimProject.equip {
     public partial class EquipCheckList {
         
         /// <summary>
-        /// btnMainEQQ control.
+        /// divaddnew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainEQQ;
+        protected global::System.Web.UI.WebControls.LinkButton divaddnew;
+        
+        /// <summary>
+        /// divcheckk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton divcheckk;
+        
+        /// <summary>
+        /// divcheckkk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton divcheckkk;
         
         /// <summary>
         /// AddPM control.

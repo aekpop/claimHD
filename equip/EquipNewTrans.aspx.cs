@@ -40,16 +40,16 @@ namespace ClaimProject.equip
                 string chhh = Session["UserPrivilegeId"].ToString(); //5
                 string usercpo = Session["UserCpoint"].ToString();  //701
                 
-                if (Session["BackWhat"].ToString() == "Send")
-                {
-                    btnMainTranSend.Visible = true;
-                    btnMainTranGet.Visible = false;
-                }
-                else
-                {
-                    btnMainTranSend.Visible = false;
-                    btnMainTranGet.Visible = true;
-                }
+               // if (Session["BackWhat"].ToString() == "Send")
+                //{
+                //    btnMainTranSend.Visible = true;
+                ///    btnMainTranGet.Visible = false;
+                //}
+                //else
+                //{
+               //     btnMainTranSend.Visible = false;
+               //     btnMainTranGet.Visible = true;
+               // }
                 if (usercpo == "0")
                 {
                     equipNo = "SELECT equipment_no,equipment_id FROM tbl_equipment WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete = '0' AND toll_id = '9200' Order By equipment_id ASC";
@@ -1453,22 +1453,6 @@ namespace ClaimProject.equip
                     return "0";
                 }
             
-        }
-
-
-        protected void btnMainTranSend_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipTranList");
-        }
-
-        protected void btnMainTranGet_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipTranGetList");
-        }
-
-        protected void btnMainEQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain");
         }
 
         protected void lbtnBack_Command(object sender, CommandEventArgs e) //ตีกลับ

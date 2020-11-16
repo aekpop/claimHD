@@ -7,8 +7,23 @@
         }
     </style>
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-   
-        <asp:Button runat="server" ID="btnMainEQtt" Text="หน้าหลัก"  OnClick="btnMainEQtt_Click" CssClass="btn btn-default" />
+   <!-- Menu Dropdown -->        
+        <div class="btn-group">
+              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
+                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
+                <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
+                <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
+                <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
+                <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
+                <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
+              </ul>
+        </div>
+        <!-------------------------------- // ------------------------------------>
         <br />
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
@@ -126,14 +141,13 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ฝ่ายฯ)     
-                          </div>
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ฝ่ายฯ)</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
                                   <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
                               </div>
-                           </div> 
+                         </div> 
                          <div class="row">
                              <div class="container mb-2">
                                         <div class="table-responsive-sm">
@@ -235,7 +249,7 @@
                     </div>
              </div>
                 <div class="row"> 
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div6">
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div6" visible="false">
                         <div class="card card-stats" >
                             <div class="card-header card-header-success card-header-icon" >
                                 <div class="card-icon ">
@@ -259,7 +273,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div3" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div3" visible="false" >
                         <div class="card card-stats" >
                             <div class="card-header card-header-secondary card-header-icon" >
                                 <div class="card-icon" >
@@ -281,7 +295,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div5" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div5" visible="false">
                         <div class="card card-stats" >
                             <div class="card-header card-header-rose card-header-icon" >
                                 <div class="card-icon">
@@ -305,7 +319,7 @@
 
                 
                 
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div1">
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div1" visible="false">
                         <div class="card card-stats" >
                             <div class="card-header card-header-warning card-header-icon" >
                                 <div class="card-icon">
@@ -329,7 +343,7 @@
 
           
               
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div4" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div4" visible="false">
                         <div class="card card-stats" >
                             <div class="card-header card-header-info card-header-icon" >
                                 <div class="card-icon">
@@ -351,7 +365,7 @@
                         </div>
                     </div>
  
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div2" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div2" visible="false">
                         <div class="card card-stats" >
                             <div class="card-header card-header-warning card-header-icon" >
                                 <div class="card-icon" >
@@ -374,7 +388,7 @@
                     </div>
 
                 
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div8" >
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div8" visible="false">
                         <div class="card card-stats" >
                             <div class="card-header card-header-dark card-header-icon" >
                                 <div class="card-icon">

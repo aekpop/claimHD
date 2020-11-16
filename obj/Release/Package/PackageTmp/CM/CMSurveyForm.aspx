@@ -3,7 +3,21 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+     <!-- Menu Dropdown -->        
+        <div class="btn-group">
+              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/CM/DefaultCM">หน้าหลัก</a></li>
+                <li><a href="/CM/CMDetailForm">แจ้งซ่อม</a></li>
+                <li><a href="/CM/CMEditForm">การแก้ไข</a></li>
+                <li><a href="/CM/CMLine">ส่งไลน์</a></li>
+                <li><a href="/CM/CMReport">สรุปรายการ</a></li>                
+              </ul>
+        </div>
+        <!-------------------------------- // ------------------------------------> 
         
 
     <div id="DivCMGridView" runat="server" class="col-12">
@@ -83,8 +97,8 @@
                             <asp:TemplateField HeaderText="อนุมัติ" >
                                 <ItemTemplate>
                                     <div class="row" >
-                                        <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="fas text-success m-1">&#xf058;</asp:LinkButton>
-                                        <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancel_Command" OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');" CssClass="fas text-danger m-1">&#xf057;</asp:LinkButton>
+                                        <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="btn btn-outline-success"><i class="fas fa-check"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancel_Command" OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');" CssClass="btn btn-outline-danger"><i class="fas fa-times"></i></asp:LinkButton>
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>

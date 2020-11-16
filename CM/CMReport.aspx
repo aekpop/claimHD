@@ -24,7 +24,21 @@
 
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-    
+     <!-- Menu Dropdown -->        
+        <div class="btn-group">
+              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/CM/DefaultCM">หน้าหลัก</a></li>
+                <li><a href="/CM/CMDetailForm">แจ้งซ่อม</a></li>
+                <li><a href="/CM/CMEditForm">การแก้ไข</a></li>
+                <li><a href="/CM/CMLine">ส่งไลน์</a></li>
+                <li><a href="/CM/CMReport">สรุปรายการ</a></li>                
+              </ul>
+        </div>
+        <!-------------------------------- // ------------------------------------> 
     <div id="MainBody" class="card" style="z-index: 0; ">
         <div class="card-header card-header-primary">
             <div class="card-title">รายงานสรุปแจ้งซ่อมอุปกรณ์</div>

@@ -12,7 +12,7 @@
     
 
    <div class="container-fluid" style="font-family:'Prompt',sans-serif;"> 
-        <!--<h3 class="bg-success "  style="font-size:30px;color:white;height:50px">&nbsp;&nbsp;Corrective Maintenance : CM</h3>-->
+        
 
     <div class="row">
         <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="boxUserSystem">
@@ -354,8 +354,8 @@
          function refresh() {
                  window.location.reload(true);
          }
-        setTimeout(refresh, 30000);
-
+                 setTimeout(refresh, 30000);
+        
         history.pushState(null, null, window.location.href);
         history.back();
         window.onpopstate = () => history.forward();

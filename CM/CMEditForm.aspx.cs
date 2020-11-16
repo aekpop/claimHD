@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -224,6 +225,8 @@ namespace ClaimProject.CM
                 Label2.Text = rs.GetString("locate_name");
                 Label3.Text = rs.GetString("device_name");
                 Label4.Text = rs.GetString("cm_detail_problem");
+                string img = rs.GetString("cm_detail_simg");
+                ImgCM.ImageUrl = "~" + img;
                 if (!rs.IsDBNull(8)) { txtEDate.Text = rs.GetString("cm_detail_edate"); } else { txtEDate.Text = ""; }
                 if (!rs.IsDBNull(9)) { txtETime.Text = rs.GetString("cm_detail_etime"); } else { txtETime.Text = DateTime.Now.ToString("HH.mm"); }
                 if (!rs.IsDBNull(11)) { txtMethod.Text = rs.GetString("cm_detail_method"); } else { txtMethod.Text = ""; }
@@ -256,7 +259,6 @@ namespace ClaimProject.CM
                     string sqlDocService = "";
                     if (txtMethod.Text != "")
                     {
-                        
                         if (fileImg.HasFile  || fileDocService.HasFile)
                         {
                             string typeFile = fileImg.FileName.Split('.')[fileImg.FileName.Split('.').Length - 1];
@@ -264,9 +266,8 @@ namespace ClaimProject.CM
                             if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFileDoc == "jpg" || typeFileDoc == "jpeg" || typeFileDoc == "png")
                             {
                                 NewFileDocName = "E_" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileImg.FileName.Split('.')[0];
-                                NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                                NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;        
                                 fileImg.SaveAs(Server.MapPath(NewFileDocName.ToString()));
-
                                 NewFileDocNameService = "E_" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileDocService.FileName.Split('.')[0];
                                 NewFileDocNameService = "/CM/Upload/" + function.getMd5Hash(NewFileDocNameService) + "." + typeFile;
                                 fileDocService.SaveAs(Server.MapPath(NewFileDocNameService.ToString()));
@@ -289,14 +290,14 @@ namespace ClaimProject.CM
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งอุปกรณ์ใช้งานได้ปกติจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text +" ";
+                                    Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งใช้งานได้ปกติ \nจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text +" ";
                                     LineTran();
                                     BindData();
-                                    Response.Redirect("/CM/DefaultCM");
+                                    //Response.Redirect("/CM/DefaultCM");
                                 }
                                 else
                                 {
-                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
+                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);                                                                        
                                 }
                                 function.Close();
                             }
@@ -388,8 +389,16 @@ namespace ClaimProject.CM
             if (Session["LineTran"].ToString() != "")
             {
                 SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
-                serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
-                Session["LineTran"] = "";
+                try
+                {
+                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
+                    Session["LineTran"] = "";
+                }
+                catch (Exception)
+                {
+                    
+                }
+                
             }
         }
 

@@ -161,40 +161,58 @@ namespace ClaimProject.CM
             }
             else
             {
-                return "/CM/Upload/NoImageAvailable.jpg";
+                return "picHasNotImage";
             }
             
         }
         protected void btnSaveCM_Click(object sender, EventArgs e)
         {
+            if (txtDeviceAdd.Text == "")
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกอุปกรณ์ที่ต้องการแจ้งซ่อม')", true);
+            }
+
             string getChkpic = ChkPicInsert();
 
-            if(getChkpic == "picTypeError")
+            if(txtProblem.Text == "")
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                txtProblem.CssClass = "form-control is-invalid ";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกปัญหา/อาการ')", true);
             }
             else
             {
-                string bgy = function.getBudgetYear(txtSDate.Text);
-                string point = Session["Userpoint"].ToString();
-                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
-                if(function.MySqlQuery(sql_insert))
+                txtProblem.CssClass = "form-control is-valid";
+
+                if (getChkpic == "picTypeError")
                 {
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                    Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งซ่อมจากด่านฯ " + txtCpoint.SelectedItem + " ช่องทาง " + ddlChanel.SelectedItem + " " + txtPoint.Text + " วันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " มีอาการชำรุด : " + txtProblem.Text + " ";
-                    LineTran();
-                    BindData();
-                    ClearDate();
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                }
+                else if(getChkpic == "picHasNotImage")
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพอีกครั้ง')", true);
                 }
                 else
                 {
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว กรุณาติดต่อผู้ดูแล')", true);
+                    string bgy = function.getBudgetYear(txtSDate.Text);
+                    string point = Session["Userpoint"].ToString();
+                    string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
+                    if(function.MySqlQuery(sql_insert))
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                        Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " +txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
+                        //LineTran();
+                        BindData();
+                        ClearDate();
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว กรุณาติดต่อผู้ดูแล')", true);
+                    }
+                    function.Close();
                 }
-                function.Close();
+
             }
 
-            
-            
         }
 
         private void ClearDate()
@@ -203,6 +221,7 @@ namespace ClaimProject.CM
             //txtPoint.Text = "";
             txtDeviceAdd.SelectedIndex = 0;
             txtProblem.Text = "";
+            txtProblem.CssClass = "form-control ";
             //txtChannel.Text = "";
             //txtNote.Text = "";
             txtSDate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
@@ -384,8 +403,15 @@ namespace ClaimProject.CM
             if (Session["LineTran"].ToString() != "")
             {
                 SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
-                serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
-                Session["LineTran"] = "";
+                try
+                {
+                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
+                    Session["LineTran"] = "";
+                }catch(Exception e)
+                {
+                    
+                }
+                
             }
         }
 

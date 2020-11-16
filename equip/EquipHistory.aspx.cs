@@ -105,11 +105,6 @@ namespace ClaimProject.equip
         protected void lbRef_Command(object sender, CommandEventArgs e)
         {
 
-        }
-
-        protected void btnMainEQQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain");
-        }
+        }        
     }
 }

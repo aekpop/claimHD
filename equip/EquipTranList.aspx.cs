@@ -46,6 +46,13 @@ namespace ClaimProject
                 ddlsearchType.SelectedItem.Value = Session["ddlsearchType"].ToString();
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
+
+                if (Session["UserCpoint"].ToString() != "0") //คนด่านฯ
+                {
+                    divaddnew.Visible = false;
+                    divcheckk.Visible = false;
+                    divcheckkk.Visible = false;
+                }
             }
             LineTran();
             LoadPaging();
@@ -86,11 +93,6 @@ namespace ClaimProject
 
         protected void LoadPaging ()
         {
-            if(Session["User"].ToString() == "pornwimon")
-            {
-                btnnewTranpage.Visible = false;
-            }
-            
             string TransRef = Session["TransID"].ToString();
             //COLLATE utf8_general_ci
             string sqlsendSearch = "SELECT * FROM tbl_transfer " +
@@ -323,15 +325,9 @@ namespace ClaimProject
 
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
         {
-            
             LoadPaging();
         }
-
-        protected void btnMainEQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain");
-        }
-
+        
         protected void lbtnprintTran_Command(object sender, CommandEventArgs e)
         {
             ReModal = e.CommandName; 

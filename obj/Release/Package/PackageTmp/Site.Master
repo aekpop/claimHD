@@ -50,7 +50,7 @@
         </asp:ScriptManager>
         <script src="/Scripts/offcanvas.js"></script>
         <div class="wrapper ">
-            <div class="sidebar" style="width:240px;" data-color="purple" data-background-color="white" data-image="/img/7877268095078.jpg" >
+            <div class="sidebar" style="width:240px; font-size:16px;" data-color="purple" data-background-color="white" data-image="/img/7877268095078.jpg" >
                 
                 <div id="divlogo" runat="server" class="logo">
                     <a  class="simple-text logo-normal">
@@ -58,8 +58,6 @@
 
                         <h4>ระบบการจัดการบริหารการจัดเก็บฯ</h4>
                         <h5> Toll Management System (TMS)</h5></a>
-                        <!--<span style="font-size: 24px;">ระบบการจัดการบริหารการจัดเก็บฯ</span><br />
-                        <span style="font-size: 16px;">Toll Management System (TMS)</span></a>-->
                 </div>
                 <div class="sidebar-wrapper" style="width:240px;" >
                     <ul class="nav">
@@ -436,6 +434,8 @@
                 return confirm(msg);
             }
         }        
+
+        $('.dropdown-toggle').dropdown()
 
     </script>
 </body>

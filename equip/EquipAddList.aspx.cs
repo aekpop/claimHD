@@ -509,12 +509,7 @@ namespace ClaimProject.equip
         {
             Response.Redirect("/equip/EquipAddList.aspx");
         }
-
-        protected void btnBackHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain.aspx");
-        }
-
+       
         protected void lbtnDeleteRow_Click(object sender, EventArgs e)
         {
             LinkButton lb = (LinkButton)sender;

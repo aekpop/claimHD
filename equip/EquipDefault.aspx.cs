@@ -34,18 +34,22 @@ namespace ClaimProject.equip
                         div4.Visible = false;
                         div6.Visible = false;
                         tblClerical.Visible = false;
+                        divaddnew.Visible = false;
+                        divcheckk.Visible = false;
+                        divcheckkk.Visible = false;
                     }
                     else
                     {
                         tblToll.Visible = false;
                     }
                     
-                }               
-                   // Session.Add("BackWhat", "");
+                }   Session.Add("ddlsearchType", "0");
+                    Session.Add("ddlsearchStat", "0");
+                    Session.Add("BackWhat", "");            
                     Session.Add("LineTran", "");
+                    Session["BackWhat"] = "";
                     loadingpage();
             }
-
         }
 
         protected void loadingpage()
@@ -680,12 +684,7 @@ namespace ClaimProject.equip
             Session.Add("ddlsearchStat", "3"); //complete
             Response.Redirect("/equip/EquipTranList");
         }
-
-        protected void btnMainEQtt_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain");
-        }
-
+       
         protected void lbtnNewTranDetail_Click(object sender, EventArgs e)
         {
             Session.Add("ddlsearchType" , "0");

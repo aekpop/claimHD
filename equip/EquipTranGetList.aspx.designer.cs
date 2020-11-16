@@ -13,13 +13,31 @@ namespace ClaimProject.equip {
     public partial class EquipTranGetList {
         
         /// <summary>
-        /// btnMainEQ control.
+        /// divaddnew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainEQ;
+        protected global::System.Web.UI.WebControls.LinkButton divaddnew;
+        
+        /// <summary>
+        /// divcheckk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton divcheckk;
+        
+        /// <summary>
+        /// divcheckkk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton divcheckkk;
         
         /// <summary>
         /// AddPM control.

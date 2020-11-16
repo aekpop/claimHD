@@ -60,6 +60,9 @@ namespace ClaimProject.equip
                     function.getListItem(ddlserchToll, cpointToll, "toll_name", "toll_id");
                     ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
                     function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By toll_id ASC", "toll_name", "toll_id");
+                    divaddnew.Visible = false;
+                    divcheckk.Visible = false;
+                    divcheckkk.Visible = false;
                 }
                 else //อื่นๆที่ไม่ใช่รหัสคนด่านฯ
                 {
@@ -1324,12 +1327,7 @@ namespace ClaimProject.equip
             Session["describe"] = describe;
             Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/equip/EquipReportPage','_newtab');", true);
         }
-
-        protected void btnBackHomeADDEQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain.aspx");
-        }
-
+        
         protected void GridEquipAdd_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridEquipAdd.PageIndex = e.NewPageIndex;

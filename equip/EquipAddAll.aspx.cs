@@ -159,11 +159,6 @@ namespace ClaimProject.equip
 
         }
 
-        protected void btnBackHomeADDEQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain.aspx");
-        }
-
         protected void btnCreatenew_Click(object sender, EventArgs e)
         {
             string pkCode = "";

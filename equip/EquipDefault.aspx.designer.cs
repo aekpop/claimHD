@@ -13,13 +13,31 @@ namespace ClaimProject.equip {
     public partial class EquipDefault {
         
         /// <summary>
-        /// btnMainEQtt control.
+        /// divaddnew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainEQtt;
+        protected global::System.Web.UI.WebControls.LinkButton divaddnew;
+        
+        /// <summary>
+        /// divcheckk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton divcheckk;
+        
+        /// <summary>
+        /// divcheckkk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton divcheckkk;
         
         /// <summary>
         /// Label1 control.

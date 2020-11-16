@@ -12,9 +12,23 @@
     <script src="/Scripts/HRSProjectScript.js"></script>
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-
-    
-    <asp:Button runat="server" ID="btnMainEQQ" Text="หน้าหลัก"  OnClick="btnBackHomeADDEQ_Click" CssClass="btn btn-default" />
+        <!-- Menu Dropdown -->        
+        <div class="btn-group">
+              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
+                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
+                <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
+                <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
+                <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
+                <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
+                <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
+              </ul>
+        </div>
+        <!------------------>
     <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
 
         <div class="card-header card-header-warning">

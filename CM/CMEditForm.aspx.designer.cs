@@ -103,6 +103,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbcmid;
         
         /// <summary>
+        /// ImgCM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgCM;
+        
+        /// <summary>
         /// lbsDate control.
         /// </summary>
         /// <remarks>

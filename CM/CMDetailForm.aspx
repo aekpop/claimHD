@@ -21,7 +21,21 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-        
+       <!-- Menu Dropdown -->        
+        <div class="btn-group">
+              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/CM/DefaultCM">หน้าหลัก</a></li>
+                <li><a href="/CM/CMDetailForm">แจ้งซ่อม</a></li>
+                <li><a href="/CM/CMEditForm">การแก้ไข</a></li>
+                <li><a href="/CM/CMLine">ส่งไลน์</a></li>
+                <li><a href="/CM/CMReport">สรุปรายการ</a></li>                
+              </ul>
+        </div>
+        <!-------------------------------- // ------------------------------------> 
         
 
         <div class="card" style="z-index: 0; ">
@@ -74,7 +88,7 @@
                     <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ปัญหา/อาการ</p>
-                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
+                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)" />
                         </div>
                     </div>
                                          
@@ -105,7 +119,7 @@
         <br />
     </div>
 
-    <div id="DivCMGridView" runat="server" class="col-12">
+    <div id="DivCMGridView" runat="server" >
         <div class="card" style="z-index: 0" >
             <div class="card-header card-header-warning">
                 <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
@@ -137,7 +151,7 @@
                         HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder"
                         HeaderStyle-Font-Size="18px"
                         RowStyle-CssClass="text-center"
-                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#000033" GridLines="None" PageSize="1">
+                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#000033" GridLines="None" PageSize="20">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField HeaderText="ลำดับ" >
@@ -155,17 +169,17 @@
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" >
+                            <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="250px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server"  Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.device_name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" >
+                            <asp:TemplateField HeaderText="อาการชำรุด" ItemStyle-Width="250px" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lbProblem" runat="server" CssClass="l" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
+                                    <asp:Label ID="lbProblem" runat="server"  Text='<%#new ClaimProject.Config.ClaimFunction().ShortText( DataBinder.Eval(Container, "DataItem.cm_detail_problem").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แจ้งซ่อม" >
+                            <asp:TemplateField HeaderText="วันแจ้งซ่อม" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                 </ItemTemplate>
@@ -246,6 +260,14 @@
             } else {
                 // your logic here
                 return confirm(msg);
+            }            
+        }
+
+        var submit = 0;
+        function CheckIsRepeat() {
+            if (++submit > 1) {
+                alert('ระบบกำลังประมวลผล ... กรุณากด "ตกลง" เพื่อทำรายการต่อไป');
+                return false;
             }
         }
 
@@ -269,7 +291,7 @@
 
          $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
-        });
-        
+        });      
+
     </script>
 </asp:Content>

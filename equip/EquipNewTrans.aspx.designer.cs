@@ -13,31 +13,31 @@ namespace ClaimProject.equip {
     public partial class EquipNewTrans {
         
         /// <summary>
-        /// btnMainEQ control.
+        /// divaddnew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainEQ;
+        protected global::System.Web.UI.WebControls.LinkButton divaddnew;
         
         /// <summary>
-        /// btnMainTranSend control.
+        /// divcheckk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainTranSend;
+        protected global::System.Web.UI.WebControls.LinkButton divcheckk;
         
         /// <summary>
-        /// btnMainTranGet control.
+        /// divcheckkk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainTranGet;
+        protected global::System.Web.UI.WebControls.LinkButton divcheckkk;
         
         /// <summary>
         /// divtranFirst control.

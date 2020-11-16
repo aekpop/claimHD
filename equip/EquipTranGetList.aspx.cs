@@ -33,6 +33,13 @@ namespace ClaimProject.equip
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
+
+                if (Session["UserCpoint"].ToString() != "0") //คนด่านฯ
+                {
+                    divaddnew.Visible = false;
+                    divcheckk.Visible = false;
+                    divcheckkk.Visible = false;
+                }
             }
             LineGetTran();
             LoadPaging();
@@ -390,13 +397,6 @@ namespace ClaimProject.equip
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
         {
             LoadPaging();
-
         }
-
-        protected void btnMainEQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain");
-        }
-        
     }
 }

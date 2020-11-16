@@ -3,9 +3,23 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <asp:Button runat="server" ID="btnMainEQ" Text="หน้าหลัก" OnClick="btnMainEQ_Click" CssClass="btn btn-default" />
-    <asp:Button runat="server" ID="btnMainTranSend" Visible="false" Text="(ส่ง)ครุภัณฑ์"  OnClick="btnMainTranSend_Click" CssClass="btn btn-success" />
-    <asp:Button runat="server" ID="btnMainTranGet" Visible="false" Text="(รับ)ครุภัณฑ์"  OnClick="btnMainTranGet_Click" CssClass="btn btn-warning" />
+    <!-- Menu Dropdown -->        
+        <div class="btn-group">
+              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
+                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
+                <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
+                <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
+                <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
+                <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
+                <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
+              </ul>
+        </div>
+        <!------------------>
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
         <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</h3>

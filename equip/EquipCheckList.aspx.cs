@@ -326,11 +326,7 @@ namespace ClaimProject.equip
             }
 
             return valueReturn;
-        }
-        protected void btnMainEQQ_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/equip/EquipMain");
-        }
+        }        
 
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {
