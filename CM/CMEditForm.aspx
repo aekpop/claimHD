@@ -176,7 +176,7 @@
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เวลาเข้าซ่อม</label>
-                                <asp:TextBox ID="txtETime" runat="server" CssClass="form-control time" MaxLength="5"/>
+                                <asp:TextBox ID="txtETime" runat="server" CssClass="form-control time" MaxLength="5"/>                               
                             </div>
                         </div>
                     
@@ -189,7 +189,7 @@
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เวลาซ่อมเสร็จ</label>
-                                <asp:TextBox ID="txtEJTime" runat="server" CssClass="form-control time" MaxLength="5"/>
+                                <asp:TextBox ID="txtEJTime" runat="server" CssClass="form-control time" MaxLength="5"/>                               
                             </div>
                         </div>
                     </div>

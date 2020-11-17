@@ -14,6 +14,9 @@ namespace ClaimProject.CM
 {
     public partial class CMDetailForm : System.Web.UI.Page
     {
+        public string alerts = "";
+        public string alertTypes = "";
+        public string icons = "";
         ClaimFunction function = new ClaimFunction();
         public string EditModal = "";
         protected void Page_Load(object sender, EventArgs e)
@@ -167,29 +170,39 @@ namespace ClaimProject.CM
         }
         protected void btnSaveCM_Click(object sender, EventArgs e)
         {
-            if (txtDeviceAdd.Text == "")
-            {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกอุปกรณ์ที่ต้องการแจ้งซ่อม')", true);
-            }
+            
 
             string getChkpic = ChkPicInsert();
 
             if(txtProblem.Text == "")
             {
-                txtProblem.CssClass = "form-control is-invalid ";
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกปัญหา/อาการ')", true);
+                //txtProblem.CssClass = "form-control is-invalid ";
+                AlertPop("Error : กรุณากรอกปัญหา/อาการ", "error");
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกปัญหา/อาการ')", true);
             }
             else
             {
-                txtProblem.CssClass = "form-control is-valid";
+                //txtProblem.CssClass = "form-control is-valid";
 
                 if (getChkpic == "picTypeError")
                 {
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                    AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                   //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                 }
                 else if(getChkpic == "picHasNotImage")
                 {
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพอีกครั้ง')", true);
+                    AlertPop("Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพ", "error");
+                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพอีกครั้ง')", true);
+                }
+                else if(txtSTime.Text == "")
+                {
+                    AlertPop("Error : กรุณากรอกเวลาแจ้ง", "error");
+                   // ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกเวลาแจ้ง ')", true);
+                }
+                else if(txtDeviceAdd.Text == "")
+                {
+                    AlertPop("Error : กรุณากรอกอุปกรณ์ ", "error");
+                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : กรุณากรอกอุปกรณ์ ')", true);
                 }
                 else
                 {
@@ -198,7 +211,8 @@ namespace ClaimProject.CM
                     string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
                     if(function.MySqlQuery(sql_insert))
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                        AlertPop("บันทึกข้อมูลสำเร็จ", "success");
+                        //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
                         Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " +txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
                         LineTran();
                         BindData();
@@ -206,7 +220,8 @@ namespace ClaimProject.CM
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว กรุณาติดต่อผู้ดูแล')", true);
+                        AlertPop("ล้มเหลว กรุณาติดต่อผู้ดูแล", "error");
+                        //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว กรุณาติดต่อผู้ดูแล')", true);
                     }
                     function.Close();
                 }
@@ -270,7 +285,7 @@ namespace ClaimProject.CM
             if (rttt.Read())
             {
                 string imgg = rttt.GetString("cm_detail_simg");
-                //ImgUpload.ImageUrl = "~" + imgg;
+                lbNameFileImg.Text = imgg;
             }
             rttt.Close();
             function.Close();
@@ -294,8 +309,8 @@ namespace ClaimProject.CM
                 }
                 else
                 {
-                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                    AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                 }
             }
             else
@@ -327,7 +342,8 @@ namespace ClaimProject.CM
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
+                AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
             }
             function.Close();
         }
@@ -351,7 +367,8 @@ namespace ClaimProject.CM
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
+                AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
             }
             function.Close();
         }
@@ -407,13 +424,32 @@ namespace ClaimProject.CM
                 {
                     serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
                     Session["LineTran"] = "";
-                }catch(Exception e)
+                }catch(Exception)
                 {
                     
                 }
                 
             }
         }
-
+        public void AlertPop(string msg, string type)
+        {
+            switch (type)
+            {
+                case "success":
+                    icons = "add_alert";
+                    alertTypes = "success";
+                    break;
+                case "error":
+                    icons = "error";
+                    alertTypes = "danger";
+                    break;
+                case "warning":
+                    icons = "warning";
+                    alertTypes = "warning";
+                    break;
+            }
+            //alertType = type;
+            alerts = msg;
+        }
     }
 }

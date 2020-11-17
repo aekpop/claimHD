@@ -257,7 +257,7 @@ namespace ClaimProject.CM
                     String NewFileDocName = "";
                     String NewFileDocNameService = "";
                     string sqlDocService = "";
-                    if (txtMethod.Text != "")
+                    if (txtMethod.Text != "" )
                     {
                         if (fileImg.HasFile  || fileDocService.HasFile)
                         {
@@ -316,9 +316,13 @@ namespace ClaimProject.CM
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('**กรุณาใส่วิธีแก้ไข')", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณากรอกวิธีแก้ไข')", true);
                     }
                 }
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณากรอกเวลาเข้าซ่อม / ซ่อมเสร็จ ')", true);
             }
         }
 

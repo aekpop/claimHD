@@ -411,32 +411,11 @@
                     </div>
                  </div>
 
-               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close"
-                                    data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-                                ขณะนี้มีรายการรอรับครุภัณฑ์จำนวน <asp:Label runat="server" ID="lbAmountWait" CssClass="text text-danger"></asp:Label>
-                                รายการ <br /> กรุณาตรวจสอบและทำรายการต่อไป 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default"
-                                    data-dismiss="modal">
-                                    close
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal -->
-                </div>
+              
+                   <div class="alert alert-warning alert-dismissible fade show" id="alertWaitTrans" runat="server" >
+                       <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                            ขณะนี้มีรายการรอรับครุภัณฑ์จำนวน <asp:Label runat="server" ID="lbAmountWait" CssClass="text "></asp:Label>รายการ 
+                   </div>
                <!-- <div class="row" >
                     <asp:Chart ID="Chart1" runat="server"  BackImageAlignment="Center" Width="1000" Height="400"  >
                                    <Series>

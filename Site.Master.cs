@@ -36,20 +36,20 @@ namespace ClaimProject
             }
             else
             {
-                lbUser.Text = "ยินดีต้อนรับ : " + Session["UserName"].ToString() + " : " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name" ) +" "+ function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
+                lbUser.Text = Session["UserName"].ToString() + " <br />ตำแหน่ง : " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name" ) +" "+ function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
+
                 if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                 {
-                    if(Session["UserPrivilegeId"].ToString() == "4")
+                    if (Session["UserPrivilegeId"].ToString() == "1")
                     {
-                        nav3.Visible = false;
+                        Li2.Visible = false;
                         equipDiv.Visible = false;
-                        searchEn.Visible = false;
                     }
                     else
                     {
                         nav3.Visible = true;
                     }
-                    
+                        
                 }
                 else
                 {
@@ -62,6 +62,17 @@ namespace ClaimProject
                         Li2.Visible = false;
                         Li1.Visible = false;
                         searchEn.Visible = false;
+                        Li3.Visible = false;
+                        Li4.Visible = false;
+                    }
+                    else if (Session["UserPrivilegeId"].ToString() == "4")
+                    {
+                        nav3.Visible = false;
+                        equipDiv.Visible = false;
+                        searchEn.Visible = false;
+                        Li3.Visible = false;
+                        Li2.Visible = false;
+                        Li4.Visible = false;
                     }
                     else
                     {
@@ -73,9 +84,12 @@ namespace ClaimProject
 
                 if (!function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
-                    nav0.Visible = false;
-                    //nav6.Visible = false;
+                        nav0.Visible = false;
+                        //nav6.Visible = false;
+                        Li3.Visible = false;
+                        Li4.Visible = false;
                 }
+                
             }
         }
         public string UserName()

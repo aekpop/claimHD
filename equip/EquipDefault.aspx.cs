@@ -502,6 +502,10 @@ namespace ClaimProject.equip
                 lbAmountWait.Text = lbreceive.Text;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
+            else
+            {
+                alertWaitTrans.Visible = false;
+            }
             
         }
         protected void loadChart ()

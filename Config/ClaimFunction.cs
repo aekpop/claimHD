@@ -23,7 +23,10 @@ namespace ClaimProject.Config
         //charset=tis620
         //string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
-        
+        public string icons = "";
+        public string alerts = "";
+        public string alertTypes = "";
+
         internal void getListItem(HtmlGenericControl ddlCMBudget, string v1, string v2, string v3)
         {
             throw new NotImplementedException();
@@ -680,6 +683,26 @@ namespace ClaimProject.Config
 
             return ip;
         }
-        
+
+        public void AlertPop(string msg, string type)
+        {
+            switch (type)
+            {
+                case "success":
+                    icons = "add_alert";
+                    alertTypes = "success";
+                    break;
+                case "error":
+                    icons = "error";
+                    alertTypes = "danger";
+                    break;
+                case "warning":
+                    icons = "warning";
+                    alertTypes = "warning";
+                    break;
+            }
+            //alertType = type;
+            alerts = msg;
+        }
     }  
 }

@@ -1,7 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ClaimProject.SiteMaster" %>
 
 <!DOCTYPE html>
-
+<style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
 <html lang="th">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=tis-620" />
@@ -26,7 +31,9 @@
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
 </head>
-<body style="padding-top:20px">
+    
+<body style="padding-top:0px">
+    
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -49,80 +56,13 @@
             </Scripts>
         </asp:ScriptManager>
         <script src="/Scripts/offcanvas.js"></script>
-        <div class="wrapper ">
-            <div class="sidebar" style="width:240px; font-size:16px;" data-color="purple" data-background-color="white" data-image="/img/7877268095078.jpg" >
-                
-                <div id="divlogo" runat="server" class="logo">
-                    <a  class="simple-text logo-normal">
-                        <img src="/img/j4.png" width="40%" /><br />
-
-                        <h4>ระบบการจัดการบริหารการจัดเก็บฯ</h4>
-                        <h5> Toll Management System (TMS)</h5></a>
-                </div>
-                <div class="sidebar-wrapper" style="width:240px;" >
-                    <ul class="nav">
-                        <li class="nav-item" runat="server" id="nav0">
-                            <a class="nav-link" href="/">
-                                <i class="fa fa-home" style="font-size: 22px;"></i>
-                                <h4>หน้าหลัก</h4>
-                            </a>
-                        </li>
-                        <li class="nav-item" runat="server" id="nav1">
-                            <a class="nav-link" href="/Claim/DefaultClaim"  >
-                                <i class="fa fa-table" style="font-size: 22px;"></i>
-                                <h4>งานอุบัติเหตุ</h4>
-                            </a>
-                        </li>
-                        <li class="nav-item" runat="server" id="Li2">
-                            <a class="nav-link" href="/CM/DefaultCM" >
-                                <i class="fas fa-tools" style="font-size: 22px;"></i>
-                                <h4>งาน MA</h4>
-                            </a>
-                        </li>
-                      
-                        <li class="nav-item" runat="server" id="equipDiv" >
-                            <a class="nav-link" href="/equip/EquipDefault" >
-                                <i class="fas fa-magic" style="font-size: 22px;"></i>
-                                <h4>งานครุภัณฑ์</h4>
-                            </a>
-                        </li>
-                  
-
-                        <li class="nav-item" runat="server" id="nav2">
-                            <a class="nav-link" href="/User/UserForm">
-                                <i class="fa fa-refresh" style="font-size: 22px;"></i>
-                                <h4>เปลี่ยนรหัสผ่าน</h4>
-                            </a>
-                        </li>   
-                        <li class="nav-item" runat="server" id="nav3" >
-                            <a class="nav-link" href="/settingPage">
-                                <i class="fa fa-gear" style="font-size: 22px;"></i>
-                                <h4>Setting/Admin</h4>
-                            </a>
-                        </li>
-                        <li class="nav-item" runat="server" id="Li1">
-                            <a class="nav-link" href="http://192.168.101.91:90/webboard/viewforum.php?f=4&sid=b612e1a12b01c2f0acc3094666e19434" target="_blank">
-                                <i class="fa fa-copy" style="font-size: 22px;"></i>
-                                <h4>ถาม-ตอบปัญหาการใช้งาน</h4>
-                            </a>
-                        </li>
-                        <li class="nav-item" runat="server" id="searchEn" >
-                            <a class="nav-link" href="/Search/searchmain">
-                                <i class="far fa-lightbulb" style="font-size: 22px;"></i>
-                                <h4>รายการบัตรผิดปกติ</h4>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="main-panel" >
-
-           
-
-                <nav class="navbar navbar-expand-sm navbar-transparent navbar-absolute fixed-top ">
+        <div class="wrapper ">      
+            <div class="panel panel-default" >           
+                <nav class="navbar navbar-expand-sm sticky-top">
                     <div class="container-fluid">
-                        <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="#pablo"><%:Page.Title %></a>
+                        <div class="navbar-wrapper">                    
+                            <a><img src="/img/j4.png" width="25px" /></a>
+                            <a class="navbar-brand" href="#pablo" style="font-size:18px; font-family:Prompt"><%:Page.Title %></a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -132,7 +72,7 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end">
                             <div class="collapse navbar-collapse justify-content-end ">
-                                <ul class="navbar-nav">
+                                <ul class="navbar-nav" style="font-size:22px; font-family:Prompt">
                                     <!--<li>
                                             <div class="input-group no-border">
                                                 <input type="text" value="" class="form-control" placeholder="Search...">
@@ -142,15 +82,133 @@
                                                 </button>
                                             </div>
                                         </li>-->
-                                    <li class="nav-item">
-                                        <h3>
-                                           <a class="nav-link" href="#" >
-                                                <i class="fa fa-user-circle-o"></i>&nbsp<asp:Label ID="lbUser" runat="server" Text="" Font-Size="20px" ForeColor="Black" ></asp:Label>
+                                    <li class="nav-item" runat="server" id="nav0" >
+                                        <a class="nav-link" href="/" title="หน้าหลัก">
+                                            <i class="fa fa-home" style="font-size: 22px;"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item dropdown" runat="server" id="nav1">
+                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Claim/DefaultClaim" title="อุบัติเหตุ" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-car-crash" style="font-size: 22px;"></i>
                                             </a>
-                                       </h3>
+                                        <div class="dropdown-menu" >
+                                            <a class="dropdown-item" href="/Claim/DefaultClaim" >Dashboard</a>
+                                            <a class="dropdown-item" href="/Claim/claimForm?add=true" >แจ้งอุบัติเหตุ</a>
+                                            <a class="dropdown-item" href="/Claim/claimForm" >รายการแจ้ง</a>
+                                            <a class="dropdown-item" href="/Claim/claimLine" >ส่ง Line</a>
+                                            <a class="dropdown-item" href="/Claim/ClaimDevice" >อุปกรณ์ค้างซ่อม</a>
+                                            <a class="dropdown-item" href="/ReportView/" >ข้อมูลทางสถิติ</a>
+                                        </div>
+                                        </li>
+                                        <li class="nav-item dropdown" runat="server" id="Li2">
+                                            <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" title="MA" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-tools" style="font-size: 22px;"></i>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/CM/DefaultCM" >Dashboard</a>
+                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
+                                            <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
+                                            <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
+                                            <a class="dropdown-item" href="/CM/CMReport" >สรุปรายการ</a>     
+                                        </div>
+                                        </li>
+
+                                            <li class="nav-item dropdown" runat="server" id="Li3">
+                                            <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" title="MA" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-tools" style="font-size: 22px;"></i>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/CM/DefaultCM" >Dashboard</a>
+                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
+                                            <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
+                                            <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
+                                            <a class="dropdown-item" href="/CM/CMReport" >สรุปรายการ</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="/CM/CMSurveyForm" >ตรวจสอบ</a>
+                                        </div>
+                                        </li>
+                      
+                                        <li class="nav-item dropdown" runat="server" id="equipDiv" >
+                                            <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" title="ครุภัณฑ์" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-magic" style="font-size: 22px;"></i>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
+                                            <a class="dropdown-item" href="/equip/EquipAdd">ค้นหา</a>
+                                            <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
+                                            <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
+    
+                                        </div>
+                                        </li>
+
+                                            <li class="nav-item dropdown" runat="server" id="Li4" >
+                                                    <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" title="ครุภัณฑ์" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-magic" style="font-size: 22px;"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
+                                                    <a class="dropdown-item" href="/equip/EquipAdd">ค้นหา</a>
+                                                    <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
+                                                    <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์</a>
+                                                    <a class="dropdown-item" href="/equip/EquipCheckList">การโอนย้าย(ด่านฯ)</a>
+                                                    <a class="dropdown-item" href="/equip/EquipHistory">ประวัติโอนย้าย</a>
+    
+                                                </div>
+                                                </li>
+
+                                        <li class="nav-item" runat="server" id="nav2" visible="false" >
+                                            <a class="nav-link" href="/User/UserForm" title="เปลี่ยนรหัสผ่าน">
+                                                <i class="fa fa-refresh" style="font-size: 22px;"></i>
+                                            </a>
+                                        </li> 
+                                    
+                                        <li class="nav-item" runat="server" id="nav3" >
+                                            <a class="nav-link" href="/settingPage" title="Setting">
+                                                <i class="fa fa-gear" style="font-size: 22px;"></i>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item" runat="server" id="Li1">
+                                            <a class="nav-link" href="http://192.168.101.91:90/webboard/viewforum.php?f=4&sid=b612e1a12b01c2f0acc3094666e19434" target="_blank" title="ถาม-ตอบปัญหาการใช้งาน">
+                                                <i class="fa fa-copy" style="font-size: 22px;"></i>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item" runat="server" id="searchEn" >
+                                            <a class="nav-link" href="/Search/searchmain" title="รายการบัตรผิดปกติ">
+                                                <i class="far fa-lightbulb" style="font-size: 22px;"></i>
+                                            </a>
+                                        </li>
+
+                                    <li class="nav-item dropdown">
+                                           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-user-circle-o"></i>
+                                           </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" runat="server" >
+                                              <i class="fa fa-user-circle-o col-2"></i> 
+                                                <asp:Label ID="lbUser" runat="server" ForeColor="Black" CssClass="col-10" ></asp:Label></a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="/User/UserForm">
+                                               
+                                                    <i class="fa fa-refresh col-2" ></i> 
+                                                    <span class="col-10">เปลี่ยนรหัสผ่าน</span>
+                                                
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="nav-item" >
+                                                <div class="col-2"></div>
+                                                
+                                                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="text text-center col-10" OnClick="btnLogout_Click" Visible="true" ForeColor="Black"><span class="col-10">ออกระบบ</span></asp:LinkButton>
+                                               
+                                            </a>                                            
+                                        </div>
                                     </li>
                                     <li class="nav-item">
-                                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-danger btn-sm fa" Font-Size="XX-Small" OnClick="btnLogout_Click">&#xf13e; Logout</asp:LinkButton>
+                                        
                                     </li>
                                 </ul>
                             </div>
@@ -184,7 +242,7 @@
                             </ul>-->
                         </nav>
                         <div class="copyright float-right">
-                            &copy; <%=DateTime.Now.Year+543 %> ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
+                            &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
                         </div>
                         <br />
                         <div class="row" >
@@ -203,7 +261,7 @@
     <script src="/Scripts/chartist.min.js"></script>
     <script src="/Scripts/material-dashboard.js"></script>
     <script src="/Scripts/demo.js"></script>
-    <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -436,6 +494,7 @@
         }        
 
         $('.dropdown-toggle').dropdown()
+
 
     </script>
 </body>
