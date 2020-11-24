@@ -34,9 +34,6 @@ namespace ClaimProject.equip
                         div4.Visible = false;
                         div6.Visible = false;
                         tblClerical.Visible = false;
-                        divaddnew.Visible = false;
-                        divcheckk.Visible = false;
-                        divcheckkk.Visible = false;
                     }
                     else
                     {
@@ -100,7 +97,7 @@ namespace ClaimProject.equip
                     sqlcpSearchtotal = "7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040' OR toll_id = '7020' OR toll_id = '7031' OR toll_id = '7032' OR toll_id = '7033' OR toll_id = '7041' OR toll_id = '7042' OR toll_id = '7051' OR toll_id = '7052'" +
                         "OR toll_id ='7061' OR toll_id = ' 7062 ' OR toll_id = ' 7063 ' OR toll_id = '7064' OR toll_id = '7071' OR toll_id = '7072' OR toll_id = '7073' OR toll_id = '7074' OR toll_id = '7075' OR toll_id = '7076' OR toll_id = '7081' OR toll_id = '7082'" +
                         "OR toll_id ='7083' OR toll_id = ' 7084 ' OR toll_id = ' 7090 ' OR toll_id = ' 7100 ' OR toll_id = ' 7110 ' OR toll_id = ' 7120 ";
-                    sqltran = "7010' OR tbl_transfer.toll_send = '9010' OR tbl_transfer.toll_send = '9020' OR tbl_transfer.toll_send ='9030' OR tbl_transfer.toll_send ='9040' OR tbl_transfer.toll_send ='7020' OR tbl_transfer.toll_send = '7031' OR tbl_transfer.toll_send = '7032' OR tbl_transfer.toll_send = '7033' OR tbl_transfer.toll_send = '7041' OR tbl_transfer.toll_send = '7042' OR tbl_transfer.toll_send = '7051' OR tbl_transfer.toll_send = '7052'" +
+                    sqltran = " 9200' OR tbl_transfer.toll_send = '7010' OR tbl_transfer.toll_send = '9010' OR tbl_transfer.toll_send = '9020' OR tbl_transfer.toll_send ='9030' OR tbl_transfer.toll_send ='9040' OR tbl_transfer.toll_send ='7020' OR tbl_transfer.toll_send = '7031' OR tbl_transfer.toll_send = '7032' OR tbl_transfer.toll_send = '7033' OR tbl_transfer.toll_send = '7041' OR tbl_transfer.toll_send = '7042' OR tbl_transfer.toll_send = '7051' OR tbl_transfer.toll_send = '7052'" +
                         "OR tbl_transfer.toll_send ='7061' OR tbl_transfer.toll_send = ' 7062 ' OR tbl_transfer.toll_send = ' 7063 ' OR tbl_transfer.toll_send = '7064' OR tbl_transfer.toll_send = '  7071' OR tbl_transfer.toll_send = '7072' OR tbl_transfer.toll_send = '7073' OR tbl_transfer.toll_send = '7074' OR tbl_transfer.toll_send = '7075' OR tbl_transfer.toll_send = '7076' OR tbl_transfer.toll_send = '7081' OR tbl_transfer.toll_send = '7082'" +
                         "OR tbl_transfer.toll_send ='7083' OR tbl_transfer.toll_send = ' 7084 ' OR tbl_transfer.toll_send = ' 7090 ' OR tbl_transfer.toll_send = ' 7100 ' OR tbl_transfer.toll_send = ' 7110 ' OR tbl_transfer.toll_send = ' 7120 ";
                     sqlUser = " ";
@@ -373,7 +370,7 @@ namespace ClaimProject.equip
             string sqlrt = "SELECT COUNT(*) AS numt FROM tbl_transfer WHERE complete_stat = '3' AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
             string sqleqrt = "SELECT COUNT(*) AS numqt FROM tbl_transfer LEFT JOIN tbl_transfer_action ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE num_success = 'yes' AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
             string sqlrt4 = "SELECT COUNT(*) AS numt FROM tbl_transfer WHERE complete_stat = '3' AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
-            string sqleqrt4 = "SELECT COUNT(*) AS numqt FROM tbl_transfer LEFT JOIN tbl_transfer_action ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE num_success = 'yes' AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
+            string sqleqrt4 = "SELECT COUNT(*) AS numqt FROM tbl_transfer LEFT JOIN tbl_transfer_action ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE ( num_success = 'yes' OR num_success = 'repaired' ) AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
             string sqlrt7 = "SELECT COUNT(*) AS numt FROM tbl_transfer WHERE complete_stat = '3' AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
             string sqleqrt7 = "SELECT COUNT(*) AS numqt FROM tbl_transfer LEFT JOIN tbl_transfer_action ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE num_success = 'yes' AND ( tbl_transfer.toll_send = '" + sqltran + "' ) AND tbl_transfer.trans_stat = " + sqlStatus + " ";
             string sqltr = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '3' " + sqlUser + " AND tbl_transfer.trans_stat = " + sqlStatus + " ";

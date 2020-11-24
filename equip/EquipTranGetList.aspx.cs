@@ -51,8 +51,15 @@ namespace ClaimProject.equip
             if (Session["LineTran"].ToString() != "")
             {
                 SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
-                serviceLine.MessageToServer("zUq1qjowyyxFuPuubLX7FG7W71xoehlhpMMUohzF4ck", Session["LineTran"].ToString(), "", 1, 41);
-                Session["LineTran"] = "";
+                try
+                {
+                    serviceLine.MessageToServer("zUq1qjowyyxFuPuubLX7FG7W71xoehlhpMMUohzF4ck", Session["LineTran"].ToString(), "", 1, 41);
+                    Session["LineTran"] = "";
+                }catch(Exception e)
+                {
+
+                }
+                
             }
 
         }

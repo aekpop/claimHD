@@ -3,8 +3,10 @@ using Microsoft.Diagnostics.Instrumentation.Extensions.Intercept;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -29,7 +31,8 @@ namespace ClaimProject.Claim
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 { sqlcp = " "; } else { sqlcp = "AND claim_cpoint = " + Session["UserCpoint"] + " "; }
                 loadingpage();
-            } 
+                //GetChartData();
+            }
         }
 
         protected void loadingpage()
@@ -268,6 +271,15 @@ namespace ClaimProject.Claim
                     st6.Close();
                 }
             }
+        }
+
+        protected void GetChartData()
+        {
+            string query = "SELECT claim_cpoint, COUNT(claim_id) AS Amount";
+            query += " FROM tbl_claim WHERE claim_budget_year = 2563 AND claim_delete = 0 GROUP BY claim_cpoint";
+            
+            
+        
         }
     }
 }

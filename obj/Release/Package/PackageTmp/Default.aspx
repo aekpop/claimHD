@@ -133,21 +133,30 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div6">
-                    <asp:Label ID="Label2" runat="server" Text="ประกาศข่าวสารในกลุ่มไลน์"></asp:Label><br />
-                    <asp:DropDownList ID="DropDownList1" runat="server">
-                        <asp:ListItem Text="Toll:อุบัติเหตุ" Value="uQQdUNuFfBphgSugC3OUa1lSjmovi4XINOAe2VwIczo"></asp:ListItem>
+                    <h3> ประกาศข่าวสารในกลุ่มไลน์</h3>
+
+                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdown-item">
+                        <asp:ListItem Text="Toll:อุบัติเหตุ" Value="uQQdUNuFfBphgSugC3OUa1lSjmovi4XINOAe2VwIczo" ></asp:ListItem>
                         <asp:ListItem Text="Toll:CM_M9" Value="TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F"></asp:ListItem>
                         <asp:ListItem Text="ทดสอบ" Value="g0Zinn2LGsXH7MqNl6LqRRAloneiupRMel3VaC3TVdJ"></asp:ListItem>
                     </asp:DropDownList><br />
-                    ข้อความ 
-                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Width="300px"></asp:TextBox>
-                    URL รูปภาพ
-                    <asp:TextBox ID="TextBox2" runat="server" Width="300px"></asp:TextBox>
+                </div>
+               
+           
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                             <h3>ข้อความ</h3> 
+                             <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" ></asp:TextBox>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            URL รูปภาพ
+                            <asp:TextBox ID="TextBox2" runat="server" Visible="false"></asp:TextBox>
+                        </div>
+             <div class="col-lg-3 col-md-6 col-sm-6">
                     <asp:LinkButton ID="Button1" runat="server" Text="ส่ง" CssClass="btn btn-success" OnClientClick="return CompareConfirm('ยืนยันการส่งข้อมูล');" OnClick="Button1_Click" />
                 </div>
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <script type="text/javascript">

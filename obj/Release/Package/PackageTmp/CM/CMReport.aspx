@@ -60,7 +60,7 @@
                                         </div>
                                         <div class=" col-md-1 ">
                                              <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbAnnex" runat="server" Text="อาคารย่อย"></asp:Label>                                       
+                                            <asp:Label ID="lbAnnex" runat="server" Text="อาคาร"></asp:Label>                                       
                                             <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="ใส่หมายเลข" ToolTip="ถ้าไม่มี ให้เว้นว่าง"></asp:TextBox>
                                                  </div>
                                         </div>

@@ -5,7 +5,8 @@
         @font-face {
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }
+        }            
+        
     </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
@@ -19,6 +20,7 @@
     <script src="../Scripts/jquery-3.5.1.js"></script>
     <script src="../Scripts/umd/popper.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
+   
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
        <!-- Menu Dropdown -->        
@@ -82,13 +84,15 @@
                     <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">อุปกรณ์</p>
-                            <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" onkeypress="return handleEnter(this, event)"/>
+                            <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" onkeypress="return handleEnter(this, event)" />
+                            
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ปัญหา/อาการ</p>
                             <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)" />
+                            
                         </div>
                     </div>
                                          
@@ -98,6 +102,7 @@
                            <p class="bmd-label-floating">แนบรูปภาพ</p>
                            <div class="col" runat="server" id="diveditpic">
                                 <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
+                               <asp:Label ID="lbNameFileImg" runat="server" CssClass="text text-dark" />
                             </div>
                          <div class="col-md-1">
                                  <asp:Label ID="pkeq" runat="server" visible="true" Font-Size="Smaller" ></asp:Label>
@@ -109,7 +114,13 @@
 
                 <div class="row">
                     <div class="col-md text-center">
-                        <asp:LinkButton ID="btnSaveCM" runat="server" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click">แจ้งซ่อม</asp:LinkButton>
+                        <asp:LinkButton ID="btnSaveCM" runat="server" Visible="true" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click" >
+                             แจ้งซ่อม</asp:LinkButton>
+                        <div id="Loading" class="d-flex justify-content-center" runat="server" visible="false">
+                              <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
                         <asp:LinkButton ID="btnEditCM" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnEditCM_Click">แก้ไข</asp:LinkButton>
                         <asp:LinkButton ID="btnCancelCM" runat="server" Font-Size="20px" CssClass="btn btn-dark btn-sm" OnClick="btnCancelCM_Click">ยกเลิก</asp:LinkButton>
                         <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบ</asp:LinkButton>
@@ -253,14 +264,21 @@
         function CompareConfirm(msg) {
             var str1 = "1";
             var str2 = "2";
+            
 
             if (str1 === str2) {
                 // your logic here
+                
                 return false;
             } else {
                 // your logic here
+                
                 return confirm(msg);
-            }            
+            }
+        }
+
+        function unhide(){
+	        document.getElementById("Loading").removeAttribute("hidden");
         }
 
         var submit = 0;
@@ -291,7 +309,15 @@
 
          $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
-        });      
+        });
+
+        $(function () {
+         <% if (alerts != "")
+        { %>
+            demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
+        <% } %>
+        });
+
 
     </script>
 </asp:Content>
