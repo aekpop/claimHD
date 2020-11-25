@@ -59,15 +59,31 @@ namespace ClaimProject
                 {
                     if(Session["UserPrivilegeId"].ToString() == "5")
                     {
-                        nav3.Visible = false;
-                        equipDiv.Visible = true;
-                        nav0.Visible = false;
-                        nav1.Visible = false;
-                        Li2.Visible = false;
-                        Li1.Visible = false;
-                        searchEn.Visible = false;
-                        Li3.Visible = false;
-                        Li4.Visible = false;
+                        if (Session["UserCpoint"].ToString() == "0")
+                        {
+                            nav3.Visible = false;
+                            equipDiv.Visible = false;
+                            nav0.Visible = false;
+                            nav1.Visible = false;
+                            Li2.Visible = false;
+                            Li1.Visible = false;
+                            searchEn.Visible = false;
+                            Li3.Visible = false;
+                            Li4.Visible = true;
+                        }
+                        else
+                        {
+                            nav3.Visible = false;
+                            equipDiv.Visible = true;
+                            nav0.Visible = false;
+                            nav1.Visible = false;
+                            Li2.Visible = false;
+                            Li1.Visible = false;
+                            searchEn.Visible = false;
+                            Li3.Visible = false;
+                            Li4.Visible = false;
+                        }
+                        
                     }
                     else if (Session["UserPrivilegeId"].ToString() == "4")
                     {
