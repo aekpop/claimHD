@@ -273,13 +273,10 @@ namespace ClaimProject.Claim
             }
         }
 
-        protected void GetChartData()
-        {
-            string query = "SELECT claim_cpoint, COUNT(claim_id) AS Amount";
-            query += " FROM tbl_claim WHERE claim_budget_year = 2563 AND claim_delete = 0 GROUP BY claim_cpoint";
-            
-            
-        
-        }
+        //protected void GetChartData()
+        //{
+        //    string query = "SELECT claim_cpoint, COUNT(claim_id) AS Amount";
+        //    query += " FROM tbl_claim WHERE claim_budget_year = 2563 AND claim_delete = 0 GROUP BY claim_cpoint";
+        //}
     }
 }

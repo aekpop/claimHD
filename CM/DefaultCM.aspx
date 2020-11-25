@@ -13,8 +13,8 @@
    <div class="container-fluid" style="font-family:'Prompt',sans-serif;" > 
         
 
-    <div class="row" >
-        <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="boxUserSystem">
+    <div class="row" runat="server" visible="false">
+        <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="boxUserSystem" >
             <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                     

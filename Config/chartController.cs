@@ -9,7 +9,7 @@ namespace ClaimProject.Config
     public class chartController : Controller
     {            
         // GET: chart
-        public ActionResult Index()
+        public ActionResult ColumnChart()
         {
             return View();
         } 

@@ -3,23 +3,7 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <!-- Menu Dropdown -->        
-        <div class="btn-group">
-              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
-              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
-                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
-                <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
-                <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
-                <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
-                <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
-                <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
-              </ul>
-        </div>
-        <!------------------>
+    
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
         <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</h3>
@@ -319,11 +303,11 @@
             <div class="row">
                 <div class="col-md text-center" >
                     <asp:Button ID="btnPlanSheet" runat="server" Visible="false" Text="บันทึกฉบับร่าง"  OnClick="btnPlanSheet_Click" CssClass="btn btn-default" OnClientClick="return UpdteConfirm('ยืนยันบันทึกฉบับร่าง ใช่หรือไม่');"/>
-                    <asp:Button ID="btnSendRepair" runat="server" Visible="false" Text="บันทึกและส่งซ่อม"  OnClick="btnSendRepair_Click" CssClass="btn" BackColor="#50009f" OnClientClick="return UpdteConfirm('ยืนยันแจ้งส่งซ่อม ใช่หรือไม่');" />
+                    <asp:Button ID="btnSendRepair" runat="server" Visible="false" Text="ส่งซ่อม"  OnClick="btnSendRepair_Click" CssClass="btn btn-info"  OnClientClick="return UpdteConfirm('ยืนยันแจ้งส่งซ่อม ใช่หรือไม่');" />
                     <asp:Button ID="btnSecondSubmit" runat="server" Visible="false" Text="ยืนยัน"  OnClick="btnSecondSubmit_Click" CssClass="btn btn-success" OnClientClick="return UpdteConfirm('ยืนยันบันทึกและส่งข้อมูลไปปลายทาง ใช่หรือไม่');" />
                     <asp:Button ID="btnEdit" runat="server" Visible="false" Text="ดึงเรื่องกลับแก้ไข"  OnClick="btnEdit_Click" CssClass="btn btn-warning" />
                     <asp:Button ID="btnGet" runat="server" Visible="false" Text="อนุมัติ"  OnClick="btnGet_Click" CssClass="btn btn-success"  />
-                    <asp:Button ID="btnRepaired" runat="server" Visible="false" Text="บันทึก/อัพเดทรายการส่งซ่อม" OnClick="btnRepaired_Click" CssClass="btn btn-success"  />
+                    <asp:Button ID="btnRepaired" runat="server" Visible="false" Text="อัพเดทส่งซ่อม" OnClick="btnRepaired_Click" CssClass="btn btn-success"  />
                     <asp:Button ID="btnBackto" runat ="server" Visible="false" Text="ไม่อนุมัติ" OnClick="btnBackto_Click" CssClass="btn btn-danger" />
                     <asp:LinkButton ID="lbtnDelete" runat="server" Visible="false"  CssClass="btn btn-danger " OnCommand="lbtnDelete_Command" OnClientClick="return UpdteConfirm('ยืนยันลบรายการทั้งหมด ใช่หรือไม่');">ลบ</asp:LinkButton>                
                 </div>
@@ -549,6 +533,6 @@
                 return confirm(msg);
             }
         }
-        
+       
     </script>
 </asp:Content>

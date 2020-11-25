@@ -466,7 +466,26 @@ namespace ClaimProject.equip
                         divnewserial.Visible = false;
                         ddlTypeEQQ.Enabled = false;
                     }
-                    redf.Close();
+                    else if (completestatus == "7")
+                    {
+                        ddlTypeEQQ.Enabled = false;
+                        ddlStartEQ.Enabled = false;
+                        ddlTollEQ.Enabled = false;
+                        txtactnote.Enabled = false;
+                        DropDownList1.Enabled = false;
+                        txtDateSend.Enabled = false;
+                        txtSender.Enabled = false;
+                        ddlPosition.Enabled = false;
+                        divEndToll.Visible = true;
+
+                        GridAddTran.Enabled = false;
+                        gridreplace.Enabled = false;
+                        btnAddEQTran.Enabled = false;
+                        divnormal.Visible = false;
+                        btnReturn.Visible = true;
+                        
+                    }
+                        redf.Close();
                 }
             }
             else
@@ -810,6 +829,10 @@ namespace ClaimProject.equip
                 {
                     function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll where toll_EQGroup = '9' Order By toll_id ASC", "toll_name", "toll_id");
                 }
+                else if(ddlTypeEQQ.SelectedValue == "7")
+                {
+                    function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll where in_outdepart = '1' Order By toll_id ASC", "toll_name", "toll_id");
+                }
                 else
                 {
                     function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
@@ -874,7 +897,17 @@ namespace ClaimProject.equip
                 divnormal.Style.Add("background-color", "lightcyan");
                 changeDropdown(levelcpoint);
             }
-            
+            else if (ddlTypeEQQ.SelectedValue == "7")
+            {
+                divEndToll.Visible = true;
+                divreplace.Visible = false;
+                divnormal.Visible = true;
+                divnewserial.Visible = false;
+                ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#ede0ff");
+                divnormal.Style.Add("background-color", "#ede0ff");
+                ddlTollEQ.Enabled = true;
+                changeDropdown(levelcpoint);
+            }
             else 
             {
                 divEndToll.Visible = true;
@@ -1178,10 +1211,13 @@ namespace ClaimProject.equip
                     else
                     {
                         completeStatf = "2";
-                    }
-                    
+                    }  
                 }
-                
+                else if(ddlTypeEQQ.SelectedValue == "7")
+                {
+                    completeStatf = "7";
+                }
+                    
                 SQLFirst = "update tbl_transfer SET trans_budget ='" + function.getBudgetYear(txtDateSend.Text) + "',trans_note = '" + txtactnote.Text + "' ,trans_id = '" + Session["TransID"].ToString() + "'," +
                     "thai_month='"+datesf+"',trans_stat='" + ddlTypeEQQ.SelectedValue + "',date_send='" + txtDateSend.Text + "',time_send='" + timenow + "'," +
                     "user_send = '" + Session["UserName"].ToString() + "',name_send ='" + txtSender.Text + "',toll_send ='" + ddlStartEQ.SelectedValue + "'," +
@@ -1381,7 +1417,7 @@ namespace ClaimProject.equip
                     {
                         string updateAct = "";
                         string updateequip = "";
-                        if (ddlTypeEQQ.SelectedValue != "5" && ddlTypeEQQ.SelectedValue != "4")//ประเภท1,2,3
+                        if (ddlTypeEQQ.SelectedValue != "5" && ddlTypeEQQ.SelectedValue != "4" && ddlTypeEQQ.SelectedValue != "7")//ประเภท1,2,3
                         {
                             updateAct = "UPDATE tbl_transfer_action SET tran_type='"+ddlTypeEQQ.SelectedValue+"',new_toll = '" + ddlTollEQ.SelectedValue + "',num_success='yes' " +
                                        " WHERE trans_equip_id ='" + EQIDloop + "' AND transfer_id = '" + Session["TransID"].ToString() + "' ";
@@ -1412,6 +1448,13 @@ namespace ClaimProject.equip
                             updateequip = "UPDATE tbl_equipment SET trans_complete = '0',toll_id='" + ddlTollEQ.SelectedValue + "' " +
                                    " WHERE equipment_id ='" + EQIDloop + "' ";
                         }
+                        else if (ddlTypeEQQ.SelectedValue == "7")
+                        {
+                            updateAct = "UPDATE tbl_transfer_action SET tran_type='" + ddlTypeEQQ.SelectedValue + "',new_toll = '" + ddlTollEQ.SelectedValue + "',num_success='yes' " +
+                                      " WHERE trans_equip_id ='" + EQIDloop + "' AND transfer_id = '" + Session["TransID"].ToString() + "' ";
+                            updateequip = "UPDATE tbl_equipment SET trans_complete = '0' WHERE equipment_id ='" + EQIDloop + "' ";
+                        }
+
                         if (function.MySqlQuery(updateAct))
                         {
                             if (ddlTypeEQQ.SelectedValue == "4")
@@ -1893,6 +1936,50 @@ namespace ClaimProject.equip
         protected void ddlStartEQ_SelectedIndexChanged(object sender, EventArgs e)
         {
             inputDDLSELECT();
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            string datenow = DateTime.Now.ToString("dd-MM-") + (int.Parse(DateTime.Now.ToString("yyyy")) + 543).ToString();
+            string timenow = DateTime.Now.ToString("HH.mm.ss");
+            string timenowe = DateTime.Now.ToString("dd-MM-yyyy HH.mm.ss");
+            string loge = "Insert into tbl_logtransfer   (trans_stat_id,logt_note,time_log,logt_transID,user_up) " +
+                "values ('7','','" + timenowe + "','" + Session["TransID"].ToString() + "','" + Session["UserName"].ToString() + "') ";
+            string sqlGet = "UPDATE tbl_transfer SET  date_recieve='" + datenow + "',time_recieve='" + timenow + "'" +
+           ",user_recieve='" + Session["UserName"].ToString() + "',name_recieve='" + Session["UserName"].ToString() + "',complete_stat='3',position_getder='" + ddlposGet.SelectedItem + "'" +
+           " WHERE trans_id='" + Session["TransID"].ToString() + "'";
+
+            for (int i = 0; i < 51; i++)
+            {
+                string value = loopGetCommand();
+                if (value == "0")
+                {
+                    if (function.MySqlQuery(sqlGet))
+                    {
+                        if (function.MySqlQuery(loge))
+                        {
+                            Session["LineTran"] = "ระบบได้รับข้อมูลการ คืนครุภัณฑ์  " +
+                                " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
+                            Response.Redirect("/equip/EquipTranList");
+                            break;
+                        }
+                        else
+                        {
+                            AlertPop("Error!! Can't update LogTrans", "warning");
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        AlertPop("Error!! Can't updateTransfer", "warning");
+                        break;
+                    }
+                }
+                else if (value == "error")
+                {
+                    break;
+                }
+            }
         }
     }
 }

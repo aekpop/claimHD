@@ -71,23 +71,35 @@ namespace ClaimProject.equip
                 {
                     Headmas = "ใบส่งซ่อมครุภัณฑ์";
                 }
-                gettoll = parame.GetString("toll_name");
-                if(gettoll == "ฝ่ายบริหารฯ")
+                else if(stat == "7")
                 {
-                    gettoll = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                    Headmas = "ใบยืมครุภัณฑ์";
                 }
-                else if(gettoll == "กองทางหลวงพิเศษฯ")
+                if(parame.GetString("toll_group") == "3")
                 {
-                    gettoll = "กองทางหลวงพิเศษระหว่างเมือง";
-                }
-                else if (gettoll == "ฝ่ายบำรุงรักษาทรัพย์สิน")
-                {
-                    gettoll = "ฝ่ายบำรุงรักษาทรัพย์สิน";
+                    gettoll = parame.GetString("toll_name");
                 }
                 else
                 {
-                    gettoll = "ด่านฯ " + gettoll;
+                    gettoll = parame.GetString("toll_name");
+                    if (gettoll == "ฝ่ายบริหารฯ")
+                    {
+                        gettoll = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                    }
+                    else if (gettoll == "กองทางหลวงพิเศษฯ")
+                    {
+                        gettoll = "กองทางหลวงพิเศษระหว่างเมือง";
+                    }
+                    else if (gettoll == "ฝ่ายบำรุงรักษาทรัพย์สิน")
+                    {
+                        gettoll = "ฝ่ายบำรุงรักษาทรัพย์สิน";
+                    }
+                    else
+                    {
+                        gettoll = "ด่านฯ " + gettoll;
+                    }
                 }
+                
                 thdate = function.ConvertDatelongThai(parame.GetString("date_send"));
                 parame.Close();
             }

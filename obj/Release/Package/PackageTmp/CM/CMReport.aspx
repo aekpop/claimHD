@@ -25,7 +25,7 @@
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
      <!-- Menu Dropdown -->        
-        <div class="btn-group">
+        <div class="btn-group" runat="server" visible="false">
               <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
               <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
                 <span class="caret"></span>
@@ -81,11 +81,8 @@
                                             <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
                                             <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select " ></asp:DropDownList>
                                                  </div>
-                                        </div>
-                                        
-                        </div>
-                        <br />
-                        
+                                        </div>                                        
+                        </div>                        
                         <div class="row">
                                         
                                         <div class =" col-md-2 ">

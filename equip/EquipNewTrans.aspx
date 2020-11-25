@@ -309,6 +309,7 @@
                     <asp:Button ID="btnGet" runat="server" Visible="false" Text="อนุมัติ"  OnClick="btnGet_Click" CssClass="btn btn-success"  />
                     <asp:Button ID="btnRepaired" runat="server" Visible="false" Text="อัพเดทส่งซ่อม" OnClick="btnRepaired_Click" CssClass="btn btn-success"  />
                     <asp:Button ID="btnBackto" runat ="server" Visible="false" Text="ไม่อนุมัติ" OnClick="btnBackto_Click" CssClass="btn btn-danger" />
+                    <asp:Button ID="btnReturn" runat ="server" Visible="false" Text="คืน" OnClick="btnReturn_Click" CssClass="btn btn-success" />
                     <asp:LinkButton ID="lbtnDelete" runat="server" Visible="false"  CssClass="btn btn-danger " OnCommand="lbtnDelete_Command" OnClientClick="return UpdteConfirm('ยืนยันลบรายการทั้งหมด ใช่หรือไม่');">ลบ</asp:LinkButton>                
                 </div>
             </div>

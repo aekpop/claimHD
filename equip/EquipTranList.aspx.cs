@@ -109,7 +109,7 @@ namespace ClaimProject
             string status = ddlsearchStat.SelectedValue ;
             if (Session["UserCpoint"].ToString() == "0")
             {
-                sqlsendSearch += " WHERE cpoint_id = '920' AND user_send = '"+ Session["UserName"].ToString() + "'   ";
+                sqlsendSearch += " WHERE (cpoint_id = '920' OR cpoint_id = '999' ) AND user_send = '" + Session["UserName"].ToString() + "'   ";
             }
             else
             {
@@ -124,11 +124,11 @@ namespace ClaimProject
                     {
                         if(txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND trans_stat !='7'  AND trans_id like '%" + txtRefTran.Text+ "%'  Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_id like '%" + txtRefTran.Text+ "%'  Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND trans_stat !='7'   Order By tbl_trans_complete.complete_sort ASC , STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  Order By tbl_trans_complete.complete_sort ASC , STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
                     }
@@ -136,11 +136,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat = '" + status + "' AND trans_stat != '7' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat = '" + status + "' AND trans_stat != '7' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -184,11 +184,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND complete_stat !='5' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -197,11 +197,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -285,7 +285,8 @@ namespace ClaimProject
                 lbtnprintTran.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "trans_id");
                 if (DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "แจ้งใหม่" ||
                     DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "สำเร็จ" ||
-                    DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "รอซ่อม")
+                    DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "รอซ่อม" ||
+                    DataBinder.Eval(e.Row.DataItem, "complete_name").ToString() == "ยืม")
                 {
                     lbtnprintTran.Visible = true;
                 }

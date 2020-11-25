@@ -27,6 +27,10 @@ namespace ClaimProject
                 Session.Add("UserPrivilege", function.GetLevel(int.Parse(Session["UserPrivilegeId"].ToString())));
                 Session.Add("UserCpoint", Request.Cookies["ClaimLogin"]["UserCpoint"]);
                 Session.Add("Userpoint", Request.Cookies["ClaimLogin"]["Userpoint"]);
+                Session.Add("ddlsearchType", "0");
+                Session.Add("ddlsearchStat", "0");
+                Session.Add("BackWhat", "");
+                Session.Add("LineTran", "");
                 Session.Timeout = 28800;
             }
 

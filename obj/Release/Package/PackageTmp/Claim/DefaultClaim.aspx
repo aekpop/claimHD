@@ -10,7 +10,7 @@
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
   
-        <div class="row">
+        <div class="row" runat="server" visible="false">
             <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" runat="server" visible="false">
             <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div3">
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
@@ -60,7 +60,7 @@
                             <a class="nav-link" href="/Claim/ClaimDevice" style="font-family:'Prompt',sans-serif;">อุปกรณ์ค้างซ่อม</a>
                         </h4>
                     </div>
-                </div>
+                </div>     
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div1">
@@ -142,7 +142,28 @@
 
          <div class="row">-->
 
-                <div class="col-xl-3 col-md-6 mb-4">
+                
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-6 mb-4">
+                  <div class="card border-left-warning shadow h-70 py-2">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">กราฟ</div>
+                            </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-chart-bar fa-2x text-gray-300 text-success"></i>
+                                </div>
+                          </div>
+                          <div class="col-auto">
+                              <div id="chart" style="width: 600px; height: 250px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
                   <div class="card border-left-primary shadow h-70 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
@@ -157,9 +178,9 @@
                               </div>
                            </div> 
                          <div class="row">
-                             <div class="container mb-2">
-                                        <div class="table-responsive-sm">
-                                        <table class="table table-sm table-hover">                                          
+                             <div class="container mb-2" style="height:250px">
+                                        <div class="table-responsive-sm" >
+                                        <table class="table table-sm table-hover" >                                          
                                             <tbody>
                                                 <tr class="">
                                                     <th scope="row" class="text-center"></th>
@@ -204,13 +225,14 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                            </table>   
-                         </div>
+                                  </table>   
+                            </div>
                         </div>
                       </div>
                     </div>
-             </div>
-       </div>
-</div>
+                </div>
+              </div>
         </div>
+        </div>
+    
 </asp:Content>

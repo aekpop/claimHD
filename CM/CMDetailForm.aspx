@@ -24,7 +24,7 @@
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
        <!-- Menu Dropdown -->        
-        <div class="btn-group">
+        <div class="btn-group" runat="server" visible="false">
               <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
               <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
                 <span class="caret"></span>
