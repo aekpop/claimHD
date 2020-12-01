@@ -205,6 +205,11 @@
                                     <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="หน่วยฯซ่อม" ControlStyle-Width="150px">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbcmAgency" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.drive_group_agency").ToString()) %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Edit" HeaderStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnEditCM" runat="server"  CssClass="btn btn-sm btn-outline-warning"  Font-Size="15px" ToolTip="แก้ไขรายละเอียดการแจ้งซ่อม" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขรายการใช่หรือไม่')"><i class="fas fa-edit"></i></asp:LinkButton>

@@ -53,13 +53,13 @@ namespace ClaimProject.CM
                 {
                     string sqlchN = "SELECT COUNT(*) AS num FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id JOIN tbl_drive_group b ON d.davice_group = b.drive_group_id " +
+                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' AND drive_group_id = '1' " +
                     " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id JOIN tbl_drive_group b ON d.davice_group = b.drive_group_id " +
+                    " WHERE cm.cm_detail_status_id='0'   AND c.cpoint_id = '" + cpointt + "' AND cm.cm_point LIKE '%" + ddlAnnex.SelectedValue + "%' AND drive_group_id = '1' " +
                     " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     MySqlDataReader chK = function.MySqlSelect(sqlchN);
                     if (chK.Read())
@@ -107,13 +107,13 @@ namespace ClaimProject.CM
                 {
                     string sqlchNN = "SELECT COUNT(*) AS num FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id JOIN tbl_drive_group b ON d.davice_group = b.drive_group_id " +
+                    " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "' AND drive_group_id = '1' " +
                     " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     string sql = "SELECT * FROM tbl_cm_detail cm JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
-                    " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "'  " +
+                    " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id JOIN tbl_drive_group b ON d.davice_group = b.drive_group_id " +
+                    " WHERE cm.cm_detail_status_id='0' AND c.cpoint_id = '" + cpointt + "' AND drive_group_id = '1' " +
                     " ORDER BY STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC";
                     MySqlDataReader chKNN = function.MySqlSelect(sqlchNN);
                     if (chKNN.Read())

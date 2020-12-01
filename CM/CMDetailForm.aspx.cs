@@ -118,7 +118,7 @@ namespace ClaimProject.CM
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                    " JOIN tbl_user u ON cm.cm_user = u.username" +
+                    " JOIN tbl_user u ON cm.cm_user = u.username JOIN tbl_drive_group dg ON d.davice_group = dg.drive_group_id " +
                     " WHERE cm.cm_detail_status_id='0' " +
                     " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
             }
@@ -128,7 +128,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                    " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
-                   " JOIN tbl_user u ON cm.cm_user = u.username" +
+                   " JOIN tbl_user u ON cm.cm_user = u.username JOIN tbl_drive_group dg ON d.davice_group = dg.drive_group_id " +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' AND cm.cm_point = '"+ txtPoint.Text + "' " +
                    " AND cm.cm_detail_status_id='0' " +
                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
@@ -208,13 +208,29 @@ namespace ClaimProject.CM
                 {
                     string bgy = function.getBudgetYear(txtSDate.Text);
                     string point = Session["Userpoint"].ToString();
+                    string agncy = txtDeviceAdd.SelectedValue.ToString();
+                    string chkagncy = "SELECT device_id,drive_group_id,drive_group_agency FROM tbl_device " +
+                    "JOIN tbl_drive_group ON tbl_device.davice_group = tbl_drive_group.drive_group_id WHERE device_id = '" + agncy + "' ";
+                    
+
                     string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
                     if(function.MySqlQuery(sql_insert))
                     {
                         AlertPop("บันทึกข้อมูลสำเร็จ", "success");
-                        //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                        Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " +txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
-                        LineTran();
+                        MySqlDataReader rs = function.MySqlSelect(chkagncy);
+                        if (rs.Read())
+                        {
+                            if (rs.GetString("drive_group_id") == "2")
+                            {
+                                Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
+                            }
+                            else
+                            {
+                                Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
+                                LineTran();
+                            }
+                        }
+                        
                         BindData();
                         ClearDate();
                     }
