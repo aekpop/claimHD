@@ -1,4 +1,4 @@
-﻿<%@ Page Title="งานครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAdd.aspx.cs" Inherits="ClaimProject.equip.EquipAdd" %>
+﻿<%@ Page Title="งานครุภัณฑ์ / ค้นหา" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAdd.aspx.cs" Inherits="ClaimProject.equip.EquipAdd" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         @font-face {
@@ -84,13 +84,13 @@
                             </div>                                                   
                                 <div id="divSagain" runat="server" visible="false" class="col-md-6">
                                          <asp:Label ID="chkS" runat="server" font-size="Small" ></asp:Label>
-                                                 <asp:LinkButton ID="lbtnTollReport"  runat="server" Text="Export" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm" Font-Bold="true" Font-Size="Large"  OnCommand="lbtnTollReport_Command"></asp:LinkButton>
-                                                        <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="Export" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
+                                                 <asp:LinkButton ID="lbtnTollReport"  runat="server" Text="ออกรายงาน" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm" Font-Bold="true" Font-Size="Large"  OnCommand="lbtnTollReport_Command"></asp:LinkButton>
+                                                        <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="ออกรายงาน" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
                                 </div>
                          </div>
                <br />
                 <div class="row" style="padding-left:20px; font-size:small">
-                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false"  ></asp:Label>               
+                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false" ></asp:Label>               
                         
                 </div>
            </div>
@@ -324,6 +324,7 @@
 
                 </div>
                 <div class="modal-footer">
+                    <asp:LinkButton ID="btnchkHistory" runat="server" CssClass="btn btn-warning btn-sm" Font-Size="Medium" OnCommand="btnchkHistory_Command">ประวัติ</asp:LinkButton>
                     <asp:LinkButton ID="btnUpdateEQ" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateEQ_Command" OnClientClick="return UpdteConfirm('ยืนยันแก้ไขข้อมูล ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>
                 </div>

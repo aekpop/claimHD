@@ -454,6 +454,15 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.TextBox txtEditNote;
         
         /// <summary>
+        /// btnchkHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnchkHistory;
+        
+        /// <summary>
         /// btnUpdateEQ control.
         /// </summary>
         /// <remarks>

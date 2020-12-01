@@ -29,7 +29,7 @@ namespace ClaimProject.CM
             if (!this.IsPostBack)
             {    
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
-                function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group = '1' Order By locate_id ASC", "locate_name", "locate_id");
+                function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group != '3' Order By locate_id ASC", "locate_name", "locate_id");
                 BindData();
                 //function.getListItem(ddlBudgetcc, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 string sql = "";

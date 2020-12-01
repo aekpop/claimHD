@@ -61,6 +61,14 @@
                                         <asp:TextBox ID="txtEGroupToken" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.drive_group_token") %>' CssClass="form-control"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="หน่วยงานบำรุงรักษา">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbEGroupMaAgency" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.drive_group_agency") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="txtEGroupMaAgency" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.drive_group_agency") %>' CssClass="form-control"></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
                                 <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="btn btn-outline-danger btn-sm fa" ControlStyle-Font-Size="Small" />
                             </Columns>

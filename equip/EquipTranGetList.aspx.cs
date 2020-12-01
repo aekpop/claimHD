@@ -28,7 +28,7 @@ namespace ClaimProject.equip
                 Session["BackWhat"] = "Get";
                 function.getListItem(ddlsearchEndToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                 function.getListItem(ddlsearchType, "SELECT * FROM tbl_transfer_status Order by trans_stat_id ASC ", "trans_stat_name", "trans_stat_id");
-                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '1' AND complete_id != '4'  AND complete_id != '5' AND complete_id != '6'  order by complete_id asc ", "complete_name", "complete_id");
+                function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '1' AND complete_id != '4'  AND complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");
                 ddlsearchEndToll.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchType.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
@@ -176,11 +176,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
                     }
@@ -204,11 +204,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3,6) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                        
 
@@ -236,11 +236,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat !='7' AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat !='7' AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 
@@ -265,11 +265,11 @@ namespace ClaimProject.equip
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%'  AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,3) Order By FIELD(complete_stat,2,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_send = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat IN (2,6,3) Order By FIELD(complete_stat,2,6,3), STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
                         }
                         
 

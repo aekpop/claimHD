@@ -68,8 +68,10 @@ namespace ClaimProject.Device
         {
             TextBox txtEGroup = (TextBox)GroupGridView.Rows[e.RowIndex].FindControl("txtEGroup");
             TextBox txtEGroupToken = (TextBox)GroupGridView.Rows[e.RowIndex].FindControl("txtEGroupToken");
+            TextBox txtEGroupMaAgency = (TextBox)GroupGridView.Rows[e.RowIndex].FindControl("txtEGroupMaAgency");
 
-            string sql = "UPDATE tbl_drive_group SET drive_group_name='" + txtEGroup.Text + "',drive_group_token = '"+ txtEGroupToken.Text.Trim()+ "' WHERE drive_group_id = '" + GroupGridView.DataKeys[e.RowIndex].Value + "'";
+            string sql = "UPDATE tbl_drive_group SET drive_group_name='" + txtEGroup.Text + "',drive_group_token = '" +
+                " "+ txtEGroupToken.Text.Trim()+ "',drive_group_agency = '"+ txtEGroupMaAgency.Text +"' WHERE drive_group_id = '" + GroupGridView.DataKeys[e.RowIndex].Value + "'";
             string script = "";
             if (function.MySqlQuery(sql))
             {
@@ -114,7 +116,7 @@ namespace ClaimProject.Device
         {
             if (txtGroupName.Text != "" && txtTokenLine.Text != "")
             {
-                string sql = "INSERT INTO tbl_drive_group (drive_group_name,drive_group_token,driver_group_delete) VALUES ('" + txtGroupName.Text.Trim() + "','"+ txtTokenLine.Text.Trim() + "','0')";
+                string sql = "INSERT INTO tbl_drive_group (drive_group_name,drive_group_token,drive_group_agency,driver_group_delete) VALUES ('" + txtGroupName.Text.Trim() + "','"+ txtTokenLine.Text.Trim() + "','"+ txtTokenLine.Text.Trim() + "','0')";
                 string script = "";
                 if (function.MySqlQuery(sql))
                 {

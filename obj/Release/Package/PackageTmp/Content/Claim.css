@@ -1,0 +1,9 @@
+﻿.card:hover {
+    background-color: aliceblue;
+    border-left:4px solid rgba(450, 0, 60,0.8);
+}
+
+.card {
+    border-left: 4px solid rgba(450, 0, 60,0.8);
+}
+

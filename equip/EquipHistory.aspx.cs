@@ -22,7 +22,8 @@ namespace ClaimProject.equip
 
             if (!this.IsPostBack)
             {
-
+                txtSearchEq.Text = Session["txtSearchEq"].ToString();
+                BindData();
             }
         }
 
@@ -93,6 +94,9 @@ namespace ClaimProject.equip
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
                 GridViewSearchEq.DataSource = ds.Tables[0];
+                string count = (ds.Tables[0].Rows.Count).ToString();
+                titlegrid.Text = "ผลการค้นหา ( เลขครุภัณฑ์ : " + equip + " ) พบ " + count + " รายการ";
+                titlegrid.Visible = true;
                 GridViewSearchEq.DataBind();
             }
             else

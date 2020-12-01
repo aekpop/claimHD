@@ -842,7 +842,7 @@ namespace ClaimProject.equip
             {
                 if (ddlTypeEQQ.SelectedValue == "4")
                 {
-                    function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll where toll_id = '9400' ", "toll_name", "toll_id");
+                    function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll where toll_EQGroup = '9' ", "toll_name", "toll_id");
                     //function.getListItem(ddlTollEQ, "SELECT * FROM tbl_company WHERE company_status != '1' ORDER BY company_status ASC , company_status DESC ", "company_name", "company_id");
                 }
                 else

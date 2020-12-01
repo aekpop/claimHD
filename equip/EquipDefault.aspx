@@ -399,7 +399,13 @@
                    <div class="alert alert-warning alert-dismissible fade show" id="alertWaitTrans" runat="server" >
                        <div class =" row">
                        <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
-                            ขณะนี้มีรายการรอรับครุภัณฑ์ &nbsp<asp:Label runat="server" ID="lbAmountWait" CssClass="text "></asp:Label>&nbsp รายการ
+                           <asp:LinkButton runat="server" ID="btnDetails" OnClick="lbtnReceiveDetail_Click">
+                               <div class="col">
+                                    <div class="row">
+                                        ขณะนี้มีรายการรอรับครุภัณฑ์ &nbsp<asp:Label runat="server" ID="lbAmountWait" ></asp:Label>&nbsp รายการ
+                                   </div>
+                                 </div>
+                               </asp:LinkButton>
                            </div>
                    </div>
                <!-- <div class="row" >

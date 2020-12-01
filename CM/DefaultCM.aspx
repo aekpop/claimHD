@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultCM.aspx.cs" Inherits="ClaimProject.CM.DefaultCM" %>
+﻿<%@ Page Title="งานบำรุงรักษา" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultCM.aspx.cs" Inherits="ClaimProject.CM.DefaultCM" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">

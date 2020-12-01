@@ -1,4 +1,4 @@
-﻿<%@ Page Title="งานครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipCheckList.aspx.cs" Inherits="ClaimProject.equip.EquipCheckList" %>
+﻿<%@ Page Title="งานครุภัณฑ์ / ตรวจสอบโอนย้าย" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipCheckList.aspx.cs" Inherits="ClaimProject.equip.EquipCheckList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>

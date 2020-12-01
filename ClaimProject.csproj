@@ -497,6 +497,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
+    <Content Include="Content\Claim.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />

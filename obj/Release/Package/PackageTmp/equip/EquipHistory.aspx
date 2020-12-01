@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipHistory.aspx.cs" Inherits="ClaimProject.equip.EquipHistory" %>
+﻿<%@ Page Title="งานครุภัณฑ์ / ประวัติครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipHistory.aspx.cs" Inherits="ClaimProject.equip.EquipHistory" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         @font-face {
@@ -33,8 +33,8 @@
                 <div id="Search" class="row">
                     <div class="form-group bmd-form-group col-xl-3 col-md-6">
                         <span class = "label label-primary">หมายเลขครุภัณฑ์ : </span>
-                        <asp:TextBox id="txtSearchEq" runat="server" CssClass="form-control" aria-describedby="SearchEqHelp" placeholder="หมายเลขครุภัณฑ์" onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                        <small id="SearchEqHelp" class="form-text text-muted">กรอกตัวเลขอย่างน้อย 1 ตัวอักษร</small>
+                        <asp:TextBox id="txtSearchEq" runat="server" CssClass="form-control" aria-describedby="SearchEqHelp" placeholder="กรอกตัวเลขอย่างน้อย 1 ตัวอักษร" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                       
                     </div> 
                 </div>            
                 <div class="col-xl-6 text-left">
@@ -42,7 +42,10 @@
                 </div>
             </div>
         </div>
-
+        <div class="row" style="padding-left:20px; font-size:small">
+                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false"  ></asp:Label>                   
+                </div>
+        <br />
         <asp:Panel ID="Panel" runat="server" >
             <asp:GridView ID="GridViewSearchEq" runat="server"
                 OnRowDataBound="GridViewSearchEq_RowDataBound"

@@ -63,6 +63,7 @@ namespace ClaimProject.equip
                     divaddnew.Visible = false;
                     divcheckk.Visible = false;
                     divcheckkk.Visible = false;
+                    btnchkHistory.Visible = false;
                 }
                 else //อื่นๆที่ไม่ใช่รหัสคนด่านฯ
                 {
@@ -1453,6 +1454,13 @@ namespace ClaimProject.equip
                 function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE cpoint_id = '703' Order By toll_id ASC", "toll_name", "toll_id");
                 ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
             }
+        }
+
+        protected void btnchkHistory_Command(object sender, CommandEventArgs e)
+        {
+            Session.Add("txtSearchEq", txtEditNo.Text);
+            //Response.Redirect("/equip/EquipHistory");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/equip/EquipHistory','_newtab');", true);
         }
     }
 }

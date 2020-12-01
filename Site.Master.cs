@@ -51,6 +51,8 @@ namespace ClaimProject
                     }
                     else
                     {
+                        equipDiv.Visible = false;
+                        Li2.Visible = false;
                         nav3.Visible = true;
                     }
                         

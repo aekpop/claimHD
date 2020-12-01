@@ -5,7 +5,7 @@
         @font-face {
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }
+        }               
     </style>
 <html lang="th">
 <head runat="server">
@@ -29,6 +29,7 @@
     <link href="/Content/lightbox.css" rel="stylesheet" />
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/Claim.css" rel="stylesheet" />
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
 </head>
     
