@@ -76,8 +76,13 @@ namespace ClaimProject.equip
                 }
                 else if (Status == "repair")
                 {
-                    lbStatus.Text = "ซ่อม";
+                    lbStatus.Text = "ส่งซ่อม";
                     lbStatus.CssClass = "text-warning";
+                }
+                else if (Status == "repaired")
+                {
+                    lbStatus.Text = "ยืนยันซ่อม";
+                    lbStatus.CssClass = "text-success";
                 }
             }
         }

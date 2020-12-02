@@ -34,10 +34,12 @@ namespace ClaimProject.equip
                         div4.Visible = false;
                         div6.Visible = false;
                         tblClerical.Visible = false;
+                        //div3.Visible = false;
                     }
                     else
                     {
                         tblToll.Visible = false;
+                        
                     }
                     
                 }   Session.Add("ddlsearchType", "0");
@@ -282,8 +284,8 @@ namespace ClaimProject.equip
 
             }
 
-            string rep = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '4' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
-            string repact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '4' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string rep = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '4' AND complete_stat = '6' AND (toll_send ='" + sqlcpSearch + "' )";
+            string repact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '4' AND num_success = 'repair' AND (toll_send ='" + sqlcpSearch + "' )";
             MySqlDataReader ree = function.MySqlSelect(rep);
             if (ree.Read())
             {
@@ -675,8 +677,23 @@ namespace ClaimProject.equip
         protected void lbtnRepairDetail_Click(object sender, EventArgs e)
         {
             Session.Add("ddlsearchType", "4");
-            Session.Add("ddlsearchStat", "3");
-            Response.Redirect("/equip/EquipTranList");
+            Session.Add("ddlsearchStat", "6");
+
+            if (Session["UserPrivilegeId"].ToString() == "5" || Session["UserPrivilegeId"].ToString() == "2")
+            {
+                if (Session["User"].ToString() != "supaporn" && Session["User"].ToString() != "watcharee" && Session["User"].ToString() != "sawitree" && Session["User"].ToString() != "yuiequip")
+                {
+                    Response.Redirect("/equip/EquipTranList");
+                }
+                else
+                {
+                    Response.Redirect("/equip/EquipTranGetList");
+                }
+            }
+            else
+            {
+                Response.Redirect("/equip/EquipTranGetList");
+            }
         }
 
         protected void lbtnCopyDetail_Click(object sender, EventArgs e)

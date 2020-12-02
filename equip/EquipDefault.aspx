@@ -231,6 +231,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div3" visible="true" >
+                        <div class="card card-stats" >
+                            <div class="card-header card-header-secondary card-header-icon" >
+                                <div class="card-icon" >
+                                    <i class="fa fa-wrench"></i>
+                                </div>
+                                <h5 class="card-category" style="font-size:32px;">ส่งซ่อม</h5>
+                                <h4 class="card-title">
+                                    <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
+                                     / 
+                                    <asp:Label ID="lbRepair2" runat="server" ForeColor="Black" Text=""></asp:Label>
+                                </h4>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="fa fa-th-list"></i>&nbsp
+                            <asp:LinkButton ID="lbtnRepairDetail" runat="server" OnClick="lbtnRepairDetail_Click">รายละเอียด</asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
              </div>
                 <div class="row"> 
                     <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div6" visible="false">
@@ -257,27 +279,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div3" visible="false" >
-                        <div class="card card-stats" >
-                            <div class="card-header card-header-secondary card-header-icon" >
-                                <div class="card-icon" >
-                                    <i class="fa fa-wrench"></i>
-                                </div>
-                                <h5 class="card-category" style="font-size:32px;">ส่งซ่อม</h5>
-                                <h4 class="card-title">
-                                    <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                     / 
-                                    <asp:Label ID="lbRepair2" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                </h4>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="fa fa-th-list"></i>&nbsp
-                            <asp:LinkButton ID="lbtnRepairDetail" runat="server" OnClick="lbtnRepairDetail_Click">รายละเอียด</asp:LinkButton>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div5" visible="false">
                         <div class="card card-stats" >

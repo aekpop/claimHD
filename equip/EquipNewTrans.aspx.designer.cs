@@ -247,15 +247,6 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divnormal;
         
         /// <summary>
-        /// lbEQtranAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbEQtranAdd;
-        
-        /// <summary>
         /// txtEquipTrans control.
         /// </summary>
         /// <remarks>

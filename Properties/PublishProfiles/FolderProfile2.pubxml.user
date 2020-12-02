@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>12/01/2020 12:33:57</publishTime>
+      <publishTime>12/02/2020 10:56:11</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>12/01/2020 12:33:57</publishTime>
+      <publishTime>12/02/2020 10:56:11</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>12/01/2020 12:33:58</publishTime>
+      <publishTime>12/02/2020 10:56:11</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -622,7 +622,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2018 09:04:02</publishTime>
     </File>
     <File Include="CM/CMDetailForm.aspx">
-      <publishTime>11/27/2020 16:07:39</publishTime>
+      <publishTime>12/01/2020 16:01:35</publishTime>
     </File>
     <File Include="CM/CMEditForm.aspx">
       <publishTime>11/27/2020 16:08:31</publishTime>
@@ -3481,7 +3481,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2020 15:57:43</publishTime>
     </File>
     <File Include="equip/EquipDefault.aspx">
-      <publishTime>11/27/2020 15:53:48</publishTime>
+      <publishTime>12/02/2020 08:55:20</publishTime>
     </File>
     <File Include="equip/EquipHistory.aspx">
       <publishTime>11/27/2020 15:52:38</publishTime>
@@ -4306,7 +4306,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2020 15:40:46</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>12/01/2020 09:59:33</publishTime>
+      <publishTime>12/01/2020 15:15:48</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/01/2018 16:43:56</publishTime>

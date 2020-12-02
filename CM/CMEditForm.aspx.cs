@@ -281,6 +281,11 @@ namespace ClaimProject.CM
                                     sqlDocService = " ,cm_detail_Service_img = '" + NewFileDocNameService + "' ";
                                 }
 
+                                string chkagncy = " SELECT cm_detail_id,drive_group_id,drive_group_agency FROM " +
+                                    "tbl_cm_detail JOIN tbl_device ON tbl_cm_detail.cm_detail_driver_id = tbl_device.device_id " +
+                                    "JOIN tbl_drive_group ON tbl_drive_group.drive_group_id = tbl_device.davice_group " +
+                                    "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "' ";
+
                                 string sql = "UPDATE tbl_cm_detail SET cm_detail_edate = '" + txtEDate.Text + "', " +
                                     "cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', " +
                                     "cm_detail_status_id = '1',cm_detail_eimg = '" + NewFileDocName + "',cm_detail_method = '" + txtMethod.Text + "', " +
@@ -290,10 +295,29 @@ namespace ClaimProject.CM
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                                    Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งใช้งานได้ปกติ \nจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text +" ";
-                                    LineTran();
+                                    MySqlDataReader rs = function.MySqlSelect(chkagncy);
+                                    if (rs.Read())
+                                    {
+                                        if (txtCpointSearch.SelectedValue != "711" && txtCpointSearch.SelectedValue != "712" && txtCpointSearch.SelectedValue != "713")
+                                        {
+                                            if (rs.GetString("drive_group_id") == "2")
+                                            {
+                                                Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งใช้งานได้ปกติ \nจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text + " ";
+                                            }
+                                            else
+                                            {
+                                                Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งใช้งานได้ปกติ \nจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text + " ";
+                                                LineTran();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งใช้งานได้ปกติ \nจากด่านฯ " + Label5.Text + " ช่องทาง " + Label2.Text + "\nวันที่ " + txtEDate.Text + " เวลา " + txtETime.Text + " น. \nอุปกรณ์ : " + Label3.Text + "\nอาการชำรุด : " + Label4.Text + "\nแก้ไขโดย " + txtMethod.Text + " ";
+                                            LineTran();
+                                        }
+                                    }
+
                                     BindData();
-                                    //Response.Redirect("/CM/DefaultCM");
                                 }
                                 else
                                 {
