@@ -1,9 +1,9 @@
 ﻿.card:hover {
-    background-color: aliceblue;
-    border-left:4px solid rgba(450, 0, 60,0.8);
+    background-color: #f5f5f5;
+    border-left: 4px solid #ffd800;
 }
 
 .card {
-    border-left: 4px solid rgba(450, 0, 60,0.8);
+    border-left: 4px solid #ffd800;
 }
 

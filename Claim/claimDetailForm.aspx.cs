@@ -655,7 +655,7 @@ namespace ClaimProject.Claim
             }
             else
             {
-                AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                AlertPop("Error : แนบรูปภาพเอกสารประกอบ ล้มเหลว ไม่พบไฟล์เอกสาร / ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
             }
         }
 

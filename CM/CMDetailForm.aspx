@@ -5,10 +5,54 @@
         @font-face {
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }            
+        }
         
-    </style>
 
+        .form-group {
+          position: relative;
+          padding: 15px 0 0;
+          margin-top: 10px;
+          width: 100%;
+        }
+        .form-control {
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid #3846b1;
+            outline: 0;
+            font-size: 1.3rem;
+            color: #808080;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+
+        }
+        .form-control:focus {
+
+          padding-bottom: 6px;  
+          font-weight: 700;
+          border-width: 3px;
+          border-image-slice: 1;
+        }
+
+
+        .ui-state-default,
+        .ui-widget-content .ui-state-default,
+        .ui-widget-header .ui-state-default  {
+            font-family: Prompt;
+            width: 90%;
+            border: 0;
+            border-bottom: 2px solid #3846b1;
+            outline: 0;
+            font-size: 1.3rem;
+            color: #808080;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+        
+
+    </style>
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
@@ -127,7 +171,6 @@
                     </div>
                 </div>
             </div>       
-        <br />
     </div>
 
     <div id="DivCMGridView" runat="server" >

@@ -69,7 +69,7 @@
                       <asp:TextBox ID="txtNewSerial" runat="server"  BackColor="#ffffcc" CssClass="form-control" ></asp:TextBox>
                 </div>
                 <div class="form-group bmd-form-group col-md-2" id="diviconchk" runat="server" style="padding-top:30px;">
-                    <asp:LinkButton ID="chknewSEE" runat="server" ToolTip="เพิ่มรายการ" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="chknewSEE_Command"></asp:LinkButton>
+                    <asp:LinkButton ID="chknewSEE" runat="server" ToolTip="ปรายการ" Font-Size="XX-Large" CssClass="fa fa-search" OnCommand="chknewSEE_Command"></asp:LinkButton>
                 </div>
                 <div class="form-group bmd-form-group col-md-3" id="diviconchkAgain" runat="server" visible="false" style="padding-top:26px;">
                     <asp:Button ID="chkSEAgain" runat="server" Width="120px" Text="<<-แก้ไขเลข" BackColor="#006666" CssClass="btn form-control" OnClick="chkSEAgain_Click" />
@@ -78,14 +78,12 @@
             </div>
 
             <div class="row " id="divnormal" runat="server">
-                <div class="col-xl-2 text-right">
-                    <asp:Label ID="lbEQtranAdd" runat="server" Text="เพิ่มครุภัณฑ์ -->" ForeColor="#990000" ></asp:Label>
-                </div>
+                
                 <div class="col-xl-3" style="enable-background:initial;">
                     <asp:DropDownList ID="txtEquipTrans" runat="server" CssClass="combobox form-control custom-select" ></asp:DropDownList>
                 </div>
                 <div class="col-xl-1" >
-                   <asp:LinkButton ID="btnAddEQTran" runat="server" ToolTip="เพิ่มรายการ" Font-Size="XX-Large" CssClass="fas text-success" OnCommand="btnAddEQTran_Command" OnClientClick="return UpdteConfirm('ยืนยันเลือกเลขครุภัณฑ์นี้ ใช่หรือไม่');">&#xf055;</asp:LinkButton>
+                   <asp:LinkButton ID="btnAddEQTran" runat="server" CssClass="btn btn-success" OnCommand="btnAddEQTran_Command" OnClientClick="return UpdteConfirm('ยืนยันเลือกเลขครุภัณฑ์นี้ ใช่หรือไม่');"><i class="fas fa-plus-circle"></i>&nbspเพิ่มรายการ</asp:LinkButton>
                 </div>
             </div>
             <!-- ทดแทน-->
@@ -105,8 +103,8 @@
             <div class="row" style="padding-left:12px;" >
                 <asp:Label ID="lbshowamount" runat="server"  ></asp:Label>
             </div>
-                <asp:gridview ID="GridAddTran" runat="server" DataKeyNames="trans_act_id"
-                    ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="15px" 
+                <asp:gridview ID="GridAddTran" runat="server" DataKeyNames="trans_act_id" CssClass="table table-hover table-sm"
+                    ShowFooter="true"  GridLines="None" Font-Size="18px" HeaderStyle-Font-Size ="24px"
                     AutoGenerateColumns="false" OnRowDataBound="GridAddTran_RowDataBound" OnRowDeleting="GridAddTran_RowDeleting"> 
                     <AlternatingRowStyle BackColor="#edebec" />
                     <Columns>
@@ -140,11 +138,11 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:CommandField  ShowDeleteButton="True" HeaderText="ลบรายการ" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" ItemStyle-CssClass="text-center" />
+                        <asp:CommandField  ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" ItemStyle-CssClass="text-center" />
                     </Columns>
-                    <FooterStyle BackColor="#c8ffc4" Font-Bold="True" CssClass="text-center" ForeColor="#0a7802" />
-                    <HeaderStyle BackColor="#c8ffc4" CssClass="text-center"   ForeColor="#0a7802" />
-                    <RowStyle BackColor="#f3fff0"  />
+                    <FooterStyle BackColor="#ffffff" Font-Bold="True" CssClass="text-center" ForeColor="#0a7802" />
+                    <HeaderStyle BackColor="#ffffff" CssClass="text-center"   ForeColor="#0a7802" />
+                    
                 
                 </asp:gridview>
 
@@ -187,7 +185,7 @@
                                 <asp:label ID="txtnewserialz"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.new_serial") %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                        <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" />
                     </Columns>
                     <FooterStyle BackColor="#e8ba23" Font-Bold="True" CssClass="text-center" ForeColor="white" />
                     <HeaderStyle BackColor="#e8ba23" CssClass="text-center"   ForeColor="#000000" />

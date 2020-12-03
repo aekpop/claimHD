@@ -31,11 +31,7 @@ namespace ClaimProject.Config
         {
             throw new NotImplementedException();
         }
-
-        //string strConnString = "Server=10.6.3.201;User Id=claimtwo; Password=123456789;charset=utf8; Database=db_claim; Pooling=false";
-        //string strConnString = "Server=10.6.3.213;User Id=heaven; Password=admin1234;charset=utf8; Database=db_claim; Pooling=false";  
-        
-
+         
         public void getListItem(DropDownList list, string sql, string text, string value)
         {
             using (var reader = MySqlSelect(sql))

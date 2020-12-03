@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="งานอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="claimDetailForm.aspx.cs" Inherits="ClaimProject.Claim.claimDetailForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <link href="../Content/Claim.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <div class="tab-content">
@@ -670,12 +672,7 @@
         }
     </script>
     <script type="text/javascript"> 
-        $(function () {
-        <% if (alert != "")
-        { %>
-            demo.showNotification('top', 'center', '<%=icon%>', '<%=alertType%>', '<%=alert%>');
-        <% } %>
-        });
+        
         $(function () {
             <% if (Car2 != "")
         {%>
