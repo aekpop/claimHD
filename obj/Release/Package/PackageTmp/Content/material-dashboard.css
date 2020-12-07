@@ -11205,7 +11205,7 @@ form {
     .navbar form .btn {
         margin-bottom: 0;
     }
-    /*
+/*
 .form-control {
     background: no-repeat center bottom, center calc(100% - 1px);
     background-size: 0 100%, 100% 100%;
@@ -12913,7 +12913,7 @@ label {
     left: 0;
     /*font-size: 0.6875rem;*/
 }
-    /*
+/*
 .bmd-label-static {
     top: 0.35rem;
     left: 0;

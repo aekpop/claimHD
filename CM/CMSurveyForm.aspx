@@ -3,23 +3,8 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <!-- Menu Dropdown -->        
-        <div class="btn-group">
-              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
-              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="/CM/DefaultCM">หน้าหลัก</a></li>
-                <li><a href="/CM/CMDetailForm">แจ้งซ่อม</a></li>
-                <li><a href="/CM/CMEditForm">การแก้ไข</a></li>
-                <li><a href="/CM/CMLine">ส่งไลน์</a></li>
-                <li><a href="/CM/CMReport">สรุปรายการ</a></li>                
-              </ul>
-        </div>
-        <!-------------------------------- // ------------------------------------> 
-        
-
+     
+ <div class="container-fluid" style="font-family:'Prompt',sans-serif;">       
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
@@ -37,7 +22,6 @@
                         Font-Size="15px" 
                         CellPadding="4" 
                         ForeColor="#333333"
-                        Font-Names="thsaraban"
                         GridLines="None">
 
                         <AlternatingRowStyle BackColor="White" />
@@ -310,4 +294,5 @@
             }
         }
     </script>
+     </div>
 </asp:Content>

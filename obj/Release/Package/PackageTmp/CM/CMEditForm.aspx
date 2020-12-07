@@ -1,13 +1,9 @@
 ﻿<%@ Page Title="งานบำรุงรักษา / การแก้ไข" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMEditForm.aspx.cs" Inherits="ClaimProject.CM.CMEditForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <style>
-        @font-face {
-            font-family: 'Prompt';
-            src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }
-    </style>
+    <!-- CSS only -->
+    <link href="../Content/form-design-new.css" rel="stylesheet" />
+
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
          <!-- Menu Dropdown -->        
         <div class="btn-group" runat="server" visible="false">

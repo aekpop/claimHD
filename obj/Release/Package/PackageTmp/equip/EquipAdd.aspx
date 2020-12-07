@@ -8,12 +8,13 @@
     </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+    <link href="../Content/form-design-new.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         <!-- Menu Dropdown -->        
-        <div class="btn-group">
+        <div class="btn-group" runat="server" visible="false">
               <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
               <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
                 <span class="caret"></span>

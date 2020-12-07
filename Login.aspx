@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <a href="Login.aspx">Login.aspx</a>
+    <a href="Login.aspx" style="color:#ffffff">Login.aspx</a>
     <link rel="icon" href="favicon.ico">
 
     <title>ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS)</title>
@@ -15,9 +15,12 @@
     <!-- Bootstrap core CSS -->
     <link href="/Content/bootstrap.css" rel="stylesheet">
     <link href="/Content/font-awesome.css" rel="stylesheet" />
+
     <!-- Custom styles for this template -->
     <link href="/Content/signin.css" rel="stylesheet">
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
+    <link href="/Content/form-design-new.css" rel="stylesheet" />
+
 </head>
 
 <body class="text-center">
@@ -80,5 +83,8 @@
             </div>
         </div>
     </div>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/bootstrap-material-design.min.js"></script>
 </body>
 </html>

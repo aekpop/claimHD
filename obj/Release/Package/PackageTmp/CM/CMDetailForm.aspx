@@ -1,21 +1,14 @@
 ﻿<%@ Page Title="งานบำรุงรักษา / แจ้งซ่อม" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMDetailForm.aspx.cs" Inherits="ClaimProject.CM.CMDetailForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        @font-face {
-            font-family: 'Prompt';
-            src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }            
-        
-    </style>
-
+    
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
     <script src="../Scripts/printThis.js"></script>
     <!-- CSS only -->
-    
+    <link href="/Content/form-design-new.css" rel="stylesheet" />
     <!-- JS, Popper.js, and jQuery -->    
     <script src="../Scripts/jquery-3.5.1.js"></script>
     <script src="../Scripts/umd/popper.min.js"></script>
@@ -50,7 +43,7 @@
                     <div class="col-md-3 col-xl-2">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ด่านฯ :</p>
-                            <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select" Enabled="false"></asp:DropDownList>
+                            <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control" Enabled="false"></asp:DropDownList>
                         </div>
                     </div>
                    <div class="col-md-2">
@@ -76,7 +69,7 @@
                     <div class="col-md-2">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating ">ช่องทาง</p>
-                            <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control " ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control dropdown" ></asp:DropDownList>
                         </div>
                     </div>    
                 </div>
@@ -110,6 +103,7 @@
                         </div>
                      </div>
                 </div>
+                <br >
                 <hr />
 
                 <div class="row">
@@ -127,7 +121,6 @@
                     </div>
                 </div>
             </div>       
-        <br />
     </div>
 
     <div id="DivCMGridView" runat="server" >

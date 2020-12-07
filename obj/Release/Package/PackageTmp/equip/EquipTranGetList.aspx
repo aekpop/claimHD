@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="งานครุภัณฑ์ / รับครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipTranGetList.aspx.cs" Inherits="ClaimProject.equip.EquipTranGetList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+    <link href="../Content/form-design-new.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <style>

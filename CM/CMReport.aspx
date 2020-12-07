@@ -2,12 +2,7 @@
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        @font-face {
-            font-family: 'Prompt';
-            src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }
-    </style>
+
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
@@ -16,7 +11,8 @@
     <script src="../Scripts/printThis.js"></script>
     
     <!-- CSS only -->
-    
+    <link href="../Content/form-design-new.css" rel="stylesheet" />
+
     <!-- JS, Popper.js, and jQuery -->    
     <script src="../Scripts/jquery-3.5.1.js"></script>
     <script src="../Scripts/umd/popper.min.js"></script>
@@ -55,7 +51,7 @@
                                         <div class=" col-md-2 ">
                                          <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbToll" runat="server" Text="ด่านฯ : "></asp:Label>                                            
-                                            <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
+                                            <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control "></asp:DropDownList>
                                              </div>
                                         </div>
                                         <div class=" col-md-1 ">
@@ -79,7 +75,7 @@
                                          <div class=" col-md-2 ">
                                              <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
-                                            <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control custom-select " ></asp:DropDownList>
+                                            <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control " ></asp:DropDownList>
                                                  </div>
                                         </div>                                        
                         </div>                        
@@ -111,10 +107,10 @@
                         <br />
                                         <div class="row">  
                                             <div class="col-xl-6 text-right">
-                                                      <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa" Font-Size="Medium" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
+                                                      <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa" Font-Size="Larger" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
                                                 </div>
                                             <div class="col-xl-6 text-left">
-                                                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" ToolTip="Export To Excel" OnClick="btnExport_Click">&#xf1c3; Export</asp:LinkButton>
+                                                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Larger" ToolTip="Export To Excel" OnClick="btnExport_Click">&#xf1c3; ออกรายงาน</asp:LinkButton>
                                                 </div>
                                         </div>
                         </div>
@@ -136,6 +132,7 @@
                            PageSize="20"
                            GridLines="None"
                            Font-Size="15px"
+                           RowStyle-Height="50px"
                            CssClass="table table-hover table-condensed table-sm"
                            OnPageIndexChanging="GridView1_PageIndexChanging"
                            PagerSettings-Mode="NumericFirstLast"

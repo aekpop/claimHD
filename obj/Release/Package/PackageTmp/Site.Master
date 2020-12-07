@@ -5,7 +5,7 @@
         @font-face {
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }               
+        }   
     </style>
 <html lang="th">
 <head runat="server">
@@ -28,12 +28,12 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <link href="/Content/lightbox.css" rel="stylesheet" />
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
-    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Content/Claim.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />    
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
+    
 </head>
     
-<body style="padding-top:0px">
+<body style="padding-top:0px;">
     
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -257,7 +257,7 @@
     <script src="/Scripts/material-dashboard.js"></script>
     <script src="/Scripts/demo.js"></script>
     <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
-    <script src="/Scripts/ClaimProjectScript.js"></script>
+    <!--<script src="/Scripts/ClaimProjectScript.js"></script>-->
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>

@@ -1,0 +1,69 @@
+﻿.form-group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-control {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #808080;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #808080;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+    .form-control:focus {
+        color: #ff9800;
+        padding-bottom: 6px;
+        font-weight: 700;
+        border-width: 3px;
+        border-image-slice: 1;
+        border-color: #ff9800;
+        box-shadow: none;
+    }
+.form-control:focus,
+    .bmd-form-group.is-focused .form-control {
+        background-size: 100% 100%, 100% 100%;
+        transition-duration: 0.3s;
+        box-shadow: none;
+    }
+
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    font-family: Prompt;
+    width: 90%;
+    border: 0;
+    border-bottom: 2px solid #808080;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #808080;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+ .ui-button {
+     display:none;
+ }
+
+.ui-menu .ui-menu-item {
+    position: relative;
+    margin: 0;
+    padding: 3px 1em 3px .4em;
+    cursor: pointer;
+    min-height: 0; /* support: IE7 */
+    /* support: IE10, see #8844 */
+    list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+    font-size:x-large;
+}
+
+hr {
+    border-top: 3px solid #ff9800;
+}
+
