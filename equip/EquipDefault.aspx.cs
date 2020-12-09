@@ -35,11 +35,13 @@ namespace ClaimProject.equip
                         div6.Visible = false;
                         tblClerical.Visible = false;
                         //div3.Visible = false;
+                        //dvRent.Visible = true;
                     }
                     else
                     {
                         tblToll.Visible = false;
-                        
+                        //dvRent.Visible = true;
+
                     }
                     
                 }   Session.Add("ddlsearchType", "0");
@@ -48,6 +50,7 @@ namespace ClaimProject.equip
                     Session.Add("LineTran", "");
                     Session["BackWhat"] = "";
                     loadingpage();
+                    //loadChart();
             }
         }
 
@@ -93,10 +96,10 @@ namespace ClaimProject.equip
                 }
                 else
                 {
-                    sqlcpSearch += " 7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040' OR toll_send ='7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
+                    sqlcpSearch += "9200' OR toll_send = '7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040' OR toll_send ='7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
                         "OR toll_send ='7061' OR toll_send = ' 7062 ' OR toll_send = ' 7063 ' OR toll_send = '7064' OR toll_send = '7071' OR toll_send = '7072' OR toll_send = '7073' OR toll_send = '7074' OR toll_send = '7075' OR toll_send = '7076' OR toll_send = '7081' OR toll_send = '7082'" +
                         "OR toll_send ='7083' OR toll_send = ' 7084 ' OR toll_send = ' 7090 ' OR toll_send = ' 7100 ' OR toll_send = ' 7110 ' OR toll_send = ' 7120 ";
-                    sqlcpSearchtotal = "7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040' OR toll_id = '7020' OR toll_id = '7031' OR toll_id = '7032' OR toll_id = '7033' OR toll_id = '7041' OR toll_id = '7042' OR toll_id = '7051' OR toll_id = '7052'" +
+                    sqlcpSearchtotal = "9200' OR toll_id = '7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040' OR toll_id = '7020' OR toll_id = '7031' OR toll_id = '7032' OR toll_id = '7033' OR toll_id = '7041' OR toll_id = '7042' OR toll_id = '7051' OR toll_id = '7052'" +
                         "OR toll_id ='7061' OR toll_id = ' 7062 ' OR toll_id = ' 7063 ' OR toll_id = '7064' OR toll_id = '7071' OR toll_id = '7072' OR toll_id = '7073' OR toll_id = '7074' OR toll_id = '7075' OR toll_id = '7076' OR toll_id = '7081' OR toll_id = '7082'" +
                         "OR toll_id ='7083' OR toll_id = ' 7084 ' OR toll_id = ' 7090 ' OR toll_id = ' 7100 ' OR toll_id = ' 7110 ' OR toll_id = ' 7120 ";
                     sqltran = " 9200' OR tbl_transfer.toll_send = '7010' OR tbl_transfer.toll_send = '9010' OR tbl_transfer.toll_send = '9020' OR tbl_transfer.toll_send ='9030' OR tbl_transfer.toll_send ='9040' OR tbl_transfer.toll_send ='7020' OR tbl_transfer.toll_send = '7031' OR tbl_transfer.toll_send = '7032' OR tbl_transfer.toll_send = '7033' OR tbl_transfer.toll_send = '7041' OR tbl_transfer.toll_send = '7042' OR tbl_transfer.toll_send = '7051' OR tbl_transfer.toll_send = '7052'" +
@@ -383,6 +386,8 @@ namespace ClaimProject.equip
             string sqleqerc = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '3' AND(toll_send = '" + sqlcpSearch + "') ";
             //string tranSentTotal = "";
             //string tranClaimTotal = "";
+            string sqlRent = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '7' AND complete_stat = '7' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+            string sqleqRent = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON transfer_id = trans_id WHERE(tran_type = '7' AND num_success = 'no') AND(tbl_transfer.toll_send = '" + sqltran + "') ";
             MySqlDataReader rt = function.MySqlSelect(eqTotal);
             if (rt.Read())
             {
@@ -496,6 +501,20 @@ namespace ClaimProject.equip
                     rtt8.Close();
                 }
             }
+
+            MySqlDataReader rt9 = function.MySqlSelect(sqlRent);
+            if (rt9.Read())
+            {
+                MySqlDataReader rtt9 = function.MySqlSelect(sqleqRent);
+                if (rtt9.Read())
+                {
+                    lbrent.Text = String.Format("{0:n0}", rt9.GetInt32("num"));
+                    lbrentamount.Text = String.Format("{0:n0}", rtt9.GetInt32("devv")) + " รายการ";
+                    rtt9.Close();
+                    rt9.Close();
+                }
+            }
+
             if (lbreceive.Text != "0")
             {
                 lbAmountWait.Text = lbreceive.Text;
@@ -681,18 +700,11 @@ namespace ClaimProject.equip
 
             if (Session["UserPrivilegeId"].ToString() == "5" || Session["UserPrivilegeId"].ToString() == "2")
             {
-                if (Session["User"].ToString() != "supaporn" && Session["User"].ToString() != "watcharee" && Session["User"].ToString() != "sawitree" && Session["User"].ToString() != "yuiequip")
-                {
                     Response.Redirect("/equip/EquipTranList");
-                }
-                else
-                {
-                    Response.Redirect("/equip/EquipTranGetList");
-                }
             }
             else
             {
-                Response.Redirect("/equip/EquipTranGetList");
+                Response.Redirect("/equip/EquipTranList");
             }
         }
 
@@ -722,6 +734,12 @@ namespace ClaimProject.equip
 
             Session.Add("ddlsearchStat", "2");
             Response.Redirect("/equip/EquipTranGetList");
+        }
+
+        protected void btnRent_Click(object sender, EventArgs e)
+        {
+            Session.Add("ddlsearchStat", "7");
+            Response.Redirect("/equip/EquipTranList");
         }
     }
 }

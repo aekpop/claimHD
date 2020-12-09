@@ -43,7 +43,7 @@ namespace ClaimProject.equip
             }
             LineGetTran();
             LoadPaging();
-            Session["ddlsearchStat"] = "0";
+            //Session["ddlsearchStat"] = "0";
 
         }
         protected void LineGetTran()
@@ -80,20 +80,19 @@ namespace ClaimProject.equip
             {
                 if (Session["User"].ToString() == "sawitree")
                 {
-                    sqlsendSearch += "WHERE (toll_send ='7010' or toll_send ='9010' " +
-                        "or toll_send ='9020' or toll_send ='9030' )";
+                    sqlsendSearch += "WHERE toll_EQGroup = '1' ";
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
-                    sqlsendSearch += "WHERE (toll_send ='7020' or toll_send ='7031' " +
-                        "or toll_send ='7032' or toll_send ='7033' or toll_send ='7041' " +
-                        "or toll_send ='7042' or toll_send ='7051' " +
-                        "or toll_send ='7052' or toll_send ='7061' or toll_send ='7062' " +
-                        "or toll_send ='7063' or toll_send ='7064') ";
+                    sqlsendSearch += "WHERE toll_EQGroup = '2' ";
+                }
+                else if (Session["User"].ToString() == "watcharee")
+                {
+                    sqlsendSearch += "WHERE toll_EQGroup = '3' ";
                 }
                 else
                 {
-                    sqlsendSearch += " WHERE (toll_recieve = '9200' OR toll_recieve = '9300' OR toll_recieve = '9400' OR toll_recieve = '9500')  ";
+                    sqlsendSearch += "WHERE toll_EQGroup IN (1,2,3,9) ";
                 }
             }
             else
@@ -403,7 +402,16 @@ namespace ClaimProject.equip
 
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
         {
-            LoadPaging();
+            if (Session["ddlsearchStat"].ToString() != "0")
+            {
+                Session["ddlsearchStat"] = "0";
+                ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
+                LoadPaging();
+            }
+            else
+            {
+                LoadPaging();
+            }
         }
     }
 }

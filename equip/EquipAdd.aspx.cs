@@ -67,7 +67,7 @@ namespace ClaimProject.equip
                 }
                 else //อื่นๆที่ไม่ใช่รหัสคนด่านฯ
                 {
- 
+                    /*
                     if (username == "sawitree")
                     {
                         function.getListItem(ddlcpoint, "select * from tbl_cpoint where eq_gr='1' order by cpoint_id ASC", "cpoint_name", "cpoint_id");
@@ -94,7 +94,8 @@ namespace ClaimProject.equip
                         //function.getListItem(ddlserchToll, "SELECT * FROM tbl_toll WHERE toll_EQGroup = '3'  Order By toll_id ASC", "toll_name", "toll_id");
                     }
                     else
-                    {                       
+                    {     
+                    */
                         function.getListItem(ddlcpoint, "select * from tbl_cpoint  order by cpoint_id ASC", "cpoint_name", "cpoint_id");
                         function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                         ddlcpoint.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
@@ -106,9 +107,7 @@ namespace ClaimProject.equip
                             FileEditEQ.Visible = false;
                             btnUpdateEQ.Visible = false;
                         }
-                    }
-                    
-
+                   // }
                 }
 
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
@@ -442,6 +441,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -459,9 +459,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
                                 
                             }
@@ -499,6 +500,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -516,9 +518,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
                             }
                             else
@@ -558,6 +561,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -575,9 +579,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
                             }
                             else
@@ -614,6 +619,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -631,9 +637,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
                             }
                             else
@@ -679,6 +686,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -696,9 +704,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                   // }
                                 }
                             }
                             else
@@ -738,6 +747,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -755,9 +765,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
 
                             }
@@ -787,6 +798,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -804,9 +816,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
                             }
                             else
@@ -843,6 +856,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -860,9 +874,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                    //}
                                 }
                             }
                             else
@@ -894,6 +909,7 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
+                                    /*
                                     if (usernamee == "sawitree")
                                     {
                                         Ssql += " AND tbl_toll.toll_EQGroup = '1' order by d.equipment_no ASC ";
@@ -911,9 +927,10 @@ namespace ClaimProject.equip
                                     }
                                     else
                                     {
+                                    */
                                         Ssql += " order by d.equipment_no ASC ";
                                         SsqlReport += " order by d.equipment_no ASC ";
-                                    }
+                                   // }
                                 }
                             }
                             else

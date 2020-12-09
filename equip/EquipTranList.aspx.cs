@@ -56,8 +56,8 @@ namespace ClaimProject
             }
             LineTran();
             LoadPaging();
-            Session["ddlsearchType"] = "0";
-            Session["ddlsearchStat"] = "0";
+            //Session["ddlsearchType"] = "0";
+            //Session["ddlsearchStat"] = "0";
         }
         protected void LineTran ()
         {
@@ -109,7 +109,24 @@ namespace ClaimProject
             string status = ddlsearchStat.SelectedValue ;
             if (Session["UserCpoint"].ToString() == "0")
             {
-                sqlsendSearch += " WHERE (cpoint_id = '920' OR cpoint_id = '999' ) AND user_send = '" + Session["UserName"].ToString() + "'   ";
+                if(Session["User"].ToString() == "sawitree")
+                {
+                    sqlsendSearch += " WHERE Toll_EQGroup = '1' ";
+                }
+                else if (Session["User"].ToString() == "supaporn")
+                {
+                    sqlsendSearch += " WHERE Toll_EQGroup = '2' ";
+
+                }
+                else if (Session["User"].ToString() == "watcharee")
+                {
+                    sqlsendSearch += " WHERE Toll_EQGroup = '3' ";
+                }
+                else
+                {
+                    sqlsendSearch += " WHERE Toll_EQGroup IN (1,2,3,9)";
+                }
+                //sqlsendSearch += " WHERE (cpoint_id = '920' OR cpoint_id = '999' ) AND user_send = '" + Session["UserName"].ToString() + "'   ";
             }
             else
             {
@@ -332,7 +349,20 @@ namespace ClaimProject
 
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
         {
-            LoadPaging();
+            
+            if (Session["ddlsearchType"].ToString() != "0" || Session["ddlsearchStat"].ToString() != "0")
+            {
+                Session["ddlsearchType"] = "0";
+                Session["ddlsearchStat"] = "0";
+                ddlsearchType.SelectedItem.Value = Session["ddlsearchType"].ToString();
+                ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
+                LoadPaging();
+            }
+            else
+            {
+                LoadPaging();
+            }
+           
         }
         
         protected void lbtnprintTran_Command(object sender, CommandEventArgs e)

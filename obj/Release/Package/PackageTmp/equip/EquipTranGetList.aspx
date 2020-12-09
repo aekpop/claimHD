@@ -82,8 +82,10 @@
                     GridLines="None" 
                     CssClass="table table-hover table-condensed table-sm"
                     HeaderStyle-Font-Size="18px"
+                    HeaderStyle-Height="75px"
                     Font-Size="15px"
                     AllowSorting="true"
+                    RowStyle-Height="60px"
                     PageSize="30" >
 
                     

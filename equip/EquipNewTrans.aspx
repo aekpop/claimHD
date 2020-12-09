@@ -410,7 +410,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnSubreplace" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnSubreplace_Command" OnClientClick="return UpdteConfirm('ยืนยันบันทึก ใช่หรือไม่');">ยืนยันบันทึก</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnSubreplace" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnSubreplace_Command" OnClientClick="return UpdteConfirm('ยืนยันบันทึก ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">ยกเลิก</button>
                 </div>
             </div>
@@ -436,7 +436,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnGet" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnGet_Command" OnClientClick="return UpdteConfirm('ยืนยันบันทึก ใช่หรือไม่');">ยืนยันบันทึก</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGet" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnGet_Command" OnClientClick="return UpdteConfirm('ยืนยันบันทึก ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">ยกเลิก</button>
                 </div>
             </div>

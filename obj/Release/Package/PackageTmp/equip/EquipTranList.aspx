@@ -71,6 +71,7 @@
                         </div>
                     </div>
                 </div>
+                <hr />
                 <div class="row" style="padding-left:20px;" >
                     <asp:Label ID="lbAmountgrid" runat="server" Font-Size="12px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
                 </div>
@@ -80,12 +81,14 @@
                     OnRowDataBound="gridTranlist_RowDataBound"
                     CssClass="table table-hover table-condensed table-sm"
                     HeaderStyle-Font-Size="18px"
+                    HeaderStyle-Height="75px"
                     GridLines="None" 
                     AllowSorting="true"                   
-                    Font-Size="16px" 
+                    Font-Size="16px"
+                    RowStyle-Height="60px"
                     OnPageIndexChanging="gridTranlist_PageIndexChanging" 
                     PagerSettings-Mode="NumericFirstLast"  
-                    PageSize="100" 
+                    PageSize="50" 
             PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย" AllowPaging="true" >
                     
                     <Columns>

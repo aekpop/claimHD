@@ -283,6 +283,42 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.LinkButton lbtnRepairDetail;
         
         /// <summary>
+        /// dvRent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvRent;
+        
+        /// <summary>
+        /// lbrent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbrent;
+        
+        /// <summary>
+        /// lbrentamount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbrentamount;
+        
+        /// <summary>
+        /// btnRent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnRent;
+        
+        /// <summary>
         /// div6 control.
         /// </summary>
         /// <remarks>

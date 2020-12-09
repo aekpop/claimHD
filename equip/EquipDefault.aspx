@@ -77,7 +77,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ด่านฯ)      
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (สำเร็จ)      
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
@@ -125,7 +125,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ฝ่ายฯ)</div>
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (สำเร็จ)</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
@@ -238,7 +238,7 @@
                                 <div class="card-icon" >
                                     <i class="fa fa-wrench"></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">ส่งซ่อม</h5>
+                                <h5 class="card-category" style="font-size:32px;">ซ่อม</h5>
                                 <h4 class="card-title">
                                     <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
                                      / 
@@ -253,6 +253,29 @@
                             </div>
                         </div>
                     </div>
+
+                     <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="dvRent" visible="true">
+                        <div class="card card-stats" >
+                            <div class="card-header card-header-info card-header-icon" >
+                                <div class="card-icon">
+                                    <i class="fas fa-align-justify" ></i>
+                                </div>
+                                <h5 class="card-category" style="font-size:32px;">ยืม</h5>
+                                <h4 class="card-title">
+                                    <asp:Label ID="lbrent" runat="server" ForeColor="Black" ></asp:Label>
+                                     /
+                                    <asp:Label ID="lbrentamount" runat="server" ForeColor="Black" ></asp:Label>
+                                </h4>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="fa fa-th-list"></i>&nbsp
+                                        <asp:LinkButton ID="btnRent" runat="server" OnClick="btnRent_Click">รายละเอียด</asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
              </div>
                 <div class="row"> 
                     <div class="col-xl-3 col-md-6 col-sm-6" runat="server" id="div6" visible="false">
@@ -395,8 +418,11 @@
                             </div>
                         </div>
                     </div>
-                 </div>
+                 
 
+                
+                 </div>
+                </div>
               
                    <div class="alert alert-warning alert-dismissible fade show" id="alertWaitTrans" runat="server" >
                        <div class =" row">
