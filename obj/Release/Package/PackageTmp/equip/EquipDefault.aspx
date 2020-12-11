@@ -77,7 +77,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ด่านฯ)      
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (สำเร็จ)      
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
@@ -125,7 +125,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (ฝ่ายฯ)</div>
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (สำเร็จ)</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
@@ -238,7 +238,7 @@
                                 <div class="card-icon" >
                                     <i class="fa fa-wrench"></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">รอซ่อม</h5>
+                                <h5 class="card-category" style="font-size:32px;">ซ่อม</h5>
                                 <h4 class="card-title">
                                     <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
                                      / 

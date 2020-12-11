@@ -125,8 +125,19 @@ namespace ClaimProject
                 else
                 {
                     sqlsendSearch += " WHERE Toll_EQGroup IN (1,2,3,9)";
+
+                    if (type == "4")
+                    {
+                        sqlsendSearch += " AND Complete_stat = '6' ";
+                    }
+                    else
+                    {
+                        sqlsendSearch += " AND Toll_send = '9200' ";
+                    }
                 }
-                //sqlsendSearch += " WHERE (cpoint_id = '920' OR cpoint_id = '999' ) AND user_send = '" + Session["UserName"].ToString() + "'   ";
+
+                
+                    
             }
             else
             {

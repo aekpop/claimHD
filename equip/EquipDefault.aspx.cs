@@ -58,8 +58,8 @@ namespace ClaimProject.equip
         {
 
             function.getListItem(txtBudgetYear, "SELECT trans_budget FROM tbl_transfer GROUP BY trans_budget ORDER BY trans_budget DESC", "trans_budget", "trans_budget");
-            string newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
-            string newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+            string newTran = "";
+            string newTranact = "";
             string sqlcpSearch = "";
             string sqlcpSearchtotal = "";
             string sqltran = "";
@@ -73,6 +73,8 @@ namespace ClaimProject.equip
                     sqlcpSearchtotal = "7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040 ";
                     sqltran = " 7010' OR tbl_transfer.toll_send = '9010' OR tbl_transfer.toll_send = '9020' OR tbl_transfer.toll_send ='9030' OR tbl_transfer.toll_send ='9040 ";
                     sqlUser = " AND user_send = '" + Session["UserName"].ToString() + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
@@ -83,6 +85,8 @@ namespace ClaimProject.equip
                     sqltran = " 7020' OR tbl_transfer.toll_send = '7031' OR tbl_transfer.toll_send = '7032' OR tbl_transfer.toll_send = '7033' OR tbl_transfer.toll_send = '7041' OR tbl_transfer.toll_send = '7042' OR tbl_transfer.toll_send = '7051' OR tbl_transfer.toll_send = '7052'" +
                         "OR tbl_transfer.toll_send ='7061' OR tbl_transfer.toll_send = ' 7062 ' OR tbl_transfer.toll_send = ' 7063 ' OR tbl_transfer.toll_send = ' 7064 ";
                     sqlUser = " AND user_send = '" + Session["UserName"].ToString() + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
                 }
                 else if (Session["User"].ToString() == "watcharee")
                 {
@@ -93,10 +97,12 @@ namespace ClaimProject.equip
                     sqltran = " 7071' OR tbl_transfer.toll_send = '7072' OR tbl_transfer.toll_send = '7073' OR tbl_transfer.toll_send = '7074' OR tbl_transfer.toll_send = '7075' OR tbl_transfer.toll_send = '7076' OR tbl_transfer.toll_send = '7081' OR tbl_transfer.toll_send = '7082'" +
                         "OR tbl_transfer.toll_send ='7083' OR tbl_transfer.toll_send = ' 7084 ' OR tbl_transfer.toll_send = ' 7090 ' OR tbl_transfer.toll_send = ' 7100 ' OR tbl_transfer.toll_send = ' 7110 ' OR tbl_transfer.toll_send = ' 7120 ";
                     sqlUser = " AND user_send = '" + Session["UserName"].ToString() + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
                 }
                 else
                 {
-                    sqlcpSearch += "9200' OR toll_send = '7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040' OR toll_send ='7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
+                    sqlcpSearch += " 7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040' OR toll_send ='7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
                         "OR toll_send ='7061' OR toll_send = ' 7062 ' OR toll_send = ' 7063 ' OR toll_send = '7064' OR toll_send = '7071' OR toll_send = '7072' OR toll_send = '7073' OR toll_send = '7074' OR toll_send = '7075' OR toll_send = '7076' OR toll_send = '7081' OR toll_send = '7082'" +
                         "OR toll_send ='7083' OR toll_send = ' 7084 ' OR toll_send = ' 7090 ' OR toll_send = ' 7100 ' OR toll_send = ' 7110 ' OR toll_send = ' 7120 ";
                     sqlcpSearchtotal = "9200' OR toll_id = '7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040' OR toll_id = '7020' OR toll_id = '7031' OR toll_id = '7032' OR toll_id = '7033' OR toll_id = '7041' OR toll_id = '7042' OR toll_id = '7051' OR toll_id = '7052'" +
@@ -106,6 +112,8 @@ namespace ClaimProject.equip
                         "OR tbl_transfer.toll_send ='7061' OR tbl_transfer.toll_send = ' 7062 ' OR tbl_transfer.toll_send = ' 7063 ' OR tbl_transfer.toll_send = '7064' OR tbl_transfer.toll_send = '  7071' OR tbl_transfer.toll_send = '7072' OR tbl_transfer.toll_send = '7073' OR tbl_transfer.toll_send = '7074' OR tbl_transfer.toll_send = '7075' OR tbl_transfer.toll_send = '7076' OR tbl_transfer.toll_send = '7081' OR tbl_transfer.toll_send = '7082'" +
                         "OR tbl_transfer.toll_send ='7083' OR tbl_transfer.toll_send = ' 7084 ' OR tbl_transfer.toll_send = ' 7090 ' OR tbl_transfer.toll_send = ' 7100 ' OR tbl_transfer.toll_send = ' 7110 ' OR tbl_transfer.toll_send = ' 7120 ";
                     sqlUser = " ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND Toll_send = '9200' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND Toll_send = '9200' ";
                 }
             }
             else if (Session["UserCpoint"].ToString() == "701")
@@ -113,96 +121,256 @@ namespace ClaimProject.equip
                 sqlcpSearch += " 9200' AND toll_recieve ='7010 ";
                 sqlcpSearchtotal = "7010 ";
                 sqltran = "7010 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "702")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7020 ";
                 sqlcpSearchtotal = "7020 ";
                 sqltran = "7020 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "703")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7031' OR toll_recieve = '7032' OR toll_recieve = '7033";
                 sqlcpSearchtotal = "7031' OR toll_id = '7032' OR toll_id = '7033";
                 sqltran = "7031' OR tbl_transfer.toll_send = '7032' OR tbl_transfer.toll_send = '7033";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "704")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7041' OR toll_recieve = ' 7042 ";
                 sqlcpSearchtotal = "7041' OR toll_id = '7042";
                 sqltran = "7041' OR tbl_transfer.toll_send = '7042";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "706")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7051' OR toll_recieve = ' 7052 ";
                 sqlcpSearchtotal = "7051' OR toll_id = '7052";
                 sqltran = "7051' OR tbl_transfer.toll_send = '7052";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "707")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7061' OR toll_recieve = ' 7062 ' OR toll_recieve = ' 7063 ' OR toll_recieve = ' 7064 ";
                 sqlcpSearchtotal = "7061' OR toll_id = ' 7062 ' OR toll_id = ' 7063 ' OR toll_id = ' 7064 ";
                 sqltran = "7061' OR tbl_transfer.toll_send = ' 7062 ' OR tbl_transfer.toll_send = ' 7063 ' OR tbl_transfer.toll_send = ' 7064 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "708")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7071' OR toll_recieve = ' 7072 ' OR toll_recieve = ' 7073 ' OR toll_recieve = ' 7074 ' OR toll_recieve = ' 7075 ' OR toll_recieve = ' 7076 ";
                 sqlcpSearchtotal = "7071' OR toll_id = ' 7072 ' OR toll_id = ' 7073 ' OR toll_id = ' 7074 ' OR toll_id = ' 7075 ' OR toll_id = ' 7076 ";
                 sqltran = "7071' OR tbl_transfer.toll_send = ' 7072 ' OR tbl_transfer.toll_send = ' 7073 ' OR tbl_transfer.toll_send = ' 7074 ' OR tbl_transfer.toll_send = ' 7075 ' OR tbl_transfer.toll_send = ' 7076 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "709")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7081' OR toll_recieve = ' 7082 ' OR toll_recieve = ' 7083 ' OR toll_recieve = ' 7084 ";
                 sqlcpSearchtotal = "7081' OR toll_id = ' 7082 ' OR toll_id = ' 7083 ' OR toll_id = ' 7084 ";
                 sqltran = "7081' OR tbl_transfer.toll_send = ' 7082 ' OR tbl_transfer.toll_send = ' 7083 ' OR tbl_transfer.toll_send = ' 7084 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "710")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7090 ";
                 sqlcpSearchtotal = "7090 ";
                 sqltran = "7090 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "711")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7100 ";
                 sqlcpSearchtotal = "7100 ";
                 sqltran = "7100 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "712")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7110 ";
                 sqlcpSearchtotal = "7110 ";
                 sqltran = "7110 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "713")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='7120 ";
                 sqlcpSearchtotal = "7120 ";
                 sqltran = "7120 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "902")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9010 ";
                 sqlcpSearchtotal = "9010 ";
                 sqltran = "9010 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "903")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9020 ";
                 sqlcpSearchtotal = "9020 ";
                 sqltran = "9020 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "904")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9030 ";
                 sqlcpSearchtotal = "9030 ";
                 sqltran = "9030 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
             else if (Session["UserCpoint"].ToString() == "905")
             {
                 sqlcpSearch += " 9200' AND toll_recieve ='9040 ";
                 sqlcpSearchtotal = "9040 ";
                 sqltran = "9040 ";
+                if (Session["UserPrivilegeId"].ToString() == "5")
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                }
+                else
+                {
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
+                }
             }
 
             MySqlDataReader ttr = function.MySqlSelect(newTran);

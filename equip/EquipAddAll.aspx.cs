@@ -41,7 +41,7 @@ namespace ClaimProject.equip
             string gridload = "select * from tbl_newequipment " +
                 " join tbl_toll on tbl_toll.toll_id = tbl_newequipment.AddCpoint " +
                 " join tbl_user on tbl_user.username =  tbl_newequipment.NewEQ_User " +
-                " where NewEQ_User = '" + Session["User"].ToString() + "' order by NewEQ_Date DESC";
+                " where NewEQ_User = '" + Session["User"].ToString() + "' order by  STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC";
             MySqlDataAdapter da = function.MySqlSelectDataSet(gridload);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);

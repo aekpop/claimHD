@@ -94,6 +94,9 @@ namespace ClaimProject.equip
                 {
                     sqlsendSearch += "WHERE toll_EQGroup IN (1,2,3,9) ";
                 }
+
+
+                sqlsendSearch += " AND toll_recieve = '9200' ";
             }
             else
             {

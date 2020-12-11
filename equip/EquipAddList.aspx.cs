@@ -25,8 +25,10 @@ namespace ClaimProject.equip
             if (!this.IsPostBack)
             {
                 function.getListItem(ddlAddCompany, "SELECT * FROM tbl_company WHERE company_status='0' Order By company_id DESC ", "company_name", "company_id");
+                ddlAddCompany.SelectedValue = "555";
                 function.getListItem(ddlAddStat, "SELECT * FROM tbl_equipment_status Order By status_id ", "status_name", "status_id");
-               // function.getListItem(ddlAddLocatedd, "SELECT * FROM tbl_location Order By locate_id ", "locate_name", "locate_id");
+                //function.getListItem(ddlAddLocatedd, "SELECT * FROM tbl_location Order By locate_id ", "locate_name", "locate_id");
+                //function.getListItem(txtAddContractNum, );
                 SetInitialRow();
                LoadPaging();
                 
@@ -294,6 +296,8 @@ namespace ClaimProject.equip
                                             if(function.MySqlQuery(eqaddList))
                                             {
                                                 Session["NewEQPKtype"] = "old";
+                                                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "success", "alert('บันทึกสำเร็จ')", true);
+                                                SetInitialRow();
                                                 LoadPaging();
                                                 break;
                                             }

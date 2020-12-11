@@ -23,7 +23,7 @@
               </ul>
         </div>
         <!-------------------------------- // ------------------------------------>
-    <asp:Button runat="server" ID="btnCreatenew" Text="เพิ่ม" OnClick="btnCreatenew_Click" CssClass="btn btn-danger " />
+    <asp:Button runat="server" ID="btnCreatenew" OnClick="btnCreatenew_Click" CssClass="btn btn-danger" Text="เพิ่มครุภัณฑ์" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header card-header-danger">
@@ -82,11 +82,7 @@
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่รับ" >
-                        <ItemTemplate>
-                            <asp:Label ID="lbDateStart" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    
                     <asp:TemplateField HeaderText="ชื่อครุภัณฑ์" HeaderStyle-CssClass="text-left">
                         <ItemTemplate>
                             <asp:Label ID="lbThname" runat="server" CssClass="text-left" Text='<%# DataBinder.Eval(Container, "DataItem.AddNameth") %>' ></asp:Label>
@@ -100,6 +96,11 @@
                     <asp:TemplateField HeaderText="เลขที่สัญญา" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                         <ItemTemplate>
                             <asp:Label ID="lbAddConNum"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.AddConNum") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="วันที่ตรวจรับ" >
+                        <ItemTemplate>
+                            <asp:Label ID="lbDateStart" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="แก้ไข" >
