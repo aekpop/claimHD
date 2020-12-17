@@ -55,7 +55,7 @@ namespace ClaimProject
                 }
             }
             LineTran();
-            LoadPaging();
+            LoadPaging();           
             //Session["ddlsearchType"] = "0";
             //Session["ddlsearchStat"] = "0";
         }
@@ -152,11 +152,11 @@ namespace ClaimProject
                     {
                         if(txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat !='5'  AND trans_id like '%" + txtRefTran.Text+ "%'  Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_id like '%" + txtRefTran.Text+ "%'  Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5'  Order By tbl_trans_complete.complete_sort ASC , STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  Order By tbl_trans_complete.complete_sort ASC , STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
                     }
@@ -164,11 +164,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 
@@ -180,11 +180,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 
@@ -193,11 +193,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 
@@ -212,11 +212,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 
@@ -225,11 +225,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 
@@ -242,11 +242,11 @@ namespace ClaimProject
                         if (txtRefTran.Text != "")
                         {
                             sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' " +
-                                " AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                                " AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 
@@ -255,11 +255,11 @@ namespace ClaimProject
                     {
                         if (txtRefTran.Text != "")
                         {
-                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         else
                         {
-                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(date_send, '%d-%m-%Y') DESC ";
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
                         
 

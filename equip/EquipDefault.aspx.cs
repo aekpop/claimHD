@@ -155,8 +155,8 @@ namespace ClaimProject.equip
                 sqltran = "7031' OR tbl_transfer.toll_send = '7032' OR tbl_transfer.toll_send = '7033";
                 if (Session["UserPrivilegeId"].ToString() == "5")
                 {
-                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
-                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
                 }
                 else
                 {
@@ -171,8 +171,8 @@ namespace ClaimProject.equip
                 sqltran = "7041' OR tbl_transfer.toll_send = '7042";
                 if (Session["UserPrivilegeId"].ToString() == "5")
                 {
-                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
-                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
                 }
                 else
                 {
@@ -187,8 +187,8 @@ namespace ClaimProject.equip
                 sqltran = "7051' OR tbl_transfer.toll_send = '7052";
                 if (Session["UserPrivilegeId"].ToString() == "5")
                 {
-                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
-                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
                 }
                 else
                 {
@@ -203,8 +203,8 @@ namespace ClaimProject.equip
                 sqltran = "7061' OR tbl_transfer.toll_send = ' 7062 ' OR tbl_transfer.toll_send = ' 7063 ' OR tbl_transfer.toll_send = ' 7064 ";
                 if (Session["UserPrivilegeId"].ToString() == "5")
                 {
-                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
-                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
                 }
                 else
                 {
@@ -219,8 +219,8 @@ namespace ClaimProject.equip
                 sqltran = "7071' OR tbl_transfer.toll_send = ' 7072 ' OR tbl_transfer.toll_send = ' 7073 ' OR tbl_transfer.toll_send = ' 7074 ' OR tbl_transfer.toll_send = ' 7075 ' OR tbl_transfer.toll_send = ' 7076 ";
                 if (Session["UserPrivilegeId"].ToString() == "5")
                 {
-                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
-                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
                 }
                 else
                 {
@@ -235,8 +235,8 @@ namespace ClaimProject.equip
                 sqltran = "7081' OR tbl_transfer.toll_send = ' 7082 ' OR tbl_transfer.toll_send = ' 7083 ' OR tbl_transfer.toll_send = ' 7084 ";
                 if (Session["UserPrivilegeId"].ToString() == "5")
                 {
-                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND tbl_transfer.toll_send =' " + sqltran + "' ";
-                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND tbl_transfer.toll_send =' " + sqltran + "' ";
+                    newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
+                    newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON tbl_transfer.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
                 }
                 else
                 {

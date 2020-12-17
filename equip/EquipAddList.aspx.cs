@@ -45,22 +45,26 @@ namespace ClaimProject.equip
                     string sawitree = "SELECT * FROM tbl_toll " +
                         "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'sawitree' Order by toll_id ASC ";
                     function.getListItem(ddlAddCpoint, sawitree, "toll_name", "toll_id");
+                    ddlAddCpoint.SelectedValue = "9200";
                 }
                 else if (userrrr == "supaporn")
                 {
                     string supaporn = " SELECT * FROM tbl_toll " +
                         "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'supaporn' Order by toll_id ASC ";
                     function.getListItem(ddlAddCpoint, supaporn, "toll_name", "toll_id");
+                    ddlAddCpoint.SelectedValue = "9200";
                 }
                 else if (userrrr == "watcharee")
                 {
                     string watcharee = "SELECT * FROM tbl_toll " +
                         "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'watcharee' Order by toll_id ASC ";
                     function.getListItem(ddlAddCpoint, watcharee, "toll_name", "toll_id");
+                    ddlAddCpoint.SelectedValue = "9200";
                 }
                 else
                 {
                     function.getListItem(ddlAddCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
+                    ddlAddCpoint.SelectedValue = "9200";
                 }
 
             }
@@ -114,7 +118,7 @@ namespace ClaimProject.equip
                     {
                         deleteAll.Visible = false;
                     }
-                    resulttt.Text = "รายการครุภัณฑ์ที่เพิ่มเข้าระบบเรียบร้อย  " + dt.Rows.Count.ToString() + " รายการ";
+                    resulttt.Text = "ครุภัณฑ์เข้าระบบ  " + dt.Rows.Count.ToString() + " รายการ";
                     gridadded.DataBind();
                 }
                 
@@ -398,8 +402,16 @@ namespace ClaimProject.equip
                         }
                         else if (resultChk == "no")
                         {
-                            ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!')", true);
+                            //ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!')", true);
                             //AlertPop("เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!", "error");
+                            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Alert", "alert('หมายเลข "+ Num1 + " มีอยู่ในระบบแล้ว !!')", true);
+                            break;
+                        }
+                        else if (resultChk == "dupSer")
+                        {
+                            //ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('บันทึกล้มเหลว!! เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!')", true);
+                            //AlertPop("เลขครุภัณฑ์หรือเลขทะเบียนซ้ำ!!!", "error");
+                            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Alert", "alert('หมายเลข " + Num2 + " มีอยู่ในระบบแล้ว !!')", true);
                             break;
                         }
                         else
@@ -450,7 +462,15 @@ namespace ClaimProject.equip
                     }
                     else
                     {
-                        return "no";
+                        if(resultNN != 0)
+                        {
+                            return "no";
+                        }
+                        else
+                        {
+                            return "dupSer";
+                        }
+                        
                     }
                 }
                 else

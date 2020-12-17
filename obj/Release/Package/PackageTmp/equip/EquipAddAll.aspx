@@ -23,7 +23,7 @@
               </ul>
         </div>
         <!-------------------------------- // ------------------------------------>
-    <asp:Button runat="server" ID="btnCreatenew" Text="เพิ่ม" OnClick="btnCreatenew_Click" CssClass="btn btn-danger " />
+    <asp:Button runat="server" ID="btnCreatenew" OnClick="btnCreatenew_Click" CssClass="btn btn-danger" Text="เพิ่มครุภัณฑ์" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
 
         <div class="card-header card-header-danger">
@@ -70,7 +70,7 @@
             Font-Size="15px"
             HeaderStyle-Font-Size="18px"
             AutoGenerateColumns="False"
-            HeaderStyle-CssClass="text-center" 
+            HeaderStyle-CssClass="text-left" 
             CellPadding="4" 
             BorderColor="white" 
             ForeColor="#333333" GridLines="None">
@@ -82,9 +82,9 @@
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่รับ" >
+                    <asp:TemplateField HeaderText="วันที่นำเข้า" >
                         <ItemTemplate>
-                            <asp:Label ID="lbDateStart" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
+                            <asp:Label ID="lbNewEQ_Date" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.NewEQ_Date") %>' ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ชื่อครุภัณฑ์" HeaderStyle-CssClass="text-left">
@@ -102,6 +102,11 @@
                             <asp:Label ID="lbAddConNum"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.AddConNum") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="วันที่ตรวจรับ" >
+                        <ItemTemplate>
+                            <asp:Label ID="lbDateStart" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="แก้ไข" >
                         <ItemTemplate>
                             <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข"  CssClass="btn btn-sm btn-outline-warning" OnCommand="lbtneditAdd_Command"><i class="fas fa-edit"></i></asp:LinkButton>
@@ -110,7 +115,7 @@
 
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle CssClass="text-center" BackColor="#ffffff"  ForeColor="000000" ></HeaderStyle>
+                
                 <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="#2461BF" ForeColor="White" />
                 <SelectedRowStyle BackColor="#a2fca5" Font-Bold="True" ForeColor="#333333" />
                 <SortedAscendingCellStyle BackColor="#baf7b2" />

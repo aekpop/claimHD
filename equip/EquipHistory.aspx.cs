@@ -22,7 +22,10 @@ namespace ClaimProject.equip
 
             if (!this.IsPostBack)
             {
-                txtSearchEq.Text = Session["txtSearchEq"].ToString();
+                if(Session["txtSearchEq"].ToString() != null)
+                {
+                    txtSearchEq.Text = Session["txtSearchEq"].ToString();
+                }
                 BindData();
             }
         }
@@ -108,7 +111,12 @@ namespace ClaimProject.equip
             {
                 txtSearchEq.CssClass = "form-control is-invalid ";
             }
-            
+            Clear();
+        }
+
+        void Clear()
+        {
+            Session["txtSearchEq"] = "";
         }
 
         protected void lbRef_Command(object sender, CommandEventArgs e)

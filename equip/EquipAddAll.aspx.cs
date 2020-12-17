@@ -138,11 +138,11 @@ namespace ClaimProject.equip
             
             if (Session["User"].ToString() != "watcharee" && Session["User"].ToString() != "supaporn" && Session["User"].ToString() != "sawitree")
             {
-                searchbtn += " order by NewEQ_Date DESC";
+                searchbtn += " order by STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC";
             }
             else
             {
-                searchbtn += " AND NewEQ_User = '" + Session["User"].ToString() + "' order by NewEQ_Date DESC ";
+                searchbtn += " AND NewEQ_User = '" + Session["User"].ToString() + "' order by STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC ";
             }
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(searchbtn);

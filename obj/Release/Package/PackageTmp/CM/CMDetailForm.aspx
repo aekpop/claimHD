@@ -62,7 +62,7 @@
                     <div class="col-md-2">
                         <div class="form-group bmd-form-group ">
                             <p class="bmd-label-floating ">เวลา :</p>
-                            <asp:TextBox ID="txtSTime" runat="server" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                            <asp:TextBox ID="txtSTime" runat="server" MaxLength="5" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
                                     

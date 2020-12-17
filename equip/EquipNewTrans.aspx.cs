@@ -1227,7 +1227,7 @@ namespace ClaimProject.equip
                 {
                     if (function.MySqlQuery(SQLFirst))
                     {
-                        Session["LineTran"] = "ระบบได้รับข้อมูลแจ้งการ" + ddlTypeEQQ.SelectedItem + "ครุภัณฑ์ เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + " ";
+                        Session["LineTran"] = "ระบบได้รับข้อมูล " + ddlTypeEQQ.SelectedItem + "ครุภัณฑ์ \n เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + " ";
                         Response.Redirect("/equip/EquipTranList");
                         // SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                         // serviceLine.MessageToServer("wDLRWPWgBvJRMEk69ebQVGumxOfiTKCgXoUwKeKPQyh", "ระบบได้รับข้อมูลแจ้งการ"+ ddlTypeEQQ.SelectedItem+ "ครุภัณฑ์  " +
@@ -1323,12 +1323,12 @@ namespace ClaimProject.equip
                     {
                         if(tty == "11")
                         {
-                            Session["LineTran"] = "ระบบได้รับข้อมูลโอนย้ายครุภัณฑ์ " +
+                            Session["LineTran"] = "ระบบได้รับข้อมูล โอนย้ายครุภัณฑ์ " +
                             " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
                         }
                         else
                         {
-                            Session["LineTran"] = "ระบบได้รับข้อมูลส่งคืนครุภัณฑ์ " +
+                            Session["LineTran"] = "ระบบได้รับข้อมูล ส่งคืนครุภัณฑ์ " +
                             " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
 
                         }
@@ -1371,8 +1371,8 @@ namespace ClaimProject.equip
                     {
                         if(function.MySqlQuery(loge))
                         {
-                            Session["LineTran"] = "ระบบได้รับข้อมูลการตรวจรับครุภัณฑ์  " +
-                                " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
+                            Session["LineTran"] = "ระบบได้รับข้อมูล การตรวจรับครุภัณฑ์  " +
+                                "\n เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
                            Response.Redirect("/equip/EquipTranGetList");
                             break;
                           /*  SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
@@ -1656,8 +1656,8 @@ namespace ClaimProject.equip
                     {
                         if (function.MySqlQuery(loge))
                         {
-                            Session["LineTran"] = "ระบบได้รับข้อมูลการส่งซ่อมครุภัณฑ์  " +
-                                " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
+                            Session["LineTran"] = "ระบบได้รับข้อมูล ส่งซ่อมครุภัณฑ์  " +
+                                "\n เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
                             Response.Redirect("/equip/EquipTranList");
                             break;
                             /*  SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
@@ -1913,7 +1913,7 @@ namespace ClaimProject.equip
 
                     if (function.MySqlQuery(finishTranFers))
                     {
-                        Session["LineTran"] = "ระบบได้รับข้อมูลการตรวจรับครุภัณฑ์ส่งซ่อม  " +
+                        Session["LineTran"] = "ระบบได้รับข้อมูล ตรวจรับส่งซ่อม  " +
                          "\n เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + " \n จาก : " + ddlTollEQ.SelectedItem + "  ";
 
                         Response.Redirect("/equip/EquipTranList");
