@@ -102,11 +102,7 @@
                             <asp:Label ID="lbAddConNum"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.AddConNum") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่ตรวจรับ" >
-                        <ItemTemplate>
-                            <asp:Label ID="lbDateStart" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.AddDateGet") %>' ></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    
                     <asp:TemplateField HeaderText="แก้ไข" >
                         <ItemTemplate>
                             <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข"  CssClass="btn btn-sm btn-outline-warning" OnCommand="lbtneditAdd_Command"><i class="fas fa-edit"></i></asp:LinkButton>

@@ -312,7 +312,37 @@
                 </div>
             </div>
         </div>
-        
+         <div id="divtranthird" visible="false" class="card-body table-responsive"  runat="server">
+            <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่3 : รายละเอียดการตรวจรับ</h3>
+             <div class="card">
+                 <div class="row">
+                     <div class="col-3">
+                         <div class="form-group bmd-form-group">
+                              <span class = "label label-primary">วันที่ :</span>
+                                    <asp:Label ID="lbDateCF" runat="server" ></asp:Label>
+                             </div>
+                     </div>
+                     <div class="col-3">
+                         <div class="form-group bmd-form-group">
+                         <span class = "label label-primary">เวลา :</span>
+                         <asp:Label ID="lbTimeCF" runat="server" ></asp:Label>
+                             </div>
+                     </div>
+                     <div class="col-3">
+                         <div class="form-group bmd-form-group">
+                          <span class = "label label-primary">ชื่อ :</span>
+                         <asp:Label ID="lbNameCF" runat="server" ></asp:Label>
+                             </div>
+                     </div>
+                     <div class="col-3">
+                         <div class="form-group bmd-form-group">
+                          <span class = "label label-primary">ตำแหน่ง :</span>
+                         <asp:Label ID="lbPositionCF" runat="server" ></asp:Label>
+                             </div>
+                     </div>
+                 </div>
+             </div>
+             </div>
     </div>
      <div class="modal fade " id="ReplaceModal"   tabindex="-1" role="dialog" aria-labelledby="ReplaceModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered " style="width:600px"  role="form">

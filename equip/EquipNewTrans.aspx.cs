@@ -136,6 +136,22 @@ namespace ClaimProject.equip
                     txtactnote.Text = redf.GetString("trans_note");
                     txtSender.Text = redf.GetString("name_send");
                     ddlPosition.SelectedValue = redf.GetString("position_sender");
+                    if(completestatus == "3" || completestatus == "4")
+                    {
+                        divtranthird.Visible = true;
+                        lbDateCF.Text = redf.GetString("date_recieve");
+                        lbTimeCF.Text = redf.GetString("time_recieve");
+                        lbNameCF.Text = redf.GetString("name_recieve");
+                        lbPositionCF.Text = redf.GetString("position_getder");
+                    }
+                    else
+                    {
+                        lbDateCF.Text = "-";
+                        lbTimeCF.Text = "-";
+                        lbNameCF.Text = "-";
+                        lbPositionCF.Text = "-";
+                    }
+                    
                     divtranSecond.Visible = true;
                     divSubmitFirst.Visible = false;
                     //string ucpoint = Session["UserCpoint"].ToString();
@@ -1138,6 +1154,7 @@ namespace ClaimProject.equip
                 if (function.MySqlQuery(SQLFirst))
                 {
                     divtranSecond.Visible = true;
+                    divtranthird.Visible = true;
                     Session["TransNew"] = "1";
                     Response.Redirect("/equip/EquipNewTrans");
                 }

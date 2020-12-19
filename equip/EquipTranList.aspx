@@ -140,7 +140,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="ดู/แก้ไข" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="20px" ForeColor="#0022ff" OnCommand="lbtntrans_Command"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="พิมพ์เอกสาร" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >

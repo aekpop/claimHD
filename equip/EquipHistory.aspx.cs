@@ -22,9 +22,14 @@ namespace ClaimProject.equip
 
             if (!this.IsPostBack)
             {
-                if(Session["txtSearchEq"].ToString() != null)
+                string SearchEQ = Session["txtSearchEq"].ToString();
+                if (SearchEQ != "")
                 {
-                    txtSearchEq.Text = Session["txtSearchEq"].ToString();
+                    txtSearchEq.Text = SearchEQ;
+                }
+                else
+                {
+                    txtSearchEq.Text = "";
                 }
                 BindData();
             }

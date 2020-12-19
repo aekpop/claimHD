@@ -445,6 +445,51 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.LinkButton lbtnDelete;
         
         /// <summary>
+        /// divtranthird control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtranthird;
+        
+        /// <summary>
+        /// lbDateCF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDateCF;
+        
+        /// <summary>
+        /// lbTimeCF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTimeCF;
+        
+        /// <summary>
+        /// lbNameCF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbNameCF;
+        
+        /// <summary>
+        /// lbPositionCF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPositionCF;
+        
+        /// <summary>
         /// lbreplaceeqide control.
         /// </summary>
         /// <remarks>
