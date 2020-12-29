@@ -104,8 +104,10 @@
             DataKeyNames="equipment_id"
             OnRowDataBound="GridEquipAdd_RowDataBound"
             CssClass="table table-hover table-sm "
-            HeaderStyle-Font-Size="22px"
-            Font-Size="19px"
+            HeaderStyle-Font-Size="28px"
+                HeaderStyle-Height="50px"
+                RowStyle-Height="50px"
+            Font-Size="24px"
             AutoGenerateColumns="False" 
             OnPageIndexChanging="GridEquipAdd_PageIndexChanging" 
             PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
@@ -158,6 +160,11 @@
                     <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                         <ItemTemplate>
                             <asp:Label ID="lbequipnote"  runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbManage" runat="server" CssClass="btn btn-xs btn-info " Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i>&nbsp รายละเอียด</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     

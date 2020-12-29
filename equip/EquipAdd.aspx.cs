@@ -278,6 +278,12 @@ namespace ClaimProject.equip
                 lbequipNo.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
             }
 
+            LinkButton lbManage = (LinkButton)(e.Row.FindControl("lbManage"));
+            if(lbManage != null)
+            {
+                lbManage.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
+            }
+
         }
 
         protected void btnEditEquip_Command(object sender, CommandEventArgs e)

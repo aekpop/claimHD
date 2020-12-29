@@ -37,7 +37,7 @@
         </div>
             <div class="card-body table-responsive table-sm">
 
-                <div class="row" id="divSendSearch" style="font-size:medium;" runat="server" >
+                <div id="divSendSearch" style="font-size:medium;" runat="server" >
                     <div class="row" >
                         <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
@@ -63,13 +63,15 @@
                             <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control"  ></asp:DropDownList>
                            </div>
                         </div>
+                        </div>
+                    <div class="row">
                         <div class="col text-center" >
                             <div class="form-group">
-                            <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-secondary" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
+                            <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="Large" CssClass="btn btn-success fa fa-search text-white" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
                            </div>
                         </div>
                     </div>
-                    
+                    </div>      
                 </div>
                 <hr />
                 <div class="row" style="padding-left:20px;" >
@@ -82,16 +84,16 @@
                     GridLines="None" 
                     CssClass="table table-hover table-condensed table-sm"
                     HeaderStyle-Font-Size="18px"
-                    HeaderStyle-Height="75px"
+                    HeaderStyle-Height="50px"
                     Font-Size="15px"
                     AllowSorting="true"
-                    RowStyle-Height="60px"
+                    RowStyle-Height="50px"
                     PageSize="30" >
 
                     
                     <Columns>
                         
-                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="#" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
                                 </ItemTemplate>

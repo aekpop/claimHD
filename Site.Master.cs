@@ -31,6 +31,7 @@ namespace ClaimProject
                 Session.Add("ddlsearchStat", "0");
                 Session.Add("BackWhat", "");
                 Session.Add("LineTran", "");
+                Session.Add("txtSearchEq", "");
                 Session.Timeout = 28800;
             }
 
