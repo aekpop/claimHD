@@ -1444,6 +1444,17 @@
     <Content Include="Scripts\HRSProjectScript.js" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\index.js.flow" />
+    <Content Include="Report\dsEquipTran.xsc">
+      <DependentUpon>dsEquipTran.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsEquipTran.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEquipTran.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsEquipTran.xss">
+      <DependentUpon>dsEquipTran.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -2068,6 +2079,11 @@
     <Compile Include="ReportView\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\dsEquipTran.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEquipTran.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\report.aspx.cs">
       <DependentUpon>report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2228,6 +2244,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PMAdmin.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportEquipTran.rdlc" />
     <EmbeddedResource Include="Techno\Quotations.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Quotations.cs</LastGenOutput>

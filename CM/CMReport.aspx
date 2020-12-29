@@ -42,25 +42,27 @@
         <div class="card-body table-responsive"> 
                     <div runat="server">                        
                         <div class="row">                                       
-                                        <div class="col-md-1 ">
+                                        <div class="col-md-4 ">
                                             <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbBudget" runat="server" Text="ปีงบฯ : "></asp:Label>
                                             <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
                                                 </div>
                                         </div>
-                                        <div class=" col-md-2 ">
+                                        <div class=" col-md-4 ">
                                          <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbToll" runat="server" Text="ด่านฯ : "></asp:Label>                                            
                                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control "></asp:DropDownList>
                                              </div>
                                         </div>
-                                        <div class=" col-md-1 ">
+                                        <div class=" col-md-4 ">
                                              <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbAnnex" runat="server" Text="อาคาร"></asp:Label>                                       
                                             <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" placeholder="ใส่หมายเลข" ToolTip="ถ้าไม่มี ให้เว้นว่าง"></asp:TextBox>
                                                  </div>
                                         </div>
-                                        <div class="col-md-2">
+                            </div>
+                        <div class="row">
+                                        <div class="col-md-4">
                                              <div class="form-group bmd-form-group">
                                                         <asp:Label ID="lbChannel" runat="server" text="  ตู้ :" ></asp:Label>
                                                         <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
@@ -72,7 +74,7 @@
                                             <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select "></asp:DropDownList>
                                                  </div>
                                         </div>
-                                         <div class=" col-md-2 ">
+                                         <div class=" col-md-4 ">
                                              <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
                                             <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control " ></asp:DropDownList>
@@ -81,7 +83,7 @@
                         </div>                        
                         <div class="row">
                                         
-                                        <div class =" col-md-2 ">
+                                        <div class =" col-md-4 ">
                                               <div class="form-group bmd-form-group">
                                              <div class="label-on-left" >วันเวลาแจ้งซ่อม</div>
                                             <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged" CssClass="checkbox-danger"/>
@@ -89,20 +91,18 @@
                                                   </div>
                                         </div>
                                         
-                                        <div class=" col-md-2 ">
+                                        <div class=" col-md-4 ">
                                              <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbDayS" runat="server" Text="เลือกช่วงเวลาตั้งแต่ "></asp:Label>
                                             <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>
                                             </div>
-                                        <div class=" col-md-2">
+                                        <div class=" col-md-4">
                                               <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbDayE" runat="server" Text="ถึง "></asp:Label>
                                             <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                                   </div>
-                                        </div>                            
-                                       
-                                        
+                                        </div>                                
                         </div>                  
                         <br />
                                         <div class="row">  
@@ -125,13 +125,14 @@
                        <asp:GridView ID="GridView1" runat="server"
                            HeaderStyle-BackColor="#ffffff"
                            HeaderStyle-CssClass="align-content-center"
-                           HeaderStyle-Font-Size="16px"
+                           HeaderStyle-Font-Size="18px"
                            OnRowDataBound="GridView1_RowDataBound"
                            AlternatingRowStyle-CssClass="align-content-left"
                            AutoGenerateColumns="false"
                            PageSize="20"
                            GridLines="None"
                            Font-Size="15px"
+                           HeaderStyle-Height="50px"
                            RowStyle-Height="50px"
                            CssClass="table table-hover table-condensed table-sm"
                            OnPageIndexChanging="GridView1_PageIndexChanging"
@@ -139,7 +140,7 @@
                            PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
                            AllowPaging="false">                      
                             <Columns>
-                            <asp:TemplateField HeaderText="ลำดับ">
+                            <asp:TemplateField HeaderText="#">
                                 <ItemTemplate>
                                     <asp:Label ID="lbClaimNumrow" Text='<%#  Container.DataItemIndex + 1 %>' runat="server" />
                                 </ItemTemplate>
@@ -155,12 +156,12 @@
                                             <asp:Label ID="lbChannel" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="250px" HeaderStyle-Width="250px">
+                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="350px" HeaderStyle-Width="250px">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' OnCommand="lbDeviceName_Command"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="250px" HeaderStyle-Width="250px">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="350px" HeaderStyle-Width="250px">
                                 <ItemTemplate>
                                    <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
@@ -192,7 +193,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbStatus" runat="server"></asp:Label>
+                                    <asp:Label ID="lbStatus" runat="server" Font-Size="16px"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>      
                             </Columns>

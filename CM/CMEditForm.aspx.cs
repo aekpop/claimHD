@@ -44,7 +44,7 @@ namespace ClaimProject.CM
             if (!this.IsPostBack)
             {
                 function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group = '1' Order By locate_id ASC", "locate_name", "locate_id");
-                ddlChanel.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+                ddlChanel.Items.Insert(0, new ListItem("ทุกช่องทาง", ""));
                 //function.getListItem(ddlCMBudget, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 //function.getListItem(ddlAnnex, "SELECT cm_point FROM tbl_cm_detail  GROUP BY cm_point ORDER by cm_point ASC", "cm_point", "cm_point");
                 txtAnnex.Text = Session["Userpoint"].ToString();
@@ -54,7 +54,7 @@ namespace ClaimProject.CM
                 {
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
-                    txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+                    txtCpointSearch.Items.Insert(0, new ListItem("ทุกด่านฯ", ""));
                 }
                 else
                 {

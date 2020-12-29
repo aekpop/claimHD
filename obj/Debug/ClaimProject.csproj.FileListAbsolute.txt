@@ -1931,3 +1931,5 @@ C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Debug\ClaimProject
 C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Debug\ClaimProject.csproj.CopyComplete
 C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Debug\ClaimProject.dll
 C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Debug\ClaimProject.pdb
+C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Debug\RdlCompile.cache
+C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Debug\RdlCompile.compiled

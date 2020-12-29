@@ -31,20 +31,20 @@
                         <label class="bmd-label-floating">ปีงบประมาณ : </label>
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
                     </div>-->
-                    <div class="col-md-3 col-xl-2">
+                    <div class="col-md-4">
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "  ></asp:DropDownList>
                     </div>
-                    <div class="col-md-1" >
+                    <div class="col-md-4" >
                         <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" placeholder="อาคาร" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                     </div>
-                    <div class="col-md-3 col-xl-2">
+                    <div class="col-md-4 ">
                         <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control custom-select " placeholder="ช่องทาง" ></asp:DropDownList>
                     </div>
                 </div>
                 <br />
                     <div class="row">
-                    <div class="col-md-2">                      
-                        <asp:Button ID="btnSearchEdit" runat="server" font-size="Medium" CssClass="btn btn-success " OnClick="btnSearchEdit_Click" Text="ค้นหา"/>
+                    <div class="col-md text-center">                      
+                        <asp:LinkButton ID="btnSearchEdit" runat="server" font-size="18px" CssClass="btn btn-success " OnClick="btnSearchEdit_Click"><i class="fas fa-search"></i>&nbsp ค้นหา</asp:LinkButton>
                     </div>
                 </div>
                 <br />
@@ -52,12 +52,14 @@
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
                         HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center" HeaderStyle-Font-Size="18px"
+                        HeaderStyle-Height="50px"
+                        RowStyle-Height="50px"
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField HeaderText="Repair" HeaderStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="btn btn-sm btn-outline-success" Font-Size="15px" ToolTip="อัพเดตสถานะการซ่อม"><i class="fa text-center">&#xf0aa;</i></asp:LinkButton>
+                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="btn btn-sm btn-outline-success" ToolTip="อัพเดตสถานะการซ่อม"><i class="fas fa-wrench fa-2x"></i></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ด่านฯ" >
@@ -70,12 +72,12 @@
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="300px">
+                            <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="400px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" ItemStyle-Width="300px">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" ItemStyle-Width="400px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
@@ -90,7 +92,7 @@
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ผู้แจ้ง" >
+                            <asp:TemplateField HeaderText="ผู้แจ้ง" ItemStyle-Width="200px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
                                 </ItemTemplate>

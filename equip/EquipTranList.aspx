@@ -38,7 +38,7 @@
         </div>
             <div class="card-body table-responsive table-sm">
 
-                <div class="row" style="font-size:medium;" id="divSendSearch"  runat="server"  >
+                <div id="divSendSearch"  runat="server" style="font-size:medium;" >
                     <div class="row" >
                         <div class="col-md-6 col-xl-3"  >
                             <div class="form-group">
@@ -64,16 +64,19 @@
                                 <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control col-auto"  ></asp:DropDownList>
                            </div>
                         </div>
+                     </div>
+                    <div class="row">
                         <div class="col text-center" >
                             <div class="form-group">
-                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-secondary" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
+                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="18px" CssClass="btn btn-success fa fa-search text-white" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <hr />
                 <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="12px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
                 </div>
                 <asp:GridView ID="gridTranlist" runat="server" 
                     AutoGenerateColumns="false" 
@@ -81,11 +84,11 @@
                     OnRowDataBound="gridTranlist_RowDataBound"
                     CssClass="table table-hover table-condensed table-sm"
                     HeaderStyle-Font-Size="18px"
-                    HeaderStyle-Height="75px"
+                    HeaderStyle-Height="50px"
                     GridLines="None" 
                     AllowSorting="true"                   
                     Font-Size="16px"
-                    RowStyle-Height="60px"
+                    RowStyle-Height="50px"
                     OnPageIndexChanging="gridTranlist_PageIndexChanging" 
                     PagerSettings-Mode="NumericFirstLast"  
                     PageSize="50" 
@@ -133,7 +136,7 @@
                                 <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ItemStyle-Font-Size="20px">
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
                             </ItemTemplate>

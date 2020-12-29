@@ -40,55 +40,56 @@
             <div class="card-body table-responsive table-sm">
                 <asp:HiddenField ID="txtRef" runat="server" />
                 <div class="row">
-                    <div class="col-md-3 col-xl-2">
+                    <div class="col-md-4 ">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">ด่านฯ :</p>
                             <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control" Enabled="false"></asp:DropDownList>
                         </div>
                     </div>
-                   <div class="col-md-2">
+                   <div class="col-md-4">
                             <div class="form-group bmd-form-group">
                                 <p Class="bmd-label-floating ">อาคารย่อย :</p>
                                 <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"  MaxLength="1" Enabled="false" ToolTip="กรณีไม่มีอาคารย่อย ให้เว้นว่าง" onkeypress="return handleEnter(this, event)"/>
                             </div>
                     </div>
                 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="form-group bmd-form-group ">
                             <p class="bmd-label-floating ">วันที่ :</p>
                             <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    </div>
+                  <div class="row"> 
+                    <div class="col-md-4">
                         <div class="form-group bmd-form-group ">
                             <p class="bmd-label-floating ">เวลา :</p>
                             <asp:TextBox ID="txtSTime" runat="server" MaxLength="5" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                         </div>
                     </div>
-                                    
-                    <div class="col-md-2">
+                                      
+                    <div class="col-md-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating ">ช่องทาง</p>
                             <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control dropdown" ></asp:DropDownList>
                         </div>
                     </div>    
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-xl-4">
+                
+                    <div class="col-md-4 ">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">อุปกรณ์</p>
                             <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" onkeypress="return handleEnter(this, event)" />
                             
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="form-group bmd-form-group">
-                            <p class="bmd-label-floating">ปัญหา/อาการ</p>
-                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)" />
-                            
-                        </div>
-                    </div>
-                                         
+                      </div>
+                      <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <p class="bmd-label-floating">ปัญหา/อาการ</p>
+                                <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)" /> 
+                            </div>
+                        </div>            
                     <!-- แนบรูป -->                                      
                     <div class="col-md-4">
                        <div class="form-group bmd-form-group">
@@ -154,11 +155,13 @@
                         AutoGenerateColumns="False" CssClass="col table table-striped table-hover "
                         HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder"
                         HeaderStyle-Font-Size="18px"
+                        HeaderStyle-Height="50px"
+                        RowStyle-Height="50px"
                         RowStyle-CssClass="text-center"
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#000033" GridLines="None" PageSize="20">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="ลำดับ" >
+                            <asp:TemplateField HeaderText="#" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
                                 </ItemTemplate>
@@ -173,12 +176,12 @@
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="250px">
+                            <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="350px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server"  Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.device_name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการชำรุด" ItemStyle-Width="250px" >
+                            <asp:TemplateField HeaderText="อาการชำรุด" ItemStyle-Width="350px" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server"  Text='<%#new ClaimProject.Config.ClaimFunction().ShortText( DataBinder.Eval(Container, "DataItem.cm_detail_problem").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
@@ -198,7 +201,7 @@
                                     <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="หน่วยฯซ่อม" ControlStyle-Width="150px">
+                            <asp:TemplateField HeaderText="หน่วยฯซ่อม" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbcmAgency" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.drive_group_agency").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
