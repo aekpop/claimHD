@@ -15,6 +15,7 @@ namespace ClaimProject.CM
         public int Nowmonth = int.Parse(DateTime.Now.ToString("MM"));
         public int Nowyear = int.Parse((DateTime.Now.Year + 543).ToString());
         public string Nowday = DateTime.Now.ToString("dd");
+        public string NowDate = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
         public string sqlcp = "";
         public string cpoint = "";
         public string point = "";
@@ -168,6 +169,10 @@ namespace ClaimProject.CM
             {
                 Nowbudget = Nowyear + 1;
             }
+            else
+            {
+                Nowbudget = Nowyear;
+            }
 
             string mYconn = Nowmonth+"-"+ Nowyear;
 
@@ -182,17 +187,17 @@ namespace ClaimProject.CM
             //string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
             //string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
 
-            string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' "+ sqlcp +" "+ point + " AND cm_detail_sdate = '" + now + "' ";
+            string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' "+ sqlcp +" "+ point + " AND cm_detail_sdate = '" + NowDate + "' ";
             string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " "+ point +" AND cm_budget = '" + Nowbudget + "' AND cm_detail_sdate LIKE '%"+ mYconn + "' ";
             string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
             string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " " + point +" ";
             //ค้างซ่อม
-            string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + " AND cm_detail_sdate ='" + now + "' ";
+            string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + " AND cm_detail_sdate ='" + NowDate + "' ";
             string CMsqlMonthNot = "SELECT COUNT(*) AS nummn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' AND cm_detail_sdate LIKE '%" + mYconn + "' ";
             string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
             string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' " + sqlcp + " " + point + " ";
 
-            string CMsqlFixbacktoday = "SELECT COUNT(*) AS numfd FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_detail_edate = '" + now + "' ";
+            string CMsqlFixbacktoday = "SELECT COUNT(*) AS numfd FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_detail_edate = '" + NowDate + "' ";
             string CMsqlFixbackMouth = "SELECT COUNT(*) AS numfm FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' AND cm_detail_edate LIKE '%" + mYconn + "' ";
             string CMsqlFixbackYear = "SELECT COUNT(*) AS numfy FROM tbl_cm_detail WHERE cm_detail_status_id = '2' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
             string CMsqlFixbackOverall = "SELECT COUNT(*) AS numfo FROM tbl_cm_detail WHERE cm_detail_status_id = '2' "+ sqlcp + " " + point + " ";
