@@ -5,6 +5,10 @@
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
+        .alert {
+            font-size:26px;
+            font-family: 'Prompt';
+        }
     </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
@@ -164,7 +168,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbManage" runat="server" CssClass="btn btn-xs btn-info " Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i>&nbsp รายละเอียด</asp:LinkButton>
+                            <asp:LinkButton ID="lbManage" runat="server" CssClass="badge bg-info text-white" Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i>&nbsp รายละเอียด</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     
@@ -202,7 +206,7 @@
 
 
     <div class="modal fade " id="UpdateEquipModal"   tabindex="-1" role="dialog" aria-labelledby="UpdateEquipModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered " style="width:100%" role="form">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable " style="width:100%" role="form">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">

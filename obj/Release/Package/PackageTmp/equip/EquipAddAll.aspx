@@ -69,6 +69,8 @@
             CssClass="table table-hover table-sm col-md "
             Font-Size="15px"
             HeaderStyle-Font-Size="18px"
+                HeaderStyle-Height="50px"
+                RowStyle-Height="50px"
             AutoGenerateColumns="False"
             HeaderStyle-CssClass="text-left" 
             CellPadding="4" 
@@ -103,9 +105,9 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     
-                    <asp:TemplateField HeaderText="แก้ไข" >
+                    <asp:TemplateField HeaderText="จัดการข้อมูล" >
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbtneditAdd" runat="server" Text="แก้ไข"  CssClass="btn btn-sm btn-outline-warning" OnCommand="lbtneditAdd_Command"><i class="fas fa-edit"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lbtneditAdd" runat="server" CssClass="btn btn-sm btn-warning " Font-Size="Medium" OnCommand="lbtneditAdd_Command"><i class="fas fa-edit fa-1x"></i>&nbsp แก้ไข</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
 

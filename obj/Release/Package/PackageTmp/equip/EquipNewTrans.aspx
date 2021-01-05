@@ -399,8 +399,7 @@
                                 <label class="bmd-label-floating">รุ่น(ใหม่)</label>
                                 <asp:TextBox ID="txtNewSeriesRe"  runat="server" BackColor="#ffffd7" Font-Size="Medium" CssClass="form-control time" />
                             </div>
-                        </div>
-                        
+                        </div>                       
                     </div>
 
                     <div class="row" style="height: 90px">
@@ -437,10 +436,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnSubreplace" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnSubreplace_Command" OnClientClick="return UpdteConfirm('ยืนยันบันทึก ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnSubreplace" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnSubreplace_Command" >ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">ยกเลิก</button>
                 </div>
             </div>
@@ -448,25 +446,23 @@
     </div>
        
     <div class="modal fade " id="modalConfirmGet"   tabindex="-1" role="dialog" aria-labelledby="modalConfirmGet" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered " style="width:320px" role="form">
+        <div class="modal-dialog modal-lg modal-dialog-centered " style="width:380px" role="form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title"> กรุณาเลือกตำแหน่งของท่านเพื่อยืนยัน</h4>
+                    <h4 class="modal-title"> เลือกตำแหน่งของผู้อนุมัติ</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style="line-height: inherit;">
-                    
-                    <div class="row" style="height: 90px">
+                <div class="modal-body" style="line-height: inherit;">                    
+                    <div class="row" style="height: 50px">
                         <div class="col-md text-center">
-                            <asp:DropDownList ID="ddlposGet" runat="server" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlposGet" runat="server" CssClass="dropdown-item"></asp:DropDownList>
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnGet" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnGet_Command" OnClientClick="return UpdteConfirm('ยืนยันบันทึก ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGet" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnGet_Command" >ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">ยกเลิก</button>
                 </div>
             </div>
@@ -481,15 +477,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style="line-height: inherit;">
-                    
+                <div class="modal-body" style="line-height: inherit;">                   
                     <div class="row" style="height: 120px">
                         <div class="form-group bmd-form-group col-md text-center">
                                 <!--<label class="bmd-label-floating">เหตุผลการตีกลับเอกสาร</label>-->
                                 <asp:TextBox ID="txtEditNote"  runat="server" Font-Size="Medium" TextMode="MultiLine" CssClass="form-control time" />
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="lbtnBack" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnBack_Command" OnClientClick="return UpdteConfirm('ยืนยันไม่อนุมัติ (ตีกลับเอกสาร) ใช่หรือไม่');">ยืนยันไม่อนุมัติ</asp:LinkButton>
@@ -498,11 +492,6 @@
             </div>
         </div>
     </div>
-
-    
-
-
-
 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>

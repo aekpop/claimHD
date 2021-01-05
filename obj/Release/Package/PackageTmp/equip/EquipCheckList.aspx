@@ -11,26 +11,8 @@
         }
     </style>
 
-    <div class="container-fluid" style="font-family:'Prompt',sans-serif">
-        <!-- Menu Dropdown -->        
-        <div class="btn-group">
-              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
-              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
-                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
-                <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
-                <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
-                <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
-                <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
-                <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
-              </ul>
-        </div>
-        <!-------------------------------- // ------------------------------------>   
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif">        
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
-
         <div class="card-header card-header-warning" >
             <div class="card-title" >ตรวจสอบการโอนย้าย ด่านฯ</div>
         </div>
@@ -44,7 +26,7 @@
                                 <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                            </div>
                         </div>
-                        <div class="col-md-6 col-xl-2">
+                        <div class="col-md-6 col-xl-3">
                             <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="ประเภทโอนย้าย : " ></asp:Label>
                             <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" ></asp:DropDownList>
@@ -87,14 +69,15 @@
                     DataKeyNames="trans_id" 
                     OnRowDataBound="gridTranlist_RowDataBound"
                     GridLines="None" 
-                      
-                    Font-Size="16px"
-                    HeaderStyle-Font-Size="20px"
+                    Font-Size="15px"
+                    HeaderStyle-Font-Size="18px"
+                    HeaderStyle-Height="50px"
+                    RowStyle-Height="50px"
                     CssClass="table table-hover table-condensed table-sm"
                     >
                     
                     <Columns>
-                        <asp:TemplateField HeaderText="ตรวจสอบ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center"  ControlStyle-Width="70px">
+                        <asp:TemplateField HeaderText="ตรวจสอบ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="70px" ItemStyle-Font-Size="Large">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!"   OnCommand="lbtntrans_Command"></asp:LinkButton>
                             </ItemTemplate>
@@ -138,7 +121,7 @@
 
                     </Columns>
                     <FooterStyle BackColor="#b8ecff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
-                    <HeaderStyle BackColor="#fffd6b" CssClass="text-center"   ForeColor="Black" />
+                    
                     
                 </asp:GridView>
 

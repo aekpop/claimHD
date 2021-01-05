@@ -1161,7 +1161,7 @@ namespace ClaimProject.equip
                 }
                 else if(tORf == "2")
                 {
-                    ResultPop("Error : การแก้ไขล้มเหลวกรุณาติดต่อเจ้าหน้าที่", "error");
+                    ResultPop("Error : บันทึกล้มเหลว กรุณาติดต่อเจ้าหน้าที่", "error");
                 }
                 else
                 {
@@ -1182,7 +1182,7 @@ namespace ClaimProject.equip
                         File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
                         sb.Clear();
 
-                        ResultPop("อัพเดทสำเร็จ", "success");
+                        ResultPop("ระบบงานครุภัณฑ์ : บันทึกสำเร็จ", "success");
                         SearchBind();
                     }
                 }

@@ -206,9 +206,9 @@
                                     <asp:Label ID="lbcmAgency" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.drive_group_agency").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Edit" HeaderStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-left">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnEditCM" runat="server"  CssClass="btn btn-sm btn-outline-warning"  Font-Size="15px" ToolTip="แก้ไขรายละเอียดการแจ้งซ่อม" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขรายการใช่หรือไม่')"><i class="fas fa-edit"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="btnEditCM" runat="server"  CssClass="badge bg-warning text-white"  Font-Size="16px" ToolTip="แก้ไขรายละเอียดการแจ้งซ่อม" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('User ต้องการแก้ไขรายการนี้ ใช่หรือไม่')"><i class="fas fa-edit fa-2x"></i>&nbsp Edit</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

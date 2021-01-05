@@ -31,13 +31,13 @@
                         <label class="bmd-label-floating">ปีงบประมาณ : </label>
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select" ></asp:DropDownList>
                     </div>-->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select "  ></asp:DropDownList>
                     </div>
-                    <div class="col-md-4" >
+                    <div class="col-md-3 ">
                         <asp:TextBox ID="txtAnnex" runat="server" CssClass="form-control " Enabled="false" placeholder="อาคาร" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                     </div>
-                    <div class="col-md-4 ">
+                    <div class="col-md-3 ">
                         <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control custom-select " placeholder="ช่องทาง" ></asp:DropDownList>
                     </div>
                 </div>
@@ -57,11 +57,7 @@
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="Repair" HeaderStyle-CssClass="text-center">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="btn btn-sm btn-outline-success" ToolTip="อัพเดตสถานะการซ่อม"><i class="fas fa-wrench fa-2x"></i></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            
                             <asp:TemplateField HeaderText="ด่านฯ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
@@ -97,7 +93,11 @@
                                     <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            
+                            <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-left">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" CssClass="badge bg-info text-white" Font-Size="16px" ToolTip="อัพเดตสถานะการซ่อม"><i class="fas fa-wrench fa-2x"></i>&nbsp Repair</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <EditRowStyle BackColor="#ffffff" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

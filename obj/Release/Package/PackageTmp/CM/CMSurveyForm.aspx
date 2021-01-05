@@ -18,8 +18,10 @@
                         HeaderStyle-CssClass="text-center" 
                         HeaderStyle-BackColor="ActiveBorder"
                         HeaderStyle-Font-Size="18px"
+                        HeaderStyle-Height="50px"
+                        RowStyle-Height="50px"
                         OnRowDataBound="CMGridView_RowDataBound" 
-                        Font-Size="15px" 
+                        Font-Size="16px" 
                         CellPadding="4" 
                         ForeColor="#333333"
                         GridLines="None">
@@ -78,7 +80,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             
-                            <asp:TemplateField HeaderText="อนุมัติ" >
+                            <asp:TemplateField HeaderText="ดำเนินการ" ControlStyle-Width="80px">
                                 <ItemTemplate>
                                     <div class="row" >
                                         <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="btn btn-outline-success"><i class="fas fa-check"></i></asp:LinkButton>

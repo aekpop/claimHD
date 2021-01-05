@@ -7,26 +7,28 @@
         </div>
         <div class="card-body table-responsive table-sm">
             <div class="row">
-                <div class="col-md-1 text-right">
+                <div class="col-md-2 text-right">
                     <asp:Label ID="Label6" runat="server" Text="ด่านฯ : "></asp:Label>
                 </div>
                 <div class="col-md-2">
                     <asp:DropDownList ID="txtSearchCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
-                <div class="col-md-1 text-right">
+                <div class="col-md-2 text-right">
                     <asp:Label ID="Label1" runat="server" Text="อาคารย่อย :"></asp:Label>
                 </div>
                 <div class="col-md-2">
                     <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-1 text-right">
+                <div class="col-md-2 text-right">
                     <asp:Label ID="lbChannel" runat="server" Text="ตู้ :"></asp:Label>
                 </div>
                 <div class="col-md-2">
                     <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
-           
-                <div class="col-md-1 text-right">
+           </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2 text-right">
                     <asp:Label ID="Label5" runat="server" Text="สถานะ : "></asp:Label>
                 </div>
                 <div class="col-md-2">
@@ -36,32 +38,38 @@
                 <!--<div class="col-md-1">
                     <asp:CheckBox ID="CheckDeviceNotDamaged" runat="server" />
                     <label-->
-            </div>
-            </br>
-
-            <div class="row">
-                <div class =" col-md-1 text-right">
-                    <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged"/>
-                    <asp:Label Id ="lbCheckAllDay" runat="server" Text="AllDay" ></asp:Label> 
-                </div>
-                <div class="col-md-1 text-right">
-                    <asp:Label ID="lbDateStart" runat="server" Text="ตั้งแต่วันที่ : "></asp:Label>
-                </div>
-                <div class="col-md-2">
-                    <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker"></asp:TextBox>
-                </div>
-                <div class="col-md-1 text-right">
-                    <asp:Label ID="lbDateEnd" runat="server" Text="ถึงวันที่ : "></asp:Label>
-                </div>
-                <div class="col-md-2">
-                    <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker"></asp:TextBox>
-                </div>
-                <div class="col-md-1 text-right">
+            
+                <div class="col-md-2 text-right">
                     <asp:Label ID="lbDeviceDamage" runat="server" Text="อุปกรณ์ :"></asp:Label>
                 </div>
                 <div class="col-md-4">
                     <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select"></asp:DropDownList>
                 </div>
+                
+                </div>
+            <br />
+            <div class="row">
+                
+                 <div class =" col-md-2 text-right">
+                    <asp:Label Id ="lbCheckAllDay" runat="server" Text="ช่วงเวลา : เลือกทั้งหมด" ></asp:Label> 
+                </div>
+                <div class =" col-md-2 text-left">
+                    <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" CssClass="text-xl-center" OnCheckedChanged="CheckAllDay_CheckedChanged"/>
+                    </div>
+
+                <div class="col-md-2 text-right">
+                    <asp:Label ID="lbDateStart" runat="server" Text="ตั้งแต่วันที่ : "></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker"></asp:TextBox>
+                </div>
+                <div class="col-md-2 text-right">
+                    <asp:Label ID="lbDateEnd" runat="server" Text="ถึงวันที่ : "></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker"></asp:TextBox>
+                </div>
+                
             </div>
            <hr />
             <div class="row">              

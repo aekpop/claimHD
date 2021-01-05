@@ -94,13 +94,22 @@ namespace ClaimProject.Claim {
         protected global::System.Web.UI.WebControls.CheckBox CheckDeviceNotDamaged;
         
         /// <summary>
-        /// CheckAllDay control.
+        /// lbDeviceDamage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckAllDay;
+        protected global::System.Web.UI.WebControls.Label lbDeviceDamage;
+        
+        /// <summary>
+        /// txtDeviceDamage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtDeviceDamage;
         
         /// <summary>
         /// lbCheckAllDay control.
@@ -110,6 +119,15 @@ namespace ClaimProject.Claim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCheckAllDay;
+        
+        /// <summary>
+        /// CheckAllDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckAllDay;
         
         /// <summary>
         /// lbDateStart control.
@@ -146,24 +164,6 @@ namespace ClaimProject.Claim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateEnd;
-        
-        /// <summary>
-        /// lbDeviceDamage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDeviceDamage;
-        
-        /// <summary>
-        /// txtDeviceDamage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtDeviceDamage;
         
         /// <summary>
         /// btnSearch control.

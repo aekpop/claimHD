@@ -47,12 +47,18 @@ namespace ClaimProject
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
 
+                if (Session["UserPrivilegeId"].ToString() == "0") //Admin
+                {
+                    lbtnGoReportrd.Visible = true;
+                }
+
                 if (Session["UserCpoint"].ToString() != "0") //คนด่านฯ
                 {
                     divaddnew.Visible = false;
                     divcheckk.Visible = false;
                     divcheckkk.Visible = false;
                 }
+
             }
             LineTran();
             LoadPaging();           
@@ -601,5 +607,39 @@ namespace ClaimProject
             }
             
         }
+
+        protected void lbtnGoReportrd_Command(object sender, CommandEventArgs e)
+        {
+            Session["CopyTran"] = "";
+            if (txtSenderName.Text == "")
+            {
+                Session["SenderTran"] = ".";
+            }
+            else
+            {
+                Session["SenderTran"] = txtSenderName.Text;
+            }
+            if (txtPosSender.Text == "")
+            {
+                Session["PosSender"] = "..";
+            }
+            else
+            {
+                Session["PosSender"] = txtPosSender.Text;
+            }
+
+            ReportDocument rpt = new ReportDocument();
+
+            if (Session["TranRepId"].ToString() != "")
+            {
+
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/report','_newtab');", true);
+            }
+            else
+            {
+                AlertPop("Error Report!! ติดต่อเจ้าหน้าที่", "error");
+            }
+        }
     }
+    
 }

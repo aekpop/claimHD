@@ -6,24 +6,7 @@
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
     </style>
-    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-        <!-- Menu Dropdown -->        
-        <div class="btn-group">
-              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
-              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
-                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
-                <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
-                <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
-                <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
-                <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
-                <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
-              </ul>
-        </div>
-        <!-------------------------------- // ------------------------------------>
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">      
         <div id="MainBody" class="card" style="z-index: 0; ">
             <div class="card-header card-header-info">
                 <div class="card-title">
@@ -31,10 +14,9 @@
             </div>
             <div class="card-body table-responsive">
                 <div id="Search" class="row">
-                    <div class="form-group bmd-form-group col-xl-3 col-md-6">
+                    <div class="form-group bmd-form-group col-xl-6 col-md-6">
                         <span class = "label label-primary">หมายเลขครุภัณฑ์ : </span>
                         <asp:TextBox id="txtSearchEq" runat="server" CssClass="form-control" aria-describedby="SearchEqHelp" placeholder="กรอกตัวเลขอย่างน้อย 1 ตัวอักษร" onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                       
                     </div> 
                 </div>            
                 <div class="col-xl-6 text-left">
@@ -50,6 +32,8 @@
             <asp:GridView ID="GridViewSearchEq" runat="server"
                 OnRowDataBound="GridViewSearchEq_RowDataBound"
                 AutoGenerateColumns="false"
+                HeaderStyle-Height="50px"
+                RowStyle-Height="50px"
                 GridLines="None"
                 CssClass="table table-hover table-condensed table-sm">
                         <Columns>

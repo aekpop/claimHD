@@ -1753,3 +1753,5 @@ C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Release\ClaimProje
 C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Release\ClaimProject.dll
 C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Release\ClaimProject.pdb
 C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Release\ClaimProject.XmlSerializers.dll
+C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Release\RdlCompile.cache
+C:\Users\DOH-NB\Desktop\ClaimProject20201204\ClaimProject\obj\Release\RdlCompile.compiled
