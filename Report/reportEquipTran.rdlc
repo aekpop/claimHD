@@ -55,7 +55,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.75347in</Width>
+                  <Width>0.48958in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.67139in</Width>
@@ -64,7 +64,7 @@
                   <Width>1.7118in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.31597in</Width>
+                  <Width>1.57986in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.31597in</Width>
@@ -268,11 +268,17 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=RunningValue(CountDistinct("Tablix1"),Count,"Tablix1")</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                    <FontSize>14pt</FontSize>
+                                    <Format>0;(0)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -447,7 +453,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>1.90625in</Top>
-            <Left>0.28in</Left>
+            <Left>0.78in</Left>
             <Height>0.60417in</Height>
             <Width>6.76861in</Width>
             <Style>
@@ -476,7 +482,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.90625in</Top>
-            <Left>0.28in</Left>
+            <Left>0.78in</Left>
             <Height>0.25in</Height>
             <Width>0.4375in</Width>
             <ZIndex>1</ZIndex>
@@ -510,7 +516,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>1.22569in</Top>
-            <Left>0.28in</Left>
+            <Left>0.78in</Left>
             <Height>0.25in</Height>
             <Width>0.4375in</Width>
             <ZIndex>2</ZIndex>
@@ -544,7 +550,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>1.22917in</Top>
-            <Left>3.92708in</Left>
+            <Left>4.05208in</Left>
             <Height>0.25in</Height>
             <Width>0.4375in</Width>
             <ZIndex>3</ZIndex>
@@ -577,9 +583,9 @@
             </Paragraphs>
             <rd:DefaultName>sendToll</rd:DefaultName>
             <Top>0.90625in</Top>
-            <Left>0.78694in</Left>
+            <Left>1.28694in</Left>
             <Height>0.25in</Height>
-            <Width>2.91097in</Width>
+            <Width>2.59847in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -610,9 +616,9 @@
             </Paragraphs>
             <rd:DefaultName>gettoll</rd:DefaultName>
             <Top>1.22569in</Top>
-            <Left>0.78694in</Left>
+            <Left>1.28694in</Left>
             <Height>0.25in</Height>
-            <Width>2.91097in</Width>
+            <Width>2.59847in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -642,8 +648,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>thdate</rd:DefaultName>
-            <Top>1.23264in</Top>
-            <Left>4.43402in</Left>
+            <Top>1.22569in</Top>
+            <Left>4.54514in</Left>
             <Height>0.25in</Height>
             <Width>1.54514in</Width>
             <ZIndex>6</ZIndex>
@@ -672,12 +678,14 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Headmas</rd:DefaultName>
             <Top>0.5in</Top>
-            <Left>3.01736in</Left>
+            <Left>3.11111in</Left>
             <Height>0.25in</Height>
             <Width>2.13416in</Width>
             <ZIndex>7</ZIndex>
@@ -710,7 +718,7 @@
             </Paragraphs>
             <rd:DefaultName>submitText</rd:DefaultName>
             <Top>2.64583in</Top>
-            <Left>0.28in</Left>
+            <Left>0.78in</Left>
             <Height>0.25in</Height>
             <Width>6.76861in</Width>
             <ZIndex>8</ZIndex>
@@ -743,7 +751,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox19</rd:DefaultName>
             <Top>1.60069in</Top>
-            <Left>0.28in</Left>
+            <Left>0.78in</Left>
             <Height>0.25in</Height>
             <Width>0.64583in</Width>
             <ZIndex>9</ZIndex>
@@ -776,9 +784,9 @@
             </Paragraphs>
             <rd:DefaultName>refNo</rd:DefaultName>
             <Top>1.60069in</Top>
-            <Left>0.94792in</Left>
+            <Left>1.44792in</Left>
             <Height>0.25in</Height>
-            <Width>2.75in</Width>
+            <Width>2.4375in</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -804,14 +812,16 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SenderN</rd:DefaultName>
             <Top>3.83396in</Top>
-            <Left>1.13889in</Left>
+            <Left>1.44792in</Left>
             <Height>0.25in</Height>
-            <Width>1.30208in</Width>
+            <Width>1.7118in</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -837,14 +847,16 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SendPos</rd:DefaultName>
-            <Top>4.1534in</Top>
-            <Left>1.13889in</Left>
+            <Top>4.19507in</Top>
+            <Left>1.44792in</Left>
             <Height>0.25in</Height>
-            <Width>1.30208in</Width>
+            <Width>1.7118in</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -871,12 +883,14 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>copyHead</rd:DefaultName>
-            <Top>0.25in</Top>
-            <Left>3.63542in</Left>
+            <Top>0.19444in</Top>
+            <Left>3.65278in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>13</ZIndex>
@@ -897,7 +911,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>ลงชื่อ ..........................................  ผู้ส่ง</Value>
+                    <Value>ลงชื่อ ............................................................ ผู้ส่ง</Value>
                     <Style>
                       <FontFamily>TH SarabunPSK</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -909,9 +923,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>3.51451in</Top>
-            <Left>0.72792in</Left>
-            <Height>0.25in</Height>
-            <Width>3.00472in</Width>
+            <Left>0.99875in</Left>
+            <Height>0.31944in</Height>
+            <Width>2.55681in</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -930,7 +944,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>ลงชื่อ .....................................................  ผู้รับ</Value>
+                    <Value>ลงชื่อ ............................................................  ผู้รับ</Value>
                     <Style>
                       <FontFamily>TH SarabunPSK</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -941,10 +955,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>3.52431in</Top>
-            <Left>4.05902in</Left>
-            <Height>0.25in</Height>
-            <Width>2.98959in</Width>
+            <Top>3.51451in</Top>
+            <Left>4.93402in</Left>
+            <Height>0.30556in</Height>
+            <Width>2.59847in</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -963,7 +977,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(..................................................)</Value>
+                    <Value>       (...........................................................)</Value>
                     <Style>
                       <FontFamily>TH SarabunPSK</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -975,9 +989,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>3.88951in</Top>
-            <Left>4.43402in</Left>
+            <Left>4.93402in</Left>
             <Height>0.25in</Height>
-            <Width>2.61459in</Width>
+            <Width>2.59847in</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -996,7 +1010,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>ตำแหน่ง (...................................................) </Value>
+                    <Value>ตำแหน่ง (........................................................) </Value>
                     <Style>
                       <FontFamily>TH SarabunPSK</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -1007,10 +1021,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.2784in</Top>
-            <Left>3.93402in</Left>
+            <Top>4.26861in</Top>
+            <Left>4.80902in</Left>
             <Height>0.25in</Height>
-            <Width>3.11459in</Width>
+            <Width>2.72347in</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1029,8 +1043,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>     ตำแหน่ง (............................................) </Value>
-                    <Style />
+                    <Value> ตำแหน่ง (..........................................................) </Value>
+                    <Style>
+                      <FontFamily>TH SarabunPSK</FontFamily>
+                      <FontSize>14pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -1038,9 +1055,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>4.26861in</Top>
-            <Left>0.34028in</Left>
+            <Left>0.78in</Left>
             <Height>0.25in</Height>
-            <Width>3.39236in</Width>
+            <Width>2.77555in</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1059,7 +1076,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>       (...........................................)</Value>
+                    <Value>       (...........................................................)</Value>
                     <Style>
                       <FontFamily>TH SarabunPSK</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -1071,9 +1088,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>3.88951in</Top>
-            <Left>0.72792in</Left>
+            <Left>0.99875in</Left>
             <Height>0.25in</Height>
-            <Width>3.00472in</Width>
+            <Width>2.55681in</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -1086,17 +1103,198 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>11.7in</Height>
+        <Height>4.51861in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>8.3in</Width>
+      <Width>7.79861in</Width>
       <Page>
+        <PageFooter>
+          <Height>0.45931in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="PageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style>
+                        <FontFamily>TH SarabunPSK</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>PageNumber</rd:DefaultName>
+              <Top>0.11125in</Top>
+              <Left>6.85292in</Left>
+              <Height>0.25in</Height>
+              <Width>0.33333in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="TotalPages">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!TotalPages</Value>
+                      <Style>
+                        <FontFamily>TH SarabunPSK</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>TotalPages</rd:DefaultName>
+              <Top>0.11125in</Top>
+              <Left>7.41542in</Left>
+              <Height>0.25in</Height>
+              <Width>0.38319in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox32">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value> /</Value>
+                      <Style>
+                        <FontFamily>TH SarabunPSK</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox32</rd:DefaultName>
+              <Top>0.11125in</Top>
+              <Left>7.22792in</Left>
+              <Height>0.25in</Height>
+              <Width>0.13542in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="ReportName">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ReportName</Value>
+                      <Style>
+                        <FontFamily>TH SarabunPSK</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ReportName</rd:DefaultName>
+              <Top>0.11125in</Top>
+              <Left>0.5925in</Left>
+              <Height>0.25in</Height>
+              <Width>1in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox34">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>MTS  /</Value>
+                      <Style>
+                        <FontFamily>TH SarabunPSK</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox34</rd:DefaultName>
+              <Top>0.11125in</Top>
+              <Left>0.19667in</Left>
+              <Height>0.25in</Height>
+              <Width>0.39583in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>11.69in</PageHeight>
         <PageWidth>8.27in</PageWidth>
+        <InteractiveHeight>0in</InteractiveHeight>
+        <InteractiveWidth>8.27in</InteractiveWidth>
         <Style />
       </Page>
     </ReportSection>

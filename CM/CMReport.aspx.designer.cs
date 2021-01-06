@@ -193,6 +193,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.LinkButton btnExport;
         
         /// <summary>
+        /// btnReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnReport;
+        
+        /// <summary>
         /// lbCMNull control.
         /// </summary>
         /// <remarks>

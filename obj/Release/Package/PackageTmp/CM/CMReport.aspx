@@ -106,12 +106,15 @@
                         </div>                  
                         <br />
                                         <div class="row">  
-                                            <div class="col-xl-6 text-right">
+                                            <div class="col-xl-4 text-right">
                                                       <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa" Font-Size="Larger" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
                                                 </div>
-                                            <div class="col-xl-6 text-left">
+                                            <div class="col-xl-4 text-left">
                                                     <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Larger" ToolTip="Export To Excel" OnClick="btnExport_Click">&#xf1c3; ออกรายงาน</asp:LinkButton>
                                                 </div>
+                                            <div class="col-xl-4 text-center">
+                                                <asp:LinkButton ID="btnReport" runat="server" CssClass="btn btn-success fa" Font-Size="Larger" OnCommand="btnReport_Command">&#xf1c3; ออกรายงาน</asp:LinkButton>
+                                            </div>
                                         </div>
                         </div>
                 </div> 

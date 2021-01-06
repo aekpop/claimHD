@@ -205,10 +205,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnGoReport" runat="server" CssClass="btn btn-outline-success btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง" OnCommand="lbtnGoReport_Command" ><i class="fa">&#xf02f;</i></asp:LinkButton>
-                    <asp:LinkButton ID="lbtnGoReportCopy" runat="server" CssClass="btn btn-outline-warning btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง สำเนา" OnCommand="lbtnGoReportCopy_Command" ><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGoReport" runat="server" CssClass="btn btn-outline-success btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง" Visible="false" OnCommand="lbtnGoReport_Command" ><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGoReportCopy" runat="server" CssClass="btn btn-outline-warning btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง สำเนา" Visible="false" OnCommand="lbtnGoReportCopy_Command" ><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="true" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
-                    <asp:LinkButton ID="lbtnGoReportrd" runat="server" CssClass="btn btn-sm btn-outline-danger" Font-Size="15px" ToolTip="ใบรับส่ง RDLC" visible="false" OnCommand="lbtnGoReportrd_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGoReportrd" runat="server" CssClass="btn btn-sm btn-outline-danger" Font-Size="15px" ToolTip="ใบรับส่ง RDLC" visible="true" OnCommand="lbtnGoReportrd_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">X</button>
                 </div>
             </div>

@@ -1289,6 +1289,7 @@
     <Content Include="ReportView\Default.aspx" />
     <Content Include="Report\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Report\report.aspx" />
+    <Content Include="Report\reportCM.aspx" />
     <Content Include="Report\reportView.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -1446,6 +1447,17 @@
     <Content Include="Scripts\index.js.flow" />
     <Content Include="Report\dsEquipTran.xsc">
       <DependentUpon>dsEquipTran.xsd</DependentUpon>
+    </Content>
+    <Content Include="Report\dsCM.xsc">
+      <DependentUpon>dsCM.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsCM.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCM.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsCM.xss">
+      <DependentUpon>dsCM.xsd</DependentUpon>
     </Content>
     <None Include="Report\dsEquipTran.xsd">
       <SubType>Designer</SubType>
@@ -2079,6 +2091,11 @@
     <Compile Include="ReportView\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\dsCM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCM.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\dsEquipTran.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2090,6 +2107,13 @@
     </Compile>
     <Compile Include="Report\report.aspx.designer.cs">
       <DependentUpon>report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportCM.aspx.cs">
+      <DependentUpon>reportCM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\reportCM.aspx.designer.cs">
+      <DependentUpon>reportCM.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\reportView.aspx.cs">
       <DependentUpon>reportView.aspx</DependentUpon>
@@ -2244,6 +2268,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PMAdmin.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportCM.rdlc" />
     <EmbeddedResource Include="Report\reportEquipTran.rdlc" />
     <EmbeddedResource Include="Techno\Quotations.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

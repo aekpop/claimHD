@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCM" targetNamespace="http://tempuri.org/dsCM.xsd" xmlns:mstns="http://tempuri.org/dsCM.xsd" xmlns="http://tempuri.org/dsCM.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCM" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCM" msprop:Generator_UserDSName="dsCM">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cpoint_name" msprop:Generator_ColumnVarNameInTable="columncpoint_name" msprop:Generator_ColumnPropNameInRow="cpoint_name" msprop:Generator_ColumnPropNameInTable="cpoint_nameColumn" msprop:Generator_UserColumnName="cpoint_name" type="xs:string" minOccurs="0" />
+              <xs:element name="locate_name" msprop:Generator_ColumnVarNameInTable="columnlocate_name" msprop:Generator_ColumnPropNameInRow="locate_name" msprop:Generator_ColumnPropNameInTable="locate_nameColumn" msprop:Generator_UserColumnName="locate_name" type="xs:string" minOccurs="0" />
+              <xs:element name="device_name" msprop:Generator_ColumnVarNameInTable="columndevice_name" msprop:Generator_ColumnPropNameInRow="device_name" msprop:Generator_ColumnPropNameInTable="device_nameColumn" msprop:Generator_UserColumnName="device_name" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_detail_problem" msprop:Generator_ColumnVarNameInTable="columncm_detail_problem" msprop:Generator_ColumnPropNameInRow="cm_detail_problem" msprop:Generator_ColumnPropNameInTable="cm_detail_problemColumn" msprop:Generator_UserColumnName="cm_detail_problem" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_detail_sdate" msprop:Generator_ColumnVarNameInTable="columncm_detail_sdate" msprop:Generator_ColumnPropNameInRow="cm_detail_sdate" msprop:Generator_ColumnPropNameInTable="cm_detail_sdateColumn" msprop:Generator_UserColumnName="cm_detail_sdate" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_detail_stime" msprop:Generator_ColumnVarNameInTable="columncm_detail_stime" msprop:Generator_ColumnPropNameInRow="cm_detail_stime" msprop:Generator_ColumnPropNameInTable="cm_detail_stimeColumn" msprop:Generator_UserColumnName="cm_detail_stime" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_detail_edate" msprop:Generator_ColumnVarNameInTable="columncm_detail_edate" msprop:Generator_ColumnPropNameInRow="cm_detail_edate" msprop:Generator_ColumnPropNameInTable="cm_detail_edateColumn" msprop:Generator_UserColumnName="cm_detail_edate" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_detail_etime" msprop:Generator_ColumnVarNameInTable="columncm_detail_etime" msprop:Generator_ColumnPropNameInRow="cm_detail_etime" msprop:Generator_ColumnPropNameInTable="cm_detail_etimeColumn" msprop:Generator_UserColumnName="cm_detail_etime" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_point" msprop:Generator_ColumnVarNameInTable="columncm_point" msprop:Generator_ColumnPropNameInRow="cm_point" msprop:Generator_ColumnPropNameInTable="cm_pointColumn" msprop:Generator_UserColumnName="cm_point" type="xs:string" minOccurs="0" />
+              <xs:element name="cm_stat_name" msprop:Generator_ColumnVarNameInTable="columncm_stat_name" msprop:Generator_ColumnPropNameInRow="cm_stat_name" msprop:Generator_ColumnPropNameInTable="cm_stat_nameColumn" msprop:Generator_UserColumnName="cm_stat_name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

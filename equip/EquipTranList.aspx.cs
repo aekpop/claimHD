@@ -49,7 +49,8 @@ namespace ClaimProject
 
                 if (Session["UserPrivilegeId"].ToString() == "0") //Admin
                 {
-                    lbtnGoReportrd.Visible = true;
+                    lbtnGoReport.Visible = true;
+                    lbtnGoReportCopy.Visible = true;
                 }
 
                 if (Session["UserCpoint"].ToString() != "0") //คนด่านฯ
