@@ -736,7 +736,7 @@ namespace ClaimProject.Claim
             if (Session["claim_id"].ToString() != "")
             {
                 string note_number = "กท./ฝจ./" + function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON cpoint_id = claim_cpoint", "claim_id='" + Session["claim_id"].ToString() + "'", "cpoint_name") + "/";
-                note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim() + "/" + function.GetSelectValue("tbl_claim", "claim_id='" + Session["claim_id"].ToString() + "'", "claim_cpoint_date").Split('-')[2]; ;
+                note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim() + "/" + function.GetSelectValue("tbl_claim_doc", "claim_doc_id='" + Session["claim_id"].ToString() + "'", "claim_doc_date").Split('-')[2]; ;
                 string note_to = txtNoteTo.Text;
                 string[] textValue = new string[16];
                 textValue[0] = txtNo1.Text.Trim();

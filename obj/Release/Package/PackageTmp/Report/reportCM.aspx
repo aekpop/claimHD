@@ -13,7 +13,7 @@
         <div>
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="700px" Width="100%">
+            <rsweb:ReportViewer ID="reportViewer1" runat="server" Height="700px" Width="100%">
                 <LocalReport ReportPath="Report\reportCM.rdlc">
                 </LocalReport>
             </rsweb:ReportViewer>
