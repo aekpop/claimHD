@@ -736,7 +736,7 @@ namespace ClaimProject.Claim
             if (Session["claim_id"].ToString() != "")
             {
                 string note_number = "กท./ฝจ./" + function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON cpoint_id = claim_cpoint", "claim_id='" + Session["claim_id"].ToString() + "'", "cpoint_name") + "/";
-                note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim() + "/" + function.GetSelectValue("tbl_claim_doc", "claim_doc_id='" + Session["claim_id"].ToString() + "'", "claim_doc_date").Split('-')[2]; ;
+                note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim() ;
                 string note_to = txtNoteTo.Text;
                 string[] textValue = new string[16];
                 textValue[0] = txtNo1.Text.Trim();
@@ -760,7 +760,11 @@ namespace ClaimProject.Claim
                     string sql = "INSERT INTO tbl_claim_doc ( claim_doc_id,claim_doc_title,claim_doc_date,claim_doc_num, claim_doc_type, claim_doc_to, claim_doc_no1, claim_doc_no2, claim_doc_no3, claim_doc_no4, claim_doc_no5, claim_doc_no6, claim_doc_no7, claim_doc_no8, claim_doc_no9, claim_doc_no10, claim_doc_no11, claim_doc_no12, claim_doc_no13, claim_doc_no14, claim_doc_no15, claim_doc_no16) VALUES ( '" + Session["claim_id"].ToString() + "','" + txtTitle.Text.Trim() + "','" + txtDate.Text.Trim() + "','" + note_number + "', '1', '" + note_to + "', '" + textValue[0] + "', '" + textValue[1] + "', '" + textValue[2] + "', '" + textValue[3] + "', '" + textValue[4] + "', '" + textValue[5] + "', '" + textValue[6] + "', '" + textValue[7] + "', '" + textValue[8] + "', '" + textValue[9] + "', '" + textValue[10] + "', '" + textValue[11] + "', '" + textValue[12] + "', '0', '0', '0' )";
                     if (function.MySqlQuery(sql))
                     {
-
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success')", true);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99')", true);
                     }
                 }
                 else
@@ -768,7 +772,11 @@ namespace ClaimProject.Claim
                     string sql = "UPDATE tbl_claim_doc SET claim_doc_title='" + txtTitle.Text.Trim() + "',claim_doc_date='" + txtDate.Text.Trim() + "',claim_doc_to = '" + note_to + "',claim_doc_num='" + note_number + "', claim_doc_no1 = '" + textValue[0] + "', claim_doc_no2 = '" + textValue[1] + "', claim_doc_no3 = '" + textValue[2] + "', claim_doc_no4 = '" + textValue[3] + "', claim_doc_no5 = '" + textValue[4] + "', claim_doc_no6 = '" + textValue[5] + "', claim_doc_no7 = '" + textValue[6] + "', claim_doc_no8 = '" + textValue[7] + "', claim_doc_no9 = '" + textValue[8] + "', claim_doc_no10 = '" + textValue[9] + "', claim_doc_no11 = '" + textValue[10] + "', claim_doc_no12 = '" + textValue[11] + "', claim_doc_no13 = '" + textValue[12] + "' WHERE claim_doc_id = '" + Session["claim_id"].ToString() + "' AND claim_doc_type = '1'";
                     if (function.MySqlQuery(sql))
                     {
-
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success')", true);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99')", true);
                     }
                 }
 

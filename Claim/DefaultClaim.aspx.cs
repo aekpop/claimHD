@@ -116,6 +116,10 @@ namespace ClaimProject.Claim
             {
                 Nowbudget = Nowyear + 1;
             }
+            else
+            {
+                Nowbudget = Nowyear;
+            }
 
             string ClMouthly = "SELECT COUNT(*) AS numm FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_budget_year = '" + Nowbudget + "' AND claim_month = '" + MonthList[i] + "' ";
             string ClBudget = "SELECT COUNT(*) AS numb FROM tbl_claim WHERE claim_delete = 0 " + sqlcp + " AND claim_budget_year = '" + Nowbudget + "' ";
