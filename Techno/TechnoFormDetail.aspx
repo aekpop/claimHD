@@ -468,7 +468,14 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <asp:UpdatePanel runat="server">
+                    <div class="row" >
+                        <div class="col-md-3 text-right">แหล่งที่มาราคา : </div>
+                          <div class="col-md">
+                                    <asp:DropDownList ID="ddlSelectQua" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
+                                </div>      
+                    </div>
+                    <br />
+                    <asp:UpdatePanel runat="server" ID="SelectQua1" >
                         <ContentTemplate>
                             <div class="row">
                                 <div class="col-md-3 text-right">ชื่อบริษัท : </div>
@@ -728,7 +735,8 @@
             {
                 return true;
             }
-        }     
+        }
+    
 
     </script>
 </asp:Content>

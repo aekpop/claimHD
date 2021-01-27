@@ -761,10 +761,12 @@ namespace ClaimProject.Claim
                     if (function.MySqlQuery(sql))
                     {
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success')", true);
+                        GetReport(Session["claim_id"].ToString(), 1);
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99')", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99 ติดต่อเจ้าหน้าที่')", true);
+
                     }
                 }
                 else
@@ -773,14 +775,15 @@ namespace ClaimProject.Claim
                     if (function.MySqlQuery(sql))
                     {
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success')", true);
+                        GetReport(Session["claim_id"].ToString(), 1);
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99')", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99 ติดต่อเจ้าหน้าที่')", true);
                     }
                 }
 
-                GetReport(Session["claim_id"].ToString(), 1);
+                //GetReport(Session["claim_id"].ToString(), 1);
                 //clearDate();
             }
         }

@@ -50,7 +50,8 @@ namespace ClaimProject.Techno
                     //lbTitle.Text = Session["codePK"].ToString();
                     sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_delete = '0'";
                     function.getListItem(txtCompanyOrder, sql, "company_name", "company_id");
-                   
+                    function.GetListQuantations(ddlSelectQua, 0);
+                    
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 2)

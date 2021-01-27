@@ -109,7 +109,7 @@ namespace ClaimProject
             //COLLATE utf8_general_ci
             string sqlsendSearch = "SELECT * FROM tbl_transfer " +
                          " JOIN tbl_transfer_status on tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id" +
-                         " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
+                         " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_recieve " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
             string type = ddlsearchType.SelectedValue;
             string EndState = ddlsearchEndToll.SelectedValue;
@@ -118,16 +118,16 @@ namespace ClaimProject
             {
                 if(Session["User"].ToString() == "sawitree")
                 {
-                    sqlsendSearch += " WHERE Toll_EQGroup = '1' ";
+                    sqlsendSearch += " WHERE Toll_EQGroup = '1' AND Toll_send = '9200' ";
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
-                    sqlsendSearch += " WHERE Toll_EQGroup = '2' ";
+                    sqlsendSearch += " WHERE Toll_EQGroup = '2' AND Toll_send = '9200' ";
 
                 }
                 else if (Session["User"].ToString() == "watcharee")
                 {
-                    sqlsendSearch += " WHERE Toll_EQGroup = '3' ";
+                    sqlsendSearch += " WHERE Toll_EQGroup = '3' AND Toll_send = '9200' ";
                 }
                 else
                 {
@@ -307,6 +307,19 @@ namespace ClaimProject
                 }
                 else { lbEndtrans.Text = "ยังไม่ระบุ"; }
             }
+
+            Label lbStarttrans = (Label)(e.Row.FindControl("lbStarttrans"));
+            if (lbStarttrans != null)
+            {
+                string gettollname = "SELECT toll_name from tbl_toll where toll_id = '" + lbStarttrans.Text + "' ";
+                MySqlDataReader namee = function.MySqlSelect(gettollname);
+                if (namee.Read())
+                {
+                    lbStarttrans.Text = namee.GetString("toll_name");
+                }
+                else { lbStarttrans.Text = "ยังไม่ระบุ"; }
+            }
+
             Label lbstat = (Label)(e.Row.FindControl("lbstat"));
             if (lbstat != null)
             {

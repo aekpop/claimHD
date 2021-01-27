@@ -535,6 +535,24 @@ namespace ClaimProject.Techno {
         protected global::System.Web.UI.WebControls.Button btns4;
         
         /// <summary>
+        /// ddlSelectQua control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSelectQua;
+        
+        /// <summary>
+        /// SelectQua1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel SelectQua1;
+        
+        /// <summary>
         /// txtCompany control.
         /// </summary>
         /// <remarks>

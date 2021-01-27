@@ -95,6 +95,8 @@
                     HeaderStyle-CssClass="text-left" 
                     HeaderStyle-BackColor="ActiveBorder"
                     HeaderStyle-Font-Size="17px"
+                    HeaderStyle-Height="50px"
+                    RowStyle-Height="50px"
                     RowStyle-CssClass="text-left" 
                     GridLines="None"                    
                     OnRowDataBound="ClaimGridView_RowDataBound" 
