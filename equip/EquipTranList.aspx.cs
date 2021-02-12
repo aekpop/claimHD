@@ -107,15 +107,20 @@ namespace ClaimProject
         {
             string TransRef = Session["TransID"].ToString();
             //COLLATE utf8_general_ci
-            string sqlsendSearch = "SELECT * FROM tbl_transfer " +
+            string type = ddlsearchType.SelectedValue;
+            string EndState = ddlsearchEndToll.SelectedValue;
+            string status = ddlsearchStat.SelectedValue;
+            string sqlsendSearch = "";
+
+            if (Session["UserCpoint"].ToString() == "0")
+            {
+                sqlsendSearch = "SELECT * FROM tbl_transfer " +
                          " JOIN tbl_transfer_status on tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id" +
                          " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_recieve " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
-            string type = ddlsearchType.SelectedValue;
-            string EndState = ddlsearchEndToll.SelectedValue;
-            string status = ddlsearchStat.SelectedValue ;
-            if (Session["UserCpoint"].ToString() == "0")
-            {
+
+            //if (Session["UserCpoint"].ToString() == "0")
+            //{
                 if(Session["User"].ToString() == "sawitree")
                 {
                     sqlsendSearch += " WHERE Toll_EQGroup = '1' AND Toll_send = '9200' ";
@@ -148,9 +153,15 @@ namespace ClaimProject
             }
             else
             {
+                sqlsendSearch = "SELECT * FROM tbl_transfer " +
+                         " JOIN tbl_transfer_status on tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id" +
+                         " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
+                         " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
+                
                 sqlsendSearch += " WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "'  ";
             }
 
+            
             if (EndState == "0") // ทุกปลายทาง
             {
                 if (type == "0")// ทุกประเภทรายการ

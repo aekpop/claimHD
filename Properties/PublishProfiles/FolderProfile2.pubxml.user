@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>01/11/2021 10:53:09</publishTime>
+      <publishTime>02/03/2021 15:00:17</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>01/11/2021 10:53:09</publishTime>
+      <publishTime>02/03/2021 15:00:17</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>01/11/2021 10:53:09</publishTime>
+      <publishTime>02/03/2021 15:00:18</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -607,7 +607,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2020 19:06:48</publishTime>
     </File>
     <File Include="Claim/ClaimDevice.aspx">
-      <publishTime>12/30/2020 16:43:21</publishTime>
+      <publishTime>01/26/2021 13:44:57</publishTime>
     </File>
     <File Include="Claim/claimForm.aspx">
       <publishTime>10/30/2020 08:48:14</publishTime>
@@ -616,7 +616,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/11/2020 22:28:24</publishTime>
     </File>
     <File Include="Claim/DefaultClaim.aspx">
-      <publishTime>12/03/2020 19:09:25</publishTime>
+      <publishTime>01/26/2021 09:18:49</publishTime>
     </File>
     <File Include="Claim/Upload/chrome_installer.exe">
       <publishTime>11/29/2018 09:04:02</publishTime>
@@ -3514,7 +3514,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/16/2020 09:49:46</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>01/05/2021 17:37:46</publishTime>
+      <publishTime>01/27/2021 15:40:04</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>07/10/2020 11:27:56</publishTime>
@@ -4345,7 +4345,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>10/22/2020 20:18:48</publishTime>
+      <publishTime>01/26/2021 15:08:09</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
       <publishTime>10/05/2020 11:43:50</publishTime>

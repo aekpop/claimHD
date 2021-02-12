@@ -139,7 +139,7 @@
                 
         </div>
         <div class="row">
-            <div class="col-xl-6 col-md-6 mb-4">
+            <div id="chartClaim" runat="server" visible="false" class="col-xl-6 col-md-6 mb-4">
                   <div class="card border-left-warning shadow h-70 py-2">
                       <div class="card-body">
                         <div class="row no-gutters align-items-center">
