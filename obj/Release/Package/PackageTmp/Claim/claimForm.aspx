@@ -162,7 +162,7 @@
                         <div class="col-md-2">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">เลขที่เอกสาร</label>
-                                <asp:TextBox ID="txtDocNum" runat="server" CssClass="form-control form-control-sm" />
+                                <asp:TextBox ID="txtDocNum" runat="server" CssClass="form-control form-control-sm" placeholder="XXXX/ ปี พ.ศ."/>
                             </div>
                         </div>
                     </div>

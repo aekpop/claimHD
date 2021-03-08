@@ -478,9 +478,13 @@ namespace ClaimProject.Claim
 
             if(car2has == "1")
             {
-                strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
-                    +" โดยมี"+driver2+" เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " หมายเลขโทรศัพท์ " + tel2 : "") + "" +
-                    " และคันที่ ๒ เป็น"+car;
+                //strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
+                //    +" โดยมี"+driver2+" เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " หมายเลขโทรศัพท์ " + tel2 : "") + "" +
+                //    " และคันที่ ๒ เป็น"+car;
+                strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + car + " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
+                    " จังหวัด " + province2 + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + direction +" โดยมี"+driver2+"" +
+                    " เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
+                    " หมายเลขโทรศัพท์ " + tel2 : "") + "";
             }
             else
             {
@@ -705,7 +709,8 @@ namespace ClaimProject.Claim
                 try
                 {
                     txtNoteTo.Text = rs.GetString("claim_doc_to");
-                    try { txtDocNum.Text = rs.GetString("claim_doc_num").Split('/')[3]; } catch { txtDocNum.Text = ""; }
+                    try { txtDocNum.Text = rs.GetString("claim_doc_num").Split('/')[3]+"/"+ rs.GetString("claim_doc_num").Split('/')[4]; } catch { txtDocNum.Text = ""; }
+                    //try { txtDocNum.Text = rs.GetString("claim_doc_num"); } catch { txtDocNum.Text = ""; }
                     txtDate.Text = rs.GetString("claim_doc_date");
                     txtTitle.Text = rs.GetString("claim_doc_title");
                     txtNo1.Text = rs.GetString("claim_doc_no1");

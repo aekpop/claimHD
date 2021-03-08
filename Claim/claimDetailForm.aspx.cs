@@ -376,8 +376,41 @@ namespace ClaimProject.Claim
                         ", claim_detail_clemence='" + txtClemence.Text + "'" +
                         ", claim_detail_inform='" + txtInform.Text + "'" +
                         ", claim_detail_tel='" + txtTelDrive.Text + "',claim_detail_provi2 = '"+txtProvince22.Text+"' ";
-                    sql = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
-                    if (function.MySqlQuery(sql))
+                    sql = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '1'";
+
+                    //sql 2nd Car
+                    string text2car = "claim_detail_note_to = '" + txtNoteTo.Text + "'" +
+                        ", claim_detail_around='" + txtAround.SelectedItem + "'" +
+                        ", claim_detail_point='" + txtPoint.Text.Trim() + "'" +
+                        ", claim_detail_point='" + txtPoint.Text.Trim() + "'" +
+                        ", claim_detail_time='" + txtTime.Text + "'" +
+                        ", claim_detail_user_alear='" + txtNameAleat.Text + "'" +
+                        ", claim_detail_pos_user_alear='" + txtPosAleat.SelectedItem + "'" +
+                        ", claim_detail_cb='" + txtCB.Text + "'" +
+                        ", claim_detail_cb_claim='" + txtCBClaim.Text + "'" +
+                        ", claim_detail_direction='" + txtDirection.Text + "'" +
+                        ", claim_detail_comefrom = '" + txtComeFrom.Text + "'" +
+                        ", claim_detail_direction_in='" + txtDirectionIn.Text + "'" +
+                        ", claim_detail_accident='" + txtDetail.Text + "'" +
+                        ", claim_detail_supervisor='" + txtSup.Text + "'" +
+                        ", claim_detail_supervisor_pos='" + txtPosSup.SelectedItem + "'" +
+                        ", claim_detail_car='" + ddlSecTypecar.SelectedItem + " ,ยี่ห้อ ," + ddlbrandcar2.SelectedItem + " ,สี," + txtColorcar2.Text.Trim() + "'" +
+                        ", claim_detail_license_plate='" + txtnocar2.Text + "'" +
+                        ", Licen_Eng ='" + txtLiEng.Text + "'" +
+                        ", claim_detail_province='" + txtprovince2.Text + "'" +
+                        ", Province_Eng='" + txtProEng.Text + "'" +
+                        ", claim_detail_driver='" + txtDriver2.Text + "'" +
+                        ", claim_detail_idcard='" + txtIDcar2.Text + "'" +
+                        ", claim_detail_address='" + txtAddress2.Text + "'" +
+                        ", claim_detail_lp2='" + txtLp2.Text + "'" +
+                        ", claim_detail_insurer='" + txtInsurer.Text + "'" +
+                        ", claim_detail_policyholders='" + txtPolicyholders.Text + "'" +
+                        ", claim_detail_clemence='" + txtClemence.Text + "'" +
+                        ", claim_detail_inform='" + txtInform.Text + "'" +
+                        ", claim_detail_tel='" + txtTelcar2.Text + "',claim_detail_provi2 = '" + txtProvince22.Text + "' ";
+                    string sql2car = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
+
+                    if (function.MySqlQuery(sql) || function.MySqlQuery(sql2car))
                     {
                         sql = "UPDATE tbl_status_detail SET detail_status_id = '" + status + "', detail_date_start ='" + txtStartDate.Text + "',detail_date_end ='" + function.ConvertDateTime(txtStartDate.Text, 3) + "' WHERE (detail_status_id='1' OR detail_status_id='6') AND detail_claim_id='" + Session["CodePK"].ToString() + "'";
                         function.MySqlQuery(sql);
@@ -1083,7 +1116,7 @@ namespace ClaimProject.Claim
                     insertcar2 = "INSERT INTO tbl_claim_com  " + textt;
                     if (function.MySqlQuery(insertcar2))
                     {
-
+                        //AlertPop("บันทึกข้อมูล สำเร็จ", "success");
                     }
                     else
                     {
@@ -1193,7 +1226,7 @@ namespace ClaimProject.Claim
                 updatecar2 = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number ='" + lbmodaltitle.Text + "'";
                 if (function.MySqlQuery(updatecar2))
                 {
-                    
+                    AlertPop("บันทึกสำเร็จ", "success");
                 }
                 else
                 {
