@@ -500,7 +500,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered " style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" role="form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">ข้อมูลคุ่กรณี คันที่</h4>
+                    <h4 class="modal-title">ข้อมูลคุ่กรณี คันที่ : </h4>
                     <asp:Label runat="server" ID="lbmodaltitle" ></asp:Label>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -605,7 +605,7 @@
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="lbtnDeletecar2" runat="server" CssClass="btn btn-danger btn-sm far-fa-save" Font-Size="Large" OnCommand="lbtnDeletecar2_Command" OnClientClick="return CompareConfirm('ยืนยันลบข้อมูล ใช่หรือไม่');">ลบข้อมูล</asp:LinkButton>
-                    <asp:LinkButton ID="lbtnEditcar2" runat="server" Visible="false" CssClass="btn btn-warning btn-sm far-fa-save" Font-Size="Large" OnCommand="lbtnEditcar2_Command" OnClientClick="return CompareConfirm('ยืนยันแก้ไขข้อมูล ใช่หรือไม่');">บันทึกการแก้ไข</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnEditcar2" runat="server" Visible="false" CssClass="btn btn-warning btn-sm far-fa-save" Font-Size="Large" OnCommand="lbtnEditcar2_Command" OnClientClick="return CompareConfirm('ยืนยันแก้ไขข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>
                     <asp:LinkButton ID="lbtnsubmitcar2" runat="server" CssClass="btn btn-success btn-sm far-fa-save" Font-Size="Large" OnCommand="lbtnsubmitcar2_Command" OnClientClick="return CompareConfirm('ยืนยันบันทึกข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>
                 </div>

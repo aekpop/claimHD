@@ -428,9 +428,10 @@ namespace ClaimProject.Claim
             }
             rs.Close();
             function.Close();
-            string getcar2  = "select * FROM tbl_claim_com where claim_id = '" + key + "' AND claim_detail_number = '2'";
+            string getcar2 = "select * FROM tbl_claim_com where claim_id = '" + key + "' AND claim_detail_number = '2'";
             string getcar3 = "select * FROM tbl_claim_com where claim_id = '" + key + "' AND claim_detail_number = '3'";
-            string car2has = "1"; string car3has = "1";
+            string car2has = "1";
+            string car3has = "1";
             MySqlDataReader checkcar2 = function.MySqlSelect(getcar2);
             if (checkcar2.Read())
             {
@@ -476,38 +477,81 @@ namespace ClaimProject.Claim
             strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ";
             strNote += " เมื่อได้รับแจ้งเหตุ เจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;
 
-            if(car2has == "1")
+            if (car2has == "1")
             {
                 //strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
                 //    +" โดยมี"+driver2+" เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " หมายเลขโทรศัพท์ " + tel2 : "") + "" +
                 //    " และคันที่ ๒ เป็น"+car;
-                strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + car + " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
-                    " จังหวัด " + province2 + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + direction +" โดยมี"+driver2+"" +
-                    " เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
-                    " หมายเลขโทรศัพท์ " + tel2 : "") + "";
-            }
-            else
-            {
-                strNote += " พบว่าคู่กรณีเป็น " + car;
-            }
+                strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + car;
 
-            if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-" )
-            {
-                strNote += "ไม่ทราบหมายเลขทะเบียน";
-            }
-            else
-            {
-                strNote += " หมายเลขทะเบียน " + licensePlate;
-
-                if (licensePlate2 != "" && licensePlate2 != "-")
+                if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-")
                 {
-                    
-                        if(provinceplate2 != province)
+                    strNote += "ไม่ทราบหมายเลขทะเบียน";
+                }
+                else
+                {
+                    strNote += " หมายเลขทะเบียน " + licensePlate;
+
+                    if (licensePlate2 != "" && licensePlate2 != "-")
+                    {
+
+                        if (provinceplate2 != province)
                         {
-                            strNote += " จังหวัด "+province+ " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด "+provinceplate2;
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด " + provinceplate2;
                             if (licenseEng != "")
                             {
-                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn 
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn
+                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                            }
+                            else
+                            {
+                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                            }
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                            }
+                            else
+                            {
+                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (licenseEng != "")
+                        {
+                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                        }
+                    }
+                }
+                /*
+                if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-")
+                {
+                    strNote += "ไม่ทราบหมายเลขทะเบียน";
+                }
+                else
+                {
+                    strNote += " หมายเลขทะเบียน " + licensePlate;
+
+                    if (licensePlate2 != "" && licensePlate2 != "-")
+                    {
+
+                        if (provinceplate2 != province)
+                        {
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด " + provinceplate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn
                                 + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                             else
@@ -527,168 +571,292 @@ namespace ClaimProject.Claim
                                 strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                         }
-                   
-                }
-                else
-                {
-                    if (licenseEng != "")
-                    {
-                        strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+
                     }
                     else
                     {
-                        strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        if (licenseEng != "")
+                        {
+                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        }
                     }
-                }
-                
-                
+                    */
+                    strNote += " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
+                    " จังหวัด " + province2 + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + direction + " โดยมี" + driver2 + "" +
+                    " เลขที่บัตรประจำตัวประชาชน " + idcard2 + " ที่อยู่ " + address2 + (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
+                    " หมายเลขโทรศัพท์ " + tel2 : " เป็นผู้ขับขี่");
+                //}
+                //strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + car ;
                 if (insurer.Trim() == "" || insurer.Trim() == "-")
                 {
-                    strNote += " ซึ่งรถยนต์คันดังกล่าวไม่ได้ทำประกันภัยไว้กับบริษัทใด";
+                    strNote += " ซึ่งรถยนต์คันที่ 1 ไม่ได้ทำประกันภัยไว้กับบริษัทใด";
                 }
                 else
                 {
-                    strNote += " ซึ่งรถยนต์คันดังกล่าวได้ทำประกันไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
+                    strNote += " ซึ่งรถยนต์คันที่ 1 ได้ทำประกันไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
                 }
                 strNote += " ทั้งนี้ ด่านฯ " + cpointName + (point != "" ? " " + point : "") + " ได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + inform + " ไว้เป็นหลักฐานแล้ว";
             }
-
-            string name = "";
-            string com = "";
-            string dev = "";
-            string listDoc = "";
-            string doc_num = "";
-
-            string sql_com = "SELECT * FROM tbl_claim_com_working WHERE detail_com_id ='" + key + "'";
-            string sql_dev = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + key + "' AND d.device_damaged_delete = '0'";
-            int i = 1;
-
-            if (report == 0)
-            {
-                rs = function.MySqlSelect(sql_com);
-                while (rs.Read())
-                {
-                    if (i == 1)
-                    {
-                        name += "(" + rs.GetString("com_working_name") + ")\r\n" + rs.GetString("com_working_pos");
-                        com += "ซึ่งมีเจ้าหน้าที่ควบคุมระบบปฏิบัติหน้าที่ประจำผลัด ดังนี้\r\n                      ";
-                        com += i + ". " + rs.GetString("com_working_name");
-                    }
-                    else
-                    {
-                        com += "\r\n                      " + i + ". " + rs.GetString("com_working_name");
-                    }
-                    i++;
-                }
-                rs.Close();
-                name += "\r\n\r\n\r\n";
-                name += "(" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor") + ")";
-                name += "\r\n" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor_pos");
-
-                function.Close();
-
-                i = 1;
-                rs = function.MySqlSelect(sql_dev);
-                while (rs.Read())
-                {
-                    if (i == 1)
-                    {
-                        dev += "จากการตรวจสอบเบื้องต้นพบทรัพย์สินของทางราชการเสียหาย ดังนี้\r\n                      ";
-                        dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
-                    }
-                    else
-                    {
-                        dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
-                    }
-                    i++;
-                }
-                rs.Close();
-                function.Close();
-            }
             else
             {
-                i = 1;
-                rs = function.MySqlSelect(sql_dev);
-                while (rs.Read())
+                // รถคันเดียว
+                strNote += " พบว่าคู่กรณีเป็น " + car;
+
+                if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-")
                 {
-                    if (i == 1)
+                    strNote += "ไม่ทราบหมายเลขทะเบียน";
+                }
+                else
+                {
+                    strNote += " หมายเลขทะเบียน " + licensePlate;
+
+                    if (licensePlate2 != "" && licensePlate2 != "-")
                     {
-                        dev += "ความเสียหายของทรัพย์สินของทางราชการ เบื้องต้นสรุปได้ ดังนี้\r\n                      ";
-                        dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+
+                        if (provinceplate2 != province)
+                        {
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด " + provinceplate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn
+                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                            else
+                            {
+                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                            else
+                            {
+                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                        }
+
                     }
                     else
                     {
-                        dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                        if (licenseEng != "")
+                        {
+                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        }
                     }
-                    i++;
                 }
-                rs.Close();
-                function.Close();
 
-
-                string sql_doc = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + key + "' AND claim_doc_type = '1'";
-                rs = function.MySqlSelect(sql_doc);
-                if (rs.Read())
+                /*if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-")
                 {
-                    doc_num = rs.GetString("claim_doc_num");
-                    noteTo1 = rs.GetString("claim_doc_to");
-                    listDoc += "เอกสารประกอบการพิจารณาแนบ ดังนี้";
-                    listDoc += "\r\n                      1. บันทึกข้อความ จำนวน " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
-                    listDoc += "\r\n                      2. หนังสือยอมรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
-                    listDoc += "\r\n                      3. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
-                    listDoc += "\r\n                      4. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";
-                    listDoc += "\r\n                      5. บันทึกข้อมูลการเกิดอุบัติเหตุเบื้องต้นสำหรับการแจ้งความ จำนวน " + converNum(rs.GetString("claim_doc_no5")) + " ฉบับ";
-                    listDoc += "\r\n                      6. สำเนารายงานประจำวันเกี่ยวกับคดี จำนวน " + converNum(rs.GetString("claim_doc_no6")) + " ฉบับ";
-                    listDoc += "\r\n                      7. สำเนาบันทึกการเปรียบเทียบ จำนวน " + converNum(rs.GetString("claim_doc_no7")) + " ฉบับ";
-                    listDoc += "\r\n                      8. สำเนาใบเสร็จรับเงินค่าปรับ จำนวน " + converNum(rs.GetString("claim_doc_no8")) + " ฉบับ";
-                    listDoc += "\r\n                      9. ใบรับรองความเสียหายต่อทรัพย์สิน(ใบเคลมประกัน) จำนวน " + converNum(rs.GetString("claim_doc_no9")) + " ฉบับ";
-                    listDoc += "\r\n                      10. สำเนาบัตรประชาชน จำนวน " + converNum(rs.GetString("claim_doc_no10")) + " ฉบับ";
-                    listDoc += "\r\n                      11. สำเนาใบอนุญาตขับรถ จำนวน " + converNum(rs.GetString("claim_doc_no11")) + " ฉบับ";
-                    listDoc += "\r\n                      12. บันทึกข้อความรองผู้จัดการด่านฯ และพนักงานควบคุมระบบ จำนวน " + converNum(rs.GetString("claim_doc_no12")) + " ฉบับ";
-                    listDoc += "\r\n                      13. รูปถ่าย จำนวน " + converNum(rs.GetString("claim_doc_no13")) + " ฉบับ";
-                    title2 = rs.GetString("claim_doc_title");
-                    DateTitle = rs.GetString("claim_doc_date");
+                    strNote += "ไม่ทราบหมายเลขทะเบียน";
                 }
-                rs.Close();
-                function.Close();
+                else
+                {
+                    strNote += " หมายเลขทะเบียน " + licensePlate;
+
+                    if (licensePlate2 != "" && licensePlate2 != "-")
+                    {
+
+                        if (provinceplate2 != province)
+                        {
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด " + provinceplate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn
+                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                            else
+                            {
+                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
+                            if (licenseEng != "")
+                            {
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                            else
+                            {
+                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (licenseEng != "")
+                        {
+                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        }
+                        else
+                        {
+                            strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                        }
+                    }
+                    */
+
+                    if (insurer.Trim() == "" || insurer.Trim() == "-")
+                    {
+                        strNote += " ซึ่งรถยนต์คันดังกล่าวไม่ได้ทำประกันภัยไว้กับบริษัทใด";
+                    }
+                    else
+                    {
+                        strNote += " ซึ่งรถยนต์คันดังกล่าวได้ทำประกันไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
+                    }
+                    strNote += " ทั้งนี้ ด่านฯ " + cpointName + (point != "" ? " " + point : "") + " ได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + inform + " ไว้เป็นหลักฐานแล้ว";
+                
             }
 
-            ReportDocument rpt = new ReportDocument();
-            string cpoint_title = "ด่านฯ " + cpointName ;
-            if (report == 0)
-            {
-                cpoint_title += " "+point;
-                rpt.Load(Server.MapPath("/Claim/reportCom.rpt"));
-                doc_num = noteNumber;
-                rpt.SetParameterValue("list_com", com != "" ? com  : "");
-                rpt.SetParameterValue("name", name);
-                rpt.SetParameterValue("txt_to", noteTo);
-                rpt.SetParameterValue("note_title", title);
-                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(cpointDate));
-            }
-            else
-            {
-                rpt.Load(Server.MapPath("/Claim/reportOfficialBooks.rpt"));
-                rpt.SetParameterValue("list_doc", listDoc != "" ? listDoc : "");
-                rpt.SetParameterValue("name", "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName);
-                rpt.SetParameterValue("txt_to", noteTo1);
-                rpt.SetParameterValue("note_title", title2);
-                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(DateTitle));
-            }
-            cpoint_title += " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
-            rpt.SetParameterValue("cpoint_title", cpoint_title);
-            rpt.SetParameterValue("num_title", doc_num);
-            rpt.SetParameterValue("note_text", strNote);
+                string name = "";
+                string com = "";
+                string dev = "";
+                string listDoc = "";
+                string doc_num = "";
 
-            rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
+                string sql_com = "SELECT * FROM tbl_claim_com_working WHERE detail_com_id ='" + key + "'";
+                string sql_dev = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + key + "' AND d.device_damaged_delete = '0'";
+                int i = 1;
 
-            rpt.SetParameterValue("list_dev", dev);
+                if (report == 0)
+                {
+                    rs = function.MySqlSelect(sql_com);
+                    while (rs.Read())
+                    {
+                        if (i == 1)
+                        {
+                            name += "(" + rs.GetString("com_working_name") + ")\r\n" + rs.GetString("com_working_pos");
+                            com += "ซึ่งมีเจ้าหน้าที่ควบคุมระบบปฏิบัติหน้าที่ประจำผลัด ดังนี้\r\n                      ";
+                            com += i + ". " + rs.GetString("com_working_name");
+                        }
+                        else
+                        {
+                            com += "\r\n                      " + i + ". " + rs.GetString("com_working_name");
+                        }
+                        i++;
+                    }
+                    rs.Close();
+                    name += "\r\n\r\n\r\n";
+                    name += "(" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor") + ")";
+                    name += "\r\n" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor_pos");
+
+                    function.Close();
+
+                    i = 1;
+                    rs = function.MySqlSelect(sql_dev);
+                    while (rs.Read())
+                    {
+                        if (i == 1)
+                        {
+                            dev += "จากการตรวจสอบเบื้องต้นพบทรัพย์สินของทางราชการเสียหาย ดังนี้\r\n                      ";
+                            dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                        }
+                        else
+                        {
+                            dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                        }
+                        i++;
+                    }
+                    rs.Close();
+                    function.Close();
+                }
+                else
+                {
+                    i = 1;
+                    rs = function.MySqlSelect(sql_dev);
+                    while (rs.Read())
+                    {
+                        if (i == 1)
+                        {
+                            dev += "ความเสียหายของทรัพย์สินของทางราชการ เบื้องต้นสรุปได้ ดังนี้\r\n                      ";
+                            dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                        }
+                        else
+                        {
+                            dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                        }
+                        i++;
+                    }
+                    rs.Close();
+                    function.Close();
 
 
-            Session["Report"] = rpt;
-            Session["ReportTitle"] = "บันทึกข้อความ";
-            //Response.Redirect("/Report/reportView", true);
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
+                    string sql_doc = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + key + "' AND claim_doc_type = '1'";
+                    rs = function.MySqlSelect(sql_doc);
+                    if (rs.Read())
+                    {
+                        doc_num = rs.GetString("claim_doc_num");
+                        noteTo1 = rs.GetString("claim_doc_to");
+                        listDoc += "เอกสารประกอบการพิจารณาแนบ ดังนี้";
+                        listDoc += "\r\n                      1. บันทึกข้อความ จำนวน " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
+                        listDoc += "\r\n                      2. หนังสือยอมรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
+                        listDoc += "\r\n                      3. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
+                        listDoc += "\r\n                      4. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";
+                        listDoc += "\r\n                      5. บันทึกข้อมูลการเกิดอุบัติเหตุเบื้องต้นสำหรับการแจ้งความ จำนวน " + converNum(rs.GetString("claim_doc_no5")) + " ฉบับ";
+                        listDoc += "\r\n                      6. สำเนารายงานประจำวันเกี่ยวกับคดี จำนวน " + converNum(rs.GetString("claim_doc_no6")) + " ฉบับ";
+                        listDoc += "\r\n                      7. สำเนาบันทึกการเปรียบเทียบ จำนวน " + converNum(rs.GetString("claim_doc_no7")) + " ฉบับ";
+                        listDoc += "\r\n                      8. สำเนาใบเสร็จรับเงินค่าปรับ จำนวน " + converNum(rs.GetString("claim_doc_no8")) + " ฉบับ";
+                        listDoc += "\r\n                      9. ใบรับรองความเสียหายต่อทรัพย์สิน(ใบเคลมประกัน) จำนวน " + converNum(rs.GetString("claim_doc_no9")) + " ฉบับ";
+                        listDoc += "\r\n                      10. สำเนาบัตรประชาชน จำนวน " + converNum(rs.GetString("claim_doc_no10")) + " ฉบับ";
+                        listDoc += "\r\n                      11. สำเนาใบอนุญาตขับรถ จำนวน " + converNum(rs.GetString("claim_doc_no11")) + " ฉบับ";
+                        listDoc += "\r\n                      12. บันทึกข้อความรองผู้จัดการด่านฯ และพนักงานควบคุมระบบ จำนวน " + converNum(rs.GetString("claim_doc_no12")) + " ฉบับ";
+                        listDoc += "\r\n                      13. รูปถ่าย จำนวน " + converNum(rs.GetString("claim_doc_no13")) + " ฉบับ";
+                        title2 = rs.GetString("claim_doc_title");
+                        DateTitle = rs.GetString("claim_doc_date");
+                    }
+                    rs.Close();
+                    function.Close();
+                }
+
+                ReportDocument rpt = new ReportDocument();
+                string cpoint_title = "ด่านฯ " + cpointName;
+                if (report == 0)
+                {
+                    cpoint_title += " " + point;
+                    rpt.Load(Server.MapPath("/Claim/reportCom.rpt"));
+                    doc_num = noteNumber;
+                    rpt.SetParameterValue("list_com", com != "" ? com : "");
+                    rpt.SetParameterValue("name", name);
+                    rpt.SetParameterValue("txt_to", noteTo);
+                    rpt.SetParameterValue("note_title", title);
+                    rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(cpointDate));
+                }
+                else
+                {
+                    rpt.Load(Server.MapPath("/Claim/reportOfficialBooks.rpt"));
+                    rpt.SetParameterValue("list_doc", listDoc != "" ? listDoc : "");
+                    rpt.SetParameterValue("name", "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName);
+                    rpt.SetParameterValue("txt_to", noteTo1);
+                    rpt.SetParameterValue("note_title", title2);
+                    rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(DateTitle));
+                }
+                cpoint_title += " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+                rpt.SetParameterValue("cpoint_title", cpoint_title);
+                rpt.SetParameterValue("num_title", doc_num);
+                rpt.SetParameterValue("note_text", strNote);
+
+                rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
+
+                rpt.SetParameterValue("list_dev", dev);
+
+
+                Session["Report"] = rpt;
+                Session["ReportTitle"] = "บันทึกข้อความ";
+                //Response.Redirect("/Report/reportView", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
+            //}
         }
 
         protected void printReport1_Command(object sender, CommandEventArgs e)
