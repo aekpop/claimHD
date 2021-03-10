@@ -123,16 +123,40 @@ namespace ClaimProject
             //{
                 if(Session["User"].ToString() == "sawitree")
                 {
-                    sqlsendSearch += " WHERE Toll_EQGroup = '1' AND Toll_send = '9200' ";
+                    if (Session["ddlsearchType"].ToString() == "4")
+                    {
+                        sqlsendSearch += " WHERE (Toll_send = '7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040') ";
+                    }
+                    else
+                    {
+                        sqlsendSearch += " WHERE Toll_EQGroup = '1' AND Toll_send = '9200' ";
+                    }
                 }
                 else if (Session["User"].ToString() == "supaporn")
                 {
-                    sqlsendSearch += " WHERE Toll_EQGroup = '2' AND Toll_send = '9200' ";
+                    if(Session["ddlsearchType"].ToString() == "4")
+                    {
+                        sqlsendSearch += " WHERE (Toll_send = '7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
+                        "OR toll_send ='7061' OR toll_send = ' 7062 ' OR toll_send = ' 7063 ' OR toll_send = ' 7064') ";
+                    }
+                    else
+                    {
+                        sqlsendSearch += " WHERE Toll_EQGroup = '2' AND Toll_send = '9200' ";
+                    }
+                    
 
                 }
                 else if (Session["User"].ToString() == "watcharee")
                 {
-                    sqlsendSearch += " WHERE Toll_EQGroup = '3' AND Toll_send = '9200' ";
+                    if (Session["ddlsearchType"].ToString() == "4")
+                    {
+                        sqlsendSearch += " WHERE (Toll_send = '7071' OR toll_send = '7072' OR toll_send = '7073' OR toll_send = '7074' OR toll_send = '7075' OR toll_send = '7076' OR toll_send = '7081' OR toll_send = '7082'" +
+                        "OR toll_send ='7083' OR toll_send = ' 7084 ' OR toll_send = ' 7090 ' OR toll_send = ' 7100 ' OR toll_send = ' 7110 ' OR toll_send = ' 7120') ";
+                    }
+                    else
+                    {
+                        sqlsendSearch += " WHERE Toll_EQGroup = '3' AND Toll_send = '9200' ";
+                    }
                 }
                 else
                 {

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="งานครุภัณฑ์ / ค้นหา" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAdd.aspx.cs" Inherits="ClaimProject.equip.EquipAdd" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server" >
     <style>
         @font-face {
             font-family: 'Prompt';
