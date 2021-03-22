@@ -129,7 +129,7 @@ namespace ClaimProject
                     }
                     else
                     {
-                        sqlsendSearch += " WHERE Toll_EQGroup = '1' AND Toll_send = '9200' ";
+                        sqlsendSearch += " WHERE Toll_EQGroup IN (1,9) AND Toll_send = '9200' ";
                     }
                 }
                 else if (Session["User"].ToString() == "supaporn")
@@ -141,7 +141,7 @@ namespace ClaimProject
                     }
                     else
                     {
-                        sqlsendSearch += " WHERE Toll_EQGroup = '2' AND Toll_send = '9200' ";
+                        sqlsendSearch += " WHERE Toll_EQGroup IN (2,9) AND Toll_send = '9200' ";
                     }
                     
 
@@ -155,7 +155,7 @@ namespace ClaimProject
                     }
                     else
                     {
-                        sqlsendSearch += " WHERE Toll_EQGroup = '3' AND Toll_send = '9200' ";
+                        sqlsendSearch += " WHERE Toll_EQGroup IN (3,9) AND Toll_send = '9200' ";
                     }
                 }
                 else

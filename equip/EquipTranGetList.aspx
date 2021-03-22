@@ -137,14 +137,14 @@
                         
                         
 
-                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Font-Size ="Medium" >
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Font-Size ="Large" >
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ดู/แก้ไข" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="Larger" OnCommand="lbtntrans_Command" BackColor="#ffffff"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="X-Large" OnCommand="lbtntrans_Command" BackColor="#ffffff"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 

@@ -2158,3 +2158,5 @@ D:\Project\ClaimProject\ClaimProject\obj\Debug\ClaimProject.csproj.CoreCompileIn
 D:\Project\ClaimProject\ClaimProject\obj\Debug\ClaimProject.csproj.CopyComplete
 D:\Project\ClaimProject\ClaimProject\obj\Debug\ClaimProject.dll
 D:\Project\ClaimProject\ClaimProject\obj\Debug\ClaimProject.pdb
+D:\Project\ClaimProject\ClaimProject\obj\Debug\Interop.CrystalAnalysisCommLayerLib.dll
+D:\Project\ClaimProject\ClaimProject\obj\Debug\Interop.CrystalReportsCommonObjectModelLib.dll

@@ -256,7 +256,7 @@ namespace ClaimProject.equip
             
 
             //must join toll
-            string qrytable = "select * from tbl_transfer" +
+            string qrytable = "select trans_id,complete_name,date_send,trans_stat_name,toll_name,toll_recieve,name_send,complete_badge,complete_link from tbl_transfer" +
                             " join tbl_toll  on  tbl_toll.toll_id = tbl_transfer.toll_send" +
                             " join tbl_trans_complete on tbl_trans_complete.complete_id =  tbl_transfer.complete_stat" +
                             " join tbl_transfer_status on tbl_transfer_status.trans_stat_id = tbl_transfer.trans_stat " + tollid;
