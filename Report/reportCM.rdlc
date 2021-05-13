@@ -79,19 +79,19 @@
                   <Width>0.375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.75in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.48958in</Width>
+                  <Width>0.4375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.65625in</Width>
+                  <Width>0.52083in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.69792in</Width>
+                  <Width>1.4375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.78125in</Width>
+                  <Width>1.59375in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.88542in</Width>
@@ -908,17 +908,22 @@
               <TablixMembers>
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>DataSetCM</DataSetName>
             <Top>0.37375in</Top>
             <Left>0.2175in</Left>
             <Height>0.5in</Height>
-            <Width>9.61458in</Width>
+            <Width>8.72917in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -950,7 +955,7 @@
             </Paragraphs>
             <rd:DefaultName>Headmas</rd:DefaultName>
             <Top>0.05431in</Top>
-            <Left>4.5925in</Left>
+            <Left>3.5925in</Left>
             <Height>0.25in</Height>
             <Width>2.19792in</Width>
             <ZIndex>1</ZIndex>
@@ -968,7 +973,7 @@
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>10.5925in</Width>
+      <Width>9.29042in</Width>
       <Page>
         <PageHeight>11.69in</PageHeight>
         <PageWidth>8.27in</PageWidth>

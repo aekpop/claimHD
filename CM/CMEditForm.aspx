@@ -195,21 +195,21 @@
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">วิธีแก้ไข</label>
-                                <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control time" />
+                                <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control " />
                             </div>
                         </div>
                     
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">หมายเหตุ</label>
-                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control time" />
+                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control " />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg col-xl">
-                            <asp:CheckBox id="ckeNoservice" runat="server" AutoPostBack="false" OnCheckedChanged="ckeNoservice_CheckedChanged"/>
-                            <label class="label-on-left">ติ๊กเลือกกรณีหายเอง หรือจ.คอมฯ แก้ไขเอง และไม่ต้องแนบรูปภาพใบ Service</label>
+                            <asp:CheckBox id="ckeNoservice" runat="server" AutoPostBack="false" OnCheckedChanged="ckeNoservice_CheckedChanged" />
+                            <label class="label-on-left">เลือกกรณีหายเอง หรือจ.คอมฯ แก้ไขเอง และไม่ต้องแนบรูปภาพใบ Service</label>
                         </div>
                     </div>
                     <div class="row">
@@ -219,7 +219,7 @@
                             <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="imgService" runat="server">
                         <div class="col-lg-10 col-xl-10">
                             <br />
                             <label class="bmd-label-floating">แนบใบService </label>
@@ -305,7 +305,8 @@
         history.pushState(null, null, window.location.href);
         history.back();
         window.onpopstate = () => history.forward();
-       
+
+        
     </script>
     </div>
 </asp:Content>

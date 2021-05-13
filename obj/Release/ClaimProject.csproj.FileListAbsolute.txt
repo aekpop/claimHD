@@ -1982,3 +1982,5 @@ D:\Project\ClaimProject\ClaimProject\obj\Release\ClaimProject.csproj.CopyComplet
 D:\Project\ClaimProject\ClaimProject\obj\Release\ClaimProject.dll
 D:\Project\ClaimProject\ClaimProject\obj\Release\ClaimProject.pdb
 D:\Project\ClaimProject\ClaimProject\obj\Release\ClaimProject.XmlSerializers.dll
+D:\Project\ClaimProject\ClaimProject\obj\Release\Interop.CrystalAnalysisCommLayerLib.dll
+D:\Project\ClaimProject\ClaimProject\obj\Release\Interop.CrystalReportsCommonObjectModelLib.dll

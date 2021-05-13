@@ -76,17 +76,7 @@
                     CssClass="table table-hover table-condensed table-sm"
                     >
                     
-                    <Columns>
-                        <asp:TemplateField HeaderText="ตรวจสอบ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="70px" ItemStyle-Font-Size="Large">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!"   OnCommand="lbtntrans_Command"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
-                            <ItemTemplate>
-                                <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                    <Columns>                                 
                         <asp:TemplateField HeaderText="หมายเลขอ้างอิง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
                                 <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>' ></asp:Label>
@@ -117,8 +107,16 @@
                                 <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
-
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ItemStyle-Font-Size="x-large">
+                            <ItemTemplate>
+                                <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="รายละเอียด" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Width="70px" ItemStyle-Font-Size="x-large">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtntrans" runat="server" OnCommand="lbtntrans_Command"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#b8ecff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
                     

@@ -1,15 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="EquipNewTrans.aspx.cs" Inherits="ClaimProject.equip.EquipNewTrans" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
+
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
-        <h3 class="bg form-control"  style="font-size:30px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</h3>
+        <div class="bg form-control"  style="font-size:25px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</div>
         
         <div id="divtranFirst" class="card-body table-responsive" style="padding-top:1px" runat="server">
-           <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" Font-Size="Large" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" CssClass="" Font-Size="Medium" ></asp:Label><asp:Label runat="server" Text=" )" CssClass="" Font-Size="Medium" ></asp:Label></h3>
+           <div class="card-title alert-warning" style="font-size:16px;">ส่วนที่ 1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" ></asp:Label><asp:Label runat="server" Text=" )" ></asp:Label></div>
             <div class="row" id="divhitback" runat="server" visible="false" style="padding:1px 1px 1px 20px;height:60px"  >
                 <asp:TextBox ID="NoteHitback" BackColor="#ffffcc" BorderColor="#e1e1e1" runat="server" Width="800px"  ForeColor="Red" Font-Bold="true" Font-Size="Large"  TextMode="MultiLine"></asp:TextBox>
             </div>
@@ -61,7 +68,7 @@
             </div>
 
         <div id="divtranSecond" visible="false" class="card-body table-responsive"  runat="server">
-            <h3 class="card-title alert-warning" style="font-size:22px;">ส่วนที่2 : รายการครุภัณฑ์</h3>
+            <div class="card-title alert-warning" style="font-size:16px;">ส่วนที่ 2 : รายการครุภัณฑ์</div>
 
             <div class="row" id="divnewserial" runat="server" visible="false"   >
                 <div class="form-group bmd-form-group col-md-3"  style="padding:1px 20px 1px 20px;">
@@ -492,7 +499,7 @@
             </div>
         </div>
     </div>
-
+    </div>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>

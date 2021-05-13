@@ -274,10 +274,13 @@ namespace ClaimProject.CM
 
                                 if (ckeNoservice.Checked)
                                 {
+                                    
                                     sqlDocService = " ";
                                 }
                                 else
                                 {
+
+                                    
                                     sqlDocService = " ,cm_detail_Service_img = '" + NewFileDocNameService + "' ";
                                 }
 
@@ -432,7 +435,7 @@ namespace ClaimProject.CM
 
         protected void ckeNoservice_CheckedChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

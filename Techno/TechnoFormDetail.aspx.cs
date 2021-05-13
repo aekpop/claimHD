@@ -523,7 +523,8 @@ namespace ClaimProject.Techno
 
             string date = function.ConvertDatelongThai(function.GetSelectValue("tbl_quotations", "quotations_id='" + key + "'", "quotations_date_send"));
             string dateSet = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id='" + Session["codePK"].ToString() + "' AND detail_status_id = '2'", "detail_date_end"));
-            string note_num = "คค.060005/ฝจ./" + function.GetSelectValue("tbl_quotations", "quotations_id='" + key + "'", "quotations_note_number") + "/" + date.Split(' ')[2];
+            //string note_num = "คค.060005/ฝจ./" + function.GetSelectValue("tbl_quotations", "quotations_id='" + key + "'", "quotations_note_number") + "/" + date.Split(' ')[2];
+            string note_num = "คค.060005/ฝจ./";
             string title_name = "ขอความอนุเคราะห์ประเมินและเสนอราคางานอุบัติเหตุ";
             string send_to = "ผู้จัดการ " + function.GetSelectValue("tbl_quotations JOIN tbl_company ON company_id=quotations_company_id", "quotations_id='" + key + "'", "company_name"); ;
             string cpoint = function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON claim_cpoint = cpoint_id", "claim_id='" + Session["codePK"].ToString() + "'", "cpoint_name");

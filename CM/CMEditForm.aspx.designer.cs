@@ -238,6 +238,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.FileUpload fileImg;
         
         /// <summary>
+        /// imgService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl imgService;
+        
+        /// <summary>
         /// fileDocService control.
         /// </summary>
         /// <remarks>
