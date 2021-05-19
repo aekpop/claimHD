@@ -1245,6 +1245,7 @@
     <Content Include="equip\EquipDefault.aspx" />
     <Content Include="equip\EquipHistory.aspx" />
     <Content Include="equip\EquipLoanList.aspx" />
+    <Content Include="equip\EquipReportAll.aspx" />
     <Content Include="equip\EquipReportPage.aspx" />
     <Content Include="equip\EquipReportTran.aspx" />
     <Content Include="equip\EquipStatistics.aspx" />
@@ -1865,6 +1866,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EquipReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="equip\EquipReportAll.aspx.cs">
+      <DependentUpon>EquipReportAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equip\EquipReportAll.aspx.designer.cs">
+      <DependentUpon>EquipReportAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="equip\EquipReportPage.aspx.cs">
       <DependentUpon>EquipReportPage.aspx</DependentUpon>

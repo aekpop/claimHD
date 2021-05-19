@@ -586,7 +586,7 @@ namespace ClaimProject.Claim
                     }
                     */
                     strNote += " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
-                    " จังหวัด " + province2 + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + direction + " โดยมี" + driver2 + "" +
+                    " จังหวัด " + province2 + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + driver2 + "" +
                     " เลขที่บัตรประจำตัวประชาชน " + idcard2 + " ที่อยู่ " + address2 + (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
                     " หมายเลขโทรศัพท์ " + tel2 : " เป็นผู้ขับขี่");
                 //}
