@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <a href="Login.aspx" style="color:#ffffff">Login.aspx</a>
+    <!--<a href="Login.aspx" style="color:#ffffff">Login.aspx</a> -->
     <link rel="icon" href="favicon.ico">
 
     <title>ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS)</title>
@@ -85,6 +85,6 @@
     </div>
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
-    <script src="Scripts/bootstrap-material-design.min.js"></script>
+    <script src="Scripts/bootstrap-material-design.min.js"></script>   
 </body>
 </html>

@@ -142,7 +142,14 @@ namespace ClaimProject.equip
                         lbDateCF.Text = redf.GetString("date_recieve");
                         lbTimeCF.Text = redf.GetString("time_recieve");
                         lbNameCF.Text = redf.GetString("name_recieve");
-                        lbPositionCF.Text = redf.GetString("position_getder");
+                        if(redf.IsDBNull(20))
+                            {
+                                lbPositionCF.Text = "ไม่ระบุ";
+                            }
+                            else
+                            {
+                                lbPositionCF.Text = redf.GetString("position_getder");
+                            }                                               
                     }
                     else
                     {

@@ -139,6 +139,7 @@
                                             <a class="dropdown-item" href="/equip/EquipAdd">ค้นหา</a>
                                             <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
                                             <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
+                                                <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
     
                                         </div>
                                         </li>
@@ -152,6 +153,7 @@
                                                     <a class="dropdown-item" href="/equip/EquipAdd">ค้นหา</a>
                                                     <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
                                                     <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
+                                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
                                                         <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์</a>
                                                     <a class="dropdown-item" href="/equip/EquipCheckList">การโอนย้าย(ด่านฯ)</a>
