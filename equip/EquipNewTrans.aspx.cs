@@ -139,17 +139,23 @@ namespace ClaimProject.equip
                     if(completestatus == "3" || completestatus == "4")
                     {
                         divtranthird.Visible = true;
-                        lbDateCF.Text = redf.GetString("date_recieve");
-                        lbTimeCF.Text = redf.GetString("time_recieve");
-                        lbNameCF.Text = redf.GetString("name_recieve");
-                        if(redf.IsDBNull(20))
+                        //lbDateCF.Text = redf.GetString("date_recieve");
+                        //lbTimeCF.Text = redf.GetString("time_recieve");
+                        //lbNameCF.Text = redf.GetString("name_recieve");
+                        if(redf.IsDBNull(20) || redf.IsDBNull(8) || redf.IsDBNull(9) || redf.IsDBNull(11))
                             {
                                 lbPositionCF.Text = "ไม่ระบุ";
+                                lbDateCF.Text = "ไม่ระบุ";
+                                lbTimeCF.Text = "ไม่ระบุ";
+                                lbNameCF.Text = "ไม่ระบุ";
                             }
                             else
                             {
                                 lbPositionCF.Text = redf.GetString("position_getder");
-                            }                                               
+                                lbDateCF.Text = redf.GetString("date_recieve");
+                                lbTimeCF.Text = redf.GetString("time_recieve");
+                                lbNameCF.Text = redf.GetString("name_recieve");
+                            }
                     }
                     else
                     {
@@ -1866,7 +1872,7 @@ namespace ClaimProject.equip
             }
             else if(actionNum == "1")
             {
-                repairStat = "NotRepair"; EStatus = "2"; tranCom = "1"; repairAct = "1";
+                repairStat = "NotRepair"; EStatus = "2"; tranCom = "0"; repairAct = "1";
             }
             else
             {
