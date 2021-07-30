@@ -199,7 +199,12 @@
                                 <ItemTemplate>
                                     <asp:Label ID="lbStatus" runat="server" Font-Size="16px"></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>      
+                            </asp:TemplateField>
+                                <asp:TemplateField HeaderText="ผู้รับผิดชอบ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbResponsible" runat="server" Font-Size="16px"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             </Columns>
                            <PagerStyle HorizontalAlign="Center" CssClass="GridPager"  ForeColor="#ef8a00" />
                 </asp:GridView>         

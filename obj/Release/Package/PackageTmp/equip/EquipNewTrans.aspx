@@ -5,13 +5,15 @@
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
+        
     </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-    <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
+        
+    <div class="card" style="font-size: 19px; z-index: 0;" runat="server" >
 
         <div class="bg form-control"  style="font-size:25px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</div>
         
@@ -499,7 +501,10 @@
             </div>
         </div>
     </div>
+        
     </div>
+    
+    
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -558,6 +563,8 @@
                 return confirm(msg);
             }
         }
+
+       
        
     </script>
 </asp:Content>
