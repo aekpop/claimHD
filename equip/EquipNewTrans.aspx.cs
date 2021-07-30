@@ -1257,7 +1257,8 @@ namespace ClaimProject.equip
                 {
                     if (function.MySqlQuery(SQLFirst))
                     {
-                        Session["LineTran"] = "ระบบได้รับข้อมูล " + ddlTypeEQQ.SelectedItem + "ครุภัณฑ์ \n เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + " ";
+                        Session["LineTran"] = " \n" + ddlTypeEQQ.SelectedItem + " \n วันที่ : " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "" +
+                            "\n ผู้บันทึก : " + txtSender.Text ;
                         Response.Redirect("/equip/EquipTranList");
                         // SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                         // serviceLine.MessageToServer("wDLRWPWgBvJRMEk69ebQVGumxOfiTKCgXoUwKeKPQyh", "ระบบได้รับข้อมูลแจ้งการ"+ ddlTypeEQQ.SelectedItem+ "ครุภัณฑ์  " +

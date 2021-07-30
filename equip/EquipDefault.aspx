@@ -7,7 +7,6 @@
         }
     </style>
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-   
         <br />
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
@@ -29,13 +28,13 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะครุภัณฑ์
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะครุภัณฑ์
                                         
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
-                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
+                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
                               </div>
                            </div> 
                          <div class="row">
@@ -77,12 +76,12 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (สำเร็จ)      
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย       
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
-                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
+                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
                               </div>
                            </div> 
                          <div class="row">
@@ -125,7 +124,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย (สำเร็จ)</div>
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะโอนย้าย </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
@@ -190,13 +189,13 @@
                                 <div class="card-icon ">
                                     <i class="fas fa-plus"></i>
                                 </div>
-                                <h4 class="card-category" style="font-size:32px;">แจ้งใหม่</h4>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">แจ้งใหม่</div>
+                                <div class="card-title">
                                 
                                     <asp:Label ID="lbnew" runat="server"   Text=""></asp:Label>/
                                 
                                     <asp:Label ID="lbnew1" runat="server"  Text=""></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -214,13 +213,13 @@
                                 <div class="card-icon ">
                                     <i class="fas fa-receipt"></i>
                                 </div>
-                                <h4 class="card-category" style="font-size:32px;">รับใหม่</h4>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">รับใหม่</div>
+                                <div class="card-title">
                                 
                                     <asp:Label ID="lbreceive" runat="server"  ForeColor="Black" Text=""></asp:Label>
                                     /
                                     <asp:Label ID="lbreceive2" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -238,12 +237,12 @@
                                 <div class="card-icon" >
                                     <i class="fa fa-wrench"></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">ซ่อม</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">ซ่อม</div>
+                                <div class="card-title">
                                     <asp:Label ID="lbRepair" runat="server" ForeColor="Black" Text=""></asp:Label>
                                      / 
                                     <asp:Label ID="lbRepair2" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -260,12 +259,12 @@
                                 <div class="card-icon">
                                     <i class="fas fa-align-justify" ></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">ยืม</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">ยืม</div>
+                                <div class="card-title">
                                     <asp:Label ID="lbrent" runat="server" ForeColor="Black" ></asp:Label>
                                      /
                                     <asp:Label ID="lbrentamount" runat="server" ForeColor="Black" ></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -284,13 +283,13 @@
                                 <div class="card-icon ">
                                     <i class="fas fa-exchange-alt"></i>
                                 </div>
-                                <h4 class="card-category" style="font-size:32px;">โอนย้าย</h4>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">โอนย้าย</div>
+                                <div class="card-title">
                                 
                                     <asp:Label ID="lbTran" runat="server"  ForeColor="Black" Text=""></asp:Label>
                                      /
                                     <asp:Label ID="lbTran2" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -310,12 +309,12 @@
                                 <div class="card-icon">
                                     <i class="fas fa-people-carry" ></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">ส่งคืน</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">ส่งคืน</div>
+                                <div class="card-title">
                                     <asp:Label ID="Label2" runat="server" ForeColor="Black" ></asp:Label>
                                     /
                                     <asp:Label ID="Label3" runat="server" ForeColor="Black" ></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -334,12 +333,12 @@
                                 <div class="card-icon">
                                     <i class="fas fa-luggage-cart"></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">ส่งคืนกองฯ</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">ส่งคืนกองฯ</div>
+                                <div class="card-title">
                                     <asp:Label ID="lbSendHead" runat="server" ForeColor="Black" Text=""></asp:Label>
                                      /
                                     <asp:Label ID="lbSendHead2" runat="server" ForeColor="Black" Text=""></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -358,12 +357,12 @@
                                 <div class="card-icon">
                                     <i class="fas fa-sync" ></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">ทดแทน</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">ทดแทน</div>
+                                <div class="card-title">
                                     <asp:Label ID="lbCopy" runat="server" ForeColor="Black" ></asp:Label>
                                      /
                                     <asp:Label ID="lbCopy2" runat="server" ForeColor="Black" ></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -380,12 +379,12 @@
                                 <div class="card-icon" >
                                     <i class="fas fa-truck-loading"></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">แทงจำหน่าย</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">แทงจำหน่าย</div>
+                                <div class="card-title">
                                     <asp:Label ID="lbSell" runat="server" ForeColor="Black" ></asp:Label>
                                      /
                                     <asp:Label ID="lbSell2" runat="server" ForeColor="Black" ></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -403,12 +402,12 @@
                                 <div class="card-icon">
                                     <i class="fas fa-align-justify" ></i>
                                 </div>
-                                <h5 class="card-category" style="font-size:32px;">รายการส่งออกทั้งหมด</h5>
-                                <h4 class="card-title">
+                                <div class="card-category" style="font-size:32px;">รายการส่งออกทั้งหมด</div>
+                                <div class="card-title">
                                     <asp:Label ID="lbTotal" runat="server" ForeColor="Black" ></asp:Label>
                                      /
                                     <asp:Label ID="lbTotal2" runat="server" ForeColor="Black" ></asp:Label>
-                                </h4>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -479,9 +478,6 @@
             $('#myModal').modal('show');
             }   
         </script>
-
-
-
-
      </div>
+    
 </asp:Content>

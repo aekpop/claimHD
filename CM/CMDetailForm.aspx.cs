@@ -224,17 +224,17 @@ namespace ClaimProject.CM
                             {
                                 if (rs.GetString("drive_group_id") == "2" )
                                 {
-                                    Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
+                                    Session["LineTran"] = "\n แจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @ " + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
                                 }
                                 else
                                 {
-                                    Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
+                                    Session["LineTran"] = "\n แจ้งซ่อม : ด่านฯ  " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ " + txtSDate.Text + " @ " + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
                                     LineTran();
                                 }
                             }
                             else
                             {
-                                Session["LineTran"] = "ระบบได้รับข้อมูล แจ้งซ่อม \nจากด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + " ช่องทาง " + ddlChanel.SelectedItem + " \nวันที่ " + txtSDate.Text + " เวลา " + txtSTime.Text + " น. \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nอาการชำรุด : " + txtProblem.Text + " ";
+                                Session["LineTran"] = "\n แจ้งซ่อม : ด่านฯ  " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ " + txtSDate.Text + " @ " + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
                                 LineTran();
                             }
                                 

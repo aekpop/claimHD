@@ -111,11 +111,6 @@
                     <div class="col-md text-center">
                         <asp:LinkButton ID="btnSaveCM" runat="server" Visible="true" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click" >
                              แจ้งซ่อม</asp:LinkButton>
-                        <div id="Loading" class="d-flex justify-content-center" runat="server" visible="false">
-                              <div class="spinner-border" role="status">
-                                <span class="sr-only">Loading...</span>
-                              </div>
-                            </div>
                         <asp:LinkButton ID="btnEditCM" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แก้ไขแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnEditCM_Click">แก้ไข</asp:LinkButton>
                         <asp:LinkButton ID="btnCancelCM" runat="server" Font-Size="20px" CssClass="btn btn-dark btn-sm" OnClick="btnCancelCM_Click">ยกเลิก</asp:LinkButton>
                         <asp:LinkButton ID="btnDeleteCM" runat="server" Font-Size="20px" CssClass="btn btn-danger btn-sm" OnClientClick="return CompareConfirm('ยืนยัน ลบข้อมูลการแจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnDeleteCM_Click">ลบ</asp:LinkButton>
@@ -318,7 +313,6 @@
             demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
         <% } %>
         });
-
 
     </script>
 </asp:Content>

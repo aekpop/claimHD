@@ -79,7 +79,7 @@ namespace ClaimProject
                             nav3.Visible = false;
                             equipDiv.Visible = true;
                             nav0.Visible = false;
-                            nav1.Visible = false;
+                            nav1.Visible = true;
                             Li2.Visible = false;
                             Li1.Visible = false;
                             searchEn.Visible = false;

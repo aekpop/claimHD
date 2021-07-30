@@ -69,7 +69,8 @@ namespace ClaimProject.User.Add
             {
                 try
                 {
-                    ((LinkButton)e.Row.Cells[5].Controls[0]).OnClientClick = "return confirm('ต้องการลบข้อมูลใช่หรือไม่');";
+                    ((LinkButton)e.Row.Cells[5].Controls[0]).OnClientClick = "return confirm('ต้องการแก้ไขข้อมูล ใช่หรือไม่');";
+                    ((LinkButton)e.Row.Cells[6].Controls[0]).OnClientClick = "return confirm('ต้องการลบข้อมูล ใช่หรือไม่');";
                 }
                 catch { }
             }

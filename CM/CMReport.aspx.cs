@@ -140,7 +140,7 @@ namespace ClaimProject.CM
                     }
                 }
             }
-            sql += "SELECT* FROM tbl_cm_detail cm " +
+            sql += "SELECT * FROM tbl_cm_detail cm " +
             " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
             " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
             " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
