@@ -305,17 +305,17 @@ namespace ClaimProject.CM
                                         {
                                             if (rs.GetString("drive_group_id") == "2")
                                             {
-                                                Session["LineTran"] = "\n แจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง " + lbsDate.Text + " @ " + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                                Session["LineTran"] = "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                             }
                                             else
                                             {
-                                                Session["LineTran"] = "\n แจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง " + lbsDate.Text + " @ " + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                                Session["LineTran"] = "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                                 LineTran();
                                             }
                                         }
                                         else
                                         {
-                                            Session["LineTran"] = "\n แจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง " + lbsDate.Text + " @ " + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                            Session["LineTran"] = "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                             LineTran();
                                         }
                                     }
