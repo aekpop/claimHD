@@ -8,7 +8,7 @@
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0">
             <div class="card-header card-header-warning">
-                <h3 class="card-title">รายการแก้ไขอุปกรณ์</h3>
+                <div class="card-title">ตรวจสอบรายการแก้ไขอุปกรณ์จากทางด่านฯ</div>
             </div>
             <div class="card-body table-responsive table-sm" >
                 <asp:Panel ID="Panel1" runat="server" >
@@ -110,7 +110,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อมอุปกรณ์ CM</h5>
+                    <div class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อมอุปกรณ์ CM</div>
                         <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

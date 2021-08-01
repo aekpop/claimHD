@@ -48,6 +48,7 @@ namespace ClaimProject.CM
                 txtCMStatus.Items.Insert(1, new ListItem("รอการแก้ไข", "0"));
                 txtCMStatus.Items.Insert(2, new ListItem("รอการตรวจสอบ", "1"));
                 txtCMStatus.Items.Insert(3, new ListItem("ใช้งานได้ปกติ", "2"));
+                txtCMStatus.Items.Insert(4, new ListItem("แก้ไขเบื้องต้น", "3"));
 
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
@@ -144,6 +145,7 @@ namespace ClaimProject.CM
             " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
             " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
             " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id " +
+            " JOIN tbl_drive_group dg ON d.davice_group = dg.drive_group_id " +
             " JOIN tbl_cm_status ss ON cm.cm_detail_status_id = ss.cm_stat_id ";
 
             if (checkBudget != "")
@@ -160,8 +162,11 @@ namespace ClaimProject.CM
                         }
                         else
                         {
-                            sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
-                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
+                                sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), " +
+                                       "cm.cm_detail_stime, cm_detail_status_id ASC";
+                                
                         }
                     }
                     else
@@ -174,12 +179,12 @@ namespace ClaimProject.CM
                         }
                         else
                         {
-                            sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
+                                sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                                                           
                         }
                     }
-
-
                 }
                 else
                 {
@@ -192,9 +197,11 @@ namespace ClaimProject.CM
                     }
                     else
                     {
-                        sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                       " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
-                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        
+                            sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                                   " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
+                                   " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        
                     }
                 }
             }
@@ -212,8 +219,10 @@ namespace ClaimProject.CM
                         }
                         else
                         {
-                            sql += " Where d.`davice_delete` = 0 " + consta + " " +
-                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
+                                sql += " Where d.`davice_delete` = 0 " + consta + " " +
+                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
                         }
                     }
                     else
@@ -226,8 +235,10 @@ namespace ClaimProject.CM
                         }
                         else
                         {
-                            sql += " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
+                                sql += " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
                         }
                     }
 
@@ -245,8 +256,11 @@ namespace ClaimProject.CM
                         }
                         else
                         {
-                            sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
+                            
+                                sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
                            " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
+                            
                         }
                     }
                     else
@@ -260,9 +274,11 @@ namespace ClaimProject.CM
                         }
                         else
                         {
-                            sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
-                           " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            
+                                sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
+                                        " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
+                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                             
                         }
                     }
 
@@ -355,14 +371,21 @@ namespace ClaimProject.CM
                 if (lbStatus.Text == "รอการแก้ไข")
                 {
                     lbStatus.CssClass = "badge badge-danger";
+                    lbStatus.Text = "แจ้งซ่อม";
                 }
                 else if (lbStatus.Text == "รอการตรวจสอบ")
                 {
                     lbStatus.CssClass = "badge badge-warning";
+                    lbStatus.Text = "ตรวจสอบ";
+                }
+                else if (lbStatus.Text == "แก้ไขเบื้องต้น")
+                {
+                    lbStatus.CssClass = "badge badge-info";
                 }
                 else if (lbStatus.Text == "ใช้งานได้ปกติ")
                 {
                     lbStatus.CssClass = "badge badge-success";
+                    lbStatus.Text = "ซ่อมแล้ว";
                 }
 
             }
@@ -382,7 +405,7 @@ namespace ClaimProject.CM
                 if (!DataBinder.Eval(e.Row.DataItem, "cm_detail_etime").Equals(DBNull.Value))
                 {
                     btnTimeEditCM.Text = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_etime");
-                    if (btnTimeEditCM.Text != "") { btnTimeEditCM.Text += " น."; }
+                    if (btnTimeEditCM.Text != "") { btnTimeEditCM.Text += ""; }
                 }
             }
 
@@ -437,7 +460,7 @@ namespace ClaimProject.CM
             if (lbDeviceName != null)
             {
                 lbDeviceName.CommandName = DataBinder.Eval(e.Row.DataItem, "cm_detail_id").ToString();
-                //lbDeviceName.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
+                lbDeviceName.Text = function.ShortTextCom(DataBinder.Eval(e.Row.DataItem, "device_name").ToString());
                 //lbDeviceName.ToolTip = DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
             }
 
@@ -610,6 +633,22 @@ namespace ClaimProject.CM
             ImgEditEQ.ImageUrl = "~" + imgS;
             ImgEditEQE.ImageUrl = "~" + imgE;
             ImgImageDocSer.ImageUrl = "~" + imgSer;
+            if (rt.GetString("cm_detail_status_id") == "0")
+            {
+                lbStatusRecheck.ForeColor = Color.DarkRed;
+            }
+            else if(rt.GetString("cm_detail_status_id") == "1")
+            {
+                lbStatusRecheck.ForeColor = Color.DarkOrange;
+            }
+            else if (rt.GetString("cm_detail_status_id") == "2")
+            {
+                lbStatusRecheck.ForeColor = Color.DarkGreen;
+            }
+            else if (rt.GetString("cm_detail_status_id") == "3")
+            {
+                lbStatusRecheck.ForeColor = Color.LightSkyBlue;
+            }
             lbStatusRecheck.Text = function.GetStatusCM(rt.GetString("cm_detail_status_id").ToString());
             lbrefRecheck.Text = rt.GetString("cm_detail_id");
             lbCpointRecheck.Text = rt.GetString("cpoint_name");

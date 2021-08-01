@@ -211,7 +211,24 @@ namespace ClaimProject.CM
 
         protected void lbtnStatusUpdateModal_Command(object sender, CommandEventArgs e)
         {
-            string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '2' WHERE cm_detail_id = '" + pkeq.Text + "'";
+            string sql = "";
+            string Chknoservice = "SELECT cm_detail_id,cm_detail_Chknoservice FROM tbl_cm_detail WHERE cm_detail_id = '" + pkeq.Text + "'";
+            MySqlDataReader rt = function.MySqlSelect(Chknoservice);
+            if (rt.Read())
+            {
+                string Chk = rt.GetString("cm_detail_Chknoservice");
+                if (Chk == "1")
+                {
+                     sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '3' WHERE cm_detail_id = '" + pkeq.Text + "'";
+                }
+                else
+                {
+                     sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '2' WHERE cm_detail_id = '" + pkeq.Text + "'";
+                }
+            }
+            rt.Close();
+
+            /*string sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '2' WHERE cm_detail_id = '" + pkeq.Text + "'";*/
             if (function.MySqlQuery(sql))
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);

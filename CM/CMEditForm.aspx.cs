@@ -257,6 +257,7 @@ namespace ClaimProject.CM
                     String NewFileDocName = "";
                     String NewFileDocNameService = "";
                     string sqlDocService = "";
+                    string Noservice = "";
                     if (txtMethod.Text != "" )
                     {
                         if (fileImg.HasFile  || fileDocService.HasFile)
@@ -274,13 +275,12 @@ namespace ClaimProject.CM
 
                                 if (ckeNoservice.Checked)
                                 {
-                                    
+                                    Noservice = "1";
                                     sqlDocService = " ";
                                 }
                                 else
                                 {
-
-                                    
+                                    Noservice = "0";
                                     sqlDocService = " ,cm_detail_Service_img = '" + NewFileDocNameService + "' ";
                                 }
 
@@ -292,7 +292,8 @@ namespace ClaimProject.CM
                                 string sql = "UPDATE tbl_cm_detail SET cm_detail_edate = '" + txtEDate.Text + "', " +
                                     "cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', " +
                                     "cm_detail_status_id = '1',cm_detail_eimg = '" + NewFileDocName + "',cm_detail_method = '" + txtMethod.Text + "', " +
-                                    "cm_detail_ejdate = '"+ txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '"+ txtEJTime.Text.Trim() + "' , cm_user_endjob = '"+ Session["UserName"].ToString() + "' " + sqlDocService + " "+
+                                    "cm_detail_ejdate = '"+ txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '"+ txtEJTime.Text.Trim() + "' , cm_user_endjob = '"+ Session["UserName"].ToString() + "' " + sqlDocService + " ," +
+                                    "cm_detail_Chknoservice = '"+ Noservice + "' "+
                                     "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
 
                                 if (function.MySqlQuery(sql))

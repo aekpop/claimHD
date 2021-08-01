@@ -21,9 +21,9 @@ namespace ClaimProject.Config
         //ClaimConnection conn = new ClaimConnection();
         public MySqlConnection conn;
         //charset=tis620
-        //string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         //string strConnString = "Server=192.168.101.91;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
-        string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        //string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         public string icons = "";
         public string alerts = "";
         public string alertTypes = "";
@@ -634,7 +634,9 @@ namespace ClaimProject.Config
             {
                 case "0": return "รอการแก้ไข"; 
                 case "1": return "รอการตรวจสอบ"; 
-                case "2": return "ใช้งานได้ปกติ"; 
+                case "2": return "ใช้งานได้ปกติ";
+                case "3": return "แก้ไขเบื้องต้น";
+                case "9": return "ลบแล้ว";
                 default: return "";
             }
         }

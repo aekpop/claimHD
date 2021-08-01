@@ -299,6 +299,8 @@ namespace ClaimProject.Report {
             
             private global::System.Data.DataColumn columncm_stat_name;
             
+            private global::System.Data.DataColumn columndrive_group_agency;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DataTable1DataTable() {
@@ -414,6 +416,14 @@ namespace ClaimProject.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn drive_group_agencyColumn {
+                get {
+                    return this.columndrive_group_agency;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace ClaimProject.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string cpoint_name, string locate_name, string device_name, string cm_detail_problem, string cm_detail_sdate, string cm_detail_stime, string cm_detail_edate, string cm_detail_etime, string cm_point, string cm_stat_name) {
+            public DataTable1Row AddDataTable1Row(string cpoint_name, string locate_name, string device_name, string cm_detail_problem, string cm_detail_sdate, string cm_detail_stime, string cm_detail_edate, string cm_detail_etime, string cm_point, string cm_stat_name, string drive_group_agency) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cpoint_name,
@@ -461,7 +471,8 @@ namespace ClaimProject.Report {
                         cm_detail_edate,
                         cm_detail_etime,
                         cm_point,
-                        cm_stat_name};
+                        cm_stat_name,
+                        drive_group_agency};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -494,6 +505,7 @@ namespace ClaimProject.Report {
                 this.columncm_detail_etime = base.Columns["cm_detail_etime"];
                 this.columncm_point = base.Columns["cm_point"];
                 this.columncm_stat_name = base.Columns["cm_stat_name"];
+                this.columndrive_group_agency = base.Columns["drive_group_agency"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace ClaimProject.Report {
                 base.Columns.Add(this.columncm_point);
                 this.columncm_stat_name = new global::System.Data.DataColumn("cm_stat_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncm_stat_name);
+                this.columndrive_group_agency = new global::System.Data.DataColumn("drive_group_agency", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndrive_group_agency);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -821,6 +835,22 @@ namespace ClaimProject.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string drive_group_agency {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.drive_group_agencyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'drive_group_agency\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.drive_group_agencyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Iscpoint_nameNull() {
                 return this.IsNull(this.tableDataTable1.cpoint_nameColumn);
             }
@@ -937,6 +967,18 @@ namespace ClaimProject.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setcm_stat_nameNull() {
                 this[this.tableDataTable1.cm_stat_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isdrive_group_agencyNull() {
+                return this.IsNull(this.tableDataTable1.drive_group_agencyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setdrive_group_agencyNull() {
+                this[this.tableDataTable1.drive_group_agencyColumn] = global::System.Convert.DBNull;
             }
         }
         

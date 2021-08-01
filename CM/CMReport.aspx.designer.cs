@@ -127,16 +127,7 @@ namespace ClaimProject.CM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckAllDay;
-        
-        /// <summary>
-        /// lbCheckAllDay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCheckAllDay;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox CheckAllDay;
         
         /// <summary>
         /// lbDayS control.

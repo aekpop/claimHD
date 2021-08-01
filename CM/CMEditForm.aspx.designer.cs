@@ -226,7 +226,7 @@ namespace ClaimProject.CM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ckeNoservice;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox ckeNoservice;
         
         /// <summary>
         /// fileImg control.
