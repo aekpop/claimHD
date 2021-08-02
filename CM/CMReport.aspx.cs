@@ -604,7 +604,7 @@ namespace ClaimProject.CM
                             }
                     
                     }
-                    else if(Chk == "2")
+                    else if(Chk == "2" || Chk == "3")
                     {
                         if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                         {

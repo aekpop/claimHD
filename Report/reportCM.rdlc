@@ -61,6 +61,18 @@
           <DataField>drive_group_agency</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="cm_detail_ejdate">
+          <DataField>cm_detail_ejdate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cm_detail_ejtime">
+          <DataField>cm_detail_ejtime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cm_detail_method">
+          <DataField>cm_detail_method</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsCM</rd:DataSetName>
@@ -83,31 +95,37 @@
                   <Width>0.375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.75in</Width>
+                  <Width>0.62158in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.4375in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.52083in</Width>
+                  <Width>0.49229in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.4375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.59375in</Width>
+                  <Width>1.38542in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.88542in</Width>
+                  <Width>1.10417in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.44792in</Width>
+                  <Width>0.78553in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.89583in</Width>
+                  <Width>0.46219in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.51042in</Width>
+                  <Width>0.85731in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.47417in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.76741in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.4375in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.875in</Width>
@@ -132,7 +150,7 @@
                                   <Value>#</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -168,7 +186,7 @@
                                   <Value>ด่านฯ</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -178,42 +196,6 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox3</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>Orange</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox5">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>อาคาร</Value>
-                                  <Style>
-                                    <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -240,11 +222,13 @@
                                   <Value>ช่องทาง</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -274,7 +258,7 @@
                                   <Value>รายการอุปกรณ์</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -307,10 +291,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>อาการชำรุด</Value>
+                                  <Value>รายละเอียดความผิดปกติ</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -336,6 +320,42 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox14">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>วิธีแก้ไข</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Orange</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox13">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -343,10 +363,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>วันแจ้งซ่อม</Value>
+                                  <Value>วันที่แจ้ง</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -382,7 +402,7 @@
                                   <Value>เวลา</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -408,6 +428,78 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>วันที่เข้าแก้ไข</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Orange</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>เวลา</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Orange</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox17">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -415,10 +507,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>วันแก้ไข</Value>
+                                  <Value>วันที่แก้ไขเสร็จ</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -454,7 +546,7 @@
                                   <Value>เวลา</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -490,7 +582,7 @@
                                   <Value>สถานะ</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -526,7 +618,7 @@
                                   <Value>ผู้รับผิดชอบ</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -567,7 +659,6 @@
                                   <Value>=RunningValue(CountDistinct("Tablix1"),Count,"Tablix1")</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -599,10 +690,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cpoint_name.Value</Value>
+                                  <Value>=Fields!cpoint_name.Value &amp; " " &amp; Fields!cm_point.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -610,39 +700,6 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>cpoint_name</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="cm_point">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!cm_point.Value</Value>
-                                  <Style>
-                                    <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>cm_point</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -668,7 +725,6 @@
                                   <Value>=Fields!locate_name.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -701,7 +757,6 @@
                                   <Value>=Fields!device_name.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -734,7 +789,6 @@
                                   <Value>=Fields!cm_detail_problem.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -742,6 +796,40 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>cm_detail_problem</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="cm_detail_method">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!cm_detail_method.Value</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>cm_detail_method</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -767,7 +855,6 @@
                                   <Value>=Fields!cm_detail_sdate.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -802,7 +889,6 @@
                                   <Value>=Fields!cm_detail_stime.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -837,7 +923,6 @@
                                   <Value>=Fields!cm_detail_edate.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -872,7 +957,6 @@
                                   <Value>=Fields!cm_detail_etime.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -882,6 +966,74 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>cm_detail_etime</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="cm_detail_ejdate">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!cm_detail_ejdate.Value</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>cm_detail_ejdate</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="cm_detail_ejtime">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!cm_detail_ejtime.Value</Value>
+                                  <Style>
+                                    <FontFamily>TH SarabunPSK</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>cm_detail_ejtime</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -907,11 +1059,12 @@
                                   <Value>=Fields!cm_stat_name.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>cm_stat_name</rd:DefaultName>
@@ -940,11 +1093,12 @@
                                   <Value>=Fields!drive_group_agency.Value</Value>
                                   <Style>
                                     <FontFamily>TH SarabunPSK</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>drive_group_agency</rd:DefaultName>
@@ -979,6 +1133,8 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -997,10 +1153,10 @@
             <FixedColumnHeaders>true</FixedColumnHeaders>
             <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>DataSetCM</DataSetName>
-            <Top>0.37375in</Top>
+            <Top>0.54042in</Top>
             <Left>0.2175in</Left>
             <Height>0.5in</Height>
-            <Width>9.72917in</Width>
+            <Width>11.07506in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1031,8 +1187,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Headmas</rd:DefaultName>
-            <Top>0.05431in</Top>
-            <Left>3.5925in</Left>
+            <Left>5.36333in</Left>
             <Height>0.25in</Height>
             <Width>2.19792in</Width>
             <ZIndex>1</ZIndex>
@@ -1050,7 +1205,7 @@
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>9.94667in</Width>
+      <Width>12.405in</Width>
       <Page>
         <PageHeight>11.69in</PageHeight>
         <PageWidth>8.27in</PageWidth>

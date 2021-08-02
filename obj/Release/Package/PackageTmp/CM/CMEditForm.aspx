@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- CSS only -->
     <link href="../Content/form-design-new.css" rel="stylesheet" />
+    <link href="../Content/CM.css" rel="stylesheet" />
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
          <!-- Menu Dropdown -->        
@@ -207,10 +208,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg col-xl">
-                            <asp:CheckBox id="ckeNoservice" runat="server" AutoPostBack="false" OnCheckedChanged="ckeNoservice_CheckedChanged" />
-                            <label class="label-on-left">เลือกกรณีหายเอง หรือจ.คอมฯ แก้ไขเอง และไม่ต้องแนบรูปภาพใบ Service</label>
-                        </div>
+                         <div class="col-lg col-xl">
+                              <label class="container">เลือกกรณีหายเอง หรือจ.คอมฯ แก้ไขเบื้องต้น และไม่ต้องแนบรูปภาพใบ Service
+                                  <input type="checkbox" id="ckeNoservice" name="ckeNoservice" runat="server" />
+                                  <span class="checkmark"></span>
+                              </label>                                     
+                          </div>
+                       
                     </div>
                     <div class="row">
                         <div class="col-lg-10 col-xl-10">

@@ -12,6 +12,7 @@
     
     <!-- CSS only -->
     <link href="../Content/form-design-new.css" rel="stylesheet" />
+    <link href="../Content/CM.css" rel="stylesheet" />
 
     <!-- JS, Popper.js, and jQuery -->    
     <script src="../Scripts/jquery-3.5.1.js"></script>
@@ -82,12 +83,13 @@
                                         </div>                                        
                         </div>                        
                         <div class="row">
-                                        
                                         <div class =" col-md-4 ">
                                               <div class="form-group bmd-form-group">
                                              <div class="label-on-left" >วันเวลาแจ้งซ่อม</div>
-                                            <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" OnCheckedChanged="CheckAllDay_CheckedChanged" CssClass="checkbox-danger"/>
-                                            <asp:Label Id ="lbCheckAllDay" runat="server" Text="เลือกทั้งหมด" ></asp:Label> 
+                                            <label class="container">เลือกทั้งหมด
+                                                  <input type="checkbox" checked="checked" id="CheckAllDay" name="CheckAllDay" runat="server" />
+                                                  <span class="checkmark"></span>
+                                              </label>                              
                                                   </div>
                                         </div>
                                         
@@ -160,24 +162,24 @@
                                             <asp:Label ID="lbChannel" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="350px" HeaderStyle-Width="250px">
+                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="230px" HeaderStyle-Width="230px">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' OnCommand="lbDeviceName_Command"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="350px" HeaderStyle-Width="250px">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="230px" HeaderStyle-Width="230px">
                                 <ItemTemplate>
                                    <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันแจ้งซ่อม" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
+                            <asp:TemplateField HeaderText="วันที่แจ้ง" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
+                                    <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="วันแก้ไข" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
@@ -202,7 +204,7 @@
                             </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ผู้รับผิดชอบ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbResponsible" runat="server" Font-Size="16px"></asp:Label>
+                                    <asp:Label ID="lbResponsible" runat="server" Font-Size="16px" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.drive_group_agency").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             </Columns>
@@ -246,7 +248,7 @@
                             <div class="row" >
                                 <div class="col-xl">
                                     <div class="form-group bmd-form-group">       
-                                        <span class = "label label-primary">สถานะ. </span>
+                                        <span class = "label label-primary">สถานะ : </span>
                                            <asp:Label ID="lbStatusRecheck" Enabled="false" runat="server"></asp:Label>
                                     </div>
                                 </div>
