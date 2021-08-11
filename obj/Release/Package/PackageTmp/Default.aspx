@@ -5,15 +5,17 @@
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="row">
-                <div class="col-md-2 text-right">
-                    <asp:Label ID="Label1" runat="server" Text="ปีงบประมาณ : "></asp:Label>
+                
+                <div class="btn-group">
+                    <div class="rol-md-4 ">
+                        <button type="button" class="btn btn-warning" >
+                            ปีงบประมาณ
+                            </button>
+                        </div>
+                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="btn btn-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
+                                     </asp:DropDownList>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </div>
-            </div>
-
             <br />
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">

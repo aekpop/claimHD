@@ -87,7 +87,7 @@
                                               <div class="form-group bmd-form-group">
                                              <div class="label-on-left" >วันเวลาแจ้งซ่อม</div>
                                             <label class="container">เลือกทั้งหมด
-                                                  <input type="checkbox" checked="checked" id="CheckAllDay" name="CheckAllDay" runat="server" />
+                                                  <input type="checkbox"  id="CheckAllDay" name="CheckAllDay" runat="server" />
                                                   <span class="checkmark"></span>
                                               </label>                              
                                                   </div>
@@ -122,11 +122,8 @@
                         </div>
                 </div> 
            </div>
-   
                    <asp:Label ID="lbCMNull" runat="server" Text=""></asp:Label>
-                   
-                                        
-
+    
                    <asp:Panel ID="Panel1" runat="server" >
                        <asp:GridView ID="GridView1" runat="server"
                            HeaderStyle-BackColor="#ffffff"
@@ -211,6 +208,7 @@
                            <PagerStyle HorizontalAlign="Center" CssClass="GridPager"  ForeColor="#ef8a00" />
                 </asp:GridView>         
             </asp:Panel>
+            </div>
           <!------------------------------------------------------------------------------------------------------------>
     <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" ">
         <div class="modal-dialog modal-xl" role="document">
@@ -375,7 +373,6 @@
         </div>
     </div>
 
-        </div>
     <!------------------------------------------------------------------------------------------------------------>                  
                    
 

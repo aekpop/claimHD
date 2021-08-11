@@ -112,6 +112,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
         
         /// <summary>
+        /// lbdateShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbdateShow;
+        
+        /// <summary>
         /// lbCMStatDay control.
         /// </summary>
         /// <remarks>
@@ -130,13 +139,13 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbFixBack;
         
         /// <summary>
-        /// lbCMNameMonthly control.
+        /// ddlCMNameMonthly control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCMNameMonthly;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCMNameMonthly;
         
         /// <summary>
         /// lbCMStatMonthly control.

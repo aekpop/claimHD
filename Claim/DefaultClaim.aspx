@@ -139,7 +139,7 @@
                 
         </div>
         <div class="row">
-            <div id="chartClaim" runat="server" visible="false" class="col-xl-6 col-md-6 mb-4">
+            <div id="chartClaim" runat="server" visible="true" class="col-xl-6 col-md-6 mb-4">
                   <div class="card border-left-warning shadow h-70 py-2">
                       <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -162,13 +162,13 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะปัจจุบัน
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะปัจจุบัน
                                         
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                               <div class="col-auto">
-                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-danger"></i>
+                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
                               </div>
                            </div> 
                          <div class="row">

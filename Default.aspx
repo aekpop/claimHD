@@ -2,37 +2,36 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="Content/Claim.css" rel="stylesheet" />
-    <asp:UpdatePanel runat="server">
+
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
+        <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="row">
-                <div class="col-md-2 text-right">
-                    <asp:Label ID="Label1" runat="server" Text="ปีงบประมาณ : "></asp:Label>
+                
+                <div class="btn-group">
+                    <div class="rol-md-4 ">
+                        <button type="button" class="btn btn-warning" >
+                            ปีงบประมาณ
+                            </button>
+                              </div>
+                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="btn btn-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
+                           </asp:DropDownList>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </div>
-            </div>
-
             <br />
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
+                <!--<div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
                     <div class="card card-stats">
                         <div class="card-header card-header-danger card-header-icon">
                             <div class="card-icon">
                                 <i class="fas fa-car-crash"></i>
                             </div>
                             <h4 class="card-category">แจ้งอุบัติเหตุ</h4>
-                            <h4 class="card-title">
-                                <asp:Label ID="lbAlert" runat="server" Text="Label"></asp:Label>
-                            </h4>
+                            <h1 class="card-title">
+                                
+                            </h1>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="fa fa-th-list"></i>&nbsp
-                        <asp:LinkButton ID="btnDetailAlert" runat="server" OnClick="btnDetailAlert_Click">รายละเอียด</asp:LinkButton>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div2">
@@ -42,19 +41,19 @@
                                 <i class="fas fa-file-export"></i>
                             </div>
                             <h4 class="card-category">ส่งเรื่องเข้ากองฯ</h4>
-                            <h4 class="card-title">
-                                <asp:Label ID="lbSend" runat="server" Text="Label"></asp:Label>
-                            </h4>
+                            <h1 class="card-title">
+                                
+                            </h1>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="fa fa-th-list"></i>&nbsp
-                        <asp:LinkButton ID="btnSendto" runat="server" OnClick="btnSendto_Click">รายละเอียด</asp:LinkButton>
+                        
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div1">
                     <div class="card card-stats">
                         <div class="card-header card-header-warning card-header-icon">
@@ -62,19 +61,19 @@
                                 <i class="fa fa-clipboard"></i>
                             </div>
                             <h4 class="card-category">ขอใบเสนอราคา</h4>
-                            <h4 class="card-title">
-                                <asp:Label ID="lbQuote" runat="server" Text="Label"></asp:Label>
-                            </h4>
+                            <h1 class="card-title">
+                                
+                            </h1>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="fa fa-th-list"></i>&nbsp
-                        <asp:LinkButton ID="btnDetailQute" runat="server" OnClick="btnDetailQute_Click">รายละเอียด</asp:LinkButton>
+                        
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
 
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div4">
                     <div class="card card-stats">
@@ -83,18 +82,19 @@
                                 <i class="fa fa-wrench"></i>
                             </div>
                             <h4 class="card-category">อยู่ระหว่างการซ่อม</h4>
-                            <h4 class="card-title">
-                                <asp:Label ID="lbRepair" runat="server" Text="Label"></asp:Label>
-                            </h4>
+                            <h1 class="card-title">
+                               
+                            </h1>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="fa fa-th-list"></i>&nbsp
-                        <asp:LinkButton ID="btnWait" runat="server" OnClick="btnWait_Click">รายละเอียด</asp:LinkButton>
+                        
                             </div>
                         </div>
                     </div>
                 </div>
+                    
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div5">
                     <div class="card card-stats">
                         <div class="card-header card-header-success card-header-icon">
@@ -102,37 +102,189 @@
                                 <i class="far fa-folder-open"></i>
                             </div>
                             <h4 class="card-category">ส่งงาน/เสร็จสิ้น</h4>
-                            <h4 class="card-title">
-                                <asp:Label ID="lbSuccess" runat="server" Text="Label"></asp:Label>
-                            </h4>
+                            <h1 class="card-title">
+                                
+                            </h1>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="fa fa-th-list"></i>&nbsp
-                        <asp:LinkButton ID="btnSuccessJob" runat="server" OnClick="btnSuccessJob_Click">รายละเอียด</asp:LinkButton>
+                        
                             </div>
                         </div>
                     </div>
                 </div>
+                    
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div3">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-primary card-header-icon">
-                            <div class="card-icon">
+                    <div class="card card-stats" >
+                        <div class="card-header card-header-rose card-header-icon" >
+                            <div class="card-icon" >
                                 <i class="fa fa-car"></i>
                             </div>
                             <h4 class="card-category">รายงานเพื่อทราบ</h4>
-                            <h4 class="card-title">
-                                <asp:Label ID="lbReport" runat="server" Text="Label"></asp:Label>
-                            </h4>
+                            <h1 class="card-title">
+                               
+                            </h1>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="fa fa-th-list"></i>&nbsp
-                        <asp:LinkButton ID="btnReport" runat="server" OnClick="btnReport_Click">รายละเอียด</asp:LinkButton>
+                                <i class="fa fa-th-list" ></i>&nbsp
+                       
                             </div>
                         </div>
                     </div>
                 </div>
+                    -->
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-car-crash"></i></div>
+                            <div class="mb-4">
+                                <div class="card-category mb-0">แจ้งอุบัติเหตุ</div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                     <div class="card-title">
+                                        <div class="d-flex align-items-center mb-0 ">
+                                            <asp:Label ID="lbAlert" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>                           
+                        </div>
+                         <div class="card-footer">
+                            <div class="stats">
+                                    <asp:LinkButton ID="btnDetailAlert" runat="server" CssClass="text-white-50" OnClick="btnDetailAlert_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-file-export"></i></div>
+                            <div class="mb-4">
+                                <div class="card-category mb-0">ส่งเอกสาร</div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                     <div class="card-title">
+                                        <div class="d-flex align-items-center mb-0 ">
+                                            <asp:Label ID="lbSend" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>                           
+                        </div>
+                         <div class="card-footer">
+                            <div class="stats">
+                                    <asp:LinkButton ID="btnSendto" runat="server" CssClass="text-white-50" OnClick="btnSendto_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-orange">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-clipboard"></i></div>
+                            <div class="mb-4">
+                                <div class="card-category mb-0">ใบเสนอราคา</div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                     <div class="card-title">
+                                        <div class="d-flex align-items-center mb-0 ">
+                                            <asp:Label ID="lbQuote" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>                           
+                        </div>
+                         <div class="card-footer">
+                            <div class="stats">
+                                    <asp:LinkButton ID="btnDetailQute" runat="server" CssClass="text-white-50" OnClick="btnDetailQute_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-green">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-wrench""></i></div>
+                            <div class="mb-4">
+                                <div class="card-category mb-0">ดำเนินการซ่อม</div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                     <div class="card-title">
+                                        <div class="d-flex align-items-center mb-0 ">
+                                             <asp:Label ID="lbRepair" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>                           
+                        </div>
+                         <div class="card-footer">
+                            <div class="stats">
+                                    <asp:LinkButton ID="btnWait" runat="server" CssClass="text-white-50" OnClick="btnWait_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-green-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-folder-open"></i></div>
+                            <div class="mb-4">
+                                <div class="card-category mb-0">ส่งงาน/เสร็จสิ้น</div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                     <div class="card-title">
+                                        <div class="d-flex align-items-center mb-0 ">
+                                            <asp:Label ID="lbSuccess" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>                           
+                        </div>
+                         <div class="card-footer">
+                            <div class="stats">
+                                    <asp:LinkButton ID="btnSuccessJob" runat="server" CssClass="text-white-50" OnClick="btnSuccessJob_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-blue-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-car"></i></div>
+                            <div class="mb-4">
+                                <div class="card-category mb-0">รายงานเพื่อทราบ</div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                     <div class="card-title">
+                                        <div class="d-flex align-items-center mb-0 ">
+                                            <asp:Label ID="lbReport" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>                           
+                        </div>
+                         <div class="card-footer">
+                            <div class="stats">
+                                    <asp:LinkButton ID="btnReport" runat="server" CssClass="text-white-50" OnClick="btnReport_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div6">
@@ -160,6 +312,7 @@
                 </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+    </div>
     <script type="text/javascript">
         function CompareConfirm(msg) {
             var str1 = "1";

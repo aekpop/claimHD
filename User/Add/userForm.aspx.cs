@@ -28,7 +28,10 @@ namespace ClaimProject.User.Add
                 function.getListItem(ddlCpoint, "SELECT cpoint_id,cpoint_name FROM tbl_cpoint order by cpoint_id ASC", "cpoint_name", "cpoint_id");
                 ddlCpoint.Items.Insert(0, new ListItem("เลือกด่านฯ", ""));
             }
+
+            TextBox1.Attributes.Add("onkeypress", "return controlEnter('" + btnSearch.ClientID + "', event)");
         }
+
 
         void BindData()
         {

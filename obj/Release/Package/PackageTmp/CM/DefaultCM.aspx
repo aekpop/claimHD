@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="row" >
-        <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div6">
+        <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12" runat="server" id="Div6">
             <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                     <div class="card-icon">
@@ -134,7 +134,9 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">วันนี้</div>                         
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                              <asp:Label ID="lbdateShow" runat="server" Font-Bold="true" CssClass="text-danger"></asp:Label>
+                          </div>                         
                         </div>
                               <div class="col-auto">
                                   <i class="fas fa-clock fa-2x text-gray-300 text-danger"></i>
@@ -143,7 +145,7 @@
                                 <div class="col-auto">
                                         <asp:Label ID="lbCMStatDay" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                                 </div>                        
-                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                                             <div class="col-xl text-right">
                                                 <asp:Label ID="lbFixBack" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                                         </div>  
@@ -156,18 +158,21 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">เดือน
-                              <asp:Label ID="lbCMNameMonthly" runat="server" ></asp:Label>   
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                             <!-- เดือน-->
+                            <span class="sr-only">Toggle Dropdown</span>
+                               <asp:DropDownList ID="ddlCMNameMonthly" runat="server" AutoPostBack="true" CssClass="border-white text-warning dropdown-toggle dropdown-toggle-split" ></asp:DropDownList>    
                           </div>
                         </div>
                               <div class="col-auto">
                                   <i class="fas fa-calendar text-warning fa-2x text-gray-300"></i>
+                                  
                               </div>
                            </div> 
                          <div class="col-auto">
                               <asp:Label ID="lbCMStatMonthly" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                           </div>
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                                             <div class="col-xl text-right">
                                                 <asp:Label ID="lbFixbackMonth" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                                         </div>  
@@ -193,7 +198,7 @@
                         <div class="col-auto">
                          <asp:Label ID="lbCMStatBudget" runat="server" Font-Bold="true" CssClass="text-gray " Font-Size="XX-Large"></asp:Label>
                     </div>
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                                             <div class="col-xl text-right">
                                                 <asp:Label ID="lbFixbackyear" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                                         </div> 
@@ -206,7 +211,9 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ทั้งหมด</div>     
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                              <div class="font-weight-bold" >ทั้งหมด</div>
+                          </div>     
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-history fa-2x text-gray-300 text-info"></i>
@@ -218,7 +225,7 @@
                         <div class="col-auto">
                          <asp:Label ID="Label1" runat="server" Font-Bold="true" CssClass="text-gray " Font-Size="XX-Large"></asp:Label>
                     </div>
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1 text-right">เข้าแก้ไข</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                                             <div class="col-xl text-right">
                                                 <asp:Label ID="lbFixbackOverall" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                                         </div> 
@@ -345,7 +352,7 @@
          function refresh() {
                  window.location.reload(true);
          }
-                 setTimeout(refresh, 30000);
+                 setTimeout(refresh, 300000);
         
         history.pushState(null, null, window.location.href);
         history.back();

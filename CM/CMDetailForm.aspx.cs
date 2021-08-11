@@ -74,6 +74,7 @@ namespace ClaimProject.CM
                         txtDeviceAdd.SelectedValue = rs.GetString("cm_detail_driver_id");
                         txtProblem.Text = rs.GetString("cm_detail_problem");
                         //txtNote.Text = rs.GetString("cm_detail_note");
+                        lbNameFileImg.ImageUrl = rs.GetString("cm_detail_simg");
                     }
                     rs.Close();
                     function.Close();
@@ -149,7 +150,7 @@ namespace ClaimProject.CM
             if(fileImg.HasFile)
             {
                 string typeFile = fileImg.FileName.Split('.')[fileImg.FileName.Split('.').Length - 1];
-                if(typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
                 {
                     NewFileDocName = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileImg.FileName.Split('.')[0];
                     NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
@@ -296,7 +297,7 @@ namespace ClaimProject.CM
             {
                 lbRowNum.Text = (CMGridView.Rows.Count + 1).ToString() + ".";
             }
-
+   
         }
 
         protected void btnEdit_Command(object sender, CommandEventArgs e)
@@ -310,7 +311,7 @@ namespace ClaimProject.CM
             if (rttt.Read())
             {
                 string imgg = rttt.GetString("cm_detail_simg");
-                lbNameFileImg.Text = imgg;
+                //lbNameFileImg.Text = imgg;
             }
             rttt.Close();
             function.Close();

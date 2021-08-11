@@ -52,11 +52,11 @@ namespace ClaimProject
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
-                label.Text = rs.GetString("count_num") + " รายการ";
+                label.Text = rs.GetString("count_num");
             }
             else
             {
-                label.Text = "0 รายการ";
+                label.Text = "0";
             }
             rs.Close();
             function.Close();
