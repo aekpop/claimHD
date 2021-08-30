@@ -4,6 +4,8 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
+
     <div class="card">
             <div class="card-header card-header-warning">
                 <div class="card-title">เพิ่มผู้ใช้งาน</div>
@@ -60,10 +62,10 @@
                     <div class="card-body table-responsive">
                         <div class="row">
                             <div class="col-md-3">
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
-                            <div class="col-md-1">
-                                <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark btn-sm" OnClick="btnSearch_Click"><i class="fa fa-search"></i></asp:LinkButton>
+                            <div class="col-md-1" runat="server" visible="true">
+                               <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-white " OnClick="btnSearch_Click"></asp:LinkButton>
                             </div>
                         </div>
                         <br />
@@ -81,9 +83,9 @@
                             AllowPaging="true"
                             PageSize="50"
                             OnPageIndexChanging="UserGridView_PageIndexChanging"
-                            PagerSettings-Mode="NumericFirstLast" HeaderStyle-Font-Bold="true">
+                            PagerSettings-Mode="NumericFirstLast" HeaderStyle-Font-Bold="true" HeaderStyle-Height="70">
                             <Columns>
-                                <asp:TemplateField HeaderText="Username">
+                                <asp:TemplateField HeaderText="Username" >
                                     <ItemTemplate>
                                         <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.username") %>'></asp:Label>
                                     </ItemTemplate>
@@ -92,7 +94,7 @@
                                         <asp:TextBox ID="txtEUser" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.username") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Password">
+                                <asp:TemplateField HeaderText="Password" >
                                 <ItemTemplate>
                                         <asp:Label ID="lbPass" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.password") %>'></asp:Label>
                                     </ItemTemplate>
@@ -105,7 +107,7 @@
                                         <asp:TextBox ID="txtEName" size="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="สิทธ์การใช้งาน">
+                                <asp:TemplateField HeaderText="สิทธ์การใช้งาน" >
                                     <ItemTemplate>
                                         <asp:Label ID="lbPrivilege" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().GetLevel(int.Parse(DataBinder.Eval(Container, "DataItem.level").ToString())) %>'></asp:Label>
                                     </ItemTemplate>
@@ -113,7 +115,7 @@
                                         <asp:DropDownList ID="txtEPrivilege" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ด่านฯ">
+                                <asp:TemplateField HeaderText="ด่านฯ" >
                                     <ItemTemplate>
                                         <asp:Label ID="lbCpoint" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name").ToString() %>'></asp:Label>
                                     </ItemTemplate>
@@ -121,8 +123,9 @@
                                         <asp:DropDownList ID="ddlCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="ตกลง" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
-                                <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="btn btn-outline-danger btn-sm fa" ControlStyle-Font-Size="Small" />
+
+                                <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="ตกลง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
+                                <asp:CommandField ShowDeleteButton="True" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="btn btn-outline-danger btn-sm fa " ControlStyle-Font-Size="Small" />
                             </Columns>
                             <PagerStyle HorizontalAlign="Center" CssClass="GridPager" />
                         </asp:GridView>
@@ -134,9 +137,39 @@
                     </div>
                 </div>
             </div>
+       </div>
+       
         </ContentTemplate>
     </asp:UpdatePanel>
+        </div>
     <script type="text/javascript">
+        
+
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        function controlEnter(obj, event) {
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;  
+            if (keyCode == 13)
+            {   
+               // __doPostBack(obj, '');
+               document.getElementById(obj).click();
+                   return false;      
+             }      
+             else  {
+                   return true; 
+            } 
+        }
+
         function CompareConfirm(msg) {
             var str1 = "1";
             var str2 = "2";
@@ -150,17 +183,6 @@
             }
         }
 
-        function handleEnter (field, event) {
-		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
-            if (keyCode == 13) {
-                
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }     
 
     </script>
 </asp:Content>

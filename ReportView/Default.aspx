@@ -10,15 +10,12 @@
 
     <div class="card" style="z-index: 0">
         <div class="card-header card-header-warning">
-            <h3 class="card-title">ตารางรายงานแสดงข้อมูลทางสถิติ</h3>
+            <div class="card-title">แสดงข้อมูลอุบัติเหตุทางสถิติ</div>
         </div>
-
         <hr />
-
         <div class="card-body table-responsive">
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-
                     <div runat="server">
                     <div id="headdiv" runat="server" >
                         <div class="row">
@@ -32,7 +29,6 @@
                                     <asp:RadioButton ID="rbtDuration" runat="server" Text="&nbspช่วงวันที่" GroupName="G1" AutoPostBack="True" OnCheckedChanged="rbtDuration_CheckedChanged" />
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="row">
@@ -76,26 +72,23 @@
                    </div>
 
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="form-group bmd-form-group">
                                     <label class="bmd-label-floating"></label>
-                                    <asp:Button ID="btnResult" runat="server" Text="แสดงผลลัพธ์" Visible="false" Width="80%" OnClick="btnResult_Click" class="btn btn-danger" />
+                                    <asp:Button ID="btnResult" runat="server" Text="ตกลง" Visible="false" Width="100%" OnClick="btnResult_Click" CssClass="btn btn-danger " />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="form-group bmd-form-group">
                                     <label class="bmd-label-floating"></label>
-                                    <asp:Button ID="btnNewSearch" runat="server" Text="ค้นหาใหม่" Visible="false" Width="80%" OnClick="btnNewSearch_Click" class="btn btn-primary" />
+                                    <asp:Button ID="btnNewSearch" runat="server" Text="ย้อนกลับ" Visible="false" Width="100%" OnClick="btnNewSearch_Click" class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>
-                            <asp:Label ID="chkday" runat="server" Text="" ></asp:Label>
-                        
+                            <asp:Label ID="chkday" runat="server" Text="" ></asp:Label> 
            </div>
-
                     <br />
-                    <hr />
-                    
+                    <hr />   
     <div class="row">
                     <div class="col">
                         <h3>
@@ -148,9 +141,7 @@
                                    <asp:ChartArea Name="ChartArea1"  >
                                    </asp:ChartArea>
                                </ChartAreas>
-
-                              </asp:Chart>
-                              
+                              </asp:Chart>                             
                         </div>
 
     </div>
@@ -190,12 +181,7 @@
 
       </div>
                     <hr />
-
-
-
-                        <h3>
-                            <asp:Label ID="lbTable2" runat="server" Text="" Visible="false"></asp:Label></h3>
-
+                        <h3><asp:Label ID="lbTable2" runat="server" Text="" Visible="false"></asp:Label></h3>
                     </div>
 
                     <asp:GridView
@@ -473,20 +459,17 @@
                         <SortedDescendingHeaderStyle BackColor="#820000" />
                     </asp:GridView>
                     
+                   
                 </ContentTemplate>
             </asp:UpdatePanel>
-
         </div>
-
-
     </div>
 
 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
-
-
+    
 
 
 

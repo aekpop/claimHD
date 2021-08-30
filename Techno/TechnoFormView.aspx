@@ -16,7 +16,7 @@
                             <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark btn-sm fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
                         </div>
                     </div>
-                    <hr />
+                    <br />
                     <asp:GridView ID="ClaimGridView" runat="server"
                         DataKeyNames="claim_id"
                         GridLines="None"

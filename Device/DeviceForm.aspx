@@ -11,7 +11,7 @@
             <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control"></asp:DropDownList>
         </div>
         <div class="col-md-3">
-            ระยะเวลาในการเข้าซ่อม/ชั่วโมง (CM) : 
+            เวลาเข้าซ่อม : 
             <asp:TextBox ID="txtSchedule" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
     </div>
@@ -66,12 +66,28 @@
                                         <asp:DropDownList ID="txtEDeviceGroup" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ระยะเวลาในการเข้าซ่อม/ชั่วโมง (CM)">
+                                <asp:TemplateField HeaderText="เวลาเข้าซ่อม">
                                     <ItemTemplate>
                                         <asp:Label ID="lbDeviceSchedule" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txtEDeviceSchedule" size="3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="สัญญา โครงการอ้างอิง">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbDeviceref" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_ref_Project") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="txtDeviceref" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container, "DataItem.device_ref_Project") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="ราคาอ้างอิง">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbDevicePrice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_ref_Price") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="txtDevicePrice" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container, "DataItem.device_ref_Price") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />

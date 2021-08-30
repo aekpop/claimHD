@@ -1291,6 +1291,9 @@
     <Content Include="Report\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Report\report.aspx" />
     <Content Include="Report\reportCM.aspx" />
+    <Content Include="Report\reportMonthlyClaim.aspx" />
+    <Content Include="Report\reportQuantationCostapp.aspx" />
+    <Content Include="Report\reportShowCost.aspx" />
     <Content Include="Report\reportView.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -1467,6 +1470,17 @@
     </None>
     <Content Include="Report\dsEquipTran.xss">
       <DependentUpon>dsEquipTran.xsd</DependentUpon>
+    </Content>
+    <Content Include="Report\dsQuan.xsc">
+      <DependentUpon>dsQuan.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsQuan.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsQuan.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Report\dsQuan.xss">
+      <DependentUpon>dsQuan.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -2109,6 +2123,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEquipTran.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\dsQuan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsQuan.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\report.aspx.cs">
       <DependentUpon>report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2122,6 +2141,27 @@
     </Compile>
     <Compile Include="Report\reportCM.aspx.designer.cs">
       <DependentUpon>reportCM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportMonthlyClaim.aspx.cs">
+      <DependentUpon>reportMonthlyClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\reportMonthlyClaim.aspx.designer.cs">
+      <DependentUpon>reportMonthlyClaim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportQuantationCostapp.aspx.cs">
+      <DependentUpon>reportQuantationCostapp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\reportQuantationCostapp.aspx.designer.cs">
+      <DependentUpon>reportQuantationCostapp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportShowCost.aspx.cs">
+      <DependentUpon>reportShowCost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\reportShowCost.aspx.designer.cs">
+      <DependentUpon>reportShowCost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\reportView.aspx.cs">
       <DependentUpon>reportView.aspx</DependentUpon>
@@ -2276,8 +2316,11 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PMAdmin.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportMonthlyClaim.rdlc" />
     <EmbeddedResource Include="Report\reportCM.rdlc" />
+    <EmbeddedResource Include="Report\reportCostAppraisal.rdlc" />
     <EmbeddedResource Include="Report\reportEquipTran.rdlc" />
+    <EmbeddedResource Include="Report\reportShowCost.rdlc" />
     <EmbeddedResource Include="Techno\Quotations.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Quotations.cs</LastGenOutput>

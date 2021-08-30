@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="รายละเอียดอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TechnoFormDetail.aspx.cs" Inherits="ClaimProject.Techno.TechnoFormDetail" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">    
+    <style>
+        #ddlCom {
+        display: none;
+    }
+    </style>
     <div class="card" style="font-size:21px; font-family:'TH SarabunPSK'">
         <div class="card-header card-header-warning">
             <div class="col-md-2">
@@ -248,9 +253,16 @@
                             GridLines="None"
                             OnRowDataBound="QuotaGridView_RowDataBound"
                             AutoGenerateColumns="False"
-                            CssClass="table table-hover table-sm"
-                            HeaderStyle-Font-Bold="true">
+                            CssClass="table table-bordered table-sm"
+                            HeaderStyle-Font-Bold="true"
+                            HeaderStyle-HorizontalAlign="Center"
+                            RowStyle-HorizontalAlign="Center">
                             <Columns>
+                                <asp:TemplateField HeaderText="ที่มา">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbRefer" runat="server" ></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ชื่อบริษัท">
                                     <ItemTemplate>
                                         <asp:Label ID="lbCompany" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.company_name") %>'></asp:Label>
@@ -270,6 +282,7 @@
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnPrint" CssClass="text-info fa" runat="server" Font-Size="Larger" OnCommand="btnPrint_Command" ToolTip="ตัวจริง">&#xf02f;</asp:LinkButton>
                                         <asp:LinkButton ID="btnPrint2" CssClass="text-dark fa" runat="server" Font-Size="Larger" OnCommand="btnPrint2_Command" ToolTip="สำเนา">&#xf02f;</asp:LinkButton>
+                                        <asp:LinkButton ID="btnQuatation" CssClass="text-danger fa" runat="server" Font-Size="Larger" OnCommand="btnQuatation_Command" ToolTip="ตารางราคากลาง">&#xf02f;</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ลงรับใบเสนอราคา" ControlStyle-CssClass="text-center text-warning fa">
@@ -277,7 +290,7 @@
                                         <asp:LinkButton ID="btnEdit" runat="server" Font-Size="Larger" OnCommand="btnEdit_Command">&#xf044;</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ราคาที่บริษัทเสนอ">
+                                <asp:TemplateField HeaderText="ราคา">
                                     <ItemTemplate>
                                         <asp:Label ID="lbPrice" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_company_price") %>'></asp:Label>
                                     </ItemTemplate>
@@ -464,41 +477,52 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">ขอใบเสนอราคา</h4>
+                    <h4 class="modal-title">ใบเสนอราคา</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="row" >
-                        <div class="col-md-3 text-right">แหล่งที่มาราคา : </div>
-                          <div class="col-md">
-                                    <asp:DropDownList ID="ddlSelectQua" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
-                                </div>      
+                    <div class="row" >                 
+                          <div class="col-md">    
+                                <asp:DropDownList id="ddlSelectQua" runat="server" name="form_select" onchange="showDiv('ddlCom', this)" class="btn btn-warning dropdown-toggle dropdown-toggle-split">
+                                   
+                                </asp:DropDownList>
+                           </div>  
                     </div>
                     <br />
                     <asp:UpdatePanel runat="server" ID="SelectQua1" >
                         <ContentTemplate>
-                            <div class="row">
-                                <div class="col-md-3 text-right">ชื่อบริษัท : </div>
+                            <div id="ddlCom" >
+                                <div class="row">
+                                    <div class="col-md-3 text-right">ชื่อบริษัท : </div>
+                                        <div class="col-md">
+                                            <asp:DropDownList ID="txtCompany" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
+                                        </div>
+                                </div>                              
+                            </div>
+                            <br />
+                            <div class="row" id="ddlDevi" >
+                                <div class="col-md-3 text-right">ชื่ออุปกรณ์ : </div>
                                 <div class="col-md">
-                                    <asp:DropDownList ID="txtCompany" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlDevice" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <div class="col-md-3 text-right">เลขที่หนังสือ : </div>
-                                <div class="col-md">
-                                    <asp:TextBox ID="txtNoteNumber" runat="server" CssClass="form-control col-md-4" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                                <div class="col-md-3">
+                                    <asp:TextBox ID="txtNoteNumber" runat="server" CssClass="form-control " onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                 </div>
                                                       
                                     <div class="col-md-3 text-right">วันที่ : </div>
-                                    <div class="col-md">
-                                        <asp:TextBox ID="txtDateQuotations" runat="server" CssClass="form-control datepicker col-md-8" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                                    <div class="col-md-3">
+                                        <asp:TextBox ID="txtDateQuotations" runat="server" CssClass="form-control datepicker " onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </div>
                            </div>
-                            <div>
+                             <br />
+                            
                                 <div class="row">
                                     <div class="col-md text-center">
-                                        <asp:Button ID="btnSaveQuotations" runat="server" Font-Size="20px" CssClass="btn btn-warning btn-sm" Text="ส่งเสนอราคา" OnClick="btnSaveQuotations_Click" />
+                                        <asp:Button ID="btnSaveQuotations" runat="server" CssClass="btn btn-warning btn-sm text-lg-center" Text="เสนอราคา" Font-Size="Larger" OnClick="btnSaveQuotations_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -515,9 +539,9 @@
                                 OnRowDeleting="QuotationsGridView_RowDeleting"
                                 HeaderStyle-Font-Bold="true">
                                 <Columns>
-                                    <asp:TemplateField HeaderText="ชื่อบริษัท">
+                                    <asp:TemplateField HeaderText="ชื่อบริษัท/สัญญา" ControlStyle-Width="230px">
                                         <ItemTemplate>
-                                            <asp:Label ID="lbCompany" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.company_name") %>'></asp:Label>
+                                            <asp:Label ID="lbCompany" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.company_name")+" / "+DataBinder.Eval(Container, "DataItem.device_ref_Project")) %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="เลขที่หนังสือ">
@@ -528,6 +552,11 @@
                                             <asp:TextBox ID="txtENote" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_note_number") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="ราคา">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbPriceQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_company_price") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                     <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="แก้ไข" ControlStyle-Font-Size="Small" ControlStyle-CssClass="fa" />
                                     <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa" ControlStyle-Font-Size="Small" />
                                 </Columns>
@@ -711,6 +740,72 @@
         </div>
     </div>
     <!-- End ส่งงานเสร็จสิ้น -->
+
+     <!-- Start พิมพ์ตารางราคากลาง -->
+    <div class="modal" id="tableQuotationsModel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ตารางราคากลาง
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                          <div class="col-md-3 text-right">ช่องทางที่ : </div>
+                                <div class="col-md">
+                                        <asp:TextBox ID="txtProject" runat="server" CssClass="form-control col-md" ToolTip="EX01 (บางพลีมุ่งหน้าบางปะอิน) ด่านฯ ทับช้าง 1"></asp:TextBox>
+                                </div>
+                            </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3 text-right">ประธานกรรมการ : </div>
+                        <div class="col-md-3">
+                            <asp:TextBox ID="txtPerson1" runat="server" CssClass="form-control col-md" ></asp:TextBox>
+                        </div>
+                        <div class="col-md-2 text-right">ตำแหน่ง : </div>
+                        <div class="col-md-4">
+                            <asp:DropDownList ID="ddlPosition1" runat="server" CssClass="form-control col-md" ></asp:DropDownList>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3 text-right">กรรมการ : </div>
+                        <div class="col-md-3">
+                            <asp:TextBox ID="txtPerson2" runat="server" CssClass="form-control col-md" ></asp:TextBox>
+                        </div>
+                        <div class="col-md-2 text-right">ตำแหน่ง : </div>
+                        <div class="col-md-4">
+                            <asp:DropDownList ID="ddlPosition2" runat="server" CssClass="form-control col-md" ></asp:DropDownList>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3 text-right">กรรมการและเลขานุการ : </div>
+                        <div class="col-md-3">
+                            <asp:TextBox ID="txtPerson3" runat="server" CssClass="form-control col-md" ></asp:TextBox>
+                        </div>
+                        <div class="col-md-2 text-right">ตำแหน่ง : </div>
+                        <div class="col-md-4">
+                            <asp:DropDownList ID="ddlPosition3" runat="server" CssClass="form-control col-md" ></asp:DropDownList>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md text-center">
+                            <asp:Button ID="btnTblQuan" runat="server"  CssClass="btn btn-warning btn-md" Text="ตารางราคากลาง" OnCommand="btnTblQuan_Command" />
+                        </div>
+                        <div class="col-md text-center">
+                            <asp:Button ID="btnShowCost" runat="server"  CssClass="btn btn-info btn-md" Text="ตารางแสดงวงเงิน" OnCommand="btnShowCost_Command" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End พิมพ์ตารางราคากลาง -->
+
     <script type="text/javascript">
         function CompareConfirm(msg) {
             var str1 = "1";
@@ -735,6 +830,13 @@
             {
                 return true;
             }
+        }
+
+        function showDiv(divId, element)
+        {
+            {
+                 document.getElementById(divId).style.display = element.value == 1 ?'block' : 'none';
+            }  
         }
     
 

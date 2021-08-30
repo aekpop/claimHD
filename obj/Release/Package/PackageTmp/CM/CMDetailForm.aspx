@@ -9,6 +9,7 @@
     <script src="../Scripts/printThis.js"></script>
     <!-- CSS only -->
     <link href="/Content/form-design-new.css" rel="stylesheet" />
+    <link href="../Content/CM.css" rel="stylesheet" />
     <!-- JS, Popper.js, and jQuery -->    
     <script src="../Scripts/jquery-3.5.1.js"></script>
     <script src="../Scripts/umd/popper.min.js"></script>
@@ -96,13 +97,20 @@
                            <p class="bmd-label-floating">แนบรูปภาพ</p>
                            <div class="col" runat="server" id="diveditpic">
                                 <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
-                               <asp:Label ID="lbNameFileImg" runat="server" CssClass="text text-dark" />
+                               
                             </div>
+                          
                          <div class="col-md-1">
                                  <asp:Label ID="pkeq" runat="server" visible="true" Font-Size="Smaller" ></asp:Label>
                           </div>
                         </div>
                      </div>
+                           <div class="col-2">
+                                <div class="form-group bmd-form-group">
+                                    <p class="bmd-label-floating">รูปภาพเดิม</p>
+                               <asp:Image ID="lbNameFileImg" runat="server" CssClass="img-thumbnail" />
+                                    </div>
+                           </div>
                 </div>
                 <br >
                 <hr />

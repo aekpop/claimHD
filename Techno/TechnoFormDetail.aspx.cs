@@ -47,11 +47,15 @@ namespace ClaimProject.Techno
                     PageLoadData();
                     string sql = "SELECT * FROM tbl_company ORDER BY company_name";
                     function.getListItem(txtCompany, sql, "company_name", "company_id");
+                    string sqldevice = "SELECT * FROM tbl_device WHERE davice_group = '9' ORDER BY device_name";
+                    function.getListItem(ddlDevice, sqldevice, "device_name", "device_id");
                     //lbTitle.Text = Session["codePK"].ToString();
                     sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_delete = '0'";
                     function.getListItem(txtCompanyOrder, sql, "company_name", "company_id");
                     function.GetListQuantations(ddlSelectQua, 0);
-                    
+                    function.GetList(ddlPosition1, "PosList");
+                    function.GetList(ddlPosition2, "PosList");
+                    function.GetList(ddlPosition3, "PosList");
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 2)
@@ -320,9 +324,24 @@ namespace ClaimProject.Techno
 
         protected void btnSaveQuotations_Click(object sender, EventArgs e)
         {
+            double price = 0;
+
+            //string Prj = txtProject.Text;
+            //Session.Add("HeadmesProject", Prj );
+
             if (txtDateQuotations.Text.Trim() != "")
-            {       
-            string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','0','" + txtNoteNumber.Text + "','0','" + txtDateQuotations.Text.Trim() + "','0','0','0','0')";
+            {
+                if(ddlSelectQua.SelectedIndex == 0)
+                {
+                    string sqlprice = "SELECT * FROM tbl_device WHERE device_id = '"+ ddlDevice.SelectedValue + "' ";
+                    MySqlDataReader rs = function.MySqlSelect(sqlprice);
+                    if(rs.Read())
+                    {
+                         price = rs.GetDouble("device_ref_Price");
+                        //rs.Close();
+                    }
+                }
+            string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img,quotations_refer,quotations_device_id) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','" + price + "','" + txtNoteNumber.Text + "','0','" + txtDateQuotations.Text.Trim() + "','0','0','0','0','"+ ddlSelectQua.SelectedIndex +"','"+ ddlDevice.SelectedValue + "')";
             //string script = "";
             if (function.MySqlQuery(sql))
             {
@@ -354,12 +373,12 @@ namespace ClaimProject.Techno
             {
                 //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาใส่วันที่')", true);
-            }
+            }       
         }
 
         void BindConpaney()
         {
-            string sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
+            string sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id LEFT JOIN tbl_device d ON q.quotations_device_id = d.device_id WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
@@ -368,6 +387,8 @@ namespace ClaimProject.Techno
 
             QuotaGridView.DataSource = ds.Tables[0];
             QuotaGridView.DataBind();
+
+            Session.Add("sqlReport", sql);
         }
 
         protected void btns2_Click(object sender, EventArgs e)
@@ -439,6 +460,12 @@ namespace ClaimProject.Techno
                 btnPrint2.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "quotations_id").ToString();
             }
 
+            LinkButton btnQuatation = (LinkButton)e.Row.FindControl("btnQuatation");
+            if (btnQuatation != null)
+            {
+                btnQuatation.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "quotations_id").ToString();
+            }
+
             LinkButton btnEdit = (LinkButton)e.Row.FindControl("btnEdit");
             if (btnEdit != null)
             {
@@ -471,6 +498,21 @@ namespace ClaimProject.Techno
                     btnDocDownload.Visible = false;
                 }
             }
+
+            Label lbRefer = (Label)e.Row.FindControl("lbRefer");
+            
+            if (lbRefer != null)
+            {
+                lbRefer.Text = DataBinder.Eval(e.Row.DataItem, "quotations_refer").ToString();
+                if (lbRefer.Text == "0")
+                {
+                    lbRefer.Text = "ราคากลาง " + (string)DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
+                }
+                else if(lbRefer.Text == "1")
+                {
+                    lbRefer.Text = "ใบเสนอราคา";
+                }
+            }
         }
 
         protected void QuotationsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -480,6 +522,12 @@ namespace ClaimProject.Techno
             {
                 lbPrice.Text = double.Parse(lbPrice.Text).ToString("#,##0.00") + " บาท";
             }
+
+            //Label lbCompany = (Label)e.Row.FindControl("lbCompany");
+            //if (lbCompany != null)
+            //{
+            //    lbCompany.Text = function.ShortText("lbCompany");
+            //}
         }
 
         protected void btnEdit_Command(object sender, CommandEventArgs e)
@@ -526,8 +574,9 @@ namespace ClaimProject.Techno
             //string note_num = "คค.060005/ฝจ./" + function.GetSelectValue("tbl_quotations", "quotations_id='" + key + "'", "quotations_note_number") + "/" + date.Split(' ')[2];
             string note_num = "คค.060005/ฝจ./";
             string title_name = "ขอความอนุเคราะห์ประเมินและเสนอราคางานอุบัติเหตุ";
-            string send_to = "ผู้จัดการ " + function.GetSelectValue("tbl_quotations JOIN tbl_company ON company_id=quotations_company_id", "quotations_id='" + key + "'", "company_name"); ;
+            string send_to = "ผู้จัดการ " + function.GetSelectValue("tbl_quotations JOIN tbl_company ON company_id=quotations_company_id", "quotations_id='" + key + "'", "company_name"); 
             string cpoint = function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON claim_cpoint = cpoint_id", "claim_id='" + Session["codePK"].ToString() + "'", "cpoint_name");
+            
 
             ReportDocument rpt = new ReportDocument();
             rpt.Load(Server.MapPath("/Techno/Quotations.rpt"));
@@ -541,6 +590,8 @@ namespace ClaimProject.Techno
             rpt.SetParameterValue("send_to", send_to);
             rpt.SetParameterValue("cpoint", cpoint);
             rpt.SetParameterValue("user", ReplaceName(Session["UserName"].ToString().Split(' ')[0]));
+
+
 
             if (doc == 1)
             {
@@ -1411,6 +1462,43 @@ namespace ClaimProject.Techno
                 ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
             return ip;
+        }
+
+        protected void btnQuatation_Command(object sender, CommandEventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#tableQuotationsModel').modal();", true);
+            Session.Add("Quantation", e.CommandName);
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportQuantationCostapp','_newtab');", true);
+        }
+
+        protected void btnTblQuan_Command(object sender, CommandEventArgs e)
+        {
+            string Prj = txtProject.Text;
+
+            Session.Add("HeadmesProject", Prj );
+            Session.Add("Person1", txtPerson1.Text);
+            Session.Add("Person2", txtPerson2.Text);
+            Session.Add("Person3", txtPerson3.Text);
+            Session.Add("Position1", ddlPosition1.SelectedValue);
+            Session.Add("Position2", ddlPosition2.SelectedValue);
+            Session.Add("Position3", ddlPosition3.SelectedValue);
+            //Session.Add("Quantation", e.CommandName);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportQuantationCostapp','_newtab');", true);
+        }
+
+        protected void btnShowCost_Command(object sender, CommandEventArgs e)
+        {
+            string Prj = txtProject.Text;
+
+            Session.Add("HeadmesProject", Prj);
+            Session.Add("Person1", txtPerson1.Text);
+            Session.Add("Person2", txtPerson2.Text);
+            Session.Add("Person3", txtPerson3.Text);
+            Session.Add("Position1", ddlPosition1.SelectedValue);
+            Session.Add("Position2", ddlPosition2.SelectedValue);
+            Session.Add("Position3", ddlPosition3.SelectedValue);
+            //Session.Add("Quantation", e.CommandName);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportShowCost','_newtab');", true);
         }
     }
 }

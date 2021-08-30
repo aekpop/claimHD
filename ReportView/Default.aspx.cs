@@ -33,7 +33,7 @@ namespace ClaimProject.ReportView
                 function.getListItem(txtStation, getCpointName, "cpoint_name", "cpoint_id");
                 //เพิ่มไอเทมให้เลือกในดรอบดาว  (ตำแหน่ง , สร้างใหม่(ชื่ออะไร,values))
                 txtStation.Items.Insert(0, new ListItem("ทั้งหมด", ""));
-                function.getListItem(txtBudgetYear, "SELECT claim_budget_year FROM tbl_claim  GROUP BY claim_budget_year DESC", "claim_budget_year", "claim_budget_year");
+                function.getListItem(txtBudgetYear, "SELECT claim_budget_year FROM tbl_claim  GROUP BY claim_budget_year ORDER BY claim_budget_year DESC", "claim_budget_year", "claim_budget_year");
                 
             }
             ShowAnnex();
@@ -1273,7 +1273,6 @@ namespace ClaimProject.ReportView
 
         protected void txtStation_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             ShowAnnex();
         }
     }
