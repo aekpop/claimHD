@@ -357,7 +357,12 @@
                         อัพไฟล์ภาพใบสั่งจ้างใหม่ --> 
                     </div>
                     <asp:FileUpload ID="FileEditEQ" runat="server"  CssClass="custom-file" lang="en" />
-                    <asp:LinkButton ID="lbtnchangeimg" runat="server" CssClass="fa" OnCommand="lbtnchangeimg_Command"></asp:LinkButton>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-right" >
+                            <asp:LinkButton ID="lbtnchangeimg" runat="server" CssClass="btn btn-info" OnCommand="lbtnchangeimg_Command" Text="ตกลง" style="font-size:medium;"></asp:LinkButton>
+                        </div>
                 </div>
                 <asp:GridView id="gridquatation" runat="server"  GridLines="Both"
                     DataKeyNames="quotations_id" AutoGenerateColumns="False"
@@ -409,7 +414,12 @@
                         อัพไฟล์ภาพใบส่งงานใหม่ --> 
                     </div>
                     <asp:FileUpload ID="FileUpload2" runat="server"  CssClass="custom-file" lang="en" />
-                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="fa" OnCommand="lbtnchangefinalimg_Command"></asp:LinkButton>
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="col-md-3 text-right">
+                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-info" OnCommand="lbtnchangefinalimg_Command" Text="ตกลง"></asp:LinkButton>
+                        </div>
                 </div>
                 
                 <div class="row">
@@ -426,7 +436,7 @@
                     CssClass="table table-hover table-sm"
                     HeaderStyle-Font-Bold="true"
                     BorderColor="White"
-                    OnRowDataBound="gridFinal_RowDataBound"  OnRowDeleting="gridFinal_RowDeleting"
+                    OnRowDataBound="gridFinal_RowDataBound"  OnRowDeleting="gridFinal_RowDeleting" 
                  >
                     <Columns>
                         <asp:TemplateField HeaderText="ใบส่งงาน">

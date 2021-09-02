@@ -102,10 +102,14 @@
                                                 </button>
                                             </div>
                                         </li>-->
-                                    <li class="nav-item" runat="server" id="nav0" >
-                                        <a class="nav-link" href="/" >
+                                    <li class="nav-item dropdown" runat="server" id="nav0" >
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">Techno อุบัติเหตุ</span>
                                         </a>
+                                        <div class="dropdown-menu" >
+                                            <a class="dropdown-item" href="/" >Dashboard</a>
+                                            <a class="dropdown-item" href="/Techno/TechnoReport" >Report</a>
+                                        </div>
                                     </li>
 
                                     <li class="nav-item dropdown" runat="server" id="nav1">

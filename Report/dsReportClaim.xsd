@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportClaim" targetNamespace="http://tempuri.org/dsReportClaim.xsd" xmlns:mstns="http://tempuri.org/dsReportClaim.xsd" xmlns="http://tempuri.org/dsReportClaim.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportClaim" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReportClaim" msprop:Generator_UserDSName="dsReportClaim">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cpoint_name" msprop:Generator_ColumnVarNameInTable="columncpoint_name" msprop:Generator_ColumnPropNameInRow="cpoint_name" msprop:Generator_ColumnPropNameInTable="cpoint_nameColumn" msprop:Generator_UserColumnName="cpoint_name" type="xs:string" minOccurs="0" />
+              <xs:element name="device_name" msprop:Generator_ColumnVarNameInTable="columndevice_name" msprop:Generator_ColumnPropNameInRow="device_name" msprop:Generator_ColumnPropNameInTable="device_nameColumn" msprop:Generator_UserColumnName="device_name" type="xs:string" minOccurs="0" />
+              <xs:element name="cpoint_id" msprop:Generator_ColumnVarNameInTable="columncpoint_id" msprop:Generator_ColumnPropNameInRow="cpoint_id" msprop:Generator_ColumnPropNameInTable="cpoint_idColumn" msprop:Generator_UserColumnName="cpoint_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CpointAmount" msprop:Generator_ColumnVarNameInTable="columnCpointAmount" msprop:Generator_ColumnPropNameInRow="CpointAmount" msprop:Generator_ColumnPropNameInTable="CpointAmountColumn" msprop:Generator_UserColumnName="CpointAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="deviceAmount" msprop:Generator_ColumnVarNameInTable="columndeviceAmount" msprop:Generator_ColumnPropNameInRow="deviceAmount" msprop:Generator_ColumnPropNameInTable="deviceAmountColumn" msprop:Generator_UserColumnName="deviceAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="claim_cpoint" msprop:Generator_ColumnVarNameInTable="columnclaim_cpoint" msprop:Generator_ColumnPropNameInRow="claim_cpoint" msprop:Generator_ColumnPropNameInTable="claim_cpointColumn" msprop:Generator_UserColumnName="claim_cpoint" type="xs:string" minOccurs="0" />
+              <xs:element name="device_initials" msprop:Generator_ColumnVarNameInTable="columndevice_initials" msprop:Generator_ColumnPropNameInRow="device_initials" msprop:Generator_ColumnPropNameInTable="device_initialsColumn" msprop:Generator_UserColumnName="device_initials" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

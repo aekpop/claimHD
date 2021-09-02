@@ -1,7 +1,9 @@
 ﻿using ClaimProject.Config;
 using Microsoft.Reporting.WebForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,9 +23,35 @@ namespace ClaimProject.Report
             }
             if (!this.IsPostBack)
             {
-                reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.LocalReport.ReportPath = Server.MapPath("reportMonthlyClaim.rdlc");
+                string sql = Session["SqlResult"].ToString();
+                string Month = Session["Month"].ToString();
+                string Budget = Session["Budget"].ToString();
+                string Report = Session["report"].ToString();
 
+                MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+                DataTable dt = function.GetTable(sql);
+
+                reportViewer1.ProcessingMode = ProcessingMode.Local;
+                if(Report == "1")
+                {
+                    reportViewer1.LocalReport.ReportPath = Server.MapPath("reportMonthlyClaim.rdlc");
+                }
+                else if(Report == "2")
+                {
+                    reportViewer1.LocalReport.ReportPath = Server.MapPath("reportMonthlyMatrixClaim.rdlc");
+                }
+                
+
+                ReportParameter[] parameter = new ReportParameter[2];
+                parameter[0] = new ReportParameter("Budget", Budget);
+                parameter[1] = new ReportParameter("Month", Month);
+
+                reportViewer1.LocalReport.SetParameters(parameter);
+                reportViewer1.LocalReport.Refresh();
+
+                ReportDataSource dataSource = new ReportDataSource("DataSet1", dt);
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(dataSource);
             }
 
         }

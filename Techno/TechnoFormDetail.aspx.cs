@@ -101,6 +101,7 @@ namespace ClaimProject.Techno
                 if (int.Parse(Session["status_id"].ToString()) >= 4)
                 {
                     getDataStatus4();
+                    BindImg();
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 5)
@@ -1319,12 +1320,30 @@ namespace ClaimProject.Techno
 
         protected void gridquatation_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            string sql = "UPDATE FROM tbl_quotations SET quotations_order_img = '0' WHERE quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'";
+            string partFile = function.GetSelectValue("tbl_quotations", "quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'", "quotations_order_img");
+            string sql = "UPDATE tbl_quotations SET quotations_order_img = '0' WHERE quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'";
             //string script = "";
             if (function.MySqlQuery(sql))
             {
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                }
                 //script = "บันทึกสำเร็จ";
             }
+            //string quaimg = "SELECT * FROM tbl_quotations " +
+            //             " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
+            //
+            //MySqlDataAdapter da = function.MySqlSelectDataSet(quaimg);
+            //System.Data.DataSet ds = new System.Data.DataSet();
+            //da.Fill(ds);
+            //gridquatation.DataSource = ds.Tables[0];
+            //gridquatation.DataBind();
+            bindImgGridQuatation();
+        }
+
+        void bindImgGridQuatation()
+        {
             string quaimg = "SELECT * FROM tbl_quotations " +
                          " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
 
@@ -1338,20 +1357,20 @@ namespace ClaimProject.Techno
         protected void lbtnchangeimg_Command(object sender, CommandEventArgs e)
         {
             String NewFileDocName = "";
-            if (FileOrder.HasFile)
+            if (FileEditEQ.HasFile)
             {
-                string typeFile = FileOrder.FileName.Split('.')[FileOrder.FileName.Split('.').Length - 1];
+                string typeFile = FileEditEQ.FileName.Split('.')[FileEditEQ.FileName.Split('.').Length - 1];
                 if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
                 {
                     NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
-                    FileOrder.SaveAs(Server.MapPath(NewFileDocName.ToString()));
+                    FileEditEQ.SaveAs(Server.MapPath(NewFileDocName.ToString()));
                     
                     string sqlp = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
 
                     if(function.MySqlQuery(sqlp))
                     {
-
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Success')", true);
                     }
                     else
                     {
@@ -1364,6 +1383,7 @@ namespace ClaimProject.Techno
                     //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                 }
+                    bindImgGridQuatation();
             }
             else
             {
@@ -1395,12 +1415,30 @@ namespace ClaimProject.Techno
 
         protected void gridFinal_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            string partFile = function.GetSelectValue("tbl_quotations", "quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'", "quotations_doc_img_send");
             string sql = "UPDATE tbl_quotations SET quotations_doc_img_send = '0' WHERE quotations_id = '" + gridquatation.DataKeys[e.RowIndex].Value + "'";
             //string script = "";
             if (function.MySqlQuery(sql))
             {
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                }
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('System : Delete Success')", true);
             }
+            /**string imgfinal = "SELECT * FROM tbl_quotations " +
+                         " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_doc_img_send != '0'";
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(imgfinal);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            gridFinal.DataSource = ds.Tables[0];
+            gridFinal.DataBind(); **/
+            bindImg();
+        }
+
+        void bindImg()
+        {
             string imgfinal = "SELECT * FROM tbl_quotations " +
                          " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_doc_img_send != '0'";
 
@@ -1409,6 +1447,8 @@ namespace ClaimProject.Techno
             da.Fill(ds);
             gridFinal.DataSource = ds.Tables[0];
             gridFinal.DataBind();
+
+
         }
 
         protected void lbtnloadfinal_Command(object sender, CommandEventArgs e)
@@ -1418,20 +1458,20 @@ namespace ClaimProject.Techno
         protected void lbtnchangefinalimg_Command(object sender, CommandEventArgs e)
         {
             String NewFileDocName = "";
-            if (FileOrder.HasFile)
+            if (FileUpload2.HasFile)
             {
-                string typeFile = FileOrder.FileName.Split('.')[FileOrder.FileName.Split('.').Length - 1];
+                string typeFile = FileUpload2.FileName.Split('.')[FileUpload2.FileName.Split('.').Length - 1];
                 if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
                 {
                     NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
-                    FileOrder.SaveAs(Server.MapPath(NewFileDocName.ToString()));
+                    FileUpload2.SaveAs(Server.MapPath(NewFileDocName.ToString()));
 
                     string sqlpf = "UPDATE tbl_quotations SET quotations_order='1', quotations_doc_img_send='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
 
                     if (function.MySqlQuery(sqlpf))
                     {
-
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Success : Success')", true);
                     }
                     else
                     {
@@ -1444,6 +1484,8 @@ namespace ClaimProject.Techno
                     //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                 }
+
+                bindImg();
             }
             else
             {

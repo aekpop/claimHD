@@ -6,17 +6,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .col-10 {
+            margin-right: 166px;
+        }
+    </style>
+    
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>
-            <rsweb:ReportViewer ID="reportViewer1" runat="server" Height="700px" Width="100%">
-                <LocalReport ReportPath="Report\reportMonthlyClaim.rdlc">
-                </LocalReport>
-            </rsweb:ReportViewer>
-        </div>
-    </form>
+
+    
+       
+        <form id="form1" runat="server">
+            <div class="col-10">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <rsweb:ReportViewer ID="reportViewer1" runat="server" Height="700px" Width="862px">
+                    
+                </rsweb:ReportViewer>
+            </div>
+        </form>
+        
+    
+    
 </body>
 </html>

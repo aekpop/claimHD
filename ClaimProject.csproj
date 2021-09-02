@@ -1482,6 +1482,17 @@
     <Content Include="Report\dsQuan.xss">
       <DependentUpon>dsQuan.xsd</DependentUpon>
     </Content>
+    <Content Include="Report\dsReportClaim.xsc">
+      <DependentUpon>dsReportClaim.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsReportClaim.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReportClaim.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsReportClaim.xss">
+      <DependentUpon>dsReportClaim.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -1633,6 +1644,7 @@
     </Content>
     <Content Include="Techno\TechnoFormDetail.aspx" />
     <Content Include="Techno\TechnoFormView.aspx" />
+    <Content Include="Techno\TechnoReport.aspx" />
     <Content Include="User\Add\userForm.aspx" />
     <Content Include="User\UserForm.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -2128,6 +2140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsQuan.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\dsReportClaim.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReportClaim.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\report.aspx.cs">
       <DependentUpon>report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2225,6 +2242,13 @@
     <Compile Include="Techno\TechnoFormView.aspx.designer.cs">
       <DependentUpon>TechnoFormView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Techno\TechnoReport.aspx.cs">
+      <DependentUpon>TechnoReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Techno\TechnoReport.aspx.designer.cs">
+      <DependentUpon>TechnoReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\Add\userForm.aspx.cs">
       <DependentUpon>userForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2320,6 +2344,7 @@
     <EmbeddedResource Include="Report\reportCM.rdlc" />
     <EmbeddedResource Include="Report\reportCostAppraisal.rdlc" />
     <EmbeddedResource Include="Report\reportEquipTran.rdlc" />
+    <EmbeddedResource Include="Report\reportMonthlyMatrixClaim.rdlc" />
     <EmbeddedResource Include="Report\reportShowCost.rdlc" />
     <EmbeddedResource Include="Techno\Quotations.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
