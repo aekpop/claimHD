@@ -8,16 +8,16 @@
         <ContentTemplate>
             <div class="row">
                 
-                <div class="btn-group">
+                <!--<div class="btn-group">-->
                     <div class="rol-md-4 ">
-                        <button type="button" class="btn btn-warning" >
+                        <div class="text-warning">
                             ปีงบประมาณ
-                            </button>
+                            </div>
                               </div>
-                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="btn btn-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
+                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
                            </asp:DropDownList>
                     </div>
-                </div>
+                <!--</div>-->
             <br />
             <div class="row">
                 <!--<div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">

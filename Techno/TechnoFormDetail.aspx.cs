@@ -204,6 +204,7 @@ namespace ClaimProject.Techno
                     Div3.Visible = false;
                     Div4.Visible = false;
                     divFileUploalNote.Visible = false;
+                    LinkButton2.Visible = false;
                     break;
                 case "2":
                     btns0.Visible = false;
@@ -216,6 +217,7 @@ namespace ClaimProject.Techno
                     Div2.Visible = true;
                     Div3.Visible = false;
                     Div4.Visible = false;
+                    LinkButton2.Visible = false;
                     break;
                 case "3":
                     btns0.Visible = false;
@@ -228,6 +230,7 @@ namespace ClaimProject.Techno
                     Div2.Visible = true;
                     Div3.Visible = false;
                     Div4.Visible = false;
+                    LinkButton2.Visible = false;
                     break;
                 case "4":
                     btns0.Visible = false;
@@ -240,6 +243,7 @@ namespace ClaimProject.Techno
                     Div3.Visible = true;
                     Div4.Visible = false;
                     divFileUploalNote.Visible = false;
+                    LinkButton2.Visible = false;
                     break;
                 case "5":
                     btns0.Visible = false;

@@ -253,8 +253,10 @@
                             GridLines="None"
                             OnRowDataBound="QuotaGridView_RowDataBound"
                             AutoGenerateColumns="False"
-                            CssClass="table table-hover table-sm"
-                            HeaderStyle-Font-Bold="true">
+                            CssClass="table table-bordered table-sm"
+                            HeaderStyle-Font-Bold="true"
+                            HeaderStyle-HorizontalAlign="Center"
+                            RowStyle-HorizontalAlign="Center">
                             <Columns>
                                 <asp:TemplateField HeaderText="ที่มา">
                                     <ItemTemplate>
@@ -355,7 +357,12 @@
                         อัพไฟล์ภาพใบสั่งจ้างใหม่ --> 
                     </div>
                     <asp:FileUpload ID="FileEditEQ" runat="server"  CssClass="custom-file" lang="en" />
-                    <asp:LinkButton ID="lbtnchangeimg" runat="server" CssClass="fa" OnCommand="lbtnchangeimg_Command"></asp:LinkButton>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-right" >
+                            <asp:LinkButton ID="lbtnchangeimg" runat="server" CssClass="btn btn-info" OnCommand="lbtnchangeimg_Command" Text="ตกลง" style="font-size:medium;"></asp:LinkButton>
+                        </div>
                 </div>
                 <asp:GridView id="gridquatation" runat="server"  GridLines="Both"
                     DataKeyNames="quotations_id" AutoGenerateColumns="False"
@@ -407,7 +414,12 @@
                         อัพไฟล์ภาพใบส่งงานใหม่ --> 
                     </div>
                     <asp:FileUpload ID="FileUpload2" runat="server"  CssClass="custom-file" lang="en" />
-                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="fa" OnCommand="lbtnchangefinalimg_Command"></asp:LinkButton>
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="col-md-3 text-right">
+                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-info" OnCommand="lbtnchangefinalimg_Command" Text="ตกลง"></asp:LinkButton>
+                        </div>
                 </div>
                 
                 <div class="row">
@@ -424,7 +436,7 @@
                     CssClass="table table-hover table-sm"
                     HeaderStyle-Font-Bold="true"
                     BorderColor="White"
-                    OnRowDataBound="gridFinal_RowDataBound"  OnRowDeleting="gridFinal_RowDeleting"
+                    OnRowDataBound="gridFinal_RowDataBound"  OnRowDeleting="gridFinal_RowDeleting" 
                  >
                     <Columns>
                         <asp:TemplateField HeaderText="ใบส่งงาน">
@@ -520,7 +532,7 @@
                             
                                 <div class="row">
                                     <div class="col-md text-center">
-                                        <asp:Button ID="btnSaveQuotations" runat="server" CssClass="btn btn-warning btn-sm text-md-center" Text="เสนอราคา" OnClick="btnSaveQuotations_Click" />
+                                        <asp:Button ID="btnSaveQuotations" runat="server" CssClass="btn btn-warning btn-sm text-lg-center" Text="เสนอราคา" Font-Size="Larger" OnClick="btnSaveQuotations_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -537,9 +549,9 @@
                                 OnRowDeleting="QuotationsGridView_RowDeleting"
                                 HeaderStyle-Font-Bold="true">
                                 <Columns>
-                                    <asp:TemplateField HeaderText="ชื่อบริษัท">
+                                    <asp:TemplateField HeaderText="ชื่อบริษัท/สัญญา" ControlStyle-Width="230px">
                                         <ItemTemplate>
-                                            <asp:Label ID="lbCompany" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.company_name") %>'></asp:Label>
+                                            <asp:Label ID="lbCompany" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.company_name")+" / "+DataBinder.Eval(Container, "DataItem.device_ref_Project")) %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="เลขที่หนังสือ">

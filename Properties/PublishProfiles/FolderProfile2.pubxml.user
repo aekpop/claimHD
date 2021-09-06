@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>08/24/2021 18:06:34</publishTime>
+      <publishTime>09/02/2021 17:35:28</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>08/24/2021 18:06:34</publishTime>
+      <publishTime>09/02/2021 17:35:28</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>08/24/2021 18:06:36</publishTime>
+      <publishTime>09/02/2021 17:35:29</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -631,7 +631,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2020 10:31:00</publishTime>
     </File>
     <File Include="CM/CMReport.aspx">
-      <publishTime>08/06/2021 11:57:46</publishTime>
+      <publishTime>08/30/2021 11:32:34</publishTime>
     </File>
     <File Include="CM/CMStatForm.aspx">
       <publishTime>10/01/2020 12:50:21</publishTime>
@@ -3460,10 +3460,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/21/2019 18:35:20</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>08/11/2021 10:58:02</publishTime>
+      <publishTime>08/26/2021 10:28:43</publishTime>
     </File>
     <File Include="Device/DeviceForm.aspx">
-      <publishTime>08/11/2021 21:35:14</publishTime>
+      <publishTime>08/25/2021 09:52:09</publishTime>
     </File>
     <File Include="Device/GroupDeviceForm.aspx">
       <publishTime>12/01/2020 11:56:36</publishTime>
@@ -3711,11 +3711,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Report/dsQuan.xss">
       <publishTime>08/20/2021 14:59:01</publishTime>
     </File>
+    <File Include="Report/dsReportClaim.xsc">
+      <publishTime>09/01/2021 11:55:01</publishTime>
+    </File>
+    <File Include="Report/dsReportClaim.xss">
+      <publishTime>09/01/2021 11:55:01</publishTime>
+    </File>
     <File Include="Report/report.aspx">
       <publishTime>01/05/2021 16:15:08</publishTime>
     </File>
     <File Include="Report/reportCM.aspx">
       <publishTime>01/06/2021 10:14:27</publishTime>
+    </File>
+    <File Include="Report/reportMonthlyClaim.aspx">
+      <publishTime>08/31/2021 15:42:20</publishTime>
     </File>
     <File Include="Report/reportQuantationCostapp.aspx">
       <publishTime>08/23/2021 16:06:49</publishTime>
@@ -3727,7 +3736,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/26/2020 11:50:36</publishTime>
     </File>
     <File Include="ReportView/Default.aspx">
-      <publishTime>02/11/2020 09:14:06</publishTime>
+      <publishTime>08/26/2021 11:56:40</publishTime>
     </File>
     <File Include="Scripts/bootbox.js">
       <publishTime>10/01/2018 16:44:50</publishTime>
@@ -4339,7 +4348,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2021 16:24:26</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>08/11/2021 09:41:55</publishTime>
+      <publishTime>08/31/2021 09:28:09</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/01/2018 16:43:56</publishTime>
@@ -4360,10 +4369,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>08/24/2021 13:31:24</publishTime>
+      <publishTime>09/02/2021 17:24:07</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
-      <publishTime>10/05/2020 11:43:50</publishTime>
+      <publishTime>08/26/2021 09:53:14</publishTime>
+    </File>
+    <File Include="Techno/TechnoReport.aspx">
+      <publishTime>08/31/2021 14:58:16</publishTime>
     </File>
     <File Include="User/Add/userForm.aspx">
       <publishTime>08/10/2021 16:39:22</publishTime>

@@ -15,7 +15,7 @@
         <div class="card-body table-responsive">
 
             <div class="row">
-                <div class="col-md-2 text-right"></div>
+                <div class="col-md-2 text-right">สถานะ : </div>
                 <div class="col-md">
                     <h3>
                         <asp:Label ID="lbTitleStatus" runat="server" Text="Label"></asp:Label></h3>
@@ -453,8 +453,8 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            
-            <asp:UpdatePanel runat="server">
+            <div class="text-center">
+                 <asp:UpdatePanel runat="server">
                 <ContentTemplate>
                     <div class="row text-center">
                         <div class="col-md"></div>
@@ -465,7 +465,7 @@
                             <asp:Button ID="btns1" runat="server" CssClass="btn btn-dark" Text="ส่งเรื่องเข้ากองฯ" OnClick="btns2_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนสถานะส่งเรื่องเข้ากองฯ ?');" />
                         </div>
                         <div class="col-md-2">
-                            <asp:Button ID="btns2" runat="server" CssClass="btn btn-warning" OnClick="btns1_Click" Text="ขอใบเสนอราคา" />
+                            <asp:Button ID="btns2" runat="server" CssClass="btn btn-warning" OnClick="btns1_Click" Text="เพิ่มใบเสนอราคา" />
                         </div>
                         <div class="col-md-2">
                             <asp:Button ID="btns3" runat="server" CssClass="btn btn-primary" Text="อยู่ระหว่างซ่อม" OnClick="btns3_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนเป็นอยู่ระหว่างซ่อม ?');" />
@@ -480,8 +480,11 @@
                     <asp:PostBackTrigger ControlID="btns0" />
                 </Triggers>
             </asp:UpdatePanel>
+            </div>
+           
         </div>
-    </div>
+    
+    
     <!-- Start ขอใบเสนอราคา -->
     <div class="modal" id="QuotationsModel">
         <div class="modal-dialog modal-lg">

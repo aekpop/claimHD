@@ -210,7 +210,7 @@
             </asp:Panel>
             </div>
           <!------------------------------------------------------------------------------------------------------------>
-    <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" ">
+    <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -362,16 +362,19 @@
                                             </div>
                                         </div>       
                                     </div>
-                                    <div class="row">
-                                        <div class="col-2" >
-                                            <asp:Button Id="btnReverb" runat="server" Text="Reverb" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');"/>
-                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">                                      
+                                        <div class="col-2">
+                                            
+                                            <asp:LinkButton Id="btnReverb" runat="server" Text="Reverb" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');" />
+                                        </div>                                                                            
                                     </div>
+                                 </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
     <!------------------------------------------------------------------------------------------------------------>                  
                    

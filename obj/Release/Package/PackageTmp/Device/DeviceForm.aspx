@@ -11,7 +11,7 @@
             <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control"></asp:DropDownList>
         </div>
         <div class="col-md-3">
-            ระยะเวลาในการเข้าซ่อม/ชั่วโมง (CM) : 
+            เวลาเข้าซ่อม : 
             <asp:TextBox ID="txtSchedule" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
         </div>
     </div>
@@ -66,7 +66,7 @@
                                         <asp:DropDownList ID="txtEDeviceGroup" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="เวลาในการเข้าซ่อม/ชั่วโมง">
+                                <asp:TemplateField HeaderText="เวลาเข้าซ่อม">
                                     <ItemTemplate>
                                         <asp:Label ID="lbDeviceSchedule" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>'></asp:Label>
                                     </ItemTemplate>
