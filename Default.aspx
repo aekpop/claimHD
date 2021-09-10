@@ -10,15 +10,16 @@
                 
                 <!--<div class="btn-group">-->
                     <div class="rol-md-4 ">
-                        <div class="text-warning">
-                            ปีงบประมาณ
-                            </div>
-                              </div>
-                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text text-warning" id="basic-addon1">ปีงบประมาณ</span>
+                          
+                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="input-group-text text-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
                            </asp:DropDownList>
+                            </div>
+                             </div>
                     </div>
-                <!--</div>-->
-            <br />
+               </div>
             <div class="row">
                 <!--<div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
                     <div class="card card-stats">
@@ -165,7 +166,7 @@
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-file-export"></i></div>
                             <div class="mb-4">
-                                <div class="card-category mb-0">ส่งเอกสาร</div>
+                                <div class="card-category mb-0">รายงานอุบัติเหตุ (ส่งกองฯ)</div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -215,7 +216,7 @@
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-balance-scale""></i></div>
                             <div class="mb-4">
-                                <div class="card-category mb-0">ส่งประเมินราคา (นิติกร)</div>
+                                <div class="card-category mb-0">ประเมินราคา (ส่งนิติกร)</div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">

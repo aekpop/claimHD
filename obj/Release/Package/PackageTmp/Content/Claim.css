@@ -72,3 +72,18 @@
     color: #fff;
 }
 
+.l-bg-red {
+    background: linear-gradient(135deg, #791809, #ff0000) !important;
+    color: #fff;
+}
+
+.l-bg-yellow-dark {
+    background: linear-gradient(135deg, #787909, #feff00) !important;
+    color: #fff;
+}
+
+.l-bg-dark {
+    background: linear-gradient(135deg, #303030, #969595) !important;
+    color: #fff;
+}
+

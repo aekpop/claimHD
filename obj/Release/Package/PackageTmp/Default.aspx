@@ -10,15 +10,16 @@
                 
                 <!--<div class="btn-group">-->
                     <div class="rol-md-4 ">
-                        <div class="text-warning">
-                            ปีงบประมาณ
-                            </div>
-                              </div>
-                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text text-warning" id="basic-addon1">ปีงบประมาณ</span>
+                          
+                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="input-group-text text-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
                            </asp:DropDownList>
+                            </div>
+                             </div>
                     </div>
-                <!--</div>-->
-            <br />
+               </div>
             <div class="row">
                 <!--<div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
                     <div class="card card-stats">
@@ -136,7 +137,7 @@
                 </div>
                     -->
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-cherry">
+                    <div class="card l-bg-red">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-car-crash"></i></div>
                             <div class="mb-4">
@@ -165,7 +166,7 @@
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-file-export"></i></div>
                             <div class="mb-4">
-                                <div class="card-category mb-0">ส่งเอกสาร</div>
+                                <div class="card-category mb-0">รายงานอุบัติเหตุ (ส่งกองฯ)</div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -186,11 +187,11 @@
                 </div>
 
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-orange">
+                    <div class="card l-bg-yellow-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-clipboard"></i></div>
                             <div class="mb-4">
-                                <div class="card-category mb-0">ใบเสนอราคา</div>
+                                <div class="card-category mb-0">เสนอราคา</div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -211,11 +212,11 @@
                 </div>
 
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-green">
+                    <div class="card l-bg-dark">
                         <div class="card-statistic-3 p-4">
-                            <div class="card-icon card-icon-large"><i class="fas fa-wrench""></i></div>
+                            <div class="card-icon card-icon-large"><i class="fas fa-balance-scale""></i></div>
                             <div class="mb-4">
-                                <div class="card-category mb-0">ดำเนินการซ่อม</div>
+                                <div class="card-category mb-0">ประเมินราคา (ส่งนิติกร)</div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -238,7 +239,7 @@
                 <div class="col-xl-3 col-lg-6">
                     <div class="card l-bg-green-dark">
                         <div class="card-statistic-3 p-4">
-                            <div class="card-icon card-icon-large"><i class="fas fa-folder-open"></i></div>
+                            <div class="card-icon card-icon-large"><i class="fas fa-thumbs-up"></i></div>
                             <div class="mb-4">
                                 <div class="card-category mb-0">ส่งงาน/เสร็จสิ้น</div>
                             </div>

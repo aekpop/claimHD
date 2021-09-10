@@ -78,7 +78,7 @@
         <script src="/Scripts/offcanvas.js"></script>
         <div class="wrapper ">      
             <div class="panel panel-default" >           
-                <nav class="navbar navbar-expand-sm sticky-top">
+                <nav class="navbar navbar-expand-md sticky-top">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">                    
                             <a><img src="/img/j4.png" width="25px" /></a>

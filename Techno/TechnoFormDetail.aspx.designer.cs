@@ -346,6 +346,33 @@ namespace ClaimProject.Techno {
         protected global::System.Web.UI.WebControls.GridView QuotaGridView;
         
         /// <summary>
+        /// estimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl estimate;
+        
+        /// <summary>
+        /// lbestimatedays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbestimatedays;
+        
+        /// <summary>
+        /// lbtnEditEstimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnEditEstimate;
+        
+        /// <summary>
         /// Div3 control.
         /// </summary>
         /// <remarks>
@@ -526,6 +553,15 @@ namespace ClaimProject.Techno {
         protected global::System.Web.UI.WebControls.Button btns3;
         
         /// <summary>
+        /// btn3_1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn3_1;
+        
+        /// <summary>
         /// btns4 control.
         /// </summary>
         /// <remarks>
@@ -650,6 +686,24 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveRecive;
+        
+        /// <summary>
+        /// txtestimateDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtestimateDay;
+        
+        /// <summary>
+        /// btnEstimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEstimate;
         
         /// <summary>
         /// txtCompanyOrder control.

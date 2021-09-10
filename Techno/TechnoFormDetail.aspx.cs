@@ -21,6 +21,7 @@ namespace ClaimProject.Techno
         public string Quotations_id = "";
         int Quotations = 3;
         int SendTo = 15;
+        public string ChkEditEst = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,6 +45,12 @@ namespace ClaimProject.Techno
                     }
                     txtDateRecive.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
                     txtDateQuotations.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
+                    if (txtestimateDay.Text == "")
+                    {
+                        txtestimateDay.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
+                    }
+                    
+
                     PageLoadData();
                     string sql = "SELECT * FROM tbl_company ORDER BY company_name";
                     function.getListItem(txtCompany, sql, "company_name", "company_id");
@@ -56,6 +63,8 @@ namespace ClaimProject.Techno
                     function.GetList(ddlPosition1, "PosList");
                     function.GetList(ddlPosition2, "PosList");
                     function.GetList(ddlPosition3, "PosList");
+
+                    Session["Chk"] = "";
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 2)
@@ -100,12 +109,14 @@ namespace ClaimProject.Techno
 
                 if (int.Parse(Session["status_id"].ToString()) >= 4)
                 {
-                    getDataStatus4();
+                    //getDataStatus4();
+                    getDataStatus3_1();
                     BindImg();
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 5)
                 {
+                    getDataStatus4();
                     getDataStatus5();
                 }
             }
@@ -194,68 +205,114 @@ namespace ClaimProject.Techno
             switch (status)
             {
                 case "1":
-                    btns0.Visible = true;
+                    /*btns0.Visible = true;
                     btns1.Visible = true;
                     btns2.Visible = false;
                     btns3.Visible = false;
-                    btns4.Visible = false;
+                    btn3_1.Visible = false;
+                    btns4.Visible = false; */
                     Div1.Visible = false;
                     Div2.Visible = false;
                     Div3.Visible = false;
                     Div4.Visible = false;
                     divFileUploalNote.Visible = false;
-                    LinkButton2.Visible = false;
+                    LinkButton2.Visible = false;                    
+                    estimate.Visible = false;
+
+                    btns0.Enabled = true;
+                    btns1.Enabled = true;
+                    btns2.Enabled = false;
+                    btns3.Enabled = false;
+                    btn3_1.Enabled = false;
+                    btns4.Enabled = false;
                     break;
                 case "2":
-                    btns0.Visible = false;
+                    /*btns0.Visible = false;
                     btns1.Visible = false;
                     btns2.Visible = true;
-                    divFileUploalNote.Visible = true;
                     btns3.Visible = false;
-                    btns4.Visible = false;
+                    btn3_1.Visible = false;
+                    btns4.Visible = false;*/
+
+                    divFileUploalNote.Visible = true;
                     Div1.Visible = false;
                     Div2.Visible = true;
                     Div3.Visible = false;
                     Div4.Visible = false;
                     LinkButton2.Visible = false;
+                    estimate.Visible = false;
+
+                    btns0.Enabled = false;
+                    btns1.Enabled = false;
+                    btns2.Enabled = true;
+                    btns3.Enabled = false;
+                    btn3_1.Enabled = false;
+                    btns4.Enabled = false;
                     break;
                 case "3":
-                    btns0.Visible = false;
+                    /*btns0.Visible = false;
                     btns1.Visible = false;
                     btns2.Visible = true;
                     btns3.Visible = true;
+                    btn3_1.Visible = false;
+                    btns4.Visible = false;*/
+
                     divFileUploalNote.Visible = false;
-                    btns4.Visible = false;
                     Div1.Visible = true;
                     Div2.Visible = true;
                     Div3.Visible = false;
                     Div4.Visible = false;
                     LinkButton2.Visible = false;
+                    estimate.Visible = false;
+
+                    btns0.Enabled = false;
+                    btns1.Enabled = false;
+                    btns2.Enabled = true;
+                    btns3.Enabled = true;
+                    btn3_1.Enabled = false;
+                    btns4.Enabled = false;
                     break;
                 case "4":
-                    btns0.Visible = false;
+                    /*btns0.Visible = false;
                     btns1.Visible = false;
                     btns2.Visible = false;
                     btns3.Visible = false;
-                    btns4.Visible = true;
+                    btn3_1.Visible = true;
+                    btns4.Visible = true;*/
+
                     Div1.Visible = true;
                     Div2.Visible = true;
-                    Div3.Visible = true;
+                    Div3.Visible = false;
                     Div4.Visible = false;
                     divFileUploalNote.Visible = false;
                     LinkButton2.Visible = false;
+
+                    btns0.Enabled = false;
+                    btns1.Enabled = false;
+                    btns2.Enabled = false;
+                    btns3.Enabled = false;
+                    btn3_1.Enabled = true;
+                    btns4.Enabled = true;
                     break;
                 case "5":
-                    btns0.Visible = false;
-                    btns1.Visible = false;
-                    btns2.Visible = false;
-                    btns3.Visible = false;
-                    btns4.Visible = false;
+                    //btns0.Visible = false;
+                    //btns1.Visible = false;
+                    //btns2.Visible = false;
+                    //btns3.Visible = false;
+                    //btn3_1.Visible = false;
+                    //btns4.Visible = false;
                     Div1.Visible = true;
                     Div2.Visible = true;
-                    Div3.Visible = true;
+                    Div3.Visible = true;   
                     Div4.Visible = true;
                     divFileUploalNote.Visible = false;
+
+                    btns0.Enabled = false;
+                    btns1.Enabled = false;
+                    btns2.Enabled = false;
+                    btns3.Enabled = false;
+                    btn3_1.Enabled = false;
+                    btns4.Enabled = false;
                     break;
                 case "6":
                     btns0.Visible = true;
@@ -410,7 +467,7 @@ namespace ClaimProject.Techno
         protected void btns3_Click(object sender, EventArgs e)
         {
             getPrice();
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);
         }
 
         protected void btns4_Click(object sender, EventArgs e)
@@ -976,10 +1033,10 @@ namespace ClaimProject.Techno
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
                     FileOrder.SaveAs(Server.MapPath(NewFileDocName.ToString()));
 
-                    string sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('4','" + Session["codePK"].ToString() + "','" + txtDateOrder.Text.Trim() + "','" + function.ConvertDateTime(txtDateOrder.Text.Trim(), int.Parse(txtSendOrder.Text)) + "')";
+                    string sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('5','" + Session["codePK"].ToString() + "','" + txtDateOrder.Text.Trim() + "','" + function.ConvertDateTime(txtDateOrder.Text.Trim(), int.Parse(txtSendOrder.Text)) + "')";
                     if (function.MySqlQuery(sql))
                     {
-                        sql = "UPDATE tbl_claim SET claim_status = '4' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
+                        sql = "UPDATE tbl_claim SET claim_status = '5' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
                         function.MySqlQuery(sql);
 
                         sql = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_company_id = '" + txtCompanyOrder.SelectedValue + "'";
@@ -1014,6 +1071,11 @@ namespace ClaimProject.Techno
             txtPriceOrder.Text = double.Parse(function.GetSelectValue("tbl_company c JOIN tbl_quotations q ON q.quotations_company_id = c.company_id", "q.quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_company_id ='" + txtCompanyOrder.SelectedValue + "'", "quotations_company_price")).ToString("#,##0.00");
         }
 
+        void getDataStatus3_1()
+        {
+            lbestimatedays.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_start"));
+        }
+
         void getDataStatus4()
         {
             string sql = "SELECT * FROM tbl_company c JOIN tbl_quotations q ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND q.quotations_order = '1'";
@@ -1035,8 +1097,9 @@ namespace ClaimProject.Techno
             rs.Close();
             function.Close();
 
-            lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_start"));
-            lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_end"));
+            
+            lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_start"));
+            lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_end"));
         } 
 
 
@@ -1117,7 +1180,15 @@ namespace ClaimProject.Techno
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
-                lbFineOrder.Text = double.Parse(rs.GetString("quotations_fine")).ToString("#,##0.00") + " บาท";
+                if (rs.IsDBNull(16))
+                {
+                    lbFineOrder.Text = "0.00 บาท";
+                }
+                else
+                {
+                    lbFineOrder.Text = double.Parse(rs.GetString("quotations_fine")).ToString("#,##0.00") + " บาท";
+                }
+                
                 string imgfinal =  "SELECT* FROM tbl_quotations " +
                           " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
                 MySqlDataAdapter da = function.MySqlSelectDataSet(imgfinal);
@@ -1132,6 +1203,7 @@ namespace ClaimProject.Techno
             }
             rs.Close();
             function.Close();
+
         }
 
         string ReplaceName(string name)
@@ -1545,6 +1617,68 @@ namespace ClaimProject.Techno
             Session.Add("Position3", ddlPosition3.SelectedValue);
             //Session.Add("Quantation", e.CommandName);
             Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportShowCost','_newtab');", true);
+        }
+
+        protected void btnEstimate_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+            string chk = Session["Chk"].ToString();
+
+            String NewFileDocName = "";
+            
+                    NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
+
+            if (chk == "1")
+            {
+                sql = "DELETE FROM tbl_status_detail WHERE detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'";
+                if (function.MySqlQuery(sql))
+                {
+                    sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('4','" + Session["codePK"].ToString() + "','" + txtestimateDay.Text.Trim() + "','" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "')";
+                    function.MySqlQuery(sql);
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
+                    Response.Redirect("/Techno/TechnoFormDetail");
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ไม่สามารถทำรายงานได้')", true);
+                }
+            }
+            else
+            {
+                sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('4','" + Session["codePK"].ToString() + "','" + txtestimateDay.Text.Trim() + "','" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "')";
+                if (function.MySqlQuery(sql))
+                {
+                    sql = "UPDATE tbl_claim SET claim_status = '4' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
+                    function.MySqlQuery(sql);
+
+                    sql = "UPDATE tbl_quotations SET quotations_order='1' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' ";
+                    function.MySqlQuery(sql);
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                    Response.Redirect("/Techno/TechnoFormDetail");
+                }
+                else
+                {
+                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#001')", true);
+                }
+            }
+            
+        }
+
+        protected void btn3_1_Click(object sender, EventArgs e)
+        {
+            getPrice();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
+        }
+
+        protected void lbtnEditEstimate_Command(object sender, CommandEventArgs e)
+        {
+            ChkEditEst = "1";
+            Session.Add("Chk" , ChkEditEst);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);
+            
         }
     }
 }
