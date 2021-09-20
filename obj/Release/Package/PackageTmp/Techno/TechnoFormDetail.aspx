@@ -4,7 +4,14 @@
     <style>
         #ddlCom {
         display: none;
-    }
+        }
+        .custom {
+            width: 100px !important;
+        }
+        .btn:disabled{
+            background-color: #c3c3c9;
+        }
+
     </style>
     <div class="card" style="font-size:21px; font-family:'TH SarabunPSK'">
         <div class="card-header card-header-warning">
@@ -327,12 +334,16 @@
                     <div class="col-md-2 text-right">
                         วันที่ส่ง : 
                     </div>
-                    <div class="col-md">
+                    <div class="col-md-2">
                         <asp:Label ID="lbestimatedays" runat="server" Text=""></asp:Label>
                     </div>
+                    <div class="col-md-2">
+                        <asp:LinkButton ID="lbtnEditEstimate" runat="server" CssClass="btn btn-outline-warning" OnCommand="lbtnEditEstimate_Command">Edit</asp:LinkButton>
+                    </div>
                 </div>
+                <hr />
             </div>
-            <hr />
+            
             <div runat="server" id="Div3">
                 <div class="row">
                     <div class="col-md">
@@ -470,39 +481,40 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            <div class="text-center">
+            
                  <asp:UpdatePanel runat="server">
                 <ContentTemplate>
                     <div class="row text-center">
-                        
-                        <div class="col-md-2">
-                            <asp:Button ID="btns0" runat="server" CssClass="btn btn-danger" OnClick="btns0_Click" Text="ลบข้อมูล" OnClientClick="return CompareConfirm('ยืนยัน คุณต้องการลบข้อมูล ใช่หรือไม่')" />
-                        </div>
-                        <div class="col-md-2">
-                            <asp:Button ID="btns1" runat="server" CssClass="btn btn-dark" Text="ส่งเรื่องเข้ากองฯ" OnClick="btns2_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนสถานะส่งเรื่องเข้ากองฯ ?');" />
-                        </div>
-                        <div class="col-md-2">
-                            <asp:Button ID="btns2" runat="server" CssClass="btn btn-warning" OnClick="btns1_Click" Text="เพิ่มใบเสนอราคา" />
-                        </div>
-                        <div class="col-md-2">
-                            <asp:Button ID="btns3" runat="server" CssClass="btn btn-primary" Text="ส่งประเมินราคา" OnClick="btns3_Click" OnClientClick="return CompareConfirm('ยืนยัน ส่งประเมินราคา ?');" />
-                        </div>
-                        <div class="col-md-2">
-                            <asp:Button ID="btn3_1" runat="server" CssClass="btn btn-success" Text="สั่งจ้าง" OnClick="btn3_1_Click"  />
-                        </div>
-                        <div class="col-md-2">
-                            <asp:Button ID="btns4" runat="server" CssClass="btn btn-success" Text="ส่งงาน/เสร็จสิ้น" OnClick="btns4_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนส่งงาน/เสร็จสิ้น ?');" />
-                        </div>
-                       
+                            <div class="col-md-3"></div>                   
+                            <div class="col-md-1">
+                                <asp:Button ID="btns0" runat="server" CssClass="btn btn-danger custom" OnClick="btns0_Click" Text="ลบข้อมูล" OnClientClick="return CompareConfirm('ยืนยัน คุณต้องการลบข้อมูล ใช่หรือไม่')" />
+                            </div>
+                            <div class="col-md-1">
+                                <asp:Button ID="btns1" runat="server" CssClass="btn btn-dark custom" Text="ส่งเรื่องเข้ากองฯ" OnClick="btns2_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนสถานะส่งเรื่องเข้ากองฯ ?');" />
+                            </div>
+                            <div class="col-md-1">
+                                <asp:Button ID="btns2" runat="server" CssClass="btn btn-warning custom" OnClick="btns1_Click" Text="เพิ่มใบเสนอราคา" />
+                            </div>
+                            <div class="col-md-1">
+                                <asp:Button ID="btns3" runat="server" CssClass="btn btn-primary custom" Text="ส่งประเมินราคา" OnClick="btns3_Click" OnClientClick="return CompareConfirm('ยืนยัน ส่งประเมินราคา ?');" />
+                            </div>
+                            <div class="col-md-1">
+                                <asp:Button ID="btn3_1" runat="server" CssClass="btn btn-info custom" Text="สั่งจ้าง" OnClick="btn3_1_Click"  />
+                            </div>
+                            <div class="col-md-1">
+                                <asp:Button ID="btns4" runat="server" CssClass="btn btn-success custom" Text="ส่งงาน/เสร็จสิ้น" OnClick="btns4_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนส่งงาน/เสร็จสิ้น ?');" />
+                            </div>
+                            <div class="col-md-3"></div>
                     </div>
                 </ContentTemplate>
                 <Triggers>
                     <asp:PostBackTrigger ControlID="btns0" />
                 </Triggers>
             </asp:UpdatePanel>
+        <br />
             </div>
            
-        </div>
+        
     
     
     <!-- Start ขอใบเสนอราคา -->

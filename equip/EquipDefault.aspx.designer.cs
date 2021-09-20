@@ -31,6 +31,33 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.DropDownList txtBudgetYear;
         
         /// <summary>
+        /// alertWaitTrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertWaitTrans;
+        
+        /// <summary>
+        /// btnDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnDetails;
+        
+        /// <summary>
+        /// lbAmountWait control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAmountWait;
+        
+        /// <summary>
         /// lbEqTotal control.
         /// </summary>
         /// <remarks>
@@ -535,39 +562,30 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
         
         /// <summary>
-        /// alertWaitTrans control.
+        /// Expire control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertWaitTrans;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Expire;
         
         /// <summary>
-        /// btnDetails control.
+        /// lbBudget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnDetails;
+        protected global::System.Web.UI.WebControls.Label lbBudget;
         
         /// <summary>
-        /// lbAmountWait control.
+        /// expiredGridview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbAmountWait;
-        
-        /// <summary>
-        /// Chart1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
+        protected global::System.Web.UI.WebControls.GridView expiredGridview;
     }
 }

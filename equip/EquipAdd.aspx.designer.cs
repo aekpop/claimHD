@@ -220,15 +220,6 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.LinkButton lbtnDepartReport;
         
         /// <summary>
-        /// titlegrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label titlegrid;
-        
-        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -245,6 +236,15 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridEquipAdd;
+        
+        /// <summary>
+        /// titlegrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titlegrid;
         
         /// <summary>
         /// imagee control.
@@ -434,6 +434,15 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEditCompany;
+        
+        /// <summary>
+        /// txtlifetime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtlifetime;
         
         /// <summary>
         /// txtEditPerson control.

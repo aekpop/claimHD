@@ -6,8 +6,11 @@
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
     </style>
+
+    <!-- CSS only -->
+    <link href="../Content/CM.css" rel="stylesheet" />
+
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
-        <br />
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <!--<div class="row" style="height:100px">
@@ -21,9 +24,21 @@
                     </div>
                 
                 </div>-->
+                <div class="alert alert-warning alert-dismissible fade show" id="alertWaitTrans" runat="server" >
+                       <div class =" row">
+                       <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                           <asp:LinkButton runat="server" ID="btnDetails" OnClick="lbtnReceiveDetail_Click">
+                               <div class="col">
+                                    <div class="row">
+                                        ขณะนี้มีรายการรอรับครุภัณฑ์ &nbsp<asp:Label runat="server" ID="lbAmountWait" ></asp:Label>&nbsp รายการ
+                                   </div>
+                                 </div>
+                               </asp:LinkButton>
+                           </div>
+                   </div>
                  <!-- ตารางสถานปัจจุบัน-->
                <div class="row">
-                <div class="col-xl-3 col-md-6 mb-4">
+                <div class="col-xl-4 col-md-6 mb-4">
                   <div class="card border-left-primary shadow h-70 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
@@ -71,7 +86,7 @@
                                     </div>
                              </div>
                        </div>
-                   <div class="col-xl-3 col-md-6 mb-4" id="tblToll" runat="server" >
+                   <div class="col-xl-4 col-md-6 mb-4" id="tblToll" runat="server" >
                   <div class="card border-left-primary shadow h-70 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
@@ -119,8 +134,8 @@
                              </div>
                        </div>
                    
-                <div class="col-xl-3 col-md-6 mb-4" id="tblClerical" runat="server">
-                  <div class="card border-left-primary shadow h-70 py-2">
+                <div class="col-xl-4 col-md-6 mb-4" id="tblClerical" runat="server">
+                  <div class="card border-left-primary shadow h-40 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -417,47 +432,70 @@
                             </div>
                         </div>
                     </div>
-                 
-
-                
                  </div>
                 </div>
-              
-                   <div class="alert alert-warning alert-dismissible fade show" id="alertWaitTrans" runat="server" >
-                       <div class =" row">
-                       <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
-                           <asp:LinkButton runat="server" ID="btnDetails" OnClick="lbtnReceiveDetail_Click">
-                               <div class="col">
-                                    <div class="row">
-                                        ขณะนี้มีรายการรอรับครุภัณฑ์ &nbsp<asp:Label runat="server" ID="lbAmountWait" ></asp:Label>&nbsp รายการ
-                                   </div>
-                                 </div>
-                               </asp:LinkButton>
-                           </div>
-                   </div>
-               <!-- <div class="row" >
-                    <asp:Chart ID="Chart1" runat="server"  BackImageAlignment="Center" Width="1000" Height="400"  >
-                                   <Series>
-                                       <asp:Series Name="Series1" BorderWidth="2" >
-                                       </asp:Series>
-                                       <asp:Series Name="Series2" BorderWidth="2" >
-                                       </asp:Series>
-                                       <asp:Series Name="Series3" BorderWidth="2" >
-                                       </asp:Series>
-                                       <asp:Series Name="Series4" BorderWidth="2" >
-                                       </asp:Series>
-                                       <asp:Series Name="Series5" BorderWidth="2" >
-                                       </asp:Series>
-                                       <asp:Series Name="Series6" BorderWidth="2" >
-                                       </asp:Series>
-                                   </Series>
-                                   <ChartAreas>
-                                       <asp:ChartArea Name="ChartArea1"  >
-                                       </asp:ChartArea>
-                                   </ChartAreas>
-                                  </asp:Chart>
+                <div id="Expire" runat="server" visible="true" >
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3"></div>
+                    <div class="col-lg-8 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-secondary card-header-icon">
+                                <div class="card-icon">
+                                <a class="card-link text-light" href="#"><i class='fa fa-user-secret'></i></a>
+                            </div>
+                                <h4 class="card-category">รายการครุภัณฑ์ที่ครบอายุการใช้งาน</h4>
+                                <h4 class="card-title">ปีงบประมาณ</h4>
+                            <asp:Label ID="lbBudget" runat="server" CssClass="text-danger" ></asp:Label>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md">
+                                    <asp:GridView ID="expiredGridview" runat="server"
+                                    AutoGenerateColumns="false" 
+                                    DataKeyNames="equipment_id"
+                                    OnRowDataBound="expiredGridview_RowDataBound"
+                                    CssClass="table table-hover table-responsive-md table-sm"
+                                    HeaderStyle-Font-Size="18px"
+                                        HeaderStyle-Height="40px"
+                                        RowStyle-Height="30px"
+                                    HeaderStyle-CssClass="text-center"
+                                    Font-Size="15px"
+                                    AllowSorting="true"
+                                    >
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="ลำดับ" ItemStyle-CssClass="text-center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                                </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="รายการ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbEquipname" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NAME") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbToll" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="อายุการใช้งาน" ItemStyle-CssClass="text-center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbexpired" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.age") %>' CssClass="text-center" > </asp:Label>
+                                                </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-lg-2 col-md-3 col-sm-3"></div>
+                    </div>                   
                 </div>
-                -->           
+                
             </ContentTemplate>
         </asp:UpdatePanel>
         <script type="text/javascript">

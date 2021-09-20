@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TechnoReport.aspx.cs" Inherits="ClaimProject.Techno.TechnoReport" %>
+﻿<%@ Page Title="TECHNO/REPORT" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TechnoReport.aspx.cs" Inherits="ClaimProject.Techno.TechnoReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         <div id="MainBody" class="card" style="z-index: 0; ">

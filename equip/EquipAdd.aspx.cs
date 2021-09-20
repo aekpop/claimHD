@@ -131,6 +131,7 @@ namespace ClaimProject.equip
                 txtEditContract.Enabled = true;
                 ddlEditCpoint.Enabled = true;
                 ddlEditCompany.Enabled = true;
+                txtlifetime.Enabled = true;
             }
         }
         public void BindGridData ()
@@ -320,6 +321,7 @@ namespace ClaimProject.equip
                 ImgEditEQ.ImageUrl = "~"+imgg;
                 txtEditcUnit.Text = rttt.GetString("equipment_unit");
                 txtEditContract.Text = rttt.GetString("equipment_contract_no");
+                txtlifetime.Text = rttt.GetString("equipment_life");
                 try
                 {
                     txtEditTH.Text = rttt.GetString("equipment_nameth");
@@ -1132,7 +1134,7 @@ namespace ClaimProject.equip
                                 " equipment_buy_date='" + txtEditDate.Text + "', equipment_price_unit='" + txtEditPrice.Text + "'," +
                                 " equipment_contract_no='" + txtEditContract.Text + "', toll_id='" + ddlEditCpoint.SelectedValue + "'," +
                                 " Estatus_id='" + ddlEditStat.SelectedValue + "',company_id='" + ddlEditCompany.SelectedValue + "'," +
-                                " locate_id='" + ddlEditLocate.SelectedValue + "', equip_comment='" + txtEditNote.Text + "'," +
+                                " equipment_life ='"+ txtlifetime.Text +"' , locate_id='" + ddlEditLocate.SelectedValue + "', equip_comment='" + txtEditNote.Text + "'," +
                                 " person_name='" + txtEditPerson.Text + "', equipment_unit = '" + txtEditcUnit.Text + "', " +
                                 " user_update = '" + Session["User"].ToString() +"',time_update='"+TimeNoww+"',date_update='"+DateNoww+"' ";
             

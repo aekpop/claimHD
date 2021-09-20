@@ -36,12 +36,13 @@ namespace ClaimProject.equip
                         tblClerical.Visible = false;
                         //div3.Visible = false;
                         //dvRent.Visible = true;
+                        Expire.Visible = false;
                     }
                     else
                     {
                         tblToll.Visible = false;
                         //dvRent.Visible = true;
-
+                        Expire.Visible = true;
                     }
                     
                 }   Session.Add("ddlsearchType", "0");
@@ -50,7 +51,7 @@ namespace ClaimProject.equip
                     Session.Add("LineTran", "");
                     Session["BackWhat"] = "";
                     loadingpage();
-                    //loadChart();
+                    bind();
             }
         }
 
@@ -58,6 +59,8 @@ namespace ClaimProject.equip
         {
 
             function.getListItem(txtBudgetYear, "SELECT trans_budget FROM tbl_transfer GROUP BY trans_budget ORDER BY trans_budget DESC", "trans_budget", "trans_budget");
+            int nowBudget = int.Parse(function.getBudgetYear("01-" + DateTime.Now.ToString("MM") + "-" + (DateTime.Now.Year + 543).ToString()));
+            lbBudget.Text = nowBudget.ToString();
             string newTran = "";
             string newTranact = "";
             string sqlcpSearch = "";
@@ -694,7 +697,7 @@ namespace ClaimProject.equip
             }
             
         }
-        protected void loadChart ()
+        /*protected void loadChart ()
         {
             int Nowmonth = int.Parse(DateTime.Now.ToString("MM"));
 
@@ -833,6 +836,21 @@ namespace ClaimProject.equip
               Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
               Chart1.ChartAreas["ChartArea1"].AxisY.Title = "จำนวน";
               Chart1.DataBind(); 
+        } */
+        void bind()
+        {
+            string sql = "SELECT equipment_id, CONCAT(equipment_no,' ',equipment_nameth) AS NAME, toll_name, " +
+                "DATE_FORMAT('2021-09-11', '%Y') - DATE_FORMAT(DATE_ADD(STR_TO_DATE(`equipment_buy_date`, '%d-%m-%Y'), " +
+                "INTERVAL - 543 YEAR), '%Y') AS age FROM tbl_equipment JOIN tbl_toll ON tbl_equipment.toll_id = tbl_toll.toll_id " +
+                "WHERE (DATE_FORMAT('2021-10-31', '%Y') - DATE_FORMAT(DATE_ADD(STR_TO_DATE(equipment_buy_date, '%d-%m-%Y'), " +
+                "INTERVAL - 543 YEAR), '%Y') - (DATE_FORMAT('2021-10-31', '00-%m-%d') < DATE_FORMAT(DATE_ADD(STR_TO_DATE(equipment_buy_date, '%d-%m-%Y'), INTERVAL - 543 YEAR), '00-%m-%d')) >= equipment_life ) AND (tbl_equipment.toll_id != '9400') " +
+                "ORDER BY age DESC";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            expiredGridview.DataSource = ds.Tables[0];
+            int countt = ds.Tables[0].Rows.Count;
+            expiredGridview.DataBind();
         }
         
         protected void txtBudgetYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -908,6 +926,15 @@ namespace ClaimProject.equip
         {
             Session.Add("ddlsearchStat", "7");
             Response.Redirect("/equip/EquipTranList");
+        }
+
+        protected void expiredGridview_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            if (lbRowNum != null)
+            {
+                lbRowNum.Text = (expiredGridview.Rows.Count + 1).ToString() + ".";
+            }
         }
     }
 }
