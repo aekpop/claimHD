@@ -37,7 +37,7 @@
         </div>
         <!-------------------------------- // ------------------------------------> 
     <div id="MainBody" class="card" style="z-index: 0; ">
-        <div class="card-header card-header-primary">
+        <div class="card-header ">
             <div class="card-title">รายงานสรุปแจ้งซ่อมอุปกรณ์</div>
         </div>       
         <div class="card-body table-responsive"> 

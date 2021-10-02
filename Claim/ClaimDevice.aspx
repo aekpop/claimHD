@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div Id="lbSearch" class="card" style="z-index: 0; font-size: medium">
-        <div class="card-header card-header-warning">
+        <div class="card-header">
             <h3 class="card-title">รายการอุปกรณ์ค้างซ่อม</h3>
         </div>
         <div class="card-body table-responsive table-sm">
@@ -74,11 +74,11 @@
            <hr />
             <div class="row">              
                 <div class="col-md-6 text-right">
-                    <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-default fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
+                    <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-success fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
                 </div>
 
                 <div class="col-md-6 text-left">
-                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnExport_Click">&#xf1c3; Export To Excel</asp:LinkButton>
+                    <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-warning fa" Font-Size="Medium" OnClick="btnExport_Click">&#xf1c3; Export</asp:LinkButton>
                 </div>
             </div>
             <asp:Label ID="lbClaimNull" runat="server" Text="" CssClass="text-success"></asp:Label>

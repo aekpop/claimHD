@@ -158,9 +158,9 @@ ul.radioButtonList {
 }
 
 .GridPager span {
-    background: #ff9966;
+    background: #fb8c00;
     box-shadow: inset 0px 0px 8px rgb(255, 204, 154), 0px 1px 0px rgba(255,255,255, .8);
     color: #f0f0f0;
     text-shadow: 0px 0px 3px rgba(0,0,0, .5);
-    border: 1px solid #FF9966;
+    border: 1px solid #ffa726;
 }

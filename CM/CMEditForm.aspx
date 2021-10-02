@@ -23,10 +23,10 @@
         <!-------------------------------- // ------------------------------------> 
     <div id="DivCMGridView" runat="server" >
         <div class="card" style="z-index: 0">
-            <div class="card-header card-header-warning">
+            <div class="card-header ">
                 <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
             </div>
-            <div class="card-body table-responsive table-sm">
+            <div class="card-body table-responsive table-md">
                 <div class="row" >
                     <!--<div class="col-md">
                         <label class="bmd-label-floating">ปีงบประมาณ : </label>
@@ -51,7 +51,7 @@
                 <br />
                 <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
-                        AutoGenerateColumns="False" CssClass="col table table-striped table-hover"
+                        AutoGenerateColumns="False" CssClass="table table-striped table-hover"
                         HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center" HeaderStyle-Font-Size="18px"
                         HeaderStyle-Height="50px"
                         RowStyle-Height="50px"
@@ -69,6 +69,17 @@
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            
+                            <asp:TemplateField HeaderText="วันที่แจ้ง" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbSDate" runat="server"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="เวลา" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="400px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
@@ -77,16 +88,6 @@
                             <asp:TemplateField HeaderText="อาการที่ชำรุด" ItemStyle-Width="400px">
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่แจ้งซ่อม" >
-                                <ItemTemplate>
-                                    <asp:Label ID="lbSDate" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" >
-                                <ItemTemplate>
-                                    <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ผู้แจ้ง" ItemStyle-Width="200px">

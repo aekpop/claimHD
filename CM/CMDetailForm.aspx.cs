@@ -477,5 +477,11 @@ namespace ClaimProject.CM
             //alertType = type;
             alerts = msg;
         }
+
+        protected void CMGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            CMGridView.PageIndex = e.NewPageIndex;
+            BindData();
+        }
     }
 }

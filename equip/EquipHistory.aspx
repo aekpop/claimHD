@@ -8,7 +8,7 @@
     </style>
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">      
         <div id="MainBody" class="card" style="z-index: 0; ">
-            <div class="card-header card-header-info">
+            <div class="card-header ">
                 <div class="card-title">
                     <i class="fas fa-history"></i>&nbsp ประวัติการโอนย้ายของครุภัณฑ์</div>
             </div>

@@ -35,7 +35,7 @@
         
 
         <div class="card" style="z-index: 0; ">
-            <div class="card-header card-header-warning">
+            <div class="card-header ">
                 <div class="card-title">แจ้งซ่อมอุปกรณ์</div>
             </div>
             <div class="card-body table-responsive table-sm">
@@ -113,8 +113,6 @@
                            </div>
                 </div>
                 <br >
-                <hr />
-
                 <div class="row">
                     <div class="col-md text-center">
                         <asp:LinkButton ID="btnSaveCM" runat="server" Visible="true" Font-Size="20px" CssClass="btn btn-success btn-sm" OnClientClick="return CompareConfirm('ยืนยัน แจ้งซ่อมอุปกรณ์ ใช่หรือไม่');" OnClick="btnSaveCM_Click" >
@@ -125,48 +123,54 @@
                     </div>
                 </div>
             </div>       
-    </div>
+        </div>
 
     <div id="DivCMGridView" runat="server" >
         <div class="card" style="z-index: 0" >
-            <div class="card-header card-header-warning">
+            <div class="card-header">
                 <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
             </div>
             <div class="card-body table-responsive table-sm">
-                <!--<div class="row">
+                <div class="row">
                     <div class="col-md" >
                         <label ID="lbTollz" class="bmd-label-floating">ด่านฯ : </label>
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select" ></asp:DropDownList>
-                    </div>
-                    <div class="col-md">
-                        <label ID="lbBudgetz" class="bmd-label-floating">ปีงบประมาณ : </label>
-                        <asp:DropDownList ID="ddlBudgetcc" runat="server" CssClass="form-control custom-select" ></asp:DropDownList>
-                    </div>
+                    </div>              
                     <div class="col-md">
                         <br />
-                        <asp:Button ID="btnSearchAddd" runat="server" Text="ค้นหา" Visible="false" CssClass="btn btn-success" OnClick="btnSearchAddd_Click"/>
+                        <asp:Button ID="btnSearchAddd" runat="server" Text="ค้นหา" Visible="true" CssClass="btn btn-success" OnClick="btnSearchAddd_Click"/>
                     </div>
 
                     <div class="col-md" >
                         <br />
                         <asp:Button ID="btnToReport" runat="server" Text="ไปยังหน้ารายงาน" Visible="false" CssClass="btn btn-warning" OnClick="btnToReport_Click"/>
                     </div>
-                </div>-->
+                </div>
                 <br />
                 <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
-                        AutoGenerateColumns="False" CssClass="col table table-striped table-hover "
-                        HeaderStyle-CssClass="text-center" HeaderStyle-BackColor="ActiveBorder"
+                        AutoGenerateColumns="False" 
+                        CssClass="col table table-striped table-hover "
+                        HeaderStyle-CssClass="text-center" 
+                        HeaderStyle-BackColor="ActiveBorder"
                         HeaderStyle-Font-Size="18px"
                         HeaderStyle-Height="50px"
                         RowStyle-Height="50px"
                         RowStyle-CssClass="text-center"
-                        OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#000033" GridLines="None" PageSize="20">
+                        OnRowDataBound="CMGridView_RowDataBound" 
+                        Font-Size="15px" 
+                        CellPadding="4" 
+                        ForeColor="#000033" 
+                        GridLines="None"
+                        OnPageIndexChanging="CMGridView_PageIndexChanging" 
+                        PagerSettings-Mode="NumericFirstLast"
+                        AllowPaging="true"
+                        PageSize="30">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="#" >
+                            <asp:TemplateField HeaderText="ลำดับ" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                     <%# Container.DataItemIndex + 1+"." %>
                                 </ItemTemplate>
                         </asp:TemplateField>
                             <asp:TemplateField HeaderText="ด่านฯ" >
@@ -218,13 +222,15 @@
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                         <HeaderStyle BackColor="White" CssClass="text-left" Font-Bold="True" ForeColor="#000033"  />
-                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        
                         <RowStyle BackColor="White" CssClass="text-left" />
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                        <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />            
+
                     </asp:GridView>
                 </asp:Panel>
             </div>

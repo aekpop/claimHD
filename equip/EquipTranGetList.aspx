@@ -32,8 +32,8 @@
     
     
     <div id="AddPM" runat="server" class="card" style="z-index: 0; ">
-        <div class="card-header card-header-success" >
-            <div class="card-title" style="color:white;">รายการโอนย้ายครุภัณฑ์  (รับ)</div>
+        <div class="card-header " >
+            <div class="card-title" >ค้นหา</div>
         </div>
             <div class="card-body table-responsive table-sm">
 
@@ -73,7 +73,12 @@
                     </div>
                     </div>      
                 </div>
-                <hr />
+              </div>
+    <div class="card">
+            <div class="card-header">
+                <div class="card-title">รายการรับครุภัณฑ์</div>
+            </div>
+               <div class="card-body">
                 <div class="row" style="padding-left:20px;" >
                     <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" ForeColor="#0022ff" ></asp:Label>
                 </div>
@@ -88,18 +93,19 @@
                     Font-Size="15px"
                     AllowSorting="true"
                     RowStyle-Height="50px"
-                    PageSize="30" >
-
-                    
-                    <Columns>
-                        
-                        <asp:TemplateField HeaderText="#" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                    OnPageIndexChanging="gridTranlist_PageIndexChanging" 
+                    PagerSettings-Mode="NumericFirstLast" 
+                    PageSize="50" 
+                    PagerSettings-FirstPageText="หน้าแรก"  
+                    PagerSettings-LastPageText="หน้าสุดท้าย"
+                    AllowPaging="true">                    
+                    <Columns>                       
+                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
+                                     <%# Container.DataItemIndex + 1+"." %>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        
-                        <asp:TemplateField HeaderText="ประเภทรายการ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <asp:TemplateField HeaderText="ประเภท" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
                                 <asp:Label ID="lbtypetrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name") %>' ></asp:Label>
                             </ItemTemplate>
@@ -109,7 +115,7 @@
                                 <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="วันที่ดำเนินการ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                        <asp:TemplateField HeaderText="วันที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
                                 <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>' ></asp:Label>
                             </ItemTemplate>
@@ -133,10 +139,7 @@
                             <ItemTemplate>
                                 <asp:Label ID="lbreciever" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_recieve") %>' ></asp:Label>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                        
-                        
-
+                        </asp:TemplateField>                                                
                         <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Font-Size ="Large" >
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
@@ -147,20 +150,14 @@
                                 <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="X-Large" OnCommand="lbtntrans_Command" BackColor="#ffffff"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-
                     </Columns>
                     <FooterStyle BackColor="#ffffff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
-                    <HeaderStyle BackColor="#ffffff" CssClass="text-center"   ForeColor="#031f91" />
-                    
+                    <HeaderStyle BackColor="#ffffff" CssClass="text-center"   ForeColor="#031f91" />                   
                     <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="white" ForeColor="#990000" />
                 </asp:GridView>
-
-
             </div>
-
+        </div>
     </div>
-</div>
-
 
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -177,6 +174,5 @@
                 return true;
             }
 	    }     
-        
     </script>
 </asp:Content>

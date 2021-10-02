@@ -7,7 +7,7 @@
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
         
-        .wrapper    { display: none; padding: 0 0.5em; }
+        .wrapper    { display: none; padding: 0 0; }
         .wrapper h1 { font-size: 2em; line-height: 1em; margin-top: 1.1em; font-weight: bold; }
         .wrapper p  { font-size: 1.5em; line-height: 1.275em; margin-top: 0.15em; }
 
@@ -26,8 +26,8 @@
         }
 
     </style>
-<html lang="th">
-<head runat="server">
+<html lang="th" style="overflow:hidden;">
+<head runat="server"> 
     <meta http-equiv="Content-Type" content="text/html; charset=tis-620" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System</title>
@@ -47,13 +47,13 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <link href="/Content/lightbox.css" rel="stylesheet" />
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
-    <link href="/Content/bootstrap.min.css" rel="stylesheet" />    
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/custom.css" rel="stylesheet" />
+
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
     
 </head>
-    
-<body style="padding-top:0px;">
-    
+<body style="padding-top:0px; ">   
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -78,10 +78,10 @@
         <script src="/Scripts/offcanvas.js"></script>
         <div class="wrapper ">      
             <div class="panel panel-default" >           
-                <nav class="navbar navbar-expand-md sticky-top">
+                <nav class="navbar fixed-top navbar-expand-md sticky-top navbar-dark bg-dark">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">                    
-                            <a><img src="/img/j4.png" width="25px" /></a>
+                            <a><img src="/img/j4.png" width="35px" /></a>
                             <a class="navbar-brand" href="#pablo" style="font-size:18px; font-family:Prompt"><%:Page.Title %></a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +90,7 @@
                             <span class="navbar-toggler-icon icon-bar"></span>
                             <span class="navbar-toggler-icon icon-bar"></span>
                         </button>
-                        <div class="collapse navbar-collapse justify-content-end">
+                        <!--<div class="collapse navbar-collapse justify-content-end">-->
                             <div class="collapse navbar-collapse justify-content-end ">
                                 <ul class="navbar-nav" style="font-size:22px; font-family:Prompt">
                                     <!--<li>
@@ -159,7 +159,7 @@
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
-                                            <a class="dropdown-item" href="/equip/EquipAdd">ค้นหา</a>
+                                            <a class="dropdown-item" href="/equip/EquipAdd">รายการครุภัณฑ์</a>
                                             <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
                                             <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
                                                 <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
@@ -173,7 +173,7 @@
                                                     </a>
                                                     <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
-                                                    <a class="dropdown-item" href="/equip/EquipAdd">ค้นหา</a>
+                                                    <a class="dropdown-item" href="/equip/EquipAdd">รายการครุภัณฑ์</a>
                                                     <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
                                                     <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
                                                         <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
@@ -232,7 +232,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        <!--</div> -->
                     </div>
                 </nav>
                 <!-- End Navbar -->
@@ -270,6 +270,8 @@
                         </div>
                     </div>
                 </footer>
+                <br />
+                <br />
             </div>
         </div>
         <div id="loading"></div>

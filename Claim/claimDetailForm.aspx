@@ -6,7 +6,7 @@
     <script src="/Scripts/HRSProjectScript.js"></script>
     <div class="tab-content">
         <div class="card" style="font-size: 19px; z-index: 0;" runat="server" id="cardBody">
-            <div class="card-header card-header-warning">
+            <div class="card-header ">
                 <h2 class="card-title">รายการอุบัติเหตุ</h2>
             </div>
             <div class="card-body table-responsive">

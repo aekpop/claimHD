@@ -33,7 +33,7 @@ namespace ClaimProject.Device
             string sql = "";
             try
             {
-                sql = "SELECT * FROM tbl_device d JOIN tbl_drive_group g ON d.davice_group = g.drive_group_id WHERE davice_delete <> 1 AND device_name LIKE '%" + key + "%' ORDER BY device_name ASC";
+                sql = "SELECT * FROM tbl_device d JOIN tbl_drive_group g ON d.davice_group = g.drive_group_id WHERE davice_delete <> 1 AND UPPER(device_name) LIKE UPPER('%" + key + "%') ORDER BY device_name ASC";
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
@@ -132,7 +132,7 @@ namespace ClaimProject.Device
         {
             if (txtDeviceName.Text != "" && txtGroup.SelectedValue != "" && txtSchedule.Text != "")
             {
-                string sql = "INSERT INTO tbl_device (device_name,davice_delete,davice_group,device_schedule_hour) VALUES ('" + txtDeviceName.Text.Trim() + "','0','" + txtGroup.SelectedValue + "','" + txtSchedule.Text.Trim() + "')";
+                string sql = "INSERT INTO tbl_device (device_name,davice_delete,davice_group,device_schedule_hour,device_ref_Project,device_ref_Price,device_initials) VALUES ('" + txtDeviceName.Text.Trim() + "','0','" + txtGroup.SelectedValue + "','" + txtSchedule.Text.Trim() + "','-','0','-')";
                 string script = "";
                 if (function.MySqlQuery(sql))
                 {

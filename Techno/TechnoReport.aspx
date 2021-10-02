@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         <div id="MainBody" class="card" style="z-index: 0; ">
-            <div class="card-header card-header-primary">
+            <div class="card-header ">
                 <div class="card-title">รายงานอุบัติเหตุ</div>
             </div>
             <div class="card-body table-responsive">
@@ -28,7 +28,7 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-2" style="font-size:smaller">
+                    <div class="col text-center" style="font-size:smaller">
                         <asp:Button ID="btnResultReport" runat="server" CssClass="btn btn-success" OnCommand="btnResultReport_Command" Text="ตกลง"/>
                     </div>
                 </div>

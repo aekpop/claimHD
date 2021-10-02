@@ -416,5 +416,11 @@ namespace ClaimProject.equip
                 LoadPaging();
             }
         }
+
+        protected void gridTranlist_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridTranlist.PageIndex = e.NewPageIndex;
+            LoadPaging();
+        }
     }
 }

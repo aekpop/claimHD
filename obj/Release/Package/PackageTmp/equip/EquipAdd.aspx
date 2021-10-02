@@ -1,4 +1,4 @@
-﻿<%@ Page Title="งานครุภัณฑ์ / ค้นหา" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAdd.aspx.cs" Inherits="ClaimProject.equip.EquipAdd" %>
+﻿<%@ Page Title="งานครุภัณฑ์ / รายการครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAdd.aspx.cs" Inherits="ClaimProject.equip.EquipAdd" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server" >
     <style>
         @font-face {
@@ -9,6 +9,7 @@
             font-size:26px;
             font-family: 'Prompt';
         }
+        
     </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
@@ -16,7 +17,7 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
-    <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
+    <div class="container-fluid" style="font-family:'Prompt',sans-serif; ">
         <!-- Menu Dropdown -->        
         <div class="btn-group" runat="server" visible="false">
               <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
@@ -37,7 +38,7 @@
     <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
 
         <div class="card-header card-header-warning">
-            <div class="card-title " style="font-size:larger">ค้นหา/แก้ไข ครุภัณฑ์</div>
+            <div class="card-title " style="font-size:larger">ค้นหา</div>
         </div>
         
             <div class="card-body table-responsive table-sm">
@@ -94,30 +95,28 @@
                                 </div>
                          </div>
                <br />
-                <div class="row" style="padding-left:20px; font-size:small">
-                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false" ></asp:Label>               
-                        
-                </div>
+                <hr />               
            </div>
-        
-        <div class="card-body" style="font-size:medium; font-family:'TH SarabunPSK';">
-
+        <div class="card-header card-header-warning">
+            <div class="card-title " style="font-size:larger">รายการครุภัณฑ์</div>
+        </div>
+        <div class="card-body" style="font-size:medium; font-family:'TH SarabunPSK'; ">
           <asp:Panel ID="Panel1" runat="server" > 
-              
             <asp:GridView ID="GridEquipAdd" runat="server"
             DataKeyNames="equipment_id"
             OnRowDataBound="GridEquipAdd_RowDataBound"
-            CssClass="table table-hover table-sm "
+            CssClass="table table-responsive-md table-hover table-condensed table-sm"
             HeaderStyle-Font-Size="28px"
-                HeaderStyle-Height="50px"
-                RowStyle-Height="50px"
+            HeaderStyle-Height="50px"
+            RowStyle-Height="50px"
             Font-Size="24px"
             AutoGenerateColumns="False" 
             OnPageIndexChanging="GridEquipAdd_PageIndexChanging" 
-            PagerSettings-Mode="NumericFirstLast"  PageSize="20" 
+            PagerSettings-Mode="NumericFirstLast" 
+            PageSize="100" 
             PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
-            AllowPaging="true" 
-            HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="white" ForeColor="#000000" GridLines="None">
+            AllowPaging="true"
+            HeaderStyle-CssClass="text-center" RowStyle-CssClass="text-center" CellPadding="4" BorderColor="White" ForeColor="#000000" GridLines="None">
                 
                 <Columns>
                     
@@ -126,25 +125,25 @@
                             <%# Container.DataItemIndex + 1+"." %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ชื่อครุภัณฑ์(ไทย)" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                    <asp:TemplateField HeaderText="ชื่อครุภัณฑ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                         <ItemTemplate>
                             <asp:LinkButton ID="lbEquipthai" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_nameth") %>' OnCommand="btnEditEquip_Command" ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="เลขครุภัณฑ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                    <asp:TemplateField HeaderText="เลขครุภัณฑ์"  >
                         <ItemTemplate>
                             <asp:LinkButton ID="lbequipNo" runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.equipment_no") %>' OnCommand="btnEditEquip_Command" ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="เลขทะเบียน" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                    <asp:TemplateField HeaderText="เลขทะเบียน" >
                         <ItemTemplate>
                             <asp:Label ID="lbequipSe" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_serial") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="ยี่ห้อ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                    <asp:TemplateField HeaderText="ยี่ห้อ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" Visible="false">
                         <ItemTemplate>
                             <asp:Label ID="lbequipbrand"  runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_brand") %>'></asp:Label>
                         </ItemTemplate>
@@ -156,36 +155,34 @@
                         </ItemTemplate>
                     </asp:TemplateField> 
                     
-                    <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                    <asp:TemplateField HeaderText="สถานะ" >
                         <ItemTemplate>
                             <asp:Label ID="lbequipchk"  runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                    <asp:TemplateField HeaderText="สถานที่" >
                         <ItemTemplate>
                             <asp:Label ID="lbequipnote"  runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                    <asp:TemplateField HeaderText="จัดการข้อมูล" >
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbManage" runat="server" CssClass="badge bg-info text-white" Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i>&nbsp รายละเอียด</asp:LinkButton>
+                            <asp:LinkButton ID="lbManage" runat="server" CssClass="badge bg-info text-white" Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     
                     
                 </Columns>
-                <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle CssClass="text-center" BackColor="#ffffff"  ForeColor="000000" ></HeaderStyle>
-                <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="#2461BF" ForeColor="White" />
-                
-                <SelectedRowStyle BackColor="#a2fca5" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#baf7b2" />
-                <SortedDescendingHeaderStyle BackColor="#5abe48"/>              
-                <PagerStyle HorizontalAlign="Center" BackColor="White" ForeColor="#026b14"  />
-        </asp:GridView>                
+                <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" BorderColor="White"/>
+                <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />            
+        </asp:GridView>
+              <div class="footer">
+                  <div class="stats" style="padding-left:20px; font-size:small">
+                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false" ></asp:Label>               
+                </div>
+              </div>
    </asp:Panel>   
             </div>
-            
         </div>
    <div class="modal fade" id="EquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-size: 15px;">
         <div class="modal-dialog modal-lg" role="document">
@@ -206,7 +203,7 @@
 
 
     <div class="modal fade " id="UpdateEquipModal"   tabindex="-1" role="dialog" aria-labelledby="UpdateEquipModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable " style="width:100%" role="form">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable " style="width:100%" role="form">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">
@@ -247,7 +244,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group bmd-form-group">
                                         <p class="bmd-label-floating">ชื่อครุภัณฑ์อังกฤษ(ถ้ามี)</p>
-                                        <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" F CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                                        <asp:TextBox ID="txtEditEng" Enabled="false" runat="server" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                                          <br />
                                         <p class="bmd-label-floating">ยี่ห้อ</p>
                                         <asp:TextBox ID="txtEditBrand" Enabled="false" runat="server"  CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
@@ -314,17 +311,21 @@
                         </div>
                     </div>
 
-                    <div class="row" >
-                        
+                    <div class="row" >              
+                        <div class="col-md">
+                            <div class="form-group bmd-form-group">
+                                <p class="bmd-label-floating">อายุการใช้งาน</p>
+                                <asp:TextBox ID="txtlifetime" runat="server" Enabled="false" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                            </div>
+                        </div>
+
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ผู้รับผิดชอบหรือผู้ใช้งาน</p>
                                 <asp:TextBox ID="txtEditPerson" runat="server"   CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
-                        
-
-                    
+                                            
                         <div class="col-md">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">หมายเหตุ</p>

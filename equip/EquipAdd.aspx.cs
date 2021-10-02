@@ -1107,14 +1107,16 @@ namespace ClaimProject.equip
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
             GridEquipAdd.DataSource = ds.Tables[0];
+            GridEquipAdd.DataBind();
             ccount = (ds.Tables[0].Rows.Count).ToString();
-            titlegrid.Text = "ผลการค้นหา ( ชื่อครุภัณฑ์ : " + Snameth + " | เลขครุภัณฑ์ : " + SNum + " | เลขทะเบียน(Serial) : "+ txtSerial + " | สถานะ : "+ txtStatus + " | ด่านฯ : " + txtCpoint + " | อาคารย่อย : " + txtTollz + "  ) พบ " + ccount + " รายการ";
+            //titlegrid.Text = "ผลการค้นหา ( ชื่อครุภัณฑ์ : " + Snameth + " | เลขครุภัณฑ์ : " + SNum + " | เลขทะเบียน(Serial) : "+ txtSerial + " | สถานะ : "+ txtStatus + " | ด่านฯ : " + txtCpoint + " | อาคารย่อย : " + txtTollz + "  ) พบ " + ccount + " รายการ";
+            titlegrid.Text = "พบข้อมูลจำนวน "+ ccount + " แถว";
             titlegrid.Visible = true;
             
-            GridEquipAdd.DataBind();
-            if (Session["UserCpoint"].ToString() == "0"){ lbtnDepartReport.Visible = true; }
-            else { lbtnTollReport.Visible = true; }
-            function.Close();
+            
+            if (ccount != "0"){ equip.Visible = true; }
+            //else { lbtnTollReport.Visible = true; }
+            //function.Close();
             //AlertPop("เสร็จสิ้น", "success");
         }
         protected void btnSagain_Click(object sender, EventArgs e)

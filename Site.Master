@@ -26,7 +26,7 @@
         }
 
     </style>
-<html lang="th" style="overflow:hidden;">
+<html lang="th" >
 <head runat="server"> 
     <meta http-equiv="Content-Type" content="text/html; charset=tis-620" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,21 +78,20 @@
         <script src="/Scripts/offcanvas.js"></script>
         <div class="wrapper ">      
             <div class="panel panel-default" >           
-                <nav class="navbar fixed-top navbar-expand-md sticky-top navbar-dark bg-dark">
+                <nav class="navbar fixed-top sticky-top navbar-expand-sm navbar-dark bg-dark">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">                    
-                            <a><img src="/img/j4.png" width="35px" /></a>
+                            <a><img src="/img/j4.png" style="width:35px" /></a>
                             <a class="navbar-brand" href="#pablo" style="font-size:18px; font-family:Prompt"><%:Page.Title %></a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="navbar-toggler-icon icon-bar"></span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
+
                         </button>
                         <!--<div class="collapse navbar-collapse justify-content-end">-->
                             <div class="collapse navbar-collapse justify-content-end ">
-                                <ul class="navbar-nav" style="font-size:22px; font-family:Prompt">
+                                <ul class="navbar-nav" style="font-size:18px; font-family:Prompt">
                                     <!--<li>
                                             <div class="input-group no-border">
                                                 <input type="text" value="" class="form-control" placeholder="Search...">
@@ -134,7 +133,7 @@
                                             <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
                                             <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
                                             <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
-                                            <a class="dropdown-item" href="/CM/CMReport" >สรุปรายการ</a>     
+                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานสรุป</a>     
                                         </div>
                                         </li>
 
@@ -147,7 +146,7 @@
                                             <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
                                             <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
                                             <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
-                                            <a class="dropdown-item" href="/CM/CMReport" >สรุปรายการ</a>
+                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานสรุป</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="/CM/CMSurveyForm" >ตรวจสอบ</a>
                                         </div>
@@ -235,7 +234,7 @@
                         <!--</div> -->
                     </div>
                 </nav>
-                <!-- End Navbar -->
+                <!-- End Navbar -->  
                 <div class="content">
                         <div class="container-fluid">
                             <asp:Label ID="lblText" runat="server"></asp:Label>
@@ -245,33 +244,16 @@
                 </div>
                 <footer class="footer">
                     <div class="container-fluid">
-                        <nav class="float-left">
-                            <!--<ul>
-                                <li>
-                                    <a href="#">Creative Tim</a>
-                                </li>
-                                <li>
-                                    <a href="#">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="#">Licenses</a>
-                                </li>
-                            </ul>-->
-                        </nav>
+                        
                         <div class="copyright float-right">
                             &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
                         </div>
-                        <br />
+                        <br /><br /><br />
                         <div class="row" >
                             <asp:TextBox ID="txtUrlchk"  runat="server" Visible="false" OnTextChanged="txtUrlchk_TextChanged" ></asp:TextBox>
                         </div>
                     </div>
                 </footer>
-                <br />
-                <br />
             </div>
         </div>
         <div id="loading"></div>

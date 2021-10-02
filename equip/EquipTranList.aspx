@@ -22,7 +22,7 @@
               <ul class="dropdown-menu">
                 <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>
                   <li><asp:LinkButton runat="server" ID="lbtnNewInform" Text="แจ้งใหม่" CssClass="text text-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" /></li>
-                <li><a href="/equip/EquipAdd">ค้นหา</a></li>
+                <li><a href="/equip/EquipAdd">รายการครุภัณฑ์</a></li>
                 <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
                 <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
                 <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
@@ -33,8 +33,8 @@
         <!------------------>
         <asp:Button runat="server" ID="btnNewTran" CssClass="btn btn-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" Text="แจ้งใหม่" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
-        <div class="card-header card-header-success " >
-            <div class="card-title " style="color:white;">รายการโอนย้ายครุภัณฑ์ (ส่ง)</div>
+        <div class="card-header " >
+            <div class="card-title ">ค้นหา</div>
         </div>
             <div class="card-body table-responsive table-sm">
 
@@ -74,10 +74,12 @@
                     </div>
                     </div>
                 </div>
-                <hr />
-                <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
                 </div>
+        <div class="card">
+            <div class="card-header " >
+            <div class="card-title ">รายการส่งครุภัณฑ์</div>
+        </div>
+            <div class="card-body">
                 <asp:GridView ID="gridTranlist" runat="server" 
                     AutoGenerateColumns="false" 
                     DataKeyNames="trans_id" 
@@ -92,10 +94,10 @@
                     OnPageIndexChanging="gridTranlist_PageIndexChanging" 
                     PagerSettings-Mode="NumericFirstLast"  
                     PageSize="50" 
-            PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย" AllowPaging="true" >
-                    
-                    <Columns>
-                        
+                    PagerSettings-FirstPageText="หน้าแรก"  
+                    PagerSettings-LastPageText="หน้าสุดท้าย" 
+                    AllowPaging="true" >                    
+                    <Columns>                        
                         <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center" > </asp:Label>
@@ -152,17 +154,17 @@
                                 <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" visible="false" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-
                     </Columns>
                     <FooterStyle BackColor="#FFFFFF" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
-                    <HeaderStyle BackColor="#FFFFFF" CssClass="text-center"   ForeColor="#031f91" />
-                    
+                    <HeaderStyle BackColor="#FFFFFF" CssClass="text-center"   ForeColor="#031f91" />                    
                     <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="white" ForeColor="#990000" />
                 </asp:GridView>
-
-
+        </div>
+                <div class="row" style="padding-left:20px;" >
+                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                </div>
+                
             </div>
-
     </div>
     <div class="modal fade " id="ReportModal"   tabindex="-1" role="dialog" aria-labelledby="ReportModalLabel" aria-hidden="true">
         <div class="modal-dialog modal modal-dialog-centered " style=" max-height:85%;  margin-top: 50px; margin-bottom:50px;width:500px" role="form">
