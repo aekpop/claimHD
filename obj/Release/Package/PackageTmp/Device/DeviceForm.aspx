@@ -1,26 +1,35 @@
 ﻿<%@ Page Title="รายการอุปกรณ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DeviceForm.aspx.cs" Inherits="ClaimProject.Device.DeviceForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="form-row">
-        <div class="col-md-3">
-            ชื่ออุปกรณ์ : 
-            <asp:TextBox ID="txtDeviceName" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">เพิ่มอุปกรณ์</h3>
         </div>
-        <div class="col-md-3">
-            กลุ่ม : 
-            <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control"></asp:DropDownList>
-        </div>
-        <div class="col-md-3">
-            เวลาเข้าซ่อม : 
-            <asp:TextBox ID="txtSchedule" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col-md-3">
+                    ชื่ออุปกรณ์ : 
+                    <asp:TextBox ID="txtDeviceName" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                </div>
+                <div class="col-md-3">
+                    กลุ่ม : 
+                    <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control dropdown-item"></asp:DropDownList>
+                </div>
+                <div class="col-md-3">
+                    เวลาเข้าซ่อม : 
+                    <asp:TextBox ID="txtSchedule" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                </div>
+            </div>
+            <br />
+            <div class="form-row text-center">
+                <div class="col-md">
+                    <asp:Button ID="btnDeviceAdd" runat="server" Text="&#xf067; เพิ่ม" Font-Size="Medium" CssClass="btn btn-success btn-sm align-items-end fa" OnClick="btnDeviceAdd_Click" OnClientClick="return CompareConfirm('ยืนยันเพิ่มอุปกรณ์ ใช่หรือไม่');" />
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-row">
-        <div class="col-md-3">
-            <asp:Button ID="btnDeviceAdd" runat="server" Text="&#xf067; เพิ่ม" Font-Size="Medium" CssClass="btn btn-success btn-sm align-items-end fa" OnClick="btnDeviceAdd_Click" OnClientClick="return CompareConfirm('ยืนยันเพิ่มอุปกรณ์ ใช่หรือไม่');" />
-        </div>
-    </div>
-    <hr />
+   
+    
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="form-row">
@@ -28,14 +37,16 @@
                     ค้นหา 
             <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                 </div>
+                </div>
+            <div class="row">
                 <div class="col-md-3">
                     <br />
-                    <asp:Button ID="btnSearch" runat="server" Text="&#xf002; ค้นหา" Font-Size="Medium" CssClass="btn btn-dark btn-sm align-items-end fa" OnClick="btnSearch_Click" />
+                    <asp:Button ID="btnSearch" runat="server" Font-Size="Medium" Text="&#xf002; ค้นหา" CssClass="btn btn-info btn-sm align-items-end fa" OnClick="btnSearch_Click" />
                 </div>
             </div>
             <div class="form-row">
                 <div class="card">
-                    <div class="card-header card-header-warning">
+                    <div class="card-header ">
                         <h3 class="card-title">รายการอุปกรณ์</h3>
                     </div>
                     <div class="card-body table-responsive">
@@ -74,7 +85,7 @@
                                         <asp:TextBox ID="txtEDeviceSchedule" size="3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_schedule_hour") %>' CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="สัญญา โครงการอ้างอิง">
+                                <asp:TemplateField HeaderText="สัญญา/โครงการอ้างอิง">
                                     <ItemTemplate>
                                         <asp:Label ID="lbDeviceref" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_ref_Project") %>'></asp:Label>
                                     </ItemTemplate>

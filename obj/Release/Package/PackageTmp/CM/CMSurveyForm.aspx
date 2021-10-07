@@ -7,7 +7,7 @@
  <div class="container-fluid" style="font-family:'Prompt',sans-serif;">       
     <div id="DivCMGridView" runat="server" class="col-12">
         <div class="card" style="z-index: 0">
-            <div class="card-header card-header-warning">
+            <div class="card-header ">
                 <div class="card-title">ตรวจสอบรายการแก้ไขอุปกรณ์จากทางด่านฯ</div>
             </div>
             <div class="card-body table-responsive table-sm" >

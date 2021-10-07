@@ -96,7 +96,7 @@
                        <div class="form-group bmd-form-group">
                            <p class="bmd-label-floating">แนบรูปภาพ</p>
                            <div class="col" runat="server" id="diveditpic">
-                                <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
+                                <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" onchange="validateSize(this)"/>
                                
                             </div>
                           
@@ -327,6 +327,16 @@
             demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
         <% } %>
         });
+
+        function validateSize(FileUpload) {
+          const fileSize = FileUpload.files[0].size / 1024 / 1024; // in MiB
+          if (fileSize > 2) {
+            alert('ขนาดไฟล์เกิน 4 MB');
+              $(FileUpload).val(''); //for clearing with Jquery
+          } else {
+            // Proceed further
+          }
+        }
 
     </script>
 </asp:Content>

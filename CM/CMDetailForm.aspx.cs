@@ -171,8 +171,6 @@ namespace ClaimProject.CM
         }
         protected void btnSaveCM_Click(object sender, EventArgs e)
         {
-            
-
             string getChkpic = ChkPicInsert();
 
             if(txtProblem.Text == "")

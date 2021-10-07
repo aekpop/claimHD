@@ -37,56 +37,72 @@
         <!------------------>
     <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
 
-        <div class="card-header card-header-warning">
+        <div class="card-header ">
             <div class="card-title " style="font-size:larger">ค้นหา</div>
-        </div>
-        
+        </div>        
             <div class="card-body table-responsive table-sm">
                 
-                <div id="divsearch" runat="server" class="row"  >
-                    <div class="col-md-2 col-lg-2" >
-                            <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" Text="ชื่อครุภัณฑ์(ไทย) :" Font-Bold="true" ></asp:Label>
-                            <asp:TextBox ID="txtsearchth"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                           </div>
-                        </div>
+                <div id="divsearch" runat="server">
+                    <div class="row text-right">
+                            <div class="col-md-2 lg-2" >
+                                <asp:Label ID="Label1" runat="server" Text="ชื่อครุภัณฑ์ :" Font-Bold="true" ></asp:Label>
+                            </div>
+                        <div class="col-md-2 lg-2">
+                                <asp:TextBox ID="txtsearchth"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                            </div>
                 
-                    <div class="col-md-2 col-lg-2" >
-                            <div class="form-group" >
-                            <asp:Label ID="Label2" runat="server" Text="เลขครุภัณฑ์ :"  Font-Bold="true" ></asp:Label>
-                            <asp:TextBox ID="txtsearchNum"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                           </div>
-                        </div>
-                    <div class="col-md-2 col-lg-2" >
-                            <div class="form-group" >
-                            <asp:Label ID="Label4" runat="server" Text="เลขทะเบียน(Serial) :" Font-Bold="true" ></asp:Label>
-                            <asp:TextBox ID="txtsearchSerial"  CssClass="form-control" runat="server" BorderStyle="NotSet"  onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                           </div>
-                        </div>
-                    <div class="col-md-2 col-lg-2" >
-                            <div class="form-group" >
-                                <asp:Label ID="Label6" runat="server" Text="สถานะ :" Font-Bold="true" ></asp:Label>
-                                <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" ></asp:DropDownList>
-                                </div>
-                     </div>
-                    <div class="col-md-2 col-lg-2" >
-                            <div class="form-group" >
-                                <asp:Label ID="Label5" runat="server" Text="ด่านฯ :"  Font-Bold="true" ></asp:Label>
-                                <asp:DropDownList ID="ddlcpoint" runat="server"  OnSelectedIndexChanged="ddlcpoint_SelectedIndexChanged" AutoPostBack="true"  CssClass="form-control" ></asp:DropDownList>
-                                </div>
-                     </div>
+                        <div class="col-md-1 lg-1" >
+                                <asp:Label ID="Label2" runat="server" Text="เลขครุภัณฑ์ :"  Font-Bold="true" ></asp:Label>
+                            </div>
+                        <div class="col-md-3 lg-3">
+                                <asp:TextBox ID="txtsearchNum"  CssClass="form-control" runat="server" BorderStyle="NotSet" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                               </div>
 
-                     <div class="col-md-2 col-lg-2" >
-                            <div id="divAnex" runat="server" visible="false" class="form-group"  >
-                                <asp:Label ID="Label3" runat="server" Text="อาคาร :"  Font-Bold="true" ></asp:Label>
-                                <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="form-control"  ></asp:DropDownList>
-                                </div>
-                     </div>
+                        <div class="col-md-1 col-lg-1" >
+
+                                <asp:Label ID="Label4" runat="server" Text="เลขทะเบียน :" Font-Bold="true" ></asp:Label>
+                            </div>
+                            <div class="col-md-3 lg-3">
+                                <asp:TextBox ID="txtsearchSerial"  CssClass="form-control" runat="server" BorderStyle="NotSet"  onkeypress="return handleEnter(this, event)"></asp:TextBox>
+
+                            </div>
+                    </div>
+                    <br />
+                        <div class="row">
+                                    <div class="col-md-2 col-lg-2 text-right" >
+
+                                            <asp:Label ID="Label6" runat="server" Text="สถานะ :" Font-Bold="true" ></asp:Label>
+                                        </div>
+                                    <div class="col-md-2 lg-2">
+                                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control" ></asp:DropDownList>
+                               
+                                 </div>
+                                <div class="col-md-1 col-lg-1 text-right" >
+                            
+                                            <asp:Label ID="Label5" runat="server" Text="ด่านฯ :"  Font-Bold="true" ></asp:Label>
+                                    </div>
+                                    <div class="col-md-3 lg-3">
+                                            <asp:DropDownList ID="ddlcpoint" runat="server"  OnSelectedIndexChanged="ddlcpoint_SelectedIndexChanged" AutoPostBack="true"  CssClass="form-control" ></asp:DropDownList>
+                                
+                                 </div>
+
+                         
+                                <div id="divAnex" runat="server" visible="false" class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <asp:Label ID="Label3" runat="server" Text="อาคาร :"  Font-Bold="true" ></asp:Label>
+                                    </div>
+                                        <div class="col-md-9">
+                                            <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="form-control"  ></asp:DropDownList>
+                                        </div>
+                                    </div>
+                               </div>
+                         </div>
                      </div>
                    <br />
                         <div class="row">
                             <div class="col-md-6 text-right" >                               
-                                   <asp:Button ID="searchEquip" runat="server" Text="ค้นหา" CssClass="btn btn-warning btn-sm" Font-Bold="true" Font-Size="Large" OnClick="searchEquip_Click" />                                
+                                   <asp:Button ID="searchEquip" runat="server" Text="&#xf002; ค้นหา" CssClass="fa btn btn-info btn-sm" Font-Bold="true" Font-Size="Large" OnClick="searchEquip_Click" />                                
                             </div>                                                   
                                 <div id="divSagain" runat="server" visible="false" class="col-md-6">
                                          <asp:Label ID="chkS" runat="server" font-size="Small" ></asp:Label>
@@ -94,10 +110,11 @@
                                                         <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="ออกรายงาน" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
                                 </div>
                          </div>
-               <br />
-                <hr />               
+                   </div>
            </div>
-        <div class="card-header card-header-warning">
+
+        <div id="equip" runat="server" visible="false" class="card" >
+        <div class="card-header ">
             <div class="card-title " style="font-size:larger">รายการครุภัณฑ์</div>
         </div>
         <div class="card-body" style="font-size:medium; font-family:'TH SarabunPSK'; ">
@@ -151,7 +168,7 @@
                     
                     <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
-                            <asp:Label ID="lbequipToll"  runat="server"  Width="90px" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
+                            <asp:Label ID="lbequipToll"  runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
                     
@@ -177,8 +194,8 @@
                 <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />            
         </asp:GridView>
               <div class="footer">
-                  <div class="stats" style="padding-left:20px; font-size:small">
-                    <asp:Label ID="titlegrid" runat="server" text="" Visible="false" ></asp:Label>               
+                  <div class="stats" style="padding-left:20px; color:grey; ">
+                    <asp:Label ID="titlegrid" runat="server" Visible="false" ></asp:Label>               
                 </div>
               </div>
    </asp:Panel>   
@@ -401,5 +418,4 @@
 	    }     
         
     </script>
-</div>
 </asp:Content>

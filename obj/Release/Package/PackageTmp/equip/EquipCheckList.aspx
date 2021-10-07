@@ -13,7 +13,7 @@
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif">        
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
-        <div class="card-header card-header-warning" >
+        <div class="card-header " >
             <div class="card-title" >ตรวจสอบการโอนย้าย ด่านฯ</div>
         </div>
             <div class="card-body table-responsive table-sm">
@@ -29,25 +29,25 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="ประเภทโอนย้าย : " ></asp:Label>
-                            <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="dropdown dropdown-item" ></asp:DropDownList>
                            </div>
                         </div>
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group">
                             <asp:Label ID="Label2" runat="server" Text="ด่านต้นทาง : "></asp:Label>
-                            <asp:DropDownList ID="ddlsearchEndToll" runat="server" AutoPostBack="true"  CssClass="form-control" OnSelectedIndexChanged="ddlsearchEndToll_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlsearchEndToll" runat="server" AutoPostBack="true"  CssClass="dropdown dropdown-item" OnSelectedIndexChanged="ddlsearchEndToll_SelectedIndexChanged"></asp:DropDownList>
                            </div>
                         </div>
                         <div class="col-md-6 col-xl-2" id="divannex" runat="server" visible="false"  >
                             <div class="form-group">
                             <asp:Label ID="Label5" runat="server" Text="อาคาร" ></asp:Label>
-                            <asp:DropDownList ID="ddlannex" runat="server"  CssClass="form-control" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlannex" runat="server"  CssClass="dropdown dropdown-item" ></asp:DropDownList>
                            </div>
                         </div>
                         <div class="col-md-6 col-xl-2">
                             <div class="form-group">
                             <asp:Label ID="Label3" runat="server" Text="สถานะ : "></asp:Label>
-                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="dropdown dropdown-item"></asp:DropDownList>
                            </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="row">                       
                             <div class="col text-center">
                                 <div class="form-group">
-                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="XX-Large" CssClass="fa fa-search text-center text-secondary border-success" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
+                                <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา"  CssClass="btn btn-info fa fa-search text-center " OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
                                </div>
                             </div>
                         </div>

@@ -6,14 +6,14 @@
 
     <div class="row">
         <div class="col-md">
-            <asp:LinkButton ID="btnAddClaim" runat="server" CssClass="btn btn-info btn-sm fa" Font-Size="Medium" OnClick="btnAddClaim_Click">&#xf0a2; แจ้งอุบัติเหตุ</asp:LinkButton>
+            <asp:LinkButton ID="btnAddClaim" runat="server" CssClass="btn btn-info btn-sm fa" Font-Size="Medium" OnClick="btnAddClaim_Click" Visible="false">&#xf0a2; แจ้งอุบัติเหตุ</asp:LinkButton>
         </div>
         <div class="col-md">
             <asp:Label ID="checkSomething" runat="server" Visible="false" ></asp:Label>
         </div>
     </div>
     <div class="card" style="z-index: 0">
-        <div class="card-header card-header-warning">
+        <div class="card-header ">
             <h3 class="card-title">รายการอุบัติเหตุ</h3>
         </div>
         <div class="card-body table-responsive table-sm" style="font-size: medium;">

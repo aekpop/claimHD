@@ -3,9 +3,7 @@
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
-    <div class="container-fluid">
-
-    
+    <div class="container-fluid">    
     <!-- Menu Dropdown -->        
         <div class="btn-group">
               <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
@@ -25,29 +23,29 @@
         <!-------------------------------- // ------------------------------------>
     <asp:Button runat="server" ID="btnCreatenew" OnClick="btnCreatenew_Click" CssClass="btn btn-danger" Text="เพิ่มครุภัณฑ์" />
     <div id="AddPM" runat="server" class="card" style="z-index: 0">
-
-        <div class="card-header card-header-danger">
-            <div class="card-title" ><asp:Label ID="hhh" runat="server" Text="รายการเพิ่มครุภัณฑ์" ForeColor="White" ></asp:Label></div>
+        <div class="card-header ">
+            <div class="card-title" ><asp:Label ID="hhh" runat="server" Text="ค้นหา" ></asp:Label></div>
         </div>
             <div class="card-body table-responsive table-sm">
                 
                 <div id="divsearch" runat="server" class="row" >
-                    <div class="col-lg-3 col-md-5" >
-                            <div class="form-group" >
-                                <p class="lbdateAdd"  >วันที่เพิ่มครุภัณฑ์</p>
-                                <asp:TextBox ID="txtDatestart" runat="server" ToolTip="ตัวอย่าง 01-12-2563" CssClass="form-control " onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                                </div>
-                     </div>
-                    <div class="col-lg-3 col-md-5" >
-                            <div class="form-group" >
-                                <p class="lbCpoint" >ด่านฯ :</p>
-                                <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="form-control" ></asp:DropDownList>
-                                </div>
-                     </div>
+                    <div class="col-lg-1 col-md-1 text-right" >
+                                <div class="text-black-50" >วันที่ :</div>
+                        </div>
+                            <div class="col-md-3 ">
+                                        <asp:TextBox ID="txtDatestart" runat="server" ToolTip="ตัวอย่าง 01-12-2563" CssClass="form-control " onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                             </div>
+                                <div class="col-lg-1 col-md-1 text-right" >
+                                            <div class="text-black-50">ด่านฯ :</div>
+                                    </div>
+                                        <div class="col-md-3">
+                                                    <asp:DropDownList ID="ddlserchToll" runat="server"  CssClass="dropdown dropdown-item" ></asp:DropDownList>   
+                                         </div>
                     </div>
+                <br />
                 <div class="row">
-                     <div class="col-lg-3 col-md-2" >
-                         <asp:Button ID="btnsearchAdd" runat="server" Text="ค้นหา" CssClass="btn btn-success" Font-Bold="true" OnClick="btnsearchAdd_Click" /> 
+                     <div class="col-12 text-center" >
+                         <asp:Button ID="btnsearchAdd" runat="server" Text="&#xf002; ค้นหา" CssClass="fa btn btn-info" Font-Bold="true" OnClick="btnsearchAdd_Click" /> 
                      </div>
                     </div>
                 <div id="divSagain" runat="server" visible="false">
@@ -61,8 +59,14 @@
                 <div class="row" style="padding-left:35px;" >
                     <asp:Label ID="lbamountEQ" runat="server" ></asp:Label>
                 </div>
-          <asp:Panel ID="Panel1" CssClass="col-md " runat="server" > 
-              
+                </div>
+        </div>
+    <div class="card">
+        <div class="card-header ">
+            <div class="card-title" ><asp:Label ID="Label1" runat="server" Text="รายการเพิ่มครุภัณฑ์" ></asp:Label></div>
+        </div>
+        <div class="card-body table-responsive table-sm">
+            <asp:Panel ID="Panel1" CssClass="col-md " runat="server" > 
             <asp:GridView ID="GridAddAll" runat="server"
             DataKeyNames="NewEQ_id" 
             OnRowDataBound="GridAddAll_RowDataBound"
@@ -119,10 +123,10 @@
                 <SortedAscendingCellStyle BackColor="#baf7b2" />
                 <SortedDescendingHeaderStyle BackColor="#5abe48"/>
         </asp:GridView>                  
-   </asp:Panel>                   
+   </asp:Panel>
             </div>
+        </div>                             
     </div>
-        </div>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>

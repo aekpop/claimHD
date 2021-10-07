@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <div class="col-md-2 col-xl-3">
-                            <p class="bmd-label-floating">ตู้ที่เกิดอุบัติเหตุ</p>
+                            <p class="bmd-label-floating">บริเวณที่เกิดอุบัติเหตุ</p>
                             <asp:DropDownList ID="txtCBClaim" runat="server" CssClass="combobox form-control"></asp:DropDownList>
                         </div>
                         <div class="col-md-3 col-xl-3">
@@ -215,7 +215,7 @@
                         </div>
                         
                         
-                            <div class="col-md-2" style="padding:80px 1px 1px 10px" id="divcar2" runat="server" visible="false"  >
+                            <div class="col-md-2" style="padding:80px 1px 1px 10px" id="divcar2" runat="server" visible="true"  >
                             <asp:Button ID="btnCar2" Height="40px"  runat="server" Text="คู่กรณีคันที่2" Font-Size="18px" Font-Bold="true"   ForeColor="#790000" CssClass="btn " OnClick="btnCar2_Click" BackColor="#fcde92" />
                         </div>
                         <div class="col-md-2" style="padding:80px 10px 1px 5px" id="divcar3" runat="server" visible="false" >
@@ -275,7 +275,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="font-size: medium;" class="row">
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group bmd-form-group">
                             <p class="bmd-label-floating">พนักงานควบคุมระบบที่ปฏิบัติหน้าที่</p>
@@ -288,8 +288,11 @@
                             <asp:DropDownList ID="txtPosCom" runat="server" CssClass="form-control custom-select"></asp:DropDownList>
                         </div>
                     </div>
-                    <div class="col-md-2 text-right">
-                        <asp:LinkButton ID="btnAddCom" runat="server" Text="&#xf234; เพิ่ม พ.ควบคุมระบบที่ปฏิบัติหน้าที่" CssClass="btn btn-success btn-sm fa" OnClick="btnAddCom_Click"></asp:LinkButton>
+                    <div class="col-md-4">
+                        <div class="form-group bmd-form-group">
+                            <p class="bmd-label-floating">เพิ่ม พ.ควบคุมระบบ </p>
+                        <asp:LinkButton ID="btnAddCom" runat="server" Text="&#xf234; เพิ่ม " CssClass="btn btn-success btn-sm fa" OnClick="btnAddCom_Click" Font-Size="Large"></asp:LinkButton>
+                            </div>
                     </div>
                 </div>
                 <div style="font-size: medium;" class="row">
@@ -357,7 +360,7 @@
                     <div class="col-md-2 text-right">
                         <br />
                         <br />
-                        <asp:LinkButton ID="btnAddDeviceBroken" runat="server" Text="&#xf067; เพิ่มอุปกรณ์ที่ได้รับความเสียหาย" Font-Size="Small" CssClass="btn btn-success btn-sm fa" OnClick="btnAddDeviceBroken_Click" />
+                        <asp:LinkButton ID="btnAddDeviceBroken" runat="server" Text="&#xf067; เพิ่มอุปกรณ์ที่ได้รับความเสียหาย" Font-Size="Medium" CssClass="btn btn-success btn-sm fa" OnClick="btnAddDeviceBroken_Click" />
                     </div>
                 </div>
 
@@ -497,11 +500,12 @@
         </div>
     </div>
     <div class="modal fade " id="AddSecondModal"   tabindex="-1" role="dialog" aria-labelledby="AddSecondModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered " style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" role="form">
+        <div class="modal-dialog modal-lg modal-dialog-centered " style="max-height:85%;  margin-top: 50px; margin-bottom:50px;" role="form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">ข้อมูลคุ่กรณี คันที่ : </h4>
-                    <asp:Label runat="server" ID="lbmodaltitle" ></asp:Label>
+                    <div class="modal-title">ข้อมูลคุ่กรณี คันที่  
+                        <asp:Label runat="server" ID="lbmodaltitle" CssClass="text-center"></asp:Label>
+                    </div>                   
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -9,10 +9,10 @@
 
 
     <div class="card" style="z-index: 0">
-        <div class="card-header card-header-warning">
+        <div class="card-header ">
             <div class="card-title">แสดงข้อมูลอุบัติเหตุทางสถิติ</div>
         </div>
-        <hr />
+        
         <div class="card-body table-responsive">
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
@@ -73,21 +73,19 @@
 
                         <div class="row">
                             <div class="col-md-1">
-                                <div class="form-group bmd-form-group">
-                                    <label class="bmd-label-floating"></label>
-                                    <asp:Button ID="btnResult" runat="server" Text="ตกลง" Visible="false" Width="100%" OnClick="btnResult_Click" CssClass="btn btn-danger " />
-                                </div>
+                                
+                                    <asp:Button ID="btnResult" runat="server" Text="ตกลง" Visible="false" Width="100%" OnClick="btnResult_Click" CssClass="btn btn-success " />
+                                
                             </div>
                             <div class="col-md-1">
-                                <div class="form-group bmd-form-group">
-                                    <label class="bmd-label-floating"></label>
+                                
                                     <asp:Button ID="btnNewSearch" runat="server" Text="ย้อนกลับ" Visible="false" Width="100%" OnClick="btnNewSearch_Click" class="btn btn-primary" />
-                                </div>
+                                
                             </div>
                         </div>
                             <asp:Label ID="chkday" runat="server" Text="" ></asp:Label> 
            </div>
-                    <br />
+                    
                     <hr />   
     <div class="row">
                     <div class="col">

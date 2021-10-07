@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipAddList.aspx.cs" Inherits="ClaimProject.equip.EquipAddList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+     <style type ="text/css">
+                            .ui-datepicker {
+                                font-size: 16pt
+                            } 
+     </style>
     <script src="/Scripts/bootbox.js"></script>
     <div class="container-fluid">     
     <div  class="card" style="font-size: 19px; z-index: 0;" runat="server" >
@@ -10,7 +15,7 @@
         <div class="card-body table-responsive" runat="server" id="divAdd" >
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-                <div class="row" style="height: 110px;padding:1px 1px 1px 1px; " >
+                <div class="row" >
                         <div class="col-md-3" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating">ชื่อครุภัณฑ์(ไทย)</p>
@@ -23,54 +28,49 @@
                                 <asp:TextBox ID="txtAddENG" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
-                        <div class="col-md-2" style="padding:1px 5px 1px 5px">
+                        <div class="col-md-3" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >ยี่ห้อ</p>
                                 <asp:TextBox ID="txtAddBrand" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
-                        <div class="col-md-2" style="padding:1px 5px 1px 5px">
+                        <div class="col-md-3" style="padding:1px 5px 1px 5px">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating" >รุ่น</p>
                                 <asp:TextBox ID="txtAddSeries" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล"  Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
-                        </div>
-                        
-                        <div class="col-md-2" style="padding:1px 10px 1px 5px">
+                        </div>                        
+                    </div>                    
+                    <div class="row" >
+                        <div class="col-md-3" style="padding:1px 10px 1px 5px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >เลขสัญญา</p>
                                 <asp:TextBox ID="txtAddContractNum" runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Text="-" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
-                         
-                    </div>
-                    
-                    <div class="row" style="height: 140px;">
-                        <div class="col-md-2" style="padding:1px 5px 1px 10px">
+                        <div class="col-md-3" style="padding:1px 5px 1px 10px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >ด่านฯ</p>
                                 <asp:DropDownList ID="ddlAddCpoint" runat="server" Font-Size="Large" CssClass="form-control " />
                             </div>
                         </div>
-                        <style type ="text/css">
-                            .ui-datepicker {
-                                font-size: 16pt
-                            } 
-                        </style>
-                       <div class="col-md-2" style="padding:1px 5px 1px 5px" >
+                       
+                       <div class="col-md-3" style="padding:1px 5px 1px 5px" >
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >วันที่รับ</p>
                                 <asp:TextBox ID="txtAddDateGet" runat="server" Font-Size="Large" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>                             
                             </div>
                         </div>
 
-                        <div class="col-md-2" style="padding:1px 2px 2px 2px" >
+                        <div class="col-md-3" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >ราคา</p>
                                 <asp:TextBox ID="txtAddPrize" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
                             </div>
                         </div>
-                        <div class="col-md-1" style="padding:1px 2px 2px 2px" >
+                        </div>
+                    <div class="row">
+                        <div class="col-md-3" style="padding:1px 2px 2px 2px" >
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >หน่วย</p>
                                 <asp:TextBox ID="txtAddUnit" runat="server" Text="-" ToolTip="ใส่ - กรณีไม่มีข้อมูล" Font-Size="Medium" CssClass="form-control" onkeypress="return handleEnter(this, event)"/>
@@ -82,10 +82,16 @@
                                 <asp:DropDownList ID="ddlAddCompany" runat="server" Font-Size="Medium" CssClass="form-control " />
                             </div>
                         </div>
-                        <div class="col-md-2" style="padding:1px 2px 2px 2px">
+                        <div class="col-md-3" style="padding:1px 2px 2px 2px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >สถานะอุปกรณ์</p>
-                                <asp:DropDownList ID="ddlAddStat" runat="server" Font-Size="Large" CssClass="form-control" />
+                                <asp:DropDownList ID="ddlAddStat" runat="server"  CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="padding:1px 2px 2px 2px">
+                            <div class="form-group bmd-form-group" >
+                                <p class="bmd-label-floating" >อายุการใช้งาน</p>
+                                <asp:TextBox ID="txtexpired" runat="server"  CssClass="form-control" text="1"/>
                             </div>
                         </div>
                     </div>

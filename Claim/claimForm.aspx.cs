@@ -473,13 +473,16 @@ namespace ClaimProject.Claim
             }
 
             string strNote = "เนื่องด้วยวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก " + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
-            if (cabinet != "") { strNote += " ตู้ " + cabinet; }
-            strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ";
+            if (cabinet != "") { strNote += " ประจำช่องทาง " + cabinet; }
+
+            if(cabinet_claim != "อาคารสำนักงาน") { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ช่องทาง " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
+            else { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " บริเวณ" + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
+            //strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ";
             strNote += " เมื่อได้รับแจ้งเหตุ เจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;
 
             if (car2has == "1")
             {
-                //strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ขับรถมาจาก"+comeFrom+"มุ่งหน้า"+direction
+                //strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + cardetail2 + " หมายเลขทะเบียน "+license2+" จังหวัด "+province2+ " ใช้เส้นทาง"+comeFrom+"มุ่งหน้า"+direction
                 //    +" โดยมี"+driver2+" เลขที่บัตรประจำตัวประชาชน "+idcard2+" ที่อยู่ "+address2+ (tel2.Trim() != "" && tel2.Trim() != "-" ? " หมายเลขโทรศัพท์ " + tel2 : "") + "" +
                 //    " และคันที่ ๒ เป็น"+car;
                 strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + car;
@@ -500,12 +503,12 @@ namespace ClaimProject.Claim
                             strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด " + provinceplate2;
                             if (licenseEng != "")
                             {
-                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn
                                 + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
                             }
                             else
                             {
-                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                                strNote += " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
                             }
                         }
                         else
@@ -513,11 +516,11 @@ namespace ClaimProject.Claim
                             strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
                             if (licenseEng != "")
                             {
-                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
                             }
                             else
                             {
-                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                                strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
                             }
                         }
 
@@ -526,11 +529,11 @@ namespace ClaimProject.Claim
                     {
                         if (licenseEng != "")
                         {
-                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
                         }
                         else
                         {
-                            strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
+                            strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่ ";
                         }
                     }
                 }
@@ -586,7 +589,7 @@ namespace ClaimProject.Claim
                     }
                     */
                     strNote += " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
-                    " จังหวัด " + province2 + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + driver2 + "" +
+                    " จังหวัด " + province2 + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + driver2 + "" +
                     " เลขที่บัตรประจำตัวประชาชน " + idcard2 + " ที่อยู่ " + address2 + (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
                     " หมายเลขโทรศัพท์ " + tel2 : " เป็นผู้ขับขี่");
                 //}
@@ -622,12 +625,12 @@ namespace ClaimProject.Claim
                             strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด " + provinceplate2;
                             if (licenseEng != "")
                             {
-                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn
                                 + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                             else
                             {
-                                strNote += " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                strNote += " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                         }
                         else
@@ -635,11 +638,11 @@ namespace ClaimProject.Claim
                             strNote += " จังหวัด " + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2;
                             if (licenseEng != "")
                             {
-                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                             else
                             {
-                                strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                         }
 
@@ -648,11 +651,11 @@ namespace ClaimProject.Claim
                     {
                         if (licenseEng != "")
                         {
-                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            strNote += " จังหวัด" + province + " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                         }
                         else
                         {
-                            strNote += " จังหวัด" + province + " ขับรถมาจาก" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                         }
                     }
                 }
@@ -710,11 +713,11 @@ namespace ClaimProject.Claim
 
                     if (insurer.Trim() == "" || insurer.Trim() == "-")
                     {
-                        strNote += " ซึ่งรถยนต์คันดังกล่าวไม่ได้ทำประกันภัยไว้กับบริษัทใด";
+                        strNote += " ซึ่งไม่ได้ทำประกันภัยไว้";
                     }
                     else
                     {
-                        strNote += " ซึ่งรถยนต์คันดังกล่าวได้ทำประกันไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
+                        strNote += " ซึ่งได้ทำประกันภัยไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
                     }
                     strNote += " ทั้งนี้ ด่านฯ " + cpointName + (point != "" ? " " + point : "") + " ได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + inform + " ไว้เป็นหลักฐานแล้ว";
                 

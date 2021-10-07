@@ -115,7 +115,7 @@ namespace ClaimProject.Claim
             da.Fill(ds);
             ComGridView.DataSource = ds.Tables[0];
             ComGridView.DataBind();
-            LabelCom.Text = "พนักงานคอมที่ปฏิบัติ " + ds.Tables[0].Rows.Count + " คน";
+            LabelCom.Text = "พนักงานควบคุมระบบที่ปฏิบัติหน้าที่ " + ds.Tables[0].Rows.Count + " คน";
         }
         protected void ComGridView_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
