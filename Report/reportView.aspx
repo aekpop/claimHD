@@ -19,9 +19,8 @@
             src: url('/fonts/THSarabunIT๙.ttf') format('truetype');
         }
     </style>
-
 </head>
-<body>
+<body style="font-family: 'THSarabun,THSarabunIT๙'">
     <form id="iframe" runat="server">
         <asp:Panel id="dvReport" runat="server">
             <!--<asp:Button runat="server" ID="btnPrint" Text="พิมพ์" OnClick="btnPrint_Click" />

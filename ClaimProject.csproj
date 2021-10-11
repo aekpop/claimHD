@@ -1292,6 +1292,7 @@
     <Content Include="Report\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Report\report.aspx" />
     <Content Include="Report\reportCM.aspx" />
+    <Content Include="Report\reportEquipmentDetails.aspx" />
     <Content Include="Report\reportMonthlyClaim.aspx" />
     <Content Include="Report\reportQuantationCostapp.aspx" />
     <Content Include="Report\reportShowCost.aspx" />
@@ -2005,6 +2006,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetClaim.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataSetEquip.cs">
+      <DependentUpon>DataSetEquip.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataSetEquip.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2159,6 +2163,13 @@
     </Compile>
     <Compile Include="Report\reportCM.aspx.designer.cs">
       <DependentUpon>reportCM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportEquipmentDetails.aspx.cs">
+      <DependentUpon>reportEquipmentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\reportEquipmentDetails.aspx.designer.cs">
+      <DependentUpon>reportEquipmentDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\reportMonthlyClaim.aspx.cs">
       <DependentUpon>reportMonthlyClaim.aspx</DependentUpon>
@@ -2341,6 +2352,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PMAdmin.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportEquipmentDetails.rdlc" />
     <EmbeddedResource Include="Report\reportMonthlyClaim.rdlc" />
     <EmbeddedResource Include="Report\reportCM.rdlc" />
     <EmbeddedResource Include="Report\reportCostAppraisal.rdlc" />

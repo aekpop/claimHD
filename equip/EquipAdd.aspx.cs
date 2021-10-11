@@ -152,9 +152,9 @@ namespace ClaimProject.equip
             ccount = (ds.Tables[0].Rows.Count).ToString();
             titlegrid.Text = "รายการที่เพิ่ม/แก้ไขสำเร็จวันนี้ " + ccount +" รายการ";
             titlegrid.Visible = true;
-            lbtnTollReport.Visible = true;
+            //lbtnReportEquipment.Visible = true;
             GridEquipAdd.DataBind();
-            if (Session["UserCpoint"].ToString() != "0") { lbtnDepartReport.Visible = true; }
+            if (Session["UserCpoint"].ToString() == "0") { lbtnDepartReport.Visible = true; }
         }
 
         public string UploadEquip()
@@ -184,8 +184,8 @@ namespace ClaimProject.equip
         public string UploadEquip2()
         {
 
-            //int width = 720;
-            //int height = 480;
+            int width = 900;
+            int height = 900;
             string NewFileDocName = "";
             if(FileEditEQ.HasFile)
             {
@@ -203,8 +203,34 @@ namespace ClaimProject.equip
                         //Bitmap target = new Bitmap(width, height);
                         //Graphics graphic = Graphics.FromImage(target);
                         //graphic.DrawImage(image, 0, 0, width, height);
-                        //target.Save(Server.MapPath(NewFileDocName));
+                        //target.Save(Server.MapPath(NewFileDocName));                       
                         FileEditEQ.SaveAs(Server.MapPath(NewFileDocName.ToString()));
+
+                        using (var destinationImage = new Bitmap(width, height))
+                        {
+                            using (var graphics = Graphics.FromImage(destinationImage))
+                            {
+                                graphics.Clear(Color.White);
+                                using (var sourceImage = new Bitmap(Server.MapPath(NewFileDocName)))
+                                {
+                                    var s = Math.Max(sourceImage.Width, sourceImage.Height);
+                                    var w = width * sourceImage.Width / s;
+                                    var h = height * sourceImage.Height / s;
+                                    var x = (width - w) / 2;
+                                    var y = (height - h) / 2;
+
+                                    // Use alpha blending in case the source image has transparencies.
+                                    graphics.CompositingMode = CompositingMode.SourceOver;
+
+                                    // Use high quality compositing and interpolation.
+                                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                                    graphics.DrawImage(sourceImage, x, y, w, h);
+                                }
+                            }
+                            destinationImage.Save(Server.MapPath(NewFileDocName.ToString()));
+                        }
                         return NewFileDocName;
                     }
                     else
@@ -1114,8 +1140,16 @@ namespace ClaimProject.equip
             titlegrid.Visible = true;
             
             
-            if (ccount != "0"){ equip.Visible = true; }
-            //else { lbtnTollReport.Visible = true; }
+            if (ccount != "0")
+            {
+                equip.Visible = true;
+                lbtnReportEquipment.Visible = true;
+            }
+            else
+            {
+                equip.Visible = false;
+                lbtnReportEquipment.Visible = false;
+            }
             //function.Close();
             //AlertPop("เสร็จสิ้น", "success");
         }
@@ -1488,6 +1522,11 @@ namespace ClaimProject.equip
             Session.Add("txtSearchEq", txtEditNo.Text);
             //Response.Redirect("/equip/EquipHistory");
             Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/equip/EquipHistory','_newtab');", true);
+        }
+
+        protected void lbtnReportEquipment_Command(object sender, CommandEventArgs e)
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/report/reportEquipmentDetails','_newtab');", true);
         }
     }
 }

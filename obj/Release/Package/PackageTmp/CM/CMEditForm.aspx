@@ -24,7 +24,7 @@
     <div id="DivCMGridView" runat="server" >
         <div class="card" style="z-index: 0">
             <div class="card-header ">
-                <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
+                <div class="card-title">ค้นหา</div>
             </div>
             <div class="card-body table-responsive table-md">
                 <div class="row" >
@@ -48,8 +48,15 @@
                         <asp:LinkButton ID="btnSearchEdit" runat="server" font-size="18px" CssClass="btn btn-success " OnClick="btnSearchEdit_Click"><i class="fas fa-search"></i>&nbsp ค้นหา</asp:LinkButton>
                     </div>
                 </div>
-                <br />
-                <asp:Panel ID="Panel1" runat="server" >
+               
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"> รายการแจ้งซ่อมอุปกรณ์                       
+                        </div>
+                    <div class="card-body">
+                        <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="table table-striped table-hover"
                         HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center" HeaderStyle-Font-Size="18px"
@@ -58,7 +65,6 @@
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            
                             <asp:TemplateField HeaderText="ด่านฯ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
@@ -68,8 +74,7 @@
                                 <ItemTemplate>
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>
-                            
+                            </asp:TemplateField>                            
                             <asp:TemplateField HeaderText="วันที่แจ้ง" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
@@ -103,11 +108,8 @@
                         </Columns>
                         <EditRowStyle BackColor="#ffffff" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-
                         <HeaderStyle Font-Bold="True" ></HeaderStyle>
-
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-
                         <RowStyle CssClass="text-left" BackColor="#ffffff"></RowStyle>
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
@@ -116,6 +118,8 @@
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
                 </asp:Panel>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -221,20 +225,20 @@
                         <div class="col-lg-10 col-xl-10">
                             <br />
                             <label class="bmd-label-floating">แนบภาพแก้ไข </label>
-                            <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" />
+                            <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" onchange="validateSize(this)"/>
                         </div>
                     </div>
                     <div class="row" id="imgService" runat="server">
                         <div class="col-lg-10 col-xl-10">
                             <br />
                             <label class="bmd-label-floating">แนบใบService </label>
-                            <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" />
+                            <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" onchange="validateSize(this)"/>
                         </div>
 
                         
                     </div>
                     <label style="font-size:12px;">รองรับรูปภาพนามสกุล .jpg, .JPEG และ.PNG เท่านั้น </label>
-                    <label style="font-size:12px;">กรณีแนบภาพแก้ไขและใบservice ขนาดไฟล์รูปภาพรวมกันต้องไม่เกิน 4MB</label>
+                    <label style="font-size:12px;">ภาพแก้ไขและใบservice ขนาดไฟล์รูปภาพไม่เกิน 2MB</label>
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton ID="btnUpdateCM" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateCM_Command" OnClientClick="return CompareConfirm('ยืนยันบันทึกข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>
@@ -292,15 +296,23 @@
 
         function handleEnter (field, event) {
 		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
-            if (keyCode == 13) {
-                
+            if (keyCode == 13) {                
                 return false;
             }
             else
             {
                 return true;
-            }
-		    
+            } 
+        }
+
+        function validateSize(FileUpload) {
+          const fileSize = FileUpload.files[0].size / 1024 / 1024; // in MiB
+          if (fileSize > 2) {
+            alert('ขนาดไฟล์เกิน 2 MB');
+              $(FileUpload).val(''); //for clearing with Jquery
+          } else {
+            return true;
+          }
         }
 
          $(document).ready(function(){
