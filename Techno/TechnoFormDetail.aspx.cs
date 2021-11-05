@@ -319,12 +319,15 @@ namespace ClaimProject.Techno
                     btns1.Visible = false;
                     btns2.Visible = false;
                     btns3.Visible = false;
+                    btn3_1.Visible = false;
                     btns4.Visible = false;
                     Div1.Visible = false;
                     Div2.Visible = false;
                     Div3.Visible = false;
                     Div4.Visible = false;
+                    estimate.Visible = false;
                     divFileUploalNote.Visible = false;
+                    LinkButton2.Visible = false;
                     break;
                 case "7":
                     btns0.Visible = false;

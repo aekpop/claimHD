@@ -16,6 +16,8 @@ namespace ClaimProject.equip
         public string alerts = "";
         public string alertTypes = "";
         public string icons = "";
+        public string locate = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] == null)
@@ -27,14 +29,14 @@ namespace ClaimProject.equip
                 function.getListItem(ddlAddCompany, "SELECT * FROM tbl_company WHERE company_status='0' Order By company_id DESC ", "company_name", "company_id");
                 ddlAddCompany.SelectedValue = "555";
                 function.getListItem(ddlAddStat, "SELECT * FROM tbl_equipment_status Order By status_id ", "status_name", "status_id");
+                //function.getListItem(ddlSelectlocation, "SELECT * FROM tbl_location", "locate_name", "locate_id");
                 //function.getListItem(ddlAddLocatedd, "SELECT * FROM tbl_location Order By locate_id ", "locate_name", "locate_id");
                 //function.getListItem(txtAddContractNum, );
                 SetInitialRow();
-               LoadPaging();
-                
+                LoadPaging();                
             }
         }
-        protected void LoadPaging ()
+        protected void LoadPaging()
         {
             string PrivCode = Session["UserPrivilegeId"].ToString();
             string userrrr = Session["User"].ToString();
@@ -45,26 +47,26 @@ namespace ClaimProject.equip
                     string sawitree = "SELECT * FROM tbl_toll " +
                         "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'sawitree' Order by toll_id ASC ";
                     function.getListItem(ddlAddCpoint, sawitree, "toll_name", "toll_id");
-                    ddlAddCpoint.SelectedValue = "9200";
+                    //ddlAddCpoint.SelectedValue = "9200";
                 }
                 else if (userrrr == "supaporn")
                 {
                     string supaporn = " SELECT * FROM tbl_toll " +
                         "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'supaporn' Order by toll_id ASC ";
                     function.getListItem(ddlAddCpoint, supaporn, "toll_name", "toll_id");
-                    ddlAddCpoint.SelectedValue = "9200";
+                    //ddlAddCpoint.SelectedValue = "9200";
                 }
                 else if (userrrr == "watcharee")
                 {
                     string watcharee = "SELECT * FROM tbl_toll " +
                         "JOIN tbl_cpoint d ON d.cpoint_id = tbl_toll.cpoint_id WHERE user_depart = 'watcharee' Order by toll_id ASC ";
                     function.getListItem(ddlAddCpoint, watcharee, "toll_name", "toll_id");
-                    ddlAddCpoint.SelectedValue = "9200";
+                    //ddlAddCpoint.SelectedValue = "9200";
                 }
                 else
                 {
                     function.getListItem(ddlAddCpoint, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
-                    ddlAddCpoint.SelectedValue = "9200";
+                    //ddlAddCpoint.SelectedValue = "9200";
                 }
 
             }
@@ -75,11 +77,11 @@ namespace ClaimProject.equip
                                     "WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By tbl_toll.toll_id ASC";
                 function.getListItem(ddlAddCpoint, cpointToll, "toll_name", "toll_id");
             }
+
             if (Session["NewEQPKtype"].ToString() == "new")
             {
                 statsave.Text = Session["NewEQPK"].ToString() +" (รายการใหม่ยังไม่บันทึก)";
                 statsave.BackColor = System.Drawing.ColorTranslator.FromHtml("#dedede");
-                
             }
             else if(Session["NewEQPKtype"].ToString() == "old")
             {
@@ -105,7 +107,7 @@ namespace ClaimProject.equip
                     ddlAddStat.SelectedValue = rs.GetInt32("AddStat").ToString();
 
                     rs.Close();
-                    string sqlAddedd = "Select * FROM tbl_neweq_list WHERE newEQ_idx = '" + Session["NewEQPK"].ToString() + "' Order by newlist_id ASC ";
+                    string sqlAddedd = "Select * FROM tbl_neweq_list JOIN tbl_location ON tbl_neweq_list.list_locate =  tbl_location.locate_id WHERE newEQ_idx = '" + Session["NewEQPK"].ToString() + "' Order by newlist_id ASC ";
                     MySqlDataAdapter da = function.MySqlSelectDataSet(sqlAddedd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -118,7 +120,7 @@ namespace ClaimProject.equip
                     {
                         deleteAll.Visible = false;
                     }
-                    resulttt.Text = "ครุภัณฑ์เข้าระบบ  " + dt.Rows.Count.ToString() + " รายการ";
+                    resulttt.Text = "ระบบตรวจพบครุภัณฑ์  " + dt.Rows.Count.ToString() + " รายการ";
                     gridadded.DataBind();
                 }
                 
@@ -129,16 +131,17 @@ namespace ClaimProject.equip
 
         private void SetInitialRow()
         {
-
             DataTable dt = new DataTable();
             DataRow dr = null;
             dt.Columns.Add(new DataColumn("RowNumber", typeof(string)));
             dt.Columns.Add(new DataColumn("Column1", typeof(string)));
             dt.Columns.Add(new DataColumn("Column2", typeof(string)));
+            dt.Columns.Add(new DataColumn("Column3", typeof(string)));
             dr = dt.NewRow();
             dr["RowNumber"] = 1;
             dr["Column1"] = string.Empty;
             dr["Column2"] = string.Empty;
+            dr["Column3"] = string.Empty;
             dt.Rows.Add(dr);
 
             //dr = dt.NewRow();
@@ -165,12 +168,14 @@ namespace ClaimProject.equip
 
                         TextBox box1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
                         TextBox box2 = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("TextBox2");
+                        DropDownList list1 = (DropDownList)Gridview1.Rows[rowIndex].Cells[3].FindControl("ddlAddLocatedd");
 
                         drCurrentRow = dtCurrentTable.NewRow();
                         drCurrentRow["RowNumber"] = i + 1;
 
                         dtCurrentTable.Rows[i - 1]["Column1"] = box1.Text;
                         dtCurrentTable.Rows[i - 1]["Column2"] = box2.Text;
+                        dtCurrentTable.Rows[i - 1]["Column3"] = list1.SelectedItem.Text;
                         rowIndex++;
 
                     }
@@ -205,9 +210,16 @@ namespace ClaimProject.equip
                     {
                         TextBox box1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
                         TextBox box2 = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("TextBox2");
+                        DropDownList list1 = (DropDownList)Gridview1.Rows[rowIndex].Cells[3].FindControl("ddlAddLocatedd");
 
                         box1.Text = dt.Rows[i]["Column1"].ToString();
                         box2.Text = dt.Rows[i]["Column2"].ToString();
+
+                        if(i < dt.Rows.Count - 1)
+                        {
+                            list1.ClearSelection();
+                            list1.Items.FindByText(dt.Rows[i]["Column3"].ToString()).Selected = true;
+                        }
 
                         rowIndex++;
                     }
@@ -226,6 +238,7 @@ namespace ClaimProject.equip
             string TimeNoww = DateTime.Now.ToString("HH:mm");
             string DateNoww = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
             string Num1 = ""; string Num2 = ""; string userr = ""; string SQLPMM = "";string newEQref = "";
+            string Num3 = "";
             string eqaddList = "";
             int doOrnot = 0;
 
@@ -239,6 +252,7 @@ namespace ClaimProject.equip
                         {
                             Num1 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox1")).Text.Trim();
                             Num2 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox2")).Text.Trim();
+                            Num3 = ((DropDownList)Gridview1.Rows[i].FindControl("ddlAddLocatedd")).SelectedIndex.ToString();
                             string resultChk = CheckDupli(Num1, Num2);
                             string EQPKTYPE = Session["NewEQPKtype"].ToString();
                             if (resultChk == "ok")
@@ -284,7 +298,7 @@ namespace ClaimProject.equip
                                             ",equipment_series,equipment_buy_date,equipment_price_unit,equipment_contract_no,equipment_unit" +
                                             ",toll_id,Estatus_id,company_id" +
                                             ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month,equipment_life)"
-                                          + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','555','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
+                                          + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','"+Num3+"','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
                                           ",'" + txtAddSeries.Text + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddContractNum.Text + "'" +
                                           ",'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue + "','" + ddlAddStat.SelectedValue + "'" +
                                           ",'" + ddlAddCompany.SelectedValue + "','-','0','" + Session["User"].ToString() + "'" +
@@ -292,10 +306,11 @@ namespace ClaimProject.equip
                                           ",'" + txtexpired.Text + "')";
 
                                         eqaddList = "insert into tbl_neweq_list " +
-                                            " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth) " +
+                                            " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth,list_locate) " +
                                             "values ('" + Num2 + "','" + Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "'," +
                                             "'" + Num1 + "','" + txtAddTH.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.Text + "'," +
-                                            " '" + ddlAddCpoint.SelectedValue + "','" + function.getBudgetYear(txtAddDateGet.Text) + "','" + GetThaiMonth(txtAddDateGet.Text) + "')";
+                                            " '" + ddlAddCpoint.SelectedValue + "','" + function.getBudgetYear(txtAddDateGet.Text) + "','" + GetThaiMonth(txtAddDateGet.Text) + "'" +
+                                            ",'"+ Num3 +"')";
 
                                         if (function.MySqlQuery(SQLPMM))
                                         {
@@ -304,7 +319,7 @@ namespace ClaimProject.equip
                                                 if (function.MySqlQuery(eqaddList))
                                                 {
                                                     Session["NewEQPKtype"] = "old";
-                                                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "success", "alert('บันทึกสำเร็จ')", true);
+                                                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "success", "alert('บันทึกครุภัณฑ์จำนวน "+ Gridview1.Rows.Count +" รายการสำเร็จ')", true);
                                                     SetInitialRow();
                                                     LoadPaging();
                                                     break;
@@ -347,7 +362,7 @@ namespace ClaimProject.equip
                                             ",equipment_series,equipment_buy_date,equipment_price_unit,equipment_contract_no,equipment_unit" +
                                             ",toll_id,Estatus_id,company_id" +
                                             ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month,equipment_life)"
-                                          + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','555','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
+                                          + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','"+Num3+"','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
                                           ",'" + txtAddSeries.Text + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddContractNum.Text + "'" +
                                           ",'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue.ToString() + "','" + ddlAddStat.SelectedValue.ToString() + "'" +
                                           ",'" + ddlAddCompany.SelectedValue.ToString() + "','-','0','" + Session["User"].ToString() + "'" +
@@ -376,10 +391,10 @@ namespace ClaimProject.equip
                                             " where NewEQ_id = '" + Session["NewEQPK"].ToString() + "'";
                                         }
                                         eqaddList = "insert into tbl_neweq_list " +
-                                            " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth) " +
+                                            " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth,list_locate) " +
                                             "values ('" + Num2 + "','" + Session["NewEQPK"].ToString() + "','" + DateNoww + "','" + TimeNoww + "'," +
                                             "'" + Num1 + "','" + txtAddTH.Text + "','" + txtAddBrand.Text + "','" + txtAddSeries.Text + "','" + txtAddContractNum.Text + "'," +
-                                            " '" + ddlAddCpoint.SelectedValue + "','" + function.getBudgetYear(txtAddDateGet.Text) + "','" + GetThaiMonth(txtAddDateGet.Text) + "')";
+                                            " '" + ddlAddCpoint.SelectedValue + "','" + function.getBudgetYear(txtAddDateGet.Text) + "','" + GetThaiMonth(txtAddDateGet.Text) + "','"+ Num3+"')";
                                         if (function.MySqlQuery(SQLPMM))
                                         {
                                             if (function.MySqlQuery(newEQref))
@@ -403,7 +418,11 @@ namespace ClaimProject.equip
                                             }
                                         }
                                         else
-                                        { doOrnot = 0; break; }
+                                        {
+                                            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Alert", "alert('Error03 ติดต่อเจ้าหน้าที่ ')", true);
+                                            doOrnot = 0;
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -538,7 +557,6 @@ namespace ClaimProject.equip
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             SaveAllRow();
-
         }
 
         protected void btnAgain_Click(object sender, EventArgs e)
@@ -560,11 +578,11 @@ namespace ClaimProject.equip
                     //extract the TextBox values
                     TextBox box1 = (TextBox)Gridview1.Rows[i].Cells[1].FindControl("TextBox1");
                     TextBox box2 = (TextBox)Gridview1.Rows[i].Cells[2].FindControl("TextBox2");
-
+                    DropDownList list1 = (DropDownList)Gridview1.Rows[i].Cells[3].FindControl("ddlAddLocatedd");
 
                     dt.Rows[i]["Column1"] = box1.Text;
                     dt.Rows[i]["Column2"] = box2.Text;
-
+                    dt.Rows[i]["Column3"] = list1.SelectedItem.Text;
                 }
                 if (dt.Rows.Count > 1)
                 {
@@ -695,13 +713,23 @@ namespace ClaimProject.equip
                         ScriptManager.RegisterClientScriptBlock(this.Page,this.GetType(), "Alert", "alert('Can't Delete newequipment ติดต่อเจ้าหน้าที่!!')", true);
                         //AlertPop("Can't Delete newequipment ติดต่อเจ้าหน้าที่!!", "error");
                         break;
-                    }
-                    
-                    
+                    }                                       
                 }
             }
-
-
         }
+
+        protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlAddLocatedd = (e.Row.FindControl("ddlAddLocatedd") as DropDownList);
+                function.getListItem(ddlAddLocatedd, "SELECT * FROM tbl_location Order By locate_id ", "locate_name", "locate_id");
+                    //ddlAddLocatedd.SelectedIndex = ddlAddLocatedd.Items.IndexOf(ddlAddLocatedd.Items.FindByValue((string)DataBinder.Eval(e.Row.DataItem, "locate_id").ToString()));
+                ddlAddLocatedd.Items.Insert(0, new ListItem("Please select"));
+                ddlAddLocatedd.DataTextField = "locate_name";
+                ddlAddLocatedd.DataValueField = "locate_id";
+                //ddlAddLocatedd.DataBind();
+            }
+        }       
     }
 }

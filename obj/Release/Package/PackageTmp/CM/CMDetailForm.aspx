@@ -65,7 +65,7 @@
                     <div class="col-md-4">
                         <div class="form-group bmd-form-group ">
                             <p class="bmd-label-floating ">เวลา :</p>
-                            <asp:TextBox ID="txtSTime" runat="server" MaxLength="5" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                            <asp:TextBox ID="txtSTime" runat="server" MaxLength="5" type="time" CssClass="form-control"/>                            
                         </div>
                     </div>
                                       
@@ -135,7 +135,11 @@
                     <div class="col-md" >
                         <label ID="lbTollz" class="bmd-label-floating">ด่านฯ : </label>
                         <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control custom-select" ></asp:DropDownList>
-                    </div>              
+                    </div>
+                    <div class="col-md">
+                        <label class="bmd-label-floating">อาคารย่อย : </label>
+                        <asp:TextBox ID="txtCmpoint" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
                     <div class="col-md">
                         <br />
                         <asp:Button ID="btnSearchAddd" runat="server" Text="ค้นหา" Visible="true" CssClass="btn btn-success" OnClick="btnSearchAddd_Click"/>
@@ -336,6 +340,12 @@
           } else {
             // Proceed further
           }
+        }
+
+        function chkNum(ele)
+        {
+            var num = parseFloat(ele.value);
+            ele.value = num.toFixed(2);
         }
 
     </script>

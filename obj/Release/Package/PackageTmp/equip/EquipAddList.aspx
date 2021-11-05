@@ -91,7 +91,7 @@
                         <div class="col-md-3" style="padding:1px 2px 2px 2px">
                             <div class="form-group bmd-form-group" >
                                 <p class="bmd-label-floating" >อายุการใช้งาน</p>
-                                <asp:TextBox ID="txtexpired" runat="server"  CssClass="form-control" text="1"/>
+                                <asp:TextBox ID="txtexpired" runat="server"  CssClass="form-control" text="8"/>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,9 @@
                 <asp:gridview ID="Gridview1" runat="server" CssClass="col-md text-center"
                     ShowFooter="true"  GridLines="Both" BorderColor="White"  Font-Size="16px" 
                     HeaderStyle-Font-Size="24px"
-                    AutoGenerateColumns="false" > 
+                    AutoGenerateColumns="false" 
+                    OnRowDataBound="Gridview1_RowDataBound"
+                    > 
                     <AlternatingRowStyle BackColor="#edebec" />
                     <Columns>
                         <asp:BoundField DataField="RowNumber" HeaderText="ลำดับ" ItemStyle-Width="30px" HeaderStyle-CssClass="text-center"  ItemStyle-CssClass="text-center" />
@@ -115,6 +117,11 @@
                         <asp:TemplateField HeaderText="เลขทะเบียน" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:TextBox ID="TextBox2"  runat="server" ToolTip="ใส่ - กรณีไม่มีข้อมูล" CssClass="form-control text-center" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                            </ItemTemplate>
+                            </asp:TemplateField>
+                        <asp:TemplateField HeaderText="สถานที่" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <asp:DropDownList ID="ddlAddLocatedd" runat="server" CssClass="form-control" ></asp:DropDownList>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
@@ -138,7 +145,7 @@
             <br />
             <div class="row">
                 <div class="col-md  text-center">
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-rose" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึก" OnClientClick="return UpdteConfirm('ยืนยันเพิ่มรายการ ใช่หรือไม่');" />               
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-success" Font-Bold="true" runat="server" OnClick="btnSubmit_Click" Text="บันทึก" OnClientClick="return UpdteConfirm('ยืนยันเพิ่มรายการ ใช่หรือไม่');" />               
                 </div>
             </div>
             <hr />
@@ -151,6 +158,7 @@
                     ShowFooter="true"  GridLines="None" BorderColor="White"  Font-Size="16px" 
                     HeaderStyle-Font-Size="24px" PageSize="100" 
                     CssClass="table table-hover table-condensed table-sm"
+                    HeaderStyle-CssClass="text-center"
                     AutoGenerateColumns="false" OnRowDataBound="gridadded_RowDataBound" OnRowDeleting="gridadded_RowDeleting"> 
                     <AlternatingRowStyle BackColor="#ffffff" />
                     <Columns>
@@ -171,33 +179,43 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="ชื่อครุภัณฑ์"  ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="ชื่อครุภัณฑ์"  ItemStyle-CssClass="text-center" Visible="false">
                             <ItemTemplate >
                                 <asp:Label ID="lbEQthname"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.list_thname") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="ยี่ห้อ"  ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="ยี่ห้อ"  ItemStyle-CssClass="text-center" Visible="false">
                             <ItemTemplate >
                                 <asp:label ID="lbEQBrand"  runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortTextCom(DataBinder.Eval(Container, "DataItem.list_brand").ToString()) %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="รุ่น/ซีรีย์"  ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="รุ่น/ซีรีย์"  ItemStyle-CssClass="text-center" Visible="false">
                             <ItemTemplate >
                                 <asp:label ID="lbEQSeries"  runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortTextCom(DataBinder.Eval(Container, "DataItem.list_series").ToString()) %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="วันที่บันทึกระบบ"  ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="สถานที่"  ItemStyle-CssClass="text-center" Visible ="true">
+                            <ItemTemplate >
+                                <asp:label ID="lbLocate"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>' ></asp:label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="วันที่บันทึกระบบ"  ItemStyle-CssClass="text-center" Visible="true">
                             <ItemTemplate >
                                 <asp:label ID="lbdatesys"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Date_added") %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="เวลาที่บันทึกระบบ"  ItemStyle-CssClass="text-center" Visible ="false">
+                        <asp:TemplateField HeaderText="เวลา"  ItemStyle-CssClass="text-center" Visible ="true">
                             <ItemTemplate >
                                 <asp:label ID="lbtimesys"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Time_added") %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField  ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                        <asp:TemplateField HeaderText="จัดการข้อมูล"  ItemStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <asp:Button id="delete" runat="server" CommandName="Delete" Text="ลบ" CssClass="btn btn-danger" OnClientClick="return UpdteConfirm('ยืนยัน ลบรายการครุภัณฑ์ทั้งหมด ใช่หรือไม่');" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        
                     </Columns>
                     <FooterStyle BackColor="#ffffff" Font-Bold="True" CssClass="text-center" ForeColor="#ffffff" />
                     <HeaderStyle BackColor="#ab0c56" ForeColor="#ffd9d9"/>
@@ -208,7 +226,7 @@
     </div>
         <div class="row">
                 <div class="col-md text-center">
-                    <asp:Button ID="deleteAll" runat="server" Visible="false" CssClass="btn btn-danger" Font-Bold="true" OnClick="deleteAll_Click" Text="ลบทั้งหมด" />
+                    <asp:Button ID="deleteAll" runat="server" Visible="false" CssClass="btn btn-danger" Font-Bold="true" OnClick="deleteAll_Click" Text="ลบทั้งหมด" OnClientClick="return UpdteConfirm('ยืนยัน ลบรายการครุภัณฑ์ทั้งหมด ใช่หรือไม่');"/>
                 </div>            
             </div>
         <div class="row" >

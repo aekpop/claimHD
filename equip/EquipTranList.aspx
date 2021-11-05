@@ -14,7 +14,7 @@
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         <!-- Menu Dropdown -->        
-        <div class="btn-group">
+        <!--<div class="btn-group">
               <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
               <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
                 <span class="caret"></span>
@@ -31,8 +31,16 @@
               </ul>
         </div>
         <!------------------>
-        <asp:Button runat="server" ID="btnNewTran" CssClass="btn btn-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" Text="แจ้งใหม่" />
-    <div id="AddPM" runat="server" class="card" style="z-index: 0">
+        <div class="row">
+            <div class="col-6">
+                <asp:Button runat="server" ID="btnNewTran" CssClass="btn btn-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" Text="แจ้งใหม่" />
+            </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-outline-warning" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" ><i class="fas fa-bars"></i></a>
+            </div>
+        </div>
+    <div class="collapse show" id="collapseSearch">
+        <div id="AddPM" runat="server" class="card" style="z-index: 0">
         <div class="card-header " >
             <div class="card-title ">ค้นหา</div>
         </div>
@@ -75,6 +83,8 @@
                     </div>
                 </div>
                 </div>
+    </div>    
+    
         <div class="card">
             <div class="card-header " >
             <div class="card-title ">รายการส่งครุภัณฑ์</div>

@@ -30,7 +30,7 @@ namespace ClaimProject.CM
             {    
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
                 function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group != '3' Order By locate_id ASC", "locate_name", "locate_id");
-                BindData();
+                //BindData();
                 //function.getListItem(ddlBudgetcc, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
@@ -54,7 +54,7 @@ namespace ClaimProject.CM
                 string sql_Device = "SELECT * FROM tbl_device Where davice_delete = '0' ORDER BY device_name";
                 function.getListItem(txtDeviceAdd, sql_Device, "device_name", "device_id");
                 txtDeviceAdd.Items.Insert(0, new ListItem("", ""));
-                txtSTime.Text = DateTime.Now.ToString("HH.mm");
+                txtSTime.Text = DateTime.Now.ToString("HH.mm");               
                 txtPoint.Text = Session["Userpoint"].ToString();
                 BindData();
 
@@ -113,9 +113,14 @@ namespace ClaimProject.CM
         {
             string sql = "";
             string checkCpoint = txtCpointSearch.SelectedValue.ToString();
+            if (txtCmpoint.Text != "")
+            {
+                txtPoint.Text = txtCmpoint.Text;
+            }
+
             if (checkCpoint == "")
             {
-                sql = "SELECT * FROM tbl_cm_detail cm " +
+            sql = "SELECT * FROM tbl_cm_detail cm " +
                     " JOIN tbl_device d ON cm.cm_detail_driver_id = d.device_id " +
                     " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                     " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
@@ -140,7 +145,7 @@ namespace ClaimProject.CM
             da.Fill(ds);
             CMGridView.DataSource = ds.Tables[0];
             CMGridView.DataBind();
-            if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
+            //if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
             function.Close();
         }
 
@@ -399,6 +404,7 @@ namespace ClaimProject.CM
 
         protected void btnSearchAddd_Click(object sender, EventArgs e)
         {
+            txtPoint.Text = "";
             BindData();
         }
 

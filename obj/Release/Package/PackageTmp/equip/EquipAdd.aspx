@@ -35,13 +35,15 @@
               </ul>
         </div>
         <!------------------>
-    <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
-
+    <div class="col text-right">
+        <a class="btn btn-outline-warning" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" ><i class="fas fa-bars"></i></a>
+    </div>
+        <div class="collapse show" id="collapseSearch">
+            <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
         <div class="card-header ">
             <div class="card-title " style="font-size:larger">ค้นหา</div>
         </div>        
-            <div class="card-body table-responsive table-sm">
-                
+            <div class="card-body table-responsive table-sm">                
                 <div id="divsearch" runat="server">
                     <div class="row text-right">
                             <div class="col-md-2 lg-2" >
@@ -107,15 +109,25 @@
                                 <div id="divSagain" runat="server" visible="false" class="col-md-6">
                                          <asp:Label ID="chkS" runat="server" font-size="Small" ></asp:Label>
                                                  <asp:LinkButton ID="lbtnTollReport"  runat="server" Text="ออกรายงาน" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm" Font-Bold="true" Font-Size="Large"  OnCommand="lbtnTollReport_Command"></asp:LinkButton>
-                                                        <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="ออกรายงาน" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-dark btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
+                                                        <asp:LinkButton ID="lbtnDepartReport" runat="server" Text="ออกรายงาน" Visible="false" ToolTip="พิมพ์" CssClass="btn btn-success btn-sm"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnDepartReport_Command"></asp:LinkButton>
+                                                                
                                 </div>
                          </div>
                    </div>
            </div>
+        </div>
+    
 
         <div id="equip" runat="server" visible="false" class="card" >
         <div class="card-header ">
-            <div class="card-title " style="font-size:larger">รายการครุภัณฑ์</div>
+            <div class="card-title " style="font-size:larger">
+                <div class="row">
+                    <div class="col-6">รายการครุภัณฑ์</div>
+                    <div class="col-6 text-right">
+                        <asp:LinkButton ID="lbtnReportEquipment" runat="server" Visible="true" CssClass="btn btn-sm btn-outline-danger"  Font-Bold="true" Font-Size="Large"  OnCommand="lbtnReportEquipment_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    </div>
+                </div>
+                </div>
         </div>
         <div class="card-body" style="font-size:medium; font-family:'TH SarabunPSK'; ">
           <asp:Panel ID="Panel1" runat="server" > 
@@ -361,6 +373,7 @@
             </div>
         </div>
     </div>
+        </div>
 
     
     
@@ -415,7 +428,6 @@
             {
                 return true;
             }
-	    }     
-        
+        }                       
     </script>
 </asp:Content>

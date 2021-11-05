@@ -9,14 +9,16 @@
     
     
     <!-- Custom styles for this template -->
-    
-    
-
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+    </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-
-            <div class="card" style="z-index: 0">
+    <form id="form1" runat="server" style="font-family:Prompt">
+         <div class="card" style="z-index:0; font-family:Prompt">
             <div class="card-header card-header-warning">
             </div>
                 <div class="card-header card-header-warning">
@@ -24,20 +26,16 @@
                 </div>
                 <div class="form-group bmd-form-group" >
                         <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click" CssClass="btn" />
-                        <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />  
-                        
-                        <asp:HiddenField ID="hfImageData" runat="server" />
-                        
+                        <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick = "return ConvertToImage(this)"  />                        
+                        <asp:HiddenField ID="hfImageData" runat="server" />                       
                         <asp:DropDownList ID="ddlCMBudget" runat="server"  CssClass="form-control custom-select"  Visible="false" ></asp:DropDownList>
                     </div>
                 <br />
             <div class="card-body table-responsive table-md" >
                 <div class="row">
                       <div class="form-group bmd-form-group" >
-                        <label class="bmd-label-floating">ด่านฯ : </label>
-                        
-                        <asp:DropDownList ID="ddlCMLine" runat="server" CssClass="form-control custom-select " OnSelectedIndexChanged="ddlCMLine_SelectedIndexChanged" AutoPostBack="true"  Font-Size="large" ></asp:DropDownList>
-                        
+                        <label class="bmd-label-floating">ด่านฯ : </label>                        
+                        <asp:DropDownList ID="ddlCMLine" runat="server" CssClass="form-control custom-select " OnSelectedIndexChanged="ddlCMLine_SelectedIndexChanged" AutoPostBack="true"  Font-Size="large" ></asp:DropDownList>                        
                         <asp:Label ID="lbBuild" runat="server" Visible="false" Text="อาคาร :" Font-Size="large" ></asp:Label> 
                         <asp:DropDownList ID="ddlAnnex" runat="server" Visible="false" CssClass="control-form" Font-Size="large" >
                             <asp:ListItem Value="1">1</asp:ListItem>
@@ -56,15 +54,10 @@
                           
                                 <label class="bmd-label-floating" style="font-size:large;">วันที่</label>
                                 <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)"/>
-                                <asp:Button ID="btnrecm" runat="server" Text="แสดงรายงาน" Font-Size="large" OnClick="btnrecm_Click"  /> 
-                            </div>
-                     
-
-                    <br />
-                    
-                   
-                </div>
-                                      
+                                <asp:Button ID="btnrecm" runat="server" Text="แสดงตาราง" Font-Size="large" OnClick="btnrecm_Click"  /> 
+                            </div>                     
+                    <br />                                      
+                </div>                                     
                     <div class="col-md" >
                         <asp:Button ID="printimg" runat="server" Text="photo" Visible="false" OnClick="printimg_Click"  />
                     </div>
@@ -75,33 +68,33 @@
                     &nbsp;<asp:Label ID="lbShift" runat="server" Font-Bold="true" Font-Size="X-Large" Visible="false" ></asp:Label>
                     &nbsp;<asp:Label ID="date" runat="server" Font-Bold="true" Font-Size="X-Large" Text="วันที่" Visible="false"></asp:Label>
                     &nbsp;<asp:Label ID="lbDateNow" runat="server" Font-Bold="true" Font-Size="X-Large" Visible="false"></asp:Label>
-                
-                    
-
+                                    
                     <asp:GridView ID="gridCMLine" runat="server" 
                         AutoGenerateColumns="False" 
                         CssClass="col table table-striped table-hover"                         
-                        HeaderStyle-BackColor="ActiveBorder" 
+                        HeaderStyle-BackColor="ActiveBorder"
+                        HeaderStyle-Font-Size="21px"
                         OnRowDataBound="gridCMLine_RowDataBound" 
-                        Font-Size="14px"  CellPadding="4" 
-                        ForeColor="#333333" GridLines="Both" 
-                        BorderColor="Black" OnRowCreated="gridCMLine_RowCreated">
+                        Font-Size="18px"  CellPadding="4" 
+                        ForeColor="#333333" GridLines="Both"
+                        RowStyle-Height="40px"
+                        BorderColor="Gray" OnRowCreated="gridCMLine_RowCreated">
                         
                         <AlternatingRowStyle BackColor="White"  />                                             
                         <Columns>
-                            <asp:TemplateField HeaderText="#" ControlStyle-Width="25px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="ลำดับ" ControlStyle-Width="25px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbnoo" runat="server" ></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่" ControlStyle-Width="70px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="วันที่" ControlStyle-Width="100px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_sdate") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="เวลา" ControlStyle-Width="60px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
+                                    <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ช่องทาง" ControlStyle-Width="80px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
@@ -111,31 +104,17 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="อุปกรณ์" ControlStyle-Width="200px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
+                                    <asp:Label ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_initials") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="อาการที่ชำรุด" ControlStyle-Width="200px" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>
-                            
-                            
-                            
+                            </asp:TemplateField>                                                                                    
                         </Columns>
-                        <EditRowStyle BackColor="#2461BF" />
-                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#507CD1"  Font-Bold="True" ForeColor="White" Font-Size="Larger" />
-                        <PagerStyle BackColor="#2461BF" ForeColor="White" />
-                        <RowStyle BackColor="#EFF3FB"></RowStyle>
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>                                             
-                <br />
-                     
+                <br />                    
             </div>
 
     <script src="/Scripts/html2canvas.js"></script>
@@ -172,7 +151,7 @@
                     }
 
                     $('#lbDatep').attr('maxlength', '10');
-                   $('#lbDatep').css('font-size', '8');   
+                   $('#lbDatep').css('font-size', '16');   
         }); 
 
         function handleEnter (field, event) {

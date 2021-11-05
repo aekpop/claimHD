@@ -21,6 +21,7 @@ namespace ClaimProject.CM
         public string point = "";
         public string sqlmonth = "";
         public string sqlnofix = "";
+        public string chkAdmin = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,7 @@ namespace ClaimProject.CM
             }
             if (!this.IsPostBack)
             {
+                sqlmonth = Nowmonth + "-" + Nowyear;
                 /* string actYear = "";
                  string actMonth = "";
                  string TimeToChangeStat = "";
@@ -68,15 +70,17 @@ namespace ClaimProject.CM
 
             if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
             {
+                chkAdmin = "1";
                 Div6.Visible = true;
                 sqlcp = " ";
                 cpoint = " ";
                 point = " ";
-                sqlmonth = " WHERE cm_detail_sdate LIKE '%" + Nowmonth + "-" + Nowyear + "' ";
+                //sqlmonth = " WHERE cm_detail_sdate LIKE '%" + Nowmonth + "-" + Nowyear + "' ";
                 sqlnofix = " WHERE cm_detail_status_id = '0' ";
             }
             else
             {
+                chkAdmin = "0";
                 Div6.Visible = false;
                 divpm.Visible = false;
                 divpm2.Visible = false;
@@ -84,7 +88,7 @@ namespace ClaimProject.CM
                 //Div2.Visible = false;
                 sqlcp = "AND cm_cpoint = " + Session["UserCpoint"] + " ";
                 cpoint = " WHERE cm_cpoint = " + Session["UserCpoint"] + " ";
-                sqlmonth = "AND cm_detail_sdate LIKE '%" + Nowmonth + "-" + Nowyear + "' ";
+                //sqlmonth = "AND cm_detail_sdate LIKE '%" + Nowmonth + "-" + Nowyear + "' ";
                 sqlnofix = " AND cm_detail_status_id = '0' ";
 
                 if (Session["UserCpoint"].ToString() == "703" || Session["UserCpoint"].ToString() == "704" || Session["UserCpoint"].ToString() == "706" || Session["UserCpoint"].ToString() == "707" || Session["UserCpoint"].ToString() == "708" || Session["UserCpoint"].ToString() == "709")
@@ -181,7 +185,7 @@ namespace ClaimProject.CM
             else
             {
                 i = chk;
-                sqlmonth = "AND cm_detail_sdate LIKE '%" + i + "-" + Nowyear + "' ";
+                sqlmonth =  i + "-" + Nowyear;
             }
             
             //string now = Nowday + "-" + i + "-" + Nowyear.ToString();
@@ -530,9 +534,10 @@ namespace ClaimProject.CM
 
         protected void databind()
         {
-            string sqlLsTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
-                " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
-                " "+ cpoint + " GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+            //string sqlLsTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
+            //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
+            //   " "+ cpoint + " GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+            string sqlLsTotal = "CALL GetCM_LsTodayResult("+chkAdmin+" ,'"+ Session["UserCpoint"] + "')";
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sqlLsTotal);
             System.Data.DataSet ds = new System.Data.DataSet();
@@ -541,9 +546,10 @@ namespace ClaimProject.CM
             lsTodayGridview.DataBind();
             function.Close();
 
-            string sqlTopMoTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
-                " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
-                " " + cpoint + " " + sqlmonth + "  GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+            //string sqlTopMoTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
+            //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
+            //    " " + cpoint + " " + sqlmonth + "  GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
+            string sqlTopMoTotal = "CALL GetCM_TopMoTotal(" + chkAdmin + " ,'" + Session["UserCpoint"] + "',"+ sqlmonth +")";
 
             MySqlDataAdapter dA = function.MySqlSelectDataSet(sqlTopMoTotal);
             System.Data.DataSet dS = new System.Data.DataSet();
@@ -552,9 +558,10 @@ namespace ClaimProject.CM
             GridViewNoService.DataBind();
             function.Close();
 
-            string sqlNofix = "SELECT device_name,cm_detail_sdate,locate_name  " +
-                " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id JOIN tbl_location l ON c.cm_detail_channel = l.locate_id " +
-                " " + cpoint + " "+ sqlnofix + " ORDER BY STR_TO_DATE(cm_detail_sdate,'%d-%m-%Y') ASC LIMIT 5 ";
+            //string sqlNofix = "SELECT device_name,cm_detail_sdate,locate_name  " +
+            //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id JOIN tbl_location l ON c.cm_detail_channel = l.locate_id " +
+            //    " " + cpoint + " "+ sqlnofix + " ORDER BY STR_TO_DATE(cm_detail_sdate,'%d-%m-%Y') ASC LIMIT 5 ";
+            string sqlNofix = "CALL GetCM_NofixResult(" + chkAdmin + " ,'" + Session["UserCpoint"] + "')";
 
             MySqlDataAdapter DA = function.MySqlSelectDataSet(sqlNofix);
             System.Data.DataSet DS = new System.Data.DataSet();

@@ -35,13 +35,15 @@
               </ul>
         </div>
         <!------------------>
-    <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
-
+    <div class="col text-right">
+        <a class="btn btn-outline-warning" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" ><i class="fas fa-bars"></i></a>
+    </div>
+        <div class="collapse show" id="collapseSearch">
+            <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size:medium">
         <div class="card-header ">
             <div class="card-title " style="font-size:larger">ค้นหา</div>
         </div>        
-            <div class="card-body table-responsive table-sm">
-                
+            <div class="card-body table-responsive table-sm">                
                 <div id="divsearch" runat="server">
                     <div class="row text-right">
                             <div class="col-md-2 lg-2" >
@@ -113,6 +115,8 @@
                          </div>
                    </div>
            </div>
+        </div>
+    
 
         <div id="equip" runat="server" visible="false" class="card" >
         <div class="card-header ">
@@ -424,7 +428,6 @@
             {
                 return true;
             }
-	    }     
-        
+        }                       
     </script>
 </asp:Content>

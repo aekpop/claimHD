@@ -5,16 +5,14 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
-    <form id="form1" runat="server">
-       
-
-        <div>
+<body>    
+    <form id="form1" runat="server">       
+        <div >
              <asp:ScriptManager ID="ScriptManager1" runat="server">
              </asp:ScriptManager>
             <rsweb:ReportViewer ID="reportViewer1" runat="server" Height="900px" Width="100%">
             </rsweb:ReportViewer>
         </div>
-    </form>
+    </form> 
 </body>
 </html>

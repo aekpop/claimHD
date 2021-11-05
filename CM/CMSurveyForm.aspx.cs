@@ -166,6 +166,7 @@ namespace ClaimProject.CM
             string imgS = "";
             string imgE = "";
             string imgSer = "";
+            string lbchkservice = "";
             EditModal = e.CommandName;
             pkeq.Text = EditModal;
 
@@ -189,7 +190,11 @@ namespace ClaimProject.CM
                 ImgEditEQ.ImageUrl = "~" + imgS;
                 ImgEditEQE.ImageUrl = "~" + imgE;
                 ImgImageDocSer.ImageUrl = "~" + imgSer;
-                lbrefRecheck.Text = rt.GetString("cm_detail_id");
+                if(rt.GetString("cm_detail_Chknoservice") == "1")
+                {
+                    lbchkservice = "แก้ไขเบื้องต้น";
+                }                
+                lbrefRecheck.Text = rt.GetString("cm_detail_id") + " (" + lbchkservice +") ";
                 lbCpointRecheck.Text = rt.GetString("cpoint_name");
                 lbPointRecheck.Text = rt.GetString("cm_point");
                 lbChannelRecheck.Text = rt.GetString("locate_name");

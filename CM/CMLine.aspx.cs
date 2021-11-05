@@ -16,6 +16,7 @@ namespace ClaimProject.CM
         ClaimFunction function = new ClaimFunction();
         public string colortoll = "0";
         public string AnnexZZ = "";
+        public string headcolor = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] == null)
@@ -195,11 +196,16 @@ namespace ClaimProject.CM
 
             if (e.Row.RowType == DataControlRowType.Header)
             {
+                headcolor = function.GetSelectValue("tbl_cpoint", "cpoint_id = '" + colortoll + "'", "cpoint_color");
+                gridCMLine.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml(headcolor);
+                gridCMLine.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ece6ed");
+                
+
                 if (colortoll == "701")
                 {
-
-                    lbHeadToll.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff52");
-                    lbHeadToll.ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+                    
+                    //lbHeadToll.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff52");
+                    //lbHeadToll.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
                     lbHeadToll.Text = "ด่านฯ ลาดกระบัง";
                     lbShift.Text = ddlShift.SelectedItem.Text;
                 }
@@ -529,8 +535,8 @@ namespace ClaimProject.CM
 
         protected void btnrecm_Click(object sender, EventArgs e)
         {
-
             Binddee();
+            //headColor();
         }
 
         protected void ddlCMLine_SelectedIndexChanged(object sender, EventArgs e)
@@ -602,6 +608,7 @@ namespace ClaimProject.CM
                 GridView HeaderGrid = (GridView)sender;
                 GridViewRow HeaderGridRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert);
                 TableCell HeaderCell = new TableCell();
+                
 
                 if (colortoll == "701")
                 {
@@ -747,6 +754,11 @@ namespace ClaimProject.CM
 
                 gridCMLine.Controls[0].Controls.AddAt(0, HeaderGridRow);
             }
-        }     
+        }
+        public void headColor()
+        {
+            //string sql = "SELECT cpoint_id , cpoint_color FROM tbl_cpoint WHERE cpoint_id = '"+ colortoll+"'";
+            //headcolor = function.GetSelectValue("tbl_cpoint", "cpoint_id = '" + colortoll + "'", "cpoint_color");
+        }
     }
 }
