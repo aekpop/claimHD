@@ -66,11 +66,12 @@ namespace ClaimProject.CM
 
                 string sql_Device = "SELECT * FROM tbl_device ORDER BY device_name";
                 function.getListItem(txtDeviceDamage, sql_Device, "device_name", "device_id");
-                txtDeviceDamage.Items.Insert(0, new ListItem("ทั้งหมด", ""));
-
+                txtDeviceDamage.Items.Insert(0, new ListItem("ทั้งหมด", ""));                
+                string sqlRespon = "SELECT * FROM tbl_drive_group";
+                function.getListItem(ddlResponsible, sqlRespon, "drive_group_agency", "drive_group_id");
+                ddlResponsible.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 BindData();
             }
-
         }
         void BindData()
         {
@@ -84,6 +85,7 @@ namespace ClaimProject.CM
             string consta = "";
             string channel = txtSearchChannel.SelectedValue;
             string deviceDamage = txtDeviceDamage.SelectedValue;
+            string Responsible = ddlResponsible.SelectedValue;
 
             if (CheckAllDay.Checked)
             {
@@ -91,11 +93,25 @@ namespace ClaimProject.CM
                 {
                     if (deviceDamage == "")
                     {
-                        consta = " ";
+                        if(Responsible == "") //all query
+                        {
+                            consta = " ";
+                        }
+                        else
+                        {
+                            consta = " AND dg.drive_group_id = '"+ Responsible +"' ";
+                        }                        
                     }
                     else
                     {
-                        consta = " AND d.device_id = '" + deviceDamage + "' ";
+                        if (Responsible == "")
+                        {
+                            consta = " AND d.device_id = '" + deviceDamage + "' ";
+                        }
+                        else
+                        {
+                            consta = " AND d.device_id = '" + deviceDamage + "' AND dg.drive_group_id = '" + Responsible + "' ";
+                        }                           
                     }
 
                 }
@@ -103,15 +119,30 @@ namespace ClaimProject.CM
                 {
                     if (deviceDamage == "")
                     {
-                        consta = " AND cm_detail_channel = '" + channel + "' ";
+                        if (Responsible == "")
+                        {
+                            consta = " AND cm_detail_channel = '" + channel + "' ";
+                        }
+                        else
+                        {
+                            consta = " AND cm_detail_channel = '" + channel + "' AND dg.drive_group_id = '" + Responsible + "' ";
+                        }
+                            
                     }
                     else
                     {
-                        consta = " AND cm_detail_channel = '" + channel + "' AND d.device_id = '" + deviceDamage + "' ";
+                        if(Responsible == "")
+                        {
+                            consta = " AND cm_detail_channel = '" + channel + "' AND d.device_id = '" + deviceDamage + "' ";
+                        }
+                        else
+                        {
+                            consta = " AND cm_detail_channel = '" + channel + "' AND d.device_id = '" + deviceDamage + "' AND dg.drive_group_id = '" + Responsible + "' ";
+                        }
+                        
                     }
 
                 }
-
             }
             else
             {
@@ -119,25 +150,61 @@ namespace ClaimProject.CM
                 {
                     if (deviceDamage == "")
                     {
-                        consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') ";
+                        if(Responsible == "")
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') ";
+                        }
+                        else
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                                     "AND dg.drive_group_id = '" + Responsible + "' ";
+                        }
+                        
                     }
                     else
                     {
-                        consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                        if(Responsible == "")
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
                                  " AND d.device_id = '" + deviceDamage + "' ";
+                        }
+                        else
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                                 " AND d.device_id = '" + deviceDamage + "' AND dg.drive_group_id = '" + Responsible + "' ";
+                        }
+                        
                     }
                 }
                 else
                 {
                     if (deviceDamage == "")
                     {
-                        consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
-                             "AND cm_detail_channel = '" + channel + "' ";
+                        if(Responsible == "")
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                            "AND cm_detail_channel = '" + channel + "' ";
+                        }
+                        else
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                            "AND cm_detail_channel = '" + channel + "' AND dg.drive_group_id = '" + Responsible + "' ";
+                        }
+                       
                     }
                     else
                     {
-                        consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                        if(Responsible == "")
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
                                  " AND cm_detail_channel = '" + channel + "' AND d.device_id = '" + deviceDamage + "' ";
+                        }
+                        else
+                        {
+                            consta = " AND STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') BETWEEN  STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') " +
+                                 " AND cm_detail_channel = '" + channel + "' AND d.device_id = '" + deviceDamage + "' AND dg.drive_group_id = '" + Responsible + "' ";
+                        }
+                        
                     }
                 }
             }
@@ -158,13 +225,13 @@ namespace ClaimProject.CM
                         {
                             sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
                             
                                 sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
-                                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), " +
+                                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, " +
                                        "cm.cm_detail_stime, cm_detail_status_id ASC";
                                 
                         }
@@ -175,13 +242,13 @@ namespace ClaimProject.CM
                         {
                             sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
                             
                                 sql += " WHERE cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                                       " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                                                            
                         }
                     }
@@ -193,14 +260,14 @@ namespace ClaimProject.CM
                         sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                         " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
                         " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                     }
                     else
                     {
                         
                             sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                                    " AND cm.cm_budget = '" + ddlCMBudget.SelectedValue + "' " + consta + " " +
-                                   " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                                   " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         
                     }
                 }
@@ -215,13 +282,13 @@ namespace ClaimProject.CM
                         {
                             sql += " Where d.`davice_delete` = 0 " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
                             
                                 sql += " Where d.`davice_delete` = 0 " + consta + " " +
-                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                             
                         }
                     }
@@ -231,13 +298,13 @@ namespace ClaimProject.CM
                         {
                             sql += " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y')DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
                             
                                 sql += " Where cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                             
                         }
                     }
@@ -252,13 +319,13 @@ namespace ClaimProject.CM
                         {
                             sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
                             
                                 sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " + consta + " " +
-                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                           " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                             
                             
                         }
@@ -270,14 +337,14 @@ namespace ClaimProject.CM
                             sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                             " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
                             " AND cm.cm_detail_status_id != 9 " + // รอปรับ sql ใหม่
-                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                            " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                         }
                         else
                         {
                             
                                 sql += " WHERE cm.cm_cpoint = '" + checkCpoint + "' " +
                                         " AND cm.cm_point = '" + checkPoint + "' " + consta + " " +
-                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                                        " AND cm_detail_status_id = '" + CMStatus + "' ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime, cm_detail_status_id ASC";
                              
                         }
                     }
@@ -292,7 +359,7 @@ namespace ClaimProject.CM
             da.Fill(ds);
             GridView1.DataSource = ds.Tables[0];
             GridView1.DataBind();
-            // if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
+            if (ds.Tables[0].Rows.Count == 0) { GridView1.Visible = false; } else { GridView1.Visible = true; }
             lbCMNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
 
             Session.Add("sqlReport", sql);
