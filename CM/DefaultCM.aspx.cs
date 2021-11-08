@@ -549,7 +549,7 @@ namespace ClaimProject.CM
             //string sqlTopMoTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
             //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
             //    " " + cpoint + " " + sqlmonth + "  GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
-            string sqlTopMoTotal = "CALL GetCM_TopMoTotal(" + chkAdmin + " ,'" + Session["UserCpoint"] + "',"+ sqlmonth +")";
+            string sqlTopMoTotal = "CALL GetCM_TopMoTotal(" + chkAdmin + " ,'" + Session["UserCpoint"] + "','"+ sqlmonth +"')";
 
             MySqlDataAdapter dA = function.MySqlSelectDataSet(sqlTopMoTotal);
             System.Data.DataSet dS = new System.Data.DataSet();

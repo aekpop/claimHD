@@ -519,6 +519,7 @@
           setVisible('#loading', false);
         });
         // End Loading Screen while page loads 
+        $('html').css('overflow', 'hidden');
 
     </script>
 </body>

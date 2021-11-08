@@ -22,19 +22,7 @@
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
      <!-- Menu Dropdown -->        
-        <div class="btn-group" runat="server" visible="false">
-              <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
-              <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="/CM/DefaultCM">หน้าหลัก</a></li>
-                <li><a href="/CM/CMDetailForm">แจ้งซ่อม</a></li>
-                <li><a href="/CM/CMEditForm">การแก้ไข</a></li>
-                <li><a href="/CM/CMLine">ส่งไลน์</a></li>
-                <li><a href="/CM/CMReport">สรุปรายการ</a></li>                
-              </ul>
-        </div>
+        
         <!-------------------------------- // ------------------------------------> 
     <div id="MainBody" class="card" style="z-index: 0; ">
         <div class="card-header ">
@@ -46,7 +34,7 @@
                                         <div class="col-md-4 ">
                                             <div class="form-group bmd-form-group">
                                             <asp:Label ID="lbBudget" runat="server" Text="ปีงบฯ : "></asp:Label>
-                                            <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control custom-select "></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control  "></asp:DropDownList>
                                                 </div>
                                         </div>
                                         <div class=" col-md-4 ">
@@ -83,29 +71,39 @@
                                         </div>                                        
                         </div>                        
                         <div class="row">
-                                        <div class =" col-md-4 ">
-                                              <div class="form-group bmd-form-group">
-                                             <div class="label-on-left" >วันเวลาแจ้งซ่อม</div>
-                                            <label class="container">เลือกทั้งหมด
-                                                  <input type="checkbox"  id="CheckAllDay" name="CheckAllDay" runat="server" />
-                                                  <span class="checkmark"></span>
-                                              </label>                              
-                                                  </div>
-                                        </div>
                                         
-                                        <div class=" col-md-4 ">
+
+                                      <div class=" col-md-2 ">
                                              <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbDayS" runat="server" Text="เลือกช่วงเวลาตั้งแต่ "></asp:Label>
+                                            <asp:Label ID="lbDayS" runat="server" Text="วันที่แจ้งซ่อม      ตั้งแต่ "></asp:Label>
                                             <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>
                                             </div>
-                                        <div class=" col-md-4">
+                                        <div class=" col-md-2">
                                               <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbDayE" runat="server" Text="ถึง "></asp:Label>
+                                            <asp:Label ID="lbDayE" runat="server" Text="ถึงวันที่ "></asp:Label>
                                             <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                                   </div>
-                                        </div>                                
-                        </div>                  
+                                        </div>
+                                        <div class ="col-md-2">
+                                                          <div class="form-group bmd-form-group">
+                                                             <div class="label-on-left" >เลือกทั้งหมด</div>
+                                                                <label class="container">
+                                                                        <input type="checkbox"  id="CheckAllDay" name="CheckAllDay" runat="server" />
+                                                                      <span class="checkmark"></span>                                                                                                
+                                                                </label>                              
+                                                          </div>
+                                                    </div>
+                                        <div class=" col-md-2"></div>
+                                        <div class=" col-md-4 ">
+                                             <div class="form-group bmd-form-group">
+                                            <asp:Label ID="lblbRespons" runat="server" Text="ผู้รับผิดชอบ : "></asp:Label>
+                                            <asp:DropDownList ID="ddlResponsible" runat="server"  CssClass="form-control " ></asp:DropDownList>
+                                                 </div>
+                                        </div>           
+                                  </div>
+                                                                     
+                                         
                         <br />
                                         <div class="row">  
                                             <div class="col-xl-6 text-right">
@@ -122,9 +120,9 @@
                         </div>
                 </div> 
            </div>
-                   <asp:Label ID="lbCMNull" runat="server" Text=""></asp:Label>
-    
-                   <asp:Panel ID="Panel1" runat="server" >
+        <asp:Label ID="lbCMNull" runat="server" Text=""></asp:Label>
+
+        <asp:Panel ID="Panel1" runat="server" >
                        <asp:GridView ID="GridView1" runat="server"
                            HeaderStyle-BackColor="#ffffff"
                            HeaderStyle-CssClass="align-content-center"
@@ -141,9 +139,10 @@
                            OnPageIndexChanging="GridView1_PageIndexChanging"
                            PagerSettings-Mode="NumericFirstLast"
                            PagerSettings-FirstPageText="หน้าแรก"  PagerSettings-LastPageText="หน้าสุดท้าย"
-                           AllowPaging="false">                      
+                           AllowPaging="true"
+                           >                      
                             <Columns>
-                            <asp:TemplateField HeaderText="#">
+                            <asp:TemplateField HeaderText="ลำดับ">
                                 <ItemTemplate>
                                     <asp:Label ID="lbClaimNumrow" Text='<%#  Container.DataItemIndex + 1 %>' runat="server" />
                                 </ItemTemplate>
@@ -179,17 +178,17 @@
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันแก้ไข" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
+                            <asp:TemplateField HeaderText="วันแก้ไข" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right" Visible="false">
                                 <ItemTemplate>
-                                    <asp:Label ID="btnDateEditCM" runat="server"></asp:Label>
+                                    <asp:Label ID="btnDateEditCM" runat="server" Visible="false"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
+                            <asp:TemplateField HeaderText="เวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right" Visible="false">
                                 <ItemTemplate>
-                                    <asp:Label ID="btnTimeEditCM" runat="server"></asp:Label>
+                                    <asp:Label ID="btnTimeEditCM" runat="server" Visible="false"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="นับเวลา" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right" >
+                            <asp:TemplateField HeaderText="เวลาดำเนินการ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbDay" runat="server"></asp:Label>
                                 </ItemTemplate>
@@ -206,8 +205,9 @@
                             </asp:TemplateField>
                             </Columns>
                            <PagerStyle HorizontalAlign="Center" CssClass="GridPager"  ForeColor="#ef8a00" />
-                </asp:GridView>         
-            </asp:Panel>
+                </asp:GridView>
+            </asp:Panel> 
+
             </div>
           <!------------------------------------------------------------------------------------------------------------>
     <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" >
@@ -439,6 +439,7 @@
                     // your logic here
                     return confirm(msg);
                 }
-            }
+            }        
+            
     </script>
 </asp:Content>

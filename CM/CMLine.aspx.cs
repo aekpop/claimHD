@@ -91,7 +91,8 @@ namespace ClaimProject.CM
                             dtt.Columns.Add(new DataColumn("cm_detail_sdate", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_stime", typeof(string)));
                             dtt.Columns.Add(new DataColumn("locate_name", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
+                            //dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("device_initials", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_problem", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
                             //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
@@ -102,7 +103,7 @@ namespace ClaimProject.CM
                             drr["cm_detail_sdate"] = string.Empty;
                             drr["cm_detail_stime"] = string.Empty;
                             drr["locate_name"] = string.Empty;
-                            drr["device_name"] = " ไม่มีอุปกรณ์เสียหาย ";
+                            drr["device_initials"] = " ไม่มีอุปกรณ์เสียหาย ";
                             drr["cm_detail_problem"] = string.Empty;
                             drr["cm_detail_status_id"] = string.Empty;
                             dtt.Rows.Add(drr);
@@ -146,7 +147,7 @@ namespace ClaimProject.CM
                             dtt.Columns.Add(new DataColumn("cm_detail_sdate", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_stime", typeof(string)));
                             dtt.Columns.Add(new DataColumn("locate_name", typeof(string)));
-                            dtt.Columns.Add(new DataColumn("device_name", typeof(string)));
+                            dtt.Columns.Add(new DataColumn("device_initials", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_problem", typeof(string)));
                             dtt.Columns.Add(new DataColumn("cm_detail_status_id", typeof(string)));
                             //สร้าง Row เสมือน Datarow เพื่อเป็นแถวของ Datatable
@@ -157,7 +158,7 @@ namespace ClaimProject.CM
                             drr["cm_detail_sdate"] = string.Empty;
                             drr["cm_detail_stime"] = string.Empty;
                             drr["locate_name"] = string.Empty;
-                            drr["device_name"] = " ไม่มีอุปกรณ์เสียหาย ";
+                            drr["device_initials"] = " ไม่มีอุปกรณ์เสียหาย ";
                             drr["cm_detail_problem"] = string.Empty;
                             drr["cm_detail_status_id"] = string.Empty;
                             dtt.Rows.Add(drr);

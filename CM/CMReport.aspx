@@ -87,7 +87,7 @@
                                         </div>
                                         <div class ="col-md-2">
                                                           <div class="form-group bmd-form-group">
-                                                             <div class="label-on-left" >เลือกทั้งหมด</div>
+                                                             <div class="label-on-left" >ช่วงเวลาทั้งหมด</div>
                                                                 <label class="container">
                                                                         <input type="checkbox"  id="CheckAllDay" name="CheckAllDay" runat="server" />
                                                                       <span class="checkmark"></span>                                                                                                

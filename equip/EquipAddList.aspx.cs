@@ -107,7 +107,7 @@ namespace ClaimProject.equip
                     ddlAddStat.SelectedValue = rs.GetInt32("AddStat").ToString();
 
                     rs.Close();
-                    string sqlAddedd = "Select * FROM tbl_neweq_list JOIN tbl_location ON tbl_neweq_list.list_locate =  tbl_location.locate_id WHERE newEQ_idx = '" + Session["NewEQPK"].ToString() + "' Order by newlist_id ASC ";
+                    string sqlAddedd = "Select * FROM tbl_neweq_list LEFT JOIN tbl_location ON tbl_neweq_list.list_locate =  tbl_location.locate_id WHERE newEQ_idx = '" + Session["NewEQPK"].ToString() + "' Order by newlist_id ASC ";
                     MySqlDataAdapter da = function.MySqlSelectDataSet(sqlAddedd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -252,7 +252,7 @@ namespace ClaimProject.equip
                         {
                             Num1 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox1")).Text.Trim();
                             Num2 = ((TextBox)Gridview1.Rows[i].FindControl("TextBox2")).Text.Trim();
-                            Num3 = ((DropDownList)Gridview1.Rows[i].FindControl("ddlAddLocatedd")).SelectedIndex.ToString();
+                            Num3 = ((DropDownList)Gridview1.Rows[i].FindControl("ddlAddLocatedd")).SelectedValue;
                             string resultChk = CheckDupli(Num1, Num2);
                             string EQPKTYPE = Session["NewEQPKtype"].ToString();
                             if (resultChk == "ok")
@@ -724,8 +724,8 @@ namespace ClaimProject.equip
             {
                 DropDownList ddlAddLocatedd = (e.Row.FindControl("ddlAddLocatedd") as DropDownList);
                 function.getListItem(ddlAddLocatedd, "SELECT * FROM tbl_location Order By locate_id ", "locate_name", "locate_id");
-                    //ddlAddLocatedd.SelectedIndex = ddlAddLocatedd.Items.IndexOf(ddlAddLocatedd.Items.FindByValue((string)DataBinder.Eval(e.Row.DataItem, "locate_id").ToString()));
-                ddlAddLocatedd.Items.Insert(0, new ListItem("Please select"));
+                //ddlAddLocatedd.SelectedIndex = ddlAddLocatedd.Items.IndexOf(ddlAddLocatedd.Items.FindByValue((string)DataBinder.Eval(e.Row.DataItem, "locate_id").ToString()));
+                ddlAddLocatedd.SelectedIndex = 109;
                 ddlAddLocatedd.DataTextField = "locate_name";
                 ddlAddLocatedd.DataValueField = "locate_id";
                 //ddlAddLocatedd.DataBind();

@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>11/04/2021 11:33:37</publishTime>
+      <publishTime>11/06/2021 16:48:59</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>11/04/2021 11:33:37</publishTime>
+      <publishTime>11/06/2021 16:48:59</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>11/04/2021 11:33:38</publishTime>
+      <publishTime>11/06/2021 16:49:00</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -631,7 +631,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2021 08:59:33</publishTime>
     </File>
     <File Include="CM/CMReport.aspx">
-      <publishTime>09/22/2021 15:24:18</publishTime>
+      <publishTime>11/06/2021 12:31:11</publishTime>
     </File>
     <File Include="CM/CMStatForm.aspx">
       <publishTime>10/01/2020 12:50:21</publishTime>
@@ -4354,7 +4354,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2021 16:24:26</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>09/22/2021 16:27:33</publishTime>
+      <publishTime>11/05/2021 16:29:55</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/01/2018 16:43:56</publishTime>
@@ -4402,7 +4402,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:43:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/07/2021 08:41:50</publishTime>
+      <publishTime>11/06/2021 16:49:01</publishTime>
     </File>
     <File Include="webfonts/fa-brands-400.eot">
       <publishTime>01/14/2019 11:34:42</publishTime>

@@ -234,6 +234,12 @@
                 </div>
             </div>
        <div class="row">
+           <div>
+               <div>
+        </div>
+           </div>
+       </div>
+       <div class="row">
            <div class="col-xl-4 col-md">
                   <div class="card border-left-warning shadow h-80 py-2">
                       <div class="card-header" style="font-size:small" >อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก</div>

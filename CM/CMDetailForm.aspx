@@ -107,7 +107,7 @@
                      </div>
                            <div class="col-2">
                                 <div class="form-group bmd-form-group">
-                                    <p class="bmd-label-floating">รูปภาพเดิม</p>
+                                    <p class="bmd-label-floating">รูปภาพ</p>
                                <asp:Image ID="lbNameFileImg" runat="server" CssClass="img-thumbnail" />
                                     </div>
                            </div>
@@ -197,12 +197,12 @@
                                     <asp:Label ID="lbProblem" runat="server"  Text='<%#new ClaimProject.Config.ClaimFunction().ShortText( DataBinder.Eval(Container, "DataItem.cm_detail_problem").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันแจ้งซ่อม" >
+                            <asp:TemplateField HeaderText="วันที่" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="เวลาแจ้งซ่อม" >
+                            <asp:TemplateField HeaderText="เวลา" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
                                 </ItemTemplate>
@@ -212,7 +212,7 @@
                                     <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="หน่วยฯซ่อม" >
+                            <asp:TemplateField HeaderText="ผู้รับผิดชอบ" >
                                 <ItemTemplate>
                                     <asp:Label ID="lbcmAgency" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.drive_group_agency").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
