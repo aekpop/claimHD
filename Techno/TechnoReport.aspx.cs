@@ -22,6 +22,8 @@ namespace ClaimProject.Techno
             }
             if (!this.IsPostBack)
             {
+                int Month = Int32.Parse(DateTime.Now.ToString("MM")) -1;
+
                 ddlselectReport.Items.Insert(0, new ListItem("เลือก", "0"));
                 ddlselectReport.Items.Insert(1, new ListItem("รายงานอุบัติเหตุจำแนกตามด่านฯ", "1"));
                 ddlselectReport.Items.Insert(2, new ListItem("รายงานอุบัติเหตุจำแนกตามอุปกรณ์", "2"));
@@ -32,6 +34,7 @@ namespace ClaimProject.Techno
                 {
                     ddlMonth.Items.Add(new ListItem(month[i], i.ToString()));
                 }
+                ddlMonth.SelectedValue = Month.ToString();
 
                 function.getListItem(ddlbudget, "SELECT claim_budget_year FROM tbl_claim c WHERE c.claim_delete = '0' GROUP BY claim_budget_year ORDER by claim_budget_year DESC", "claim_budget_year", "claim_budget_year");
 

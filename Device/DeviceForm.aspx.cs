@@ -59,7 +59,7 @@ namespace ClaimProject.Device
             {
                 try
                 {
-                    ((LinkButton)e.Row.Cells[4].Controls[0]).OnClientClick = "return confirm('ต้องการลบข้อมูลใช่หรือไม่');";
+                    ((LinkButton)e.Row.Cells[6].Controls[0]).OnClientClick = "return confirm('ต้องการลบข้อมูลใช่หรือไม่');";
                 }
                 catch { }
             }

@@ -7,22 +7,22 @@
             </div>
             <div class="card-body table-responsive">
                 <div class="row">
-                        <div class="col-4" style="font-size:smaller">
+                        <div class="col-md-6 col-xl-3" >
                             <div class="form-group bmd-form-group">
                                 <div class="label-on-left">รายงาน</div>
-                                    <asp:DropDownList ID="ddlselectReport" runat="server" CssClass="dropdown dropdown-with-icons " AutoPostBack="false" OnSelectedIndexChanged="ddlselectReport_SelectedIndexChanged" />
+                                    <asp:DropDownList ID="ddlselectReport" runat="server" CssClass="form-control" AutoPostBack="false" OnSelectedIndexChanged="ddlselectReport_SelectedIndexChanged" />
                             </div>
                        </div>
-                    <div class="col-2" style="font-size:smaller">
+                    <div class="col-md-6 col-xl-3" >
                             <div class="form-group bmd-form-group">
                                 <div class="label-on-left">เดือน</div>
-                                    <asp:DropDownList ID="ddlMonth" runat="server" CssClass="dropdown dropdown-with-icons " />
+                                    <asp:DropDownList ID="ddlMonth" runat="server" CssClass="form-control" />
                             </div>
                        </div>
-                    <div class="col-2" style="font-size:smaller">
+                    <div class="col-md-6 col-xl-3" >
                             <div class="form-group bmd-form-group">
                                 <div class="label-on-left">ปี พ.ศ.</div>
-                                    <asp:DropDownList ID="ddlbudget" runat="server" CssClass="dropdown dropdown-with-icons " />
+                                    <asp:DropDownList ID="ddlbudget" runat="server" CssClass="form-control" />
                             </div>
                        </div>
                 </div>

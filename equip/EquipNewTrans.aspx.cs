@@ -23,7 +23,8 @@ namespace ClaimProject.equip
         public int wait ; public int norepair; public int repairedd;
         public string no = "";
         public string ok = "";
-        
+        //public string eqidd = "";
+
         //SiteMaster master = new SiteMaster();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -88,13 +89,13 @@ namespace ClaimProject.equip
             string EQDDL = "";
             if (Session["UserCpoint"].ToString() == "0")
             {
-                EQDDL = "SELECT equipment_no,equipment_id FROM tbl_equipment WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete != '1' AND toll_id = '9200' Order By equipment_id ASC";
+                EQDDL = "SELECT equipment_no,equipment_id FROM tbl_equipment WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete != '1' AND toll_id = '9200' AND equipment_chkUpdateLocate ='0' Order By equipment_id ASC";
                 
             }
             else
             {
                 EQDDL = "SELECT * FROM tbl_equipment" +
-                       "  WHERE toll_id = '" + ddlStartEQ.SelectedValue + "' AND Estatus_id != '3' AND Estatus_id != '4' AND trans_complete != '1' ";
+                       "  WHERE toll_id = '" + ddlStartEQ.SelectedValue + "' AND Estatus_id != '3' AND Estatus_id != '4' AND trans_complete != '1' AND equipment_chkUpdateLocate ='0' ";
             }
             function.getListItem(txtEquipTrans, EQDDL, "equipment_no", "equipment_id");
             txtEquipTrans.Items.Insert(0, new ListItem("", ""));
@@ -578,7 +579,9 @@ namespace ClaimProject.equip
                     {
                         string sqlLocate = "select * FROM tbl_equipment WHERE equipment_no = '" + txtEquipTrans.SelectedItem.ToString() + "'";
                         MySqlDataReader ser = function.MySqlSelect(sqlLocate); //เช็ครหัสตู้ครุภัณฑ์
-                        string locate_idd = ""; string eqidd = ""; string oldtoll = ""; string old_name = "";
+                        string locate_idd = "";
+                        string eqidd = "";
+                        string oldtoll = ""; string old_name = "";
                         string oldnameth = ""; string oldserial = ""; string oldtype = ""; string oldbrand = "";
                         string actNote = txtactnote.Text; string oldseries = ""; string oldno = ""; string user = ""; string oldStatus = "";
                         string completeStat = "";
@@ -608,11 +611,11 @@ namespace ClaimProject.equip
 
                             if(ddlTypeEQQ.SelectedValue == "4")
                             {
-                                sqlUpEQ = "UPDATE tbl_equipment SET Estatus_id='2',trans_complete = '" + completeStat + "' ,transfer_idnow = '" + Session["TransID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
+                                sqlUpEQ = "UPDATE tbl_equipment SET Estatus_id='2',trans_complete = '" + completeStat + "' ,transfer_idnow = '" + Session["TransID"].ToString() + "',equipment_chkUpdateLocate = '0' WHERE equipment_id = '" + eqidd + "'";
                             }
                             else
                             {
-                                sqlUpEQ = "UPDATE tbl_equipment SET trans_complete = '" + completeStat + "' ,transfer_idnow = '" + Session["TransID"].ToString() + "' WHERE equipment_id = '" + eqidd + "'";
+                                sqlUpEQ = "UPDATE tbl_equipment SET trans_complete = '" + completeStat + "' ,transfer_idnow = '" + Session["TransID"].ToString() + "',equipment_chkUpdateLocate = '0' WHERE equipment_id = '" + eqidd + "'";
                             }
 
                             string today = DateTime.Now.ToString("dd-MM-yyyy HH.mm.ss");
@@ -782,7 +785,7 @@ namespace ClaimProject.equip
                 eqidede = idid.GetString("trans_equip_id");
                 oldstatuss = idid.GetInt32("old_status").ToString();
                 idid.Close();
-                StatReturnNormal = "UPDATE tbl_equipment SET Estatus_id='"+oldstatuss+"',trans_complete = '0' ,transfer_idnow = '' WHERE equipment_id = '" + eqidede + "'";
+                StatReturnNormal = "UPDATE tbl_equipment SET Estatus_id='"+oldstatuss+ "',trans_complete = '0' ,transfer_idnow = '' ,equipment_chkUpdateLocate = '0' WHERE equipment_id = '" + eqidede + "'";
                 if (function.MySqlQuery(StatReturnNormal))
                 {
                     if (function.MySqlQuery(sql))
@@ -845,9 +848,7 @@ namespace ClaimProject.equip
             if (TextBox1 != null)
             {
                 
-            }
-
-
+            }               
         }
 
         protected void changeDropdown (string Ucpoint)
@@ -1043,7 +1044,7 @@ namespace ClaimProject.equip
             {
                 eqideded = idide.GetString("trans_equip_id");
                 idide.Close();
-                StatReturnNormal = "UPDATE tbl_equipment SET trans_complete = '0' ,transfer_idnow = ''  WHERE equipment_id = '" + eqideded + "'";
+                StatReturnNormal = "UPDATE tbl_equipment SET trans_complete = '0' ,transfer_idnow = '' ,equipment_chkUpdateLocate = '0' WHERE equipment_id = '" + eqideded + "'";
                 if (function.MySqlQuery(StatReturnNormal))
                 {
                     if (function.MySqlQuery(sql))
@@ -1402,10 +1403,13 @@ namespace ClaimProject.equip
                     {
                         if(function.MySqlQuery(loge))
                         {
-                            Session["LineTran"] = "\nตรวจรับครุภัณฑ์  " +
+                            
+                                Session["LineTran"] = "\nตรวจรับครุภัณฑ์  " +
                                 "\nวันที่ : " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
-                           Response.Redirect("/equip/EquipTranGetList");
-                            break;
+                                Response.Redirect("/equip/EquipTranGetList");
+                                break;
+                            
+                            
                           /*  SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                             serviceLine.MessageToServer("wDLRWPWgBvJRMEk69ebQVGumxOfiTKCgXoUwKeKPQyh", "ระบบได้รับข้อมูลการตรวจรับครุภัณฑ์  " +
                                 " เมื่อวันที่ "+datenow+ " \n หมายเลขอ้างอิง : "+ Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ", "", 1, 41);
@@ -1452,7 +1456,7 @@ namespace ClaimProject.equip
                         {
                             updateAct = "UPDATE tbl_transfer_action SET tran_type='"+ddlTypeEQQ.SelectedValue+"',new_toll = '" + ddlTollEQ.SelectedValue + "',num_success='yes' " +
                                        " WHERE trans_equip_id ='" + EQIDloop + "' AND transfer_id = '" + Session["TransID"].ToString() + "' ";
-                            updateequip = "UPDATE tbl_equipment SET trans_complete = '0',toll_id='" + ddlTollEQ.SelectedValue + "' " +
+                            updateequip = "UPDATE tbl_equipment SET trans_complete = '0',toll_id='" + ddlTollEQ.SelectedValue + "',equipment_chkUpdateLocate = '1'" +
                                        " WHERE equipment_id ='" + EQIDloop + "' ";
                         }
                         else if(ddlTypeEQQ.SelectedValue == "4")
@@ -2011,6 +2015,6 @@ namespace ClaimProject.equip
                     break;
                 }
             }
-        }
+        }   
     }
 }

@@ -330,7 +330,7 @@ namespace ClaimProject.equip
 
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {
-            Session["CheckTran"] = e.CommandName;
+            /*Session["CheckTran"] = e.CommandName;
             pkeq.Text = e.CommandName;
             string sqlChklist = "SELECT * FROM tbl_transfer t JOIN tbl_toll c ON t.toll_send = c.toll_id LEFT JOIN tbl_transfer_action a ON t.trans_id = a.transfer_id " +
                 "WHERE trans_id = '"+ pkeq.Text + "' ";
@@ -377,6 +377,10 @@ namespace ClaimProject.equip
             TranchkGridview.DataSource = ds.Tables[0];
             TranchkGridview.DataBind();            
             function.Close();
+            */
+            Session["TransID"] = e.CommandName;
+            Session["TransNew"] = "1";
+            Response.Redirect("/equip/EquipNewTrans");
         }
 
         protected void ddlsearchEndToll_SelectedIndexChanged(object sender, EventArgs e)

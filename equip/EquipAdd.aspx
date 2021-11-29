@@ -194,6 +194,16 @@
                             <asp:Label ID="lbequipnote"  runat="server"   Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="โอนย้ายล่าสุด" >
+                        <ItemTemplate>
+                            <asp:Label ID="lbequipTranfer"  runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name")+"( "+DataBinder.Eval(Container, "DataItem.complete_name")+" )" %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ตรวจสอบเปลี่ยนสถานที่" Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lbchkChangeLocate"  runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.equipment_chkUpdateLocate")%>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="จัดการข้อมูล" >
                         <ItemTemplate>
                             <asp:LinkButton ID="lbManage" runat="server" CssClass="badge bg-info text-white" Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i></asp:LinkButton>

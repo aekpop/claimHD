@@ -310,19 +310,44 @@ namespace ClaimProject.equip
             {
                 lbManage.CommandName = DataBinder.Eval(e.Row.DataItem, "equipment_id").ToString();
             }
-
+            Label lbchkChangeLocate = (Label)(e.Row.FindControl("lbchkChangeLocate"));
+            if(lbchkChangeLocate != null)
+            {
+                if (lbchkChangeLocate.Text == "1")
+                {
+                    e.Row.BackColor = System.Drawing.Color.OrangeRed;
+                }
+            }
+            
         }
 
         protected void btnEditEquip_Command(object sender, CommandEventArgs e)
         {
+            string statTranfer = "";
+            string txtstatTranfer = "";
             EditModal = e.CommandName;
             pkeq.Text = EditModal;
             string sqlEdit = "SELECT * FROM tbl_equipment d "
                             + " JOIN tbl_toll ON tbl_toll.toll_id = d.toll_id"
                             + " JOIN tbl_location ON tbl_location.locate_id = d.locate_id "
-                            + " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id"
+                            + " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id " 
+                            + " LEFT JOIN tbl_transfer ON d.transfer_idnow = tbl_transfer.trans_id " 
+                            + " LEFT JOIN tbl_transfer_status ON  tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id "
                             + " WHERE d.equipment_id ='"+ pkeq.Text+"' ";
+            //string sqlStatTranfer = "";
+
+            //MySqlDataReader rst = function.MySqlSelect(sqlStatTranfer);
+            //if (!rst.Read())
+            //{
+            //    statTranfer = "ปกติ";
+            //}
+            //else
+            //{
+            //    statTranfer = rst.GetString("");
+            //}
+
             MySqlDataReader rttt = function.MySqlSelect(sqlEdit);
+
             if (rttt.Read())
             {
                 
@@ -344,6 +369,27 @@ namespace ClaimProject.equip
                 {
                     txtEditNote.Text = "-";
                 }
+                if(!rttt.IsDBNull(25) && !rttt.IsDBNull(43) && !rttt.IsDBNull(44))
+                {
+                    statTranfer = rttt.GetString("complete_stat");
+                    if(statTranfer == "1")
+                    {
+                        statTranfer = "(ฉบับร่าง)";
+                    }
+                    else if (statTranfer == "2")
+                    {
+                        statTranfer = "(รออนุมัติ)";
+                    }
+                    else if (statTranfer == "3")
+                    {
+                        statTranfer = "(สำเร็จ)";
+                    }
+                    txtstatTranfer = rttt.GetString("trans_stat_name") + statTranfer + " @"+ rttt.GetString("date_send");
+                }
+                else
+                {
+                    txtstatTranfer = "ยังไม่มีการโอนย้ายใดๆ";
+                }
                 ImgEditEQ.ImageUrl = "~"+imgg;
                 txtEditcUnit.Text = rttt.GetString("equipment_unit");
                 txtEditContract.Text = rttt.GetString("equipment_contract_no");
@@ -353,7 +399,7 @@ namespace ClaimProject.equip
                     txtEditTH.Text = rttt.GetString("equipment_nameth");
                     txtEditEng.Text = rttt.GetString("equipment_name");
                     txtEditNo.Text = rttt.GetString("equipment_no");
-                    lbEQIDModal.Text = rttt.GetString("equipment_no");
+                    lbEQIDModal.Text = rttt.GetString("equipment_no") + "  ( สถานะโอนย้ายล่าสุด : "+ txtstatTranfer + " )";
                     txtEditNoform.Text = rttt.GetString("equipment_serial");
                     txtEditBrand.Text = rttt.GetString("equipment_brand");
                     txtEditSeries.Text = rttt.GetString("equipment_series");
@@ -431,7 +477,10 @@ namespace ClaimProject.equip
                             + " JOIN tbl_user ON tbl_user.username = d.user_update"
                             + " JOIN tbl_toll ON tbl_toll.toll_id = d.toll_id"
                             + " JOIN tbl_location ON tbl_location.locate_id = d.locate_id"
-                            + " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id ";
+                            + " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id " 
+                            + " LEFT JOIN tbl_transfer ON tbl_transfer.trans_id = d.transfer_idnow "
+                            + " LEFT JOIN tbl_transfer_status ON  tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id " 
+                            + " LEFT JOIN tbl_trans_complete ON tbl_trans_complete.complete_id = tbl_transfer.complete_stat"; // addon
 
             string SsqlReport = "SELECT equipment_nameth AS Enameth,equipment_no AS Enumber,equipment_serial AS Eserial," +
                                  " equipment_brand AS Ebrand,equipment_series AS Eseries,locate_name AS Elocate," +
@@ -439,7 +488,10 @@ namespace ClaimProject.equip
                                  " equipment_img AS Epic FROM tbl_equipment d" +
                                  " JOIN tbl_toll ON tbl_toll.toll_id = d.toll_id" +
                                  " JOIN tbl_location ON tbl_location.locate_id = d.locate_id" +
-                                 " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id ";
+                                 " JOIN tbl_equipment_status ON tbl_equipment_status.status_id = d.Estatus_id " +
+                                 " LEFT JOIN tbl_transfer ON tbl_transfer.trans_id = d.transfer_idnow " +
+                                 " LEFT JOIN tbl_transfer_status ON  tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id " +
+                                 " LEFT JOIN tbl_trans_complete ON tbl_trans_complete.complete_id = tbl_transfer.complete_stat"; //addon
 
 
             string usernamee = Session["User"].ToString();
@@ -858,7 +910,7 @@ namespace ClaimProject.equip
                             }
                             else
                             {
-                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
+                                Ssql += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no"; 
                                 SsqlReport += " AND tbl_toll.cpoint_id = '" + ddlcpoint.SelectedValue + "' Order by d.toll_id ASC,d.equipment_no";
                             }
                             Session["SQLEQ"] = Ssql.ToString();
@@ -991,12 +1043,20 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' " +
+                                "AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' " +
+                                    "AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            }
+                            else
+                            {
+                                Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
+                                "AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' " +
+                                    "AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
                             }
 
-                            Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' " +
-                                "AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' " +
-                                "AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            
 
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
@@ -1008,9 +1068,15 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
                             }
-                            Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                            else
+                            {
+                                Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' AND d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                            }
+                           
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
@@ -1025,9 +1091,15 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
                             }
-                            Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            else
+                            {
+                                Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            }
+                            
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
@@ -1038,9 +1110,15 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
                             }
-                            Ssql += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                            else
+                            {
+                                Ssql += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.equipment_nameth LIKE '%" + Snameth + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                            }
+                            
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
@@ -1058,9 +1136,15 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
                             }
-                            Ssql += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            else
+                            {
+                                Ssql += " WHERE d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            }
+                            
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
@@ -1071,9 +1155,15 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
                             }
-                            Ssql += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND  d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                            else
+                            {
+                                Ssql += " WHERE d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.equipment_no LIKE '%" + SNum + "%' AND d.toll_id='" + SToll + "' Order by d.equipment_no ASC ";
+                            }
+                            
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
@@ -1088,9 +1178,15 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                                Ssql += " AND  d.toll_id = '" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND  d.toll_id = '" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
                             }
-                            Ssql += " AND  d.toll_id = '" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND  d.toll_id = '" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            else
+                            {
+                                Ssql += " WHERE d.toll_id = '" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.toll_id = '" + SToll + "' AND Estatus_id = '" + statt + "' Order by d.equipment_no ASC ";
+                            }
+                            
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
@@ -1101,21 +1197,23 @@ namespace ClaimProject.equip
                             {
                                 Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                                 SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
-                            }
 
-                            Ssql += " AND  d.toll_id = '" + SToll + "' Order by d.equipment_no ASC ";
-                            SsqlReport += " AND  d.toll_id = '" + SToll + "' Order by d.equipment_no ASC ";
+                                Ssql += " AND  d.toll_id = '" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " AND  d.toll_id = '" + SToll + "' Order by d.equipment_no ASC ";
+                            }
+                            else
+                            {
+                                Ssql += " WHERE d.toll_id = '" + SToll + "' Order by d.equipment_no ASC ";
+                                SsqlReport += " WHERE d.toll_id = '" + SToll + "' Order by d.equipment_no ASC ";
+                            }
+                           
                             Session["SQLEQ"] = Ssql.ToString();
                             Session["sqlreEQ"] = SsqlReport;
                             SearchBind();
-                        }
-                        
+                        }                        
                     }
                 }
             }
-
-
-
         }
 
 
@@ -1172,7 +1270,7 @@ namespace ClaimProject.equip
                                 " Estatus_id='" + ddlEditStat.SelectedValue + "',company_id='" + ddlEditCompany.SelectedValue + "'," +
                                 " equipment_life ='"+ txtlifetime.Text +"' , locate_id='" + ddlEditLocate.SelectedValue + "', equip_comment='" + txtEditNote.Text + "'," +
                                 " person_name='" + txtEditPerson.Text + "', equipment_unit = '" + txtEditcUnit.Text + "', " +
-                                " user_update = '" + Session["User"].ToString() +"',time_update='"+TimeNoww+"',date_update='"+DateNoww+"' ";
+                                " user_update = '" + Session["User"].ToString() +"',time_update='"+TimeNoww+"',date_update='"+DateNoww+ "',equipment_chkUpdateLocate ='0' ";
             
 
             if (picResult == "typeError")
@@ -1203,34 +1301,61 @@ namespace ClaimProject.equip
                 }
                 else
                 {
-                    if (function.MySqlQuery(updateEqSQL))
+                    //ตรวจสอบ user เปลี่ยน locate หลังรับหรือไม่
+                    string chk = "";
+                    string chkChglo = "SELECT * FROM tbl_equipment WHERE equipment_id='" + pkeq.Text + "' ";
+                    MySqlDataReader rt = function.MySqlSelect(chkChglo);
+                    if (rt.Read())
                     {
-                        string filePath = "D:/log/equip/EqUpdate_log";
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("\r\n" + DateNoww + "," + TimeNoww + "," + Session["User"].ToString() + "," + txtEditEng.Text + "," + txtEditTH.Text + "," +
-                        " " + txtEditNo.Text + "," + txtEditNoform.Text + "," +
-                        " " + txtEditBrand.Text + "," + txtEditSeries.Text + "," +
-                        " " + txtEditDate.Text + "," + txtEditPrice.Text + "," +
-                        " " + txtEditContract.Text + "," + ddlEditCpoint.SelectedValue + "," +
-                        " " + ddlEditStat.SelectedValue + "," + ddlEditCompany.SelectedValue + "," +
-                        " " + ddlEditLocate.SelectedValue + "," + txtEditNote.Text + "," +
-                        " " + txtEditPerson.Text + "," + txtEditcUnit.Text + "," + pkeq.Text + ",Update_Success");
+                        string chkTranfer = rt.GetString("equipment_chkUpdateLocate");
+                        string locate = rt.GetString("locate_id");
+                        if(chkTranfer == "1")
+                        {
+                            if (locate == ddlEditLocate.SelectedValue)
+                            {
+                                chk = "1";
+                            }
+                            else
+                            {
+                                chk = "0";
+                            }
+                        }
+                        else
+                        {
+                            chk = "0";
+                        }
+                        if(chk == "0")
+                        {
+                            if (function.MySqlQuery(updateEqSQL))
+                            {
+                                
+                                string filePath = "D:/log/equip/EqUpdate_log";
+                                StringBuilder sb = new StringBuilder();
+                                sb.Append("\r\n" + DateNoww + "," + TimeNoww + "," + Session["User"].ToString() + "," + txtEditEng.Text + "," + txtEditTH.Text + "," +
+                                " " + txtEditNo.Text + "," + txtEditNoform.Text + "," +
+                                " " + txtEditBrand.Text + "," + txtEditSeries.Text + "," +
+                                " " + txtEditDate.Text + "," + txtEditPrice.Text + "," +
+                                " " + txtEditContract.Text + "," + ddlEditCpoint.SelectedValue + "," +
+                                " " + ddlEditStat.SelectedValue + "," + ddlEditCompany.SelectedValue + "," +
+                                " " + ddlEditLocate.SelectedValue + "," + txtEditNote.Text + "," +
+                                " " + txtEditPerson.Text + "," + txtEditcUnit.Text + "," + pkeq.Text + ",Update_Success");
 
-                        // flush every 20 seconds as you do it
-                        File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
-                        sb.Clear();
+                                // flush every 20 seconds as you do it
+                                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
+                                sb.Clear();
 
-                        ResultPop("ระบบงานครุภัณฑ์ : บันทึกสำเร็จ", "success");
-                        SearchBind();
+                                ResultPop("ระบบงานครุภัณฑ์ : บันทึกสำเร็จ", "success");
+                                SearchBind();
+                            }
+                        }
+                        else
+                        {
+                            ResultPop("ระบบงานครุภัณฑ์ : กรุณาเปลี่ยนสถานที่", "error");
+                        }
+                        
                     }
                 }
-
-            }
-
-            
-            
-            
-
+            }                                 
         }
         protected string CheckDupli (string noEQ,string SerialEQ,string pkEQ)
         {
