@@ -14,9 +14,8 @@
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         
     <div class="card" style="font-size: 19px; z-index: 0;" runat="server" >
-
         <div class="bg form-control"  style="font-size:25px;color:white;height:60px;background-color:darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</div>
-        
+        <br />
         <div id="divtranFirst" class="card-body table-responsive" style="padding-top:1px" runat="server">
            <div class="card-title alert-warning" style="font-size:16px;">ส่วนที่ 1 : รายละเอียด   <asp:Label ID="refnoo" runat="server" CssClass="text-right"></asp:Label><asp:Label ID="stathead" runat="server" ></asp:Label><asp:Label runat="server" Text=" )" ></asp:Label></div>
             <div class="row" id="divhitback" runat="server" visible="false" style="padding:1px 1px 1px 20px;height:60px"  >
@@ -40,7 +39,7 @@
                        <asp:DropDownList ID="ddlTollEQ" runat="server"  CssClass="form-control"  ></asp:DropDownList>
                   </div>
                
-                <div class="form-group bmd-form-group col-md-6 col-xl-2" >
+                <div class="form-group bmd-form-group col-md-6 col-xl-3" >
                      <label class="bmd-label-floating" >วันที่โอนย้าย</label>
                      <asp:TextBox runat="server" ID="txtDateSend"  CssClass="form-control datepicker" ></asp:TextBox>
                </div>
@@ -108,13 +107,21 @@
                 </div>
             </div>
             <br />
-
-            <div class="row" style="padding-left:12px;" >
-                <asp:Label ID="lbshowamount" runat="server"  ></asp:Label>
-            </div>
-                <asp:gridview ID="GridAddTran" runat="server" DataKeyNames="trans_act_id" CssClass="table table-hover table-sm"
-                    ShowFooter="true"  GridLines="None" Font-Size="18px" HeaderStyle-Font-Size ="24px"
-                    AutoGenerateColumns="false" OnRowDataBound="GridAddTran_RowDataBound" OnRowDeleting="GridAddTran_RowDeleting"> 
+            <div class="container">
+                <div class="row" style="padding-left:12px;" >
+                    <asp:Label ID="lbshowamount" runat="server" Font-Size="12px" Font-Bold="true" ForeColor="#0022ff"></asp:Label>
+                </div>
+                <asp:gridview ID="GridAddTran" runat="server" 
+                    DataKeyNames="trans_act_id" 
+                    CssClass="table table-hover table-responsive-md table-sm"
+                    ShowFooter="false"  
+                    GridLines="Both" 
+                    Font-Size="16px" 
+                    HeaderStyle-Font-Size ="18px"
+                    HeaderStyle-Height="30px"
+                    AutoGenerateColumns="false" 
+                    OnRowDataBound="GridAddTran_RowDataBound" 
+                    OnRowDeleting="GridAddTran_RowDeleting"> 
                     <AlternatingRowStyle BackColor="#edebec" />
                     <Columns>
                         <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
@@ -123,7 +130,13 @@
                                 </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="เลขครุภัณฑ์" ItemStyle-Width="200px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="รายการ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                            <ItemTemplate >
+                                <asp:Label ID="TextBox2"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.old_nameth") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="หมายเลขครุภัณฑ์" ItemStyle-Width="200px" ItemStyle-CssClass="text-center">
                             <ItemTemplate >
                                 <asp:Label ID="TextBox1"   runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.old_no") %>' ></asp:Label>
                             </ItemTemplate>
@@ -135,25 +148,21 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="รายการ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
-                            <ItemTemplate >
-                                <asp:Label ID="TextBox2"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.old_nameth") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        
 
-                        <asp:TemplateField HeaderText="ยี่ห้อ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="ยี่ห้อ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center" Visible="false">
                             <ItemTemplate >
                                 <asp:label ID="TextBox3"  runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.old_brand") %>' ></asp:label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:CommandField  ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" ItemStyle-CssClass="text-center" />
+                        <asp:CommandField  ShowDeleteButton="True" HeaderText="Delete" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" ItemStyle-CssClass="text-center" ItemStyle-Width="30px"/>
                     </Columns>
                     <FooterStyle BackColor="#ffffff" Font-Bold="True" CssClass="text-center" ForeColor="#0a7802" />
-                    <HeaderStyle BackColor="#ffffff" CssClass="text-center"   ForeColor="#0a7802" />
-                    
-                
+                    <HeaderStyle BackColor="#064c54" CssClass="text-center"   ForeColor="White" />                                    
                 </asp:gridview>
+            </div>
+                
 
             <!--ทดแทน-->
             <asp:gridview ID="gridreplace" runat="server" DataKeyNames="trans_act_id"

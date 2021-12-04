@@ -96,7 +96,7 @@ namespace ClaimProject.equip
                 }
 
 
-                sqlsendSearch += " AND toll_recieve = '9200' ";
+                sqlsendSearch += " AND toll_recieve IN (9200,9300,9400,9500,9600) ";
             }
             else
             {

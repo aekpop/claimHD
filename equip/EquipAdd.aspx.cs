@@ -980,8 +980,8 @@ namespace ClaimProject.equip
                         else
                         {
                             //AlertPop("กรุณากรอกข้อมูลค้นหาอย่างน้อย 1 ประเภท !!","error");
-                            Ssql += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
-                            SsqlReport += " AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            Ssql += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            SsqlReport += " WHERE d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
                                 //Ssql += " AND tbl_toll.user_depart = 'sawitree' Order by d.toll_id ASC,d.equipment_no ";
@@ -1245,7 +1245,7 @@ namespace ClaimProject.equip
             }
             else
             {
-                equip.Visible = false;
+                equip.Visible = true;
                 lbtnReportEquipment.Visible = false;
             }
             //function.Close();

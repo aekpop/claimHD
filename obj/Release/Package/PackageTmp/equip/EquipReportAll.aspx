@@ -52,5 +52,14 @@
                    </div>
             </div>
         </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">รายการครุภัณฑ์</div>
+            </div>
+
+            <div class="card-body">
+
+            </div>
+        </div>
     </div>
 </asp:Content>

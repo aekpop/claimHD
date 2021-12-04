@@ -1201,14 +1201,15 @@ namespace ClaimProject.equip
                 {
                     if(ddlTollEQ.SelectedValue == "9300" || ddlTollEQ.SelectedValue == "9400" || ddlTollEQ.SelectedValue == "9500")
                     {
-                        completeStatf = "3";
+                        /*completeStatf = "3";
                         SQLFirst = "update tbl_transfer SET trans_budget ='" + function.getBudgetYear(txtDateSend.Text) + "',trans_note = '" + txtactnote.Text + "' ,trans_id = '" + Session["TransID"].ToString() + "'," +
                         "thai_month='" + datesf + "',trans_stat='" + ddlTypeEQQ.SelectedValue + "',date_send='" + txtDateSend.Text + "',time_send='" + timenow + "'," +
                         "user_send = '" + Session["UserName"].ToString() + "',name_send ='" + txtSender.Text + "',toll_send ='" + ddlStartEQ.SelectedValue + "'," +
                         "toll_recieve ='" + ddlTollEQ.SelectedValue + "',complete_stat ='" + completeStatf + "',position_sender = '" + ddlPosition.SelectedValue + "' " +
                         " WHERE trans_id = '" + Session["TransID"].ToString() + "'";
                         completedd("2", SQLFirst);
-                        typ = "com";
+                        typ = "com"; */
+                        completeStatf = "2";
                     }
                     else
                     {
@@ -1230,14 +1231,15 @@ namespace ClaimProject.equip
                 {
                     if(ddlTollEQ.SelectedValue == "9300" || ddlTollEQ.SelectedValue == "9400" || ddlTollEQ.SelectedValue == "9500")
                     {
-                        completeStatf = "3";
+                        /*completeStatf = "3";
                         SQLFirst = "update tbl_transfer SET trans_budget ='" + function.getBudgetYear(txtDateSend.Text) + "',trans_note = '" + txtactnote.Text + "' ,trans_id = '" + Session["TransID"].ToString() + "'," +
                         "thai_month='" + datesf + "',trans_stat='" + ddlTypeEQQ.SelectedValue + "',date_send='" + txtDateSend.Text + "',time_send='" + timenow + "'," +
                         "user_send = '" + Session["UserName"].ToString() + "',name_send ='" + txtSender.Text + "',toll_send ='" + ddlStartEQ.SelectedValue + "'," +
                         "toll_recieve ='" + ddlTollEQ.SelectedValue + "',complete_stat ='" + completeStatf + "',position_sender = '" + ddlPosition.SelectedValue + "' " +
                         " WHERE trans_id = '" + Session["TransID"].ToString() + "'";
                         completedd("11", SQLFirst);
-                        typ = "com";
+                        typ = "com"; */
+                        completeStatf = "2";
                     }
                     else
                     {

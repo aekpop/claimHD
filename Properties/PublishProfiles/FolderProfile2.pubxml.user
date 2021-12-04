@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>11/08/2021 17:09:17</publishTime>
+      <publishTime>12/03/2021 08:22:26</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>11/08/2021 17:09:17</publishTime>
+      <publishTime>12/03/2021 08:22:26</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>11/08/2021 17:09:18</publishTime>
+      <publishTime>12/03/2021 08:22:27</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -640,7 +640,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/22/2021 16:28:22</publishTime>
     </File>
     <File Include="CM/DefaultCM.aspx">
-      <publishTime>11/08/2021 14:48:13</publishTime>
+      <publishTime>11/18/2021 18:13:09</publishTime>
     </File>
     <File Include="Company/CompanyForm.aspx">
       <publishTime>10/22/2020 20:00:16</publishTime>
@@ -3466,13 +3466,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/06/2021 17:19:25</publishTime>
     </File>
     <File Include="Device/DeviceForm.aspx">
-      <publishTime>10/01/2021 14:40:14</publishTime>
+      <publishTime>11/29/2021 08:57:49</publishTime>
     </File>
     <File Include="Device/GroupDeviceForm.aspx">
       <publishTime>12/01/2020 11:56:36</publishTime>
     </File>
     <File Include="equip/EquipAdd.aspx">
-      <publishTime>10/12/2021 17:49:54</publishTime>
+      <publishTime>11/29/2021 13:54:41</publishTime>
     </File>
     <File Include="equip/EquipAddAll.aspx">
       <publishTime>09/24/2021 14:06:26</publishTime>
@@ -3499,10 +3499,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2020 16:10:22</publishTime>
     </File>
     <File Include="equip/EquipNewTrans.aspx">
-      <publishTime>07/30/2021 13:47:52</publishTime>
+      <publishTime>11/23/2021 12:15:00</publishTime>
     </File>
     <File Include="equip/EquipReportAll.aspx">
-      <publishTime>05/13/2021 20:20:38</publishTime>
+      <publishTime>12/01/2021 11:46:10</publishTime>
     </File>
     <File Include="equip/EquipReportPage.aspx">
       <publishTime>11/30/2020 10:50:54</publishTime>
@@ -4354,7 +4354,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2021 16:24:26</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>11/05/2021 16:29:55</publishTime>
+      <publishTime>11/22/2021 11:34:13</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/01/2018 16:43:56</publishTime>
@@ -4381,7 +4381,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 16:29:30</publishTime>
     </File>
     <File Include="Techno/TechnoReport.aspx">
-      <publishTime>09/21/2021 16:13:56</publishTime>
+      <publishTime>11/09/2021 15:22:04</publishTime>
     </File>
     <File Include="User/Add/userForm.aspx">
       <publishTime>08/10/2021 16:39:22</publishTime>

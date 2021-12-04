@@ -132,6 +132,8 @@
                                             <a class="dropdown-item" href="/CM/DefaultCM" >Dashboard</a>
                                             <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
                                             <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown-header">รายงาน</div>
                                             <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
                                             <a class="dropdown-item" href="/CM/CMReport" >รายงานสรุป</a>     
                                         </div>
@@ -145,9 +147,12 @@
                                             <a class="dropdown-item" href="/CM/DefaultCM" >Dashboard</a>
                                             <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
                                             <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown-header">รายงาน</div>
                                             <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
                                             <a class="dropdown-item" href="/CM/CMReport" >รายงานสรุป</a>
-                                            <div class="dropdown-divider"></div>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown-header">ผู้ดูแลระบบ(Admin)</div>
                                             <a class="dropdown-item" href="/CM/CMSurveyForm" >ตรวจสอบ</a>
                                         </div>
                                         </li>
@@ -159,6 +164,8 @@
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
                                             <a class="dropdown-item" href="/equip/EquipAdd">รายการครุภัณฑ์</a>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown-header">โอนย้าย</div>
                                             <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
                                             <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
                                                 <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
@@ -173,10 +180,13 @@
                                                     <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
                                                     <a class="dropdown-item" href="/equip/EquipAdd">รายการครุภัณฑ์</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <div class="dropdown-header">โอนย้าย</div>
                                                     <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
                                                     <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
                                                         <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
                                                         <div class="dropdown-divider"></div>
+                                                        <div class="dropdown-header">ผู้ดูแลระบบ(Admin)</div>
                                                     <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์</a>
                                                     <a class="dropdown-item" href="/equip/EquipCheckList">การโอนย้าย(ด่านฯ)</a>
                                                     <a class="dropdown-item" href="/equip/EquipHistory">ประวัติโอนย้าย</a>
