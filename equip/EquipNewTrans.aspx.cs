@@ -1283,6 +1283,7 @@ namespace ClaimProject.equip
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             string sqlEdit = "UPDATE tbl_transfer SET complete_stat = '1' WHERE trans_id = '" + Session["TransID"].ToString() + "'";
+            
             string checkStat = "select complete_stat FROM tbl_transfer WHERE trans_id = '" + Session["TransID"].ToString() + "'";
             string statnow = "";
             string timenowe = DateTime.Now.ToString("dd-MM-yyyy HH.mm.ss");
@@ -1293,18 +1294,26 @@ namespace ClaimProject.equip
             {
                 statnow = edit.GetString("complete_stat");
                 edit.Close();
+                string value = loopGetCommand();
                 if (statnow == "2")
                 {
                     if (function.MySqlQuery(sqlEdit))
-                    {
-                        if(function.MySqlQuery(loge))
+                    {                      
+                        if(value == "0")
                         {
-                            Response.Redirect("/equip/EquipTranList");
-                        }
-                        else
+                            if (function.MySqlQuery(loge))
+                            {
+                                Response.Redirect("/equip/EquipDefault");
+                            }
+                            else
+                            {
+                                Response.Redirect("/equip/EquipDefault");
+                            }
+                        }else if(value == "error")
                         {
-                            Response.Redirect("/equip/EquipTranList");
+                            AlertPop("การดึงกลับแก้ไขล้มเหลว กรุณาติดต่อปลายทาง", "error");
                         }
+                        
 
                     }
                 }
@@ -1312,15 +1321,21 @@ namespace ClaimProject.equip
                 {
                     if (function.MySqlQuery(sqlEdit))
                     {
-                        if (function.MySqlQuery(loge))
+                        if (value == "0")
                         {
-                            Response.Redirect("/equip/EquipTranList");
+                            if (function.MySqlQuery(loge))
+                            {
+                                Response.Redirect("/equip/EquipTranList");
+                            }
+                            else
+                            {
+                                Response.Redirect("/equip/EquipTranList");
+                            }
                         }
-                        else
+                        else if (value == "error")
                         {
-                            Response.Redirect("/equip/EquipTranList");
+                            AlertPop("การดึงกลับแก้ไขล้มเหลว กรุณาติดต่อปลายทาง", "error");
                         }
-
                     }
                 }
                 else
@@ -1328,7 +1343,6 @@ namespace ClaimProject.equip
                     AlertPop("การดึงกลับแก้ไขล้มเหลว กรุณาติดต่อปลายทาง", "error");
                 }
             }
-
         }
 
         protected void btnGet_Click(object sender, EventArgs e)
