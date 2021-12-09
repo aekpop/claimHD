@@ -629,7 +629,7 @@ namespace ClaimProject
                         cpoint_title += "ด่านฯ " + cpointName + " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
                         strNote = "ด่านฯ" + cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
                         name = "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName + " ";
-                        noteTo = "ผจท. ผ่าน " + noteTo;
+                        noteTo = "รอง ผจท. ผ่าน " + noteTo;
                     }
 
                     rpt.SetParameterValue("txt_to", noteTo);

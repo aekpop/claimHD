@@ -873,8 +873,8 @@ namespace ClaimProject.equip
                     {
                         if (statt != "0")
                         {
-                            Ssql += " WHERE d.Estatus_id = '" + statt + "' ";
-                            SsqlReport += " WHERE d.Estatus_id = '" + statt + "' ";
+                            Ssql += " WHERE d.Estatus_id = '" + statt + "' AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
+                            SsqlReport += " WHERE d.Estatus_id = '" + statt + "' AND d.equipment_serial LIKE '%" + txtsearchSerial.Text + "%' ";
                             if (Session["UserCpoint"].ToString() == "0") //รหัสฝ่าย
                             {
                                 if (cpointtt != "0")
