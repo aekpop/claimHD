@@ -62,9 +62,13 @@ namespace ClaimProject
 
             }
             LineTran();
-            LoadPaging();           
-            //Session["ddlsearchType"] = "0";
-            //Session["ddlsearchStat"] = "0";
+            LoadPaging();
+            if (Session["alert"].ToString() != "")
+            {
+                string msgAlert = Session["alert"].ToString();
+                AlertPop(msgAlert, "success");
+                Session["alert"] = "";
+            }
         }
         protected void LineTran ()
         {

@@ -297,13 +297,13 @@ namespace ClaimProject.equip
                                             "(equipment_img,locate_id,equipment_name,equipment_nameth,equipment_no,equipment_serial,equipment_brand" +
                                             ",equipment_series,equipment_buy_date,equipment_price_unit,equipment_contract_no,equipment_unit" +
                                             ",toll_id,Estatus_id,company_id" +
-                                            ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month,equipment_life)"
+                                            ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month,equipment_life,equipment_chkUpdateLocate)"
                                           + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','"+Num3+"','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
                                           ",'" + txtAddSeries.Text + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddContractNum.Text + "'" +
                                           ",'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue + "','" + ddlAddStat.SelectedValue + "'" +
                                           ",'" + ddlAddCompany.SelectedValue + "','-','0','" + Session["User"].ToString() + "'" +
                                           ",'" + TimeNoww + "','" + DateNoww + "','0','-','" + function.getBudgetYear(txtAddDateGet.Text) + "','" + GetThaiMonth(txtAddDateGet.Text) + "'" +
-                                          ",'" + txtexpired.Text + "')";
+                                          ",'" + txtexpired.Text + "','0')";
 
                                         eqaddList = "insert into tbl_neweq_list " +
                                             " (list_serial,newEQ_idx,Date_added,Time_added,list_number,list_thname,list_brand,list_series,list_contract,list_toll,Bbudget,Mmonth,list_locate) " +
@@ -361,13 +361,13 @@ namespace ClaimProject.equip
                                             "(equipment_img,locate_id,equipment_name,equipment_nameth,equipment_no,equipment_serial,equipment_brand" +
                                             ",equipment_series,equipment_buy_date,equipment_price_unit,equipment_contract_no,equipment_unit" +
                                             ",toll_id,Estatus_id,company_id" +
-                                            ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month,equipment_life)"
+                                            ",person_name,action_stat,user_update,time_update,date_update,trans_complete,equip_comment,equipment_budget,th_month,equipment_life,equipment_chkUpdateLocate)"
                                           + " VALUES ('/equip/Upload/3c1d1f29ba4a7e19850b2fb498af3987.jpg','"+Num3+"','" + txtAddENG.Text + "','" + txtAddTH.Text + "','" + Num1 + "','" + Num2 + "','" + txtAddBrand.Text + "'" +
                                           ",'" + txtAddSeries.Text + "','" + txtAddDateGet.Text + "','" + txtAddPrize.Text + "','" + txtAddContractNum.Text + "'" +
                                           ",'" + txtAddUnit.Text + "','" + ddlAddCpoint.SelectedValue.ToString() + "','" + ddlAddStat.SelectedValue.ToString() + "'" +
                                           ",'" + ddlAddCompany.SelectedValue.ToString() + "','-','0','" + Session["User"].ToString() + "'" +
                                           ",'" + TimeNoww + "','" + DateNoww + "','0','-','" + function.getBudgetYear(txtAddDateGet.Text) + "','" + GetThaiMonth(txtAddDateGet.Text) + "'" +
-                                          ",'" + txtexpired.Text + "')";
+                                          ",'" + txtexpired.Text + "','0')";
                                         if (EQPKTYPE == "new")
                                         {
                                             newEQref = "INSERT INTO tbl_newequipment " +

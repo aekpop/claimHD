@@ -9,6 +9,7 @@
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
+        
     </style>
 
     <div class="container-fluid"  style="font-family:'Prompt',sans-serif;">
@@ -180,6 +181,13 @@
             {
                 return true;
             }
-	    }     
+        }
+
+        $(function () {
+        <% if (alerts != "")
+        { %>
+            demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
+        <% } %>
+        });
     </script>
 </asp:Content>

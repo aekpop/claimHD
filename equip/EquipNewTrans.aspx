@@ -504,7 +504,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="lbtnBack" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnBack_Command" OnClientClick="return UpdteConfirm('ยืนยันไม่อนุมัติ (ตีกลับเอกสาร) ใช่หรือไม่');">ยืนยันไม่อนุมัติ</asp:LinkButton>
+                    <asp:LinkButton ID="lbtnBack" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="lbtnBack_Command" OnClientClick="return UpdteConfirm('ยืนยันไม่อนุมัติ (ตีกลับเอกสาร) ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">ยกเลิก</button>
                 </div>
             </div>
