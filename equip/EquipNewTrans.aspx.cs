@@ -340,9 +340,8 @@ namespace ClaimProject.equip
                                 btnAddEQTran.Enabled = false;
                                 ddlreplace.Enabled = false;
                                 lbtnreplace.Enabled = false;
-
-                                btnGet.Visible = false;
-                                btnBackto.Visible = false;
+                                btnGet.Visible = true;
+                                btnBackto.Visible = true;
                             }
 
                         }
