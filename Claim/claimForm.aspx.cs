@@ -743,6 +743,7 @@ namespace ClaimProject.Claim
 
                 string name = "";
                 string com = "";
+                string superb = "";
                 string dev = "";
                 string listDoc = "";
                 string doc_num = "";
@@ -769,11 +770,11 @@ namespace ClaimProject.Claim
                         i++;
                     }
                     rs.Close();
-                    name += "\r\n\r\n\r\n";
-                    name += "(" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor") + ")";
-                    name += "\r\n" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor_pos");
+                //name += "\r\n\r\n\r\n";
+                superb += "(" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor") + ")";
+                superb += "\r\n" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor_pos");
 
-                    function.Close();
+                function.Close();
 
                     i = 1;
                     rs = function.MySqlSelect(sql_dev);                
@@ -897,6 +898,7 @@ namespace ClaimProject.Claim
                     rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(DateTitle));
                 }
                 cpoint_title += " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+                rpt.SetParameterValue("Cpointname", cpointName);
                 rpt.SetParameterValue("cpoint_title", cpoint_title);
                 rpt.SetParameterValue("num_title", doc_num);
                 rpt.SetParameterValue("note_text", strNote);
@@ -904,7 +906,7 @@ namespace ClaimProject.Claim
                 rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
 
                 rpt.SetParameterValue("list_dev", dev);
-
+                rpt.SetParameterValue("superb", superb);
 
                 Session["Report"] = rpt;
                 Session["ReportTitle"] = "บันทึกข้อความ";

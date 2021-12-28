@@ -10,18 +10,18 @@
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
     <style>
         @font-face {
-            font-family: 'THSarabun';
+            font-family:THSarabun;
             src: url('/fonts/THSarabun.ttf') format('truetype');
         }
 
         @font-face {
-            font-family: 'THSarabunIT๙';
+            font-family:THSarabunIT๙;
             src: url('/fonts/THSarabunIT๙.ttf') format('truetype');
         }
     </style>
 </head>
-<body style="font-family: 'THSarabun,THSarabunIT๙'">
-    <form id="iframe" runat="server">
+<body>
+    <form id="iframe" runat="server" >
         <asp:Panel id="dvReport" runat="server">
             <!--<asp:Button runat="server" ID="btnPrint" Text="พิมพ์" OnClick="btnPrint_Click" />
             <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>-->
