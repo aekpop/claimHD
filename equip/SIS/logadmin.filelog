@@ -1,0 +1,52 @@
+--->setting --->Database: server=10.6.3.175;database=sis;uid=adminsis;pwd=adminsis12345678;charset=utf8;--date:19/05/2018 08:53:48
+--->setting --->check point--Detail:706--date:19/05/2018 08:54:00
+login:123455--date:19/05/2018 08:56:09
+login:123455--date:19/05/2018 09:04:04
+login:123455--date:19/05/2018 09:04:19
+--->setting --->straps setting--Detail:043001-047500--date:19/05/2018 09:04:56
+login:123455--date:19/05/2018 10:08:19
+--->setting --->Database: server=10.6.3.175;database=sis_test;uid=adminsis;pwd=adminsis12345678;charset=utf8;--date:19/05/2018 10:08:27
+login:123455--date:19/05/2018 10:39:27
+--->setting --->check point--Detail:706--date:19/05/2018 10:39:32
+login:123455--date:19/05/2018 13:58:23
+--->setting --->check point--Detail:701--date:19/05/2018 13:58:29
+login:123455--date:19/05/2018 13:59:45
+--->setting --->check point--Detail:701--date:19/05/2018 13:59:50
+login:123455--date:19/05/2018 14:00:40
+--->setting --->check point--Detail:701--date:19/05/2018 14:00:44
+login:123455--date:19/05/2018 14:02:39
+--->setting --->Database: server=10.6.3.175;database=sis_test;uid=adminsis;pwd=adminsis12345678;charset=utf8;--date:19/05/2018 14:02:43
+login:123455--date:19/05/2018 14:05:52
+--->setting --->check point--Detail:706--date:19/05/2018 14:05:57
+login:123455--date:19/05/2018 14:06:33
+--->setting --->check point--Detail:701--date:19/05/2018 14:06:41
+login:123455--date:19/05/2018 14:07:36
+--->setting --->straps setting--Detail:043001-047500--date:19/05/2018 14:07:38
+login:123455--date:19/05/2018 14:12:50
+--->setting --->check point--Detail:706--date:19/05/2018 14:12:52
+login:123455--date:19/05/2018 14:12:59
+--->setting --->check point--Detail:701--date:19/05/2018 14:13:04
+login:123455--date:19/05/2018 14:13:50
+--->setting --->check point--Detail:701--date:19/05/2018 14:14:15
+login:123455--date:19/05/2018 14:22:11
+login:123455--date:19/05/2018 14:23:02
+--->setting --->check point--Detail:701--date:19/05/2018 14:23:08
+login:123455--date:19/05/2018 14:23:56
+--->setting --->check point--Detail:706--date:19/05/2018 14:24:01
+login:123455--date:19/05/2018 14:25:03
+--->setting --->check point--Detail:701--date:19/05/2018 14:25:09
+login:123455--date:19/05/2018 14:43:33
+--->setting --->check point--Detail:706--date:19/05/2018 14:43:39
+login:123455--date:19/05/2018 14:46:51
+--->setting --->check point--Detail:701--date:19/05/2018 14:46:55
+login:123455--date:19/05/2018 14:47:13
+--->setting --->check point--Detail:706--date:19/05/2018 14:47:23
+login:123455--date:19/05/2018 14:51:12
+--->setting --->check point--Detail:701--date:19/05/2018 14:51:14
+login:123455--date:19/05/2018 14:51:39
+--->setting --->check point--Detail:706--date:19/05/2018 14:51:42
+--->setting --->Database: server=10.6.3.175;database=sis_test;uid=adminsis;pwd=admin25;charset=utf8;--date:21/05/2018 14:06:28
+login:123455--date:21/05/2018 14:06:34
+--->setting --->check point--Detail:706--date:21/05/2018 14:06:40
+login:123455--date:21/05/2018 14:06:45
+--->setting --->straps setting--Detail:043001-047500--date:21/05/2018 14:07:03

@@ -374,6 +374,8 @@ namespace ClaimProject.Claim
             string licenAdd3 = "";
             string provinAdd3 = "";
             string tel3 = "";
+            string manager = "";
+            string Cpcontrol = "";
 
             string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON cc.claim_id=c.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint WHERE c.claim_id = '" + key + "'";
 
@@ -393,6 +395,8 @@ namespace ClaimProject.Claim
                 detail = rs.GetString("claim_detail_accident");
                 supper = rs.GetString("claim_detail_supervisor");
                 supperPos = rs.GetString("claim_detail_supervisor_pos");
+                manager = rs.GetString("cpoint_manager");
+                Cpcontrol = rs.GetString("cpoint_control");
 
                 car = rs.GetString("claim_detail_car").Replace(",", "").ToUpper();
                 licensePlate = rs.GetString("claim_detail_license_plate");
@@ -401,7 +405,7 @@ namespace ClaimProject.Claim
                 licensePlate2 = rs.GetString("claim_detail_lp2");
                 province = rs.GetString("claim_detail_province");
                 comeFrom = rs.GetString("claim_detail_comefrom");
-                nameDrive = rs.GetString("claim_detail_driver");
+                nameDrive = rs.GetString("claim_detail_driver");                
                 idcard = rs.GetString("claim_detail_idcard");
                 address = rs.GetString("claim_detail_address");
                 telDrive = rs.GetString("claim_detail_tel");
@@ -489,7 +493,7 @@ namespace ClaimProject.Claim
 
                 if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-")
                 {
-                    strNote += "ไม่ทราบหมายเลขทะเบียน";
+                    strNote += " ไม่ทราบหมายเลขทะเบียน";
                 }
                 else
                 {
@@ -621,7 +625,7 @@ namespace ClaimProject.Claim
 
                 if (licensePlate == "" || licensePlate == "-" || licensePlate == "ไม่ทราบ" && licenseEng == "" && licenseEng == "-")
                 {
-                    strNote += "ไม่ทราบหมายเลขทะเบียน";
+                    strNote += " ไม่ทราบหมายเลขทะเบียน";
                 }
                 else
                 {
@@ -635,8 +639,11 @@ namespace ClaimProject.Claim
                             strNote += " จังหวัด" + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด" + provinceplate2;
                             if (licenseEng != "")
                             {
-                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn
-                                + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn;
+                                    if(nameDrive != "")
+                                    {
+                                        strNote += " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                    }                                
                             }
                             else
                             {
@@ -665,7 +672,11 @@ namespace ClaimProject.Claim
                         }
                         else
                         {
-                            strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn;
+                                if (nameDrive != "")
+                                {
+                                    strNote += " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                }
                         }
                     }
                 }
@@ -721,9 +732,13 @@ namespace ClaimProject.Claim
                     }
                     */
 
-                    if (insurer.Trim() == "" || insurer.Trim() == "-")
+                    if (insurer.Trim() == "ไม่มีประกัน")
                     {
                         strNote += " ซึ่งไม่ได้ทำประกันภัยไว้";
+                    }
+                    else if(insurer.Trim() == "")
+                    {
+                        strNote += "";
                     }
                     else
                     {
@@ -887,6 +902,11 @@ namespace ClaimProject.Claim
                     rpt.SetParameterValue("txt_to", noteTo);
                     rpt.SetParameterValue("note_title", title);
                     rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(cpointDate));
+                    rpt.SetParameterValue("Cpointname", cpointName);
+                    rpt.SetParameterValue("superb", superb);
+                    //rpt.SetParameterValue("manager", manager);
+                    rpt.SetParameterValue("manager", "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName);
+                    rpt.SetParameterValue("Cpcontrol", Cpcontrol);
                 }
                 else
                 {
@@ -897,8 +917,8 @@ namespace ClaimProject.Claim
                     rpt.SetParameterValue("note_title", title2);
                     rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(DateTitle));
                 }
-                cpoint_title += " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
-                rpt.SetParameterValue("Cpointname", cpointName);
+                cpoint_title += " ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+                
                 rpt.SetParameterValue("cpoint_title", cpoint_title);
                 rpt.SetParameterValue("num_title", doc_num);
                 rpt.SetParameterValue("note_text", strNote);
@@ -906,7 +926,7 @@ namespace ClaimProject.Claim
                 rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
 
                 rpt.SetParameterValue("list_dev", dev);
-                rpt.SetParameterValue("superb", superb);
+                
 
                 Session["Report"] = rpt;
                 Session["ReportTitle"] = "บันทึกข้อความ";

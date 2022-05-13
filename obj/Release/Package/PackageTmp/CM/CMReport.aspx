@@ -89,7 +89,7 @@
                                                           <div class="form-group bmd-form-group">
                                                              <div class="label-on-left" >ช่วงเวลาทั้งหมด</div>
                                                                 <label class="container">
-                                                                        <input type="checkbox"  id="CheckAllDay" name="CheckAllDay" runat="server" />
+                                                                        <input type="checkbox" id="CheckAllDay" name="CheckAllDay" runat="server" />
                                                                       <span class="checkmark"></span>                                                                                                
                                                                 </label>                              
                                                           </div>

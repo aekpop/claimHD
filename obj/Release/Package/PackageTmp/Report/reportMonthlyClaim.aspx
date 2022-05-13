@@ -21,7 +21,7 @@
             <div class="col-10">
                 <asp:ScriptManager ID="ScriptManager1" runat="server">
                 </asp:ScriptManager>
-                <rsweb:ReportViewer ID="reportViewer1" runat="server" Height="700px" Width="862px">
+                <rsweb:ReportViewer ID="reportViewer1" runat="server" Height="800px" Width="80%">
                     
                 </rsweb:ReportViewer>
             </div>

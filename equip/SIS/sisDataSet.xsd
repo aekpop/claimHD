@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="sisDataSet" targetNamespace="http://tempuri.org/sisDataSet.xsd" xmlns:mstns="http://tempuri.org/sisDataSet.xsd" xmlns="http://tempuri.org/sisDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="sisConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sisConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIS.Properties.Settings.GlobalReference.Default.sisConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_aroundTableAdapter" GeneratorDataComponentClassName="tbl_aroundTableAdapter" Name="tbl_around" UserDataComponentName="tbl_aroundTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectName="sis.tbl_around" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        tbl_around_id, tbl_around_time
+FROM            tbl_around</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_cpointTableAdapter" GeneratorDataComponentClassName="tbl_cpointTableAdapter" Name="tbl_cpoint" UserDataComponentName="tbl_cpointTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectName="sis.tbl_cpoint" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT tbl_cpoint_id, tbl_cpoint_name FROM tbl_cpoint</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_empTableAdapter" GeneratorDataComponentClassName="tbl_empTableAdapter" Name="tbl_emp" UserDataComponentName="tbl_empTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectName="sis.tbl_emp" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT tbl_emp_id, tbl_emp_name, tbl_emp_group_id FROM tbl_emp</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_emp_groupTableAdapter" GeneratorDataComponentClassName="tbl_emp_groupTableAdapter" Name="tbl_emp_group" UserDataComponentName="tbl_emp_groupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectName="sis.tbl_emp_group" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT tbl_emp_group_id, tbl_emp_group_name FROM tbl_emp_group</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_incomeTableAdapter" GeneratorDataComponentClassName="tbl_incomeTableAdapter" Name="tbl_income" UserDataComponentName="tbl_incomeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectName="sis.tbl_income" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT tbl_income_id, tbl_income_money_bag, tbl_income_straps, tbl_income_emp_id, tbl_income_cabinet, tbl_income_job, tbl_income_in_time, tbl_income_out_time, tbl_income_total, tbl_income_bank, tbl_income_user, tbl_income_fine, tbl_income_other, tbl_income_around_id, tbl_income_note, tbl_income_status_backmaney, tbl_income_status_job, tbl_income_money FROM tbl_income</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_status_aroundTableAdapter" GeneratorDataComponentClassName="tbl_status_aroundTableAdapter" Name="tbl_status_around" UserDataComponentName="tbl_status_aroundTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectName="sis.tbl_status_around" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT tbl_status_around_id, tbl_status_around_aid, tbl_status_around_emp_open_id, tbl_status_around_close, tbl_status_around_date, tbl_status_around_cpoint_id FROM tbl_status_around</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable3TableAdapter" GeneratorDataComponentClassName="DataTable3TableAdapter" Name="DataTable3" UserDataComponentName="DataTable3TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sisConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT tbl_income_money_bag,tbl_income_straps,tbl_income_emp_id, tbl_emp_name,tbl_income_cabinet,tbl_income_job,tbl_income_in_time,tbl_income_out_time,tbl_income_total,tbl_income_bank,tbl_income_user,tbl_income_fine,tbl_income_other
+FROM tbl_income JOIN tbl_emp ON tbl_emp_id=tbl_income_emp_id JOIN tbl_status_around ON tbl_income_around_id = tbl_status_around_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="sisDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="sisDataSet" msprop:Generator_UserDSName="sisDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_around" msprop:Generator_TableClassName="tbl_aroundDataTable" msprop:Generator_TableVarName="tabletbl_around" msprop:Generator_RowChangedName="tbl_aroundRowChanged" msprop:Generator_TablePropName="tbl_around" msprop:Generator_RowDeletingName="tbl_aroundRowDeleting" msprop:Generator_RowChangingName="tbl_aroundRowChanging" msprop:Generator_RowEvHandlerName="tbl_aroundRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_aroundRowDeleted" msprop:Generator_RowClassName="tbl_aroundRow" msprop:Generator_UserTableName="tbl_around" msprop:Generator_RowEvArgName="tbl_aroundRowChangeEvent">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_cpoint" msprop:Generator_TableClassName="tbl_cpointDataTable" msprop:Generator_TableVarName="tabletbl_cpoint" msprop:Generator_RowChangedName="tbl_cpointRowChanged" msprop:Generator_TablePropName="tbl_cpoint" msprop:Generator_RowDeletingName="tbl_cpointRowDeleting" msprop:Generator_RowChangingName="tbl_cpointRowChanging" msprop:Generator_RowEvHandlerName="tbl_cpointRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_cpointRowDeleted" msprop:Generator_RowClassName="tbl_cpointRow" msprop:Generator_UserTableName="tbl_cpoint" msprop:Generator_RowEvArgName="tbl_cpointRowChangeEvent">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_emp" msprop:Generator_TableClassName="tbl_empDataTable" msprop:Generator_TableVarName="tabletbl_emp" msprop:Generator_RowChangedName="tbl_empRowChanged" msprop:Generator_TablePropName="tbl_emp" msprop:Generator_RowDeletingName="tbl_empRowDeleting" msprop:Generator_RowChangingName="tbl_empRowChanging" msprop:Generator_RowEvHandlerName="tbl_empRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_empRowDeleted" msprop:Generator_RowClassName="tbl_empRow" msprop:Generator_UserTableName="tbl_emp" msprop:Generator_RowEvArgName="tbl_empRowChangeEvent">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_emp_group" msprop:Generator_TableClassName="tbl_emp_groupDataTable" msprop:Generator_TableVarName="tabletbl_emp_group" msprop:Generator_RowChangedName="tbl_emp_groupRowChanged" msprop:Generator_TablePropName="tbl_emp_group" msprop:Generator_RowDeletingName="tbl_emp_groupRowDeleting" msprop:Generator_RowChangingName="tbl_emp_groupRowChanging" msprop:Generator_RowEvHandlerName="tbl_emp_groupRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_emp_groupRowDeleted" msprop:Generator_RowClassName="tbl_emp_groupRow" msprop:Generator_UserTableName="tbl_emp_group" msprop:Generator_RowEvArgName="tbl_emp_groupRowChangeEvent">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_income" msprop:Generator_TableClassName="tbl_incomeDataTable" msprop:Generator_TableVarName="tabletbl_income" msprop:Generator_RowChangedName="tbl_incomeRowChanged" msprop:Generator_TablePropName="tbl_income" msprop:Generator_RowDeletingName="tbl_incomeRowDeleting" msprop:Generator_RowChangingName="tbl_incomeRowChanging" msprop:Generator_RowEvHandlerName="tbl_incomeRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_incomeRowDeleted" msprop:Generator_RowClassName="tbl_incomeRow" msprop:Generator_UserTableName="tbl_income" msprop:Generator_RowEvArgName="tbl_incomeRowChangeEvent">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_status_around" msprop:Generator_TableClassName="tbl_status_aroundDataTable" msprop:Generator_TableVarName="tabletbl_status_around" msprop:Generator_RowChangedName="tbl_status_aroundRowChanged" msprop:Generator_TablePropName="tbl_status_around" msprop:Generator_RowDeletingName="tbl_status_aroundRowDeleting" msprop:Generator_RowChangingName="tbl_status_aroundRowChanging" msprop:Generator_RowEvHandlerName="tbl_status_aroundRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_status_aroundRowDeleted" msprop:Generator_RowClassName="tbl_status_aroundRow" msprop:Generator_UserTableName="tbl_status_around" msprop:Generator_RowEvArgName="tbl_status_aroundRowChangeEvent">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable3" msprop:Generator_TableClassName="DataTable3DataTable" msprop:Generator_TableVarName="tableDataTable3" msprop:Generator_TablePropName="DataTable3" msprop:Generator_RowDeletingName="DataTable3RowDeleting" msprop:Generator_RowChangingName="DataTable3RowChanging" msprop:Generator_RowEvHandlerName="DataTable3RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable3RowDeleted" msprop:Generator_UserTableName="DataTable3" msprop:Generator_RowChangedName="DataTable3RowChanged" msprop:Generator_RowEvArgName="DataTable3RowChangeEvent" msprop:Generator_RowClassName="DataTable3Row">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet_Summary" targetNamespace="http://tempuri.org/DataSet_Summary.xsd" xmlns:mstns="http://tempuri.org/DataSet_Summary.xsd" xmlns="http://tempuri.org/DataSet_Summary.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet_Summary" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet_Summary" msprop:Generator_UserDSName="DataSet_Summary">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_summary_cpoint" msprop:Generator_TableClassName="tbl_summary_cpointDataTable" msprop:Generator_TableVarName="tabletbl_summary_cpoint" msprop:Generator_TablePropName="tbl_summary_cpoint" msprop:Generator_RowDeletingName="tbl_summary_cpointRowDeleting" msprop:Generator_RowChangingName="tbl_summary_cpointRowChanging" msprop:Generator_RowEvHandlerName="tbl_summary_cpointRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_summary_cpointRowDeleted" msprop:Generator_UserTableName="tbl_summary_cpoint" msprop:Generator_RowChangedName="tbl_summary_cpointRowChanged" msprop:Generator_RowEvArgName="tbl_summary_cpointRowChangeEvent" msprop:Generator_RowClassName="tbl_summary_cpointRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cpoint_id" msprop:Generator_ColumnVarNameInTable="columncpoint_id" msprop:Generator_ColumnPropNameInRow="cpoint_id" msprop:Generator_ColumnPropNameInTable="cpoint_idColumn" msprop:Generator_UserColumnName="cpoint_id" type="xs:int" minOccurs="0" />
+              <xs:element name="cpoint_name" msprop:Generator_ColumnVarNameInTable="columncpoint_name" msprop:Generator_ColumnPropNameInRow="cpoint_name" msprop:Generator_ColumnPropNameInTable="cpoint_nameColumn" msprop:Generator_UserColumnName="cpoint_name" type="xs:string" minOccurs="0" />
+              <xs:element name="date_01" msprop:Generator_ColumnVarNameInTable="columndate_01" msprop:Generator_ColumnPropNameInRow="date_01" msprop:Generator_ColumnPropNameInTable="date_01Column" msprop:Generator_UserColumnName="date_01" type="xs:double" minOccurs="0" />
+              <xs:element name="date_02" msprop:Generator_ColumnVarNameInTable="columndate_02" msprop:Generator_ColumnPropNameInRow="date_02" msprop:Generator_ColumnPropNameInTable="date_02Column" msprop:Generator_UserColumnName="date_02" type="xs:double" minOccurs="0" />
+              <xs:element name="date_03" msprop:Generator_ColumnVarNameInTable="columndate_03" msprop:Generator_ColumnPropNameInRow="date_03" msprop:Generator_ColumnPropNameInTable="date_03Column" msprop:Generator_UserColumnName="date_03" type="xs:double" minOccurs="0" />
+              <xs:element name="date_04" msprop:Generator_ColumnVarNameInTable="columndate_04" msprop:Generator_ColumnPropNameInRow="date_04" msprop:Generator_ColumnPropNameInTable="date_04Column" msprop:Generator_UserColumnName="date_04" type="xs:double" minOccurs="0" />
+              <xs:element name="date_05" msprop:Generator_ColumnVarNameInTable="columndate_05" msprop:Generator_ColumnPropNameInRow="date_05" msprop:Generator_ColumnPropNameInTable="date_05Column" msprop:Generator_UserColumnName="date_05" type="xs:double" minOccurs="0" />
+              <xs:element name="date_06" msprop:Generator_ColumnVarNameInTable="columndate_06" msprop:Generator_ColumnPropNameInRow="date_06" msprop:Generator_ColumnPropNameInTable="date_06Column" msprop:Generator_UserColumnName="date_06" type="xs:double" minOccurs="0" />
+              <xs:element name="date_07" msprop:Generator_ColumnVarNameInTable="columndate_07" msprop:Generator_ColumnPropNameInRow="date_07" msprop:Generator_ColumnPropNameInTable="date_07Column" msprop:Generator_UserColumnName="date_07" type="xs:double" minOccurs="0" />
+              <xs:element name="date_08" msprop:Generator_ColumnVarNameInTable="columndate_08" msprop:Generator_ColumnPropNameInRow="date_08" msprop:Generator_ColumnPropNameInTable="date_08Column" msprop:Generator_UserColumnName="date_08" type="xs:double" minOccurs="0" />
+              <xs:element name="date_09" msprop:Generator_ColumnVarNameInTable="columndate_09" msprop:Generator_ColumnPropNameInRow="date_09" msprop:Generator_ColumnPropNameInTable="date_09Column" msprop:Generator_UserColumnName="date_09" type="xs:double" minOccurs="0" />
+              <xs:element name="date_10" msprop:Generator_ColumnVarNameInTable="columndate_10" msprop:Generator_ColumnPropNameInRow="date_10" msprop:Generator_ColumnPropNameInTable="date_10Column" msprop:Generator_UserColumnName="date_10" type="xs:double" minOccurs="0" />
+              <xs:element name="date_11" msprop:Generator_ColumnVarNameInTable="columndate_11" msprop:Generator_ColumnPropNameInRow="date_11" msprop:Generator_ColumnPropNameInTable="date_11Column" msprop:Generator_UserColumnName="date_11" type="xs:double" minOccurs="0" />
+              <xs:element name="date_12" msprop:Generator_ColumnVarNameInTable="columndate_12" msprop:Generator_ColumnPropNameInRow="date_12" msprop:Generator_ColumnPropNameInTable="date_12Column" msprop:Generator_UserColumnName="date_12" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

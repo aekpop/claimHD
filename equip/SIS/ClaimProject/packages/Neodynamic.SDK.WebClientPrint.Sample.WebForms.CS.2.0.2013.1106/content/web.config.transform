@@ -1,0 +1,12 @@
+﻿<configuration>
+  <system.web>
+    <httpHandlers>
+      <add verb="*" path="wcp.axd" type="Neodynamic.SDK.Web.WebClientPrint, Neodynamic.SDK.WebClientPrint"/>
+    </httpHandlers>
+  </system.web>
+  <system.webServer>
+    <handlers>
+      <add name="WebClientPrint" verb="*" path="wcp.axd" type="Neodynamic.SDK.Web.WebClientPrint, Neodynamic.SDK.WebClientPrint"/>
+    </handlers>
+  </system.webServer>
+</configuration>

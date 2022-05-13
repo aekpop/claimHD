@@ -92,6 +92,11 @@ namespace ClaimProject.equip
                     lbStatus.Text = "ยืนยันซ่อม";
                     lbStatus.CssClass = "text-success";
                 }
+                else if (Status == "NotRepair")
+                {
+                    lbStatus.Text = "ซ่อมไม่ได้";
+                    lbStatus.CssClass = "text-success";
+                }
             }
         }
         void BindData()

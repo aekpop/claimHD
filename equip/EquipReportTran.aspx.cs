@@ -32,7 +32,7 @@ namespace ClaimProject.equip
                 sendToll = paramee.GetString("toll_name");
                 if (sendToll == "ฝ่ายบริหารฯ")
                 {
-                    sendToll = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                    sendToll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                 }
                 else if (sendToll == "กองทางหลวงพิเศษฯ")
                 {
@@ -84,7 +84,7 @@ namespace ClaimProject.equip
                     gettoll = parame.GetString("toll_name");
                     if (gettoll == "ฝ่ายบริหารฯ")
                     {
-                        gettoll = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                        gettoll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                     }
                     else if (gettoll == "กองทางหลวงพิเศษฯ")
                     {
@@ -173,7 +173,7 @@ namespace ClaimProject.equip
                 sendToll = paramee.GetString("toll_name");
                 if (sendToll == "ฝ่ายบริหารฯ")
                 {
-                    sendToll = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                    sendToll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                 }
                 else if (sendToll == "กองทางหลวงพิเศษฯ")
                 {
@@ -215,7 +215,7 @@ namespace ClaimProject.equip
                 gettoll = parame.GetString("toll_name");
                 if (gettoll == "ฝ่ายบริหารฯ")
                 {
-                    gettoll = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                    gettoll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                 }
                 else if (gettoll == "กองทางหลวงพิเศษฯ")
                 {

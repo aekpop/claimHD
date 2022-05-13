@@ -41,7 +41,10 @@ namespace ClaimProject.CM
                     function.getListItem(ddlCMLine, sql, "cpoint_name", "cpoint_id");
 
                 }
-                ddlCMLine.Items.Insert(0, new ListItem("เลือกด่านฯ", "0"));                
+                ddlCMLine.Items.Insert(0, new ListItem("เลือกด่านฯ", "0"));
+
+                lbDatep.Text = DateTime.Now.ToString("dd / MM") + " / " + (DateTime.Now.Year + 543);
+                
             }          
         }            
         public void Binddee()

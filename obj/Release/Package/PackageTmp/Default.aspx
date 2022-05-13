@@ -12,9 +12,9 @@
                     <div class="rol-md-4 ">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text text-warning" id="basic-addon1">ปีงบประมาณ</span>
+                            <span class="input-group-text text-black-50" id="basic-addon1">ปีงบประมาณ</span>
                           
-                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="input-group-text text-warning dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
+                                <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="input-group-text text-black-50 dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
                            </asp:DropDownList>
                             </div>
                              </div>

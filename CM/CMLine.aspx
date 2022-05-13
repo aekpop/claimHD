@@ -11,13 +11,13 @@
     <!-- Custom styles for this template -->
     <style>
         @font-face {
-            font-family: 'Prompt';
+            font-family: 'TH SarabunPSK';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" style="font-family:Prompt">
+    <form id="form1" runat="server" style="font-family:'TH SarabunPSK'">
          <div class="card" style="z-index:0; font-family:Prompt">
             <div class="card-header card-header-warning">
             </div>
@@ -75,7 +75,7 @@
                         HeaderStyle-BackColor="ActiveBorder"
                         HeaderStyle-Font-Size="21px"
                         OnRowDataBound="gridCMLine_RowDataBound" 
-                        Font-Size="18px"  CellPadding="4" 
+                        Font-Size="16px"  CellPadding="4" 
                         ForeColor="#333333" GridLines="Both"
                         RowStyle-Height="40px"
                         BorderColor="Gray" OnRowCreated="gridCMLine_RowCreated">

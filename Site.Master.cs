@@ -41,7 +41,7 @@ namespace ClaimProject
             }
             else
             {
-                lbUser.Text = Session["UserName"].ToString() + " <br />ตำแหน่ง : " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name" ) +" "+ function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
+                lbUser.Text = Session["UserName"].ToString() + " ตำแหน่ง : " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name" ) +" "+ function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
 
                 if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                 {

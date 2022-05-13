@@ -13,6 +13,8 @@ using System.Web;
 using System.Web.Hosting;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace ClaimProject.Config
@@ -23,7 +25,8 @@ namespace ClaimProject.Config
         //ClaimConnection conn = new ClaimConnection();
         public MySqlConnection conn;
         //charset=tis620
-        string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //main server
+        //string strConnString = "Server=10.6.3.202;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //database server
         //string strConnString = "Server=192.168.101.91;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         //string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         public string icons = "";
@@ -723,6 +726,23 @@ namespace ClaimProject.Config
                 }
 
             }
-        }        
+        }
+
+        public class DataPoint
+        {
+            public DataPoint(double x, double y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+
+            //Explicitly setting the name to be used while serializing to JSON.
+            [DataMember(Name = "x")]
+            public Nullable<double> X = null;
+
+            //Explicitly setting the name to be used while serializing to JSON.
+            [DataMember(Name = "y")]
+            public Nullable<double> Y = null;
+        }
     }
 }

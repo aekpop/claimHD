@@ -826,7 +826,7 @@ namespace ClaimProject.Techno
 
         void PrintReport(int doc)
         {
-            string cpoint_title = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร 0 2360 7865";
+            string cpoint_title = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร 0 2360 7865";
             string num_title = "กท./ฝจ./";
             string date_thai = "";
             string note_title = "";
@@ -853,7 +853,7 @@ namespace ClaimProject.Techno
             if (rs.Read())
             {
                 note_text_to = "อ้างถึง บันทึกข้อความด่านฯ " + rs.GetString("cpoint_name") + " ที่ " + rs.GetString("claim_doc_num") + " ลงวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_doc_date")) + " เรื่อง " + rs.GetString("claim_doc_title");
-                note_text = "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม ได้รับรายงานว่า เมื่อวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_start_date")) + " เวลาประมาณ " + rs.GetString("claim_detail_time") + " น.";
+                note_text = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม ได้รับรายงานว่า เมื่อวันที่ " + function.ConvertDatelongThai(rs.GetString("claim_start_date")) + " เวลาประมาณ " + rs.GetString("claim_detail_time") + " น.";
                 string[] carDetail = rs.GetString("claim_detail_car").Split(',');
                 note_text += " ได้เกิดอุบัติเหตุ" + carDetail[0] + " ยี่ห้อ " + carDetail[2] + " สี" + carDetail[4];
                 if (rs.GetString("claim_detail_license_plate") == "" || rs.GetString("claim_detail_license_plate") == "-" || rs.GetString("claim_detail_license_plate") == "ไม่ทราบ")

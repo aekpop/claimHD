@@ -614,9 +614,9 @@ namespace ClaimProject
 
                     if (Session["UserCpoint"].ToString() == "0")
                     {
-                        cpoint_title += "ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร. 02 360 7865";
+                        cpoint_title += "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร. 02 360 7865";
                         strNote = cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
-                        name = " (นายเผชิญ หุนตระนี)\r\nผู้อำนวยการฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม";
+                        name = " (นายบุญเพิ่ม เรียงไธสง)\r\nผู้อำนวยการฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
 
                         sql = "SELECT * FROM tbl_transfer c JOIN tbl_toll t ON c.toll_recieve = t.toll_id JOIN `tbl_cpoint` p ON p.`cpoint_id` = t.`cpoint_id` WHERE c.`trans_id` = "+key;
                         MySqlDataReader rss = function.MySqlSelect(sql);
@@ -630,7 +630,7 @@ namespace ClaimProject
                     }
                     else
                     {
-                        cpoint_title += "ด่านฯ " + cpointName + " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+                        cpoint_title += "ด่านฯ " + cpointName + " ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
                         strNote = "ด่านฯ" + cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
                         name = "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName + " ";
                         noteTo = "รอง ผจท. ผ่าน " + noteTo;

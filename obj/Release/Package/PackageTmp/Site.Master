@@ -103,7 +103,7 @@
                                         </li>-->
                                     <li class="nav-item dropdown" runat="server" id="nav0" >
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">Techno อุบัติเหตุ</span>
+                                            <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">Admin อุบัติเหตุ</span>
                                         </a>
                                         <div class="dropdown-menu" >
                                             <a class="dropdown-item" href="/" >Dashboard</a>
@@ -117,10 +117,10 @@
                                             </a>
                                         <div class="dropdown-menu" >
                                             <a class="dropdown-item" href="/Claim/DefaultClaim" >Dashboard</a>
-                                            <a class="dropdown-item" href="/Claim/claimForm?add=true" >แจ้งอุบัติเหตุ</a>
-                                            <a class="dropdown-item" href="/Claim/claimForm" >รายการแจ้ง</a>
-                                            <a class="dropdown-item" href="/Claim/claimLine" >ส่ง Line</a>
-                                            <a class="dropdown-item" href="/Claim/ClaimDevice" >อุปกรณ์ค้างซ่อม</a>
+                                            <a class="dropdown-item" href="/Claim/claimForm?add=true" >แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
+                                            <a class="dropdown-item" href="/Claim/claimForm" >รายการอุบัติเหตุ</a>
+                                            <a class="dropdown-item" href="/Claim/claimLine" >ส่งรายงาน (Line)</a>
+                                            <a class="dropdown-item" href="/Claim/ClaimDevice" >รายการอุปกรณ์ค้างซ่อม</a>
                                             <a class="dropdown-item" href="/ReportView/" >ข้อมูลทางสถิติ</a>
                                         </div>
                                         </li>
@@ -130,12 +130,12 @@
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/CM/DefaultCM" >Dashboard</a>
-                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
+                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อมอุปกรณ์</a>
                                             <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
                                                 <div class="dropdown-divider"></div>
                                                 <div class="dropdown-header">รายงาน</div>
-                                            <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
-                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานสรุป</a>     
+                                            <a class="dropdown-item" href="/CM/CMLine" >ส่งรายงาน (Line)</a>
+                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานการแจ้งซ่อม</a>     
                                         </div>
                                         </li>
 
@@ -145,15 +145,15 @@
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/CM/DefaultCM" >Dashboard</a>
-                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อม</a>
+                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อมอุปกรณ์</a>
                                             <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
                                                 <div class="dropdown-divider"></div>
                                                 <div class="dropdown-header">รายงาน</div>
-                                            <a class="dropdown-item" href="/CM/CMLine" >ส่ง Line</a>
-                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานสรุป</a>
+                                            <a class="dropdown-item" href="/CM/CMLine" >ส่งรายงาน Line</a>
+                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานการแจ้งซ่อม</a>
                                                 <div class="dropdown-divider"></div>
                                                 <div class="dropdown-header">ผู้ดูแลระบบ(Admin)</div>
-                                            <a class="dropdown-item" href="/CM/CMSurveyForm" >ตรวจสอบ</a>
+                                            <a class="dropdown-item" href="/CM/CMSurveyForm" >ตรวจสอบรายการแจ้งซ่อม จากด่านฯ</a>
                                         </div>
                                         </li>
                       
@@ -163,12 +163,12 @@
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
-                                            <a class="dropdown-item" href="/equip/EquipAdd">รายการครุภัณฑ์</a>
+                                            <a class="dropdown-item" href="/equip/EquipAdd">รายการบัญชี ครุภัณฑ์</a>
                                                 <div class="dropdown-divider"></div>
                                                 <div class="dropdown-header">โอนย้าย</div>
-                                            <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
-                                            <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
-                                                <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
+                                            <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
+                                            <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
+                                                <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
     
                                         </div>
                                         </li>
@@ -179,17 +179,17 @@
                                                     </a>
                                                     <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="/equip/EquipDefault" >Dashboard</a>
-                                                    <a class="dropdown-item" href="/equip/EquipAdd">รายการครุภัณฑ์</a>
+                                                    <a class="dropdown-item" href="/equip/EquipAdd">รายการบัญชี ครุภัณฑ์</a>
                                                         <div class="dropdown-divider"></div>
                                                         <div class="dropdown-header">โอนย้าย</div>
-                                                    <a class="dropdown-item" href="/equip/EquipTranList">ส่งครุภัณฑ์</a>
-                                                    <a class="dropdown-item" href="/equip/EquipTranGetList">รับครุภัณฑ์</a>
-                                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงาน</a>
+                                                    <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
+                                                    <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
+                                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
                                                         <div class="dropdown-divider"></div>
                                                         <div class="dropdown-header">ผู้ดูแลระบบ(Admin)</div>
-                                                    <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์</a>
-                                                    <a class="dropdown-item" href="/equip/EquipCheckList">การโอนย้าย(ด่านฯ)</a>
-                                                    <a class="dropdown-item" href="/equip/EquipHistory">ประวัติโอนย้าย</a>
+                                                    <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์ใหม่</a>
+                                                    <a class="dropdown-item" href="/equip/EquipCheckList">รายงานโอนย้าย(ของด่านฯ)</a>
+                                                    <a class="dropdown-item" href="/equip/EquipHistory">รายงานประวัติโอนย้าย(แยกตามครุภัณฑ์)</a>
     
                                                 </div>
                                                 </li>
@@ -256,7 +256,7 @@
                     <div class="container-fluid">
                         
                         <div class="copyright float-right">
-                            &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
+                            &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
                         </div>
                         <br /><br /><br />
                         <div class="row" >

@@ -504,6 +504,7 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\ratioStyle.css" />
     <Content Include="crystalreportviewers13\ActiveXControls\CRViewer.dll" />
     <Content Include="crystalreportviewers13\ActiveXControls\CRViewer_res_cs.dll" />
     <Content Include="crystalreportviewers13\ActiveXControls\CRViewer_res_da.dll" />

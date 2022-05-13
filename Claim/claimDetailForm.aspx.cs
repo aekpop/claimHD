@@ -21,13 +21,10 @@ namespace ClaimProject.Claim
         public string Car2 = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Session["codePK"] == null)
             {
                 Response.Redirect("/");
             }
-
-
             ShowDiv();
             try
             {
@@ -55,33 +52,27 @@ namespace ClaimProject.Claim
                     function.GetList(txtPosCom, "PosList");
                     function.GetList(txtCB, "CabinetList");
                     function.GetList(txtCBClaim, "CabinetList");
-                    
                     function.getListItem(txtTypeCar, "Select * FROM tbl_cartype order by typecar_id ASC ", "typcar_name", "typcar_name");
                     txtTypeCar.Items.Insert(0, new ListItem("", ""));
                     // function.GetList(txtTypeCar, "typeCar");
                     function.getListItem(txtBrandCar, "select * FROM tbl_brandcar order by brandcar_id ASC", "brandcar_name", "brandcar_name");
                     //function.GetList(txtBrandCar, "brandCar");
                     txtBrandCar.Items.Insert(0, new ListItem("", ""));
-
-                    
                     function.getListItem(ddlSecTypecar, "Select * FROM tbl_cartype order by typecar_id ASC ", "typcar_name", "typcar_name");
                     ddlSecTypecar.Items.Insert(0, new ListItem("", ""));
                     // function.GetList(ddlSecTypecar, "typeCar");
                     function.GetList(ddlbrandcar2, "brandCar");
                     ddlbrandcar2.Items.Insert(0, new ListItem("", ""));
 
-
                     string sql_Device = "SELECT * FROM tbl_device WHERE davice_delete = '0' ORDER BY device_name";
+
                     function.getListItem(txtDevice, sql_Device, "device_name", "device_id");
-                    
-                    
                     txtDevice.Items.Insert(0, new ListItem("", ""));
                     BindCom();
                     BindDevice();
                     BindImg();
                     BindDoc();
                     PageLoadData();
-
                     /*if(function.GetSelectValue("tbl_claim","claim_id='"+ Session["CodePK"].ToString()+"'", "claim_status") != "1")
                     {
                         cardBody.Attributes.Add("readonly","true");
@@ -117,6 +108,7 @@ namespace ClaimProject.Claim
             ComGridView.DataBind();
             LabelCom.Text = "พนักงานควบคุมระบบที่ปฏิบัติหน้าที่ " + ds.Tables[0].Rows.Count + " คน";
         }
+
         protected void ComGridView_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -280,12 +272,12 @@ namespace ClaimProject.Claim
             }
         }
 
-        public string GetThaiMonth (string fulldate)
+        public string GetThaiMonth(string fulldate)
         {
             string[] subfuldate = fulldate.Split('-');
             string result = "";
-            if(subfuldate[1] == "01") { result = "มกราคม"; }
-            else if(subfuldate[1] == "02") { result = "กุมภาพันธ์"; }
+            if (subfuldate[1] == "01") { result = "มกราคม"; }
+            else if (subfuldate[1] == "02") { result = "กุมภาพันธ์"; }
             else if (subfuldate[1] == "03") { result = "มีนาคม"; }
             else if (subfuldate[1] == "04") { result = "เมษายน"; }
             else if (subfuldate[1] == "05") { result = "พฤษภาคม"; }
@@ -306,16 +298,23 @@ namespace ClaimProject.Claim
                 //DivDamaged.Visible = false;
                 status = "6";
             }
-            else 
+            else
             {
                 //DivDamaged.Visible = true;
                 status = "1";
             }
 
+            if (RadioButton2.Checked) { txtInsurer.Text = "ไม่มีประกัน"; } else { }
+
+            if (RadioButton3.Checked) { txtInsurer.Text = ""; } else { }
+
             string sql_check = "SELECT * FROM tbl_claim WHERE claim_id='" + Session["CodePK"].ToString() + "'";
+
             string note_number = "กท./ฝจ./" + txtCpoint.SelectedItem;
+
             if (txtPoint.Text.Trim().ToLower() != "tsb" && txtPoint.Text.Trim().ToLower() != "") { note_number += " " + txtPoint.Text.Trim(); }
             note_number += "/คร./";
+            
             if (note_number == "")
             {
                 note_number += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -324,17 +323,17 @@ namespace ClaimProject.Claim
             {
                 note_number += txtCpointNote.Text.Trim();
             }
-            note_number += "/" + txtCpointDate.Text.Split('-')[2];
 
+            note_number += "/" + txtCpointDate.Text.Split('-')[2];
             MySqlDataReader rs = function.MySqlSelect(sql_check);
+
             if (rs.Read())
             {
                 rs.Close();
                 function.Close();
                 //Update
-
-
                 string sql = "";
+
                 sql = "Update tbl_claim SET claim_equipment='" + txtEquipment.Text + "'" +
                     ", claim_cpoint='" + txtCpoint.SelectedValue + "'" +
                     ", claim_point='" + txtPoint.Text + "'" +
@@ -342,9 +341,10 @@ namespace ClaimProject.Claim
                     ", claim_cpoint_date='" + txtCpointDate.Text + "'" +
                     ", claim_start_date='" + txtStartDate.Text + "'" +
                     ", claim_budget_year='" + function.getBudgetYear(txtCpointDate.Text) + "'" +
-                    ", claim_month='"+claimmonth+ "' "+
+                    ", claim_month='" + claimmonth + "' " +
                     ", claim_status ='" + status + "'" +
                     " WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
+
                 if (function.MySqlQuery(sql))
                 {
                     string text = "claim_detail_note_to = '" + txtNoteTo.Text + "'" +
@@ -361,21 +361,31 @@ namespace ClaimProject.Claim
                         ", claim_detail_direction_in='" + txtDirectionIn.Text + "'" +
                         ", claim_detail_accident='" + txtDetail.Text + "'" +
                         ", claim_detail_supervisor='" + txtSup.Text + "'" +
-                        ", claim_detail_supervisor_pos='" + txtPosSup.SelectedItem + "'" +
-                        ", claim_detail_car='" + txtTypeCar.SelectedItem + " ,ยี่ห้อ ," + txtBrandCar.SelectedItem + " ,สี," + txtColorCar.Text.Trim() + "'" +
-                        ", claim_detail_license_plate='" + txtLicensePlate.Text + "'" +
-                        ", Licen_Eng ='"+ txtLiEng.Text + "'"+
-                        ", claim_detail_province='" + txtProvince.Text + "'" +
-                        ", Province_Eng='" + txtProEng.Text + "'" +
-                        ", claim_detail_driver='" + txtNameDrive.Text + "'" +
-                        ", claim_detail_idcard='" + txtIdcard.Text + "'" +
-                        ", claim_detail_address='" + txtAddressDriver.Text + "'" +
-                        ", claim_detail_lp2='" + txtLp2.Text + "'" +
-                        ", claim_detail_insurer='" + txtInsurer.Text + "'" +
-                        ", claim_detail_policyholders='" + txtPolicyholders.Text + "'" +
-                        ", claim_detail_clemence='" + txtClemence.Text + "'" +
-                        ", claim_detail_inform='" + txtInform.Text + "'" +
-                        ", claim_detail_tel='" + txtTelDrive.Text + "',claim_detail_provi2 = '"+txtProvince22.Text+"' ";
+                        ", claim_detail_supervisor_pos='" + txtPosSup.SelectedItem + "'";
+                    if (txtBrandCar.SelectedItem.ToString() == "")
+                    {
+                        text += ", claim_detail_car = '" + txtTypeCar.SelectedItem + " ,," + txtBrandCar.SelectedItem + " ,สี," + txtColorCar.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        text += ", claim_detail_car='" + txtTypeCar.SelectedItem + " ,ยี่ห้อ ," + txtBrandCar.SelectedItem + " ,สี," + txtColorCar.Text.Trim() + "' ";
+                    }
+
+                    //", claim_detail_car='" + txtTypeCar.SelectedItem + " ,ยี่ห้อ ," + txtBrandCar.SelectedItem + " ,สี," + txtColorCar.Text.Trim() + "'" +
+                    text += ", claim_detail_license_plate='" + txtLicensePlate.Text + "'" +
+                    ", Licen_Eng ='" + txtLiEng.Text + "'" +
+                    ", claim_detail_province='" + txtProvince.Text + "'" +
+                    ", Province_Eng='" + txtProEng.Text + "'" +
+                    ", claim_detail_driver='" + txtNameDrive.Text + "'" +
+                    ", claim_detail_idcard='" + txtIdcard.Text + "'" +
+                    ", claim_detail_address='" + txtAddressDriver.Text + "'" +
+                    ", claim_detail_lp2='" + txtLp2.Text + "'" +
+                    ", claim_detail_insurer='" + txtInsurer.Text + "'" +
+                    ", claim_detail_policyholders='" + txtPolicyholders.Text + "'" +
+                    ", claim_detail_clemence='" + txtClemence.Text + "'" +
+                    ", claim_detail_inform='" + txtInform.Text + "'" +
+                    ", claim_detail_tel='" + txtTelDrive.Text + "',claim_detail_provi2 = '" + txtProvince22.Text + "' ";
+                    
                     sql = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '1'";
 
                     //sql 2nd Car
@@ -408,6 +418,7 @@ namespace ClaimProject.Claim
                         ", claim_detail_clemence='" + txtClemence.Text + "'" +
                         ", claim_detail_inform='" + txtInform.Text + "'" +
                         ", claim_detail_tel='" + txtTelcar2.Text + "',claim_detail_provi2 = '" + txtProvince22.Text + "' ";
+                        
                     string sql2car = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
 
                     if (function.MySqlQuery(sql) || function.MySqlQuery(sql2car))
@@ -416,6 +427,7 @@ namespace ClaimProject.Claim
                         function.MySqlQuery(sql);
                         AlertPop("บันทึกข้อมูลสำเร็จ", "success");
                         //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                        checkInsuran();
                     }
                     else
                     {
@@ -438,7 +450,7 @@ namespace ClaimProject.Claim
                 MySqlDataReader rsc = function.MySqlSelect(Sql_check);
                 if (!rsc.Read())
                 {
-                    string sql = "INSERT INTO tbl_claim ( claim_id, claim_equipment, claim_cpoint, claim_point, claim_cpoint_note, claim_cpoint_date, claim_status, claim_start_date, claim_user_start_claim, claim_user_start_claim_time, claim_delete,claim_budget_year, claim_month ) VALUES ( '" + Session["CodePK"].ToString() + "', '" + txtEquipment.Text + "', '" + txtCpoint.SelectedValue + "', '" + txtPoint.Text + "', '" + note_number + "', '" + txtCpointDate.Text + "', '" + status + "', '" + txtStartDate.Text + "', '" + Session["User"].ToString() + "', NOW(), '0','" + function.getBudgetYear(txtCpointDate.Text) + "' , '"+claimmonth+"' )";
+                    string sql = "INSERT INTO tbl_claim ( claim_id, claim_equipment, claim_cpoint, claim_point, claim_cpoint_note, claim_cpoint_date, claim_status, claim_start_date, claim_user_start_claim, claim_user_start_claim_time, claim_delete,claim_budget_year, claim_month ) VALUES ( '" + Session["CodePK"].ToString() + "', '" + txtEquipment.Text + "', '" + txtCpoint.SelectedValue + "', '" + txtPoint.Text + "', '" + note_number + "', '" + txtCpointDate.Text + "', '" + status + "', '" + txtStartDate.Text + "', '" + Session["User"].ToString() + "', NOW(), '0','" + function.getBudgetYear(txtCpointDate.Text) + "' , '" + claimmonth + "' )";
                     if (function.MySqlQuery(sql))
                     {
                         string text = "";
@@ -460,9 +472,9 @@ namespace ClaimProject.Claim
                             ", claim_detail_supervisor_pos" +
                             ", claim_detail_car" +
                             ", claim_detail_license_plate" +
-                            ", Licen_Eng "+
+                            ", Licen_Eng " +
                             ", claim_detail_province" +
-                            ", Province_Eng "+
+                            ", Province_Eng " +
                             ", claim_detail_driver" +
                             ", claim_detail_idcard" +
                             ", claim_detail_address" +
@@ -501,17 +513,18 @@ namespace ClaimProject.Claim
                             ", '" + txtPolicyholders.Text + "'" +
                             ", '" + txtClemence.Text + "'" +
                             ", '" + txtInform.Text + "'" +
-                            ", '" + txtTelDrive.Text + "', '1','"+ txtProvince22.Text + "'";
+                            ", '" + txtTelDrive.Text + "', '1','" + txtProvince22.Text + "'";
 
                         sql = "INSERT INTO tbl_claim_com (" + text + ") VALUES (" + values + ")";
+
                         if (function.MySqlQuery(sql))
                         {
                             sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('" + status + "','" + Session["CodePK"].ToString() + "','" + txtStartDate.Text + "','" + function.ConvertDateTime(txtStartDate.Text, 3) + "')";
                             function.MySqlQuery(sql);
                             AlertPop("บันทึกข้อมูลสำเร็จ", "success");
+                            checkInsuran();
                             SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                             //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-
                             //TestGroup 
                             //serviceLine.MessageToServer("g0Zinn2LGsXH7MqNl6LqRRAloneiupRMel3VaC3TVdJ", "ระบบได้รับข้อมูลการเกิดอุบัติเหตุ จากด่านฯ " + txtCpoint.SelectedItem + " เมื่อวันที่ " + function.ConvertDatelongThai(txtStartDate.Text) + " เวลา " + txtTime.Text + " น. เรียบร้อยแล้ว ขอให้เจ้าหน้าที่ @Helpdesk งานเทคโนฯ เข้าตรวจสอบข้อมูลในระบบเพื่อความถูกต้องด้วย\r\n\r\n ขอบคุณครับ", "", 1, 41);
                             //OfficialGroup
@@ -546,6 +559,7 @@ namespace ClaimProject.Claim
                 " WHERE c1.claim_id = '" + Session["CodePK"].ToString() + "'";
 
             MySqlDataReader rs = function.MySqlSelect(sql);
+
             if (rs.Read())
             {
                 txtEquipment.Text = rs.GetString("claim_equipment");
@@ -595,19 +609,30 @@ namespace ClaimProject.Claim
                 if (rs.GetString("claim_status") == "6")
                 {
                     rbtForKnow.Checked = true; CheckDeviceNotDamaged.Checked = true; DivDamaged.Visible = false;
-                    
-                    lbtnDeletecar2.Visible = false; lbtnsubmitcar2.Visible = false; 
+                    lbtnDeletecar2.Visible = false; lbtnsubmitcar2.Visible = false;
                 }
                 else
                 {
                     CheckDeviceNotDamaged.Checked = false; DivDamaged.Visible = true;
                     rbtNormal.Checked = true;
-                    if(rs.GetString("claim_status") != "1")
+                    if (rs.GetString("claim_status") != "1")
                     {
                         lbtnDeletecar2.Visible = false; lbtnsubmitcar2.Visible = false;
                     }
-
                 }
+                /*string chk = txtInsurer.Text;
+                if(chk == "ไม่มีประกัน")
+                {
+                    RadioButton2.Checked = true;
+                    txtInsurer.Enabled = false;
+                }
+                else
+                {
+                    RadioButton1.Checked = true;
+                    txtInsurer.Enabled = true;
+                }
+                */
+                checkInsuran();
             }
             rs.Close();
             string firstsql = "SELECT * FROM tbl_claim_com WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '1'";
@@ -619,11 +644,10 @@ namespace ClaimProject.Claim
                 MySqlDataReader ckk = function.MySqlSelect(sqkk);
                 if (ckk.Read())
                 {
-                   // divcar3.Visible = true;
+                    // divcar3.Visible = true;
                     ckk.Close();
                 }
             }
-
             function.Close();
         }
 
@@ -656,6 +680,7 @@ namespace ClaimProject.Claim
             string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + UploadDocGridView.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
 
             string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + UploadDocGridView.DataKeys[e.RowIndex].Value + "'";
+
             if (function.MySqlQuery(sql_delete))
             {
                 if (File.Exists(Server.MapPath(partFile)))
@@ -669,6 +694,7 @@ namespace ClaimProject.Claim
         void BindDoc()
         {
             string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '1'";
+
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
@@ -705,6 +731,7 @@ namespace ClaimProject.Claim
                 string sql_text = "claim_img_url,claim_deteil_id,claim_img_type";
                 string sql_value = "'" + NewFileDocName + "','" + Session["CodePK"].ToString() + "','" + type + "'";
                 string sql_insert = "INSERT INTO tbl_claim_img (" + sql_text + ") VALUES (" + sql_value + ")";
+
                 function.MySqlQuery(sql_insert);
                 BindImg();
                 BindDoc();
@@ -770,10 +797,13 @@ namespace ClaimProject.Claim
             ReportDocument rpt = new ReportDocument();
             rpt.Load(Server.MapPath("/Claim/reportImg.rpt"));
             Model.DataSetClaim setClaim = new Model.DataSetClaim();
+
             string sql = "SELECT claim_img_id,claim_img_url,claim_deteil_id,claim_img_type FROM tbl_claim_img WHERE claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '0'";
+
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             setClaim.Clear();
             da.Fill(setClaim, "tbl_claim_img");
+
             rpt.SetDataSource(setClaim);
             //rpt.PrintToPrinter(1, true, 0, 0);
             Session["Report"] = rpt;
@@ -791,12 +821,15 @@ namespace ClaimProject.Claim
         void GetReport()
         {
             string strNote = "เนื่องด้วยเมื่อวันที่ " + function.ConvertDatelongThai(txtStartDate.Text) + " " + txtAround.Text + " เวลาประมาณ " + txtTime.Text + " น. ได้รับแจ้งจาก" + txtNameAleat.Text + " " + txtPosAleat.Text + " ปฏิบัติหน้าที่ประจำด่านฯ " + txtCpoint.SelectedItem;
+
             if (txtCB.Text != "" && txtCB.Text != "-") { strNote += " ตู้ " + txtCB.Text; }
             strNote += " " + txtDirection.Text + " ได้แจ้งว่าเกิดอุบัติเหตุ" + txtDetail.Text + " จึงได้แจ้งรองผู้จัดการด่านฯ ประจำผลัด คือ " + txtSup.Text + " ให้ทราบ";
 
-            string getcar2 = "select * FROM tbl_claim_com where claim_id = '"+ Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
+            string getcar2 = "select * FROM tbl_claim_com where claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
             string getcar3 = "select * FROM tbl_claim_com where claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '3'";
-            string car2has = "1"; string car3has = "1";
+            string car2has = "1"; 
+            string car3has = "1";
+
             MySqlDataReader checkcar2 = function.MySqlSelect(getcar2);
             if (checkcar2.Read())
             {
@@ -818,6 +851,7 @@ namespace ClaimProject.Claim
             }
             checkcar2.Close();
             MySqlDataReader checkcar3 = function.MySqlSelect(getcar3);
+
             if (checkcar3.Read())
             {
                 string license3 = checkcar3.GetString("claim_detail_license_plate");
@@ -837,7 +871,7 @@ namespace ClaimProject.Claim
                 car3has = "0";
             }
 
-            if(car2has == "1")
+            if (car2has == "1")
             {
                 strNote += " หลังจากได้รับแจ้งเหตุเจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ลงไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน พบคู่กรณีคันที่ ๑ หมายเลขทะเบียน " + txtLicensePlate.Text;
             }
@@ -849,11 +883,11 @@ namespace ClaimProject.Claim
 
             if (txtLp2.Text != "")
             {
-                if(txtProvince22.Text != "")
+                if (txtProvince22.Text != "")
                 {
                     if (txtProvince.Text != txtProvince22.Text)
                     {
-                        strNote += " จังหวัด "+txtProvince.Text+" ส่วนพ่วงหมายเลขทะเบียน " + txtLp2.Text + " จังหวัด " + txtProvince22.Text;
+                        strNote += " จังหวัด " + txtProvince.Text + " ส่วนพ่วงหมายเลขทะเบียน " + txtLp2.Text + " จังหวัด " + txtProvince22.Text;
                         if (txtLiEng.Text != "")
                         {
                             strNote += " หมายเลขทะเบียนสากล " + txtLiEng.Text + " " + txtProEng.Text + " ขับรถมาจาก" + txtComeFrom.Text + "มุ่งหน้า" + txtDirectionIn.Text + " โดยมี" + txtNameDrive.Text + " เลขที่บัตรประจำตัวประชาชนเลขที่ " + txtIdcard.Text + " ที่อยู่ " + txtAddressDriver.Text + " หมายเลขโทรศัพท์ " + txtTelDrive.Text + " เป็นผู้ขับรถยนต์ขันดังกล่าว";
@@ -865,7 +899,7 @@ namespace ClaimProject.Claim
                     }
                     else
                     {
-                        strNote += " ส่วนพ่วงหมายเลขทะเบียน " + txtLp2.Text ;
+                        strNote += " ส่วนพ่วงหมายเลขทะเบียน " + txtLp2.Text;
                         if (txtLiEng.Text != "")
                         {
                             strNote += " จังหวัด" + txtProvince.Text + " หมายเลขทะเบียนสากล " + txtLiEng.Text + " " + txtProEng.Text + " ขับรถมาจาก" + txtComeFrom.Text + "มุ่งหน้า" + txtDirectionIn.Text + " โดยมี" + txtNameDrive.Text + " เลขที่บัตรประจำตัวประชาชนเลขที่ " + txtIdcard.Text + " ที่อยู่ " + txtAddressDriver.Text + " หมายเลขโทรศัพท์ " + txtTelDrive.Text + " เป็นผู้ขับรถยนต์ขันดังกล่าว";
@@ -887,7 +921,7 @@ namespace ClaimProject.Claim
                         strNote += " จังหวัด" + txtProvince.Text + " ขับรถมาจาก" + txtComeFrom.Text + "มุ่งหน้า" + txtDirectionIn.Text + " โดยมี" + txtNameDrive.Text + " เลขที่บัตรประจำตัวประชาชนเลขที่ " + txtIdcard.Text + " ที่อยู่ " + txtAddressDriver.Text + " หมายเลขโทรศัพท์ " + txtTelDrive.Text + " เป็นผู้ขับรถยนต์ขันดังกล่าว";
                     }
                 }
-                
+
             }
             else
             {
@@ -900,19 +934,20 @@ namespace ClaimProject.Claim
                     strNote += " จังหวัด" + txtProvince.Text + " ขับรถมาจาก" + txtComeFrom.Text + "มุ่งหน้า" + txtDirectionIn.Text + " โดยมี" + txtNameDrive.Text + " เลขที่บัตรประจำตัวประชาชนเลขที่ " + txtIdcard.Text + " ที่อยู่ " + txtAddressDriver.Text + " หมายเลขโทรศัพท์ " + txtTelDrive.Text + " เป็นผู้ขับรถยนต์ขันดังกล่าว";
                 }
             }
-            
-            
+
             strNote += " ซึ่งรถยนต์คันดังกล่าวได้ทำประกันไว้กับ" + txtInsurer.Text + " หมายเลขเคลมเลขที่ " + txtClemence.Text + " หมายเลขกรมธรรม์ " + txtPolicyholders.Text + " พร้อมนี้ ข้าพเจ้าได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + txtInform.Text + " เป็นหลักฐานแล้ว";
 
             //strNote += " จากการตรวจสอบเบื้งต้นพบว่ามีทรัพย์สินของทางราชการเสีหาย ดังนี้";
             string name = "";
             string com = "";
             string dev = "";
-
             string sql_com = "SELECT * FROM tbl_claim_com_working WHERE detail_com_id ='" + Session["CodePK"].ToString() + "'";
             string sql_dev = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + Session["CodePK"].ToString() + "'";
+
             MySqlDataReader rs = function.MySqlSelect(sql_com);
+
             int i = 1;
+
             while (rs.Read())
             {
                 if (i == 1)
@@ -931,7 +966,6 @@ namespace ClaimProject.Claim
             name += "\r\n\r\n\r\n";
             name += "(" + function.GetSelectValue("tbl_claim_com", "claim_id='" + Session["CodePK"].ToString() + "'", "claim_detail_supervisor") + ")";
             name += "\r\n" + function.GetSelectValue("tbl_claim_com", "claim_id='" + Session["CodePK"].ToString() + "'", "claim_detail_supervisor_pos");
-
             function.Close();
 
             i = 1;
@@ -953,8 +987,7 @@ namespace ClaimProject.Claim
 
             ReportDocument rpt = new ReportDocument();
             rpt.Load(Server.MapPath("/Claim/reportCom.rpt"));
-
-            rpt.SetParameterValue("cpoint_title", "ด่านฯ " + txtCpoint.SelectedItem + " ฝ่ายบริหารการจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + txtCpoint.SelectedValue + "'", "cpoint_tel"));
+            rpt.SetParameterValue("cpoint_title", "ด่านฯ " + txtCpoint.SelectedItem + " ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + txtCpoint.SelectedValue + "'", "cpoint_tel"));
             rpt.SetParameterValue("num_title", "กท./ฝจ./" + txtCpoint.SelectedItem + (txtPoint.Text.ToLower() == "tsb" ? "/" : txtPoint.Text + "/") + txtCpointNote.Text);
             rpt.SetParameterValue("txt_to", txtNoteTo.Text + " " + txtCpoint.SelectedItem);
             rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(txtCpointDate.Text));
@@ -962,10 +995,8 @@ namespace ClaimProject.Claim
             rpt.SetParameterValue("note_text", strNote);
             rpt.SetParameterValue("name", name);
             rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
-
             rpt.SetParameterValue("list_dev", dev + "\r\n");
             rpt.SetParameterValue("list_com", com != "" ? com + "\r\n" : "");
-
             Session["Report"] = rpt;
             Session["ReportTitle"] = "บันทึกข้อความ";
             Response.Write("<script>");
@@ -1046,7 +1077,7 @@ namespace ClaimProject.Claim
 
         protected void rbtForKnow_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbtForKnow.Checked)
+            if (rbtForKnow.Checked)
             {
                 DivDamaged.Visible = true;
                 DivNoDamage.Visible = true;
@@ -1061,7 +1092,7 @@ namespace ClaimProject.Claim
 
         protected void rbtNormal_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbtNormal.Checked)
+            if (rbtNormal.Checked)
             {
                 DivNoDamage.Visible = false;
                 DivDamaged.Visible = true;
@@ -1082,14 +1113,14 @@ namespace ClaimProject.Claim
             }
             else
             {
-                AlertPop("ลบข้อมูลล้มเหลว กรุณาติดต่อแอดมิน","error");
+                AlertPop("ลบข้อมูลล้มเหลว กรุณาติดต่อแอดมิน", "error");
             }
         }
         protected void lbtnsubmitcar2_Command(object sender, CommandEventArgs e)
         {
             if (txtnocar2.Text != "" && txtprovince2.Text != "")
             {
-                if(ddlSecTypecar.SelectedValue != "" && ddlbrandcar2.SelectedValue != "")
+                if (ddlSecTypecar.SelectedValue != "" && ddlbrandcar2.SelectedValue != "")
                 {
                     string insertcar2 = "";
                     string textt = "(claim_detail_car" +
@@ -1127,7 +1158,7 @@ namespace ClaimProject.Claim
                 {
                     AlertPop("กรุณาเลือกประเภทรถ และยี่ห้อ", "error");
                 }
-                    
+
             }
             else
             {
@@ -1147,15 +1178,15 @@ namespace ClaimProject.Claim
             Car2 = Session["codePK"].ToString();
             lbmodaltitle.Text = "3";
             modalLoadDATA("3");
-            
+
         }
 
         void modalLoadDATA(string carnum)
         {
             string carload = "";
-            if(carnum == "2")
+            if (carnum == "2")
             {
-                carload = "select * FROM tbl_claim_com WHERE claim_id = '"+ Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
+                carload = "select * FROM tbl_claim_com WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
 
             }
             else
@@ -1165,7 +1196,7 @@ namespace ClaimProject.Claim
             MySqlDataReader SecCar = function.MySqlSelect(carload);
             if (SecCar.Read())
             {
-                
+
                 ddlSecTypecar.SelectedValue = SecCar.GetString("claim_detail_car").Split(',')[0].Trim();
                 txtnocar2.Text = SecCar.GetString("claim_detail_license_plate");
                 txtprovince2.Text = SecCar.GetString("claim_detail_province");
@@ -1175,7 +1206,7 @@ namespace ClaimProject.Claim
                 txtTelcar2.Text = SecCar.GetString("claim_detail_tel");
                 try
                 {
-                    
+
                     ddlbrandcar2.SelectedValue = SecCar.GetString("claim_detail_car").Split(',')[2].Trim();
                     txtColorcar2.Text = SecCar.GetString("claim_detail_car").Split(',')[4].Trim();
                     txtEngNo2.Text = SecCar.GetString("Licen_Eng");
@@ -1239,6 +1270,20 @@ namespace ClaimProject.Claim
                 AlertPop("กรุณาใส่เลขทะเบียนและจังหวัด", "error");
             }
 
+        }
+        void checkInsuran()
+        {
+            string chk = txtInsurer.Text;
+            if (chk == "ไม่มีประกัน")
+            {
+                RadioButton2.Checked = true;
+                txtInsurer.Enabled = false;
+            }
+            else
+            {
+                RadioButton1.Checked = true;
+                txtInsurer.Enabled = true;
+            }
         }
     }
 }

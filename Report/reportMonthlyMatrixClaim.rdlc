@@ -327,7 +327,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Total</Value>
+                                <Value>รวม</Value>
                                 <Style>
                                   <FontFamily>TH SarabunPSK</FontFamily>
                                   <FontSize>16pt</FontSize>

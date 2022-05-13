@@ -89,7 +89,7 @@
                                                           <div class="form-group bmd-form-group">
                                                              <div class="label-on-left" >ช่วงเวลาทั้งหมด</div>
                                                                 <label class="container">
-                                                                        <input type="checkbox"  id="CheckAllDay" name="CheckAllDay" runat="server" />
+                                                                        <input type="checkbox" id="CheckAllDay" name="CheckAllDay" runat="server" />
                                                                       <span class="checkmark"></span>                                                                                                
                                                                 </label>                              
                                                           </div>
@@ -158,12 +158,12 @@
                                             <asp:Label ID="lbChannel" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="230px" HeaderStyle-Width="230px">
+                            <asp:TemplateField HeaderText="อุปกรณ์" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="260px" HeaderStyle-Width="260px">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' OnCommand="lbDeviceName_Command"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="230px" HeaderStyle-Width="230px">
+                            <asp:TemplateField HeaderText="อาการที่ชำรุด" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" ControlStyle-Width="260px" HeaderStyle-Width="260px">
                                 <ItemTemplate>
                                    <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
                                 </ItemTemplate>
@@ -213,15 +213,15 @@
     <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">รายละเอียดการแจ้งซ่อมอุปกรณ์ #</div>
+                <div class="modal-header" style="font-family:'TH SarabunPSK'; font-size:x-large;">
+                    <div class="modal-title" >รายละเอียดการแจ้งซ่อมอุปกรณ์ #</div>
                         <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
                             <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server"   />
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                 </div>
-                            <div class="container" style="font-size:medium; ">                              
+                            <div class="container" style="font-size:x-large; font-family:'TH SarabunPSK'; font-weight:200">                              
                                 <div class="modal-body" style="line-height: inherit;">
                                     <div class="row" style="height: 380px">
                                         <div class="card border-white col-sm-4">
@@ -236,7 +236,7 @@
 
                                         
                                         <div class="card border-white col-sm-4">
-                                            <asp:Label ID="lbImageDocSer" runat="server" Text="ภาพใบ Service"></asp:Label>
+                                            <asp:Label ID="lbImageDocSer" runat="server" Text="ภาพใบ Service (ถ้ามี)"></asp:Label>
                                             <asp:Image ID="ImgImageDocSer" runat="server" Height="340px" CssClass="img-thumbnail" />
                                         </div>
                                     </div>                                 

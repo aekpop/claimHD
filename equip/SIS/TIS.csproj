@@ -1,0 +1,929 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C82811B-197F-4A84-A4A6-9687E91D5316}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TIS</RootNamespace>
+    <AssemblyName>TIS</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\rich.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TIS.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7D05771991262615241B36D6BB68157A38EB5463</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TIS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.69.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ClosedXml\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Google.Protobuf, Version=3.6.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.7\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 8.0.11\Assemblies\v4.5.2\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.16.3.0.29\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.16.3.0.29\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.XlsIO.WinForms.16.3.0.29\lib\net46\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddBagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBagForm.Designer.cs">
+      <DependentUpon>AddBagForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addEmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addEmpForm.Designer.cs">
+      <DependentUpon>addEmpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminEditForm.Designer.cs">
+      <DependentUpon>AdminEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMenuForm.Designer.cs">
+      <DependentUpon>AdminMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminScript.cs" />
+    <Compile Include="BagClearForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BagClearForm.Designer.cs">
+      <DependentUpon>BagClearForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodeEditFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeEditFrom.Designer.cs">
+      <DependentUpon>CodeEditFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmCloseAroundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmCloseAroundForm.Designer.cs">
+      <DependentUpon>ConfirmCloseAroundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetMemo.cs">
+      <DependentUpon>DataSetMemo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet_Report.cs">
+      <DependentUpon>DataSet_Report.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet_Report.designer.cs">
+      <DependentUpon>DataSet_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet_Report1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_Report.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet_Summary.cs">
+      <DependentUpon>DataSet_Summary.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet_Summary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_Summary.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DefectiveFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DefectiveFrom.Designer.cs">
+      <DependentUpon>DefectiveFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectiveStrapsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefectiveStrapsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="editEmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editEmpForm.Designer.cs">
+      <DependentUpon>editEmpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditJob.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditJob.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EditJobForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditJobForm.Designer.cs">
+      <DependentUpon>EditJobForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="exportDateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="exportDateForm.Designer.cs">
+      <DependentUpon>exportDateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditControlAround.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditControlAround.Designer.cs">
+      <DependentUpon>EditControlAround.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditCharged.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditCharged.Designer.cs">
+      <DependentUpon>FormEditCharged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReport_fine.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>newReport_fine.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OfficialReport7.cs">
+      <DependentUpon>OfficialReport7.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="OfficialReport9.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OfficialReport9.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OfficialReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficialReportForm.Designer.cs">
+      <DependentUpon>OfficialReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreviousMemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreviousMemo.Designer.cs">
+      <DependentUpon>PreviousMemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSendBank.cs">
+      <DependentUpon>ReportSendBank.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EmpOverMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpOverMoneyForm.Designer.cs">
+      <DependentUpon>EmpOverMoneyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EscapePaymenyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EscapePaymenyForm.Designer.cs">
+      <DependentUpon>EscapePaymenyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FineAndUser30DayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FineAndUser30DayForm.Designer.cs">
+      <DependentUpon>FineAndUser30DayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AroundCloseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AroundCloseForm.Designer.cs">
+      <DependentUpon>AroundCloseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AroundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AroundForm.Designer.cs">
+      <DependentUpon>AroundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AroundOpenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AroundOpenForm.Designer.cs">
+      <DependentUpon>AroundOpenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BagNextTimeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BagNextTimeForm.Designer.cs">
+      <DependentUpon>BagNextTimeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChargedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChargedForm.Designer.cs">
+      <DependentUpon>ChargedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboboxItem.cs" />
+    <Compile Include="ConfirmRefunForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmRefunForm.Designer.cs">
+      <DependentUpon>ConfirmRefunForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmMoneyBag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmMoneyBag.Designer.cs">
+      <DependentUpon>ConfirmMoneyBag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmSubmit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmSubmit.Designer.cs">
+      <DependentUpon>ConfirmSubmit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectDB.cs" />
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport4.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EditStrapsEmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStrapsEmpForm.Designer.cs">
+      <DependentUpon>EditStrapsEmpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStrapsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStrapsForm.Designer.cs">
+      <DependentUpon>EditStrapsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetEmpConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetEmpConfirmForm.Designer.cs">
+      <DependentUpon>GetEmpConfirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemoFrom.Designer.cs">
+      <DependentUpon>MemoFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotPayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotPayForm.Designer.cs">
+      <DependentUpon>NotPayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintReportForm.Designer.cs">
+      <DependentUpon>PrintReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report2_first.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report2_first.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EditMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMoneyForm.Designer.cs">
+      <DependentUpon>EditMoneyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpToEditMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpToEditMoneyForm.Designer.cs">
+      <DependentUpon>EmpToEditMoneyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpSendMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpSendMoneyForm.Designer.cs">
+      <DependentUpon>EmpSendMoneyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoneybagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoneybagForm.Designer.cs">
+      <DependentUpon>MoneybagForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pay_In_Slip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pay_In_Slip.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PopupReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupReport.Designer.cs">
+      <DependentUpon>PopupReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgressDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressDlg.Designer.cs">
+      <DependentUpon>ProgressDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefunForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RefunForm.Designer.cs">
+      <DependentUpon>RefunForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDailyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportDailyForm.Designer.cs">
+      <DependentUpon>ReportDailyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportIncomeKST2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportIncomeKST2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportIncomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportIncomForm.Designer.cs">
+      <DependentUpon>ReportIncomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reportSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportTS12.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportTS12.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report_TS3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report_TS3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Script.cs" />
+    <Compile Include="BackMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackMoneyForm.Designer.cs">
+      <DependentUpon>BackMoneyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SendMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendMoneyForm.Designer.cs">
+      <DependentUpon>SendMoneyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TollNotPayment.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TollNotPayment.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TS3FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TS3FormReport.Designer.cs">
+      <DependentUpon>TS3FormReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddBagForm.resx">
+      <DependentUpon>AddBagForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addEmpForm.resx">
+      <DependentUpon>addEmpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminEditForm.resx">
+      <DependentUpon>AdminEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMenuForm.resx">
+      <DependentUpon>AdminMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BagClearForm.resx">
+      <DependentUpon>BagClearForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodeEditFrom.resx">
+      <DependentUpon>CodeEditFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmCloseAroundForm.resx">
+      <DependentUpon>ConfirmCloseAroundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DefectiveFrom.resx">
+      <DependentUpon>DefectiveFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DefectiveStrapsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DefectiveStrapsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editEmpForm.resx">
+      <DependentUpon>editEmpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditJob.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EditJob.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditJobForm.resx">
+      <DependentUpon>EditJobForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="exportDateForm.resx">
+      <DependentUpon>exportDateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditControlAround.resx">
+      <DependentUpon>EditControlAround.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditCharged.resx">
+      <DependentUpon>FormEditCharged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReport_fine.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>newReport_fine.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficialReport7.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OfficialReport7.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficialReport9.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OfficialReport9.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficialReportForm.resx">
+      <DependentUpon>OfficialReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviousMemo.resx">
+      <DependentUpon>PreviousMemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSendBank.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportSendBank.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpOverMoneyForm.resx">
+      <DependentUpon>EmpOverMoneyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EscapePaymenyForm.resx">
+      <DependentUpon>EscapePaymenyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FineAndUser30DayForm.resx">
+      <DependentUpon>FineAndUser30DayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AroundCloseForm.resx">
+      <DependentUpon>AroundCloseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AroundForm.resx">
+      <DependentUpon>AroundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AroundOpenForm.resx">
+      <DependentUpon>AroundOpenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BagNextTimeForm.resx">
+      <DependentUpon>BagNextTimeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChargedForm.resx">
+      <DependentUpon>ChargedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmRefunForm.resx">
+      <DependentUpon>ConfirmRefunForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmMoneyBag.resx">
+      <DependentUpon>ConfirmMoneyBag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmSubmit.resx">
+      <DependentUpon>ConfirmSubmit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport4.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStrapsEmpForm.resx">
+      <DependentUpon>EditStrapsEmpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStrapsForm.resx">
+      <DependentUpon>EditStrapsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetEmpConfirmForm.resx">
+      <DependentUpon>GetEmpConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoFrom.resx">
+      <DependentUpon>MemoFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotPayForm.resx">
+      <DependentUpon>NotPayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReportForm.resx">
+      <DependentUpon>PrintReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report2_first.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report2_first.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMoneyForm.resx">
+      <DependentUpon>EditMoneyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpToEditMoneyForm.resx">
+      <DependentUpon>EmpToEditMoneyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpSendMoneyForm.resx">
+      <DependentUpon>EmpSendMoneyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoneybagForm.resx">
+      <DependentUpon>MoneybagForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pay_In_Slip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Pay_In_Slip.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupReport.resx">
+      <DependentUpon>PopupReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressDlg.resx">
+      <DependentUpon>ProgressDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackMoneyForm.resx">
+      <DependentUpon>BackMoneyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RefunForm.resx">
+      <DependentUpon>RefunForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportDailyForm.resx">
+      <DependentUpon>ReportDailyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportIncomeKST2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportIncomeKST2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportIncomForm.resx">
+      <DependentUpon>ReportIncomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reportSummary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportTS12.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportTS12.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report_TS3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report_TS3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendMoneyForm.resx">
+      <DependentUpon>SendMoneyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TollNotPayment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TollNotPayment.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS3FormReport.resx">
+      <DependentUpon>TS3FormReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetMemo.xsc">
+      <DependentUpon>DataSetMemo.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetMemo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include="DataSetMemo.xss">
+      <DependentUpon>DataSetMemo.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet_Report.xsc">
+      <DependentUpon>DataSet_Report.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet_Report.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>DataSet_Report1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet_Report.xss">
+      <DependentUpon>DataSet_Report.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet_Summary.xsc">
+      <DependentUpon>DataSet_Summary.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet_Summary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet_Summary.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet_Summary.xss">
+      <DependentUpon>DataSet_Summary.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\CachedCrystalReport1.datasource" />
+    <None Include="Properties\DataSources\CachedCrystalReport4.datasource" />
+    <None Include="Properties\DataSources\CachedCrystalReport_fine.datasource" />
+    <None Include="Properties\DataSources\CachedDefectiveStrapsReport.datasource" />
+    <None Include="Properties\DataSources\CachedOfficialReport7.datasource" />
+    <None Include="Properties\DataSources\CachedOfficialReport9.datasource" />
+    <None Include="Properties\DataSources\CachedPay_In_Slip.datasource" />
+    <None Include="Properties\DataSources\CachedReport2_first.datasource" />
+    <None Include="Properties\DataSources\CachedReportIncomeKST2.datasource" />
+    <None Include="Properties\DataSources\CachedReportSendBank.datasource" />
+    <None Include="Properties\DataSources\CachedReportTS12.datasource" />
+    <None Include="Properties\DataSources\CachedReport_TS3.datasource" />
+    <None Include="Properties\DataSources\CachedTollNotPayment.datasource" />
+    <None Include="Properties\DataSources\CrystalReport1.datasource" />
+    <None Include="Properties\DataSources\CrystalReport4.datasource" />
+    <None Include="Properties\DataSources\CrystalReport_fine.datasource" />
+    <None Include="Properties\DataSources\DefectiveStrapsReport.datasource" />
+    <None Include="Properties\DataSources\OfficialReport7.datasource" />
+    <None Include="Properties\DataSources\OfficialReport9.datasource" />
+    <None Include="Properties\DataSources\Pay_In_Slip.datasource" />
+    <None Include="Properties\DataSources\Report2_first.datasource" />
+    <None Include="Properties\DataSources\ReportIncomeKST2.datasource" />
+    <None Include="Properties\DataSources\ReportSendBank.datasource" />
+    <None Include="Properties\DataSources\ReportTS12.datasource" />
+    <None Include="Properties\DataSources\Report_TS3.datasource" />
+    <None Include="Properties\DataSources\TIS.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\TIS.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\TollNotPayment.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch-turn-off-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rich.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-1294532_640 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\change.png" />
+    <None Include="Resources\receipt.png" />
+    <None Include="Resources\notes1.png" />
+    <None Include="Resources\WT0seeu.jpg" />
+    <None Include="Resources\notes2.png" />
+    <None Include="Resources\icon01.png" />
+    <None Include="Resources\icon011.png" />
+    <None Include="Resources\01254154215415.jpg" />
+    <Content Include="ClosedXml\ClosedXML.dll" />
+    <Content Include="ClosedXml\DocumentFormat.OpenXml.dll" />
+    <Content Include="Resources\bg.jpg" />
+    <Content Include="Resources\bg1.jpg" />
+    <Content Include="Resources\bg2.jpg" />
+    <Content Include="Resources\bg3.jpg" />
+    <Content Include="Resources\BGGG.jpg" />
+    <None Include="Resources\get-money %281%29.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\BGGG1.jpg" />
+    <None Include="Resources\note.png" />
+    <Content Include="Resources\rich.ico" />
+    <None Include="Resources\richNext.png" />
+    <None Include="Resources\straps.png" />
+    <None Include="Resources\success.png" />
+    <Content Include="Shek0101-Blue-Blue-folder.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

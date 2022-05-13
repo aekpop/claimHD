@@ -1,0 +1,1 @@
+server=10.6.3.175;database=sis;uid=adminsis;pwd=adminsis12345678;charset=utf8;
