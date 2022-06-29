@@ -20,7 +20,7 @@ namespace ClaimProject.CM
         public string icon = "";
 
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
             if (Session["user"] == null)
             {
                 Response.Redirect("/");
@@ -36,7 +36,7 @@ namespace ClaimProject.CM
                 txtAnnex.Enabled = true;
             }
 
-            if(Session["user_cpoint"].ToString() == "1")
+            if (Session["user_cpoint"].ToString() == "1")
             {
                 btnDeleteCM.Visible = false;
             }
@@ -74,7 +74,7 @@ namespace ClaimProject.CM
             string checkCpoint = txtCpointSearch.SelectedValue;
             string checkPoint = Session["Userpoint"].ToString();
             string checkChanel = ddlChanel.SelectedValue;
-            if(checkChanel == "")
+            if (checkChanel == "")
             {
                 if (checkCpoint == "")
                 {
@@ -124,7 +124,7 @@ namespace ClaimProject.CM
                         " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                         " JOIN tbl_location n ON cm.cm_detail_channel = n.locate_id" +
                         " JOIN tbl_user u ON cm.cm_user = u.username " +
-                        " WHERE cm.cm_detail_status_id='0' AND cm.cm_detail_channel = '"+ checkChanel +"' " +
+                        " WHERE cm.cm_detail_status_id='0' AND cm.cm_detail_channel = '" + checkChanel + "' " +
                         " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                     }
                     else
@@ -152,16 +152,16 @@ namespace ClaimProject.CM
                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
                 }
             }
-            
-                
-                MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                CMGridView.DataSource = ds.Tables[0];
-                CMGridView.DataBind();
-               // if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
-                //lbCMNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
-            
+
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            CMGridView.DataSource = ds.Tables[0];
+            CMGridView.DataBind();
+            // if (ds.Tables[0].Rows.Count == 0) { DivCMGridView.Visible = false; } else { DivCMGridView.Visible = true; }
+            //lbCMNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
+
         }
 
         protected void CMGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -258,16 +258,16 @@ namespace ClaimProject.CM
                     String NewFileDocNameService = "";
                     string sqlDocService = "";
                     string Noservice = "";
-                    if (txtMethod.Text != "" )
+                    if (txtMethod.Text != "")
                     {
-                        if (fileImg.HasFile  || fileDocService.HasFile)
+                        if (fileImg.HasFile || fileDocService.HasFile)
                         {
                             string typeFile = fileImg.FileName.Split('.')[fileImg.FileName.Split('.').Length - 1];
                             string typeFileDoc = fileDocService.FileName.Split('.')[fileDocService.FileName.Split('.').Length - 1];
                             if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFileDoc == "jpg" || typeFileDoc == "jpeg" || typeFileDoc == "png")
                             {
                                 NewFileDocName = "E_" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileImg.FileName.Split('.')[0];
-                                NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;        
+                                NewFileDocName = "/CM/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
                                 fileImg.SaveAs(Server.MapPath(NewFileDocName.ToString()));
                                 NewFileDocNameService = "E_" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + fileDocService.FileName.Split('.')[0];
                                 NewFileDocNameService = "/CM/Upload/" + function.getMd5Hash(NewFileDocNameService) + "." + typeFile;
@@ -292,8 +292,8 @@ namespace ClaimProject.CM
                                 string sql = "UPDATE tbl_cm_detail SET cm_detail_edate = '" + txtEDate.Text + "', " +
                                     "cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', " +
                                     "cm_detail_status_id = '1',cm_detail_eimg = '" + NewFileDocName + "',cm_detail_method = '" + txtMethod.Text + "', " +
-                                    "cm_detail_ejdate = '"+ txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '"+ txtEJTime.Text.Trim() + "' , cm_user_endjob = '"+ Session["UserName"].ToString() + "' " + sqlDocService + " ," +
-                                    "cm_detail_Chknoservice = '"+ Noservice + "' "+
+                                    "cm_detail_ejdate = '" + txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '" + txtEJTime.Text.Trim() + "' , cm_user_endjob = '" + Session["UserName"].ToString() + "' " + sqlDocService + " ," +
+                                    "cm_detail_Chknoservice = '" + Noservice + "' " +
                                     "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
 
                                 if (function.MySqlQuery(sql))
@@ -325,7 +325,7 @@ namespace ClaimProject.CM
                                 }
                                 else
                                 {
-                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด กรุณาตรวจสอบขนาดไฟล์ รูปภาพอีกครั้ง')", true);                                                                        
+                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด กรุณาตรวจสอบขนาดไฟล์ รูปภาพอีกครั้ง')", true);
                                 }
                                 function.Close();
                             }
@@ -428,15 +428,15 @@ namespace ClaimProject.CM
                 }
                 catch (Exception)
                 {
-                    
+
                 }
-                
+
             }
         }
 
         protected void ckeNoservice_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

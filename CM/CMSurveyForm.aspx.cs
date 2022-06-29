@@ -23,7 +23,7 @@ namespace ClaimProject.CM
 
             if (!this.IsPostBack)
             {
-                
+
                 BindData("");
             }
         }
@@ -158,7 +158,6 @@ namespace ClaimProject.CM
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด')", true);
             }
             function.Close();
-
         }
 
         protected void lbref_Command(object sender, CommandEventArgs e)
@@ -172,12 +171,12 @@ namespace ClaimProject.CM
 
             string sqlEdit = "SELECT * FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
                 " JOIN tbl_cpoint e ON c.cm_cpoint = e.cpoint_id JOIN tbl_location f ON c.cm_detail_channel = f.locate_id " +
-                " JOIN tbl_user g ON c.cm_user = g.username WHERE cm_detail_id = '"+ pkeq.Text + "' ";
+                " JOIN tbl_user g ON c.cm_user = g.username WHERE cm_detail_id = '" + pkeq.Text + "' ";
 
             MySqlDataReader rt = function.MySqlSelect(sqlEdit);
-            if(rt.Read())
+            if (rt.Read())
             {
-                if(!rt.IsDBNull(22))
+                if (!rt.IsDBNull(22))
                 {
                     imgSer = rt.GetString("cm_detail_Service_img");
                 }
@@ -190,11 +189,11 @@ namespace ClaimProject.CM
                 ImgEditEQ.ImageUrl = "~" + imgS;
                 ImgEditEQE.ImageUrl = "~" + imgE;
                 ImgImageDocSer.ImageUrl = "~" + imgSer;
-                if(rt.GetString("cm_detail_Chknoservice") == "1")
+                if (rt.GetString("cm_detail_Chknoservice") == "1")
                 {
                     lbchkservice = "แก้ไขเบื้องต้น";
-                }                
-                lbrefRecheck.Text = rt.GetString("cm_detail_id") + " (" + lbchkservice +") ";
+                }
+                lbrefRecheck.Text = rt.GetString("cm_detail_id") + " (" + lbchkservice + ") ";
                 lbCpointRecheck.Text = rt.GetString("cpoint_name");
                 lbPointRecheck.Text = rt.GetString("cm_point");
                 lbChannelRecheck.Text = rt.GetString("locate_name");
@@ -224,11 +223,11 @@ namespace ClaimProject.CM
                 string Chk = rt.GetString("cm_detail_Chknoservice");
                 if (Chk == "1")
                 {
-                     sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '3' WHERE cm_detail_id = '" + pkeq.Text + "'";
+                    sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '3' WHERE cm_detail_id = '" + pkeq.Text + "'";
                 }
                 else
                 {
-                     sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '2' WHERE cm_detail_id = '" + pkeq.Text + "'";
+                    sql = "UPDATE tbl_cm_detail SET cm_detail_status_id = '2' WHERE cm_detail_id = '" + pkeq.Text + "'";
                 }
             }
             rt.Close();
@@ -262,6 +261,5 @@ namespace ClaimProject.CM
             }
             function.Close();
         }
-
     }
 }

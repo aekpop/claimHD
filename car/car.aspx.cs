@@ -69,21 +69,21 @@ namespace ClaimProject.car
         {
             //if (txtCarName.Text != "" && txtGroup.SelectedValue != "" && txtSchedule.Text != "")
             //{
-                string sql = "INSERT INTO tbl_brandcar (brandcar_name,brandcar_delete) VALUES ('" + txtCarName.Text.Trim() +  "','0')";
-                string script = "";
-                if (function.MySqlQuery(sql))
-                {
-                    script = "บันทึกข้อมูลสำเร็จ";
-                }
-                else
-                {
-                    script = "Error : บันทึกข้อมูลล้มเหลว";
-                }
-                function.Close();
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
-                CarGridView.EditIndex = -1;
-                BindData(txtCarName.Text);
-                txtCarName.Text = "";
+            string sql = "INSERT INTO tbl_brandcar (brandcar_name,brandcar_delete) VALUES ('" + txtCarName.Text.Trim() + "','0')";
+            string script = "";
+            if (function.MySqlQuery(sql))
+            {
+                script = "บันทึกข้อมูลสำเร็จ";
+            }
+            else
+            {
+                script = "Error : บันทึกข้อมูลล้มเหลว";
+            }
+            function.Close();
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
+            CarGridView.EditIndex = -1;
+            BindData(txtCarName.Text);
+            txtCarName.Text = "";
             //}
             //else
             {
@@ -154,5 +154,5 @@ namespace ClaimProject.car
             BindData(txtSearch.Text);
         }
     }
-    
+
 }

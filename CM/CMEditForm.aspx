@@ -59,7 +59,7 @@
                         <asp:Panel ID="Panel1" runat="server" >
                     <asp:GridView ID="CMGridView" runat="server"
                         AutoGenerateColumns="False" CssClass="table table-striped table-hover"
-                        HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="ActiveBorder" RowStyle-CssClass="text-center" HeaderStyle-Font-Size="18px"
+                        HeaderStyle-CssClass="text-left" HeaderStyle-BackColor="White" RowStyle-CssClass="text-center" HeaderStyle-Font-Size="18px"
                         HeaderStyle-Height="50px"
                         RowStyle-Height="50px"
                         OnRowDataBound="CMGridView_RowDataBound" Font-Size="15px" CellPadding="4" ForeColor="#333333" GridLines="None">

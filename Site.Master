@@ -76,6 +76,9 @@
             </Scripts>
         </asp:ScriptManager>
         <script src="/Scripts/offcanvas.js"></script>
+
+        <div id="loading"></div>
+
         <div class="wrapper ">      
             <div class="panel panel-default" >           
                 <nav class="navbar fixed-top sticky-top navbar-expand-sm navbar-dark bg-dark">
@@ -247,8 +250,14 @@
                             <asp:Label ID="lblText" runat="server"></asp:Label>
                             <asp:ContentPlaceHolder ID="MainContent" runat="server">
                             </asp:ContentPlaceHolder>
+
+                            
+
                         </div>
                 </div>
+
+                
+
                 <footer class="footer">
                     <div class="container-fluid">
                         
@@ -263,7 +272,7 @@
                 </footer>
             </div>
         </div>
-        <div id="loading"></div>
+        
     </form>
     <script src="/Scripts/popper.min.js"></script>
     <script src="/Scripts/umd/popper.js"></script>
@@ -514,7 +523,7 @@
               window.clearInterval(intervalId);
               callback.call(this);
             }
-          }, 1000);
+          }, 500);
         }
 
         function setVisible(selector, visible) {

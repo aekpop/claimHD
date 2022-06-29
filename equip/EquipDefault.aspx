@@ -43,42 +43,40 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">สถานะครุภัณฑ์
-                                        
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family:'Prompt', sans-serif;">บัญชีครุภัณฑ์</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
-                              <div class="col-auto">
-                                  <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
-                              </div>
-                           </div> 
+                            <div class="col-auto">
+                                <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
+                            </div>
+                        </div> 
                          <div class="row">
                              <div class="container mb-2">
                                         <div class="table-responsive-sm">
-                                        <table class="table table-sm table-hover">                                          
-                                            <tbody>
-                                                <tr class="">
-                                                    <th scope="row" class="text-center"></th>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์รวม</td>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
-                                                        <asp:Label ID="lbEqTotal" runat="server" ></asp:Label>
-                                                    </td>
+                                            <table class="table table-sm table-hover">                                          
+                                                <tbody>
+                                                    <tr class="">
+                                                        <th scope="row" class="text-center"></th>
+                                                        <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์ทั้งหมด</td>
+                                                        <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                            <asp:Label ID="lbEqTotal" runat="server" ></asp:Label>
+                                                        </td>
+                                                        </tr>
+                                                    <tr class="">
+                                                        <th scope="row" class="text-center" ></th>
+                                                        <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์ใช้งานปกติ</td>
+                                                        <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                            <asp:Label ID="lbEqNorm" runat="server" ></asp:Label>
+                                                        </td>
                                                     </tr>
-                                                 <tr class="">
-                                                    <th scope="row" class="text-center" ></th>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์สภาพดี</td>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
-                                                        <asp:Label ID="lbEqNorm" runat="server" ></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                 <tr class="">
-                                                    <th scope="row" class="text-center" ></th>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์ชำรุด</td>
-                                                    <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
-                                                        <asp:Label ID="lbEqBork" runat="server" ></asp:Label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                                    <tr class="">
+                                                        <th scope="row" class="text-center" ></th>
+                                                        <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">ครุภัณฑ์ชำรุด</td>
+                                                        <td class="text-nowrap" style="font-size:15px; font-family:'Prompt', sans-serif;">
+                                                            <asp:Label ID="lbEqBork" runat="server" ></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
                                             </table>   
                                          </div>
                                         </div>
@@ -206,16 +204,14 @@
                                 </div>
                                 <div class="card-category" style="font-size:32px;">แจ้งใหม่</div>
                                 <div class="card-title">
-                                
                                     <asp:Label ID="lbnew" runat="server"   Text=""></asp:Label>/
-                                
-                                    <asp:Label ID="lbnew1" runat="server"  Text=""></asp:Label>
+                                        <asp:Label ID="lbnew1" runat="server"  Text=""></asp:Label>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="fa fa-th-list"></i>&nbsp
-                            <asp:LinkButton ID="lbtnNewTranDetail" runat="server" OnClick="lbtnNewTranDetail_Click">รายละเอียด</asp:LinkButton>
+                                    
+                            <asp:LinkButton ID="lbtnNewTranDetail" runat="server" OnClick="lbtnNewTranDetail_Click" CssClass="btn-outline-danger"><i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                             
                                 </div>
                             </div>
@@ -238,8 +234,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="fa fa-th-list"></i>&nbsp
-                            <asp:LinkButton ID="lbtnReceiveDetail" runat="server" OnClick="lbtnReceiveDetail_Click">รายละเอียด</asp:LinkButton>
+                                   
+                            <asp:LinkButton ID="lbtnReceiveDetail" runat="server" OnClick="lbtnReceiveDetail_Click" CssClass="btn-outline-warning"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                             
                                 </div>
                             </div>
@@ -261,8 +257,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="fa fa-th-list"></i>&nbsp
-                            <asp:LinkButton ID="lbtnRepairDetail" runat="server" OnClick="lbtnRepairDetail_Click">รายละเอียด</asp:LinkButton>
+                                    
+                            <asp:LinkButton ID="lbtnRepairDetail" runat="server" OnClick="lbtnRepairDetail_Click" CssClass="btn-outline-secondary"><i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                                 </div>
                             </div>
                         </div>
@@ -283,8 +279,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="fa fa-th-list"></i>&nbsp
-                                        <asp:LinkButton ID="btnRent" runat="server" OnClick="btnRent_Click">รายละเอียด</asp:LinkButton>
+                                    
+                                        <asp:LinkButton ID="btnRent" runat="server" OnClick="btnRent_Click" CssClass="btn-outline-info"><i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                                 </div>
                             </div>
                         </div>

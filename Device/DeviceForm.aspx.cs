@@ -13,6 +13,8 @@ namespace ClaimProject.Device
     public partial class DeviceForm : System.Web.UI.Page
     {
         ClaimFunction function = new ClaimFunction();
+        public string EditModal = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserPrivilegeId"] == null) { Response.Redirect("/"); }
@@ -69,6 +71,12 @@ namespace ClaimProject.Device
             {
                 lbDevicePrice.Text = string.Format("{0:c}", float.Parse(lbDevicePrice.Text));
             }
+
+            LinkButton lbManage = (LinkButton)(e.Row.FindControl("lbManage"));
+            if (lbManage != null)
+            {
+                lbManage.CommandName = DataBinder.Eval(e.Row.DataItem, "device_id").ToString();
+            }
         }
 
         protected void DeviceGridView_RowEditing(object sender, GridViewEditEventArgs e)
@@ -91,7 +99,7 @@ namespace ClaimProject.Device
             TextBox txtDeviceref = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtDeviceref");
             TextBox txtDevicePrice = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtDevicePrice");
 
-            string sql = "UPDATE tbl_device SET device_name='" + txtEDevice.Text + "',davice_group = '" + txtEDeviceGroup.SelectedValue + "',device_schedule_hour='" + txtEDeviceSchedule.Text.Trim() +"' "+
+            string sql = "UPDATE tbl_device SET device_name='" + txtEDevice.Text + "',davice_group = '" + txtEDeviceGroup.SelectedValue + "',device_schedule_hour='" + txtEDeviceSchedule.Text.Trim() + "' " +
                          ",device_ref_Project = '" + txtDeviceref.Text + "' , device_ref_Price = '" + txtDevicePrice.Text + "' WHERE device_id = '" + DeviceGridView.DataKeys[e.RowIndex].Value + "'";
             string script = "";
             if (function.MySqlQuery(sql))

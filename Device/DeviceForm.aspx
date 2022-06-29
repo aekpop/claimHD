@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-3">
                     กลุ่ม : 
-                    <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control dropdown-item"></asp:DropDownList>
+                    <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control dropdown-item "></asp:DropDownList>
                 </div>
                 <div class="col-md-3">
                     เวลาเข้าซ่อม : 
@@ -100,7 +100,7 @@
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txtDevicePrice" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container, "DataItem.device_ref_Price") %>'></asp:TextBox>
                                     </EditItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>                                
                                 <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="ปรับปรุง" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-outline-warning btn-sm fa" />
                                 <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="btn btn-outline-danger btn-sm fa" ControlStyle-Font-Size="Small" />
                             </Columns>
@@ -115,6 +115,7 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+
     <script type="text/javascript">
         function CompareConfirm(msg) {
             var str1 = "1";
@@ -139,7 +140,8 @@
             {
                 return true;
             }
-        }    
+        }
+
 
     </script>
 </asp:Content>

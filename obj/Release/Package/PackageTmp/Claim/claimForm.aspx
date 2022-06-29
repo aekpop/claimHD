@@ -14,7 +14,7 @@
     </div>
     <div class="card" style="z-index: 0">
         <div class="card-header ">
-            <h3 class="card-title">รายการอุบัติเหตุ</h3>
+            <h3 class="card-title">ค้นหา</h3>
         </div>
         <div class="card-body table-responsive table-sm" style="font-size: medium;">
             <div class="row">
@@ -61,16 +61,22 @@
                     <asp:DropDownList ID="txtSearchStatus" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1"></div>
                 </div>
-            </div>
             <br />
-            <div class="row">
-                <div class="col-md text-center">
-                    <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
+                 <div class="row">                    
+                         <div class="col text-center">
+                            <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-info fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
+                        </div>
                 </div>
             </div>
-            <hr />
+        </div>
+            <div class="card" style="z-index: 0">
+                    <div class="card-header ">
+                <h3 class="card-title">รายการอุบัติเหตุ</h3>
+            </div>
+                <div class="card-body table-responsive table-sm" style="font-size: medium;">
+           
             <div style="font-size: medium;">
             <asp:GridView ID="ClaimGridView" runat="server"
                 DataKeyNames="claim_id"
@@ -78,6 +84,7 @@
                 OnRowDataBound="ClaimGridView_RowDataBound"
                 AutoGenerateColumns="False"
                 CssClass="table table-hover table-sm"
+                HeaderStyle-Height="50px"
                 Font-Size="14px"
                 AllowSorting="true"
                 AllowPaging="true"
@@ -94,7 +101,7 @@
                             <asp:LinkButton ID="lbCpoint" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name") %>' CssClass="links-horizontal" OnCommand="lbNoteCom_Command"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="เลขที่บันทึกข้อความจากเจ้าหน้าที่คอม">
+                    <asp:TemplateField HeaderText="เลขที่บันทึก จ.คอมฯ">
                         <ItemTemplate>
                             <asp:LinkButton ID="lbNoteCom" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_cpoint_note") %>' CssClass="links-horizontal" OnCommand="lbNoteCom_Command"></asp:LinkButton>
                         </ItemTemplate>
@@ -127,7 +134,7 @@
                             <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="พิมพ์">
+                    <asp:TemplateField HeaderText="พิมพ์" HeaderStyle-CssClass="text-center">
                         <ItemTemplate>
                             <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="รายงานเบื้องต้น" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                             <asp:LinkButton ID="printReport2" runat="server" CssClass="btn btn-sm btn-outline-success" Font-Size="15px" ToolTip="รายงานตัวเต็ม" OnCommand="printReport2_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
@@ -139,6 +146,7 @@
             <asp:Label ID="lbClaimNull" runat="server" Text=""></asp:Label>
         </div>
     </div>
+                </div>
     </div>
     <!-- -------------------------------------------------------------------- -->
     <div class="modal fade" id="NoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-3">
                     กลุ่ม : 
-                    <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control dropdown-item"></asp:DropDownList>
+                    <asp:DropDownList ID="txtGroup" runat="server" CssClass="form-control dropdown-item "></asp:DropDownList>
                 </div>
                 <div class="col-md-3">
                     เวลาเข้าซ่อม : 

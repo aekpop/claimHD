@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
@@ -776,7 +777,6 @@ namespace ClaimProject.CM
 
         protected void btnReport_Command(object sender, CommandEventArgs e)
         {
-
             Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportCM','_newtab');", true);
         }
     }

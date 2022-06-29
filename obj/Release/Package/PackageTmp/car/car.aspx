@@ -18,11 +18,12 @@
             <div class="form-row">
                 <div class="col-md-3">
                     ค้นหา 
-            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
                 </div>
+                </div>
+                <div class="row">
                 <div class="col-md-3">
-                    <br />
-                    <asp:Button ID="btnSearch" runat="server" Text="&#xf002; ค้นหา" Font-Size="Medium" CssClass="btn btn-dark btn-sm align-items-end fa" OnClick="btnSearch_Click" />
+                    <asp:Button ID="btnSearch" runat="server" Text="&#xf002; ค้นหา" Font-Size="Medium" CssClass="btn btn-warning btn-sm align-items-end fa" OnClick="btnSearch_Click" />
                 </div>
             </div>
             <div class="form-row">

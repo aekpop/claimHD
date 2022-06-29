@@ -1239,6 +1239,7 @@
     <Content Include="crystalreportviewers13\urlreporting\activexviewer.js" />
     <Content Include="crystalreportviewers13\urlreporting\appletviewer.js" />
     <Content Include="Default.aspx" />
+    <Content Include="Device\DeviceDiff.aspx" />
     <Content Include="Device\DeviceForm.aspx" />
     <Content Include="Device\GroupDeviceForm.aspx" />
     <Content Include="equip\EquipAddAll.aspx" />
@@ -1833,6 +1834,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Device\DeviceDiff.aspx.cs">
+      <DependentUpon>DeviceDiff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Device\DeviceDiff.aspx.designer.cs">
+      <DependentUpon>DeviceDiff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Device\DeviceForm.aspx.cs">
       <DependentUpon>DeviceForm.aspx</DependentUpon>

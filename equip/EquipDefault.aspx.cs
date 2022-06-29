@@ -44,14 +44,15 @@ namespace ClaimProject.equip
                         //dvRent.Visible = true;
                         Expire.Visible = true;
                     }
-                    
-                }   Session.Add("ddlsearchType", "0");
-                    Session.Add("ddlsearchStat", "0");
-                    Session.Add("BackWhat", "");            
-                    Session.Add("LineTran", "");
-                    Session["BackWhat"] = "";
-                    loadingpage();
-                    bind();
+
+                }
+                Session.Add("ddlsearchType", "0");
+                Session.Add("ddlsearchStat", "0");
+                Session.Add("BackWhat", "");
+                Session.Add("LineTran", "");
+                Session["BackWhat"] = "";
+                loadingpage();
+                bind();
             }
         }
 
@@ -553,7 +554,7 @@ namespace ClaimProject.equip
             string sqlact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE num_success = 'yes' " + sqlUser + " AND t.trans_stat = " + sqlStatus + " ";
             string sqltr6 = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '3' " + sqlUser + " AND tbl_transfer.trans_stat = " + sqlStatus + " ";
             string sqlact6 = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE num_success = 'yes' " + sqlUser + " AND t.trans_stat = " + sqlStatus + " ";
-            string sqlrec = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '3' AND (toll_send =' "+sqlcpSearch+ "') ";
+            string sqlrec = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '3' AND (toll_send =' " + sqlcpSearch + "') ";
             string sqleqerc = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '3' AND(toll_send = '" + sqlcpSearch + "') ";
             //string tranSentTotal = "";
             //string tranClaimTotal = "";
@@ -562,23 +563,23 @@ namespace ClaimProject.equip
             MySqlDataReader rt = function.MySqlSelect(eqTotal);
             if (rt.Read())
             {
-                lbEqTotal.Text = String.Format("{0:n0}", rt.GetInt32("num")) ;
+                lbEqTotal.Text = String.Format("{0:n0}", rt.GetInt32("num"));
                 rt.Close();
             }
             MySqlDataReader rt1 = function.MySqlSelect(eqNormal);
             if (rt1.Read())
             {
-                lbEqNorm.Text = String.Format("{0:n0}", rt1.GetInt32("numn")) ;
+                lbEqNorm.Text = String.Format("{0:n0}", rt1.GetInt32("numn"));
                 rt1.Close();
             }
             MySqlDataReader rt2 = function.MySqlSelect(eqBroken);
             if (rt2.Read())
             {
-                lbEqBork.Text = String.Format("{0:n0}", rt2.GetInt32("numb")) ;
+                lbEqBork.Text = String.Format("{0:n0}", rt2.GetInt32("numb"));
                 rt2.Close();
             }
             //Sent HQ ********************** NO complete
-            sqlStatus = "2"; 
+            sqlStatus = "2";
             sqlrt += sqlStatus;
             sqleqrt += sqlStatus;
             MySqlDataReader rt3 = function.MySqlSelect(sqlrt);
@@ -639,7 +640,7 @@ namespace ClaimProject.equip
                 MySqlDataReader rtt6 = function.MySqlSelect(sqlact);
                 if (rtt6.Read())
                 {
-                    lbStatrans.Text = String.Format("{0:n0}", rt6.GetInt32("num")) + " / " + String.Format("{0:n0}", rtt6.GetInt32("devv")); 
+                    lbStatrans.Text = String.Format("{0:n0}", rt6.GetInt32("num")) + " / " + String.Format("{0:n0}", rtt6.GetInt32("devv"));
                     rt6.Close();
                     rtt6.Close();
 
@@ -695,7 +696,7 @@ namespace ClaimProject.equip
             {
                 alertWaitTrans.Visible = false;
             }
-            
+
         }
         /*protected void loadChart ()
         {
@@ -852,10 +853,10 @@ namespace ClaimProject.equip
             int countt = ds.Tables[0].Rows.Count;
             expiredGridview.DataBind();
         }
-        
+
         protected void txtBudgetYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void lbtnTranDetail_Click(object sender, EventArgs e)
@@ -867,8 +868,8 @@ namespace ClaimProject.equip
 
         protected void lbtnSendHeadDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchStat" , "0");
-            Session.Add("ddlsearchType" , "6");
+            Session.Add("ddlsearchStat", "0");
+            Session.Add("ddlsearchType", "6");
             Response.Redirect("/equip/EquipTranList");
         }
 
@@ -886,7 +887,7 @@ namespace ClaimProject.equip
 
             if (Session["UserPrivilegeId"].ToString() == "5" || Session["UserPrivilegeId"].ToString() == "2")
             {
-                    Response.Redirect("/equip/EquipTranList");
+                Response.Redirect("/equip/EquipTranList");
             }
             else
             {
@@ -900,11 +901,11 @@ namespace ClaimProject.equip
             Session.Add("ddlsearchStat", "3"); //complete
             Response.Redirect("/equip/EquipTranList");
         }
-       
+
         protected void lbtnNewTranDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchType" , "0");
-            Session.Add("ddlsearchStat" , "2");
+            Session.Add("ddlsearchType", "0");
+            Session.Add("ddlsearchStat", "2");
             Response.Redirect("/equip/EquipTranList");
         }
 

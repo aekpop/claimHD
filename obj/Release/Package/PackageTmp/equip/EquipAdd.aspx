@@ -135,8 +135,8 @@
             DataKeyNames="equipment_id"
             OnRowDataBound="GridEquipAdd_RowDataBound"
             CssClass="table table-responsive-md table-hover table-condensed table-sm"
-            HeaderStyle-Font-Size="28px"
-            HeaderStyle-Height="50px"
+            HeaderStyle-Font-Size="32px"
+            HeaderStyle-Height="70px"
             RowStyle-Height="50px"
             Font-Size="24px"
             AutoGenerateColumns="False" 
@@ -209,16 +209,14 @@
                             <asp:LinkButton ID="lbManage" runat="server" CssClass="badge bg-info text-white" Font-Size="24px"  OnCommand="btnEditEquip_Command"><i class="fas fa-bars fa-1x"></i></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    
-                    
                 </Columns>
                 <FooterStyle BackColor="#82e874" Font-Bold="True" ForeColor="White" BorderColor="White"/>
                 <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />            
         </asp:GridView>
               <div class="footer">
-                  <div class="stats" style="padding-left:20px; color:grey; ">
-                    <asp:Label ID="titlegrid" runat="server" Visible="false" ></asp:Label>               
-                </div>
+                    <div class="stats" style="padding-left:20px; color:grey; ">
+                        <asp:Label ID="titlegrid" runat="server" Visible="false" ></asp:Label>               
+                    </div>
               </div>
    </asp:Panel>   
             </div>

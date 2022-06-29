@@ -5,14 +5,14 @@
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
     <div class="tab-content">
-        <div class="card" style="font-size: 16px; z-index: 0;">
+        <div class="card" style="font-size: 22px; z-index: 0; font-family:'TH SarabunPSK';">
             <h2 class="card-header ">รายการอุบัติเหตุ</h2>          
             <div class="card-body table-responsive">
                 <div runat="server" id="divCom">
-                    <h4 class="card-title alert-warning">รายละเอียดการเกิดอุบัติเหตุ (เจ้าหน้าที่คอม) <asp:Label ID="statheader" runat="server" CssClass="" ></asp:Label></h4>
+                    <h4 class="card-title alert-warning">รายละเอียดการเกิดอุบัติเหตุ (เจ้าหน้าที่คอม) <asp:Label ID="statheader" runat="server" ></asp:Label></h4>
                     
                     <div style="font-size: medium;" class="row">
-                        <div class="col-md-2 col-xl-6">
+                        <div class="col-md-2 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <p class="font-weight-normal" >ด่านฯ </p>
                                 <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control custom-select col-md-2 col-xl-auto "></asp:DropDownList>
@@ -338,8 +338,7 @@
                 </div>
                 <br />
                 <div style="font-size: larger" class="row">
-                    <div class="col-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <asp:GridView ID="ComGridView" runat="server"
                             DataKeyNames="com_working_id"
                             GridLines="None"
@@ -408,8 +407,7 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <asp:GridView ID="DeviceGridView" runat="server"
                             DataKeyNames="device_damaged_id"
                             GridLines="None"
@@ -454,19 +452,18 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <asp:GridView ID="FileGridView" runat="server"
                             DataKeyNames="claim_img_id"
                             GridLines="None"
                             OnRowDataBound="FileGridView_RowDataBound"
                             AutoGenerateColumns="False"
                             CssClass="table table-hover table-sm"
-                            OnRowDeleting="FileGridView_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-success">
+                            OnRowDeleting="FileGridView_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-light">
                             <Columns>
                                 <asp:TemplateField HeaderText="รูปภาพประกอบ">
                                     <ItemTemplate>
-                                        <asp:Image ID="ImgClaim" runat="server" Width="200px" />
+                                        <asp:Image ID="ImgClaim" runat="server" Width="300px" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Download">
@@ -503,19 +500,18 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <asp:GridView ID="UploadDocGridView" runat="server"
                             DataKeyNames="claim_img_id"
                             GridLines="None"
                             OnRowDataBound="UploadDocGridView_RowDataBound"
                             AutoGenerateColumns="False"
                             CssClass="table table-hover table-sm"
-                            OnRowDeleting="UploadDocGridView_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-success">
+                            OnRowDeleting="UploadDocGridView_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-light">
                             <Columns>
                                 <asp:TemplateField HeaderText="รูปภาพประกอบ">
                                     <ItemTemplate>
-                                        <asp:Image ID="DocClaim" runat="server" Width="200px" />
+                                        <asp:Image ID="DocClaim" runat="server" Width="300px" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Download">

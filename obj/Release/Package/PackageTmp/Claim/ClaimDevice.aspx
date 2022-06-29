@@ -81,19 +81,19 @@
                     <asp:LinkButton ID="btnExport" runat="server" CssClass="btn btn-warning fa" Font-Size="Medium" OnClick="btnExport_Click">&#xf1c3; Export</asp:LinkButton>
                 </div>
             </div>
-            <asp:Label ID="lbClaimNull" runat="server" Text="" CssClass="text-success"></asp:Label>
+            
         </div>
-        
    </div>
     <div id="Div1" runat="server" >
-        <!--<div class="card" style="z-index: 0"> -->           
-            <!--<div class="card-body table-responsive table-sm">-->
-
+        
+        <div class="card" style="z-index: 0">         
+            <div class="card-body table-responsive table-sm">
+                
                 <asp:GridView ID="ClaimGridView" runat="server"
                     AutoGenerateColumns="False" 
                     CssClass="table table-hover table-sm"
                     HeaderStyle-CssClass="text-left" 
-                    HeaderStyle-BackColor="ActiveBorder"
+                    HeaderStyle-BackColor="White"
                     HeaderStyle-Font-Size="17px"
                     HeaderStyle-Height="50px"
                     RowStyle-Height="50px"
@@ -158,9 +158,13 @@
                         </asp:TemplateField>
                     </Columns>                    
                 </asp:GridView>
+
+                <div class="row">
+                    <asp:Label ID="lbClaimNull" runat="server" CssClass="text-sm-left"></asp:Label>
+                </div>
             </div>
-        <!--</div>-->
-   <!-- </div> -->
+        </div>
+    </div>
     <script>
             function btnSearch_Click() {
                 var x = document.getElementById("lbSearch");

@@ -19,27 +19,26 @@
     <script src="../Scripts/umd/popper.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
 
-
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
      <!-- Menu Dropdown -->        
         
         <!-------------------------------- // ------------------------------------> 
     <div id="MainBody" class="card" style="z-index: 0; ">
         <div class="card-header ">
-            <div class="card-title">รายงานสรุปแจ้งซ่อมอุปกรณ์</div>
+            <div class="card-title">ค้นหา</div>
         </div>       
         <div class="card-body table-responsive"> 
                     <div runat="server">                        
                         <div class="row">                                       
                                         <div class="col-md-4 ">
                                             <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbBudget" runat="server" Text="ปีงบฯ : "></asp:Label>
+                                            <asp:Label ID="lbBudget" runat="server" Text="ปีงบประมาณ"></asp:Label>
                                             <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control  "></asp:DropDownList>
                                                 </div>
                                         </div>
                                         <div class=" col-md-4 ">
                                          <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbToll" runat="server" Text="ด่านฯ : "></asp:Label>                                            
+                                            <asp:Label ID="lbToll" runat="server" Text="ด่านฯ"></asp:Label>                                            
                                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control "></asp:DropDownList>
                                              </div>
                                         </div>
@@ -53,19 +52,19 @@
                         <div class="row">
                                         <div class="col-md-4">
                                              <div class="form-group bmd-form-group">
-                                                        <asp:Label ID="lbChannel" runat="server" text="  ตู้ :" ></asp:Label>
+                                                        <asp:Label ID="lbChannel" runat="server" text="หมายเลขช่องทาง" ></asp:Label>
                                                         <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
                                                     </div>
                                             </div>
                                         <div class="col-md-4 ">
                                              <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์ : "></asp:Label>                                            
+                                            <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์"></asp:Label>                                            
                                             <asp:DropDownList ID="txtDeviceDamage" runat="server" CssClass="combobox form-control custom-select "></asp:DropDownList>
                                                  </div>
                                         </div>
                                          <div class=" col-md-4 ">
                                              <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbStatus" runat="server" Text="สถานะ : "></asp:Label>
+                                            <asp:Label ID="lbStatus" runat="server" Text="สถานะ"></asp:Label>
                                             <asp:DropDownList ID="txtCMStatus" runat="server"  CssClass="form-control " ></asp:DropDownList>
                                                  </div>
                                         </div>                                        
@@ -75,13 +74,13 @@
 
                                       <div class=" col-md-2 ">
                                              <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbDayS" runat="server" Text="วันที่แจ้งซ่อม      ตั้งแต่ "></asp:Label>
+                                            <asp:Label ID="lbDayS" runat="server" Text="วันที่เริ่มต้น"></asp:Label>
                                             <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                         </div>
                                             </div>
                                         <div class=" col-md-2">
                                               <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lbDayE" runat="server" Text="ถึงวันที่ "></asp:Label>
+                                            <asp:Label ID="lbDayE" runat="server" Text="สิ้นสุด "></asp:Label>
                                             <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
                                                   </div>
                                         </div>
@@ -97,7 +96,7 @@
                                         <div class=" col-md-2"></div>
                                         <div class=" col-md-4 ">
                                              <div class="form-group bmd-form-group">
-                                            <asp:Label ID="lblbRespons" runat="server" Text="ผู้รับผิดชอบ : "></asp:Label>
+                                            <asp:Label ID="lblbRespons" runat="server" Text="ผู้รับผิดชอบ"></asp:Label>
                                             <asp:DropDownList ID="ddlResponsible" runat="server"  CssClass="form-control " ></asp:DropDownList>
                                                  </div>
                                         </div>           
@@ -114,17 +113,23 @@
                                                 </div>
                                             -->
                                             <div class="col-xl-6 text-left">
-                                                <asp:LinkButton ID="btnReport" runat="server" CssClass="btn btn-success fa" Font-Size="Larger" OnCommand="btnReport_Command">&#xf15c; ออกรายงาน</asp:LinkButton>
+                                                <asp:LinkButton ID="btnReport" runat="server" CssClass="btn btn-success fa" Font-Size="Larger" OnCommand="btnReport_Command">&#xf15c; รายงาน</asp:LinkButton>
                                             </div>
                                         </div>
+                                    </div>
                         </div>
                 </div> 
-           </div>
-        <asp:Label ID="lbCMNull" runat="server" Text=""></asp:Label>
+        <div id="MainBody2" class="card" style="z-index: 0; ">
+        <div class="card-header ">
+            <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
+        </div>       
+        <div class="card-body table-responsive">
+            
+        
 
         <asp:Panel ID="Panel1" runat="server" >
                        <asp:GridView ID="GridView1" runat="server"
-                           HeaderStyle-BackColor="#ffffff"
+                           HeaderStyle-BackColor="White"
                            HeaderStyle-CssClass="align-content-center"
                            HeaderStyle-Font-Size="18px"
                            OnRowDataBound="GridView1_RowDataBound"
@@ -204,10 +209,14 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             </Columns>
-                           <PagerStyle HorizontalAlign="Center" CssClass="GridPager"  ForeColor="#ef8a00" />
+                           <PagerStyle HorizontalAlign="Center" CssClass="GridPager text-lg" ForeColor="#ef8a00" />
                 </asp:GridView>
+            <div class="row">
+                <asp:Label ID="lbCMNull" runat="server" CssClass="text-black-50 text-sm"></asp:Label>
+            </div>
             </asp:Panel> 
-
+    </div>
+            </div>
             </div>
           <!------------------------------------------------------------------------------------------------------------>
     <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" >
@@ -375,14 +384,9 @@
                         </div>
                     </div>
                 </div>
-
-    <!------------------------------------------------------------------------------------------------------------>                  
-                   
-
-        
-
-
     
+    <!------------------------------------------------------------------------------------------------------------>                  
+                       
     <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
@@ -439,7 +443,6 @@
                     // your logic here
                     return confirm(msg);
                 }
-            }        
-            
+            }   
     </script>
 </asp:Content>

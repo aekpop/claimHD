@@ -246,7 +246,7 @@
                              <asp:GridView id="lsTodayGridview" runat="server"
                                     CssClass="col table table-striped table-hover"
                                      
-                                    HeaderStyle-BackColor="ActiveBorder"
+                                    HeaderStyle-BackColor="White"
                                     HeaderStyle-Font-Size="14px"
                                     
                                     OnRowDataBound="lsTodayGridview_RowDataBound" 
@@ -284,7 +284,7 @@
                          <asp:Panel ID="Panel2" runat="server" >
                              <asp:GridView id="GridViewNoService" runat="server"
                                     CssClass="col table table-striped table-hover"
-                                    HeaderStyle-BackColor="ActiveBorder"
+                                    HeaderStyle-BackColor="White"
                                     HeaderStyle-Font-Size="14px"
                                     OnRowDataBound="GridViewNoService_RowDataBound" 
                                     Font-Size="12px" 
@@ -320,7 +320,7 @@
                          <asp:Panel ID="Panel3" runat="server" >
                              <asp:GridView id="GridViewNoFix" runat="server"
                                     CssClass="col table table-striped table-hover"
-                                    HeaderStyle-BackColor="ActiveBorder"
+                                    HeaderStyle-BackColor="White"
                                     HeaderStyle-Font-Size="14px"
                                     OnRowDataBound="GridViewNoFix_RowDataBound" 
                                     Font-Size="12px" 
