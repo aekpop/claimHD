@@ -94,7 +94,7 @@
                         </button>
                         <!--<div class="collapse navbar-collapse justify-content-end">-->
                             <div class="collapse navbar-collapse justify-content-end ">
-                                <ul class="navbar-nav" style="font-size:18px; font-family:Prompt">
+                                <ul class="navbar-nav" style="font-size:12px; font-family:Prompt">
                                     <!--<li>
                                             <div class="input-group no-border">
                                                 <input type="text" value="" class="form-control" placeholder="Search...">
@@ -106,7 +106,7 @@
                                         </li>-->
                                     <li class="nav-item dropdown" runat="server" id="nav0" >
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">Admin อุบัติเหตุ</span>
+                                            <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">Admin อุบัติเหตุ</span>
                                         </a>
                                         <div class="dropdown-menu" >
                                             <a class="dropdown-item" href="/" >Dashboard</a>
@@ -116,20 +116,24 @@
 
                                     <li class="nav-item dropdown" runat="server" id="nav1">
                                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Claim/DefaultClaim"  role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">อุบัติเหตุ</span>
+                                                <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">อุบัติเหตุ</span>
                                             </a>
                                         <div class="dropdown-menu" >
                                             <a class="dropdown-item" href="/Claim/DefaultClaim" >หน้าแรก</a>
                                             <a class="dropdown-item" href="/Claim/claimForm?add=true" >แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-header text-danger">รายงาน</div>
                                             <a class="dropdown-item" href="/Claim/claimForm" >รายการอุบัติเหตุ</a>
                                             <a class="dropdown-item" href="/Claim/claimLine" >ส่งรายงาน (Line)</a>
                                             <a class="dropdown-item" href="/Claim/ClaimDevice" >รายการอุปกรณ์ค้างซ่อม</a>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-header text-danger">สถิติ</div>
                                             <a class="dropdown-item" href="/ReportView/" >ข้อมูลทางสถิติ</a>
                                         </div>
                                         </li>
                                         <li class="nav-item dropdown" runat="server" id="Li2">
                                             <a class="nav-link dropdown-toggle" href="/CM/DefaultCM"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">บำรุงรักษา</span>
+                                                <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">บำรุงรักษา</span>
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/CM/DefaultCM" >หน้าแรก</a>
@@ -144,7 +148,7 @@
 
                                             <li class="nav-item dropdown" runat="server" id="Li3">
                                             <a class="nav-link dropdown-toggle" href="/CM/DefaultCM"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">บำรุงรักษา</span>
+                                                <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">บำรุงรักษา</span>
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/CM/DefaultCM" >หน้าแรก</a>
@@ -162,7 +166,7 @@
                       
                                         <li class="nav-item dropdown" runat="server" id="equipDiv" >
                                             <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">ครุภัณฑ์</span>
+                                                <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">ครุภัณฑ์</span>
                                             </a>
                                             <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/equip/EquipDefault" >หน้าแรก</a>
@@ -178,7 +182,7 @@
 
                                             <li class="nav-item dropdown" runat="server" id="Li4" >
                                                     <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 18px;">ครุภัณฑ์</span>
+                                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">ครุภัณฑ์</span>
                                                     </a>
                                                     <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="/equip/EquipDefault" >หน้าแรก</a>

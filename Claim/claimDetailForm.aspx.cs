@@ -63,6 +63,8 @@ namespace ClaimProject.Claim
                     // function.GetList(ddlSecTypecar, "typeCar");
                     function.GetList(ddlbrandcar2, "brandCar");
                     ddlbrandcar2.Items.Insert(0, new ListItem("", ""));
+                    statheader.Text = "แจ้งใหม่";
+                    statheader.CssClass = "badge badge-info";
 
                     string sql_Device = "SELECT * FROM tbl_device WHERE davice_delete = '0' ORDER BY device_name";
 
