@@ -410,7 +410,6 @@
             <%}%>  
         });
            
-
         function UpdteConfirm(msg) {
             var str1 = "1";
             var str2 = "2";

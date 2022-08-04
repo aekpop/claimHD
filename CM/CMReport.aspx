@@ -222,7 +222,7 @@
     <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
-                <div class="modal-header" style="font-family:'TH SarabunPSK'; font-size:x-large;">
+                <div class="modal-header" style="font-family:'TH SarabunPSK'; font-size:medium;">
                     <div class="modal-title" >รายละเอียดการแจ้งซ่อมอุปกรณ์ #</div>
                         <asp:Label ID="pkeq" runat="server" visible="false" Font-Size="Smaller" ></asp:Label>
                             <asp:Label ID="lbrefRecheck" Enabled="false"  runat="server"   />

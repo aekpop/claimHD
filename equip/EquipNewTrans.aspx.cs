@@ -887,7 +887,7 @@ namespace ClaimProject.equip
                 }
                 else
                 {
-                    function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll where toll_id = '9200' ", "toll_name", "toll_id");
+                    function.getListItem(ddlTollEQ, "SELECT * FROM tbl_toll where toll_id = '9200' OR toll_id = '9400' ", "toll_name", "toll_id");
                 }
             }
             

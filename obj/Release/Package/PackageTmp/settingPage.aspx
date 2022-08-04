@@ -28,6 +28,12 @@
                     </a>
                 </div>
                 <div class="col-md-2">
+                    <a class="nav-link" href="/Device/DeviceDiff">
+                        <i class="fa fa-cubes" style="font-size: 22px;"></i>
+                        <div class="text-black-50 ">รายการอุปกรณ์ยกเว้น</div>
+                    </a>
+                </div>
+                <div class="col-md-2">
                     <a class="nav-link" href="/Device/GroupDeviceForm">
                         <i class="fa fa-gears" style="font-size: 22px;"></i>
                         <div class="text-black-50 ">กลุ่มอุปกรณ์</div>
