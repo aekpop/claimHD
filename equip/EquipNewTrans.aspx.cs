@@ -1192,8 +1192,9 @@ namespace ClaimProject.equip
 
         protected void btnSecondSubmit_Click(object sender, EventArgs e)
         {
-            if (Session["UserCpoint"].ToString() != "0" && ddlTollEQ.SelectedValue != "9200")
-            {
+            //if (Session["UserCpoint"].ToString() != "0" && ddlTollEQ.SelectedValue != "9200")
+            if (Session["UserCpoint"].ToString() != "0" && ddlTollEQ.SelectedValue != "9200" && ddlTollEQ.SelectedValue != "9400")
+                {
                 AlertPop("Warning กรุณาเลือกปลายทางเป็นฝ่ายฯเท่านั้น!!", "warning");
             }
             else
