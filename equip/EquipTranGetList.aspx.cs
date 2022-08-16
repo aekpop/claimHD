@@ -79,7 +79,7 @@ namespace ClaimProject.equip
             
             string TransRef = Session["TransID"].ToString();
             //COLLATE utf8_general_ci
-            string sqlsendSearch = "SELECT * FROM tbl_transfer " +
+            string sqlsendSearch = "SELECT trans_id, date_send, trans_stat_name, toll_name, toll_recieve, name_send, name_recieve, complete_name, complete_badge, complete_link FROM tbl_transfer " +
                          " JOIN tbl_transfer_status on tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id" +
                          " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";

@@ -112,20 +112,15 @@
                                 <ItemTemplate>
                                      <%# Container.DataItemIndex + 1+"." %>
                                 </ItemTemplate>
+                        </asp:TemplateField>                 
+                        <asp:TemplateField HeaderText="วันที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>' ></asp:Label>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="ประเภท" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
                                 <asp:Label ID="lbtypetrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="เลขอ้างอิง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="วันที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="ต้นทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
