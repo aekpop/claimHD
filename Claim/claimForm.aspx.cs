@@ -17,7 +17,6 @@ namespace ClaimProject.Claim
         ClaimFunction function = new ClaimFunction();
         public string claim_id = "";
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request["add"] == "true")
@@ -27,6 +26,7 @@ namespace ClaimProject.Claim
 
             if (!this.IsPostBack)
             {
+                string sql = "";
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
                 BindData(date.Split('-')[2]);
                 function.getListItem(txtSearchYear, "SELECT claim_budget_year FROM tbl_claim c GROUP BY claim_budget_year ORDER by claim_budget_year DESC", "claim_budget_year", "claim_budget_year");
@@ -34,7 +34,7 @@ namespace ClaimProject.Claim
                 txtSearchStatus.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 txtSearchYear.SelectedValue = function.getBudgetYear(date);
                 
-                string sql = "";
+                
                 if (Session["UserCpoint"] != null)
                 {
                     if (Session["UserCpoint"].ToString() == "0")
@@ -817,14 +817,16 @@ namespace ClaimProject.Claim
                         dev += "จากการตรวจสอบเบื้องต้นพบทรัพย์สินของทางราชการเสียหาย ดังนี้\r\n                      ";
                             dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
                         }
-                        else
-                        {
+                    else
+                    {
                             dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
-                        }
+                    }
                         i++;
                     }
+
                     rs.Close();
                     function.Close();
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาระบุอุปกรณ์ที่ได้รับความเสียหาย')", true);
                 }
                 else
                 {

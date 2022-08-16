@@ -15,7 +15,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Web.Services;
 
 namespace ClaimProject.Config
 {
@@ -25,13 +25,14 @@ namespace ClaimProject.Config
         //ClaimConnection conn = new ClaimConnection();
         public MySqlConnection conn;
         //charset=tis620
-        string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //main server
+        //string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //main server
         //string strConnString = "Server=10.6.3.202;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //database server
         //string strConnString = "Server=192.168.101.91;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
-        //string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         public string icons = "";
         public string alerts = "";
         public string alertTypes = "";
+        public string message = "";
 
         internal void getListItem(HtmlGenericControl ddlCMBudget, string v1, string v2, string v3)
         {
@@ -743,6 +744,34 @@ namespace ClaimProject.Config
             //Explicitly setting the name to be used while serializing to JSON.
             [DataMember(Name = "y")]
             public Nullable<double> Y = null;
+        }
+
+        public void LineNotify(string lineToken, string message, string pictureUrl, int stickerPackageID, int stickerID)
+        {
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create("https://notify-api.line.me/api/notify");
+                var postData = string.Format("message={0}", message);
+                var data = Encoding.UTF8.GetBytes(postData);
+
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+                request.Headers.Add("Authorization", "Bearer " + lineToken);
+
+                using (var stream = request.GetRequestStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                }
+                //using (var stream = request.GetRequestStream()) stream.Write(data, 0, data.Length);
+
+                var response = (HttpWebResponse)request.GetResponse();
+                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }
