@@ -55,7 +55,7 @@ namespace ClaimProject.Report
                 }
                 else
                 {
-                    Response.Redirect("/equip/EquipMain");
+                    Response.Redirect("/equip/EquipDefault");
                 }
 
                 string sqlParameH = "SELECT * FROM tbl_transfer " +

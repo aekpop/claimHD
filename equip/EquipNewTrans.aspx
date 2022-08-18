@@ -5,7 +5,6 @@
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
-        
     </style>
 
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
@@ -510,6 +509,37 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalPrint"   tabindex="-1" role="dialog" aria-labelledby="modalPrint" aria-hidden="true">
+        <div class="modal-dialog modal modal-dialog-centered " style=" max-height:85%;  margin-top: 50px; margin-bottom:50px;width:500px" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">กรอกรายละเอียด ใบรับ-ส่งครุภัณฑ์</div>
+                   
+                </div>
+                <div class="modal-body" style="line-height: inherit;">
+                    <div class="">รายละเอียด</div>
+                    <div class="row" style="height: 90px">
+                        <div class="col-md">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">ชื่อผู้ส่ง :</label>
+                                <asp:TextBox ID="txtSenderName"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">ตำแหน่งผู้ส่ง :</label>
+                                <asp:TextBox ID="txtPosSender"  runat="server" Font-Size="Medium" CssClass="form-control time" onkeypress="return handleEnter(this, event)"/>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+                <div class="modal-footer">          
+                    <asp:LinkButton ID="lbtnGoReportrd" runat="server" CssClass="btn btn-sm btn-outline-danger" Font-Size="15px" ToolTip="ใบรับส่ง RDLC" visible="true" OnCommand="lbtnPrint_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnCancel" runat="server" CssClass="btn btn-sm btn-outline-danger" Font-Size="15px" visible="true" OnCommand="lbtnCancel_Command"><i class="fa">&#xf05e;</i></asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
         
     </div>
     
@@ -555,7 +585,16 @@
         {%>
             $("#modalHitBack").modal('hide');
             <%}%>
-            
+        });
+        $(function () {
+            <% if (Print != "")
+        {%>
+            $("#modalPrint").modal('show');
+            <%}
+        else
+        {%>
+            $("#modalPrint").modal('hide');
+            <%}%>
         });
         
         function UpdteConfirm(msg) {
@@ -572,8 +611,5 @@
                 return confirm(msg);
             }
         }
-
-       
-       
     </script>
 </asp:Content>

@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace ClaimProject.equip
 {
@@ -19,6 +20,7 @@ namespace ClaimProject.equip
         public string replaceids = "";
         public string confirmGet = "";
         public string HitBack = "";
+        public string Print = "";
         public int amountrow ;
         public int wait ; public int norepair; public int repairedd;
         public string no = "";
@@ -1275,7 +1277,10 @@ namespace ClaimProject.equip
                         Session["LineTran"] = "\n" + ddlTypeEQQ.SelectedItem + " \n วันที่ : " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "" +
                             "\nผู้บันทึก : " + txtSender.Text ;
                         Session["alert"] = "ส่งข้อมูลโอนย้าย เรียบร้อยแล้ว";
-                        Response.Redirect("/equip/EquipTranList");
+                        Print = "1";
+
+                        //Response.Redirect("/equip/EquipTranList");
+                        
                         // SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                         // serviceLine.MessageToServer("wDLRWPWgBvJRMEk69ebQVGumxOfiTKCgXoUwKeKPQyh", "ระบบได้รับข้อมูลแจ้งการ"+ ddlTypeEQQ.SelectedItem+ "ครุภัณฑ์  " +
                         //    " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ", "", 1, 41);
@@ -2175,6 +2180,52 @@ namespace ClaimProject.equip
                     break;
                 }
             }
-        }   
+        }
+
+        protected void lbtnPrint_Command(object sender, CommandEventArgs e)
+        {
+            string transre  = Session["TransID"].ToString();
+            Session["TranRepId"] = transre;
+            Session["CopyTran"] = "";
+
+            if (txtSenderName.Text == "")
+            {
+                Session["SenderTran"] = ".";
+            }
+            else
+            {
+                Session["SenderTran"] = txtSenderName.Text;
+            }
+
+            if (txtPosSender.Text == "")
+            {
+                Session["PosSender"] = "..";
+            }
+            else
+            {
+                Session["PosSender"] = txtPosSender.Text;
+            }
+
+            ReportDocument rpt = new ReportDocument();
+
+            if (Session["TranRepId"].ToString() != "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/report','_newtab') ;window.location='/equip/EquipTranList';", true);
+            }
+            else
+            {
+                AlertPop("Error Report!! ติดต่อเจ้าหน้าที่", "error");
+            }
+        }
+
+        protected void lbtnCancel_Command(object sender, CommandEventArgs e)
+        {
+            Redirect();
+        }
+
+        public void Redirect()
+        {
+            Response.Redirect("/equip/EquipTranList");
+        }
     }
 }

@@ -62,12 +62,6 @@ namespace ClaimProject
                     lbtnGoReportCopy.Visible = true;
                 }
 
-                if (Session["UserCpoint"].ToString() != "0") //คนด่านฯ
-                {
-                    divaddnew.Visible = false;
-                    divcheckk.Visible = false;
-                    divcheckkk.Visible = false;
-                }
             }
             LineTran();
             LoadPaging();
@@ -80,12 +74,20 @@ namespace ClaimProject
         }
         protected void LineTran()
         {
+            string token = "";
+            string sqlLine = "SELECT * FROM tbl_token WHERE Sys_name = 'test' "; //เปลี่ยน token ทดสอบ
+            MySqlDataReader da = function.MySqlSelect(sqlLine);
+            if (da.Read())
+            {
+                token = da.GetString("token");
+            }
+
             if (Session["LineTran"].ToString() != "")
             {
                 SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                 try
                 {
-                    serviceLine.MessageToServer("zUq1qjowyyxFuPuubLX7FG7W71xoehlhpMMUohzF4ck", Session["LineTran"].ToString(), "", 1, 41); // tokenline to mysql
+                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41); // tokenline to mysql
                     Session["LineTran"] = "";
                 }
                 catch (Exception) { }
