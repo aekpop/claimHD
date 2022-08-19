@@ -66,7 +66,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card">
             <div class="card-header ">
                 <div class="card-title ">รายการส่งครุภัณฑ์</div>
@@ -90,9 +89,9 @@
                     PagerSettings-LastPageText="หน้าสุดท้าย"
                     AllowPaging="true">
                     <Columns>
-                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="เลขอ้างอิง" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                             <ItemTemplate>
-                                <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-center"> </asp:Label>
+                                <asp:Label ID="lbtransId" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="วันที่หนังสือ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
@@ -100,11 +99,7 @@
                                 <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ประเภทรายการ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
-                            <ItemTemplate>
-                                <asp:Label ID="lbtypetrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="ต้นทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:Label ID="lbStarttrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_send") %>'></asp:Label>
@@ -115,11 +110,7 @@
                                 <asp:Label ID="lbEndtrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_recieve") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ผู้แจ้ง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
-                            <ItemTemplate>
-                                <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ItemStyle-Font-Size="X-Large">
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>'></asp:Label>
@@ -195,7 +186,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -203,7 +194,7 @@
         $(function () {
         <% if (alerts != "")
         { %>
-        demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
+            demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
         <% } %>
         });
         $(function () {

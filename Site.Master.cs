@@ -32,6 +32,7 @@ namespace ClaimProject
                 Session.Add("BackWhat", "");
                 Session.Add("LineTran", "");
                 Session.Add("txtSearchEq", "");
+                Session.Add("PrintdocuMent", "");
                 Session.Timeout = 28800;
             }
 

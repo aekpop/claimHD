@@ -25,6 +25,7 @@ namespace ClaimProject.equip
         public int wait ; public int norepair; public int repairedd;
         public string no = "";
         public string ok = "";
+        //public string top = "";
         //public string eqidd = "";
 
         //SiteMaster master = new SiteMaster();
@@ -41,18 +42,19 @@ namespace ClaimProject.equip
                 string equipNo = "";
                 string tollStart = ""; 
                 string chhh = Session["UserPrivilegeId"].ToString(); 
-                string usercpo = Session["UserCpoint"].ToString();  
-                
-               // if (Session["BackWhat"].ToString() == "Send")
+                string usercpo = Session["UserCpoint"].ToString();
+
+                Session["TranRepId"] = "";
+                // if (Session["BackWhat"].ToString() == "Send")
                 //{
                 //    btnMainTranSend.Visible = true;
                 ///    btnMainTranGet.Visible = false;
                 //}
                 //else
                 //{
-               //     btnMainTranSend.Visible = false;
-               //     btnMainTranGet.Visible = true;
-               // }
+                //     btnMainTranSend.Visible = false;
+                //     btnMainTranGet.Visible = true;
+                // }
                 if (usercpo == "0")
                 {
                     equipNo = "SELECT equipment_no,equipment_id FROM tbl_equipment WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete = '0' AND toll_id = '9200' Order By equipment_id ASC";
@@ -136,7 +138,7 @@ namespace ClaimProject.equip
                     ddlTollEQ.SelectedValue = endvalue;
                     ddlStartEQ.SelectedValue = startvalue;
 
-
+                    
                     txtDateSend.Text = redf.GetString("date_send");
                     txtactnote.Text = redf.GetString("trans_note");
                     txtSender.Text = redf.GetString("name_send");
@@ -147,19 +149,21 @@ namespace ClaimProject.equip
                         //lbDateCF.Text = redf.GetString("date_recieve");
                         //lbTimeCF.Text = redf.GetString("time_recieve");
                         //lbNameCF.Text = redf.GetString("name_recieve");
-                        if(redf.IsDBNull(20) || redf.IsDBNull(8) || redf.IsDBNull(9) || redf.IsDBNull(11))
+                        if(redf.IsDBNull(20) || redf.IsDBNull(8) || redf.IsDBNull(9) || redf.IsDBNull(11) || redf.IsDBNull(26))
                             {
                                 lbPositionCF.Text = "ไม่ระบุ";
                                 lbDateCF.Text = "ไม่ระบุ";
                                 lbTimeCF.Text = "ไม่ระบุ";
                                 lbNameCF.Text = "ไม่ระบุ";
-                            }
+                                txtTimeSend.Text = "ไม่ระบุ";
+                        }
                             else
                             {
                                 lbPositionCF.Text = redf.GetString("position_getder");
                                 lbDateCF.Text = redf.GetString("date_recieve");
                                 lbTimeCF.Text = redf.GetString("time_recieve");
                                 lbNameCF.Text = redf.GetString("name_recieve");
+                                txtTimeSend.Text = redf.GetString("time_send");
                             }
                     }
                     else
@@ -168,6 +172,7 @@ namespace ClaimProject.equip
                         lbTimeCF.Text = "-";
                         lbNameCF.Text = "-";
                         lbPositionCF.Text = "-";
+                        txtTimeSend.Text = redf.GetString("time_send");
                     }
                     
                     divtranSecond.Visible = true;
@@ -292,6 +297,7 @@ namespace ClaimProject.equip
                         ddlTypeEQQ.Enabled = false;
                         divEndToll.Visible = true;
                         txtDateSend.Enabled = false;
+                        txtTimeSend.Enabled = false;
                         txtactnote.Enabled = false;
                         txtSender.Enabled = false;
                         ddlPosition.Enabled = false;
@@ -350,8 +356,8 @@ namespace ClaimProject.equip
                     }
                     else if(completestatus == "1")
                     {
-                        
 
+                        txtTimeSend.Enabled = false;
                         divhitback.Visible = false;
                         divsecond.Visible = false;
                         //ddlStartEQ.Enabled = false;
@@ -1276,16 +1282,17 @@ namespace ClaimProject.equip
                     {
                         Session["LineTran"] = "\n" + ddlTypeEQQ.SelectedItem + " \n วันที่ : " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "" +
                             "\nผู้บันทึก : " + txtSender.Text ;
-                        Session["alert"] = "ส่งข้อมูลโอนย้าย เรียบร้อยแล้ว";
-                        Print = "1";
+                        //Session["alert"] = lbmdrefNo.Text;
+                        btnPlanSheet.Visible = false;
+                        btnSecondSubmit.Visible = false;
+                        lbtnDelete.Visible = false;
+                        lbmdrefNo.Text = Session["TransID"].ToString();
 
-                        //Response.Redirect("/equip/EquipTranList");
-                        
+                        Print = "1";
+                        //Response.Redirect("/equip/EquipTranList");                    
                         // SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                         // serviceLine.MessageToServer("wDLRWPWgBvJRMEk69ebQVGumxOfiTKCgXoUwKeKPQyh", "ระบบได้รับข้อมูลแจ้งการ"+ ddlTypeEQQ.SelectedItem+ "ครุภัณฑ์  " +
                         //    " เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ", "", 1, 41);
-
-
                     }
                     else
                     {
@@ -2184,9 +2191,9 @@ namespace ClaimProject.equip
 
         protected void lbtnPrint_Command(object sender, CommandEventArgs e)
         {
-            string transre  = Session["TransID"].ToString();
-            Session["TranRepId"] = transre;
+            Session["TranRepId"] = lbmdrefNo.Text;
             Session["CopyTran"] = "";
+            Session["PrintdocuMent"] = "Yes";
 
             if (txtSenderName.Text == "")
             {
@@ -2220,6 +2227,7 @@ namespace ClaimProject.equip
 
         protected void lbtnCancel_Command(object sender, CommandEventArgs e)
         {
+            Session["PrintdocuMent"] = "Yes";
             Redirect();
         }
 

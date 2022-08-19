@@ -35,7 +35,10 @@ namespace ClaimProject
                 Session.Add("SenderTran", "");
                 Session.Add("PosSender", "");
                 Session.Add("CopyTran", "");
-                Session["TranRepId"] = "";
+                if(Session["PrintdocuMent"].ToString() != "Yes")
+                {
+                    Session["TranRepId"] = "";
+                }
                 Session["TransNew"] = "";
                 Session["BackWhat"] = "Send";
                 Session["Finded"] = "No";
@@ -47,7 +50,11 @@ namespace ClaimProject
                 ddlsearchType.SelectedItem.Value = Session["ddlsearchType"].ToString();
                 ddlsearchStat.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
 
-                if(Session["Finded"].ToString() == "No" && Session["ddlsearchStat"].ToString() == "0")
+                if (Session["PrintdocuMent"].ToString() == "Yes")
+                {
+                    ddlsearchStat.SelectedItem.Value = "2";
+                }
+                else if (Session["Finded"].ToString() == "No" && Session["ddlsearchStat"].ToString() == "0")
                 {
                     ddlsearchStat.SelectedItem.Value = "1";
                 }
@@ -75,7 +82,7 @@ namespace ClaimProject
         protected void LineTran()
         {
             string token = "";
-            string sqlLine = "SELECT * FROM tbl_token WHERE Sys_name = 'test' "; //เปลี่ยน token ทดสอบ
+            string sqlLine = "SELECT * FROM tbl_token WHERE Sys_name = 'ครุภัณฑ์' ";
             MySqlDataReader da = function.MySqlSelect(sqlLine);
             if (da.Read())
             {
@@ -87,7 +94,7 @@ namespace ClaimProject
                 SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                 try
                 {
-                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41); // tokenline to mysql
+                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41); 
                     Session["LineTran"] = "";
                 }
                 catch (Exception) { }
@@ -191,7 +198,7 @@ namespace ClaimProject
             }
             else
             {
-                sqlsendSearch = "SELECT * FROM tbl_transfer " +
+                sqlsendSearch = "SELECT trans_id, date_send, trans_stat_name, toll_send, toll_recieve, name_send, complete_name, complete_badge, complete_link, complete_stat FROM tbl_transfer " +
                          " JOIN tbl_transfer_status on tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id" +
                          " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
@@ -199,7 +206,130 @@ namespace ClaimProject
                 sqlsendSearch += " WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "'  ";
             }
 
+                if (EndState == "0") // ทุกปลายทาง
+            {
+                if (type == "0")// ทุกประเภทรายการ
+                {
+                    if (status == "0") //ทุกสถานะ
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_id like '%" + txtRefTran.Text + "%'  Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND complete_stat !='5'  Order By tbl_trans_complete.complete_sort ASC , STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
 
+                    }
+                    else
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                }
+                else
+                {
+                    if (status == "0") //ทุกสถานะ
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                    else
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' AND trans_id like '%" + txtRefTran.Text + "%' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                }
+            }
+            else
+            {
+                if (type == "0")// ทุกประเภทรายการ
+                {
+                    if (status == "0") //ทุกสถานะ
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND complete_stat !='5' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                    else
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                }
+                else
+                {
+                    if (status == "0") //ทุกสถานะ
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' " +
+                                " AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                    else  // เลือกเฉพาะทุกอย่าง
+                    {
+                        if (txtRefTran.Text != "")
+                        {
+                            sqlsendSearch += " AND trans_id like '%" + txtRefTran.Text + "%' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+                        else
+                        {
+                            sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
+                        }
+
+
+                    }
+                }
+            }
+            
+            /*
             if (EndState == "0") // ทุกปลายทาง
             {
                 if (type == "0")// ทุกประเภทรายการ
@@ -322,7 +452,7 @@ namespace ClaimProject
                     }
                 }
             }
-
+            */
             MySqlDataAdapter da = function.MySqlSelectDataSet(sqlsendSearch);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
@@ -396,11 +526,11 @@ namespace ClaimProject
                 //e.Row.Attributes["onmouseover"] = "onMouseOver('" + (e.Row.RowIndex + 1) + "')";
                 //e.Row.Attributes["onmouseout"] = "onMouseOut('" + (e.Row.RowIndex + 1) + "')";
             }
-            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
-            if (lbRowNum != null)
-            {
-                lbRowNum.Text = (gridTranlist.Rows.Count + 1).ToString() + ".";
-            }
+            //Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            //if (lbRowNum != null)
+            //{
+            //    lbRowNum.Text = (gridTranlist.Rows.Count + 1).ToString() + ".";
+            //}
 
             LinkButton printReport1 = (LinkButton)(e.Row.FindControl("printReport1"));
             if (printReport1 != null)
@@ -568,7 +698,7 @@ namespace ClaimProject
                 string noteNumber = txtNumto.Text;
                 string transStat = "";
                 string cpointName = "";
-                string doc_num = "";
+                //string doc_num = "";
                 string title = "";
                 string noteTo = "";
                 string name = "";

@@ -107,12 +107,12 @@
                     PagerSettings-FirstPageText="หน้าแรก"  
                     PagerSettings-LastPageText="หน้าสุดท้าย"
                     AllowPaging="true">                    
-                    <Columns>                       
-                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-center">
-                                <ItemTemplate>
-                                     <%# Container.DataItemIndex + 1+"." %>
-                                </ItemTemplate>
-                        </asp:TemplateField>                 
+                    <Columns>
+                        <asp:TemplateField HeaderText="เลขอ้างอิง" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbTransId" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="วันที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
                             <ItemTemplate>
                                 <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>' ></asp:Label>
@@ -132,17 +132,7 @@
                             <ItemTemplate>
                                 <asp:Label ID="lbEndtrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_recieve") %>' ></asp:Label>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ผู้แจ้ง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbsenderr" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_send") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ผู้ตรวจรับ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbreciever" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name_recieve") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>                                                
+                        </asp:TemplateField>                                                               
                         <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Font-Size ="Large" >
                             <ItemTemplate>
                                 <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>

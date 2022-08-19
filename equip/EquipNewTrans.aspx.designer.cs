@@ -157,6 +157,15 @@ namespace ClaimProject.equip {
         protected global::System.Web.UI.WebControls.DropDownList ddlPosition;
         
         /// <summary>
+        /// txtTimeSend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTimeSend;
+        
+        /// <summary>
         /// divSubmitFirst control.
         /// </summary>
         /// <remarks>
@@ -668,6 +677,15 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPosSender;
+        
+        /// <summary>
+        /// lbmdrefNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbmdrefNo;
         
         /// <summary>
         /// lbtnGoReportrd control.

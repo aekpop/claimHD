@@ -26,7 +26,6 @@ namespace ClaimProject.Report
                 string SenderN = Session["SenderTran"].ToString();
                 string SendPos = Session["PosSender"].ToString();
                 string copyHead = Session["CopyTran"].ToString();
-
                 string sqlParameter = "SELECT toll_name FROM tbl_transfer " +
                                     " JOIN tbl_toll ON tbl_toll.toll_id = tbl_transfer.toll_send " +
                                     " WHERE trans_id = '" + tranIDRef + "'";
