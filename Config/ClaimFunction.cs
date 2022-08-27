@@ -772,6 +772,6 @@ namespace ClaimProject.Config
             {
                 Console.WriteLine(ex.ToString());
             }
-        }
+        } 
     }
 }

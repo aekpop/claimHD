@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>08/15/2022 10:49:57</publishTime>
+      <publishTime>08/19/2022 13:30:39</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>08/15/2022 10:49:57</publishTime>
+      <publishTime>08/19/2022 13:30:39</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>08/15/2022 10:49:58</publishTime>
+      <publishTime>08/19/2022 13:30:40</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -3505,7 +3505,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2020 16:10:22</publishTime>
     </File>
     <File Include="equip/EquipNewTrans.aspx">
-      <publishTime>12/15/2021 17:57:51</publishTime>
+      <publishTime>08/19/2022 13:26:45</publishTime>
     </File>
     <File Include="equip/EquipReportAll.aspx">
       <publishTime>12/13/2021 18:37:18</publishTime>
@@ -3520,13 +3520,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/30/2020 11:13:02</publishTime>
     </File>
     <File Include="equip/EquipTranGetList.aspx">
-      <publishTime>12/16/2021 18:34:12</publishTime>
+      <publishTime>08/18/2022 16:34:29</publishTime>
     </File>
     <File Include="equip/EquipTranGetout.aspx">
       <publishTime>07/16/2020 09:49:46</publishTime>
     </File>
     <File Include="equip/EquipTranList.aspx">
-      <publishTime>10/11/2021 15:13:49</publishTime>
+      <publishTime>08/19/2022 09:49:33</publishTime>
     </File>
     <File Include="equip/EquipTranOutList.aspx">
       <publishTime>07/10/2020 11:27:56</publishTime>
