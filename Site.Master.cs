@@ -38,7 +38,7 @@ namespace ClaimProject
 
             if (Session["User"] == null)
             {
-                Response.Redirect("/Login");
+                Response.Redirect("/pageinfo");
             }
             else
             {

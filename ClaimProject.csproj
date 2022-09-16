@@ -358,6 +358,7 @@
     <Content Include="Content\brands.css" />
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\CM.css" />
+    <Content Include="Content\custom-signin.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\demo.js" />
@@ -443,7 +444,6 @@
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
-    <Content Include="Content\lightbox.css" />
     <Content Include="Content\material-dashboard.css" />
     <Content Include="Content\material-Icons.css" />
     <Content Include="Content\octicons.css" />
@@ -505,6 +505,7 @@
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
     <Content Include="Content\ratioStyle.css" />
+    <Content Include="Content\webfonts\lightbox.css" />
     <Content Include="crystalreportviewers13\ActiveXControls\CRViewer.dll" />
     <Content Include="crystalreportviewers13\ActiveXControls\CRViewer_res_cs.dll" />
     <Content Include="crystalreportviewers13\ActiveXControls\CRViewer_res_da.dll" />
@@ -1278,6 +1279,7 @@
     <Content Include="lib\Assembly.Software.Profile.dll" />
     <Content Include="lib\Assembly.Software.Profile.xml" />
     <Content Include="Login.aspx" />
+    <Content Include="pageinfo.aspx" />
     <Content Include="PM\AdminPMReport.aspx" />
     <Content Include="PM\PMDetailForm.aspx" />
     <Content Include="PM\PMListForm.aspx" />
@@ -2024,6 +2026,13 @@
       <DependentUpon>DataSetEquip.xsd</DependentUpon>
     </Compile>
     <Compile Include="NuGet.Modules\JsonHelper.cs" />
+    <Compile Include="pageinfo.aspx.cs">
+      <DependentUpon>pageinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pageinfo.aspx.designer.cs">
+      <DependentUpon>pageinfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PM\AdminPMReport.aspx.cs">
       <DependentUpon>AdminPMReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -11,6 +11,7 @@ namespace ClaimProject
     public partial class Login : System.Web.UI.Page
     {
         ClaimFunction function = new ClaimFunction();
+
         private string IPAddress;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -21,7 +22,6 @@ namespace ClaimProject
                 function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
                 string sqlp = "SELECT * FROM tbl_annex ";
                 function.getListItem(txtPoint, sqlp, "Annex_name", "Annex_id");
-
             }
         }
 
@@ -265,8 +265,6 @@ namespace ClaimProject
 
             }
         }
-
-        
 
         public string GetIPAddress()
         {

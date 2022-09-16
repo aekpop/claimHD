@@ -616,6 +616,8 @@ namespace ClaimProject.CM
                 lbDatesRecheck.Visible = true;
                 //lbTimes.Visible = true;
                 lbTimesRecheck.Visible = true;
+                lbStatusH.Visible = true;
+                lbStatusRecheck.Visible = true;
             }
 
             string imgS = "/CM/Upload/NoImageAvailable.jpg";

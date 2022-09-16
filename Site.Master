@@ -2,32 +2,45 @@
 
 <!DOCTYPE html>
 <style>
-        @font-face {
-            font-family: 'Prompt';
-            src: url('/fonts/Prompt-Light.ttf') format('truetype');
-        }
-        
-        .wrapper    { display: none; padding: 0 0; }
-        .wrapper h1 { font-size: 2em; line-height: 1em; margin-top: 1.1em; font-weight: bold; }
-        .wrapper p  { font-size: 1.5em; line-height: 1.275em; margin-top: 0.15em; }
+    @font-face {
+        font-family: 'Prompt';
+        src: url('/fonts/Prompt-Light.ttf') format('truetype');
+    }
 
-        #loading {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(192, 192, 192, 0.5);
-            background-image: url('../img/MnyxU.gif');
-            background-repeat: no-repeat;
-            background-position: center;
+    .wrapper {
+        display: none;
+        padding: 0 0;
+    }
+
+        .wrapper h1 {
+            font-size: 2em;
+            line-height: 1em;
+            margin-top: 1.1em;
+            font-weight: bold;
         }
 
-    </style>
-<html lang="th" >
-<head runat="server"> 
+        .wrapper p {
+            font-size: 1.5em;
+            line-height: 1.275em;
+            margin-top: 0.15em;
+        }
+
+    #loading {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(192, 192, 192, 0.5);
+        background-image: url('../img/MnyxU.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<html lang="th">
+<head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=tis-620" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System</title>
@@ -38,7 +51,7 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />   
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/dashboard.css" rel="stylesheet" />
     <link href="~/Content/octicons.css" rel="stylesheet" />
     <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
@@ -51,9 +64,9 @@
     <link href="Content/custom.css" rel="stylesheet" />
 
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
-    
+
 </head>
-<body style="padding-top:0px; ">   
+<body style="padding-top: 0px;">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -79,13 +92,14 @@
 
         <div id="loading"></div>
 
-        <div class="wrapper ">      
-            <div class="panel panel-default" >           
+        <div class="wrapper ">
+            <div class="panel panel-default">
                 <nav class="navbar fixed-top sticky-top navbar-expand-sm navbar-dark bg-dark">
                     <div class="container-fluid">
-                        <div class="navbar-wrapper">                    
-                            <a><img src="/img/j4.png" style="width:35px" /></a>
-                            <a class="navbar-brand" href="#pablo" style="font-size:18px; font-family:Prompt"><%:Page.Title %></a>
+                        <div class="navbar-wrapper">
+                            <a>
+                                <img src="/img/j4.png" style="width: 35px" /></a>
+                            <a class="navbar-brand" href="#pablo" style="font-size: 18px; font-family: Prompt"><%:Page.Title %></a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -93,9 +107,9 @@
 
                         </button>
                         <!--<div class="collapse navbar-collapse justify-content-end">-->
-                            <div class="collapse navbar-collapse justify-content-end ">
-                                <ul class="navbar-nav" style="font-size:12px; font-family:Prompt">
-                                    <!--<li>
+                        <div class="collapse navbar-collapse justify-content-end ">
+                            <ul class="navbar-nav" style="font-size: 12px; font-family: Prompt">
+                                <!--<li>
                                             <div class="input-group no-border">
                                                 <input type="text" value="" class="form-control" placeholder="Search...">
                                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -104,179 +118,178 @@
                                                 </button>
                                             </div>
                                         </li>-->
-                                    <li class="nav-item dropdown" runat="server" id="nav0" >
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">Admin อุบัติเหตุ</span>
+                                <li class="nav-item dropdown" runat="server" >
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/pageinfo" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;" >Info</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown" runat="server" id="nav0">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-home" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">Admin อุบัติเหตุ</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/">Dashboard</a>
+                                        <a class="dropdown-item" href="/Techno/TechnoReport">Report</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="nav1">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Claim/DefaultClaim" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">อุบัติเหตุ</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/Claim/DefaultClaim">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/Claim/claimForm?add=true">แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">รายงาน</div>
+                                        <a class="dropdown-item" href="/Claim/claimForm">รายการอุบัติเหตุ</a>
+                                        <a class="dropdown-item" href="/Claim/claimLine">ส่งรายงาน (Line)</a>
+                                        <a class="dropdown-item" href="/Claim/ClaimDevice">รายการอุปกรณ์ค้างซ่อม</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">สถิติ</div>
+                                        <a class="dropdown-item" href="/ReportView/">ข้อมูลทางสถิติ</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown" runat="server" id="Li2">
+                                    <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">บำรุงรักษา</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/CM/DefaultCM">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/CM/CMDetailForm">แจ้งซ่อมอุปกรณ์</a>
+                                        <a class="dropdown-item" href="/CM/CMEditForm">การแก้ไข</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">รายงาน</div>
+                                        <a class="dropdown-item" href="/CM/CMLine">ส่งรายงาน (Line)</a>
+                                        <a class="dropdown-item" href="/CM/CMReport">รายงานการแจ้งซ่อม</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="Li3">
+                                    <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">บำรุงรักษา</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/CM/DefaultCM">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/CM/CMDetailForm">แจ้งซ่อมอุปกรณ์</a>
+                                        <a class="dropdown-item" href="/CM/CMEditForm">การแก้ไข</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">รายงาน</div>
+                                        <a class="dropdown-item" href="/CM/CMLine">ส่งรายงาน Line</a>
+                                        <a class="dropdown-item" href="/CM/CMReport">รายงานการแจ้งซ่อม</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">ผู้ดูแลระบบ(Admin)</div>
+                                        <a class="dropdown-item" href="/CM/CMSurveyForm">ตรวจสอบรายการแจ้งซ่อม จากด่านฯ</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="equipDiv">
+                                    <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">ครุภัณฑ์</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/equip/EquipDefault">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/equip/EquipAdd">บัญชีครุภัณฑ์</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">โอนย้าย</div>
+                                        <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="Li4">
+                                    <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">ครุภัณฑ์</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/equip/EquipDefault">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/equip/EquipAdd">บัญชี ครุภัณฑ์</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">โอนย้าย</div>
+                                        <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header text-danger">ผู้ดูแลระบบ(Admin)</div>
+                                        <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์ใหม่</a>
+                                        <a class="dropdown-item" href="/equip/EquipCheckList">รายงานโอนย้าย(ของด่านฯ)</a>
+                                        <a class="dropdown-item" href="/equip/EquipHistory">รายงานประวัติโอนย้าย(แยกตามครุภัณฑ์)</a>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="nav2" visible="false">
+                                    <a class="nav-link" href="/User/UserForm" title="เปลี่ยนรหัสผ่าน">
+                                        <i class="fa fa-refresh" style="font-size: 22px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="nav3">
+                                    <a class="nav-link" href="/settingPage">
+                                        <i class="fa fa-gear" style="font-size: 22px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="Li1" visible="false">
+                                    <a class="nav-link" href="http://192.168.101.91:90/webboard/viewforum.php?f=4&sid=b612e1a12b01c2f0acc3094666e19434" target="_blank" title="ถาม-ตอบปัญหาการใช้งาน">
+                                        <i class="fa fa-copy" style="font-size: 22px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="searchEn" visible="false">
+                                    <a class="nav-link" href="/Search/searchmain" title="รายการบัตรผิดปกติ">
+                                        <i class="far fa-lightbulb" style="font-size: 18px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <asp:Label ID="lbUser" runat="server" ForeColor="White"></asp:Label>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="/User/UserForm">
+                                            <i class="fa fa-refresh col-2"></i>
+                                            <span class="col-10">เปลี่ยนรหัสผ่าน</span>
                                         </a>
-                                        <div class="dropdown-menu" >
-                                            <a class="dropdown-item" href="/" >Dashboard</a>
-                                            <a class="dropdown-item" href="/Techno/TechnoReport" >Report</a>
-                                        </div>
-                                    </li>
+                                        <div class="dropdown-divider"></div>
 
-                                    <li class="nav-item dropdown" runat="server" id="nav1">
-                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Claim/DefaultClaim"  role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">อุบัติเหตุ</span>
-                                            </a>
-                                        <div class="dropdown-menu" >
-                                            <a class="dropdown-item" href="/Claim/DefaultClaim" >หน้าแรก</a>
-                                            <a class="dropdown-item" href="/Claim/claimForm?add=true" >แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="dropdown-header text-danger">รายงาน</div>
-                                            <a class="dropdown-item" href="/Claim/claimForm" >รายการอุบัติเหตุ</a>
-                                            <a class="dropdown-item" href="/Claim/claimLine" >ส่งรายงาน (Line)</a>
-                                            <a class="dropdown-item" href="/Claim/ClaimDevice" >รายการอุปกรณ์ค้างซ่อม</a>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="dropdown-header text-danger">สถิติ</div>
-                                            <a class="dropdown-item" href="/ReportView/" >ข้อมูลทางสถิติ</a>
-                                        </div>
-                                        </li>
-                                        <li class="nav-item dropdown" runat="server" id="Li2">
-                                            <a class="nav-link dropdown-toggle" href="/CM/DefaultCM"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">บำรุงรักษา</span>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/CM/DefaultCM" >หน้าแรก</a>
-                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อมอุปกรณ์</a>
-                                            <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="dropdown-header text-danger">รายงาน</div>
-                                            <a class="dropdown-item" href="/CM/CMLine" >ส่งรายงาน (Line)</a>
-                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานการแจ้งซ่อม</a>     
-                                        </div>
-                                        </li>
-
-                                            <li class="nav-item dropdown" runat="server" id="Li3">
-                                            <a class="nav-link dropdown-toggle" href="/CM/DefaultCM"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">บำรุงรักษา</span>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/CM/DefaultCM" >หน้าแรก</a>
-                                            <a class="dropdown-item" href="/CM/CMDetailForm" >แจ้งซ่อมอุปกรณ์</a>
-                                            <a class="dropdown-item" href="/CM/CMEditForm" >การแก้ไข</a>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="dropdown-header text-danger">รายงาน</div>
-                                            <a class="dropdown-item" href="/CM/CMLine" >ส่งรายงาน Line</a>
-                                            <a class="dropdown-item" href="/CM/CMReport" >รายงานการแจ้งซ่อม</a>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="dropdown-header text-danger">ผู้ดูแลระบบ(Admin)</div>
-                                            <a class="dropdown-item" href="/CM/CMSurveyForm" >ตรวจสอบรายการแจ้งซ่อม จากด่านฯ</a>
-                                        </div>
-                                        </li>
-                      
-                                        <li class="nav-item dropdown" runat="server" id="equipDiv" >
-                                            <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">ครุภัณฑ์</span>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/equip/EquipDefault" >หน้าแรก</a>
-                                            <a class="dropdown-item" href="/equip/EquipAdd">บัญชีครุภัณฑ์</a>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="dropdown-header text-danger">โอนย้าย</div>
-                                            <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
-                                            <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
-                                                <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
-    
-                                        </div>
-                                        </li>
-
-                                            <li class="nav-item dropdown" runat="server" id="Li4" >
-                                                    <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col-10" style="font-size: 14px;">ครุภัณฑ์</span>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="/equip/EquipDefault" >หน้าแรก</a>
-                                                    <a class="dropdown-item" href="/equip/EquipAdd">บัญชี ครุภัณฑ์</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <div class="dropdown-header text-danger">โอนย้าย</div>
-                                                    <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
-                                                    <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
-                                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <div class="dropdown-header text-danger">ผู้ดูแลระบบ(Admin)</div>
-                                                    <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์ใหม่</a>
-                                                    <a class="dropdown-item" href="/equip/EquipCheckList">รายงานโอนย้าย(ของด่านฯ)</a>
-                                                    <a class="dropdown-item" href="/equip/EquipHistory">รายงานประวัติโอนย้าย(แยกตามครุภัณฑ์)</a>
-    
-                                                </div>
-                                                </li>
-
-                                        <li class="nav-item" runat="server" id="nav2" visible="false" >
-                                            <a class="nav-link" href="/User/UserForm" title="เปลี่ยนรหัสผ่าน">
-                                                <i class="fa fa-refresh" style="font-size: 22px;"></i>
-                                            </a>
-                                        </li> 
-                                    
-                                        <li class="nav-item" runat="server" id="nav3" >
-                                            <a class="nav-link" href="/settingPage" >
-                                                <i class="fa fa-gear" style="font-size: 22px;"></i>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item" runat="server" id="Li1" visible="false">
-                                            <a class="nav-link" href="http://192.168.101.91:90/webboard/viewforum.php?f=4&sid=b612e1a12b01c2f0acc3094666e19434" target="_blank" title="ถาม-ตอบปัญหาการใช้งาน">
-                                                <i class="fa fa-copy" style="font-size: 22px;"></i>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item" runat="server" id="searchEn" visible="false">
-                                            <a class="nav-link" href="/Search/searchmain" title="รายการบัตรผิดปกติ">
-                                                <i class="far fa-lightbulb" style="font-size: 18px;"></i>
-                                            </a>
-                                        </li>
-
-                                    <li class="nav-item dropdown">
-                                           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-user-circle-o"></i>
-                                               <asp:Label ID="lbUser" runat="server" ForeColor="White" ></asp:Label>
-                                           </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="/User/UserForm">
-                                                    <i class="fa fa-refresh col-2" ></i> 
-                                                    <span class="col-10">เปลี่ยนรหัสผ่าน</span>
-                                            </a>
-                                            <div class="dropdown-divider"></div>
-                                            
-                                                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="col-11 btn" OnClick="btnLogout_Click" Visible="true" ForeColor="Black" Text=""><span class="col-10">ออกระบบ</span></asp:LinkButton>                                                                                         
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        
-                                    </li>
-                                </ul>
-                            </div>
+                                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="col-11 btn" OnClick="btnLogout_Click" Visible="true" ForeColor="Black" Text=""><span class="col-10">ออกระบบ</span></asp:LinkButton>
+                                    </div>
+                                </li>
+                                <li class="nav-item"></li>
+                            </ul>
+                        </div>
                         <!--</div> -->
                     </div>
                 </nav>
-                <!-- End Navbar -->  
+                <!-- End Navbar -->
                 <div class="content">
-                        <div class="container-fluid">
-                            <asp:Label ID="lblText" runat="server"></asp:Label>
-                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                            </asp:ContentPlaceHolder>
-
-                            
-
-                        </div>
+                    <div class="container-fluid">
+                        <asp:Label ID="lblText" runat="server"></asp:Label>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
                 </div>
-
-                
 
                 <footer class="footer">
                     <div class="container-fluid">
-                        
+
                         <div class="copyright float-right">
                             &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
                         </div>
-                        <br /><br /><br />
-                        <div class="row" >
-                            <asp:TextBox ID="txtUrlchk"  runat="server" Visible="false" OnTextChanged="txtUrlchk_TextChanged" ></asp:TextBox>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="row">
+                            <asp:TextBox ID="txtUrlchk" runat="server" Visible="false" OnTextChanged="txtUrlchk_TextChanged"></asp:TextBox>
                         </div>
                     </div>
                 </footer>
             </div>
         </div>
-        
     </form>
     <script src="/Scripts/popper.min.js"></script>
     <script src="/Scripts/umd/popper.js"></script>
@@ -312,7 +325,7 @@
                     $(".datepicker").datepicker("setDate", new Date());
                 }
                 //$(".notreadonly").val("");
-            
+
             }
         });
 
@@ -410,7 +423,7 @@
                             text: false
                         })
                         .removeClass("ui-corner-all")
-                        .addClass("custom-combobox-toggle ui-corner-right")                        
+                        .addClass("custom-combobox-toggle ui-corner-right")
 
                         .on("mousedown", function () {
                             wasOpen = input.autocomplete("widget").is(":visible");
@@ -486,8 +499,7 @@
         });
     </script>
     <script>
-        function ConfirmToAdd()
-        {
+        function ConfirmToAdd() {
             if (navchk != "") {
                 if (confirm('ยืนยันที่จะออกจากหน้านี้ใช่หรือไม่ ?')) {
                     return true;
@@ -497,49 +509,48 @@
                 }
             }
             else { return true; }
-            
+
         }
     </script>
     <script type="text/javascript"> 
-        function CompareConfirm(msg)
-        {
+        function CompareConfirm(msg) {
             var str1 = "1";
             var str2 = "2";
-            
-            if (str1 === str2) 
-           {
+
+            if (str1 === str2) {
                 // your logic here
                 return false;
-            } 
-            else 
-           {
+            }
+            else {
                 // your logic here
                 return confirm(msg);
             }
-        }        
+        }
 
         $('.dropdown-toggle').dropdown()
 
         // Start Loading Screen while page loads 
         function onReady(callback) {
-          var intervalId = window.setInterval(function() {
-            if (document.getElementsByTagName('body')[0] !== undefined) {
-              window.clearInterval(intervalId);
-              callback.call(this);
-            }
-          }, 500);
+            var intervalId = window.setInterval(function () {
+                if (document.getElementsByTagName('body')[0] !== undefined) {
+                    window.clearInterval(intervalId);
+                    callback.call(this);
+                }
+            }, 500);
         }
 
         function setVisible(selector, visible) {
-          document.querySelector(selector).style.display = visible ? 'block' : 'none';
+            document.querySelector(selector).style.display = visible ? 'block' : 'none';
         }
 
-        onReady(function() {
-          setVisible('.wrapper', true);
-          setVisible('#loading', false);
+        onReady(function () {
+            setVisible('.wrapper', true);
+            setVisible('#loading', false);
         });
         // End Loading Screen while page loads 
         $('html').css('overflow', 'hidden');
+
+
 
     </script>
 </body>

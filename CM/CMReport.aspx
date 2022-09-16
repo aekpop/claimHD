@@ -223,90 +223,98 @@
                 </div>
                 <div class="container" style="font-size: 32px; font-family: 'TH SarabunPSK'; font-weight: 200">
                     <div class="modal-body" style="line-height: inherit;">
-                        <div class="row" style="height: 440px">
-                            <div class="card border-white col-sm-5">
-                                <asp:Label ID="lbImageStart" runat="server" Text="ภาพก่อนซ่อม"></asp:Label>
-                                <asp:Image ID="ImgEditEQ" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
-                            </div>
-                            <div class="col-sm-2"></div>
-                            <div class="card border-white col-sm-5">
-                                <asp:Label ID="lbImageEnd" runat="server" Text="ภาพหลังซ่อม"></asp:Label>
-                                <asp:Image ID="ImgEditEQE" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
-                            </div>
-                        </div>
-                        <!------------------------------------------------------------------------------------------------------>
                         <div class="row">
                             <div class="col-xl-8">
-                                <div class="form-group bmd-form-group" >
+                                <div class="form-group bmd-form-group" style="font-size:38px;">
                                     <span class="label label-primary">อุปกรณ์ : </span>
                                     <asp:Label ID="lbdeviceRecheck" Enabled="false" runat="server" CssClass="font-weight-bold"/>
                                 </div>
                             </div>
                             <div class="col-xl-4">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">สถานะ : </span>
-                                    <asp:Label ID="lbStatusRecheck" Enabled="false" runat="server"></asp:Label>
+                                    <asp:Label ID="lbStatusH" Enabled="false" runat="server" Visible="false">สถานะ : </asp:Label>
+                                    <asp:Label ID="lbStatusRecheck" Enabled="false" runat="server" Visible="false"></asp:Label>
                                 </div>
                             </div>
                         </div>
+                        <div class="row" style="height: 440px">
+                            <div class="card border-white col-sm-6" style="font-size: 32px;">
+                                <asp:Label ID="lbImageStart" runat="server" Text="ภาพก่อนซ่อม" CssClass="text-center "></asp:Label>
+                                <asp:Image ID="ImgEditEQ" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
+                            </div>
+
+                            <div class="card border-white col-sm-6" style="font-size: 32px;">
+                                <asp:Label ID="lbImageEnd" runat="server" Text="ภาพหลังซ่อม" CssClass="text-center "></asp:Label>
+                                <asp:Image ID="ImgEditEQE" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
+                            </div>
+                        </div>
+                        <!------------------------------------------------------------------------------------------------------>
                         <div class="row">
-                            <div class="col-xl-4 text-danger">
+                            <div class="col-xl-6 text-danger">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">อาการผิดปกติ : </span>
                                     <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-xl-4 text-danger">
-                                <div class="form-group bmd-form-group">
-                                    <asp:Label ID="lbDates" Enabled="false" runat="server" Visible="false">วันที่แจ้ง : </asp:Label>
-                                    <asp:Label ID="lbDatesRecheck" Enabled="false" runat="server" Visible="false" />@<asp:Label ID="lbTimesRecheck" Enabled="false" runat="server" Visible="false" />
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">ผู้แจ้ง : </span>
-                                    <asp:Label ID="lbUserRecheck" Enabled="false" runat="server" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-4 text-success">
+                            
+                            <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">วิธีการแก้ไข : </span>
                                     <asp:Label ID="lbMethodRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-xl-4 text-success">
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <span class="label label-primary">ผู้แจ้ง : </span>
+                                    <asp:Label ID="lbUserRecheck" Enabled="false" runat="server" />
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">วันที่เข้าแก้ไข :</span>
                                     <asp:Label ID="lbDateERecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeERecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-xl-4"></div>
+                            
+                            
                         </div>
                         <div class="row">
-                            <div class="col-xl-4"></div>
-                            <div class="col-xl-4 text-success">
+                            <div class="col-xl-6 ">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label ID="lbDates" Enabled="false" runat="server" Visible="false">วันที่แจ้ง : </asp:Label>
+                                    <asp:Label ID="lbDatesRecheck" Enabled="false" runat="server" Visible="false" />@<asp:Label ID="lbTimesRecheck" Enabled="false" runat="server" Visible="false" />
+                                </div>
+                            </div>
+                            <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">วันที่แก้ไขเสร็จ : </span>
                                     <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-xl-4">
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6"></div>
+                            <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">ผู้รับรอง : </span>
                                     <asp:Label ID="lbUserEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
+                            
+                            
                         </div>
                         <div class="row">
-                            <div class="col-xl-8">
+                            <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">หมายเหตุ : </span>
                                     <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-xl-4">
+                            <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">ใบ Service : </span>
                                     <asp:Label ID="lbServiceForm" Enabled="false" runat="server" />
@@ -316,7 +324,7 @@
                     </div>
                     <div class="modal-footer">
                         <asp:Label ID="Imgfilename" runat="server" Visible="false"></asp:Label>
-                        <asp:LinkButton ID="ImgImageDocSer" runat="server" Text="ใบ Service" CssClass="btn btn-default" OnClick="ImgImageDocSer_Click" />
+                        <asp:LinkButton ID="ImgImageDocSer" runat="server" Text="ใบ Service" CssClass="btn btn-info" OnClick="ImgImageDocSer_Click" />
                         <asp:LinkButton ID="btnReverb" runat="server" Text="Reverb" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');" />
                     </div>
                 </div>

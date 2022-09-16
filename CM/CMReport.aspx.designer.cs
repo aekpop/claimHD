@@ -274,6 +274,33 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbChannelRecheck;
         
         /// <summary>
+        /// lbdeviceRecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbdeviceRecheck;
+        
+        /// <summary>
+        /// lbStatusH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStatusH;
+        
+        /// <summary>
+        /// lbStatusRecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStatusRecheck;
+        
+        /// <summary>
         /// lbImageStart control.
         /// </summary>
         /// <remarks>
@@ -310,24 +337,6 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Image ImgEditEQE;
         
         /// <summary>
-        /// lbdeviceRecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbdeviceRecheck;
-        
-        /// <summary>
-        /// lbStatusRecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbStatusRecheck;
-        
-        /// <summary>
         /// lbProblemRecheck control.
         /// </summary>
         /// <remarks>
@@ -335,6 +344,42 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbProblemRecheck;
+        
+        /// <summary>
+        /// lbMethodRecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbMethodRecheck;
+        
+        /// <summary>
+        /// lbUserRecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUserRecheck;
+        
+        /// <summary>
+        /// lbDateERecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDateERecheck;
+        
+        /// <summary>
+        /// lbTimeERecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTimeERecheck;
         
         /// <summary>
         /// lbDates control.
@@ -362,42 +407,6 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbTimesRecheck;
-        
-        /// <summary>
-        /// lbUserRecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbUserRecheck;
-        
-        /// <summary>
-        /// lbMethodRecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbMethodRecheck;
-        
-        /// <summary>
-        /// lbDateERecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDateERecheck;
-        
-        /// <summary>
-        /// lbTimeERecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTimeERecheck;
         
         /// <summary>
         /// lbDateEJRecheck control.
