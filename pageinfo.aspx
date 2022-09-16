@@ -38,9 +38,8 @@
                     <a class="navbar-brand" href="/Login">
                         <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp เข้าสู่ระบบ</a>
                 </div>
-               
         </nav>
-    
+    <br />
         <div class="col-md-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

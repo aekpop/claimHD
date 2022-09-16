@@ -741,7 +741,7 @@ namespace ClaimProject.CM
             lbdeviceRecheck.Text = rt.GetString("device_initials");
             lbProblemRecheck.Text = rt.GetString("cm_detail_problem");
             lbDatesRecheck.Text = rt.GetString("cm_detail_sdate");
-            lbTimesRecheck.Text = rt.GetString("cm_detail_stime");
+            lbTimesRecheck.Text = "@" + rt.GetString("cm_detail_stime");
             lbUserRecheck.Text = rt.GetString("name");
 
             Fname = "~" + imgSer;

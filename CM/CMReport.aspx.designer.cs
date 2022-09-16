@@ -283,6 +283,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbdeviceRecheck;
         
         /// <summary>
+        /// lb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb;
+        
+        /// <summary>
         /// lbStatusH control.
         /// </summary>
         /// <remarks>
@@ -427,15 +436,6 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbTimeEJRecheck;
         
         /// <summary>
-        /// lbUserEJRecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbUserEJRecheck;
-        
-        /// <summary>
         /// lbNodeRecheck control.
         /// </summary>
         /// <remarks>
@@ -443,6 +443,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbNodeRecheck;
+        
+        /// <summary>
+        /// lbUserEJRecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUserEJRecheck;
         
         /// <summary>
         /// lbServiceForm control.

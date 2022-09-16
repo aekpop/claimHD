@@ -205,29 +205,31 @@
     <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
-                <div class="modal-header" style="font-family: 'TH SarabunPSK'; font-size: 50px; font-weight: bold;">
+                <div class="modal-header" style="font-family: 'TH SarabunPSK'; font-size: 40px; font-weight: bold;">
                     <div class="modal-title">
                         <asp:Label ID="pkeq" runat="server" Visible="false" Font-Size="Smaller"></asp:Label>
                         <asp:Label ID="lbrefRecheck" Enabled="false" runat="server" Visible="false" />
-
                         ด่านฯ 
                                 <asp:Label ID="lbCpointRecheck" Enabled="false" runat="server" />
                         <asp:Label ID="lbPointRecheck" Enabled="false" runat="server" />
                         [
-                                      <asp:Label ID="lbChannelRecheck" Enabled="false" runat="server" />
+                                <asp:Label ID="lbChannelRecheck" Enabled="false" runat="server" />
+                        ]&nbsp อุปกรณ์ : [
+                                    <asp:Label ID="lbdeviceRecheck" Enabled="false" runat="server" CssClass="font-weight-bold" />
                         ]
-                    </div>
+                                </div>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="container" style="font-size: 32px; font-family: 'TH SarabunPSK'; font-weight: 200">
                     <div class="modal-body" style="line-height: inherit;">
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-xl-8">
-                                <div class="form-group bmd-form-group" style="font-size:38px;">
+                                <div class="form-group bmd-form-group" style="font-size: 38px;">
                                     <span class="label label-primary">อุปกรณ์ : </span>
-                                    <asp:Label ID="lbdeviceRecheck" Enabled="false" runat="server" CssClass="font-weight-bold"/>
+                                    <asp:Label ID="lb" Enabled="false" runat="server" CssClass="font-weight-bold" />
                                 </div>
                             </div>
                             <div class="col-xl-4">
@@ -237,13 +239,14 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                         <div class="row" style="height: 440px">
-                            <div class="card border-white col-sm-6" style="font-size: 32px;">
+                            <div class="card border-white col-sm-6" style="font-size: 24px;">
                                 <asp:Label ID="lbImageStart" runat="server" Text="ภาพก่อนซ่อม" CssClass="text-center "></asp:Label>
                                 <asp:Image ID="ImgEditEQ" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
                             </div>
 
-                            <div class="card border-white col-sm-6" style="font-size: 32px;">
+                            <div class="card border-white col-sm-6" style="font-size: 24px;">
                                 <asp:Label ID="lbImageEnd" runat="server" Text="ภาพหลังซ่อม" CssClass="text-center "></asp:Label>
                                 <asp:Image ID="ImgEditEQE" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
                             </div>
@@ -256,7 +259,7 @@
                                     <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            
+
                             <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">วิธีการแก้ไข : </span>
@@ -265,7 +268,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            
+
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">ผู้แจ้ง : </span>
@@ -278,8 +281,8 @@
                                     <asp:Label ID="lbDateERecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeERecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            
-                            
+
+
                         </div>
                         <div class="row">
                             <div class="col-xl-6 ">
@@ -291,21 +294,10 @@
                             <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">วันที่แก้ไขเสร็จ : </span>
-                                    <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server" />
+                                    <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" /><asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6"></div>
-                            <div class="col-xl-6">
-                                <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">ผู้รับรอง : </span>
-                                    <asp:Label ID="lbUserEJRecheck" Enabled="false" runat="server" />
-                                </div>
-                            </div>
-                            
-                            
+
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
@@ -313,6 +305,19 @@
                                     <span class="label label-primary">หมายเหตุ : </span>
                                     <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server" />
                                 </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <span class="label label-primary">ผู้รับรอง : </span>
+                                    <asp:Label ID="lbUserEJRecheck" Enabled="false" runat="server" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
