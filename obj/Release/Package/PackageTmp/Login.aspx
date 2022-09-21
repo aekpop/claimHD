@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ClaimProject.Login" %>
 
 <!DOCTYPE html>
+
 <html lang="th">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=tis-620" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,10 +22,11 @@
     <link href="/Content/signin.css" rel="stylesheet">
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
     <link href="/Content/form-design-new.css" rel="stylesheet" />
-
+    <link href="/Content/custom-signin.css" rel="stylesheet" />
 </head>
 
 <body class="text-center">
+
     <div class="container text-center">
         <div class="card form-signin">
             <div class="card-header card-header-warning card-header-icon" style="color: black;">
@@ -67,7 +70,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text fa fa-building" style="font-size: x-large; width: 50px;"></span>
                                 </div>
-                                <asp:DropDownList ID="txtPoint" runat="server" CssClass="form-control" Visible="true" ></asp:DropDownList>
+                                <asp:DropDownList ID="txtPoint" runat="server" CssClass="form-control" Visible="true"></asp:DropDownList>
                             </div>
                             <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-warning col-6" OnClick="btnSubmit_Click1" />
                             <br />
@@ -81,10 +84,12 @@
                     <p style="font-size: 18px; text-align: center;">&copy; <%=DateTime.Now.Year%> - ฝ่ายจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง </p>
                 </div>
             </div>
-        </div>
+        </div>             
     </div>
+
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
-    <script src="Scripts/bootstrap-material-design.min.js"></script>   
+    <script src="Scripts/bootstrap-material-design.min.js"></script>
+    
 </body>
 </html>

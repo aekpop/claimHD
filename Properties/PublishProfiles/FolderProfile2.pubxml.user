@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
-      <publishTime>10/04/2018 11:59:50</publishTime>
+      <publishTime>09/07/2022 18:03:09</publishTime>
     </File>
     <File Include="ApplicationInsights.config">
       <publishTime>10/01/2018 16:43:58</publishTime>
@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>08/29/2022 07:03:01</publishTime>
+      <publishTime>09/21/2022 16:24:59</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>08/29/2022 07:03:01</publishTime>
+      <publishTime>09/21/2022 16:24:59</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>08/29/2022 07:03:02</publishTime>
+      <publishTime>09/21/2022 16:25:01</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -616,28 +616,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/11/2020 22:28:24</publishTime>
     </File>
     <File Include="Claim/DefaultClaim.aspx">
-      <publishTime>05/05/2022 13:29:53</publishTime>
+      <publishTime>09/21/2022 12:46:41</publishTime>
     </File>
     <File Include="Claim/Upload/chrome_installer.exe">
       <publishTime>11/29/2018 09:04:02</publishTime>
     </File>
     <File Include="CM/CMDetailForm.aspx">
-      <publishTime>05/31/2022 09:37:13</publishTime>
+      <publishTime>09/21/2022 16:05:02</publishTime>
     </File>
     <File Include="CM/CMEditForm.aspx">
-      <publishTime>05/30/2022 22:11:58</publishTime>
+      <publishTime>09/20/2022 12:14:41</publishTime>
     </File>
     <File Include="CM/CMLine.aspx">
-      <publishTime>05/13/2022 16:12:15</publishTime>
+      <publishTime>09/21/2022 16:08:34</publishTime>
     </File>
     <File Include="CM/CMReport.aspx">
-      <publishTime>08/27/2022 16:19:39</publishTime>
+      <publishTime>09/21/2022 13:49:51</publishTime>
     </File>
     <File Include="CM/CMStatForm.aspx">
       <publishTime>10/01/2020 12:50:21</publishTime>
     </File>
     <File Include="CM/CMSurveyForm.aspx">
-      <publishTime>09/22/2021 16:28:22</publishTime>
+      <publishTime>09/21/2022 16:19:36</publishTime>
     </File>
     <File Include="CM/DefaultCM.aspx">
       <publishTime>05/30/2022 18:34:46</publishTime>
@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/28/2020 09:15:08</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>09/28/2020 09:15:08</publishTime>
+      <publishTime>09/20/2022 17:56:14</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
       <publishTime>09/28/2020 09:15:08</publishTime>
@@ -714,20 +714,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/brands.min.css">
       <publishTime>01/14/2019 11:34:42</publishTime>
     </File>
+    <File Include="Content/bulma-calendar.min.css">
+      <publishTime>09/20/2022 10:30:59</publishTime>
+    </File>
     <File Include="Content/Claim.css">
-      <publishTime>02/23/2022 20:24:55</publishTime>
+      <publishTime>09/20/2022 17:59:18</publishTime>
     </File>
     <File Include="Content/CM.css">
-      <publishTime>09/18/2021 15:09:25</publishTime>
+      <publishTime>09/21/2022 13:48:21</publishTime>
+    </File>
+    <File Include="Content/custom-signin.css">
+      <publishTime>09/06/2022 14:54:07</publishTime>
     </File>
     <File Include="Content/custom.css">
-      <publishTime>05/30/2022 18:53:25</publishTime>
+      <publishTime>09/21/2022 10:20:28</publishTime>
     </File>
     <File Include="Content/dashboard.css">
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
+    <File Include="Content/datetimepicker.css">
+      <publishTime>09/20/2022 10:03:20</publishTime>
+    </File>
     <File Include="Content/demo.css">
-      <publishTime>12/30/2020 10:36:56</publishTime>
+      <publishTime>09/05/2022 16:25:51</publishTime>
     </File>
     <File Include="Content/demo.js">
       <publishTime>11/08/2018 09:39:02</publishTime>
@@ -817,7 +826,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
     <File Include="Content/form-design-new.css">
-      <publishTime>07/30/2021 15:34:29</publishTime>
+      <publishTime>09/20/2022 13:12:59</publishTime>
     </File>
     <File Include="Content/Images/01254154215415.jpg">
       <publishTime>10/01/2018 16:44:52</publishTime>
@@ -1048,7 +1057,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2018 16:44:52</publishTime>
     </File>
     <File Include="Content/material-dashboard.css">
-      <publishTime>12/04/2020 20:38:59</publishTime>
+      <publishTime>09/20/2022 17:47:30</publishTime>
     </File>
     <File Include="Content/material-Icons.css">
       <publishTime>10/24/2018 13:14:36</publishTime>
@@ -1066,7 +1075,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/14/2019 11:34:42</publishTime>
     </File>
     <File Include="Content/signin.css">
-      <publishTime>12/01/2020 11:03:37</publishTime>
+      <publishTime>09/06/2022 14:48:37</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>09/21/2021 14:42:20</publishTime>
@@ -1256,6 +1265,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/webfonts/fa-solid-900.woff2">
       <publishTime>01/14/2019 11:25:52</publishTime>
+    </File>
+    <File Include="Content/webfonts/lightbox.css">
+      <publishTime>09/05/2022 16:25:53</publishTime>
     </File>
     <File Include="crystalreportviewers13/ActiveXControls/crviewer.dep">
       <publishTime>01/21/2019 18:35:12</publishTime>
@@ -3637,7 +3649,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/21/2019 19:06:30</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>05/13/2021 09:46:36</publishTime>
+      <publishTime>09/07/2022 18:26:51</publishTime>
     </File>
     <File Include="Model/DataSetClaim.xsc">
       <publishTime>11/19/2018 13:25:24</publishTime>
@@ -3650,6 +3662,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Model/DataSetEquip.xss">
       <publishTime>07/03/2020 13:13:56</publishTime>
+    </File>
+    <File Include="pageinfo.aspx">
+      <publishTime>09/21/2022 10:40:35</publishTime>
     </File>
     <File Include="PM/AdminPMReport.aspx">
       <publishTime>07/10/2019 14:27:02</publishTime>
@@ -3785,6 +3800,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/bootstrap.min.js.map">
       <publishTime>09/28/2020 09:15:08</publishTime>
+    </File>
+    <File Include="Scripts/bulma-calendar.min.js">
+      <publishTime>09/20/2022 10:30:07</publishTime>
     </File>
     <File Include="Scripts/Chart.min.js">
       <publishTime>11/15/2019 01:37:30</publishTime>
@@ -4360,7 +4378,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2022 12:41:11</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>06/29/2022 15:03:35</publishTime>
+      <publishTime>09/21/2022 10:18:18</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/01/2018 16:43:56</publishTime>

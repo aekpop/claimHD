@@ -357,9 +357,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\brands.css" />
     <Content Include="Content\brands.min.css" />
+    <Content Include="Content\bulma-calendar.min.css" />
     <Content Include="Content\CM.css" />
     <Content Include="Content\custom-signin.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\datetimepicker.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\demo.js" />
     <Content Include="Content\font-awesome.css" />
@@ -1611,6 +1613,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="Scripts\bulma-calendar.min.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />

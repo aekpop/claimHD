@@ -3,6 +3,18 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- CSS Custom-->
+    <link href="../Content/CM.css" rel="stylesheet" />
+    <link href="../Content/custom.css" rel="stylesheet" />
+
+    <style>
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #ff6a00;
+            background-color:#ffffff;
+        }
+    </style>
      
  <div class="container-fluid" style="font-family:'Prompt',sans-serif;">       
     <div id="DivCMGridView" runat="server" class="col-12">
@@ -23,7 +35,6 @@
                         OnRowDataBound="CMGridView_RowDataBound" 
                         Font-Size="16px" 
                         CellPadding="4" 
-                        ForeColor="#333333"
                         GridLines="None">
 
                         <AlternatingRowStyle BackColor="White" />

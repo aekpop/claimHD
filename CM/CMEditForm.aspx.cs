@@ -245,8 +245,8 @@ namespace ClaimProject.CM
                 bool chk_time = false;
                 try
                 {
-                    double.Parse(txtEJTime.Text);
-                    double.Parse(txtETime.Text);
+                    //double.Parse(txtEJTime.Text);
+                    //double.Parse(txtETime.Text);
                     chk_time = true;
                 }
                 catch { ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาใส่เวลาให้ถูกต้อง ไม่ต้องใส่ น.')", true); }

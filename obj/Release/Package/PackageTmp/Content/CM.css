@@ -120,3 +120,11 @@ p {
     transform: rotate(45deg);
 }
 
+.form-control {
+    font-size: 1rem;
+}
+
+.GridPager a, 
+.GridPager span {
+    font-size: 1.2rem;
+}

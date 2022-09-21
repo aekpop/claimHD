@@ -51,3 +51,23 @@ ul ul a {
     padding-left: 30px !important;
     background: #6d7fcc;
 }
+
+.navbar {
+    padding: 0rem 0rem;
+  }
+
+.navbar-nav .dropdown-menu {
+    background-color: #4a9cc0;
+}
+
+.dropdown-menu .dropdown-item,
+    .dropdown-menu li > a {
+        color: #FFFFFF;
+}
+
+.dropdown-header {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+

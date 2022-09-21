@@ -121,6 +121,24 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.DropDownList txtCMStatus;
         
         /// <summary>
+        /// lblbRespons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblbRespons;
+        
+        /// <summary>
+        /// ddlResponsible control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlResponsible;
+        
+        /// <summary>
         /// lbDayS control.
         /// </summary>
         /// <remarks>
@@ -164,24 +182,6 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox CheckAllDay;
-        
-        /// <summary>
-        /// lblbRespons control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblbRespons;
-        
-        /// <summary>
-        /// ddlResponsible control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlResponsible;
         
         /// <summary>
         /// btnSearchEdit1 control.

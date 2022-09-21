@@ -277,7 +277,7 @@ namespace ClaimProject.CM
             Label lbSDate = (Label)(e.Row.FindControl("lbSDate"));
             if (lbSDate != null)
             {
-                lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate"));
+                lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate")) +" @"+ DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
             }
 
             Label lbStatus = (Label)(e.Row.FindControl("lbStatus"));

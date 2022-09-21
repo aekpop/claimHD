@@ -539,6 +539,7 @@ namespace ClaimProject.CM
 
         protected void btnrecm_Click(object sender, EventArgs e)
         {
+            //search.Visible = false;
             Binddee();
             //headColor();
         }
@@ -745,7 +746,6 @@ namespace ClaimProject.CM
                 HeaderCell.ColumnSpan = 2;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
-                
                 HeaderCell = new TableCell();
                 HeaderCell.Text = lbDatep.Text;
                 HeaderCell.ColumnSpan = 1;

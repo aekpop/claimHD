@@ -8,38 +8,34 @@
     <!-- Bootstrap core CSS -->
     <link href="/Content/bootstrap.css" rel="stylesheet" />
     <link href="/Content/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
 
+    <!-- Custom styles for this template -->
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
     <link href="/Content/form-design-new.css" rel="stylesheet" />
     <link href="/Content/custom-signin.css" rel="stylesheet" />
+    <link href="Content/custom.css" rel="stylesheet" />
 
-    <title></title>
+    <title>Toll Management System (TMS)</title>
     <style>
         .navbar-brand {
-            font-size: 1.25rem;
+            font-size: 0.5rem;
         }
     </style>
 </head>
 
 <body>
-    <!--<nav class="navbar fixed-top navbar-light bg-light">
-            <a class="navbar-brand" href="/Login">เข้าสู่ระบบ</a>
-    </nav>
-    -->
-
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <nav class="navbar fixed-top navbar-light bg-light">
 
-                    <a class="navbar-brand" href="/Login">
-                        <img class="d-block w-25" src="/Content/Images/information/Banner.png" />
-                    </a>
-                <div class="my-2 my-lg-0">
-                    <a class="navbar-brand" href="/Login">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp เข้าสู่ระบบ</a>
-                </div>
+            <a class="navbar-brand" href="/Login">
+                <img class="d-block w-25" src="/Content/Images/information/Banner.png" />
+            </a>
+            <div class="my-2 my-lg-0">
+                <a class="navbar-brand" href="/Login">
+                    &nbsp เข้าสู่ระบบ</a>
+            </div>
         </nav>
-    <br />
+        <br /><br />
         <div class="col-md-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
