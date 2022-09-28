@@ -64,7 +64,7 @@ namespace ClaimProject.Claim
                     function.GetList(ddlbrandcar2, "brandCar");
                     ddlbrandcar2.Items.Insert(0, new ListItem("", ""));
                     statheader.Text = "แจ้งใหม่";
-                    statheader.CssClass = "badge badge-info";
+                    statheader.CssClass = "badge badge-danger";
 
                     string sql_Device = "SELECT * FROM tbl_device WHERE davice_delete = '0' ORDER BY device_name";
 
@@ -226,6 +226,7 @@ namespace ClaimProject.Claim
                 foreach (HttpPostedFile postedFile in fileImg.PostedFiles)
                 {
                     Insert(0, postedFile);
+                    AlertPop("Upload Complete", "success");
                 }
             }
             else
@@ -712,6 +713,7 @@ namespace ClaimProject.Claim
                 foreach (HttpPostedFile postedFile in FileUploadDoc.PostedFiles)
                 {
                     Insert(1, postedFile);
+                    AlertPop("Upload Complete", "success");
                 }
             }
             else

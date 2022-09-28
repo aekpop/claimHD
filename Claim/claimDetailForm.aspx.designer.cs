@@ -586,7 +586,7 @@ namespace ClaimProject.Claim {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAddImg;
+        protected global::System.Web.UI.WebControls.Button btnAddImg;
         
         /// <summary>
         /// FileGridView control.
@@ -631,7 +631,7 @@ namespace ClaimProject.Claim {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnUploadDoc;
+        protected global::System.Web.UI.WebControls.Button btnUploadDoc;
         
         /// <summary>
         /// UploadDocGridView control.

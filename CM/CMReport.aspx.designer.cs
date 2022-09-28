@@ -373,22 +373,22 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbUserRecheck;
         
         /// <summary>
-        /// lbDateERecheck control.
+        /// lbreplace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDateERecheck;
+        protected global::System.Web.UI.WebControls.Label lbreplace;
         
         /// <summary>
-        /// lbTimeERecheck control.
+        /// lbnorepalce control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTimeERecheck;
+        protected global::System.Web.UI.WebControls.Label lbnorepalce;
         
         /// <summary>
         /// lbDates control.
@@ -416,6 +416,24 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbTimesRecheck;
+        
+        /// <summary>
+        /// lbDateERecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDateERecheck;
+        
+        /// <summary>
+        /// lbTimeERecheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTimeERecheck;
         
         /// <summary>
         /// lbDateEJRecheck control.

@@ -307,6 +307,10 @@ namespace ClaimProject.Report {
             
             private global::System.Data.DataColumn columncm_detail_method;
             
+            private global::System.Data.DataColumn columncm_detail_replace_name;
+            
+            private global::System.Data.DataColumn columncm_detail_replace_serial;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DataTable1DataTable() {
@@ -454,6 +458,22 @@ namespace ClaimProject.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn cm_detail_replace_nameColumn {
+                get {
+                    return this.columncm_detail_replace_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn cm_detail_replace_serialColumn {
+                get {
+                    return this.columncm_detail_replace_serial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,7 +509,23 @@ namespace ClaimProject.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string cpoint_name, string locate_name, string device_name, string cm_detail_problem, string cm_detail_sdate, string cm_detail_stime, string cm_detail_edate, string cm_detail_etime, string cm_point, string cm_stat_name, string drive_group_agency, string cm_detail_ejdate, string cm_detail_ejtime, string cm_detail_method) {
+            public DataTable1Row AddDataTable1Row(
+                        string cpoint_name, 
+                        string locate_name, 
+                        string device_name, 
+                        string cm_detail_problem, 
+                        string cm_detail_sdate, 
+                        string cm_detail_stime, 
+                        string cm_detail_edate, 
+                        string cm_detail_etime, 
+                        string cm_point, 
+                        string cm_stat_name, 
+                        string drive_group_agency, 
+                        string cm_detail_ejdate, 
+                        string cm_detail_ejtime, 
+                        string cm_detail_method, 
+                        string cm_detail_replace_name, 
+                        string cm_detail_replace_serial) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cpoint_name,
@@ -505,7 +541,9 @@ namespace ClaimProject.Report {
                         drive_group_agency,
                         cm_detail_ejdate,
                         cm_detail_ejtime,
-                        cm_detail_method};
+                        cm_detail_method,
+                        cm_detail_replace_name,
+                        cm_detail_replace_serial};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -542,6 +580,8 @@ namespace ClaimProject.Report {
                 this.columncm_detail_ejdate = base.Columns["cm_detail_ejdate"];
                 this.columncm_detail_ejtime = base.Columns["cm_detail_ejtime"];
                 this.columncm_detail_method = base.Columns["cm_detail_method"];
+                this.columncm_detail_replace_name = base.Columns["cm_detail_replace_name"];
+                this.columncm_detail_replace_serial = base.Columns["cm_detail_replace_serial"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -575,6 +615,10 @@ namespace ClaimProject.Report {
                 base.Columns.Add(this.columncm_detail_ejtime);
                 this.columncm_detail_method = new global::System.Data.DataColumn("cm_detail_method", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncm_detail_method);
+                this.columncm_detail_replace_name = new global::System.Data.DataColumn("cm_detail_replace_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncm_detail_replace_name);
+                this.columncm_detail_replace_serial = new global::System.Data.DataColumn("cm_detail_replace_serial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncm_detail_replace_serial);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -941,6 +985,38 @@ namespace ClaimProject.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string cm_detail_replace_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.cm_detail_replace_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cm_detail_replace_name\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.cm_detail_replace_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string cm_detail_replace_serial {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.cm_detail_replace_serialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cm_detail_replace_serial\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.cm_detail_replace_serialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Iscpoint_nameNull() {
                 return this.IsNull(this.tableDataTable1.cpoint_nameColumn);
             }
@@ -1105,6 +1181,30 @@ namespace ClaimProject.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setcm_detail_methodNull() {
                 this[this.tableDataTable1.cm_detail_methodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Iscm_detail_replace_nameNull() {
+                return this.IsNull(this.tableDataTable1.cm_detail_replace_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setcm_detail_replace_nameNull() {
+                this[this.tableDataTable1.cm_detail_replace_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Iscm_detail_replace_serialNull() {
+                return this.IsNull(this.tableDataTable1.cm_detail_replace_serialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setcm_detail_replace_serialNull() {
+                this[this.tableDataTable1.cm_detail_replace_serialColumn] = global::System.Convert.DBNull;
             }
         }
         

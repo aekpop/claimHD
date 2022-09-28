@@ -277,7 +277,8 @@ namespace ClaimProject.CM
             Label lbSDate = (Label)(e.Row.FindControl("lbSDate"));
             if (lbSDate != null)
             {
-                lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate")) +" @"+ DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
+                //lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate")) +" "+ DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
+                lbSDate.Text = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate") + " " + DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
             }
 
             Label lbStatus = (Label)(e.Row.FindControl("lbStatus"));
@@ -406,11 +407,6 @@ namespace ClaimProject.CM
         {
             txtPoint.Text = "";
             BindData();
-        }
-
-        protected void btnToReport_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/CM/CMLine.aspx");
         }
 
         protected void btnEditCMM_Command(object sender, CommandEventArgs e)

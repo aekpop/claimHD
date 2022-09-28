@@ -82,9 +82,9 @@ namespace ClaimProject.CM
             {
                 chkAdmin = "0";
                 Div6.Visible = false;
-                divpm.Visible = false;
-                divpm2.Visible = false;
-                Div3.Visible = false;
+                //divpm.Visible = false;
+                //divpm2.Visible = false;
+                //Div3.Visible = false;
                 //Div2.Visible = false;
                 sqlcp = "AND cm_cpoint = " + Session["UserCpoint"] + " ";
                 cpoint = " WHERE cm_cpoint = " + Session["UserCpoint"] + " ";

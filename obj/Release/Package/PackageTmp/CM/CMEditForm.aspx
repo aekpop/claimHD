@@ -319,6 +319,10 @@
         history.back();
         window.onpopstate = () => history.forward();
 
+        $('#txtETime').datetimepicker({
+            format: 'HH.mm'
+        });
+
     </script>
 
 </asp:Content>

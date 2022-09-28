@@ -826,7 +826,7 @@ namespace ClaimProject.Claim
 
                     rs.Close();
                     function.Close();
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาระบุอุปกรณ์ที่ได้รับความเสียหาย')", true);
+                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาระบุอุปกรณ์ที่ได้รับความเสียหาย')", true);
                 }
                 else
                 {

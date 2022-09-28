@@ -3,7 +3,7 @@
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
@@ -19,8 +19,14 @@
     <script src="../Scripts/umd/popper.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
 
+    <style>
+        .modal-body {
+            padding: 0.5rem;
+        }
+    </style>
+
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-        <div id="MainBody" class="card" style="z-index: 0; font-size:1rem;">
+        <div id="MainBody" class="card" style="z-index: 0; font-size: 1rem;">
             <div class="card-header ">
                 <div class="card-title">ค้นหา</div>
             </div>
@@ -53,7 +59,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <asp:Label ID="lbdevice" runat="server" Text="อุปกรณ์"></asp:Label>
@@ -90,7 +95,6 @@
                         </div>
                     </div>
                     <div class="row">
-                       
                         <div class="col-md-2">
                             <div class="form-group bmd-form-group">
                                 <div class="label-on-left">ช่วงเวลาทั้งหมด</div>
@@ -101,7 +105,6 @@
                             </div>
                         </div>
                         <div class=" col-md-2"></div>
-                        
                     </div>
                     <br />
                     <div class="row">
@@ -186,7 +189,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="เวลาดำเนินการ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbDay" runat="server"></asp:Label>
+                                    <asp:Label ID="lbDay" runat="server" Font-Size="16px"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-right" ItemStyle-CssClass="text-right">
@@ -225,10 +228,9 @@
                         ]&nbsp อุปกรณ์ : [
                                     <asp:Label ID="lbdeviceRecheck" Enabled="false" runat="server" CssClass="font-weight-bold" />
                         ]
-                                </div>
-
+                    </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" style="font-size: 3rem;">&times;</span>
                     </button>
                 </div>
                 <div class="container" style="font-size: 32px; font-family: 'TH SarabunPSK'; font-weight: 200">
@@ -248,26 +250,25 @@
                             </div>
                         </div>
                         -->
-                        <div class="row" style="height: 440px">
-                            <div class="card border-white col-sm-6" style="font-size: 24px;">
-                                <asp:Label ID="lbImageStart" runat="server" Text="ภาพก่อนซ่อม" CssClass="text-center "></asp:Label>
-                                <asp:Image ID="ImgEditEQ" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
+                        <div class="row" style="height: 410px;">
+                            <div class="card border-white col-sm-12 col-lg-5" style="font-size: 24px;">
+                                <asp:Label ID="lbImageStart" runat="server" Text="ก่อนซ่อม" CssClass="text-center text-danger"></asp:Label>
+                                <asp:Image ID="ImgEditEQ" runat="server" Height="340px" CssClass="rounded d-block" />
                             </div>
-
-                            <div class="card border-white col-sm-6" style="font-size: 24px;">
-                                <asp:Label ID="lbImageEnd" runat="server" Text="ภาพหลังซ่อม" CssClass="text-center "></asp:Label>
-                                <asp:Image ID="ImgEditEQE" runat="server" Height="340px" CssClass="rounded mx-auto d-block" />
+                            <div class="col-sm-12 col-lg-1"></div>
+                            <div class="card border-white col-sm-12 col-lg-5" style="font-size: 24px;">
+                                <asp:Label ID="lbImageEnd" runat="server" Text="หลังซ่อม" CssClass="text-center text-success"></asp:Label>
+                                <asp:Image ID="ImgEditEQE" runat="server" Height="340px" CssClass="rounded d-block" />
                             </div>
                         </div>
                         <!------------------------------------------------------------------------------------------------------>
                         <div class="row">
                             <div class="col-xl-6 text-danger">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">อาการผิดปกติ : </span>
+                                    <span class="label label-primary">อาการที่พบ : </span>
                                     <asp:Label ID="lbProblemRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-
                             <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">วิธีการแก้ไข : </span>
@@ -276,7 +277,6 @@
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
                                     <span class="label label-primary">ผู้แจ้ง : </span>
@@ -285,12 +285,20 @@
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">วันที่เข้าแก้ไข :</span>
-                                    <asp:Label ID="lbDateERecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeERecheck" Enabled="false" runat="server" />
+                                    <span class="label label-primary">อุปกรณ์/อะไหล่ทดแทน(ถ้ามี) : </span>
+                                    <asp:Label ID="lbreplace" Enabled="false" runat="server" />
                                 </div>
                             </div>
-
-
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <span class="label label-primary">หมายเลขอุปกรณ์ทดแทน(ถ้ามี) : </span>
+                                    <asp:Label ID="lbnorepalce" Enabled="false" runat="server" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-6 ">
@@ -299,20 +307,25 @@
                                     <asp:Label ID="lbDatesRecheck" Enabled="false" runat="server" Visible="false" /><asp:Label ID="lbTimesRecheck" Enabled="false" runat="server" Visible="false" />
                                 </div>
                             </div>
+                            <!--<div class="col-xl-3">
+                                <div class="form-group bmd-form-group">
+                                    <span class="label label-primary">วันที่เข้า : </span>
+                                    <asp:Label ID="lbDateERecheck" Enabled="false" runat="server" /><asp:Label ID="lbTimeERecheck" Enabled="false" runat="server" />
+                                </div>
+                            </div>-->
                             <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">วันที่แก้ไขเสร็จ : </span>
+                                    <span class="label label-primary">วันที่เสร็จสิ้น : </span>
                                     <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
-                                <div class="form-group bmd-form-group">
+                                <!--<div class="form-group bmd-form-group">
                                     <span class="label label-primary">หมายเหตุ : </span>
                                     <asp:Label ID="lbNodeRecheck" Enabled="false" runat="server" />
-                                </div>
+                                </div>-->
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
@@ -320,27 +333,16 @@
                                     <asp:Label ID="lbUserEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
-
-
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">ใบ Service : </span>
-                                    <asp:Label ID="lbServiceForm" Enabled="false" runat="server" />
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <asp:Label ID="Imgfilename" runat="server" Visible="false"></asp:Label>
-                        <asp:LinkButton ID="ImgImageDocSer" runat="server" Text="ใบ Service" CssClass="btn btn-info" OnClick="ImgImageDocSer_Click" />
-                        <asp:LinkButton ID="btnReverb" runat="server" Text="Reverb" CssClass="btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');" />
-                    </div>
-                </div>
+        <div class="modal-footer">
+            <!--<span class="label label-primary">ใบ Service : </span>
+                            <asp:Label ID="lbServiceForm" Enabled="false" runat="server" />-->
+            <asp:Label ID="Imgfilename" runat="server" Visible="false"></asp:Label>
+            <asp:LinkButton ID="ImgImageDocSer" runat="server" Text="ใบ Service" CssClass="col-1 btn btn-info" OnClick="ImgImageDocSer_Click" />
+            <asp:LinkButton ID="btnReverb" runat="server" Text="Reverb" CssClass="col-1 btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');" />
+        </div>
+        </div>
             </div>
         </div>
     </div>

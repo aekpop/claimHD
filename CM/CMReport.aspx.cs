@@ -26,6 +26,7 @@ namespace ClaimProject.CM
         public string icon = "";
         public string EditModal = "";
         public string Fname = "";
+        public string Fullname = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -646,12 +647,12 @@ namespace ClaimProject.CM
                         btnReverb.Visible = false;
                     }
                     lbMethodRecheck.Text = "-";
-                    lbDateERecheck.Text = "-";
-                    lbTimeERecheck.Text = "-";
+                    //lbDateERecheck.Text = "-";
+                    //lbTimeERecheck.Text = "-";
                     lbDateEJRecheck.Text = "-";
                     lbTimeEJRecheck.Text = "-";
                     lbUserEJRecheck.Text = "-";
-                    lbNodeRecheck.Text = " - ";
+                    //lbNodeRecheck.Text = " - ";
                 }
                 else if (Chk == "1")
                 {
@@ -661,12 +662,12 @@ namespace ClaimProject.CM
                     }
                     imgE = rt.GetString("cm_detail_eimg");
                     lbMethodRecheck.Text = rt.GetString("cm_detail_method");
-                    lbDateERecheck.Text = rt.GetString("cm_detail_edate");
-                    lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
+                    //lbDateERecheck.Text = rt.GetString("cm_detail_edate");
+                    //lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
                     lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
                     lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
                     lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
-                    lbNodeRecheck.Text = rt.GetString("cm_detail_note");
+                    //lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                     if (!rt.IsDBNull(22))
                     {
                         imgSer = rt.GetString("cm_detail_Service_img");
@@ -686,12 +687,12 @@ namespace ClaimProject.CM
                     }
                     imgE = rt.GetString("cm_detail_eimg");
                     lbMethodRecheck.Text = rt.GetString("cm_detail_method");
-                    lbDateERecheck.Text = rt.GetString("cm_detail_edate");
-                    lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
+                    //lbDateERecheck.Text = rt.GetString("cm_detail_edate");
+                    //lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
                     lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
                     lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
                     lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
-                    lbNodeRecheck.Text = rt.GetString("cm_detail_note");
+                    //lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                     if (!rt.IsDBNull(22))
                     {
                         imgSer = rt.GetString("cm_detail_Service_img");
@@ -747,13 +748,37 @@ namespace ClaimProject.CM
             Fname = "~" + imgSer;
             if(chkSerVForm == "0")
             {
-                lbServiceForm.Text = "ไม่มี";
+                //lbServiceForm.Text = "ไม่มี";
                 lbServiceForm.ForeColor = Color.Red;
+                ImgImageDocSer.CssClass = "btn btn-secondary";
+                ImgImageDocSer.Enabled = false;
+                //ImgImageDocSer.Text = "ไม่มีใบ Service";
             }
             else
             {
-                lbServiceForm.Text = "มี";
+                //lbServiceForm.Text = "มี";
                 lbServiceForm.ForeColor = Color.Green;
+                ImgImageDocSer.CssClass = "btn btn-success";
+                ImgImageDocSer.Enabled = true;
+                //ImgImageDocSer.Text = "มีใบ Service";
+            }
+
+            if (!rt.IsDBNull(24))
+            {
+                lbreplace.Text = rt.GetString("cm_detail_replace_name");
+            }
+            else
+            {
+                lbreplace.Text = "-";
+            }
+
+            if (!rt.IsDBNull(25))
+            {
+                lbnorepalce.Text = rt.GetString("cm_detail_replace_serial");
+            }
+            else
+            {
+                lbnorepalce.Text = "-";
             }
 
             rt.Close();
@@ -811,6 +836,7 @@ namespace ClaimProject.CM
         protected void ImgImageDocSer_Click(object sender, EventArgs e)
         {
             Fname = Imgfilename.Text;
+            Fullname = lbCpointRecheck.Text +""+ lbPointRecheck.Text +"_"+ lbChannelRecheck.Text +"_"+ lbDateERecheck.Text;
             DownLoad( Fname );
         }
 
@@ -825,7 +851,7 @@ namespace ClaimProject.CM
                 response.ClearContent();
                 response.ClearHeaders();
                 response.Buffer = true;
-                response.AddHeader("Content-Disposition", "attachment;filename=\"Download.jpg\"");
+                response.AddHeader("Content-Disposition", "attachment;filename=\""+ Fullname + ".jpg\"");
                 byte[] data = req.DownloadData(Server.MapPath(strURL));
                 response.BinaryWrite(data);
                 response.End();

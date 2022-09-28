@@ -94,8 +94,9 @@
 
         <div class="wrapper ">
             <div class="panel panel-default">
+                <!-- Start Navbar -->
                 <nav class="navbar fixed-top sticky-top navbar-expand-sm navbar-dark bg-dark">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="font-family:Prompt;">
                         <div class="navbar-wrapper">
                             <a>
                                 <img src="/img/j4.png" style="width: 35px" /></a>
@@ -104,11 +105,10 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="navbar-toggler-icon icon-bar"></span>
-
                         </button>
                         <!--<div class="collapse navbar-collapse justify-content-end">-->
                         <div class="collapse navbar-collapse justify-content-end ">
-                            <ul class="navbar-nav" style="font-size: 12px; font-family: Prompt">
+                            <ul class="navbar-nav">
                                 <!--<li>
                                             <div class="input-group no-border">
                                                 <input type="text" value="" class="form-control" placeholder="Search...">
@@ -120,7 +120,7 @@
                                         </li>-->
                                 <li class="nav-item dropdown" runat="server" id="nav0">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-home" style="font-size: 22px;"></i><span class="col" style="font-size: 14px;">Admin อุบัติเหตุ</span>
+                                        <i class="fa fa-home" style="font-size: 22px;"></i><span class="col">Admin อุบัติเหตุ</span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/">หน้าแรก</a>
@@ -130,7 +130,7 @@
 
                                 <li class="nav-item dropdown" runat="server" id="nav1">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Claim/DefaultClaim" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col" style="font-size: 14px;">อุบัติเหตุ</span>
+                                        <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col">อุบัติเหตุ</span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/Claim/DefaultClaim">หน้าแรก</a>
@@ -147,7 +147,7 @@
                                 </li>
                                 <li class="nav-item dropdown" runat="server" id="Li2">
                                     <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col" style="font-size: 14px;">บำรุงรักษา</span>
+                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col">บำรุงรักษา</span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/CM/DefaultCM">หน้าแรก</a>
@@ -162,7 +162,7 @@
 
                                 <li class="nav-item dropdown" runat="server" id="Li3">
                                     <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col" style="font-size: 14px;">บำรุงรักษา</span>
+                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col">บำรุงรักษา</span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/CM/DefaultCM">หน้าแรก</a>
@@ -180,7 +180,7 @@
 
                                 <li class="nav-item dropdown" runat="server" id="equipDiv">
                                     <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col" style="font-size: 14px;">ครุภัณฑ์</span>
+                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col">ครุภัณฑ์</span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/equip/EquipDefault">หน้าแรก</a>
@@ -196,7 +196,7 @@
 
                                 <li class="nav-item dropdown" runat="server" id="Li4">
                                     <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col" style="font-size: 14px;">ครุภัณฑ์</span>
+                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col">ครุภัณฑ์</span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/equip/EquipDefault">หน้าแรก</a>
@@ -268,10 +268,8 @@
                         </asp:ContentPlaceHolder>
                     </div>
                 </div>
-
                 <footer class="footer">
                     <div class="container-fluid">
-
                         <div class="copyright float-right">
                             &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
                         </div>

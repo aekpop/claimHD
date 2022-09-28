@@ -169,7 +169,9 @@ namespace ClaimProject.CM
             Label lbSDate = (Label)(e.Row.FindControl("lbSDate"));
             if (lbSDate != null)
             {
-                lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate"));
+                //lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate"));
+                lbSDate.Text = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate");
+                lbSDate.Text += " "+DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
             }
 
             Label lbStatus = (Label)(e.Row.FindControl("lbStatus"));
@@ -193,7 +195,7 @@ namespace ClaimProject.CM
                 if (!DataBinder.Eval(e.Row.DataItem, "cm_detail_etime").Equals(DBNull.Value))
                 {
                     btnTimeEditCM.Text = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_etime");
-                    if (btnTimeEditCM.Text != "") { btnTimeEditCM.Text += " น."; }
+                    if (btnTimeEditCM.Text != "") { btnTimeEditCM.Text += "-"; }
                 }
             }
 
@@ -258,6 +260,7 @@ namespace ClaimProject.CM
                     String NewFileDocNameService = "";
                     string sqlDocService = "";
                     string Noservice = "";
+                    string replace = "";
                     if (txtMethod.Text != "")
                     {
                         if (fileImg.HasFile || fileDocService.HasFile)
@@ -284,6 +287,11 @@ namespace ClaimProject.CM
                                     sqlDocService = " ,cm_detail_Service_img = '" + NewFileDocNameService + "' ";
                                 }
 
+                                if (Chkreplace.Checked)
+                                {
+                                    replace = " ,cm_detail_replace_name = '" + txtreplaceName.Text + "' ,cm_detail_replace_serial = '"+ txtreplaceNo.Text + "' ";
+                                }
+
                                 string chkagncy = " SELECT cm_detail_id,drive_group_id,drive_group_agency FROM " +
                                     "tbl_cm_detail JOIN tbl_device ON tbl_cm_detail.cm_detail_driver_id = tbl_device.device_id " +
                                     "JOIN tbl_drive_group ON tbl_drive_group.drive_group_id = tbl_device.davice_group " +
@@ -293,7 +301,7 @@ namespace ClaimProject.CM
                                     "cm_detail_etime = '" + txtETime.Text.Trim() + "', cm_detail_note = '" + txtNote.Text.Trim() + "', " +
                                     "cm_detail_status_id = '1',cm_detail_eimg = '" + NewFileDocName + "',cm_detail_method = '" + txtMethod.Text + "', " +
                                     "cm_detail_ejdate = '" + txtEJDate.Text.Trim() + "' , cm_detail_ejtime = '" + txtEJTime.Text.Trim() + "' , cm_user_endjob = '" + Session["UserName"].ToString() + "' " + sqlDocService + " ," +
-                                    "cm_detail_Chknoservice = '" + Noservice + "' " +
+                                    "cm_detail_Chknoservice = '" + Noservice + "' " + replace + " " +
                                     "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
 
                                 if (function.MySqlQuery(sql))

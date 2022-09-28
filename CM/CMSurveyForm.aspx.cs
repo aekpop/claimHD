@@ -179,10 +179,12 @@ namespace ClaimProject.CM
                 if (!rt.IsDBNull(22))
                 {
                     imgSer = rt.GetString("cm_detail_Service_img");
+                    //lbnoRepalce.Text = rt.GetString("cm_detail_replace");
                 }
                 else
                 {
                     imgSer = " ";
+                    //lbnoRepalce.Text = "ไม่เปลี่ยนอุปกรณ์";
                 }
                 imgS = rt.GetString("cm_detail_simg");
                 imgE = rt.GetString("cm_detail_eimg");
@@ -193,6 +195,10 @@ namespace ClaimProject.CM
                 {
                     lbchkservice = "แก้ไขเบื้องต้น";
                 }
+
+                if (!rt.IsDBNull(24)) { lbnoRepalce.Text = rt.GetString("cm_detail_replace_name"); } else { lbnoRepalce.Text = "ไม่เปลี่ยนอุปกรณ์"; }
+                if (!rt.IsDBNull(25)) { lbnameRepalce.Text = rt.GetString("cm_detail_replace_serial"); } else { lbnameRepalce.Text = "ไม่เปลี่ยนอุปกรณ์"; }
+
                 lbrefRecheck.Text = rt.GetString("cm_detail_id") + " (" + lbchkservice + ") ";
                 lbCpointRecheck.Text = rt.GetString("cpoint_name");
                 lbPointRecheck.Text = rt.GetString("cm_point");

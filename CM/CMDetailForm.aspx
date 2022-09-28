@@ -17,17 +17,13 @@
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
         <!-- Menu Dropdown -->
-
         <!-------------------------------- // ------------------------------------>
-
-        <div class="card" style="z-index: 0; font-size:1rem;">
-            <div class="card-header ">
-                <div class="card-title">แจ้งซ่อมอุปกรณ์</div>
+        <div class="card" style="z-index: 0; font-size: 1rem;">
+            <div class="card-header">
+                <div class="card-title text-black-50">แจ้งซ่อมอุปกรณ์</div>
             </div>
             <div class="card-body table-responsive">
-
                 <asp:HiddenField ID="txtRef" runat="server" />
-
                 <div class="row">
                     <div class="col-md-6 col-xl-3">
                         <div class="form-group bmd-form-group">
@@ -48,61 +44,59 @@
                             <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control dropdown"></asp:DropDownList>
                         </div>
                     </div>
-                <div class="col-md-6 col-xl-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group bmd-form-group">
-                                <asp:Label runat="server">วันที่</asp:Label>
-                                <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)" />
+                    <div class="col-md-6 col-xl-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label runat="server">วันที่</asp:Label>
+                                    <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" onkeypress="return handleEnter(this, event)" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group bmd-form-group">
-                                <asp:Label runat="server">เวลา</asp:Label>
-                                <asp:TextBox ID="txtSTime" runat="server" MaxLength="5" type="time" CssClass="form-control" />
+                            <div class="col-6">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label runat="server">เวลา</asp:Label>
+                                    <asp:TextBox ID="txtSTime" runat="server" MaxLength="5" type="time" CssClass="form-control" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    </div>
                 <div class="row">
                     <div class="col-md-6 col-xl-3">
                         <div class="form-group bmd-form-group">
                             <asp:Label runat="server">อุปกรณ์</asp:Label>
                             <asp:DropDownList ID="txtDeviceAdd" runat="server" CssClass="combobox form-control custom-select" onkeypress="return handleEnter(this, event)" />
-
                         </div>
                     </div>
-                
-                        <div class="col-md-6 col-xl-3">
-                            <div class="form-group bmd-form-group">
-                                <asp:Label runat="server">อาการที่พบ</asp:Label>
-                                <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)" />
-                            </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="form-group bmd-form-group">
+                            <asp:Label runat="server">อาการที่พบ</asp:Label>
+                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)" />
                         </div>
-                        <!-- แนบรูป -->
-                        <div class="col-md-12 col-xl-6">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group bmd-form-group">
-                                        <asp:Label runat="server">แนบรูปภาพ</asp:Label>
-                                        <div class="col" runat="server" id="diveditpic">
-                                            <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" onchange="validateSize(this)" />
-                                        </div>
-                                        <div class="col-md-1">
-                                            <asp:Label ID="pkeq" runat="server" Visible="true" Font-Size="Smaller"></asp:Label>
-                                        </div>
+                    </div>
+                    <!-- แนบรูป -->
+                    <div class="col-md-12 col-xl-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label runat="server">แนบรูปภาพ</asp:Label>
+                                    <div class="col" runat="server" id="diveditpic">
+                                        <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file" lang="en" onchange="validateSize(this)" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <asp:Label ID="pkeq" runat="server" Visible="true" Font-Size="Smaller"></asp:Label>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                        <div class="form-group bmd-form-group">
-                                            <asp:Label runat="server">รูปภาพ</asp:Label>
-                                            <asp:Image ID="lbNameFileImg" runat="server" CssClass="img-thumbnail" />
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label runat="server">Preview</asp:Label>
+                                    <asp:Image ID="lbNameFileImg" runat="server" CssClass="img-thumbnail" />
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <br>
                 <div class="row">
                     <div class="col-md text-center">
@@ -115,101 +109,77 @@
                 </div>
             </div>
         </div>
-
         <div id="DivCMGridView" runat="server">
-            <div class="card" style="z-index:0; font-size:1rem;" >
+            <div class="card" style="z-index: 0; font-size: 1rem;">                
                 <div class="card-header">
+                    <div class="card-title">ค้นหา</div>
+                        <div class="input-group mb-3">
+                            <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:TextBox ID="txtCmpoint" runat="server" CssClass="form-control" placehodler="อาคารย่อย"></asp:TextBox>
+                            <div class="input-group-append">
+                                <asp:Button ID="btnSearchAddd" runat="server" Visible="true" CssClass="btn btn-outline-secondary" OnClick="btnSearchAddd_Click" Text="ค้นหา"></asp:Button>
+                            </div>
+                        </div>                 
+                    <br />
                     <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
                 </div>
-                <div class="card-body table-responsive table-sm">
-                    <div class="row">
-                        <div class="col-md">
-                            <label id="lbTollz" class="bmd-label-floating">ด่านฯ : </label>
-                            <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control"></asp:DropDownList>
-                        </div>
-                        <div class="col-md">
-                            <label class="bmd-label-floating">อาคารย่อย : </label>
-                            <asp:TextBox ID="txtCmpoint" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md">
-                            <br />
-                            <asp:Button ID="btnSearchAddd" runat="server" Text="ค้นหา" Visible="true" CssClass="btn btn-info" OnClick="btnSearchAddd_Click" />
-                        </div>
-
-                        <div class="col-md">
-                            <br />
-                            <asp:Button ID="btnToReport" runat="server" Text="ไปยังหน้ารายงาน" Visible="false" CssClass="btn btn-warning" OnClick="btnToReport_Click" />
-                        </div>
-                    </div>
-                    <br />
+                <div class="card-body table-responsive table-sm">                    
                     <asp:Panel ID="Panel1" runat="server">
                         <asp:GridView ID="CMGridView" runat="server"
                             AutoGenerateColumns="False"
-                            CssClass="col table table-striped table-hover"
-                            HeaderStyle-BackColor="ActiveBorder"
-                            HeaderStyle-Font-Size="14px"
-                            HeaderStyle-Height="50px"
-                            RowStyle-Height="50px"
-                            RowStyle-CssClass="text-center"
+                            CssClass="table table-striped table-hover"
+                            HeaderStyle-BackColor="#4a9cc0"
+                            HeaderStyle-ForeColor="#FFFFFF"
+                            HeaderStyle-Font-Size="18px"
                             OnRowDataBound="CMGridView_RowDataBound"
-                            Font-Size="12px"
+                            Font-Size="15px"
                             CellPadding="4"
-                            ForeColor="#000033"
+                            ForeColor="#333333"
                             GridLines="None"
                             OnPageIndexChanging="CMGridView_PageIndexChanging"
                             PagerSettings-Mode="NumericFirstLast"
                             AllowPaging="true"
                             PageSize="30">
-                            <AlternatingRowStyle BackColor="White" />
                             <Columns>
-                                <asp:TemplateField HeaderText="ลำดับ">
-                                    <ItemTemplate>
-                                        <%# Container.DataItemIndex + 1+"." %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ด่านฯ">
+                                <asp:TemplateField HeaderText="ด่านฯ" ItemStyle-CssClass="col-2">
                                     <ItemTemplate>
                                         <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") +" ["+DataBinder.Eval(Container, "DataItem.locate_name")+"]" %>' runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-Width="350px">
+                                <asp:TemplateField HeaderText="วันที่" ItemStyle-CssClass="col-1">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbSDate" runat="server"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-CssClass="col-3">
                                     <ItemTemplate>
                                         <asp:Label ID="lbDeviceName" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.device_name").ToString()) %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="อาการชำรุด" ItemStyle-Width="350px">
+                                <asp:TemplateField HeaderText="อาการชำรุด" ItemStyle-CssClass="col-3">
                                     <ItemTemplate>
                                         <asp:Label ID="lbProblem" runat="server" Text='<%#new ClaimProject.Config.ClaimFunction().ShortText( DataBinder.Eval(Container, "DataItem.cm_detail_problem").ToString()) %>'></asp:Label>
                                     </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="วันที่">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbSDate" runat="server"></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>                               
-                                <asp:TemplateField HeaderText="ผู้แจ้ง" ControlStyle-Width="150px">
+                                </asp:TemplateField>                       
+                                <asp:TemplateField HeaderText="ผู้แจ้ง" ItemStyle-CssClass="col-2">
                                     <ItemTemplate>
                                         <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-left" HeaderStyle-Width="90px" ControlStyle-Width="90px">
+                                <asp:TemplateField HeaderText="จัดการข้อมูล" ItemStyle-CssClass="col-1">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnEditCM" runat="server" CssClass="badge bg-warning text-white" Font-Size="16px" ToolTip="แก้ไขรายละเอียดการแจ้งซ่อม" OnCommand="btnEdit_Command" OnClientClick="return CompareConfirm('แก้ไขรายการ ใช่หรือไม่')"><i class="fas fa-edit fa-2x"></i>&nbsp Edit</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
-                            <EditRowStyle BackColor="#2461BF" />
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="White" CssClass="text-left" Font-Bold="True" ForeColor="#000033" />
-
-                            <RowStyle BackColor="White" CssClass="text-left" />
+                            <HeaderStyle Font-Bold="True"/>
                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                             <SortedAscendingCellStyle BackColor="#F5F7FB" />
                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                             <PagerStyle HorizontalAlign="Right" CssClass="GridPager" />
-
                         </asp:GridView>
                     </asp:Panel>
                 </div>
@@ -225,7 +195,6 @@
                         <h4 class="modal-title" id="H3"></h4>
                     </div>
                     <asp:UpdatePanel ID="upDel" runat="server">
-
                         <ContentTemplate>
                             <div class="modal-body">
                                 คุณต้องการแก้ไขรายการนี้ใช่ หรือ ไม่
@@ -254,14 +223,11 @@
             var str1 = "1";
             var str2 = "2";
 
-
             if (str1 === str2) {
                 // your logic here
-
                 return false;
             } else {
                 // your logic here
-
                 return confirm(msg);
             }
         }
@@ -286,7 +252,6 @@
         function handleEnter(field, event) {
             var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
             if (keyCode == 13) {
-
                 return false;
             }
             else {
@@ -319,6 +284,5 @@
             var num = parseFloat(ele.value);
             ele.value = num.toFixed(2);
         }
-
     </script>
 </asp:Content>
