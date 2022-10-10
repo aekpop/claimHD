@@ -247,6 +247,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox ckeNoservice;
         
         /// <summary>
+        /// txtoriginalNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtoriginalNo;
+        
+        /// <summary>
         /// txtreplaceNo control.
         /// </summary>
         /// <remarks>

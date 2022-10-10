@@ -13,7 +13,7 @@
     <!-- JS, Popper.js, and jQuery -->
     <script src="../Scripts/jquery-3.5.1.js"></script>
     <script src="../Scripts/umd/popper.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>   
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
         <!-- Menu Dropdown -->
@@ -115,9 +115,11 @@
                     <div class="card-title">ค้นหา</div>
                         <div class="input-group mb-3">
                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control"></asp:DropDownList>
-                            <asp:TextBox ID="txtCmpoint" runat="server" CssClass="form-control" placehodler="อาคารย่อย"></asp:TextBox>
+                            <asp:TextBox ID="txtCmpoint" runat="server" CssClass="form-control" placeholder="อาคารย่อย"></asp:TextBox>
                             <div class="input-group-append">
-                                <asp:Button ID="btnSearchAddd" runat="server" Visible="true" CssClass="btn btn-outline-secondary" OnClick="btnSearchAddd_Click" Text="ค้นหา"></asp:Button>
+                                <div class="button-search-icon">
+                                    <asp:Button ID="btnSearchAddd" runat="server" Visible="true" CssClass="btn btn-outline-secondary" Width="100px" OnClick="btnSearchAddd_Click" Text="ค้นหา" ></asp:Button>
+                                </div>                                
                             </div>
                         </div>                 
                     <br />
@@ -284,5 +286,9 @@
             var num = parseFloat(ele.value);
             ele.value = num.toFixed(2);
         }
+
+        function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+        $(document).on("keydown", disableF5);
+
     </script>
 </asp:Content>

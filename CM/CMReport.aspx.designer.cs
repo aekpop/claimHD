@@ -382,6 +382,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.WebControls.Label lbreplace;
         
         /// <summary>
+        /// lbnoOriginal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbnoOriginal;
+        
+        /// <summary>
         /// lbnorepalce control.
         /// </summary>
         /// <remarks>
@@ -443,15 +452,6 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDateEJRecheck;
-        
-        /// <summary>
-        /// lbTimeEJRecheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTimeEJRecheck;
         
         /// <summary>
         /// lbNodeRecheck control.

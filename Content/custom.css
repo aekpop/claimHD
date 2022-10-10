@@ -96,3 +96,20 @@ ul ul a {
   .table>tfoot>tr>td {
       padding: 10px 10px;
   }
+
+.button-search-icon {
+    display: inline-block;
+    position: relative;
+}
+
+    .button-search-icon:after {
+        content: '\f002';
+        position: absolute;
+        right: 67px;
+        top: 15px;
+        font-size: 18px;
+        font: normal normal normal 20px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }

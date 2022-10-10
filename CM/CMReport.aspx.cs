@@ -650,7 +650,7 @@ namespace ClaimProject.CM
                     //lbDateERecheck.Text = "-";
                     //lbTimeERecheck.Text = "-";
                     lbDateEJRecheck.Text = "-";
-                    lbTimeEJRecheck.Text = "-";
+                    //lbTimeEJRecheck.Text = "-";
                     lbUserEJRecheck.Text = "-";
                     //lbNodeRecheck.Text = " - ";
                 }
@@ -664,8 +664,8 @@ namespace ClaimProject.CM
                     lbMethodRecheck.Text = rt.GetString("cm_detail_method");
                     //lbDateERecheck.Text = rt.GetString("cm_detail_edate");
                     //lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
-                    lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
-                    lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
+                    lbDateEJRecheck.Text = rt.GetString("cm_detail_edate") + "@" + rt.GetString("cm_detail_etime") + " ถึง " + rt.GetString("cm_detail_ejdate") + "@" + rt.GetString("cm_detail_ejtime");
+                    //lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
                     lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
                     //lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                     if (!rt.IsDBNull(22))
@@ -689,8 +689,8 @@ namespace ClaimProject.CM
                     lbMethodRecheck.Text = rt.GetString("cm_detail_method");
                     //lbDateERecheck.Text = rt.GetString("cm_detail_edate");
                     //lbTimeERecheck.Text = rt.GetString("cm_detail_etime");
-                    lbDateEJRecheck.Text = rt.GetString("cm_detail_ejdate");
-                    lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
+                    lbDateEJRecheck.Text = rt.GetString("cm_detail_edate") + "@" + rt.GetString("cm_detail_etime") + " ถึง " + rt.GetString("cm_detail_ejdate") + "@" + rt.GetString("cm_detail_ejtime");
+                    //lbTimeEJRecheck.Text = rt.GetString("cm_detail_ejtime");
                     lbUserEJRecheck.Text = rt.GetString("cm_user_endjob");
                     //lbNodeRecheck.Text = rt.GetString("cm_detail_note");
                     if (!rt.IsDBNull(22))
@@ -779,6 +779,14 @@ namespace ClaimProject.CM
             else
             {
                 lbnorepalce.Text = "-";
+            }
+            if (!rt.IsDBNull(26))
+            {
+                lbnoOriginal.Text = rt.GetString("cm_detail_original_serial");
+            }
+            else
+            {
+                lbnoOriginal.Text = "-";
             }
 
             rt.Close();

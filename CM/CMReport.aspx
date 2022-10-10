@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-sm-6 col-md-6 col-xl-2">
                             <div class="form-group bmd-form-group">
                                 <div class="label-on-left">ช่วงเวลาทั้งหมด</div>
                                 <label class="container">
@@ -108,11 +108,11 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-xl-6 text-right">
-                            <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa" Font-Size="Larger" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
+                        <div class="col-sm-12 col-md-6 col-xl-6 text-right">
+                            <asp:LinkButton ID="btnSearchEdit1" runat="server" CssClass="btn btn-info fa col-sm-12 col-md-2" Font-Size="Larger" OnClick="btnSearchEdit_Click">&#xf002; ค้นหา</asp:LinkButton>
                         </div>
-                        <div class="col-xl-6 text-left">
-                            <asp:LinkButton ID="btnReport" runat="server" CssClass="btn btn-success fa" Font-Size="Larger" OnCommand="btnReport_Command">&#xf15c; รายงาน</asp:LinkButton>
+                        <div class="col-sm-12 col-md-6 col-xl-6 text-left">
+                            <asp:LinkButton ID="btnReport" runat="server" CssClass="btn btn-success fa col-sm-12 col-md-2" Font-Size="Larger" OnCommand="btnReport_Command">&#xf15c; รายงาน</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                         PagerSettings-FirstPageText="หน้าแรก" PagerSettings-LastPageText="หน้าสุดท้าย"
                         AllowPaging="true">
                         <Columns>
-                            <asp:TemplateField HeaderText="ลำดับ">
+                            <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-CssClass="d-sm-none d-md-block" ItemStyle-CssClass="d-sm-none d-md-block">
                                 <ItemTemplate>
                                     <asp:Label ID="lbClaimNumrow" Text='<%#  Container.DataItemIndex + 1 %>' runat="server" />
                                 </ItemTemplate>
@@ -285,17 +285,29 @@
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">อุปกรณ์/อะไหล่ทดแทน(ถ้ามี) : </span>
+                                    <span class="label label-primary">ชื่ออุปกรณ์/อะไหล่ทดแทน : </span>
                                     <asp:Label ID="lbreplace" Enabled="false" runat="server" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
+
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">หมายเลขอุปกรณ์ทดแทน(ถ้ามี) : </span>
+                                    <span class="label label-primary">หมายเลขอุปกรณ์เดิม : </span>
+                                    <asp:Label ID="lbnoOriginal" Enabled="false" runat="server" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <span class="label label-primary">หมายเลขอุปกรณ์ทดแทน : </span>
                                     <asp:Label ID="lbnorepalce" Enabled="false" runat="server" />
                                 </div>
                             </div>
@@ -315,8 +327,8 @@
                             </div>-->
                             <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">วันที่เสร็จสิ้น : </span>
-                                    <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server" />
+                                    <span class="label label-primary">วันเข้า-สิ้นสุด : </span>
+                                    <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
                         </div>

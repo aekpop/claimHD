@@ -2,22 +2,550 @@
 <%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<style>
+    @font-face {
+        font-family: 'Prompt';
+        src: url('/fonts/Prompt-Light.ttf') format('truetype');
+    }
+
+    .wrapper {
+        display: none;
+        padding: 0 0;
+    }
+
+        .wrapper h1 {
+            font-size: 2em;
+            line-height: 1em;
+            margin-top: 1.1em;
+            font-weight: bold;
+        }
+
+        .wrapper p {
+            font-size: 1.5em;
+            line-height: 1.275em;
+            margin-top: 0.15em;
+        }
+
+    #loading {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(192, 192, 192, 0.5);
+        background-image: url('../img/MnyxU.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<html lang="th">
 <head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <meta http-equiv="Content-Type" content="text/html; charset=tis-620" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    <link href="~/Content/octicons.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="/Content/demo.css" rel="stylesheet" />
+    <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+    <link href="/Content/lightbox.css" rel="stylesheet" />
+    <link href="/Content/material-dashboard.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/custom.css" rel="stylesheet" />
+
+    <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
+
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <h1>Mobile Master Page</h1>
-        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-        <section class="content-wrapper main-content clear-fix">
-            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-        </section>
-        <friendlyUrls:ViewSwitcher runat="server" />
-    </div>
+<body style="padding-top: 0px;">
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <script src="/Scripts/offcanvas.js"></script>
+
+        <div id="loading"></div>
+
+        <div class="wrapper ">
+            <div class="panel panel-default">
+                <!-- Start Navbar -->
+                <nav class="navbar fixed-top sticky-top navbar-expand-sm navbar-dark bg-dark">
+                    <div class="container-fluid" style="font-family:Prompt;">
+                        <div class="navbar-wrapper">
+                            <a>
+                                <img src="/img/j4.png" style="width: 35px" /></a>
+                            <a class="navbar-brand" href="#pablo" style="font-size: 18px; font-family: Prompt"><%:Page.Title %></a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end ">
+                            <ul class="navbar-nav">
+                                <!--<li>
+                                            <div class="input-group no-border">
+                                                <input type="text" value="" class="form-control" placeholder="Search...">
+                                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                                    <i class="material-icons">search</i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
+                                            </div>
+                                        </li>-->
+                                <li class="nav-item dropdown" runat="server" id="nav0">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-home" style="font-size: 22px;"></i><span class="col">Admin อุบัติเหตุ</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/Techno/TechnoReport">รายงาน</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="nav1">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Claim/DefaultClaim" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-car-crash" style="font-size: 22px;"></i><span class="col">อุบัติเหตุ</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/Claim/DefaultClaim">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/Claim/claimForm?add=true">แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">รายงาน</div>
+                                        <a class="dropdown-item" href="/Claim/claimForm">รายการอุบัติเหตุ</a>
+                                        <a class="dropdown-item" href="/Claim/claimLine">ส่งรายงาน (Line)</a>
+                                        <a class="dropdown-item" href="/Claim/ClaimDevice">รายการอุปกรณ์ค้างซ่อม</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">สถิติ</div>
+                                        <a class="dropdown-item" href="/ReportView/">ข้อมูลทางสถิติ</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown" runat="server" id="Li2">
+                                    <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col">บำรุงรักษา</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/CM/DefaultCM">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/CM/CMDetailForm">แจ้งซ่อมอุปกรณ์</a>
+                                        <a class="dropdown-item" href="/CM/CMEditForm">การแก้ไข</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">รายงาน</div>
+                                        <a class="dropdown-item" href="/CM/CMLine">ส่งรายงาน (Line)</a>
+                                        <a class="dropdown-item" href="/CM/CMReport">รายงานการแจ้งซ่อม</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="Li3">
+                                    <a class="nav-link dropdown-toggle" href="/CM/DefaultCM" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-tools" style="font-size: 22px;"></i><span class="col">บำรุงรักษา</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/CM/DefaultCM">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/CM/CMDetailForm">แจ้งซ่อมอุปกรณ์</a>
+                                        <a class="dropdown-item" href="/CM/CMEditForm">การแก้ไข</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">รายงาน</div>
+                                        <a class="dropdown-item" href="/CM/CMLine">ส่งรายงาน Line</a>
+                                        <a class="dropdown-item" href="/CM/CMReport">รายงานการแจ้งซ่อม</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">ผู้ดูแลระบบ(Admin)</div>
+                                        <a class="dropdown-item" href="/CM/CMSurveyForm">ตรวจสอบรายการแจ้งซ่อม จากด่านฯ</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="equipDiv">
+                                    <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col">ครุภัณฑ์</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/equip/EquipDefault">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/equip/EquipAdd">บัญชีครุภัณฑ์</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">โอนย้าย</div>
+                                        <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown" runat="server" id="Li4">
+                                    <a class="nav-link dropdown-toggle" href="/equip/EquipDefault" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-magic" style="font-size: 22px;"></i><span class="col">ครุภัณฑ์</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/equip/EquipDefault">หน้าแรก</a>
+                                        <a class="dropdown-item" href="/equip/EquipAdd">บัญชี ครุภัณฑ์</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">โอนย้าย</div>
+                                        <a class="dropdown-item" href="/equip/EquipTranList">ส่งออก ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipTranGetList">รับเข้า ครุภัณฑ์</a>
+                                        <a class="dropdown-item" href="/equip/EquipReportAll">รายงานครุภัณฑ์</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header ">ผู้ดูแลระบบ(Admin)</div>
+                                        <a class="dropdown-item" href="/equip/EquipAddAll">เพิ่มครุภัณฑ์ใหม่</a>
+                                        <a class="dropdown-item" href="/equip/EquipCheckList">รายงานโอนย้าย(ของด่านฯ)</a>
+                                        <a class="dropdown-item" href="/equip/EquipHistory">รายงานประวัติโอนย้าย(แยกตามครุภัณฑ์)</a>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="nav2" visible="false">
+                                    <a class="nav-link" href="/User/UserForm" title="เปลี่ยนรหัสผ่าน">
+                                        <i class="fa fa-refresh" style="font-size: 22px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="nav3">
+                                    <a class="nav-link" href="/settingPage">
+                                        <i class="fa fa-gear" style="font-size: 22px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="Li1" visible="false">
+                                    <a class="nav-link" href="http://192.168.101.91:90/webboard/viewforum.php?f=4&sid=b612e1a12b01c2f0acc3094666e19434" target="_blank" title="ถาม-ตอบปัญหาการใช้งาน">
+                                        <i class="fa fa-copy" style="font-size: 22px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" runat="server" id="searchEn" visible="false">
+                                    <a class="nav-link" href="/Search/searchmain" title="รายการบัตรผิดปกติ">
+                                        <i class="far fa-lightbulb" style="font-size: 18px;"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <asp:Label ID="lbUser" runat="server" ForeColor="White"></asp:Label>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="/User/UserForm">
+                                            <i class="fa fa-refresh col-2"></i>
+                                            <span class="col-10">เปลี่ยนรหัสผ่าน</span>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+
+                                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="col-11 btn" OnClick="btnLogout_Click" Visible="true" ForeColor="Black" Text=""><span class="col-10">ออกระบบ</span></asp:LinkButton>
+                                    </div>
+                                </li>
+                                <li class="nav-item"></li>
+                            </ul>
+                        </div>
+                        <!--</div> -->
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <asp:Label ID="lblText" runat="server"></asp:Label>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="copyright float-right">
+                            &copy; <%=DateTime.Now.Year+543 %> ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS) ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม - กองทางหลวงพิเศษระหว่างเมือง กรมทางหลวง
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="row">
+                            <asp:TextBox ID="txtUrlchk" runat="server" Visible="false" OnTextChanged="txtUrlchk_TextChanged"></asp:TextBox>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
     </form>
+    <script src="/Scripts/popper.min.js"></script>
+    <script src="/Scripts/umd/popper.js"></script>
+    <script src="/Scripts/bootstrap-material-design.min.js"></script>
+    <script src="/Scripts/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/Scripts/bootstrap-notify.js"></script>
+    <script src="/Scripts/chartist.min.js"></script>
+    <script src="/Scripts/material-dashboard.js"></script>
+    <script src="/Scripts/demo.js"></script>
+    <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
+    <!--<script src="/Scripts/ClaimProjectScript.js"></script>-->
+    <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/Scripts/ClaimProjectScript.js"></script>
+
+
+    <script type="text/javascript">   
+        $(function () {
+            //datepicker
+            $(".datepicker").datepicker($.datepicker.regional["th"]);
+            $(".datepicker").attr('readonly', true);
+            $(".notreadonly").attr('readonly', false);
+            if ($(".datepicker").val() == "") {
+                $(".datepicker").datepicker("setDate", new Date());
+            }
+
+            $(".datepicker").attr('maxlength', '10');
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+            function EndRequestHandler(sender, args) {
+                $('.datepicker').datepicker($.datepicker.regional["th"]);
+                if ($(".datepicker").val() == "") {
+                    $(".datepicker").datepicker("setDate", new Date());
+                }
+                //$(".notreadonly").val("");
+
+            }
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).tooltip();
+            /*$('.nav').on('click', '.nav-item', function () {
+                //e.preventDefault();
+                $(this).parents('.nav-item').find('.active').removeClass('active').end().end().addClass('active');
+                //$(activeTab).show();
+            });*/
+
+            $(function () {
+                var pageName = window.location.pathname;
+                var newPageName = pageName;
+
+                if (pageName.indexOf('/') == 0) {
+                    newPageName = pageName.substring(1, pageName.length);
+
+                    $.each($('.nav').find('li'), function () {
+                        var hrefVal = $(this).find('a').attr('href');
+                        //alert(newPageName);
+                        if (newPageName === "") {
+                            $('#nav0').addClass('active').siblings().removeClass('active');
+                        } else if (hrefVal.indexOf(newPageName) > -1) {
+                            $(this).addClass('active').siblings().removeClass('active');
+                        }
+
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Autocompress -->
+    <script>
+        $(function () {
+
+            $.widget("custom.combobox", {
+                _create: function () {
+                    this.wrapper = $("<span>")
+                        .addClass("custom-combobox")
+                        .insertAfter(this.element);
+
+                    this.element.hide();
+                    this._createAutocomplete();
+                    this._createShowAllButton();
+                },
+
+                _createAutocomplete: function () {
+                    var selected = this.element.children(":selected"),
+                        value = selected.val() ? selected.text() : "";
+
+                    this.input = $("<input>")
+                        .appendTo(this.wrapper)
+                        .val(value)
+                        .attr("title", "")
+                        .addClass("custom-combobox-input form-control ui-state-default ui-conner-right")
+                        .autocomplete({
+                            delay: 0,
+                            minLength: 0,
+                            source: $.proxy(this, "_source")
+                        })
+                        .tooltip({
+                            classes: {
+                                "ui-tooltip": "ui-state-highlight"
+                            }
+                        });
+
+                    this._on(this.input, {
+                        autocompleteselect: function (event, ui) {
+                            ui.item.option.selected = true;
+                            this._trigger("select", event, {
+                                item: ui.item.option
+                            });
+                        },
+
+                        autocompletechange: "_removeIfInvalid"
+                    });
+                },
+
+                _createShowAllButton: function () {
+                    var input = this.input,
+                        wasOpen = false;
+
+                    $("<a>")
+                        .attr("tabIndex", -1)
+                        .attr("title", "Show All Items")
+                        .tooltip()
+                        .appendTo(this.wrapper)
+                        .button({
+                            icons: {
+                                primary: "ui-icon-triangle-1-s"
+                            },
+                            text: false
+                        })
+                        .removeClass("ui-corner-all")
+                        .addClass("custom-combobox-toggle ui-corner-right")
+
+                        .on("mousedown", function () {
+                            wasOpen = input.autocomplete("widget").is(":visible");
+                        })
+                        .on("click", function () {
+                            input.trigger("focus");
+
+                            // Close if already visible
+                            if (wasOpen) {
+                                return;
+                            }
+
+                            // Pass empty string as value to search for, displaying all results
+                            input.autocomplete("search", "");
+                        });
+                },
+
+                _source: function (request, response) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                    response(this.element.children("option").map(function () {
+                        var text = $(this).text();
+                        if (this.value && (!request.term || matcher.test(text)))
+                            return {
+                                label: text,
+                                value: text,
+                                option: this
+                            };
+                    }));
+                },
+
+                _removeIfInvalid: function (event, ui) {
+
+                    // Selected an item, nothing to do
+                    if (ui.item) {
+                        return;
+                    }
+
+                    // Search for a match (case-insensitive)
+                    var value = this.input.val(),
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
+                    this.element.children("option").each(function () {
+                        if ($(this).text().toLowerCase() === valueLowerCase) {
+                            this.selected = valid = true;
+                            return false;
+                        }
+                    });
+
+                    // Found a match, nothing to do
+                    if (valid) {
+                        return;
+                    }
+
+                    // Remove invalid value
+                    this.input
+                        .val("")
+                        .attr("title", value + " ไม่พบข้อมูล")
+                        .tooltip("open");
+                    this.element.val("");
+                    this._delay(function () {
+                        this.input.tooltip("close").attr("title", "");
+                    }, 500);
+                    this.input.autocomplete("instance").term = "";
+                },
+
+                _destroy: function () {
+                    this.wrapper.remove();
+                    this.element.show();
+                }
+            });
+
+            $(".combobox").combobox();
+        });
+    </script>
+    <script>
+        function ConfirmToAdd() {
+            if (navchk != "") {
+                if (confirm('ยืนยันที่จะออกจากหน้านี้ใช่หรือไม่ ?')) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else { return true; }
+
+        }
+    </script>
+    <script type="text/javascript"> 
+        function CompareConfirm(msg) {
+            var str1 = "1";
+            var str2 = "2";
+
+            if (str1 === str2) {
+                // your logic here
+                return false;
+            }
+            else {
+                // your logic here
+                return confirm(msg);
+            }
+        }
+
+        $('.dropdown-toggle').dropdown()
+
+        // Start Loading Screen while page loads 
+        function onReady(callback) {
+            var intervalId = window.setInterval(function () {
+                if (document.getElementsByTagName('body')[0] !== undefined) {
+                    window.clearInterval(intervalId);
+                    callback.call(this);
+                }
+            }, 500);
+        }
+
+        function setVisible(selector, visible) {
+            document.querySelector(selector).style.display = visible ? 'block' : 'none';
+        }
+
+        onReady(function () {
+            setVisible('.wrapper', true);
+            setVisible('#loading', false);
+        });
+        // End Loading Screen while page loads 
+        $('html').css('overflow', 'hidden');
+
+
+
+    </script>
 </body>
 </html>
+

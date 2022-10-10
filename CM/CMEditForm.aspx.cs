@@ -18,6 +18,8 @@ namespace ClaimProject.CM
         public string alert = "";
         public string alertType = "";
         public string icon = "";
+        public string token = "";
+        public string messageLine = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,8 +65,7 @@ namespace ClaimProject.CM
                     //txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 }
                 BindData();
-            }
-
+            }           
         }
 
 
@@ -242,6 +243,8 @@ namespace ClaimProject.CM
 
         protected void btnUpdateCM_Command(object sender, CommandEventArgs e)
         {
+            string sysname = "";
+
             if (txtEDate.Text != "" && txtETime.Text != "" && txtEJTime.Text != "" && txtEJDate.Text != "")
             {
                 bool chk_time = false;
@@ -251,7 +254,7 @@ namespace ClaimProject.CM
                     //double.Parse(txtETime.Text);
                     chk_time = true;
                 }
-                catch { ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาใส่เวลาให้ถูกต้อง ไม่ต้องใส่ น.')", true); }
+                catch { }
 
 
                 if (chk_time)
@@ -289,7 +292,7 @@ namespace ClaimProject.CM
 
                                 if (Chkreplace.Checked)
                                 {
-                                    replace = " ,cm_detail_replace_name = '" + txtreplaceName.Text + "' ,cm_detail_replace_serial = '"+ txtreplaceNo.Text + "' ";
+                                    replace = " ,cm_detail_replace_name = '" + txtreplaceName.Text + "' ,cm_detail_original_serial = '" + txtoriginalNo.Text + "' ,cm_detail_replace_serial = '" + txtreplaceNo.Text + "' ";
                                 }
 
                                 string chkagncy = " SELECT cm_detail_id,drive_group_id,drive_group_agency FROM " +
@@ -304,31 +307,72 @@ namespace ClaimProject.CM
                                     "cm_detail_Chknoservice = '" + Noservice + "' " + replace + " " +
                                     "WHERE cm_detail_id = '" + Label1.Text.Replace('#', ' ').Trim() + "'";
 
+                                if (txtCpointSearch.SelectedValue == "902" || txtCpointSearch.SelectedValue == "903" || txtCpointSearch.SelectedValue == "904" || txtCpointSearch.SelectedValue == "905")
+                                {
+                                    //token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
+                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                                    //sysname = "MAM9";
+                                    sysname = "test";
+                                }
+                                else if (txtCpointSearch.SelectedValue == "701" || txtCpointSearch.SelectedValue == "702" || txtCpointSearch.SelectedValue == "703" || txtCpointSearch.SelectedValue == "704")
+                                {
+                                    //token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
+                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                                    //sysname = "MAM71";
+                                    sysname = "test";
+                                }
+                                else if (txtCpointSearch.SelectedValue == "706" || txtCpointSearch.SelectedValue == "707" || txtCpointSearch.SelectedValue == "708" || txtCpointSearch.SelectedValue == "709" || txtCpointSearch.SelectedValue == "710")
+                                {
+                                    //token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
+                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                                    //sysname = "MAM72";
+                                    sysname = "test";
+                                }
+                                else
+                                {
+                                    //token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
+                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                                    //sysname = "MAM73";
+                                    sysname = "test";
+                                }
+
                                 if (function.MySqlQuery(sql))
                                 {
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
                                     MySqlDataReader rs = function.MySqlSelect(chkagncy);
                                     if (rs.Read())
                                     {
+                                        if (rs.GetString("drive_group_id") == "4")
+                                        {
+                                            //token = "ZKLAECJVtEghzOAPjDtBRF9AA9LgrL0ub1D9fFIsICZ"; //token MA air
+                                            //sysname = "CMAir";
+                                            sysname = "test";
+                                        }
+
                                         if (txtCpointSearch.SelectedValue != "711" && txtCpointSearch.SelectedValue != "712" && txtCpointSearch.SelectedValue != "713")
                                         {
-                                            if (rs.GetString("drive_group_id") == "2")
+                                            if (rs.GetString("drive_group_id") == "2") // ซ่อมบำรุง
                                             {
-                                                Session["LineTran"] = "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                                messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                                //function.LineTran(sysname, messageLine);
+                                                //Session["LineTran"] = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                             }
                                             else
                                             {
-                                                Session["LineTran"] = "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
-                                                LineTran();
+                                                messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                                function.LineTran(sysname, messageLine);
+                                                //Session["LineTran"] = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                                //LineTran(token);
                                             }
                                         }
                                         else
                                         {
-                                            Session["LineTran"] = "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
-                                            LineTran();
+                                            messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                            function.LineTran(sysname, messageLine);
+                                            //Session["LineTran"] = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                            //LineTran(token);
                                         }
                                     }
-
                                     BindData();
                                 }
                                 else
@@ -406,25 +450,30 @@ namespace ClaimProject.CM
             alert = msg;
         }
 
-        protected void LineTran()
+        protected void LineTran(string token)
         {
-            string token = "";
-            if (txtCpointSearch.SelectedValue == "902" || txtCpointSearch.SelectedValue == "903" || txtCpointSearch.SelectedValue == "904" || txtCpointSearch.SelectedValue == "905")
-            {
-                token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
-            }
-            else if (txtCpointSearch.SelectedValue == "701" || txtCpointSearch.SelectedValue == "702" || txtCpointSearch.SelectedValue == "703" || txtCpointSearch.SelectedValue == "704")
-            {
-                token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
-            }
-            else if (txtCpointSearch.SelectedValue == "706" || txtCpointSearch.SelectedValue == "707" || txtCpointSearch.SelectedValue == "708" || txtCpointSearch.SelectedValue == "709" || txtCpointSearch.SelectedValue == "710")
-            {
-                token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
-            }
-            else
-            {
-                token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
-            }
+
+                /*if (txtCpointSearch.SelectedValue == "902" || txtCpointSearch.SelectedValue == "903" || txtCpointSearch.SelectedValue == "904" || txtCpointSearch.SelectedValue == "905")
+                {
+                    token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
+                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                }
+                else if (txtCpointSearch.SelectedValue == "701" || txtCpointSearch.SelectedValue == "702" || txtCpointSearch.SelectedValue == "703" || txtCpointSearch.SelectedValue == "704")
+                {
+                    token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
+                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                }
+                else if (txtCpointSearch.SelectedValue == "706" || txtCpointSearch.SelectedValue == "707" || txtCpointSearch.SelectedValue == "708" || txtCpointSearch.SelectedValue == "709" || txtCpointSearch.SelectedValue == "710")
+                {
+                    //token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
+                    token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                }
+                else
+                {
+                    token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
+                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
+                }
+                */            
 
             if (Session["LineTran"].ToString() != "")
             {

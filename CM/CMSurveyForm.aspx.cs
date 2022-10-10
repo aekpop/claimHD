@@ -196,8 +196,9 @@ namespace ClaimProject.CM
                     lbchkservice = "แก้ไขเบื้องต้น";
                 }
 
-                if (!rt.IsDBNull(24)) { lbnoRepalce.Text = rt.GetString("cm_detail_replace_name"); } else { lbnoRepalce.Text = "ไม่เปลี่ยนอุปกรณ์"; }
-                if (!rt.IsDBNull(25)) { lbnameRepalce.Text = rt.GetString("cm_detail_replace_serial"); } else { lbnameRepalce.Text = "ไม่เปลี่ยนอุปกรณ์"; }
+                if (!rt.IsDBNull(26)) { lbnoOriginal.Text = rt.GetString("cm_detail_original_serial"); } else { lbnoOriginal.Text = "ไม่เปลี่ยนอุปกรณ์"; }
+                if (!rt.IsDBNull(25)) { lbnoRepalce.Text = rt.GetString("cm_detail_replace_serial"); } else { lbnoRepalce.Text = "ไม่เปลี่ยนอุปกรณ์"; }
+                if (!rt.IsDBNull(24)) { lbnameRepalce.Text = rt.GetString("cm_detail_replace_name"); } else { lbnameRepalce.Text = "ไม่เปลี่ยนอุปกรณ์"; }
 
                 lbrefRecheck.Text = rt.GetString("cm_detail_id") + " (" + lbchkservice + ") ";
                 lbCpointRecheck.Text = rt.GetString("cpoint_name");
