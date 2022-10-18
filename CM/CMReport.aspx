@@ -26,7 +26,7 @@
     </style>
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-        <div id="MainBody" class="card" style="z-index: 0; font-size: 1rem;">
+        <div id="MainBody" runat="server" class="card" style="z-index: 0; font-size: 1rem;">
             <div class="card-header ">
                 <div class="card-title">ค้นหา</div>
             </div>
@@ -152,7 +152,7 @@
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ช่องทาง" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>

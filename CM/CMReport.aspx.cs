@@ -74,6 +74,20 @@ namespace ClaimProject.CM
                 string sqlRespon = "SELECT * FROM tbl_drive_group";
                 function.getListItem(ddlResponsible, sqlRespon, "drive_group_agency", "drive_group_id");
                 ddlResponsible.Items.Insert(0, new ListItem("ทั้งหมด", ""));
+
+                if (!string.IsNullOrEmpty(Request.Params["agency"]) && !string.IsNullOrEmpty(Request.Params["cpoint"]))
+                {
+                    if (Request.Params["cpoint"] == "60")
+                    {
+                        txtCpointSearch.Items.Insert(0, new ListItem("ฝ่ายฯ ทั้งหมด", "60"));
+                    }
+                    ddlResponsible.SelectedValue = Request.Params["agency"];
+                    txtCpointSearch.SelectedValue = Request.Params["cpoint"];
+                    CheckAllDay.Checked = true;
+                    txtCMStatus.SelectedIndex = 1;
+                    MainBody.Visible = false;
+                }
+
                 BindData();
             }
         }

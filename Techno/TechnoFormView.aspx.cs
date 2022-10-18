@@ -57,11 +57,11 @@ namespace ClaimProject.Techno
                 _lbDateStart.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "claim_start_date"));
             }
 
-            Label lbStartDate = (Label)(e.Row.FindControl("lbStartDate"));
-            if (lbStartDate != null)
-            {
-                lbStartDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "detail_date_start"));
-            }
+            //Label lbStartDate = (Label)(e.Row.FindControl("claim_user_start_claim_time"));
+            //if (lbStartDate != null)
+            //{
+            //    lbStartDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "claim_user_start_claim_time"));
+            //}
 
             Label lbDay = (Label)(e.Row.FindControl("lbDay"));
             if (lbDay != null)

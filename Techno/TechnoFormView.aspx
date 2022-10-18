@@ -47,7 +47,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="วันที่ทำรายการ">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbStartDate" runat="server"></asp:Label>
+                                    <asp:Label ID="lbStartDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_user_start_claim_time") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ผ่านมาแล้ว">

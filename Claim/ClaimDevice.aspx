@@ -51,7 +51,7 @@
             <div class="row">
                 
                  <div class =" col-md-2 text-right">
-                    <asp:Label Id ="lbCheckAllDay" runat="server" Text="ช่วงเวลา : เลือกทั้งหมด" ></asp:Label> 
+                    <asp:Label Id ="lbCheckAllDay" runat="server" Text="ช่วงวันที่ : เลือกทั้งหมด" ></asp:Label> 
                 </div>
                 <div class =" col-md-2 text-left">
                     <asp:CheckBox ID ="CheckAllDay" runat="server" AutoPostBack="True" CssClass="text-xl-center" OnCheckedChanged="CheckAllDay_CheckedChanged"/>

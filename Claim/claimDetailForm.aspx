@@ -82,7 +82,7 @@
                         <div class="col-md-6 col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ชื่อเรื่อง </p>
-                                <asp:TextBox ID="txtEquipment" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtEquipment" runat="server" CssClass="form-control" placeholder="รายงานอุบัติเหตุรถเฉี่ยวชนอุปกรณ์ (....ชื่ออุปกรณ์) ช่องทาง ...... ด่านฯ...."></asp:TextBox>
                             </div>
                         </div>
                     </div>

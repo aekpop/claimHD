@@ -22,6 +22,8 @@ namespace ClaimProject.CM
         public string sqlmonth = "";
         public string sqlnofix = "";
         public string chkAdmin = "";
+        public string agency_id = "";
+        public string cpoint_id = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,26 +35,6 @@ namespace ClaimProject.CM
             if (!this.IsPostBack)
             {
                 sqlmonth = Nowmonth + "-" + Nowyear;
-                /* string actYear = "";
-                 string actMonth = "";
-                 string TimeToChangeStat = "";
-                 if (DateTime.Today.Month.ToString() == "1")
-                 {
-                     actYear = (int.Parse(DateTime.Today.Year.ToString()) + 542).ToString();
-                     actMonth = "12";
-                     TimeToChangeStat = "01-" + actMonth + "-" + actYear;
-                 }
-                 else
-                 {
-                     actYear = (int.Parse(DateTime.Today.Year.ToString()) + 543).ToString();
-                     actMonth = (int.Parse(DateTime.Today.Month.ToString()) - 1).ToString();
-                     TimeToChangeStat = "01-" + actMonth + "-" + actYear;
-                 }
-
-                 string UpdatePMSQL = "UPDATE tbl_pm_detail c SET pm_status_id = '5' "
-                                 + " WHERE c.pm_status_id = '1' AND STR_TO_DATE(SUBSTR(c.pm_contract_date,4,7),'%m-%Y') "
-                                 + " BETWEEN STR_TO_DATE(SUBSTR('"+TimeToChangeStat+"',4,7),'%m-%Y') AND STR_TO_DATE(SUBSTR('"+TimeToChangeStat+"',4,7),'%m-%Y') ";
-                 function.MySqlQuery(UpdatePMSQL);*/
                 ddlCMNameMonthly.Items.Insert(0, new ListItem("เลือก", "0"));
                 ddlCMNameMonthly.Items.Insert(1, new ListItem("มกราคม", "1"));
                 ddlCMNameMonthly.Items.Insert(2, new ListItem("กุมภาพันธ์", "2"));
@@ -207,20 +189,9 @@ namespace ClaimProject.CM
                 Nowbudget = Nowyear;
             }
 
-
-
             string mYconn = i + "-" + Nowyear;
 
-
-            //string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_detail_sdate ='"+ now +"' ";
-            //string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
-            //string CMsqlBudget = "SELECT COUNT(*) AS numb FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '"+ Nowbudget +"' ";
-            //string CMsqlOverall = "SELECT COUNT(*) AS numa FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
-            //ค้างซ่อม
-            //string CMsqlDayNot = "SELECT COUNT(*) AS numdn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_detail_sdate ='" + now + "' ";
-            //string CMsqlMonthNot = "SELECT COUNT(*) AS nummn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
-            //string CMsqlBudgetNot = "SELECT COUNT(*) AS numbn FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' AND cm_budget = '" + Nowbudget + "' ";
-            //string CMsqlOverallNot = "SELECT COUNT(*) AS numan FROM tbl_cm_detail WHERE cm_detail_status_id != '9' AND cm_detail_status_id != '2' AND cm_cpoint = '" + Session["UserCpoint"] + "' ";
+            
 
             string CMsqlDay = "SELECT COUNT(*) AS numd FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " " + point + " AND cm_detail_sdate = '" + NowDate + "' ";
             string CMsqlMonth = "SELECT COUNT(*) AS numm FROM tbl_cm_detail WHERE cm_detail_status_id != '9' " + sqlcp + " " + point + " AND cm_budget = '" + Nowbudget + "' AND cm_detail_sdate LIKE '%" + mYconn + "' ";
@@ -242,6 +213,44 @@ namespace ClaimProject.CM
             string CMsqlnoFixbackYear = "SELECT COUNT(*) AS numnofy FROM tbl_cm_detail WHERE cm_detail_status_id = '3' " + sqlcp + " " + point + "AND cm_budget = '" + Nowbudget + "' ";
             string CMsqlnoFixbackOverall = "SELECT COUNT(*) AS numnofo FROM tbl_cm_detail WHERE cm_detail_status_id = '3' " + sqlcp + " " + point + " ";
 
+            lbMAtoll.Text = function.GetSelectValue("tbl_drive_group", "drive_group_id='1'", "drive_group_agency");
+            lbHq.Text = function.GetSelectValue("tbl_drive_group", "drive_group_id='3'", "drive_group_agency");
+            lbAsset.Text = function.GetSelectValue("tbl_drive_group", "drive_group_id='2'", "drive_group_agency");
+            lbAir.Text = function.GetSelectValue("tbl_drive_group", "drive_group_id='4'", "drive_group_agency");
+
+
+            string CMSqlPending = "CALL GetCM_Pending(" + chkAdmin + " ,'" + Session["UserCpoint"] + "' , 1)";
+            MySqlDataReader rd = function.MySqlSelect(CMSqlPending);
+            if (rd.Read())
+            {
+                lbAmoMAtoll.Text = rd.GetInt32("num").ToString();
+                rd.Close();
+            }
+
+            CMSqlPending = "CALL GetCM_Pending(" + chkAdmin + " ,'" + Session["UserCpoint"] + "' , 2)";
+            MySqlDataReader rs = function.MySqlSelect(CMSqlPending);
+            if (rs.Read())
+            {
+                lbAmoMAasset.Text = rs.GetInt32("num").ToString();
+                rs.Close();
+            }
+
+            CMSqlPending = "CALL GetCM_Pending(" + chkAdmin + " ,'" + Session["UserCpoint"] + "' , 3)";
+            MySqlDataReader rss = function.MySqlSelect(CMSqlPending);
+            if (rss.Read())
+            {
+                lbAmoMAhq.Text = rss.GetInt32("num").ToString();
+                rss.Close();
+            }
+
+            CMSqlPending = "CALL GetCM_Pending(" + chkAdmin + " ,'" + Session["UserCpoint"] + "' , 4)";
+            MySqlDataReader rrss = function.MySqlSelect(CMSqlPending);
+            if (rrss.Read())
+            {
+                lbAmoMAair.Text = rrss.GetInt32("num").ToString();
+                rrss.Close();
+            }
+
             //notication survey
             string sqlNotiSur = "SELECT COUNT(*) AS numnoS FROM tbl_cm_detail WHERE cm_detail_status_id = '1' ";
 
@@ -252,121 +261,32 @@ namespace ClaimProject.CM
             MySqlDataReader trdd = function.MySqlSelect(CMsqlDay);
             if (trdd.Read())
             {
-                //if (trdd.GetInt32("numd") != 0)
-                //{
-                //MySqlDataReader trddn = function.MySqlSelect(CMsqlDayNot);
-                //if (trddn.Read())
-                //{
-                //    if (trddn.GetInt32("numdn") != 0)
-                //    {
-                //        lbCMStatDay.Text = trdd.GetInt32("numd").ToString() + " / " + trddn.GetInt32("numdn").ToString();
-                //        trdd.Close();
-                //        trddn.Close();
-                //    }
-                //    else
-                //    {
-                //        lbCMStatDay.Text = trdd.GetInt32("numd").ToString() + " / 0";
-                //        trdd.Close();
-                //        trddn.Close();
-                //    }
-                //}
-                //}
-                //else
-                //{
                 lbCMStatDay.Text = trdd.GetInt32("numd").ToString();
                 trdd.Close();
-                //}
             }
             function.Close();
 
             MySqlDataReader trmm = function.MySqlSelect(CMsqlMonth);
             if (trmm.Read())
             {
-                //if (trmm.GetInt32("numm") != 0)
-                //{
-                //    MySqlDataReader trmmn = function.MySqlSelect(CMsqlMonthNot);
-                //    if (trmmn.Read())
-                //    {
-                //        if (trmmn.GetInt32("nummn") != 0)
-                //        {
-                //            lbCMStatMonthly.Text = trmm.GetInt32("numm").ToString() + " / " + trmmn.GetInt32("nummn").ToString();
-                //            trmm.Close();
-                //            trmmn.Close();
-                //        }
-                //        else
-                //        {
-
-                //            lbCMStatMonthly.Text = trmm.GetInt32("numm").ToString() + " / 0";
-                //            trmm.Close();
-                //            trmmn.Close();
-                //        }
-                //    }
-                //}
-                //else
-                //
                 lbCMStatMonthly.Text = trmm.GetInt32("numm").ToString();
                 trmm.Close();
-                //}
             }
             function.Close();
 
             MySqlDataReader trbg = function.MySqlSelect(CMsqlBudget);
             if (trbg.Read())
             {
-                /*if (trbg.GetInt32("numb") != 0)
-                {
-                    MySqlDataReader trbgn = function.MySqlSelect(CMsqlBudgetNot);
-                    if (trbgn.Read())
-                    {
-                        if (trbgn.GetInt32("numbn") != 0)
-                        {
-                            lbCMStatBudget.Text = trbg.GetInt32("numb").ToString() + " / " + trbgn.GetInt32("numbn").ToString();
-                            trbg.Close();
-                            trbgn.Close();
-                        }
-                        else
-                        {
-                            lbCMStatBudget.Text = trbg.GetInt32("numb").ToString() + " / 0";
-                            trbg.Close();
-                            trbgn.Close();
-                        }
-                    }                       
-                }
-                else
-                { */
                 lbCMStatBudget.Text = trbg.GetInt32("numb").ToString();
                 trbg.Close();
-                // }
             }
             function.Close();
 
             MySqlDataReader troa = function.MySqlSelect(CMsqlOverall);
             if (troa.Read())
             {
-                /*if (troa.GetInt32("numa") != 0)
-                {
-                    MySqlDataReader troan = function.MySqlSelect(CMsqlOverallNot);
-                    if (troan.Read())
-                    {
-                        if (troan.GetInt32("numan") != 0)
-                        {
-                            lbCMStatOverall.Text = troa.GetInt32("numa").ToString() + " / " + troan.GetInt32("numan").ToString();
-                            troa.Close();
-                            troan.Close();
-                        }
-                        else
-                        {
-                            lbCMStatOverall.Text = troa.GetInt32("numa").ToString() + " / 0 ";
-                            troa.Close();
-                            troan.Close();
-                        }
-                    }
-                }
-                else
-                {*/
                 lbCMStatOverall.Text = troa.GetInt32("numa").ToString();
                 troa.Close();
-                // }
             }
             function.Close();
 
@@ -403,90 +323,39 @@ namespace ClaimProject.CM
             MySqlDataReader trfm = function.MySqlSelect(CMsqlFixbackMouth);
             if (trfm.Read())
             {
-                //if (trfm.GetInt32("numfm") != 0)
-                //{
                 MySqlDataReader trnofm = function.MySqlSelect(CMsqlnoFixbackMouth);
                 if (trnofm.Read())
                 {
-                    //if (trnofm.GetInt32("numnofm") != 0)
-                    //{
                     lbFixbackMonth.Text = trfm.GetInt32("numfm").ToString() + " / " + trnofm.GetInt32("numnofm").ToString();
                     trfm.Close();
                     trnofm.Close();
-                    //}
-                    //else
-                    //{
-                    //    lbFixbackMonth.Text = trfm.GetInt32("numfm").ToString() + " / 0 ";
-                    //    trfm.Close();
-                    //    trnofm.Close();
-                    //}
                 }
-                //}
-                //else
-                //{
-                //    lbFixbackMonth.Text = "0 / 0";
-                //   trfm.Close();
-                //}
             }
             function.Close();
 
             MySqlDataReader trfy = function.MySqlSelect(CMsqlFixbackYear);
             if (trfy.Read())
             {
-                //if (trfy.GetInt32("numfy") != 0)
-                //{
                 MySqlDataReader trnofy = function.MySqlSelect(CMsqlnoFixbackYear);
                 if (trnofy.Read())
                 {
-                    //    if(trnofy.GetInt32("numnofy") != 0)
-                    //    {
                     lbFixbackyear.Text = trfy.GetInt32("numfy").ToString() + " / " + trnofy.GetInt32("numnofy").ToString();
                     trnofy.Close();
                     trfy.Close();
-                    //    }
-                    //    else
-                    //    {
-                    //        lbFixbackyear.Text = trfy.GetInt32("numfy").ToString() + " / 0 ";
-                    //        trfy.Close();
-                    //        trnofy.Close();
-                    //    }
                 }
-                //}
-                //else
-                //{
-                //    lbFixbackyear.Text = "0 / 0";
-                //    trfy.Close();
-                //}
             }
             function.Close();
 
             MySqlDataReader trfo = function.MySqlSelect(CMsqlFixbackOverall);
             if (trfo.Read())
             {
-                //if (trfo.GetInt32("numfo") != 0)
-                //{
                 MySqlDataReader trnofo = function.MySqlSelect(CMsqlnoFixbackOverall);
                 if (trnofo.Read())
                 {
-                    //if(trnofo.GetInt32("numnofo") != 0)
-                    //{
                     lbFixbackOverall.Text = trfo.GetInt32("numfo").ToString() + " / " + trnofo.GetInt32("numnofo").ToString();
                     trfo.Close();
                     trnofo.Close();
-                    //}
-                    //else
-                    //{
-                    //    lbFixbackOverall.Text = trfo.GetInt32("numfo").ToString() + " / 0 ";
-                    //    trfo.Close();
-                    //    trnofo.Close();
-                    //}
                 }
-                //}
-                //else
-                //{
-                //    lbFixbackOverall.Text = "0 / 0";
-                //    trfo.Close();
-                //}
             }
             function.Close();
 
@@ -527,9 +396,6 @@ namespace ClaimProject.CM
 
         protected void databind()
         {
-            //string sqlLsTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
-            //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
-            //   " "+ cpoint + " GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
             string sqlLsTotal = "CALL GetCM_LsTodayResult(" + chkAdmin + " ,'" + Session["UserCpoint"] + "')";
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sqlLsTotal);
@@ -539,9 +405,6 @@ namespace ClaimProject.CM
             lsTodayGridview.DataBind();
             function.Close();
 
-            //string sqlTopMoTotal = "SELECT COUNT(cm_detail_driver_id) AS num , cm_detail_driver_id ,device_name " +
-            //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id " +
-            //    " " + cpoint + " " + sqlmonth + "  GROUP BY cm_detail_driver_id ORDER BY COUNT(cm_detail_driver_id) DESC LIMIT 5 ";
             string sqlTopMoTotal = "CALL GetCM_TopMoTotal(" + chkAdmin + " ,'" + Session["UserCpoint"] + "','" + sqlmonth + "')";
 
             MySqlDataAdapter dA = function.MySqlSelectDataSet(sqlTopMoTotal);
@@ -551,9 +414,6 @@ namespace ClaimProject.CM
             GridViewNoService.DataBind();
             function.Close();
 
-            //string sqlNofix = "SELECT device_name,cm_detail_sdate,locate_name  " +
-            //    " FROM tbl_cm_detail c JOIN tbl_device d ON c.cm_detail_driver_id = d.device_id JOIN tbl_location l ON c.cm_detail_channel = l.locate_id " +
-            //    " " + cpoint + " "+ sqlnofix + " ORDER BY STR_TO_DATE(cm_detail_sdate,'%d-%m-%Y') ASC LIMIT 5 ";
             string sqlNofix = "CALL GetCM_NofixResult(" + chkAdmin + " ,'" + Session["UserCpoint"] + "')";
 
             MySqlDataAdapter DA = function.MySqlSelectDataSet(sqlNofix);
@@ -593,9 +453,43 @@ namespace ClaimProject.CM
             }
         }
 
+        protected void lbtnMa_Command(object sender, CommandEventArgs e)
+        {
+            agency_id = "1";
+            cpoint_id = Session["UserCpoint"].ToString();
+            viewpage();
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/CM/CMReport?agency=" + agency_id + "&" + "cpoint=" + cpoint_id + "','_newtab');", true);
+        }
+
         protected void lbCMNameMonthly_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void lbtnAir_Command(object sender, CommandEventArgs e)
+        {
+            agency_id = "4";
+            cpoint_id = Session["UserCpoint"].ToString();
+            viewpage();
+        }
+
+        protected void lbtnAsset_Command(object sender, CommandEventArgs e)
+        {
+            agency_id = "2";
+            cpoint_id = Session["UserCpoint"].ToString();
+            viewpage();
+        }
+
+        protected void lbtnHq_Command(object sender, CommandEventArgs e)
+        {
+            agency_id = "3";
+            cpoint_id = Session["UserCpoint"].ToString();
+            viewpage();
+        }
+
+        void viewpage()
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/CM/CMReport?agency=" + agency_id + "&" + "cpoint=" + cpoint_id + "','_newtab');", true);
         }
     }
 }
