@@ -120,7 +120,7 @@
         </div>
     </div>
     <div class="modal fade" id="UpdateStatusModal" tabindex="-1" role="dialog" aria-labelledby="UpdateStatusModalLabel" aria-hidden="true" style="font-family: 'Prompt',sans-serif;">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title">
@@ -135,57 +135,57 @@
                 <div class="modal-body" style="line-height: inherit;">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="card border-info ">
-                                <asp:Image ID="ImgCM" runat="server" Width="100%" />
+                            <div class="card border-light">
+                                <asp:Image ID="ImgCM" runat="server" Width="80%" CssClass="rounded mx-auto d-block"/>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">วันที่ : </label>
-                                <asp:Label ID="lbsDate" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
-                                <label class="bmd-label-floating">เวลา : </label>
-                                <asp:Label ID="lbsTime" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
+                                <label class="text-black-50">วันที่ : </label>
+                                <asp:Label ID="lbsDate" runat="server" Text="Label" CssClass="text-rose"></asp:Label>
+                                <label class="text-black-50">เวลา : </label>
+                                <asp:Label ID="lbsTime" runat="server" Text="Label" CssClass="text-rose"></asp:Label>
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ด่านฯ : </label>
-                                <asp:Label ID="Label5" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
-                                <label class="bmd-label-floating">ช่องทาง : </label>
-                                <asp:Label ID="Label2" runat="server" Text="Label" CssClass="text-dark"></asp:Label>
+                                <label class="text-black-50">ด่านฯ : </label>
+                                <asp:Label ID="Label5" runat="server" Text="Label" CssClass="text-rose"></asp:Label>
+                                <label class="text-black-50">ช่องทาง : </label>
+                                <asp:Label ID="Label2" runat="server" Text="Label" CssClass="text-rose"></asp:Label>
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">อุปกรณ์ : </label>
-                                <asp:Label ID="Label3" runat="server" CssClass="text-dark"></asp:Label>
+                                <label class="text-black-50">อุปกรณ์ : </label>
+                                <asp:Label ID="Label3" runat="server" CssClass="text-rose"></asp:Label>
                             </div>
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">อาการที่พบ : </label>
-                                <asp:Label ID="Label4" runat="server" CssClass="text-dark"></asp:Label>
+                                <label class="text-black-50">อาการที่พบ : </label>
+                                <asp:Label ID="Label4" runat="server" CssClass="text-rose"></asp:Label>
                             </div>
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-xl-3">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">วันที่เข้าซ่อม</label>
+                            <div class="form-group">
+                                <label class="text-black-50">วันที่เข้าซ่อม</label>
                                 <asp:TextBox ID="txtEDate" runat="server" CssClass="form-control datepicker" />
                             </div>
                         </div>
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เวลาเข้าซ่อม</label>
+                                <label class="text-black-50">เวลาเข้าซ่อม</label>
                                 <asp:TextBox ID="txtETime" runat="server" type="time" CssClass="form-control" MaxLength="5" />
                             </div>
                         </div>
 
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">วันที่ซ่อมเสร็จ</label>
+                                <label class="text-black-50">วันที่ซ่อมเสร็จ</label>
                                 <asp:TextBox ID="txtEJDate" runat="server" CssClass="form-control datepicker" />
                             </div>
                         </div>
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เวลาซ่อมเสร็จ</label>
+                                <label class="text-black-50">เวลาซ่อมเสร็จ</label>
                                 <asp:TextBox ID="txtEJTime" runat="server" type="time" CssClass="form-control" MaxLength="5" />
                             </div>
                         </div>
@@ -193,22 +193,22 @@
                     <div class="row">
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">วิธีแก้ไข</label>
-                                <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control " />
+                                <label class="text-black-50">วิธีแก้ไข</label>
+                                <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control " placeholder="กรอกวิธีการแก่ไข"/>
                             </div>
                         </div>
 
                         <div class="col-lg">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">หมายเหตุ</label>
-                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control " />
+                                <label class="text-black-50">หมายเหตุ</label>
+                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control " placeholder="ถ้ามี"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-xl-6">
                             <div class="form-group bmd-form-group">
-                                <label class="container" style="font-size: 1rem;">
+                                <label class="container text-black-50" style="font-size: 1rem;">
                                     เปลี่ยนอุปกรณ์/อะไหล่ (ระบุหมายเลขอุปกรณ์)
                                   <input type="checkbox" id="Chkreplace" name="ckeRepalce" runat="server" />
                                     <span class="checkmark"></span>
@@ -217,7 +217,7 @@
                         </div>
                         <div class="col-lg-12 col-xl-6">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">ชื่ออุปกรณ์/อะไหล่ทดแทน (ถ้ามี)</label>
+                                <label class="text-black-50">ชื่ออุปกรณ์/อะไหล่ทดแทน (ถ้ามี)</label>
                                 <asp:TextBox ID="txtreplaceName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
@@ -225,16 +225,22 @@
                     <div class="row">
                         <div class="col-lg-12 col-xl-6">
                             <div class="form-group bmd-form-group">
-                                <label class="container" style="font-size: 1rem;">
+                                <label class="container text-black-50" style="font-size: 1rem;">
                                     ไม่มีใบService (แก้ไขเบื้องต้น หายเอง หรือซ่อมโดยซ่อมบำรุง)
                                   <input type="checkbox" id="ckeNoservice" name="ckeNoservice" runat="server" />
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-xl-6">
+                        <div class="col-lg-6 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">หมายเลขอุปกรณ์ทดแทน (ถ้ามี) </label>
+                                <label class="text-black-50">หมายเลขอุปกรณ์เดิม (ถ้ามี) </label>
+                                <asp:TextBox ID="txtoriginalNo" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="text-black-50">หมายเลขอุปกรณ์ทดแทน (ถ้ามี) </label>
                                 <asp:TextBox ID="txtreplaceNo" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>

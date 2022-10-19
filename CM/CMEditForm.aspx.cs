@@ -309,31 +309,23 @@ namespace ClaimProject.CM
 
                                 if (txtCpointSearch.SelectedValue == "902" || txtCpointSearch.SelectedValue == "903" || txtCpointSearch.SelectedValue == "904" || txtCpointSearch.SelectedValue == "905")
                                 {
-                                    //token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
-                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                                    //sysname = "MAM9";
-                                    sysname = "test";
+                                    sysname = "MAM9";
+                                    //sysname = "test";
                                 }
                                 else if (txtCpointSearch.SelectedValue == "701" || txtCpointSearch.SelectedValue == "702" || txtCpointSearch.SelectedValue == "703" || txtCpointSearch.SelectedValue == "704")
                                 {
-                                    //token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
-                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                                    //sysname = "MAM71";
-                                    sysname = "test";
+                                    sysname = "MAM71";
+                                    //sysname = "test";
                                 }
                                 else if (txtCpointSearch.SelectedValue == "706" || txtCpointSearch.SelectedValue == "707" || txtCpointSearch.SelectedValue == "708" || txtCpointSearch.SelectedValue == "709" || txtCpointSearch.SelectedValue == "710")
                                 {
-                                    //token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
-                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                                    //sysname = "MAM72";
-                                    sysname = "test";
+                                    sysname = "MAM72";
+                                    //sysname = "test";
                                 }
                                 else
                                 {
-                                    //token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
-                                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                                    //sysname = "MAM73";
-                                    sysname = "test";
+                                    sysname = "MAM73";
+                                    //sysname = "test";
                                 }
 
                                 if (function.MySqlQuery(sql))
@@ -344,9 +336,8 @@ namespace ClaimProject.CM
                                     {
                                         if (rs.GetString("drive_group_id") == "4")
                                         {
-                                            //token = "ZKLAECJVtEghzOAPjDtBRF9AA9LgrL0ub1D9fFIsICZ"; //token MA air
-                                            //sysname = "CMAir";
-                                            sysname = "test";
+                                            sysname = "CMAir";
+                                            //sysname = "test";
                                         }
 
                                         if (txtCpointSearch.SelectedValue != "711" && txtCpointSearch.SelectedValue != "712" && txtCpointSearch.SelectedValue != "713")

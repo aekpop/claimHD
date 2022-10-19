@@ -229,39 +229,30 @@ namespace ClaimProject.CM
                             {
                                 if (rs.GetString("drive_group_id") == "4")
                                 {
-                                    //token = "ZKLAECJVtEghzOAPjDtBRF9AA9LgrL0ub1D9fFIsICZ"; //token MA air
-                                    //sysname = "CMAir";
-                                    sysname = "test";
+                                    sysname = "CMAir";
+                                    //sysname = "test";
                                 }
                                 else
                                 {
                                     if (txtCpoint.SelectedValue == "902" || txtCpoint.SelectedValue == "903" || txtCpoint.SelectedValue == "904" || txtCpoint.SelectedValue == "905")
                                     {
-                                        //token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
-                                        //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B";
-                                        //sysname = "MAM9";
-                                        sysname = "test";
+                                        sysname = "MAM9";
+                                        //sysname = "test";
                                     }
                                     else if (txtCpoint.SelectedValue == "701" || txtCpoint.SelectedValue == "702" || txtCpoint.SelectedValue == "703" || txtCpoint.SelectedValue == "704")
                                     {
-                                        //token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
-                                        //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B";
-                                        //sysname = "MAM71";
-                                        sysname = "test";
+                                        sysname = "MAM71";
+                                        //sysname = "test";
                                     }
                                     else if (txtCpoint.SelectedValue == "706" || txtCpoint.SelectedValue == "707" || txtCpoint.SelectedValue == "708" || txtCpoint.SelectedValue == "709" || txtCpoint.SelectedValue == "710")
                                     {
-                                        //token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
-                                        //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B";
-                                        //sysname = "MAM72";
-                                        sysname = "test";
+                                        sysname = "MAM72";
+                                        //sysname = "test";
                                     }
                                     else
                                     {
-                                        //token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
-                                        //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B";
-                                        //sysname = "MAM73";
-                                        sysname = "test";
+                                        sysname = "MAM73";
+                                        //sysname = "test";
                                     }
                                 }
                                 string sql_id = "SELECT cm_detail_id FROM tbl_cm_detail WHERE cm_detail_simg = '" + getChkpic + "'";

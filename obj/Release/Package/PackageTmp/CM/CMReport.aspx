@@ -26,7 +26,7 @@
     </style>
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-        <div id="MainBody" class="card" style="z-index: 0; font-size: 1rem;">
+        <div id="MainBody" runat="server" class="card" style="z-index: 0; font-size: 1rem;">
             <div class="card-header ">
                 <div class="card-title">ค้นหา</div>
             </div>
@@ -152,7 +152,7 @@
                                     <asp:Label ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ช่องทาง" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
+                            <asp:TemplateField HeaderText="สถานที่" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">
                                 <ItemTemplate>
                                     <asp:Label ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'></asp:Label>
                                 </ItemTemplate>
@@ -285,17 +285,29 @@
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">อุปกรณ์/อะไหล่ทดแทน(ถ้ามี) : </span>
+                                    <span class="label label-primary">ชื่ออุปกรณ์/อะไหล่ทดแทน : </span>
                                     <asp:Label ID="lbreplace" Enabled="false" runat="server" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
+
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">หมายเลขอุปกรณ์ทดแทน(ถ้ามี) : </span>
+                                    <span class="label label-primary">หมายเลขอุปกรณ์เดิม : </span>
+                                    <asp:Label ID="lbnoOriginal" Enabled="false" runat="server" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <span class="label label-primary">หมายเลขอุปกรณ์ทดแทน : </span>
                                     <asp:Label ID="lbnorepalce" Enabled="false" runat="server" />
                                 </div>
                             </div>
@@ -315,8 +327,8 @@
                             </div>-->
                             <div class="col-xl-6 ">
                                 <div class="form-group bmd-form-group">
-                                    <span class="label label-primary">วันที่เสร็จสิ้น : </span>
-                                    <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />@<asp:Label ID="lbTimeEJRecheck" Enabled="false" runat="server" />
+                                    <span class="label label-primary">วันเข้า-สิ้นสุด : </span>
+                                    <asp:Label ID="lbDateEJRecheck" Enabled="false" runat="server" />
                                 </div>
                             </div>
                         </div>

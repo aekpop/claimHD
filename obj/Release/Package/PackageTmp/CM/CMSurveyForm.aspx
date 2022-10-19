@@ -197,16 +197,22 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl">
+                                <div class="col-xl-6">
                                     <div class="form-group bmd-form-group">
                                          <span class="label label-primary">อุปกรณ์/อะไหล่ที่ทดแทน : </span>
-                                        <asp:Label ID="lbnoRepalce" runat="server" CssClass="text-center" ></asp:Label>
+                                        <asp:Label ID="lbnameRepalce" runat="server" CssClass="text-center" ></asp:Label>
                                     </div>
                                 </div>
-                                <div class="col-xl">
+                                <div class="col-xl-3">
                                     <div class="form-group bmd-form-group">
-                                         <span class="label label-primary">หมายเลขเครื่องทดแทน : </span>
-                                        <asp:Label ID="lbnameRepalce" runat="server" CssClass="text-center" ></asp:Label>
+                                         <span class="label label-primary">หมายเลขเดิม : </span>
+                                        <asp:Label ID="lbnoOriginal" runat="server" CssClass="text-center" ></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="form-group bmd-form-group">
+                                         <span class="label label-primary">หมายเลขทดแทน : </span>
+                                        <asp:Label ID="lbnoRepalce" runat="server" CssClass="text-center" ></asp:Label>
                                     </div>
                                 </div>
                             </div>

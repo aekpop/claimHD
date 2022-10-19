@@ -12,59 +12,12 @@
         .table > tfoot > tr > td {
             padding: 0.25rem 0.25rem;
         }
+
+        .card {
+            font-size: 1rem;
+        }
     </style>
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-        <div class="row" runat="server" visible="false">
-            <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="boxUserSystem">
-                <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-
-                        <div class="card-icon">
-                            <i class="fas fa-wrench"></i>
-                        </div>
-                        <div class="card-category">
-                            <a class="nav-link" href="/CM/CMDetailForm" style="font-family: 'Prompt',sans-serif;">แจ้งซ่อม</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="Div4">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h4 class="card-category">
-                            <a class="nav-link" href="/CM/CMEditForm" style="font-family: 'Prompt',sans-serif;">การแก้ไข</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="Div1">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                        <div class="card-icon">
-                            <i class="fab fa-line"></i>
-                        </div>
-                        <h4 class="card-category">
-                            <a class="nav-link" href="/CM/CMLine" style="font-family: 'Prompt',sans-serif;">ส่ง Line</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-sm-6 col-6" runat="server" id="Div7">
-                <div class="card card-stats">
-                    <div class="card-header card-header-info card-header-icon">
-                        <div class="card-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h4 class="card-category">
-                            <a class="nav-link" href="/CM/CMReport" style="font-family: 'Prompt',sans-serif;">สรุปรายการ</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12" runat="server" id="Div6">
                 <div class="card card-stats">
@@ -73,11 +26,95 @@
                             <i class="fas fa-eye"></i>
                         </div>
                         <h4 class="card-category">
-
                             <asp:Label ID="lbSurveyNoti" runat="server"></asp:Label>
-
                             <a class="nav-link" href="/CM/CMSurveyForm" style="font-family: 'Prompt',sans-serif;">ตรวจสอบ</a>
                         </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                        <asp:LinkButton ID="lbtnMa" runat="server" OnCommand="lbtnMa_Command">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                        <asp:Label ID="lbMAtoll" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clock fa-2x text-gray-300 text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <asp:Label ID="lbAmoMAtoll" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            </div>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                        <asp:LinkButton ID="lbtnAir" runat="server" OnCommand="lbtnAir_Command">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        <asp:Label ID="lbAir" runat="server" Font-Bold="true" CssClass="text-warning"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clock fa-2x text-gray-300 text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <asp:Label ID="lbAmoMAair" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            </div>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                        <asp:LinkButton ID="lbtnAsset" runat="server" OnCommand="lbtnAsset_Command">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <asp:Label ID="lbAsset" runat="server" Font-Bold="true" CssClass="text-success"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clock fa-2x text-gray-300 text-success"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <asp:Label ID="lbAmoMAasset" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            </div>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                        <asp:LinkButton ID="lbtnHq" runat="server" OnCommand="lbtnHq_Command">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        <asp:Label ID="lbHq" runat="server" Font-Bold="true" CssClass="text-info">ค้</asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clock fa-2x text-gray-300 text-info"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <asp:Label ID="lbAmoMAhq" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            </div>
+                        </asp:LinkButton>
                     </div>
                 </div>
             </div>
@@ -95,7 +132,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clock fa-2x text-gray-300 text-danger"></i>
+                                <i class="fas fa-solid fa-calendar-day fa-2x text-gray-300 text-danger"></i>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -103,12 +140,11 @@
                         </div>
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                         <div class="col-xl text-right">
-                            <asp:Label ID="lbFixBack" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            <asp:Label ID="lbFixBack" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="Large"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-80 py-2">
                     <div class="card-body">
@@ -122,7 +158,6 @@
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar text-warning fa-2x text-gray-300"></i>
-
                             </div>
                         </div>
                         <div class="col-auto">
@@ -130,14 +165,11 @@
                         </div>
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                         <div class="col-xl text-right">
-                            <asp:Label ID="lbFixbackMonth" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            <asp:Label ID="lbFixbackMonth" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="Large"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-80 py-2">
                     <div class="card-body">
@@ -149,7 +181,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-bell fa-2x text-gray-300 text-success"></i>
+                                <i class="fas fa-solid fa-hand-holding-usd fa-2x text-gray-300 text-success"></i>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -157,12 +189,11 @@
                         </div>
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                         <div class="col-xl text-right">
-                            <asp:Label ID="lbFixbackyear" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            <asp:Label ID="lbFixbackyear" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="Large"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-80 py-2">
                     <div class="card-body">
@@ -173,7 +204,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-history fa-2x text-gray-300 text-info"></i>
+                                <i class="fas fa-solid fa-globe fa-2x text-gray-300 text-info"></i>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -184,7 +215,7 @@
                         </div>
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1 text-right">ซ่อมแล้ว / แก้ไขเบื้องต้น</div>
                         <div class="col-xl text-right">
-                            <asp:Label ID="lbFixbackOverall" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
+                            <asp:Label ID="lbFixbackOverall" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="Large"></asp:Label>
                         </div>
                     </div>
                 </div>
