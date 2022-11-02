@@ -42,6 +42,7 @@ a[data-toggle="collapse"] {
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
+    background-image: linear-gradient(to right top, #0950bb, #0078d6, #009ce3, #00bde5, #2cdce3);
 }
 
 p {

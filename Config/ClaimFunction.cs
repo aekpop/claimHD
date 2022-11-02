@@ -89,6 +89,7 @@ namespace ClaimProject.Config
 
             }
         }
+
          public MySqlDataReader MySqlSelect(string sql)
          {
              conn = new MySqlConnection(strConnString);
@@ -111,6 +112,7 @@ namespace ClaimProject.Config
             conn.Close();
             return dt;
         }
+
         public DataTable GetTable(string query)
         {
             DataTable dt = new DataTable();
@@ -136,7 +138,6 @@ namespace ClaimProject.Config
             cmd.CommandText = sql;
             try
             {
-                //Conn.Open();
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 conn.Close();
                 return da;
@@ -296,6 +297,7 @@ namespace ClaimProject.Config
 
             return textShort;
         }
+
         public string ShortTextCom(string text)
         {
             string textShort = "";
@@ -313,12 +315,25 @@ namespace ClaimProject.Config
 
         public string GetSelectValue(string table, string condition, string value)
         {
-            string sql = "select * from " + table + " where " + condition;
+            /*string sql = "select * from " + table + " where " + condition;
             string values = "";
             MySqlDataReader rs = MySqlSelect(sql);
             if (rs.Read())
             {
                 values = rs.GetString(value);
+            }
+            rs.Close();
+            conn.Close();
+            return values;*/
+            string sql = "select * from " + table + " where " + condition;
+            string values = "";
+            MySqlDataReader rs = MySqlSelect(sql);
+            if (rs.Read())
+            {
+                if(rs[value] != System.DBNull.Value)
+                {
+                    values = rs.GetString(value);
+                }
             }
             rs.Close();
             conn.Close();
@@ -333,6 +348,7 @@ namespace ClaimProject.Config
                 list.Items.Add(new ListItem(s.Trim(), s.Trim()));
             }
         }
+
         public string GenAddNewEQPK(int cpoint)
         {
             string pk = cpoint.ToString();
@@ -645,27 +661,7 @@ namespace ClaimProject.Config
                 case "9": return "ลบแล้ว";
                 default: return "";
             }
-        }
-        /*public void MessageLine(string token, string msg)
-        {
-            // https://notify-bot.line.me/my/ เข้าเว็บ
-            var request = (HttpWebRequest)WebRequest.Create("https://notify-api.line.me/api/notify");
-            var postData = string.Format("message={0}", msg);
-            var data = Encoding.UTF8.GetBytes(postData);
-
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-            request.Headers.Add("Authorization", "Bearer " + token);
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            var response = (HttpWebResponse)request.GetResponse();
-            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-        }*/
+        }        
 
         public class StatCM
         {            
@@ -709,6 +705,7 @@ namespace ClaimProject.Config
             //alertType = type;
             alerts = msg;
         }
+
         public void GetListQuantations(DropDownList list, int level)
         {
             string[] readText = File.ReadAllLines(HostingEnvironment.MapPath("/Config/") + "Quantation.txt");

@@ -34,13 +34,11 @@ namespace ClaimProject.CM
             {
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
                 function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group != '3' Order By locate_id ASC", "locate_name", "locate_id");
-                //BindData();
-                //function.getListItem(ddlBudgetcc, "SELECT cm_budget FROM tbl_cm_detail  GROUP BY cm_budget ORDER by cm_budget DESC", "cm_budget", "cm_budget");
+
                 string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
-
                     function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
@@ -71,7 +69,7 @@ namespace ClaimProject.CM
                     {
                         txtCpoint.SelectedValue = rs.GetString("cm_cpoint");
                         txtPoint.Text = rs.GetString("cm_point");
-                        // txtChannel.Text = rs.GetString("cm_detail_channel");
+                        //txtChannel.Text = rs.GetString("cm_detail_channel");
                         txtSDate.Text = rs.GetString("cm_detail_sdate");
                         ddlChanel.SelectedValue = rs.GetString("cm_detail_channel");
                         txtSTime.Text = rs.GetString("cm_detail_stime");
@@ -82,7 +80,6 @@ namespace ClaimProject.CM
                     }
                     rs.Close();
                     function.Close();
-
                     btnSaveCM.Visible = false;
                     btnEditCM.Visible = true;
                     btnCancelCM.Visible = true;
@@ -90,14 +87,12 @@ namespace ClaimProject.CM
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                     {
                         btnDeleteCM.Visible = true;
-                        //ImgUpload.Visible = true;
                         txtCpoint.Enabled = true;
                         txtPoint.Enabled = true;
                     }
                     else
                     {
                         btnDeleteCM.Visible = false;
-                        //ImgUpload.Visible = false;
                     }
                 }
                 else
@@ -164,7 +159,6 @@ namespace ClaimProject.CM
                 }
                 else
                 {
-
                     return "picTypeError";
                 }
             }
@@ -172,34 +166,32 @@ namespace ClaimProject.CM
             {
                 return "picHasNotImage";
             }
-
         }
         protected void btnSaveCM_Click(object sender, EventArgs e)
         {
             string getChkpic = ChkPicInsert();
-            string sysname = "";
-                        
+            string sysname = "";                        
             if (txtProblem.Text == "")
             {
-                AlertPop("Error : กรุณากรอกปัญหา/อาการ", "error");
+                function.AlertPop("Error : กรุณากรอกปัญหา/อาการ", "error");
             }
             else
             {
                 if (getChkpic == "picTypeError")
                 {
-                    AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                    function.AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 }
                 else if (getChkpic == "picHasNotImage")
                 {
-                    AlertPop("Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพ", "error");
+                    function.AlertPop("Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพ", "error");
                 }
                 else if (txtSTime.Text == "")
                 {
-                    AlertPop("Error : กรุณากรอกเวลาแจ้ง", "error");
+                    function.AlertPop("Error : กรุณากรอกเวลาแจ้ง", "error");
                 }
                 else if (txtDeviceAdd.Text == "")
                 {
-                    AlertPop("Error : กรุณากรอกอุปกรณ์ ", "error");
+                    function.AlertPop("Error : กรุณากรอกอุปกรณ์ ", "error");
                 }
                 else
                 {
@@ -210,13 +202,12 @@ namespace ClaimProject.CM
                     "JOIN tbl_drive_group ON tbl_device.davice_group = tbl_drive_group.drive_group_id WHERE device_id = '" + agncy + "' ";
                     string id = "";
                     string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
-
-
+                    /* เช็คทำรายการซ้ำ */
                     Checkduplcate(txtDeviceAdd.SelectedValue, ddlChanel.SelectedValue.ToString() , txtSDate.Text, txtSTime.Text);
 
                     if(chkdup == "1")
                     {
-                        AlertPop("ล้มเหลว มีแจ้งในระบบแล้ว", "error");
+                        function.AlertPop("ล้มเหลว มีแจ้งในระบบแล้ว", "error");
                         chkdup = "";
                     }
                     else
@@ -268,16 +259,13 @@ namespace ClaimProject.CM
                                     {
                                         messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
                                         function.AlertPop("บันทึกสำเร็จ", "success");
-                                        //function.LineTran(sysname, messageLine);
-                                        //Session["LineTran"] = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
+                                        //function.LineTran(sysname, messageLine);                                       
                                     }
                                     else
                                     {
                                         messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
                                         function.AlertPop("บันทึกสำเร็จ", "success");
                                         function.LineTran(sysname, messageLine);
-                                        //Session["LineTran"] = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
-                                        //LineTran();
                                     }
                                 }
                                 else
@@ -285,8 +273,6 @@ namespace ClaimProject.CM
                                     messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
                                     function.AlertPop("บันทึกสำเร็จ", "success");
                                     function.LineTran(sysname, messageLine);
-                                    //Session["LineTran"] = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
-                                    //LineTran();
                                 }
                             }
                             BindData();
@@ -305,12 +291,11 @@ namespace ClaimProject.CM
         private void ClearDate()
         {
             txtCpoint.SelectedIndex = 0;
-            //txtPoint.Text = "";
+
             txtDeviceAdd.SelectedIndex = 0;
             txtProblem.Text = "";
             txtProblem.CssClass = "form-control ";
-            //txtChannel.Text = "";
-            //txtNote.Text = "";
+
             txtSDate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
             txtSTime.Text = DateTime.Now.ToString("HH.mm");
         }
@@ -320,7 +305,6 @@ namespace ClaimProject.CM
             Label lbSDate = (Label)(e.Row.FindControl("lbSDate"));
             if (lbSDate != null)
             {
-                //lbSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate")) +" "+ DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
                 lbSDate.Text = (string)DataBinder.Eval(e.Row.DataItem, "cm_detail_sdate") + " " + DataBinder.Eval(e.Row.DataItem, "cm_detail_stime");
             }
 
@@ -358,7 +342,6 @@ namespace ClaimProject.CM
             if (rttt.Read())
             {
                 string imgg = rttt.GetString("cm_detail_simg");
-                //lbNameFileImg.Text = imgg;
             }
             rttt.Close();
             function.Close();
@@ -382,15 +365,12 @@ namespace ClaimProject.CM
                 }
                 else
                 {
-                    AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
-                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                    function.AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 }
             }
             else
             {
                 UpdateCM("");
-                //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
-                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
         }
 
@@ -407,16 +387,13 @@ namespace ClaimProject.CM
                 + "',cm_point='" + txtPoint.Text + "' WHERE cm_detail_id = '" + txtRef.Value + "'";
             if (function.MySqlQuery(sql_insert))
             {
-                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('แก้ไขข้อมูลสำเร็จ')", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect", "alert('แก้ไขข้อมูลสำเร็จ'); window.location='/CM/CMDetailForm';", true);
                 BindData();
-                //Response.Redirect("/CM/CMDetailForm");
                 ClearDate();
             }
             else
             {
-                AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
-                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลว เกิดข้อผิดพลาด')", true);
+                function.AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
             }
             function.Close();
         }
@@ -439,7 +416,7 @@ namespace ClaimProject.CM
             }
             else
             {
-                AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
+                function.AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
             }
             function.Close();
         }
@@ -464,46 +441,7 @@ namespace ClaimProject.CM
             rttt.Close();
             function.Close();
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
-        }
-
-        protected void LineTran()
-        {
-            if (Session["LineTran"].ToString() != "")
-            {
-                SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
-                try
-                {
-                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
-                    Session["LineTran"] = "";
-                }
-                catch (Exception)
-                {
-
-                }
-
-            }
-        }
-
-        public void AlertPop(string msg, string type)
-        {
-            switch (type)
-            {
-                case "success":
-                    icons = "add_alert";
-                    alertTypes = "success";
-                    break;
-                case "error":
-                    icons = "error";
-                    alertTypes = "danger";
-                    break;
-                case "warning":
-                    icons = "warning";
-                    alertTypes = "warning";
-                    break;
-            }
-            //alertType = type;
-            alerts = msg;
-        }
+        }                
 
         protected void CMGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

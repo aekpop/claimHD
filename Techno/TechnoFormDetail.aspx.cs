@@ -49,6 +49,10 @@ namespace ClaimProject.Techno
                     {
                         txtestimateDay.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
                     }
+                    if(txtappointdate.Text == "")
+                    {
+                        txtappointdate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
+                    }
                     
 
                     PageLoadData();
@@ -104,7 +108,6 @@ namespace ClaimProject.Techno
                         getDataStatus3();
                     }
                     BindImg();
-
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 4)
@@ -112,12 +115,16 @@ namespace ClaimProject.Techno
                     //getDataStatus4();
                     getDataStatus3_1();
                     BindImg();
+                    BindImgEstimate();
+                    getDataStatus3_2();
+                    BindImgAppoint();
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 5)
                 {
                     getDataStatus4();
                     getDataStatus5();
+                    BindImgEtc();
                 }
             }
             else
@@ -128,8 +135,9 @@ namespace ClaimProject.Techno
 
         void PageLoadData()
         {
-
-            string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON c.claim_id = cc.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint JOIN tbl_status s ON s.status_id = c.claim_status WHERE c.claim_id = '" + Session["codePK"].ToString() + "'";
+            //string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON c.claim_id = cc.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint JOIN tbl_status s ON s.status_id = c.claim_status WHERE c.claim_id = '" + Session["codePK"].ToString() + "'";
+            string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON c.claim_id = cc.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint " +
+                         "JOIN tbl_status s ON s.status_id = c.claim_status LEFT JOIN tbl_quotations q ON c.claim_id = q.quotations_claim_id WHERE c.claim_id = '" + Session["codePK"].ToString() + "'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
@@ -171,6 +179,16 @@ namespace ClaimProject.Techno
             {
                 Response.Redirect("/Techno/TechnoFormView");
             }
+
+            if(rs["quotations_order"] != System.DBNull.Value) 
+            {
+                if(rs.GetString("quotations_order") == "1")
+                {
+                    Div3.Visible = true;
+                }
+                getDataStatus4();
+            }
+
             rs.Close();
             function.Close();
 
@@ -293,6 +311,10 @@ namespace ClaimProject.Techno
                     btns3.Enabled = false;
                     btn3_1.Enabled = true;
                     btns4.Enabled = true;
+                    break;
+                case "4.1":
+                    Div3.Visible = true;
+                    btn3_1.Enabled = false;
                     break;
                 case "5":
                     //btns0.Visible = false;
@@ -475,15 +497,14 @@ namespace ClaimProject.Techno
 
         protected void btns4_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#SuccessQuotationsModel').modal();", true);
-
-            /*string sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('5','" + Session["codePK"].ToString() + "','" + function.ConvertDateTimeEB(DateTime.Now.ToString("dd-MM-yyyy")).ToString("dd-MM-yyyy") + "','" + function.ConvertDateTime(function.ConvertDateTimeEB(DateTime.Now.ToString("dd-MM-yyyy")).ToString("dd-MM-yyyy"), 0) + "')";
-            if (function.MySqlQuery(sql))
+            if (lbAppointNum.Text == "-" && lbestimateNum.Text == "-")
             {
-                sql = "UPDATE tbl_claim SET claim_status = '5' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
-                function.MySqlQuery(sql);
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#alertModel').modal();", true);
             }
-            Response.Redirect("/Techno/TechnoFormDetail");*/
+            else
+            {
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#SuccessQuotationsModel').modal();", true);
+            }
         }
 
         protected void QuotaGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1026,6 +1047,7 @@ namespace ClaimProject.Techno
 
         protected void btnSaveOrder_Click(object sender, EventArgs e)
         {
+            string sql = "";
             String NewFileDocName = "";
             if (FileOrder.HasFile)
             {
@@ -1036,18 +1058,21 @@ namespace ClaimProject.Techno
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
                     FileOrder.SaveAs(Server.MapPath(NewFileDocName.ToString()));
 
-                    string sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('5','" + Session["codePK"].ToString() + "','" + txtDateOrder.Text.Trim() + "','" + function.ConvertDateTime(txtDateOrder.Text.Trim(), int.Parse(txtSendOrder.Text)) + "')";
+                    sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('7','" + Session["codePK"].ToString() + "','" + txtDateOrder.Text.Trim() + "','" + function.ConvertDateTime(txtDateOrder.Text.Trim(), int.Parse(txtSendOrder.Text)) + "')";
                     if (function.MySqlQuery(sql))
-                    {
-                        sql = "UPDATE tbl_claim SET claim_status = '5' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
-                        function.MySqlQuery(sql);
+                    //{
+                        //sql = "UPDATE tbl_claim SET claim_status = '5' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
+                        //function.MySqlQuery(sql);
 
                         sql = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_company_id = '" + txtCompanyOrder.SelectedValue + "'";
                         function.MySqlQuery(sql);
-                    }
+                        getDataStatus4();
+                        Div3.Visible = true;
+                        btn3_1.Enabled = false;
+                    //}
 
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
-                    Response.Redirect("/Techno/TechnoFormDetail");
+                    //Response.Redirect("/Techno/TechnoFormDetail");
                 }
                 else
                 {
@@ -1076,15 +1101,67 @@ namespace ClaimProject.Techno
 
         void getDataStatus3_1()
         {
-            lbestimatedays.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_start"));
+            //lbestimatedays.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '4'", "detail_date_start"));
+            string valEtiday = function.ConvertDatelongThai(function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "'", "Estimate_date"));
+            if (valEtiday != "")
+            {
+                lbestimatedays.Text = valEtiday;
+            }
+            else
+            {
+                lbestimatedays.Text = "-";
+            }
+
+
+            string valetiNum = function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "'", "Estimate_num");
+            if (valetiNum != "")
+            {
+                lbestimateNum.Text = valetiNum;
+            }
+            else
+            {
+                lbestimateNum.Text = "-";
+                Div3.Visible = false;
+            }
+        }
+
+        void getDataStatus3_2()
+        {
+            string valappdate = function.ConvertDatelongThai(function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "'", "appoint_date"));
+            if (valappdate != "")
+            {
+                lbAppointDate.Text = valappdate;
+            }
+            else
+            {
+                lbAppointDate.Text = "-";
+            }
+
+
+            string valappNum = function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "'", "appoint_num");
+            if (valappNum != "")
+            {
+                lbAppointNum.Text = valappNum;
+            }
+            else
+            {
+                lbAppointNum.Text = "-";
+                Div3.Visible = false;
+            }
         }
 
         void getDataStatus4()
         {
+            string chk = "0";
             string sql = "SELECT * FROM tbl_company c JOIN tbl_quotations q ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND q.quotations_order = '1'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
+                if(rs["quotations_doc_img_send"] != System.DBNull.Value)
+                {
+                    chk = "1";
+                }
+
                 lbCompanyOrder.Text = rs.GetString("company_name");
                 lbPriceOrder.Text = double.Parse(rs.GetString("quotations_company_price")).ToString("#,##0.00") + " บาท";
                 string quaimg = "SELECT * FROM tbl_quotations " +
@@ -1100,9 +1177,18 @@ namespace ClaimProject.Techno
             rs.Close();
             function.Close();
 
-            
-            lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_start"));
-            lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_end"));
+            //lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_start"));
+            //lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_end"));
+            lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '7'", "detail_date_start"));
+            lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '7'", "detail_date_end"));
+            if(lbDateOrderEnd.Text == "" && chk == "0")
+            {
+                Div3.Visible = false;
+            }
+            else
+            {
+                Div3.Visible = true;
+            }
         } 
 
 
@@ -1308,6 +1394,9 @@ namespace ClaimProject.Techno
                 string sql_insert = "INSERT INTO tbl_claim_img (" + sql_text + ") VALUES (" + sql_value + ")";
                 function.MySqlQuery(sql_insert);
                 BindImg();
+                BindImgEstimate();
+                BindImgAppoint();
+                BindImgEtc();
             }
             else
             {
@@ -1325,6 +1414,36 @@ namespace ClaimProject.Techno
             da.Fill(ds);
             FileNoteGridView.DataSource = ds.Tables[0];
             FileNoteGridView.DataBind();
+        }
+
+        void BindImgEstimate()
+        {
+            string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '3'";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            GridViewEstimate.DataSource = ds.Tables[0];
+            GridViewEstimate.DataBind();
+        }
+
+        void BindImgAppoint()
+        {
+            string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '4'";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            GridViewAppoint.DataSource = ds.Tables[0];
+            GridViewAppoint.DataBind();
+        }
+
+        void BindImgEtc()
+        {
+            string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '5'";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            GridViewEtc.DataSource = ds.Tables[0];
+            GridViewEtc.DataBind();
         }
 
         protected void FileNoteGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1637,10 +1756,45 @@ namespace ClaimProject.Techno
                 if (function.MySqlQuery(sql))
                 {
                     sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('4','" + Session["codePK"].ToString() + "','" + txtestimateDay.Text.Trim() + "','" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "')";
-                    function.MySqlQuery(sql);
+                    if (function.MySqlQuery(sql))
+                    {
+                        sql = "UPDATE tbl_claim_doc SET Estimate_num = '" + txtestimateNum.Text + "' , Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
+                        if (function.MySqlQuery(sql))
+                        {
+                            if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
+                            {
+                                foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
+                                {
+                                    Insert(3, postedFile);
+                                }
 
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
-                    Response.Redirect("/Techno/TechnoFormDetail");
+                                foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
+                                {
+                                    Insert(3, postedFile);
+                                }
+
+                                foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
+                                {
+                                    Insert(3, postedFile);
+                                }
+
+                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
+                                Response.Redirect("/Techno/TechnoFormDetail");
+                            }
+                            else
+                            {
+                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                            }
+                        }
+                        else
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#004')", true);
+                        }                        
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ไม่สามารถบันทึก tbl_status_detail สำเร็จ')", true);
+                    }
                 }
                 else
                 {
@@ -1653,35 +1807,240 @@ namespace ClaimProject.Techno
                 if (function.MySqlQuery(sql))
                 {
                     sql = "UPDATE tbl_claim SET claim_status = '4' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
-                    function.MySqlQuery(sql);
+                    if (function.MySqlQuery(sql))
+                    {
+                        sql = "UPDATE tbl_quotations SET quotations_order='1' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' ";
+                        if (function.MySqlQuery(sql))
+                        {
+                            sql = "UPDATE tbl_claim_doc SET Estimate_num = '" + txtestimateNum.Text + "' , Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
+                            if (function.MySqlQuery(sql))
+                            {
+                                if(FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
+                                {
+                                    foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
+                                    {
+                                        Insert(3, postedFile);
+                                    }
 
-                    sql = "UPDATE tbl_quotations SET quotations_order='1' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' ";
-                    function.MySqlQuery(sql);
+                                    foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
+                                    {
+                                        Insert(3, postedFile);
+                                    }
 
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
-                    Response.Redirect("/Techno/TechnoFormDetail");
+                                    foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
+                                    {
+                                        Insert(3, postedFile);
+                                    }
+
+                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                                    Response.Redirect("/Techno/TechnoFormDetail");
+                                }
+                            }
+                            else
+                            {
+                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#004')", true);
+                            }                                
+                        }
+                        else
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#003')", true);
+                        }
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#002')", true);
+                    }
                 }
                 else
                 {
-                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#001')", true);
                 }
             }
-            
+
         }
 
         protected void btn3_1_Click(object sender, EventArgs e)
         {
-            getPrice();
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
+            if (lbAppointNum.Text == "-" && lbestimateNum.Text == "-")
+            {
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#alertModel').modal();", true);
+            }
+            else
+            {
+                getPrice();
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
+            }
+            //getPrice();
+            //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
         }
 
         protected void lbtnEditEstimate_Command(object sender, CommandEventArgs e)
         {
             ChkEditEst = "1";
             Session.Add("Chk" , ChkEditEst);
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);
-            
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);            
+        }
+
+        protected void GridViewEstimate_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image ImgEstimate = (Image)(e.Row.FindControl("ImgEstimate"));
+            if (ImgEstimate != null)
+            {
+                ImgEstimate.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+            }
+
+            LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
+            if (btnDownload != null)
+            {
+                btnDownload.CommandArgument = ((string)DataBinder.Eval(e.Row.DataItem, "claim_img_url")).ToString();
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                try
+                {
+                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการรูปภาพแนบ ใช่หรือไม่');";
+                }
+                catch { }
+            }
+        }
+
+        protected void GridViewEstimate_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + GridViewEstimate.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
+
+            string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + GridViewEstimate.DataKeys[e.RowIndex].Value + "'";
+            if (function.MySqlQuery(sql_delete))
+            {
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                }
+                BindImgEstimate();
+            }
+        }
+
+        protected void GridViewAppoint_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image ImgAppoint = (Image)(e.Row.FindControl("ImgAppoint"));
+            if (ImgAppoint != null)
+            {
+                ImgAppoint.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+            }
+
+            LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
+            if (btnDownload != null)
+            {
+                btnDownload.CommandArgument = ((string)DataBinder.Eval(e.Row.DataItem, "claim_img_url")).ToString();
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                try
+                {
+                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการรูปภาพแนบ ใช่หรือไม่');";
+                }
+                catch { }
+            }
+        }
+
+        protected void GridViewAppoint_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + GridViewAppoint.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
+
+            string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + GridViewAppoint.DataKeys[e.RowIndex].Value + "'";
+            if (function.MySqlQuery(sql_delete))
+            {
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                }
+                BindImgAppoint();
+            }
+        }
+
+        protected void lbtnAddAppoint_Command(object sender, CommandEventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#appointsModel').modal();", true);
+        }
+
+        protected void btnappoint_Click(object sender, EventArgs e)
+        {
+            string sql = "UPDATE tbl_claim_doc SET appoint_num = '"+ txtappointNum.Text + "' , appoint_date = '"+ function.ConvertDateTime(txtappointdate.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
+            if (function.MySqlQuery(sql))
+            {
+                if (FileUploadappoint.HasFile)
+                {
+                    foreach (HttpPostedFile postedFile in FileUploadappoint.PostedFiles)
+                    {
+                        Insert(4, postedFile);
+                    }
+                    getDataStatus4();
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
+                    Response.Redirect("/Techno/TechnoFormDetail");
+                }
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ไม่สามารถทำรายงานได้')", true);
+            }
+        }
+
+        protected void btnUploadetc_Click(object sender, EventArgs e)
+        {
+            if (FileUploadetc.HasFile)
+            {
+                foreach (HttpPostedFile postedFile in FileUploadetc.PostedFiles)
+                {
+                    Insert(5, postedFile);
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Upload Success", "alert('Upload สำเร็จ')", true);
+                }
+            }
+            else
+            {
+                //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+            }
+        }
+
+        protected void GridViewEtc_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image ImgEtc = (Image)(e.Row.FindControl("ImgEtc"));
+            if (ImgEtc != null)
+            {
+                ImgEtc.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+            }
+
+            LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
+            if (btnDownload != null)
+            {
+                btnDownload.CommandArgument = ((string)DataBinder.Eval(e.Row.DataItem, "claim_img_url")).ToString();
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                try
+                {
+                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการรูปภาพแนบ ใช่หรือไม่');";
+                }
+                catch { }
+            }
+        }
+
+        protected void GridViewEtc_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + GridViewEtc.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
+
+            string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + GridViewEtc.DataKeys[e.RowIndex].Value + "'";
+            if (function.MySqlQuery(sql_delete))
+            {
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('ลบข้อมูลสำเร็จ')", true);
+                }
+                BindImgEtc();
+            }
         }
     }
 }

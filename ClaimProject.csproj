@@ -359,6 +359,7 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\bulma-calendar.min.css" />
     <Content Include="Content\CM.css" />
+    <Content Include="Content\custom-control-file.css" />
     <Content Include="Content\custom-signin.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\datetimepicker.css" />
@@ -1299,6 +1300,7 @@
     <Content Include="Report\report.aspx" />
     <Content Include="Report\reportCM.aspx" />
     <Content Include="Report\reportEquipmentDetails.aspx" />
+    <Content Include="Report\reportIndexMatrixClaim.aspx" />
     <Content Include="Report\reportMonthlyClaim.aspx" />
     <Content Include="Report\reportQuantationCostapp.aspx" />
     <Content Include="Report\reportShowCost.aspx" />
@@ -1390,6 +1392,17 @@
     </None>
     <Content Include="Model\DataSetEquip.xss">
       <DependentUpon>DataSetEquip.xsd</DependentUpon>
+    </Content>
+    <Content Include="Model\DataSetMatrixClaim.xsc">
+      <DependentUpon>DataSetMatrixClaim.xsd</DependentUpon>
+    </Content>
+    <None Include="Model\DataSetMatrixClaim.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMatrixClaim.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Model\DataSetMatrixClaim.xss">
+      <DependentUpon>DataSetMatrixClaim.xsd</DependentUpon>
     </Content>
     <None Include="PM\PMAllTable.xsd">
       <SubType>Designer</SubType>
@@ -2028,6 +2041,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetEquip.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataSetMatrixClaim.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMatrixClaim.xsd</DependentUpon>
+    </Compile>
     <Compile Include="NuGet.Modules\JsonHelper.cs" />
     <Compile Include="pageinfo.aspx.cs">
       <DependentUpon>pageinfo.aspx</DependentUpon>
@@ -2191,6 +2209,13 @@
     </Compile>
     <Compile Include="Report\reportEquipmentDetails.aspx.designer.cs">
       <DependentUpon>reportEquipmentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportIndexMatrixClaim.aspx.cs">
+      <DependentUpon>reportIndexMatrixClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\reportIndexMatrixClaim.aspx.designer.cs">
+      <DependentUpon>reportIndexMatrixClaim.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\reportMonthlyClaim.aspx.cs">
       <DependentUpon>reportMonthlyClaim.aspx</DependentUpon>
@@ -2374,6 +2399,7 @@
       <LastGenOutput>PMAdmin.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\reportEquipmentDetails.rdlc" />
+    <EmbeddedResource Include="Report\reportIndexMatrixClaim.rdlc" />
     <EmbeddedResource Include="Report\reportMonthlyClaim.rdlc" />
     <EmbeddedResource Include="Report\reportCM.rdlc" />
     <EmbeddedResource Include="Report\reportCostAppraisal.rdlc" />

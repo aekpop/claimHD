@@ -346,22 +346,17 @@ namespace ClaimProject.CM
                                             {
                                                 messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                                 //function.LineTran(sysname, messageLine);
-                                                //Session["LineTran"] = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                             }
                                             else
                                             {
                                                 messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                                 function.LineTran(sysname, messageLine);
-                                                //Session["LineTran"] = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
-                                                //LineTran(token);
                                             }
                                         }
                                         else
                                         {
                                             messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                             function.LineTran(sysname, messageLine);
-                                            //Session["LineTran"] = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
-                                            //LineTran(token);
                                         }
                                     }
                                     BindData();
@@ -374,14 +369,11 @@ namespace ClaimProject.CM
                             }
                             else
                             {
-                                //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                             }
                         }
                         else
                         {
-                            //UpdateCM("");
-                            //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
                         }
                     }
@@ -410,77 +402,15 @@ namespace ClaimProject.CM
 
             if (function.MySqlQuery(sqlDelete))
             {
-                AlertPop("ลบรายการแจ้งซ่อมเรียบร้อย", "warning");
+                function.AlertPop("ลบรายการแจ้งซ่อมเรียบร้อย", "warning");
             }
             else
             {
-                AlertPop("ลบรายการแจ้งซ่อมล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ ", "error");
+                function.AlertPop("ลบรายการแจ้งซ่อมล้มเหลว!! กรุณาติดต่อเจ้าหน้าที่ ", "error");
             }
             function.Close();
             BindData();
-        }
-
-        public void AlertPop(string msg, string type)
-        {
-            switch (type)
-            {
-                case "success":
-                    icon = "add_alert";
-                    alertType = "success";
-                    break;
-                case "error":
-                    icon = "error";
-                    alertType = "danger";
-                    break;
-                case "warning":
-                    icon = "warning";
-                    alertType = "warning";
-                    break;
-            }
-            //alertType = type;
-            alert = msg;
-        }
-
-        protected void LineTran(string token)
-        {
-
-                /*if (txtCpointSearch.SelectedValue == "902" || txtCpointSearch.SelectedValue == "903" || txtCpointSearch.SelectedValue == "904" || txtCpointSearch.SelectedValue == "905")
-                {
-                    token = "TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F";
-                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                }
-                else if (txtCpointSearch.SelectedValue == "701" || txtCpointSearch.SelectedValue == "702" || txtCpointSearch.SelectedValue == "703" || txtCpointSearch.SelectedValue == "704")
-                {
-                    token = "N30yjwh33RFedbk8csYoXX8iQhiyrNDxqq1tjR8a1GL";
-                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                }
-                else if (txtCpointSearch.SelectedValue == "706" || txtCpointSearch.SelectedValue == "707" || txtCpointSearch.SelectedValue == "708" || txtCpointSearch.SelectedValue == "709" || txtCpointSearch.SelectedValue == "710")
-                {
-                    //token = "JUv0pwVozllZzQr9gI066f3Vtw0KEMl6QTIUOeiiqtD";
-                    token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                }
-                else
-                {
-                    token = "m36qnn0BYUziwaJutF6mHVZc5cbxQwTFr4dZpP1QWe9";
-                    //token = "XfTgb7K4kXahJPrZAA0UsyoJx1IwcyF0B1SBgvpIc9B"; //test
-                }
-                */            
-
-            if (Session["LineTran"].ToString() != "")
-            {
-                SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
-                try
-                {
-                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
-                    Session["LineTran"] = "";
-                }
-                catch (Exception)
-                {
-
-                }
-
-            }
-        }
+        }       
 
         protected void ckeNoservice_CheckedChanged(object sender, EventArgs e)
         {

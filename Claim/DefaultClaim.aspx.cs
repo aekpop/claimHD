@@ -277,6 +277,11 @@ namespace ClaimProject.Claim
                     st6.Close();
                 }
             }
-        }  
+        }
+
+        protected void lbtnClaim_Command(object sender, CommandEventArgs e)
+        {
+
+        }
     }
 }
