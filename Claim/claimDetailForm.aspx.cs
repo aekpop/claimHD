@@ -523,26 +523,21 @@ namespace ClaimProject.Claim
                         if (function.MySqlQuery(sql))
                         {
                             sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('" + status + "','" + Session["CodePK"].ToString() + "','" + txtStartDate.Text + "','" + function.ConvertDateTime(txtStartDate.Text, 3) + "')";
-                            function.MySqlQuery(sql);
-                            AlertPop("บันทึกข้อมูลสำเร็จ", "success");
-                            checkInsuran();
-                            SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
-                            //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                            //TestGroup 
-                            //serviceLine.MessageToServer("g0Zinn2LGsXH7MqNl6LqRRAloneiupRMel3VaC3TVdJ", "ระบบได้รับข้อมูลการเกิดอุบัติเหตุ จากด่านฯ " + txtCpoint.SelectedItem + " เมื่อวันที่ " + function.ConvertDatelongThai(txtStartDate.Text) + " เวลา " + txtTime.Text + " น. เรียบร้อยแล้ว ขอให้เจ้าหน้าที่ @Helpdesk งานเทคโนฯ เข้าตรวจสอบข้อมูลในระบบเพื่อความถูกต้องด้วย\r\n\r\n ขอบคุณครับ", "", 1, 41);
-                            //OfficialGroup
-                            serviceLine.MessageToServer("uQQdUNuFfBphgSugC3OUa1lSjmovi4XINOAe2VwIczo", "ระบบได้รับข้อมูลการเกิดอุบัติเหตุ จากด่านฯ " + txtCpoint.SelectedItem + " เมื่อวันที่ " + function.ConvertDatelongThai(txtStartDate.Text) + " เวลา " + txtTime.Text + " น. เรียบร้อยแล้ว ขอให้เจ้าหน้าที่ @Helpdesk งานเทคโนฯ เข้าตรวจสอบข้อมูลในระบบเพื่อความถูกต้องด้วย\r\n\r\n ขอบคุณครับ", "", 1, 41);
+                            if (function.MySqlQuery(sql))
+                            {
+                                GenerateID();
+                                AlertPop("บันทึกข้อมูลสำเร็จ", "success");
+                                checkInsuran();
+                            }                             
                         }
                         else
                         {
                             AlertPop("Error 8000 : บันทึกข้อมูลล้มเหลว!", "error");
-                            //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : บันทึกข้อมูลล้มเหลว')", true);
                         }
                     }
                     else
                     {
                         AlertPop("Error 8001 : บันทึกข้อมูลล้มเหลว!!", "error");
-                        //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : บันทึกข้อมูลล้มเหลว')", true);
                     }
                 }
                 else
@@ -1288,6 +1283,16 @@ namespace ClaimProject.Claim
                 RadioButton1.Checked = true;
                 txtInsurer.Enabled = true;
             }
+        }
+
+        void GenerateID()
+        {
+            string sqlgenID = "";
+            sqlgenID = "INSERT INTO `tbl_claim_auto_id` (`id` , claim_id , claim_delete) VALUES ((CONCAT ('" + function.getBudgetYear(txtCpointDate.Text) + "-', " +
+                "LPAD(IFNULL((SELECT SUBSTR(`id`, 6) FROM `tbl_claim_auto_id` AS `alias` " +
+                "WHERE SUBSTR(`id`, 1, 4) = '" + function.getBudgetYear(txtCpointDate.Text) + "' " +
+                "ORDER BY `id` DESC LIMIT 1 ) + 1, 1), 5, '0' ) ) ) , '" + Session["CodePK"].ToString() + "' , '0') ";
+            function.MySqlQuery(sqlgenID);
         }
     }
 }

@@ -167,6 +167,14 @@ namespace ClaimProject.Claim {
                 return this.DataDefinition.ParameterFields[9];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_reference {
+            get {
+                return this.DataDefinition.ParameterFields[10];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]

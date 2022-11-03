@@ -376,6 +376,7 @@ namespace ClaimProject.Claim
             string tel3 = "";
             string manager = "";
             string Cpcontrol = "";
+            string reference = "";
 
             string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON cc.claim_id=c.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint WHERE c.claim_id = '" + key + "'";
 
@@ -892,7 +893,22 @@ namespace ClaimProject.Claim
                     function.Close();
                 }
 
-                ReportDocument rpt = new ReportDocument();
+            string sqlID = "SELECT id FROM tbl_claim c LEFT JOIN tbl_claim_auto_id i ON c.claim_id = i.claim_id WHERE c.claim_id = '" + key + "'";
+            rs = function.MySqlSelect(sqlID);
+            if (rs.Read())
+            {
+                if(rs["id"] != System.DBNull.Value)
+                {
+                    reference = "เลขควบคุม " + rs.GetString("id");
+                }
+                else
+                {
+                    reference = "เลขควบคุม XXXX-XXXXX";
+                }
+            }
+            rs.Close();
+
+            ReportDocument rpt = new ReportDocument();
                 string cpoint_title = "ด่านฯ " + cpointName;
                 if (report == 0)
                 {
@@ -924,15 +940,12 @@ namespace ClaimProject.Claim
                 rpt.SetParameterValue("cpoint_title", cpoint_title);
                 rpt.SetParameterValue("num_title", doc_num);
                 rpt.SetParameterValue("note_text", strNote);
-
                 rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
-
                 rpt.SetParameterValue("list_dev", dev);
-                
+                rpt.SetParameterValue("reference", reference);
 
                 Session["Report"] = rpt;
                 Session["ReportTitle"] = "บันทึกข้อความ";
-                //Response.Redirect("/Report/reportView", true);
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
             //}
         }
