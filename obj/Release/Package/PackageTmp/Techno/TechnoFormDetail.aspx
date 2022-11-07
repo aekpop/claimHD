@@ -29,6 +29,11 @@
                     <h3>
                         <asp:Label ID="lbTitleStatus" runat="server" Text="Label"></asp:Label></h3>
                 </div>
+                <div class="col-md-2 text-right">เลขควบคุม : </div>
+                <div class="col-md">
+                    <h3>
+                        <asp:Label ID="lbRefnum" runat="server" Text="Label" CssClass="text-danger"></asp:Label></h3>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-2 text-right">เรื่อง : </div>

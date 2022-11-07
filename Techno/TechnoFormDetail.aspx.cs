@@ -69,6 +69,8 @@ namespace ClaimProject.Techno
                     function.GetList(ddlPosition3, "PosList");
 
                     Session["Chk"] = "";
+
+                   
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 2)
@@ -137,7 +139,8 @@ namespace ClaimProject.Techno
         {
             //string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON c.claim_id = cc.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint JOIN tbl_status s ON s.status_id = c.claim_status WHERE c.claim_id = '" + Session["codePK"].ToString() + "'";
             string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON c.claim_id = cc.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint " +
-                         "JOIN tbl_status s ON s.status_id = c.claim_status LEFT JOIN tbl_quotations q ON c.claim_id = q.quotations_claim_id WHERE c.claim_id = '" + Session["codePK"].ToString() + "'";
+                         "JOIN tbl_status s ON s.status_id = c.claim_status LEFT JOIN tbl_quotations q ON c.claim_id = q.quotations_claim_id LEFT JOIN tbl_claim_auto_id ci ON c.claim_id = ci.claim_id " +
+                         "WHERE c.claim_id = '" + Session["codePK"].ToString() + "'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
@@ -154,6 +157,15 @@ namespace ClaimProject.Techno
                 lbTitle.Text = rs.GetString("claim_equipment");
                 lbTitleStatus.CssClass = "badge badge-" + rs.GetString("status_alert");
                 lbTitleStatus.Text = rs.GetString("status_name");
+                if(rs["claim_auto_id"] != System.DBNull.Value)
+                {
+                    lbRefnum.Text = rs.GetString("claim_auto_id");
+                }
+                else
+                {
+                    lbRefnum.Text = "XXXX-XXXXX";
+                }
+                
                 lbCpoint.Text = rs.GetString("cpoint_name");
                 lbCb.Text = rs.GetString("claim_detail_cb_claim");
                 if (rs.GetString("claim_detail_point").ToLower() != "tsb" && rs.GetString("claim_detail_point").ToLower() != "") { lbCpoint.Text += " " + rs.GetString("claim_detail_point"); }
@@ -682,11 +694,11 @@ namespace ClaimProject.Techno
             if (doc == 1)
             {
                 rpt.SetParameterValue("copy_title", "สำเนา");
-                rpt.SetParameterValue("name", "ลงชื่อ          เผชิญ หุนตระนี");
+                rpt.SetParameterValue("name", "ลงชื่อ          บุญเพิ่ม เรียงไธสง");
                 rpt.SetParameterValue("copy", "2.) สำเนาเรียน");
                 rpt.SetParameterValue("copy1", "หจ.จท.1, หจ.จท.2, หจ.จท.3, งานเทคโนฯ");
                 rpt.SetParameterValue("copy_detail", "- เพื่อทราบ");
-                rpt.SetParameterValue("name_copy", "(นายเผชิญ หุนตระนี)\r\n                                            ผจท.");
+                rpt.SetParameterValue("name_copy", "(นายบุญเพิ่ม เรียงไธสง)\r\n                                            ผจท.");
             }
             else
             {
@@ -856,7 +868,7 @@ namespace ClaimProject.Techno
             string note_text = "";
             string list_dev = "";
             string list_doc = "";
-            string name = "(นายเผชิญ  หุนตระนี)\r\n                                                                                          ผจท.";
+            string name = "(นายบุญเพิ่ม เรียงไธสง)\r\n                                                                                          ผจท.";
             string copy_title = "2.) สำเนาเรียน";
             string copy_tiele1 = "";
             string name_copy = "";
@@ -899,7 +911,7 @@ namespace ClaimProject.Techno
                 note_text += " ทั้งนี้ด่านฯ " + rs.GetString("cpoint_name") + " ได้ดำเนินการแจ้งความร้องทุกไว้ที่ " + rs.GetString("claim_detail_inform") + " ไว้เป็นหลักฐานเรียบร้อยแล้ว";
                 //copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name") + "\r\n                   - เพื่อทราบติดตามผลการดำเนินงานต่อไป";
                 copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name");
-                name_copy = "(นายเผชิญ  หุนตระนี)\r\n                                 ผจท.";
+                name_copy = "(นายบุญเพิ่ม เรียงไธสง)\r\n                                 ผจท.";
 
             }
             rs.Close();
@@ -924,10 +936,17 @@ namespace ClaimProject.Techno
             foreach (string s in readText)
             {
                 string Values = function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'", "claim_doc_no" + i);
-                if (Values == "0") Values = "-";
-                //list.Items.Add(new ListItem(s.Trim(), s.Trim()));
+
+                /*if (Values == "0") Values = "-";
                 list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
                 i++;
+                */
+                if (Values != "0")
+                {
+                    list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
+                    i++;
+                }
+                else { i++; }
             }
 
             ReportDocument rpt = new ReportDocument();
@@ -948,12 +967,12 @@ namespace ClaimProject.Techno
             if (doc != 0)
             {
                 //name = "(ลงนาม)       เผชิญ  หุนตระนี\r\n                                                                               " + name;
-                name = "(ลงชื่อ)     เผชิญ  หุนตระนี";
+                name = "(ลงชื่อ)     บุญเพิ่ม เรียงไธสง";
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("copy_title", copy_title);
                 rpt.SetParameterValue("copy_tiele1", copy_tiele1);
                 rpt.SetParameterValue("copy2", "- เพื่อทราบติดตามผลการดำเนินงานต่อไป");
-                rpt.SetParameterValue("fullname", "(นายเผชิญ  หุนตระนี)");
+                rpt.SetParameterValue("fullname", "(นายบุญเพิ่ม เรียงไธสง)");
                 rpt.SetParameterValue("posboss", "ผจท.");
                 rpt.SetParameterValue("name_copy", name_copy);
                 rpt.SetParameterValue("user", user);

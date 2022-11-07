@@ -12,6 +12,8 @@ namespace ClaimProject.Techno
         ClaimFunction function = new ClaimFunction();
         public string status = "";
         string year = "";
+        public string refnum = "";
+        public string search = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] != null)
@@ -20,18 +22,24 @@ namespace ClaimProject.Techno
                 {
                     Response.Redirect("/Claim/claimForm");
                 }
-                //Response.Redirect("/Claim/claimForm");
+
                 if (!string.IsNullOrEmpty(Request.Params["s"]) && !string.IsNullOrEmpty(Request.Params["y"]))
                 {
                     status = Request.Params["s"];
                     year = Request.Params["y"];
                 }
 
-                if (!this.IsPostBack)
+                if (!string.IsNullOrEmpty(Request.Params["r"]))
                 {
-                    BindData("", status, year);
+                    refnum = Request.Params["r"];
+                    search = "1";
+                    divSearch.Visible = false;
                 }
 
+                if (!this.IsPostBack)
+                {
+                    BindData("", status, year , refnum);
+                }
             }
         }
 
@@ -81,7 +89,7 @@ namespace ClaimProject.Techno
                 }
             }
 
-            Label lbCountdown = (Label)(e.Row.FindControl("lbCountdown"));
+            /*Label lbCountdown = (Label)(e.Row.FindControl("lbCountdown"));
             if (lbDay != null)
             {
                 string[] data = DataBinder.Eval(e.Row.DataItem, "detail_date_end").ToString().Split('-');
@@ -111,7 +119,7 @@ namespace ClaimProject.Techno
                     lbCountdown.Text = "เสร็จสิ้น";
                     lbCountdown.CssClass = "text-success";
                 }
-            }
+            }*/
 
             Label lbStatus = (Label)(e.Row.FindControl("lbStatus"));
             if (lbStatus != null)
@@ -129,15 +137,33 @@ namespace ClaimProject.Techno
         protected void ClaimGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             ClaimGridView.PageIndex = e.NewPageIndex;
-            BindData("", status, year);
+            BindData("", status, year, refnum);
         }
 
-        void BindData(string txtSearch, string status, string year)
+        void BindData(string txtSearch, string status, string year, string refnum)
         {
             string sql = "";
             try
             {
-                sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' AND c.claim_status = '" + status + "' AND claim_budget_year = '" + year + "' AND (cpoint_name LIKE '%" + txtSearch + "%' OR claim_cpoint_note LIKE '%" + txtSearch + "%' OR claim_equipment LIKE '%" + txtSearch + "%' ) ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') ASC";
+                if(search != "1")
+                {
+                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status " +
+                    "LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id " +
+                    "AND sd.detail_status_id = c.claim_status LEFT JOIN tbl_claim_auto_id ci ON c.claim_id = ci.claim_id " +
+                    "WHERE c.claim_delete = '0' AND c.claim_status = '" + status + "' AND claim_budget_year = '" + year + "' " +
+                    "AND (cpoint_name LIKE '%" + txtSearch + "%' OR claim_cpoint_note LIKE '%" + txtSearch + "%' OR claim_equipment LIKE '%" + txtSearch + "%' OR ci.claim_auto_id LIKE '%" + refnum + "%') " +
+                    "ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') ASC";
+                }
+                else
+                {
+                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status " +
+                    "LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id " +
+                    "AND sd.detail_status_id = c.claim_status LEFT JOIN tbl_claim_auto_id ci ON c.claim_id = ci.claim_id " +
+                    "WHERE c.claim_delete = '0' " +
+                    "AND ci.claim_auto_id LIKE '%" + refnum + "%' " +
+                    "ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') ASC";
+                }
+                
                 Session["sql"] = sql;
 
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
@@ -156,7 +182,7 @@ namespace ClaimProject.Techno
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            BindData(txtSearch.Text.Trim(), status, year);
+            BindData(txtSearch.Text.Trim(), status, year ,refnum);
         }
 
         protected void lbCpoint_Command(object sender, CommandEventArgs e)

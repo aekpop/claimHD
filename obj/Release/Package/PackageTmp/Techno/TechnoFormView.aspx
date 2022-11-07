@@ -8,12 +8,14 @@
                     <h3 class="card-title">รายการ<%= new ClaimProject.Config.ClaimFunction().GetSelectValue("tbl_status","status_id = '"+status+"'","status_name") %></h3>
                 </div>
                 <div class="card-body table-responsive table-sm">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-1">
-                            <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-dark btn-sm fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
+                    <div id="divSearch" runat="server">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-md-1">
+                                <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-info btn-sm fa" Font-Size="Medium" OnClick="btnSearch_Click">&#xf002; ค้นหา</asp:LinkButton>
+                            </div>
                         </div>
                     </div>
                     <br />
@@ -30,6 +32,11 @@
                         OnPageIndexChanging="ClaimGridView_PageIndexChanging"
                         PagerSettings-Mode="NumericFirstLast" HeaderStyle-Font-Bold="true">
                         <Columns>
+                            <asp:TemplateField HeaderText="เลขควบคุม">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbRefnum" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_auto_id") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="ด่านฯ">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbCpoint" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name") %>' CssClass="links-horizontal" OnCommand="btnChangeStatus_Command"></asp:LinkButton>
@@ -55,14 +62,14 @@
                                     <asp:Label ID="lbDay" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ครบกำหนด">
+                            <asp:TemplateField HeaderText="ครบกำหนด" Visible="false">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbCountdown" runat="server"></asp:Label>
+                                    <asp:Label ID="lbCountdown" runat="server" Visible="false"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" Visible="false">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbStatus" Font-Size="16px" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
+                                    <asp:Label ID="lbStatus" Font-Size="16px" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>' Visible="false"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

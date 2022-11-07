@@ -119,5 +119,10 @@ namespace ClaimProject
             //TextBox1.Text = "";
             //TextBox2.Text = "";
         }
+
+        protected void btnSearch_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect("/Techno/TechnoFormView?r=" + txtsearch.Text);
+        }
     }
 }

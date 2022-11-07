@@ -54,9 +54,9 @@ namespace ClaimProject.Techno
             }
             else if (ddlselectReport.SelectedValue == "3")
             {
-                sql = "SELECT c.claim_id AS ID, cp.cpoint_name AS toll , cc.claim_detail_cb_claim AS channel , c.claim_equipment AS cname , cc.`claim_detail_license_plate` AS plate, cc.`claim_detail_province` AS prov,c.`claim_start_date` AS sdate, c.`claim_cpoint_note` AS snum, cd.`claim_doc_date` AS docdate ,cd.claim_doc_num AS docnum , cd.techno_doc_date AS redate ,cd.techno_doc_num AS renum ,cd.Estimate_date AS esdate ,cd.Estimate_num AS esnum ,cd.appoint_date AS apdate ,cd.appoint_num AS apnum " +
+                sql = "SELECT ci.claim_auto_id AS ID, cp.cpoint_name AS toll , cc.claim_detail_cb_claim AS channel , c.claim_equipment AS cname , cc.`claim_detail_license_plate` AS plate, cc.`claim_detail_province` AS prov,c.`claim_start_date` AS sdate, c.`claim_cpoint_note` AS snum, cd.`claim_doc_date` AS docdate ,cd.claim_doc_num AS docnum , cd.techno_doc_date AS redate ,cd.techno_doc_num AS renum ,cd.Estimate_date AS esdate ,cd.Estimate_num AS esnum ,cd.appoint_date AS apdate ,cd.appoint_num AS apnum " +
                     " FROM `tbl_claim` c LEFT JOIN `tbl_claim_doc` cd ON c.`claim_id` = cd.`claim_doc_id` LEFT JOIN `tbl_claim_com` cc ON c.`claim_id` = cc.`claim_id` LEFT JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id`" +
-                    " WHERE (c.claim_month = '" + ddlMonth.SelectedItem + "' AND c.`claim_budget_year` = '" + ddlbudget.SelectedValue + "') AND claim_delete = '0' " +
+                    " LEFT JOIN tbl_claim_auto_id ci ON c.`claim_id` = ci.claim_id WHERE (c.claim_month = '" + ddlMonth.SelectedItem + "' AND c.`claim_budget_year` = '" + ddlbudget.SelectedValue + "') AND c.claim_delete = '0' " +
                     " ORDER BY STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') ASC";
             }
         }

@@ -1288,10 +1288,10 @@ namespace ClaimProject.Claim
         void GenerateID()
         {
             string sqlgenID = "";
-            sqlgenID = "INSERT INTO `tbl_claim_auto_id` (`id` , claim_id , claim_delete) VALUES ((CONCAT ('" + function.getBudgetYear(txtCpointDate.Text) + "-', " +
-                "LPAD(IFNULL((SELECT SUBSTR(`id`, 6) FROM `tbl_claim_auto_id` AS `alias` " +
-                "WHERE SUBSTR(`id`, 1, 4) = '" + function.getBudgetYear(txtCpointDate.Text) + "' " +
-                "ORDER BY `id` DESC LIMIT 1 ) + 1, 1), 5, '0' ) ) ) , '" + Session["CodePK"].ToString() + "' , '0') ";
+            sqlgenID = "INSERT INTO `tbl_claim_auto_id` (claim_auto_id , claim_id , claim_delete) VALUES ((CONCAT ('" + function.getBudgetYear(txtCpointDate.Text) + "-', " +
+                "LPAD(IFNULL((SELECT SUBSTR(claim_auto_id, 6) FROM `tbl_claim_auto_id` AS `alias` " +
+                "WHERE SUBSTR(claim_auto_id, 1, 4) = '" + function.getBudgetYear(txtCpointDate.Text) + "' " +
+                "ORDER BY claim_auto_id DESC LIMIT 1 ) + 1, 1), 5, '0' ) ) ) , '" + Session["CodePK"].ToString() + "' , '0') ";
             function.MySqlQuery(sqlgenID);
         }
     }

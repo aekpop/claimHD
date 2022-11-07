@@ -6,18 +6,44 @@
         .input-group-text {
             font-size: 1.5rem;
         }
+        .btn {
+            position: relative;
+            padding: 0px 30px;
+            margin: 0rem 0px;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.42857;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            cursor: pointer;
+            background-color: transparent;
+            border: 0;
+            border-radius: 0.2rem;
+            outline: 0;
+            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: box-shadow, transform;
+        }
     </style>
 
     <div class="container-fluid" style="font-family:'Prompt',sans-serif;">
         <asp:UpdatePanel runat="server">
-        <ContentTemplate>
+        <ContentTemplate>          
             <div class="row">
-                <div class="col-xl-6">
+                <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text text-lg-center" id="basic-addon1">ปีงบประมาณ</span>
                             <asp:DropDownList ID="txtYear" runat="server" AutoPostBack="true" CssClass="input-group-text dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="txtYear_SelectedIndexChanged">
                             </asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <asp:TextBox id="txtsearch" runat="server" CssClass="input-group-text form-control" placeholder="ค้นหา...เลขควบคุม" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-outline-warning input-group-text" Text="Search" OnCommand="btnSearch_Command"/>
                         </div>
                     </div>
                 </div>

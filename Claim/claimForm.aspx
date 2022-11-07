@@ -27,9 +27,9 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-2 text-right">
-                    <asp:Label ID="Label2" runat="server" Text="เลขที่ออกหนังสือเจ้าหน้าที่คอม : "></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="เลขควบคุม : "></asp:Label>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <asp:TextBox ID="txtSearchComNumber" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-1 text-right">
@@ -48,7 +48,7 @@
                     <asp:DropDownList ID="txtSearchCpoint" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-1 text-right">
+                <div class="col-md-2 text-right">
                     <asp:Label ID="Label4" runat="server" Text="วันที่เกิดเหตุ : "></asp:Label>
                 </div>
                 <div class="col-md-2">
@@ -61,7 +61,6 @@
                     <asp:DropDownList ID="txtSearchStatus" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-1"></div>
                 </div>
             <br />
                  <div class="row">                    
@@ -96,6 +95,11 @@
                 OnRowUpdating="ClaimGridView_RowUpdating"
                 OnRowDeleting="ClaimGridView_RowDeleting">
                 <Columns>
+                    <asp:TemplateField HeaderText="เลขควบคุม">
+                        <ItemTemplate>
+                            <asp:Label ID="lbRefnum" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_auto_id") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="ด่านฯ">
                         <ItemTemplate>
                             <asp:LinkButton ID="lbCpoint" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name") %>' CssClass="links-horizontal" OnCommand="lbNoteCom_Command"></asp:LinkButton>
@@ -128,12 +132,7 @@
                         <EditItemTemplate>
                             <asp:DropDownList ID="txtStatusEdit" runat="server" CssClass="form-control"></asp:DropDownList>
                         </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="แจ้งโดย">
-                        <ItemTemplate>
-                            <asp:Label ID="lbUser" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>                  
                     <asp:TemplateField HeaderText="พิมพ์" HeaderStyle-CssClass="text-center">
                         <ItemTemplate>
                             <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="รายงานเบื้องต้น" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>

@@ -192,6 +192,9 @@ namespace ClaimProject
                         File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
                         sb.Clear();
 
+                        string updateSQl = "UPDATE tbl_user SET login_log = '" + DateNoww + " " + TimeNoww + "' WHERE username = '" + txtUser.Text.Trim() + "'";
+                        function.MySqlQuery(updateSQl);
+
                         if (Session["UserPrivilegeId"].ToString() == "5" )
                         {
 
