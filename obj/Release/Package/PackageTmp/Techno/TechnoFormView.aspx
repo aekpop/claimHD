@@ -67,9 +67,9 @@
                                     <asp:Label ID="lbCountdown" runat="server" Visible="false"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" Visible="false">
+                            <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" Visible="true">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbStatus" Font-Size="16px" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>' Visible="false"></asp:Label>
+                                    <asp:Label ID="lbStatus" Font-Size="16px" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

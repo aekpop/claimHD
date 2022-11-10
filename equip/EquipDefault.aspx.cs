@@ -689,8 +689,12 @@ namespace ClaimProject.equip
 
             if (lbreceive.Text != "0")
             {
+                string title = "Greetings";
+                string body = " ขณะนี้มีรายการรอรับครุภัณฑ์ " + lbreceive.Text + " รายการ";
                 lbAmountWait.Text = lbreceive.Text;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ShowPopup", "$(function () {$('#MyPopup').modal();})", true);
             }
             else
             {
@@ -861,23 +865,29 @@ namespace ClaimProject.equip
 
         protected void lbtnTranDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchStat", "3");
-            Session.Add("ddlsearchType", "1");
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchStat", "3");
+            //Session.Add("ddlsearchType", "1");
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=1&s=3");
         }
 
         protected void lbtnSendHeadDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchStat", "0");
-            Session.Add("ddlsearchType", "6");
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchStat", "0");
+            //Session.Add("ddlsearchType", "6");
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=6&s=0");
         }
 
         protected void lbtnSellDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchType", "0");
-            Session.Add("ddlsearchStat", "0");
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchType", "0");
+            //Session.Add("ddlsearchStat", "0");
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=0&s=0");
         }
 
         protected void lbtnRepairDetail_Click(object sender, EventArgs e)
@@ -887,46 +897,57 @@ namespace ClaimProject.equip
 
             if (Session["UserPrivilegeId"].ToString() == "5" || Session["UserPrivilegeId"].ToString() == "2")
             {
-                Response.Redirect("/equip/EquipTranList");
+                //Response.Redirect("/equip/EquipTranList");
+                Response.Redirect("/equip/EquipTranList?t=4&s=6");
             }
             else
             {
-                Response.Redirect("/equip/EquipTranList");
+                //Response.Redirect("/equip/EquipTranList");
+                Response.Redirect("/equip/EquipTranList?t=4&s=6");
             }
         }
 
         protected void lbtnCopyDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchType", "2"); //tran
-            Session.Add("ddlsearchStat", "3"); //complete
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchType", "2"); //tran
+            //Session.Add("ddlsearchStat", "3"); //complete
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=0&s=2");
         }
 
         protected void lbtnNewTranDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchType", "0");
-            Session.Add("ddlsearchStat", "2");
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchType", "0");
+            //Session.Add("ddlsearchStat", "2");
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=0&s=2");
         }
 
         protected void lbtnTotalDetail_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchType", "0");
-            Session.Add("ddlsearchStat", "0");
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchType", "0");
+            //Session.Add("ddlsearchStat", "0");
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=0&s=0");
         }
 
         protected void lbtnReceiveDetail_Click(object sender, EventArgs e)
         {
+            //Session.Add("ddlsearchStat", "2");
+            //Response.Redirect("/equip/EquipTranGetList");
 
-            Session.Add("ddlsearchStat", "2");
-            Response.Redirect("/equip/EquipTranGetList");
+            Response.Redirect("/equip/EquipTranGetList?t=0&s=2");
         }
 
         protected void btnRent_Click(object sender, EventArgs e)
         {
-            Session.Add("ddlsearchStat", "7");
-            Response.Redirect("/equip/EquipTranList");
+            //Session.Add("ddlsearchStat", "7");
+            //Response.Redirect("/equip/EquipTranList");
+
+            Response.Redirect("/equip/EquipTranList?t=0&s=7");
         }
 
         protected void expiredGridview_RowDataBound(object sender, GridViewRowEventArgs e)

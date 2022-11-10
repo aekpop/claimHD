@@ -16,6 +16,8 @@ namespace ClaimProject.equip
         public string icons = "";
         public string alertTypes = "";
         public string alerts = "";
+        public string type = "";
+        public string status = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,6 +48,7 @@ namespace ClaimProject.equip
                     divcheckkk.Visible = false;
                 }
             }
+            
             LineGetTran();
             LoadPaging();
             //Session["ddlsearchStat"] = "0";
@@ -75,8 +78,7 @@ namespace ClaimProject.equip
 
         }
         protected void LoadPaging()
-        {
-            
+        {            
             string TransRef = Session["TransID"].ToString();
             //COLLATE utf8_general_ci
             string sqlsendSearch = "SELECT trans_id, date_send, trans_stat_name, toll_name, toll_recieve, name_send, name_recieve, complete_name, complete_badge, complete_link FROM tbl_transfer " +
@@ -84,9 +86,22 @@ namespace ClaimProject.equip
                          " JOIN tbl_toll on tbl_toll.toll_id = tbl_transfer.toll_send " +
                          " JOIN tbl_trans_complete on tbl_trans_complete.complete_id = tbl_transfer.complete_stat ";
 
-            string type = ddlsearchType.SelectedValue;
+            string type = "";
             string EndState = ddlsearchEndToll.SelectedValue;
-            string status = ddlsearchStat.SelectedValue;
+            string status = "";
+
+            if (!string.IsNullOrEmpty(Request.Params["t"]) && !string.IsNullOrEmpty(Request.Params["s"]))
+            {
+                type = Request.Params["t"];
+                status = Request.Params["s"];
+                AddPM.Visible = false;
+            }
+            else
+            {
+                 type = ddlsearchType.SelectedValue;
+                 status = ddlsearchStat.SelectedValue;
+            }
+
             if (Session["UserCpoint"].ToString() == "0")
             {
                 if (Session["User"].ToString() == "sawitree")

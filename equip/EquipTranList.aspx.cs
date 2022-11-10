@@ -128,10 +128,22 @@ namespace ClaimProject
         {
             string TransRef = Session["TransID"].ToString();
             //COLLATE utf8_general_ci
-            string type = ddlsearchType.SelectedValue;
+            string type = "";
             string EndState = ddlsearchEndToll.SelectedValue;
-            string status = ddlsearchStat.SelectedValue;
+            string status = "";
             string sqlsendSearch = "";
+
+            if (!string.IsNullOrEmpty(Request.Params["t"]) && !string.IsNullOrEmpty(Request.Params["s"]))
+            {
+                type = Request.Params["t"];
+                status = Request.Params["s"];
+                AddPM.Visible = false;
+            }
+            else
+            {
+                type = ddlsearchType.SelectedValue;
+                status = ddlsearchStat.SelectedValue;
+            }
 
             if (Session["UserCpoint"].ToString() == "0")
             {

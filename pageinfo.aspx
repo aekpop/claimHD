@@ -20,10 +20,11 @@
         .navbar-brand {
             font-size: 0.5rem;
         }
+
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column">
     <div class="container-fluid">
         <nav class="navbar fixed-top navbar-light bg-light">
 
@@ -36,7 +37,8 @@
             </div>
         </nav>
         <br /><br />
-        <div class="col-md-12">
+        <div class="justify-content-center">
+            <div class="col-md-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -67,8 +69,15 @@
                 </a>
             </div>
         </div>
-
+        </div>
+        
     </div>
+
+    <footer id="sticky-footer" class="flex-shrink-0 py-3 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>Copyright &copy : งานเทคโนโลยรระบบจัดเก็บฯ</small>
+        </div>
+    </footer>
 
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
