@@ -868,12 +868,15 @@ namespace ClaimProject.Techno
             string note_text = "";
             string list_dev = "";
             string list_doc = "";
-            string name = "(นายบุญเพิ่ม เรียงไธสง)\r\n                                                                                          ผจท.";
+            //string name = function.GetDirector("name") + "\r\n";
+            string name = function.GetDirector("name") ;
+            string pos = function.GetDirector("Pos");
+            string pos2 = function.GetDirector("shoutPos");
             string copy_title = "2.) สำเนาเรียน";
             string copy_tiele1 = "";
-            string name_copy = "";
+            //string name_copy = "";
             string user = ReplaceName(Session["UserName"].ToString().Split(' ')[0]);
-
+            string reference = "";
 
             num_title += txtNoteNumTo.Text + "/" + txtDateNoteto.Text.Split('-')[2];
             date_thai = function.ConvertDatelongThai(txtDateNoteto.Text.Trim());
@@ -911,7 +914,7 @@ namespace ClaimProject.Techno
                 note_text += " ทั้งนี้ด่านฯ " + rs.GetString("cpoint_name") + " ได้ดำเนินการแจ้งความร้องทุกไว้ที่ " + rs.GetString("claim_detail_inform") + " ไว้เป็นหลักฐานเรียบร้อยแล้ว";
                 //copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name") + "\r\n                   - เพื่อทราบติดตามผลการดำเนินงานต่อไป";
                 copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name");
-                name_copy = "(นายบุญเพิ่ม เรียงไธสง)\r\n                                 ผจท.";
+                //name_copy = "(นายบุญเพิ่ม เรียงไธสง)\r\n                                 ผจท.";
 
             }
             rs.Close();
@@ -937,23 +940,37 @@ namespace ClaimProject.Techno
             {
                 string Values = function.GetSelectValue("tbl_claim_doc", "claim_doc_id = '" + Session["CodePK"].ToString() + "' AND claim_doc_type = '1'", "claim_doc_no" + i);
 
-                /*if (Values == "0") Values = "-";
+                if (Values == "0") Values = "-";
                 list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
                 i++;
-                */
-                if (Values != "0")
-                {
-                    list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
-                    i++;
-                }
-                else { i++; }
+               
+                //if (Values != "0")
+                //{
+                //    list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
+                //    i++;
+                //}
+                //else { i++; }
             }
+
+            string sqlID = "SELECT claim_auto_id FROM tbl_claim c LEFT JOIN tbl_claim_auto_id i ON c.claim_id = i.claim_id WHERE c.claim_id = '" + Session["CodePK"].ToString() + "'";
+            rs = function.MySqlSelect(sqlID);
+            if (rs.Read())
+            {
+                if (rs["claim_auto_id"] != System.DBNull.Value)
+                {
+                    reference = "เลขควบคุม " + rs.GetString("claim_auto_id");
+                }
+                else
+                {
+                    reference = "เลขควบคุม XXXX-XXXXX";
+                }
+            }
+            rs.Close();
+
 
             ReportDocument rpt = new ReportDocument();
             rpt.Load(Server.MapPath("/Techno/reportOfficialBooks.rpt"));
-
             rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
-
             rpt.SetParameterValue("cpoint_title", cpoint_title);
             rpt.SetParameterValue("num_title", num_title);
             rpt.SetParameterValue("date_thai", date_thai);
@@ -963,29 +980,29 @@ namespace ClaimProject.Techno
             rpt.SetParameterValue("note_text", note_text);
             rpt.SetParameterValue("list_dev", list_dev);
             rpt.SetParameterValue("list_doc", list_doc);
+            rpt.SetParameterValue("reference", reference);
 
             if (doc != 0)
             {
-                //name = "(ลงนาม)       เผชิญ  หุนตระนี\r\n                                                                               " + name;
                 name = "(ลงชื่อ)     บุญเพิ่ม เรียงไธสง";
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("copy_title", copy_title);
                 rpt.SetParameterValue("copy_tiele1", copy_tiele1);
                 rpt.SetParameterValue("copy2", "- เพื่อทราบติดตามผลการดำเนินงานต่อไป");
-                rpt.SetParameterValue("fullname", "(นายบุญเพิ่ม เรียงไธสง)");
-                rpt.SetParameterValue("posboss", "ผจท.");
-                rpt.SetParameterValue("name_copy", name_copy);
+                rpt.SetParameterValue("fullname", "("+ function.GetDirector("name") + ")");
+                rpt.SetParameterValue("posboss", pos);
+                rpt.SetParameterValue("pos2", pos2);
                 rpt.SetParameterValue("user", user);
             }
             else
             {
-                name = "\r\n                                                                               " + name;
+                name = "\r\n                                                                               ";
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("copy_title", "");
                 rpt.SetParameterValue("copy_tiele1", "");
                 rpt.SetParameterValue("copy2", "");
-                rpt.SetParameterValue("fullname", "");
-                rpt.SetParameterValue("posboss", "");
+                rpt.SetParameterValue("fullname", "(" + function.GetDirector("name") + ")");
+                rpt.SetParameterValue("posboss", pos);
                 rpt.SetParameterValue("name_copy", "");
                 rpt.SetParameterValue("user", "");
             }
