@@ -2,6 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="Content/Claim.css" rel="stylesheet" />
+
     <style>
         .input-group-text {
             font-size: 1.5rem;

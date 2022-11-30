@@ -229,6 +229,15 @@ namespace ClaimProject.CM {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Chkreplace;
         
         /// <summary>
+        /// divtxtre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtxtre;
+        
+        /// <summary>
         /// txtreplaceName control.
         /// </summary>
         /// <remarks>
@@ -245,6 +254,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox ckeNoservice;
+        
+        /// <summary>
+        /// divtxtre2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtxtre2;
         
         /// <summary>
         /// txtoriginalNo control.

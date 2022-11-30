@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TechnoFormView.aspx.cs" Inherits="ClaimProject.Techno.TechnoFormView" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../Content/BG.css" rel="stylesheet" />
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="card" style="z-index: 0; font-size:21px; font-family:'TH SarabunPSK'">

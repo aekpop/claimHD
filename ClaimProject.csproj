@@ -341,6 +341,7 @@
     <Content Include="CM\DefaultCM.aspx" />
     <Content Include="Company\CompanyForm.aspx" />
     <Content Include="Config\brandCar.txt" />
+    <Content Include="Config\Director.txt" />
     <Content Include="Config\ListDocTechno.txt" />
     <Content Include="Config\AroundList.txt" />
     <Content Include="Config\CabinetList.txt" />
@@ -349,6 +350,7 @@
     <Content Include="Config\thaiMonth.txt" />
     <Content Include="Config\typeCar.txt" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\BG.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -1310,6 +1312,7 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\checkValidInput.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />

@@ -702,7 +702,7 @@ namespace ClaimProject.Config
                     alertTypes = "warning";
                     break;
             }
-            //alertType = type;
+            //alertTypes = type;
             alerts = msg;
         }
 

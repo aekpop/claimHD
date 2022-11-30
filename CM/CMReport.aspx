@@ -23,6 +23,24 @@
         .modal-body {
             padding: 0.5rem;
         }
+
+        .form-group {
+            margin: 5px 0 0 0;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .card {
+            border: 0;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
     </style>
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
@@ -95,7 +113,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6 col-md-6 col-xl-2">
+                        <div class="col-xl-9"></div>
+                        <div class="col-sm-6 col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <div class="label-on-left">ช่วงเวลาทั้งหมด</div>
                                 <label class="container">
@@ -104,7 +123,6 @@
                                 </label>
                             </div>
                         </div>
-                        <div class=" col-md-2"></div>
                     </div>
                     <br />
                     <div class="row">
@@ -292,7 +310,6 @@
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
-
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
@@ -303,7 +320,6 @@
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
-                                
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group bmd-form-group">
@@ -347,19 +363,18 @@
                             </div>
                         </div>
                     </div>
-        <div class="modal-footer">
-            <!--<span class="label label-primary">ใบ Service : </span>
+                    <div class="modal-footer">
+                        <!--<span class="label label-primary">ใบ Service : </span>
                             <asp:Label ID="lbServiceForm" Enabled="false" runat="server" />-->
-            <asp:Label ID="Imgfilename" runat="server" Visible="false"></asp:Label>
-            <asp:LinkButton ID="ImgImageDocSer" runat="server" Text="ใบ Service" CssClass="col-1 btn btn-info" OnClick="ImgImageDocSer_Click" />
-            <asp:LinkButton ID="btnReverb" runat="server" Text="Reverb" CssClass="col-1 btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');" />
-        </div>
-        </div>
+                        <asp:Label ID="Imgfilename" runat="server" Visible="false"></asp:Label>
+                        <asp:LinkButton ID="ImgImageDocSer" runat="server" Text="ใบ Service" CssClass="col-1 btn btn-info" OnClick="ImgImageDocSer_Click" />
+                        <asp:LinkButton ID="btnReverb" runat="server" Text="Reverb" CssClass="col-1 btn btn-danger" OnCommand="btnReverb_Command" Visible="false" OnClientClick="return CompareConfirm('คุณต้องการย้อนกลับไปอนุมัติอีกครั้ง ใช่หรือไม่');" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!------------------------------------------------------------------------------------------------------------>
-
     <script src="/Scripts/jquery-migrate-3.0.0.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>

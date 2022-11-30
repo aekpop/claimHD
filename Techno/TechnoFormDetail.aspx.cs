@@ -870,8 +870,7 @@ namespace ClaimProject.Techno
             string list_doc = "";
             //string name = function.GetDirector("name") + "\r\n";
             string name = function.GetDirector("name") ;
-            string pos = function.GetDirector("Pos");
-            string pos2 = function.GetDirector("shoutPos");
+            string pos = function.GetDirector("Pos");     
             string copy_title = "2.) สำเนาเรียน";
             string copy_tiele1 = "";
             //string name_copy = "";
@@ -981,7 +980,7 @@ namespace ClaimProject.Techno
             rpt.SetParameterValue("list_dev", list_dev);
             rpt.SetParameterValue("list_doc", list_doc);
             rpt.SetParameterValue("reference", reference);
-
+            rpt.SetParameterValue("fullname", "(" + function.GetDirector("name") + ")");
             if (doc != 0)
             {
                 name = "(ลงชื่อ)     บุญเพิ่ม เรียงไธสง";
@@ -989,9 +988,10 @@ namespace ClaimProject.Techno
                 rpt.SetParameterValue("copy_title", copy_title);
                 rpt.SetParameterValue("copy_tiele1", copy_tiele1);
                 rpt.SetParameterValue("copy2", "- เพื่อทราบติดตามผลการดำเนินงานต่อไป");
-                rpt.SetParameterValue("fullname", "("+ function.GetDirector("name") + ")");
+                //rpt.SetParameterValue("fullname", "("+ function.GetDirector("name") + ")");
+                rpt.SetParameterValue("name_copy", "(" + function.GetDirector("shoutName") + ")");
                 rpt.SetParameterValue("posboss", pos);
-                rpt.SetParameterValue("pos2", pos2);
+                rpt.SetParameterValue("pos2", function.GetDirector("shoutPos"));
                 rpt.SetParameterValue("user", user);
             }
             else
@@ -1001,9 +1001,9 @@ namespace ClaimProject.Techno
                 rpt.SetParameterValue("copy_title", "");
                 rpt.SetParameterValue("copy_tiele1", "");
                 rpt.SetParameterValue("copy2", "");
-                rpt.SetParameterValue("fullname", "(" + function.GetDirector("name") + ")");
+                //rpt.SetParameterValue("fullname", "(" + function.GetDirector("name") + ")");
                 rpt.SetParameterValue("posboss", pos);
-                rpt.SetParameterValue("name_copy", "");
+                rpt.SetParameterValue("pos2", "");
                 rpt.SetParameterValue("user", "");
             }
 
@@ -1343,7 +1343,7 @@ namespace ClaimProject.Techno
             name_replace = name_replace.Replace("ว่าที่ร.ต.หญิง", "");
             name_replace = name_replace.Replace("ว่าที่ ร.ต.", "");
             name_replace = name_replace.Replace("ว่าที่ ร.ต.หญิง", "");
-            return "CRS : " + name_replace;
+            return "TMS : " + name_replace;
         }
 
         protected void txtDateNoteto_TextChanged(object sender, EventArgs e)

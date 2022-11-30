@@ -13,6 +13,15 @@ namespace ClaimProject.CM {
     public partial class CMDetailForm {
         
         /// <summary>
+        /// statheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label statheader;
+        
+        /// <summary>
         /// txtRef control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProblem;
+        
+        /// <summary>
+        /// lbImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbImg;
         
         /// <summary>
         /// diveditpic control.

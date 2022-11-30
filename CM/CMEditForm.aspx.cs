@@ -28,10 +28,10 @@ namespace ClaimProject.CM
                 Response.Redirect("/");
             }
 
-            if (txtETime.Text == "")
-            {
-                txtETime.Text = DateTime.Now.ToString("HH.mm");
-            }
+            //if (txtETime.Text == "")
+            //{
+            //    txtETime.Text = DateTime.Now.ToString("HH.mm");
+            //}
 
             if (Session["UserCpoint"].ToString() == "0")
             {
@@ -215,6 +215,7 @@ namespace ClaimProject.CM
 
         protected void btnStatusUpdate_Command(object sender, CommandEventArgs e)
         {
+            clearCss(); // Clear CSSClass
             cm_id = e.CommandName;
             Label1.Text = "#" + cm_id;
             lbcmid.Text = cm_id;
@@ -231,11 +232,11 @@ namespace ClaimProject.CM
                 string img = rs.GetString("cm_detail_simg");
                 ImgCM.ImageUrl = "~" + img;
                 if (!rs.IsDBNull(8)) { txtEDate.Text = rs.GetString("cm_detail_edate"); } else { txtEDate.Text = ""; }
-                if (!rs.IsDBNull(9)) { txtETime.Text = rs.GetString("cm_detail_etime"); } else { txtETime.Text = DateTime.Now.ToString("HH.mm"); }
+                if (!rs.IsDBNull(9)) { txtETime.Text = rs.GetString("cm_detail_etime"); } else { txtETime.Text = DateTime.Now.ToString("HH:mm"); }
                 if (!rs.IsDBNull(11)) { txtMethod.Text = rs.GetString("cm_detail_method"); } else { txtMethod.Text = ""; }
                 if (!rs.IsDBNull(12)) { txtNote.Text = rs.GetString("cm_detail_note"); } else { txtNote.Text = ""; }
                 if (!rs.IsDBNull(19)) { txtEJDate.Text = rs.GetString("cm_detail_ejdate"); } else { txtEJDate.Text = ""; }
-                if (!rs.IsDBNull(20)) { txtEJTime.Text = rs.GetString("cm_detail_ejtime"); } else { txtEJTime.Text = DateTime.Now.ToString("HH.mm"); }
+                if (!rs.IsDBNull(20)) { txtEJTime.Text = rs.GetString("cm_detail_ejtime"); } else { txtEJTime.Text = DateTime.Now.ToString("HH:mm"); }
             }
             rs.Close();
             function.Close();
@@ -244,6 +245,8 @@ namespace ClaimProject.CM
         protected void btnUpdateCM_Command(object sender, CommandEventArgs e)
         {
             string sysname = "";
+
+            checkValid();
 
             if (txtEDate.Text != "" && txtETime.Text != "" && txtEJTime.Text != "" && txtEJDate.Text != "")
             {
@@ -363,30 +366,56 @@ namespace ClaimProject.CM
                                 }
                                 else
                                 {
-                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด กรุณาตรวจสอบขนาดไฟล์ รูปภาพอีกครั้ง')", true);
+                                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ล้มเหลวเกิดข้อผิดพลาด กรุณาตรวจสอบขนาดไฟล์ รูปภาพอีกครั้ง')", true);
+                                    cm_id = Label1.Text.Replace('#', ' ').Trim();
                                 }
-                                function.Close();
+                                //function.Close();
                             }
                             else
                             {
-                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                                cm_id = Label1.Text.Replace('#', ' ').Trim();
                             }
                         }
                         else
                         {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
+                            //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
+                            cm_id = Label1.Text.Replace('#', ' ').Trim();
                         }
+                        txtMethod.CssClass = "form-control is-valid";
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณากรอกวิธีแก้ไข')", true);
-                    }
+                        //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณากรอกวิธีแก้ไข')", true);
+                        cm_id = Label1.Text.Replace('#', ' ').Trim();
+                        txtMethod.CssClass = "form-control is-invalid";
+                    }                    
                 }
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณากรอกเวลาเข้าซ่อม / ซ่อมเสร็จ ')", true);
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณากรอกเวลาเข้าซ่อม / ซ่อมเสร็จ ')", true);
+                cm_id = Label1.Text.Replace('#', ' ').Trim();
+
+                //if(txtETime.Text == "")
+                //{
+                //    txtETime.CssClass = "form-control is-invalid";
+                //}
+                //else
+                //{
+                //    txtETime.CssClass = "form-control is-valid";
+                //}
+
+                //if (txtEJTime.Text == "")
+                //{
+                //    txtEJTime.CssClass = "form-control is-invalid";
+                //}
+                //else
+                //{
+                //    txtEJTime.CssClass = "form-control is-valid";
+                //}
             }
+
         }
 
         protected void btnSearchEdit_Click(object sender, EventArgs e)
@@ -415,6 +444,25 @@ namespace ClaimProject.CM
         protected void ckeNoservice_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void clearCss()
+        {
+            //txtETime.CssClass = "form-control";
+            //txtEJTime.CssClass = "form-control";
+            txtMethod.CssClass = "form-control";
+        }
+
+        public void checkValid()
+        {
+            if(txtreplaceName.Text == "")
+            {
+                txtreplaceName.CssClass = "form-control is-invalid";
+            }
+            else
+            {
+                txtreplaceName.CssClass = "form-control is-valid";
+            }
         }
     }
 }

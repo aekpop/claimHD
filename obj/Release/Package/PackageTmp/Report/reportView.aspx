@@ -8,24 +8,13 @@
 <head runat="server">
     <title></title>
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
-    <style>
-        @font-face {
-            font-family:THSarabun;
-            src: url('/fonts/THSarabun.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family:THSarabunIT๙;
-            src: url('/fonts/THSarabunIT๙.ttf') format('truetype');
-        }
-    </style>
 </head>
-<body>
+<body style="height: 862px">
     <form id="iframe" runat="server" >
-        <asp:Panel id="dvReport" runat="server">
+        <asp:Panel id="dvReport" runat="server" >
             <!--<asp:Button runat="server" ID="btnPrint" Text="พิมพ์" OnClick="btnPrint_Click" />
             <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>-->
-            <CR:CrystalReportViewer ID="resultReportLeave" runat="server"
+            <CR:CrystalReportViewer ID="resultReportLeave" runat="server" 
                 EnableParameterPrompt="False" 
                 ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="Pdf" AutoDataBind="true" EnableDatabaseLogonPrompt="False" />
         </asp:Panel>

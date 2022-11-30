@@ -56,8 +56,9 @@ namespace ClaimProject.CM
                 string sql_Device = "SELECT * FROM tbl_device Where davice_delete = '0' ORDER BY device_name";
                 function.getListItem(txtDeviceAdd, sql_Device, "device_name", "device_id");
                 txtDeviceAdd.Items.Insert(0, new ListItem("", ""));
-                txtSTime.Text = DateTime.Now.ToString("HH.mm");
-                txtPoint.Text = Session["Userpoint"].ToString();
+                txtSTime.Text = DateTime.Now.ToString("HH:mm");
+                //txtPoint.Text = Session["Userpoint"].ToString();
+               
                 BindData();
 
                 if (Request["ref"] != null)
@@ -83,6 +84,8 @@ namespace ClaimProject.CM
                     btnSaveCM.Visible = false;
                     btnEditCM.Visible = true;
                     btnCancelCM.Visible = true;
+                    statheader.Text = "แก้ไข";
+                    statheader.CssClass = "badge badge-warning";
 
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                     {
@@ -101,6 +104,8 @@ namespace ClaimProject.CM
                     btnEditCM.Visible = false;
                     btnCancelCM.Visible = false;
                     btnDeleteCM.Visible = false;
+                    statheader.Text = "แจ้งใหม่";
+                    statheader.CssClass = "badge badge-danger";
                 }
             }
         }
@@ -170,122 +175,166 @@ namespace ClaimProject.CM
         protected void btnSaveCM_Click(object sender, EventArgs e)
         {
             string getChkpic = ChkPicInsert();
-            string sysname = "";                        
-            if (txtProblem.Text == "")
+            string sysname = "";
+
+            //if (getChkpic == "picTypeError")
+            //{
+            //    AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+            //    lbImg.CssClass = "text-danger fa fa-times";
+            //}
+            //else if (getChkpic == "picHasNotImage")
+            //{
+            //    AlertPop("Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพ", "error");
+            //    lbImg.CssClass = "text-danger fa fa-times";
+            //}
+            //else if (txtSTime.Text == "")
+            //{
+            //    AlertPop("Error : กรุณาระบุเวลาแจ้ง", "error");
+            //    txtSTime.CssClass = "form-control is-invalid";
+            //}
+            //else if (txtDeviceAdd.Text == "")
+            //{
+            //    AlertPop("Error : กรุณาเลือกอุปกรณ์ ", "error");
+            //}
+            //else if (txtProblem.Text == "")
+            //{
+            //    AlertPop("Error : กรุณาบันทึกปัญหา/อาการ", "error");
+            //    txtProblem.CssClass = "form-control is-invalid ";
+            //}
+            if (txtSTime.Text == "" || txtDeviceAdd.Text == "" || txtProblem.Text == "" || getChkpic == "picTypeError" || getChkpic == "picHasNotImage")
             {
-                function.AlertPop("Error : กรุณากรอกปัญหา/อาการ", "error");
-            }
-            else
-            {
-                if (getChkpic == "picTypeError")
+                AlertPop("Error : กรุณาตรวจสอบข้อมูล", "error");
+
+                if(txtSTime.Text == "")
                 {
-                    function.AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
-                }
-                else if (getChkpic == "picHasNotImage")
-                {
-                    function.AlertPop("Error : ไม่พบรูปภาพ กรุณาตรวจสอบรูปภาพ", "error");
-                }
-                else if (txtSTime.Text == "")
-                {
-                    function.AlertPop("Error : กรุณากรอกเวลาแจ้ง", "error");
-                }
-                else if (txtDeviceAdd.Text == "")
-                {
-                    function.AlertPop("Error : กรุณากรอกอุปกรณ์ ", "error");
+                    txtSTime.CssClass = "form-control is-invalid";
                 }
                 else
                 {
-                    string bgy = function.getBudgetYear(txtSDate.Text);
-                    string point = Session["Userpoint"].ToString();
-                    string agncy = txtDeviceAdd.SelectedValue.ToString();
-                    string chkagncy = "SELECT device_id,drive_group_id,drive_group_agency FROM tbl_device " +
-                    "JOIN tbl_drive_group ON tbl_device.davice_group = tbl_drive_group.drive_group_id WHERE device_id = '" + agncy + "' ";
-                    string id = "";
-                    string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
-                    /* เช็คทำรายการซ้ำ */
-                    Checkduplcate(txtDeviceAdd.SelectedValue, ddlChanel.SelectedValue.ToString() , txtSDate.Text, txtSTime.Text);
+                    txtSTime.CssClass = "form-control is-valid";
+                }
 
-                    if(chkdup == "1")
+                if (txtProblem.Text == "")
+                {
+                    txtProblem.CssClass = "form-control is-invalid";
+                }
+                else
+                {
+                    txtProblem.CssClass = "form-control is-valid";
+                }
+
+                if (txtDeviceAdd.Text == "")
+                {
+                    txtDeviceAdd.CssClass = "custom-combobox-input is-invalid form-control";
+                }
+                else
+                {
+                    txtDeviceAdd.CssClass = "custom-combobox-input is-valid form-control";
+                }
+
+                if (getChkpic == "picTypeError")
+                {
+                    lbImg.CssClass = "text-danger fa fa-times";
+                }
+                else if (getChkpic == "picHasNotImage")
+                {
+                    lbImg.CssClass = "text-danger fa fa-times";
+                }
+            }
+            else
+            {
+                string bgy = function.getBudgetYear(txtSDate.Text);
+                string point = Session["Userpoint"].ToString();
+                string agncy = txtDeviceAdd.SelectedValue.ToString();
+                string chkagncy = "SELECT device_id,drive_group_id,drive_group_agency FROM tbl_device " +
+                "JOIN tbl_drive_group ON tbl_device.davice_group = tbl_drive_group.drive_group_id WHERE device_id = '" + agncy + "' ";
+                string id = "";
+                string sql_insert = "INSERT INTO tbl_cm_detail (cm_budget,cm_detail_driver_id,cm_detail_problem,cm_detail_status_id,cm_detail_channel,cm_detail_sdate,cm_detail_stime,cm_detail_simg,cm_cpoint,cm_point,cm_user) VALUES ('" + bgy + "','" + txtDeviceAdd.SelectedValue + "','" + txtProblem.Text + "','0','" + ddlChanel.SelectedValue.ToString() + "','" + txtSDate.Text + "','" + txtSTime.Text + "','" + getChkpic + "','" + txtCpoint.SelectedValue + "','" + point + "','" + Session["User"].ToString() + "')";
+                /* เช็คทำรายการซ้ำ */
+                Checkduplcate(txtDeviceAdd.SelectedValue, ddlChanel.SelectedValue.ToString(), txtSDate.Text, txtSTime.Text);
+
+                if (chkdup == "1")
+                {
+                    AlertPop("ล้มเหลว มีแจ้งในระบบแล้ว", "error");
+                    chkdup = "";
+                }
+                else
+                {
+                    if (function.MySqlQuery(sql_insert))
                     {
-                        function.AlertPop("ล้มเหลว มีแจ้งในระบบแล้ว", "error");
-                        chkdup = "";
-                    }
-                    else
-                    {
-                        if (function.MySqlQuery(sql_insert))
+                        cssNornal();
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
+                        MySqlDataReader rs = function.MySqlSelect(chkagncy);
+                        if (rs.Read())
                         {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกข้อมูลสำเร็จ')", true);
-                            MySqlDataReader rs = function.MySqlSelect(chkagncy);
-                            if (rs.Read())
+                            if (rs.GetString("drive_group_id") == "4")
                             {
-                                if (rs.GetString("drive_group_id") == "4")
+                                sysname = "CMAir";
+                                //sysname = "test";
+                            }
+                            else
+                            {
+                                if (txtCpoint.SelectedValue == "902" || txtCpoint.SelectedValue == "903" || txtCpoint.SelectedValue == "904" || txtCpoint.SelectedValue == "905")
                                 {
-                                    sysname = "CMAir";
+                                    sysname = "MAM9";
+                                    //sysname = "test";
+                                }
+                                else if (txtCpoint.SelectedValue == "701" || txtCpoint.SelectedValue == "702" || txtCpoint.SelectedValue == "703" || txtCpoint.SelectedValue == "704")
+                                {
+                                    sysname = "MAM71";
+                                    //sysname = "test";
+                                }
+                                else if (txtCpoint.SelectedValue == "706" || txtCpoint.SelectedValue == "707" || txtCpoint.SelectedValue == "708" || txtCpoint.SelectedValue == "709" || txtCpoint.SelectedValue == "710")
+                                {
+                                    sysname = "MAM72";
                                     //sysname = "test";
                                 }
                                 else
                                 {
-                                    if (txtCpoint.SelectedValue == "902" || txtCpoint.SelectedValue == "903" || txtCpoint.SelectedValue == "904" || txtCpoint.SelectedValue == "905")
-                                    {
-                                        sysname = "MAM9";
-                                        //sysname = "test";
-                                    }
-                                    else if (txtCpoint.SelectedValue == "701" || txtCpoint.SelectedValue == "702" || txtCpoint.SelectedValue == "703" || txtCpoint.SelectedValue == "704")
-                                    {
-                                        sysname = "MAM71";
-                                        //sysname = "test";
-                                    }
-                                    else if (txtCpoint.SelectedValue == "706" || txtCpoint.SelectedValue == "707" || txtCpoint.SelectedValue == "708" || txtCpoint.SelectedValue == "709" || txtCpoint.SelectedValue == "710")
-                                    {
-                                        sysname = "MAM72";
-                                        //sysname = "test";
-                                    }
-                                    else
-                                    {
-                                        sysname = "MAM73";
-                                        //sysname = "test";
-                                    }
+                                    sysname = "MAM73";
+                                    //sysname = "test";
                                 }
-                                string sql_id = "SELECT cm_detail_id FROM tbl_cm_detail WHERE cm_detail_simg = '" + getChkpic + "'";
-                                MySqlDataReader rd = function.MySqlSelect(sql_id);
-                                if (rd.Read())
-                                {
-                                    id = rd.GetString("cm_detail_id");
-                                }
+                            }
+                            string sql_id = "SELECT cm_detail_id FROM tbl_cm_detail WHERE cm_detail_simg = '" + getChkpic + "'";
+                            MySqlDataReader rd = function.MySqlSelect(sql_id);
+                            if (rd.Read())
+                            {
+                                id = rd.GetString("cm_detail_id");
+                            }
 
-                                if (txtCpoint.SelectedValue != "711" && txtCpoint.SelectedValue != "712" && txtCpoint.SelectedValue != "713")
+                            if (txtCpoint.SelectedValue != "711" && txtCpoint.SelectedValue != "712" && txtCpoint.SelectedValue != "713")
+                            {
+                                if (rs.GetString("drive_group_id") == "2")
                                 {
-                                    if (rs.GetString("drive_group_id") == "2")
-                                    {
-                                        messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
-                                        function.AlertPop("บันทึกสำเร็จ", "success");
-                                        //function.LineTran(sysname, messageLine);                                       
-                                    }
-                                    else
-                                    {
-                                        messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
-                                        function.AlertPop("บันทึกสำเร็จ", "success");
-                                        function.LineTran(sysname, messageLine);
-                                    }
+                                    messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
+                                    AlertPop("บันทึกสำเร็จ", "success");
+                                    //function.LineTran(sysname, messageLine);                                       
                                 }
                                 else
                                 {
                                     messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
-                                    function.AlertPop("บันทึกสำเร็จ", "success");
+                                    AlertPop("บันทึกสำเร็จ", "success");
                                     function.LineTran(sysname, messageLine);
                                 }
                             }
-                            BindData();
-                            ClearDate();
+                            else
+                            {
+                                messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
+                                AlertPop("บันทึกสำเร็จ", "success");
+                                function.LineTran(sysname, messageLine);
+                            }
                         }
-                        else
-                        {
-                            function.AlertPop("ล้มเหลว กรุณาติดต่อผู้ดูแล", "error");
-                        }
+                        BindData();
+                        ClearDate();
                     }
-                    function.Close();
+                    else
+                    {
+                        AlertPop("ล้มเหลว กรุณาติดต่อผู้ดูแล", "error");
+                    }
                 }
+                function.Close();
             }
+
         }
 
         private void ClearDate()
@@ -297,7 +346,7 @@ namespace ClaimProject.CM
             txtProblem.CssClass = "form-control ";
 
             txtSDate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
-            txtSTime.Text = DateTime.Now.ToString("HH.mm");
+            txtSTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
         protected void CMGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -347,7 +396,6 @@ namespace ClaimProject.CM
             function.Close();
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
 
-
         }
 
         protected void btnEditCM_Click(object sender, EventArgs e)
@@ -365,7 +413,7 @@ namespace ClaimProject.CM
                 }
                 else
                 {
-                    function.AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                    AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 }
             }
             else
@@ -393,7 +441,7 @@ namespace ClaimProject.CM
             }
             else
             {
-                function.AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
+                AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
             }
             function.Close();
         }
@@ -416,7 +464,7 @@ namespace ClaimProject.CM
             }
             else
             {
-                function.AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
+                AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
             }
             function.Close();
         }
@@ -441,7 +489,7 @@ namespace ClaimProject.CM
             rttt.Close();
             function.Close();
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
-        }                
+        }
 
         protected void CMGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -457,6 +505,35 @@ namespace ClaimProject.CM
             {
                 chkdup = "1";
             }
+        }
+
+        public void AlertPop(string msg, string type)
+        {
+            switch (type)
+            {
+                case "success":
+                    icons = "add_alert";
+                    alertTypes = "success";
+                    break;
+                case "error":
+                    icons = "error";
+                    alertTypes = "danger";
+                    break;
+                case "warning":
+                    icons = "warning";
+                    alertTypes = "warning";
+                    break;
+            }
+            //alertTypes = type;
+            alerts = msg;
+        }
+
+        public void cssNornal()
+        {
+            txtSTime.CssClass = "form-control";
+            txtProblem.CssClass = "form-control";
+            txtDeviceAdd.CssClass = "combobox form-control custom-select ";
+            lbImg.CssClass = "text-black-50";
         }
     }
 }

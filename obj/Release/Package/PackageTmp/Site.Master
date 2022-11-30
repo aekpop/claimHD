@@ -62,6 +62,7 @@
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/custom.css" rel="stylesheet" />
+    <link href="Content/BG.css" rel="stylesheet" />
 
     <script src="/crystalreportviewers13/js/crviewer/crv.js"></script>
 

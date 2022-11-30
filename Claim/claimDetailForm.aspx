@@ -7,10 +7,10 @@
 
     <style>
         .card {
-            color: #191818;
+            
         }
             .card .card-body {
-                background-color: #faf9f4;
+                background-color: #ffffff;
             }
 
         .btn, .btn.btn-default {
@@ -37,12 +37,17 @@
         button, input, optgroup, select, textarea {
             font-size: 1.6rem;
         }
+
+        .form-control {
+            font-size:1.3rem;
+        }
+
     </style>
     <div class="tab-content">
-        <div class="card" style="font-size: 22px; z-index: 0; font-family: 'TH SarabunPSK';">
+        <div class="card" style="font-size: 26px; z-index: 0; font-family: 'TH SarabunPSK';">
             <div class="card-body table-responsive">
                 <div runat="server" id="divCom">
-                    <div class="card-title text-black-50">
+                    <div class="card-title text-gray-800">
                         รายละเอียดการเกิดอุบัติเหตุ (เจ้าหน้าที่คอม)
                         <asp:Label ID="statheader" runat="server"></asp:Label>
                     </div>
@@ -63,6 +68,7 @@
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">เลขที่บันทึก</p>
                                 <asp:TextBox ID="txtCpointNote" runat="server" CssClass="form-control" placeholder="เช่น 1234" />
+                                <span id="numNote-error">ไม่ถูกต้อง</span>
                             </div>
                         </div>
                     </div>
@@ -138,7 +144,7 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">บริเวณที่เกิดอุบัติเหตุ</p>
-                                <asp:DropDownList ID="txtCBClaim" runat="server" CssClass="combobox form-control"></asp:DropDownList>
+                                <asp:DropDownList ID="txtCBClaim" runat="server" CssClass="combobox form-control" ></asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3">
