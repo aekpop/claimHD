@@ -16,7 +16,6 @@
     </style>
 
     <!-- JS -->
-
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
         <!-- Menu Dropdown -->
         <div class="btn-group" runat="server" visible="false">
@@ -136,7 +135,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card border-light">
-                                <asp:Image ID="ImgCM" runat="server" Width="80%" CssClass="rounded mx-auto d-block"/>
+                                <asp:Image ID="ImgCM" runat="server" Width="80%" CssClass="rounded mx-auto d-block" />
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -176,7 +175,6 @@
                                 <asp:TextBox ID="txtETime" runat="server" type="time" CssClass="form-control" MaxLength="5" />
                             </div>
                         </div>
-
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <label class="text-black-50">วันที่ซ่อมเสร็จ</label>
@@ -191,17 +189,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg">
+                        <div class="col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <label class="text-black-50">วิธีแก้ไข</label>
-                                <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control " placeholder="กรอกวิธีการแก่ไข"/>
+                                <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control " placeholder="กรอกวิธีการแก่ไข" />
                             </div>
                         </div>
-
-                        <div class="col-lg">
+                        <div class="col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <label class="text-black-50">หมายเหตุ</label>
-                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control " placeholder="ถ้ามี"/>
+                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control "/>
                             </div>
                         </div>
                     </div>
@@ -210,14 +207,14 @@
                             <div class="form-group bmd-form-group">
                                 <label class="container text-black-50" style="font-size: 1rem;">
                                     เปลี่ยนอุปกรณ์/อะไหล่ (ระบุหมายเลขอุปกรณ์)
-                                  <input type="checkbox" id="Chkreplace" name="ckeRepalce" runat="server" />
+                                  <input type="checkbox" id="Chkreplace" name="ckeRepalce" runat="server" onchange="checkbox()"/>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-xl-6">
+                        <div id="divtxtre" runat="server" class="col-lg-12 col-xl-6" >
                             <div class="form-group bmd-form-group">
-                                <label class="text-black-50">ชื่ออุปกรณ์/อะไหล่ทดแทน (ถ้ามี)</label>
+                                <label class="text-black-50">ชื่ออุปกรณ์/อะไหล่ทดแทน</label>
                                 <asp:TextBox ID="txtreplaceName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
@@ -227,21 +224,23 @@
                             <div class="form-group bmd-form-group">
                                 <label class="container text-black-50" style="font-size: 1rem;">
                                     ไม่มีใบService (แก้ไขเบื้องต้น หายเอง หรือซ่อมโดยซ่อมบำรุง)
-                                  <input type="checkbox" id="ckeNoservice" name="ckeNoservice" runat="server" />
+                                  <input type="checkbox" id="ckeNoservice" name="ckeNoservice" runat="server" onchange="checkbox()"/>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-xl-3">
-                            <div class="form-group bmd-form-group">
-                                <label class="text-black-50">หมายเลขอุปกรณ์เดิม (ถ้ามี) </label>
-                                <asp:TextBox ID="txtoriginalNo" runat="server" CssClass="form-control"></asp:TextBox>
+                        <div id="divtxtre2" runat="server" class="row col-lg-12 col-xl-6" >
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <label class="text-black-50">หมายเลขอุปกรณ์เดิม (ถ้ามี) </label>
+                                    <asp:TextBox ID="txtoriginalNo" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-xl-3">
-                            <div class="form-group bmd-form-group">
-                                <label class="text-black-50">หมายเลขอุปกรณ์ทดแทน (ถ้ามี) </label>
-                                <asp:TextBox ID="txtreplaceNo" runat="server" CssClass="form-control"></asp:TextBox>
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="form-group bmd-form-group">
+                                    <label class="text-black-50">หมายเลขอุปกรณ์ทดแทน (ถ้ามี) </label>
+                                    <asp:TextBox ID="txtreplaceNo" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -255,7 +254,6 @@
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div id="imgService" runat="server">
-
                                 <div class="form-group bmd-form-group">
                                     <label class="text-black-50">ใบService </label>
                                     <asp:FileUpload ID="fileDocService" runat="server" CssClass="custom-file" lang="en" onchange="validateSize(this)" />
@@ -268,7 +266,7 @@
                         <label style="font-size: 0.5rem;">ภาพแก้ไขและใบservice ขนาดไฟล์รูปภาพไม่เกิน 2MB</label>
                     </div>
                     <div class="modal-footer">
-                        <asp:LinkButton ID="btnUpdateCM" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateCM_Command" OnClientClick="return CompareConfirm('ยืนยันบันทึกข้อมูล ใช่หรือไม่');">บันทึก</asp:LinkButton>
+                        <asp:LinkButton ID="btnUpdateCM" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateCM_Command" OnClientClick="Chkinvalid()">บันทึก</asp:LinkButton>
                         <asp:LinkButton ID="btnDeleteCM" runat="server" CssClass="btn btn-danger btn-sm" Font-Size="Medium" OnCommand="btnDeleteCM_Command" OnClientClick="return CompareConfirm('ยืนยันลบข้อมูล ใช่หรือไม่');">ลบ</asp:LinkButton>
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>
                     </div>
@@ -284,13 +282,19 @@
         <%if (cm_id != "")
         {%>
         $('#UpdateStatusModal').modal("show");
+        if (document.getElementById('<%= Chkreplace.ClientID %>').checked) {
+            document.getElementById('<%= divtxtre.ClientID %>').style.visibility = "visible";
+            document.getElementById('<%= divtxtre2.ClientID %>').style.visibility = "visible";
+        } else {
+            document.getElementById('<%= divtxtre.ClientID %>').style.visibility = "hidden";
+            document.getElementById('<%= divtxtre2.ClientID %>').style.visibility = "hidden";
+        }        
         <%}
         else
         {%>
         $('#UpdateStatusModal').modal("hide");
         <%}%>
-</script>
-    <script type="text/javascript"> 
+
         function CompareConfirm(msg) {
             var str1 = "1";
             var str2 = "2";
@@ -301,24 +305,6 @@
             } else {
                 // your logic here
                 return confirm(msg);
-            }
-        }
-
-        function checkText() {
-            var str1 = "1";
-            var str2 = "2";
-
-            if (str1 === str2) {
-                // your logic here
-                return false;
-            } else {
-                // your logic here
-                if ($('<%=txtMethod.ClientID%>').val === "") {
-                    alert("กรุณาใส่วิธีแก้ไข");
-                    return false;
-                } else {
-                    return true;
-                }
             }
         }
 
@@ -350,12 +336,77 @@
         history.back();
         window.onpopstate = () => history.forward();
 
-        $('#txtETime').datetimepicker({
-            format: 'HH.mm'
+        $('#txtETime').datepicker({
+            format: 'DD/MM/YYYY HH:mm'
         });
 
         function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
         $(document).on("keydown", disableF5);
+
+        function Chkinvalid() {
+            var value = document.getElementById('<%= txtMethod.ClientID %>').value;       
+            var value2 = document.getElementById('<%= txtETime.ClientID %>').value;
+            var value3 = document.getElementById('<%= txtEJTime.ClientID %>').value;
+            var value4 = document.getElementById('<%= txtreplaceName.ClientID %>').value;
+
+            if (value2 != "") {
+                //
+            } else {
+                alert('กรุณาระบุเวลาเข้าซ่อม');
+            }
+           
+            if (value3 != "") {
+                //
+            } else {
+                alert('กรุณาระบุเวลาซ่อมเสร็จ');
+            }
+
+            if (value != "") {
+                //
+            } else {
+                alert('กรุณาระบุวิธิแก้ไข');
+            }
+
+            if (document.getElementById('<%= Chkreplace.ClientID %>').checked) {
+                if (value4 == "") {
+                    alert("กรุณาระบุ ชื่ออุปกรณ์/อะไหล่ทดแทน");
+                } else {
+
+                }
+            } else {
+                document.getElementById('<%= txtreplaceName.ClientID %>').value = "";
+            }
+
+            if (document.getElementById('<%= fileImg.ClientID %>').value == "") {
+                alert("ตรวจไม่พบ กรุณตรวจสอบรูปภาพการแก้ไข อีกครั้ง");
+            }
+        }
+
+        function checkbox() {
+            if (document.getElementById('<%= ckeNoservice.ClientID %>').checked) {
+                document.getElementById('<%= imgService.ClientID %>').style.visibility = "hidden";
+                document.getElementById('<%= fileDocService.ClientID %>').value = "";
+
+            } else {
+                 document.getElementById('<%= imgService.ClientID %>').style.visibility = "visible";
+            }
+
+            if (document.getElementById('<%= Chkreplace.ClientID %>').checked) {
+                document.getElementById('<%= divtxtre.ClientID %>').style.visibility = "visible";
+                document.getElementById('<%= divtxtre2.ClientID %>').style.visibility = "visible";
+
+            } else {
+                document.getElementById('<%= divtxtre.ClientID %>').style.visibility = "hidden";
+                document.getElementById('<%= divtxtre2.ClientID %>').style.visibility = "hidden";
+                document.getElementById('<%= txtreplaceName.ClientID %>').value = "";
+                document.getElementById('<%= txtoriginalNo.ClientID %>').value = "";
+                document.getElementById('<%= txtreplaceNo.ClientID %>').value = "";
+            }
+        }
+
+        function clearValue() {
+
+        }
 
     </script>
 </asp:Content>

@@ -480,7 +480,7 @@ namespace ClaimProject.Claim
             string strNote = "เนื่องด้วยวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก " + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
             if (cabinet != "") { strNote += " ประจำช่องทาง " + cabinet; }
 
-            if(cabinet_claim != "อาคารสำนักงาน") { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ช่องทาง " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
+            if(cabinet_claim != "อาคารสำนักงาน" && cabinet_claim != "อาคารด่านเก็บเงิน") { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ช่องทาง " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
             else { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " บริเวณ" + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
             //strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ";
             strNote += " เมื่อได้รับแจ้งเหตุ เจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;

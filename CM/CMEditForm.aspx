@@ -175,7 +175,6 @@
                                 <asp:TextBox ID="txtETime" runat="server" type="time" CssClass="form-control" MaxLength="5" />
                             </div>
                         </div>
-
                         <div class="col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <label class="text-black-50">วันที่ซ่อมเสร็จ</label>
@@ -190,14 +189,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg">
+                        <div class="col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <label class="text-black-50">วิธีแก้ไข</label>
                                 <asp:TextBox ID="txtMethod" runat="server" CssClass="form-control " placeholder="กรอกวิธีการแก่ไข" />
                             </div>
                         </div>
-
-                        <div class="col-lg">
+                        <div class="col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <label class="text-black-50">หมายเหตุ</label>
                                 <asp:TextBox ID="txtNote" runat="server" CssClass="form-control "/>

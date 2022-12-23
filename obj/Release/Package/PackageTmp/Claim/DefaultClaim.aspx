@@ -5,7 +5,18 @@
     <link href="../Content/Claim.css" rel="stylesheet" />
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
+
         <div class="row" runat="server" visible="false">
+            <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div5">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="fas fa-car-crash"></i>
+                        </div>
+                        <h4 class="card-category"></h4>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="boxUserSystem">
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
@@ -74,31 +85,48 @@
 
         <!-- Content Row -->
         <div class="row">
-
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-70 py-2">
                     <div class="card-body">
-                        <asp:LinkButton ID="lbtnClaim" runat="server" OnCommand="lbtnClaim_Command">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    เดือน 
-                              <asp:Label ID="lbClaimNameMonthly" runat="server"></asp:Label>
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                    รหัสด่านฯ                              
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300 text-warning"></i>
+                                <i class="fas fa-home fa-2x text-gray-300 text-danger"></i>
                             </div>
                         </div>
-                            </asp:LinkButton>
+                        <div class="col-auto">
+                            <asp:Label ID="lbcpoint" runat="server" CssClass="text-gray" Font-Size="XX-Large" Font-Bold="true"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-70 py-2">
+                    <div class="card-body">
+                        <asp:LinkButton ID="lbtnClaim" runat="server" OnCommand="lbtnClaim_Command">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        เดือน 
+                              <asp:Label ID="lbClaimNameMonthly" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar fa-2x text-gray-300 text-warning"></i>
+                                </div>
+                            </div>
+                        </asp:LinkButton>
                         <div class="col-auto">
                             <asp:Label ID="lbClaimStatMonthly" runat="server" Font-Bold="true" CssClass="text-gray" Font-Size="XX-Large"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-70 py-2">
                     <div class="card-body">
@@ -117,7 +145,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-70 py-2">
                     <div class="card-body">
@@ -137,19 +164,32 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
-                <canvas id="myChart" width="400" height="400"></canvas>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-9 col-md-12 mb-4">
                 <div class="card border-left-primary shadow py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family: 'Prompt', sans-serif;">
-                                    สถานะทั้งหมด
-                                        
+                                     <asp:DropDownList ID="ddlstatus" runat="server" CssClass="dropdown "></asp:DropDownList>
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
+                            </div>
+                        </div>
+                        <canvas id="myChart" style="width: 100%;"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-12 mb-4">
+                <div class="card border-left-primary shadow py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-family: 'Prompt', sans-serif;">
+                                    สถานะทั้งหมด                                    
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                             </div>
@@ -214,44 +254,129 @@
             </div>
         </div>
     </div>
-    <script src="../Scripts/Chart.min.js"></script>
-
-    <script type="text/javascript">
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: '# of Votes',
-                    data: data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+    <script src="/Scripts/Chart.min.js"></script>
+    <script type="text/javascript">  
+        $(document).ready(function () {
+            LoadChart();
         });
+
+        function LoadChart() {
+            var e = document.getElementById('<%= ddlstatus.ClientID %>');
+            var getYear = e.options[e.selectedIndex].value;
+            var labelS = "อุบัติเหตุรวม";
+            var labelS1 = "อุบัติเหตุซ่อมแล้วเสร็จ";
+            var cpoint = document.getElementById('<%= lbcpoint.ClientID %>').innerHTML;
+            var jsonData = JSON.stringify({
+                status: getYear, cp: cpoint
+            });
+                      
+            $.ajax({
+                type: "POST",
+                url: "DefaultClaim.aspx/getLineChartData",
+                data: jsonData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess_,
+                error: OnErrorCall_
+            });
+
+            function OnSuccess_(reponse) {
+                var aData = reponse.d;
+                var aLabels = [];
+                var aDatasets1 = [];
+                var aDatasets2 = [];
+
+                 aLabels = aData[0];
+                aDatasets1 = aData[1];
+                aDatasets2 = aData[2];
+
+                console.log(aDatasets2);
+
+                var data = {
+                    labels:  aLabels ,
+                    datasets: [{
+                        label: labelS,
+                        data: aDatasets1,
+                        barPercentage: 0.9,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)'
+                           
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 99, 132)'
+                           
+                        ],
+                        borderWidth: 1
+                    },
+                        {
+                        label: labelS1,
+                        data: aDatasets2,
+                        barPercentage: 0.9,
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(75, 192, 192, 0.2)'
+
+                        ],
+                        borderColor: [
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)',
+                            'rgb(75, 192, 192)'
+
+                        ],
+                        borderWidth: 1
+                    }
+                    ]
+                };
+
+                var config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                };
+
+                var ctx = document.getElementById('myChart');
+                var chart = new Chart(ctx, config);
+
+                $("[id*=ddlstatus]").bind("change", function () {
+                    
+                });
+            } 
+
+            function OnErrorCall_(reponse) {
+                alert("Woops something went wrong, pls try later !");
+            }           
+        }
 
     </script>
 </asp:Content>

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,19 +22,36 @@ namespace ClaimProject.Claim
         public int Nowmonth = int.Parse(DateTime.Now.ToString("MM"));
         public int Nowyear = int.Parse((DateTime.Now.Year + 543).ToString());
         public string sqlcp = "";
+        public string year = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string sql = "";
             if (Session["User"] == null)
             {
                 Response.Redirect("/");
             }
             if (!this.IsPostBack)
             {
+                sql = "SELECT claim_status AS stat , status_name FROM tbl_claim c JOIN tbl_device_damaged d ON c.`claim_id` = d.`claim_id` ";
+                sql += "JOIN `tbl_device` t ON d.`device_id` = t.`device_id` JOIN `tbl_status` st ON c.`claim_status` = st.`status_id` ";
+
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
-                { sqlcp = " "; } else { sqlcp = "AND claim_cpoint = " + Session["UserCpoint"] + " "; }
+                {
+                    sqlcp = " ";
+                    sql += " ";
+                }
+                else
+                {
+                    sqlcp = "AND claim_cpoint = " + Session["UserCpoint"] + " ";
+                    sql += "WHERE claim_cpoint = '" + Session["UserCpoint"] + "'";
+                }
+
+                lbcpoint.Text = function.GetSelectValue("tbl_cpoint", "cpoint_id = '" + Session["UserCpoint"] + "' ", "cpoint_id");
+                sql += " GROUP BY `claim_status` ";
+                function.getListItem(ddlstatus, sql, "status_name", "status_name");
                 loadingpage();
+                //getLineChartData(ddlbudget.SelectedValue, Session["UserCpoint"].ToString());
             }
         }
 
@@ -282,6 +300,118 @@ namespace ClaimProject.Claim
         protected void lbtnClaim_Command(object sender, CommandEventArgs e)
         {
 
+        }
+
+        //[WebMethod]
+        //public static ChartData GetChartData()
+        //{
+        //    // Get the data from database.
+        //    DataTable dt = new DataTable();
+        //    dt.Columns.AddRange(new DataColumn[] {
+        //new DataColumn("Month"),new DataColumn("Motorcycles"),new DataColumn("Bicycles") });
+        //    dt.Rows.Add("January", 30, 65);
+        //    dt.Rows.Add("February", 50, 60);
+        //    dt.Rows.Add("March", 40, 81);
+        //    dt.Rows.Add("April", 20, 80);
+        //    dt.Rows.Add("May", 80, 60);
+        //    dt.Rows.Add("June", 30, 60);
+
+        //    ChartData chartData = new ChartData();
+        //    chartData.Labels = dt.AsEnumerable().Select(x => x.Field<string>("Month")).ToArray();
+        //    chartData.DatasetLabels = new string[] { "Motorcycles", "Bicycles" };
+        //    List<int[]> datasetDatas = new List<int[]>();
+
+        //    List<int> motorcycles = new List<int>();
+        //    List<int> bicycles = new List<int>();
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        motorcycles.Add(Convert.ToInt32(dr["Motorcycles"]));
+        //        bicycles.Add(Convert.ToInt32(dr["Bicycles"]));
+        //    }
+
+        //    datasetDatas.Add(motorcycles.ToArray());
+        //    datasetDatas.Add(bicycles.ToArray());
+        //    chartData.DatasetDatas = datasetDatas;
+        //    return chartData;
+        //}
+
+        //public class ChartData
+        //{
+        //    public string[] Labels { get; set; }
+        //    public string[] DatasetLabels { get; set; }
+        //    public List<int[]> DatasetDatas { get; set; }
+        //}
+
+        [WebMethod]
+        public static List<object> getLineChartData(string status, string cp)
+        {
+            ClaimFunction function = new ClaimFunction();
+            string sql = "";
+
+            List<object> iData = new List<object>();
+            List<string> labels = new List<string>();
+            List<string> labels1 = new List<string>();
+
+            string query1 = "SELECT claim_budget_year , COUNT(*) AS num FROM tbl_claim ";
+                   query1 += "WHERE tbl_claim.`claim_delete` = '0' ";
+
+            if (cp == "")
+            {
+                query1 += " GROUP BY claim_budget_year ORDER BY claim_budget_year DESC";
+                cp = " ";
+                sql = " WHERE claim_status = '5' ";               
+            }
+            else
+            {
+                query1 += "AND claim_cpoint = '" + cp + "' GROUP BY claim_budget_year ORDER BY claim_budget_year DESC";
+                cp = "WHERE claim_cpoint = '" + cp + "' ";
+                sql = " AND claim_status = '5' ";               
+            }
+
+            //First get distinct Month Name for select Year.
+             
+                   
+
+            DataTable dtLabels = function.MySqlSelectDataTable(query1);
+            foreach (DataRow drow in dtLabels.Rows)
+            {
+                labels.Add(drow["claim_budget_year"].ToString());
+            }
+            iData.Add(labels);
+
+            //string query_DataSet_1 = " SELECT c.`claim_budget_year`,t.`device_initials`, COUNT(*) AS num FROM tbl_claim c JOIN tbl_device_damaged d ON c.`claim_id` = d.`claim_id` ";
+            //       query_DataSet_1 += "JOIN `tbl_device` t ON d.`device_id` = t.`device_id` ";
+            //       query_DataSet_1 += cp + "  GROUP BY d.`device_id` ORDER BY num DESC";
+
+            DataTable dtDataItemsSets_1 = function.MySqlSelectDataTable(query1);
+            List<int> lst_dataItem_1 = new List<int>();
+            foreach (DataRow dr in dtDataItemsSets_1.Rows)
+            {
+                lst_dataItem_1.Add(Convert.ToInt32(dr["num"].ToString()));
+            }
+            iData.Add(lst_dataItem_1);
+
+            string query_DataSet_2 = "SELECT a.claim_budget_year , COUNT(b.claim_budget_year) AS num ";
+            query_DataSet_2 += "FROM (SELECT claim_id, claim_budget_year FROM tbl_claim WHERE tbl_claim.claim_delete = '0') a ";
+            query_DataSet_2 += "LEFT JOIN ( SELECT claim_id, claim_budget_year FROM tbl_claim "+ cp + sql + ") b ";
+            query_DataSet_2 += "ON a.claim_id = b.claim_id ";
+            query_DataSet_2 += "GROUP BY a.claim_budget_year ORDER BY a.claim_budget_year DESC";
+           
+            DataTable dtDataItemsSets_2 = function.MySqlSelectDataTable(query_DataSet_2);
+
+            //foreach (DataRow droww in dtDataItemsSets_2.Rows)
+            //{
+            //    labels1.Add(droww["claim_budget_year"].ToString());
+            //}
+            //iData.Add(labels1);
+
+            List<int> lst_dataItem_2 = new List<int>();
+            foreach (DataRow dr in dtDataItemsSets_2.Rows)
+            {
+                lst_dataItem_2.Add(Convert.ToInt32(dr["num"].ToString()));
+            }
+            iData.Add(lst_dataItem_2);
+            return iData;
         }
     }
 }

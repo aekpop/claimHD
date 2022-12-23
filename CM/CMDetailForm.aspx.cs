@@ -14,10 +14,10 @@ namespace ClaimProject.CM
 {
     public partial class CMDetailForm : System.Web.UI.Page
     {
+        ClaimFunction function = new ClaimFunction();
         public string alerts = "";
         public string alertTypes = "";
-        public string icons = "";
-        ClaimFunction function = new ClaimFunction();
+        public string icons = "";       
         public string EditModal = "";
         public string chkdup = "";
         public string token = "";
@@ -33,23 +33,27 @@ namespace ClaimProject.CM
             if (!this.IsPostBack)
             {
                 string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+                string sql = "";
+
                 function.getListItem(ddlChanel, "SELECT * FROM tbl_location WHERE locate_group != '3' Order By locate_id ASC", "locate_name", "locate_id");
 
-                string sql = "";
                 if (function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
                     function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
                     txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
-                    txtCpoint.Enabled = true;
-                    txtPoint.Enabled = true;
+                    
                 }
                 else
                 {
                     sql = "SELECT * FROM tbl_cpoint WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "'";
                     function.getListItem(txtCpoint, sql, "cpoint_name", "cpoint_id");
                     function.getListItem(txtCpointSearch, sql, "cpoint_name", "cpoint_id");
+                    txtPoint.Text = Session["Userpoint"].ToString();
+                    divSearch.Visible = false;
+                    txtCmpoint.Enabled = false;
+                    txtPoint.Enabled = false;
                     //txtCpointSearch.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 }
 
@@ -113,10 +117,11 @@ namespace ClaimProject.CM
         {
             string sql = "";
             string checkCpoint = txtCpointSearch.SelectedValue.ToString();
-            if (txtCmpoint.Text != "")
-            {
-                txtPoint.Text = txtCmpoint.Text;
-            }
+
+            //if (txtCmpoint.Text != "")
+            //{
+            //    txtPoint.Text = txtCmpoint.Text;
+            //}
 
             if (checkCpoint == "")
             {
@@ -126,7 +131,7 @@ namespace ClaimProject.CM
                         " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                         " JOIN tbl_user u ON cm.cm_user = u.username JOIN tbl_drive_group dg ON d.davice_group = dg.drive_group_id " +
                         " WHERE cm.cm_detail_status_id='0' " +
-                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                        " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime DESC";
             }
             else
             {
@@ -137,7 +142,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_user u ON cm.cm_user = u.username JOIN tbl_drive_group dg ON d.davice_group = dg.drive_group_id " +
                    " WHERE cm.cm_cpoint = '" + checkCpoint + "' AND cm.cm_point = '" + txtPoint.Text + "' " +
                    " AND cm.cm_detail_status_id='0' " +
-                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y'), cm.cm_detail_stime, cm_detail_status_id ASC";
+                   " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime DESC";
             }
 
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
@@ -340,11 +345,9 @@ namespace ClaimProject.CM
         private void ClearDate()
         {
             txtCpoint.SelectedIndex = 0;
-
             txtDeviceAdd.SelectedIndex = 0;
             txtProblem.Text = "";
             txtProblem.CssClass = "form-control ";
-
             txtSDate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
             txtSTime.Text = DateTime.Now.ToString("HH:mm");
         }
@@ -377,7 +380,6 @@ namespace ClaimProject.CM
             {
                 lbRowNum.Text = (CMGridView.Rows.Count + 1).ToString() + ".";
             }
-
         }
 
         protected void btnEdit_Command(object sender, CommandEventArgs e)
@@ -395,7 +397,6 @@ namespace ClaimProject.CM
             rttt.Close();
             function.Close();
             Response.Redirect("/CM/CMDetailForm?ref=" + e.CommandName);
-
         }
 
         protected void btnEditCM_Click(object sender, EventArgs e)
@@ -471,7 +472,7 @@ namespace ClaimProject.CM
 
         protected void btnSearchAddd_Click(object sender, EventArgs e)
         {
-            txtPoint.Text = "";
+            //txtPoint.Text = "";
             BindData();
         }
 

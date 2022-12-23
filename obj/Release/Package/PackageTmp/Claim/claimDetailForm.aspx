@@ -144,7 +144,7 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">บริเวณที่เกิดอุบัติเหตุ</p>
-                                <asp:DropDownList ID="txtCBClaim" runat="server" CssClass="combobox form-control"></asp:DropDownList>
+                                <asp:DropDownList ID="txtCBClaim" runat="server" CssClass="combobox form-control" ></asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3">

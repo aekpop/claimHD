@@ -230,7 +230,7 @@
         <div class="row">
             <div class="col-xl-4 col-md">
                 <div class="card border-left-warning shadow h-80 py-2">
-                    <div class="card-header" style="font-size: large">อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก</div>
+                    <div class="card-header" style="font-size: large">แจ้งซ่อมมากที่สุด 5 อันดับแรก</div>
                     <div class="card-body">
                         <div class="card-body table-responsive table-sm">
                             <asp:Panel ID="Panel1" runat="server">
@@ -264,7 +264,7 @@
             <div class="col-xl-4 col-md">
                 <div class="card border-left-warning shadow h-80 py-2">
                     <div class="card-header" style="font-size: large">
-                        อุปกรณ์แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำเดือน
+                        แจ้งซ่อมมากที่สุด 5 อันดับแรก ประจำเดือน
                           <asp:Label ID="lbTop5CMMonthly" runat="server"></asp:Label>
                     </div>
                     <div class="card-body">
@@ -299,7 +299,7 @@
             </div>
             <div class="col-xl-4 col-md">
                 <div class="card border-left-warning shadow h-80 py-2">
-                    <div class="card-header" style="font-size: large">อุปกรณ์ค้างซ่อมล่าช้า 5 อันดับแรก</div>
+                    <div class="card-header" style="font-size: large">ค้างซ่อมล่าช้า 5 อันดับแรก</div>
                     <div class="card-body">
                         <div class="card-body table-responsive table-sm">
                             <asp:Panel ID="Panel3" runat="server">

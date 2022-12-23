@@ -18,7 +18,7 @@
     transition: border-color 0.2s;
 }
     .form-control:focus {
-        color: #ff9800;
+        color: #2d2b29;
         padding-bottom: 6px;
         font-weight: 700;
         border-width: 3px;

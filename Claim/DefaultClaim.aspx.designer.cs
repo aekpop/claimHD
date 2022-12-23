@@ -13,6 +13,15 @@ namespace ClaimProject.Claim {
     public partial class DefaultClaim {
         
         /// <summary>
+        /// Div5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div5;
+        
+        /// <summary>
         /// boxUserSystem control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace ClaimProject.Claim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        
+        /// <summary>
+        /// lbcpoint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbcpoint;
         
         /// <summary>
         /// lbtnClaim control.
@@ -110,6 +128,15 @@ namespace ClaimProject.Claim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbClaimStatOverall;
+        
+        /// <summary>
+        /// ddlstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlstatus;
         
         /// <summary>
         /// lbTotalSta1 control.
