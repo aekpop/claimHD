@@ -12,7 +12,6 @@
             font-family: 'Prompt';
         }
     </style>
-
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <link href="../Content/form-design-new.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
@@ -349,7 +348,6 @@
             </div>
         </div>
     </div>
-
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>

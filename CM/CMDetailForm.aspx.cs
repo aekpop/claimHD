@@ -88,7 +88,7 @@ namespace ClaimProject.CM
                     btnSaveCM.Visible = false;
                     btnEditCM.Visible = true;
                     btnCancelCM.Visible = true;
-                    statheader.Text = "แก้ไข";
+                    statheader.Text = "แก้ไขข้อมูลแจ้งซ่อม";
                     statheader.CssClass = "badge badge-warning";
 
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
@@ -108,7 +108,7 @@ namespace ClaimProject.CM
                     btnEditCM.Visible = false;
                     btnCancelCM.Visible = false;
                     btnDeleteCM.Visible = false;
-                    statheader.Text = "แจ้งใหม่";
+                    statheader.Text = "แจ้งซ่อมอุปกรณ์ใหม่";
                     statheader.CssClass = "badge badge-danger";
                 }
             }
@@ -116,12 +116,17 @@ namespace ClaimProject.CM
         void BindData()
         {
             string sql = "";
+            string point = "";
             string checkCpoint = txtCpointSearch.SelectedValue.ToString();
 
-            //if (txtCmpoint.Text != "")
-            //{
-            //    txtPoint.Text = txtCmpoint.Text;
-            //}
+            if (txtCmpoint.Text == "")
+            {
+                point = txtPoint.Text;
+            }
+            else
+            {
+                point = txtCmpoint.Text;
+            }
 
             if (checkCpoint == "")
             {
@@ -140,7 +145,7 @@ namespace ClaimProject.CM
                    " JOIN tbl_location e ON cm.cm_detail_channel = e.locate_id " +
                    " JOIN tbl_cpoint c ON cm.cm_cpoint = c.cpoint_id " +
                    " JOIN tbl_user u ON cm.cm_user = u.username JOIN tbl_drive_group dg ON d.davice_group = dg.drive_group_id " +
-                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' AND cm.cm_point = '" + txtPoint.Text + "' " +
+                   " WHERE cm.cm_cpoint = '" + checkCpoint + "' AND cm.cm_point = '" + point + "' " +
                    " AND cm.cm_detail_status_id='0' " +
                    " ORDER BY cm_cpoint,cm_point,STR_TO_DATE(cm.cm_detail_sdate, '%d-%m-%Y') DESC, cm.cm_detail_stime DESC";
             }
@@ -472,7 +477,7 @@ namespace ClaimProject.CM
 
         protected void btnSearchAddd_Click(object sender, EventArgs e)
         {
-            //txtPoint.Text = "";
+            txtPoint.Text = "";
             BindData();
         }
 

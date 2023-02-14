@@ -324,7 +324,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
+    <Content Include="TransitCard.aspx" />
     <Content Include="car\car.aspx" />
     <Content Include="Claim\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />
     <Content Include="Claim\claimDetailForm.aspx" />
@@ -333,6 +333,7 @@
     <Content Include="Claim\claimLine.aspx" />
     <Content Include="Claim\DefaultClaim.aspx" />
     <Content Include="Claim\Upload\chrome_installer.exe" />
+    <Content Include="CM\asanaForm.aspx" />
     <Content Include="CM\CMDetailForm.aspx" />
     <Content Include="CM\CMEditForm.aspx" />
     <Content Include="CM\CMLine.aspx" />
@@ -1719,12 +1720,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="TransitCard.aspx.cs">
+      <DependentUpon>TransitCard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="TransitCard.aspx.designer.cs">
+      <DependentUpon>TransitCard.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="car\car.aspx.cs">
@@ -1788,6 +1789,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CM\ActionResult.cs" />
+    <Compile Include="CM\asanaForm.aspx.cs">
+      <DependentUpon>asanaForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CM\asanaForm.aspx.designer.cs">
+      <DependentUpon>asanaForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CM\CMDetailForm.aspx.cs">
       <DependentUpon>CMDetailForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -16,19 +16,29 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <style>
         div.sticky {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 100px;
-      }
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+        }
+
+        .card {
+            border-top: 5px solid #ffc107;
+        }
+
+            .card .card-header {
+                font-size: 1.3rem;
+                font-weight: 900;
+            }
     </style>
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-
         <div class="row">
-            <div class="card col-sm-12 col-md-3  sticky" style="z-index: 0; font-size: 1rem; height:860px;">
+            <div class="card col-sm-12 col-md-3  sticky" style="z-index: 0; font-size: 1rem; height: 860px;">
                 <div class="card-header">
-                    <div class="card-title text-black-50">แจ้งซ่อมอุปกรณ์ 
-                        <asp:Label ID="statheader" runat="server"></asp:Label>
-                    </div>                    
+                    <div class="card-title">
+                        <div class="col-6">
+                            <asp:Label ID="statheader" runat="server"></asp:Label>
+                        </div>                                    
+                    </div>
                 </div>
                 <div class="card-body table-responsive">
                     <asp:HiddenField ID="txtRef" runat="server" />
@@ -37,24 +47,24 @@
                             <div class="form-group bmd-form-group">
                                 <asp:Label runat="server" Text="ด่านฯ"></asp:Label>
                                 <!--<p class="bmd-label-floating">ด่านฯ :</p>-->
-                                <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control" Enabled="false"></asp:DropDownList>
+                                <asp:DropDownList ID="txtCpoint" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-12 col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <asp:Label runat="server">อาคารย่อย</asp:Label>
-                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control" MaxLength="1" Enabled="false" ToolTip="กรณีไม่มีอาคารย่อย ให้เว้นว่าง" onkeypress="return handleEnter(this, event)" />
+                                <asp:TextBox ID="txtPoint" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
-                         <div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <asp:Label runat="server">หมายเลขช่องทาง</asp:Label>
                                 <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control dropdown"></asp:DropDownList>
                             </div>
                         </div>
-                    </div>                      
+                    </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group bmd-form-group">
@@ -84,25 +94,23 @@
                         </div>
                         <!-- แนบรูป -->
                         <div class="col-md-12 col-xl-12">
-                            
-                                <div class="col-md-12 col-xl-12">
-                                    <div class="form-group bmd-form-group">
-                                        <asp:Label ID="lbImg" runat="server" CssClass="text-black-50"> แนบรูปภาพ</asp:Label>
-                                        <div runat="server" id="diveditpic">
-                                            <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file " lang="en" onchange="validateSize(this)" />
-                                        </div>
-                                        <div class="col-md-1">
-                                            <asp:Label ID="pkeq" runat="server" Visible="true" Font-Size="Smaller"></asp:Label>
-                                        </div>
+                            <div class="col-md-12 col-xl-12">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label ID="lbImg" runat="server" CssClass="text-black-50"> แนบรูปภาพ</asp:Label>
+                                    <div runat="server" id="diveditpic">
+                                        <asp:FileUpload ID="fileImg" runat="server" CssClass="custom-file " lang="en" onchange="validateSize(this)" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <asp:Label ID="pkeq" runat="server" Visible="true" Font-Size="Smaller"></asp:Label>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-xl-12">
-                                    <div class="form-group bmd-form-group">
-                                        <asp:Label runat="server"></asp:Label>
-                                        <asp:Image ID="lbNameFileImg" runat="server" CssClass="img-thumbnail" />
-                                    </div>
+                            </div>
+                            <div class="col-md-12 col-xl-12">
+                                <div class="form-group bmd-form-group">
+                                    <asp:Label runat="server"></asp:Label>
+                                    <asp:Image ID="lbNameFileImg" runat="server" CssClass="img-thumbnail" />
                                 </div>
-                           
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -119,9 +127,9 @@
             </div>
             <div id="DivCMGridView" runat="server" class="col-sm-12 col-md-9">
                 <div class="card" style="z-index: 0; font-size: 1rem;">
-                    <div class="card-header">
-                        <div class="card-title">ค้นหา</div>
-                        <div class="input-group mb-3">
+                    <div class="card-header"> รายการแจ้งซ่อม
+                        <div id="divSearch" runat="server">
+                            <div class="input-group mb-3">
                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control"></asp:DropDownList>
                             <asp:TextBox ID="txtCmpoint" runat="server" CssClass="form-control" placeholder="อาคารย่อย"></asp:TextBox>
                             <div class="input-group-append">
@@ -130,8 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <br />
-                        <div class="card-title">รายการแจ้งซ่อมอุปกรณ์</div>
+                        </div>                       
                     </div>
                     <div class="card-body table-responsive table-sm">
                         <asp:Panel ID="Panel1" runat="server">
@@ -161,7 +168,7 @@
                                             <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-CssClass="col-3">
+                                    <asp:TemplateField HeaderText="อุปกรณ์" ItemStyle-CssClass="col-2">
                                         <ItemTemplate>
                                             <asp:Label ID="lbDeviceName" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.device_name").ToString()) %>'></asp:Label>
                                         </ItemTemplate>
@@ -171,7 +178,7 @@
                                             <asp:Label ID="lbProblem" runat="server" Text='<%#new ClaimProject.Config.ClaimFunction().ShortText( DataBinder.Eval(Container, "DataItem.cm_detail_problem").ToString()) %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="ผู้แจ้ง" ItemStyle-CssClass="col-1">
+                                    <asp:TemplateField HeaderText="ผู้แจ้ง" ItemStyle-CssClass="col-2">
                                         <ItemTemplate>
                                             <asp:Label ID="lbcmUser" runat="server" Text='<%# new ClaimProject.Config.ClaimFunction().ShortText(DataBinder.Eval(Container, "DataItem.name").ToString()) %>'></asp:Label>
                                         </ItemTemplate>
@@ -273,6 +280,18 @@
 
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
+
+            var select = document.getElementById("<%= txtCpoint.ClientID%>");
+            var selectedValue = select.value;
+
+            console.log(selectedValue);
+
+            if (selectedValue == "701" || selectedValue == "702" || selectedValue == "710" || selectedValue == "711" || selectedValue == "712" || selectedValue == "713" ||
+                selectedValue == "902" || selectedValue == "903" || selectedValue == "904" || selectedValue == "905") {
+                document.getElementById("<%= txtPoint.ClientID%>").disabled = true;
+            } else {
+                document.getElementById("<%= txtPoint.ClientID%>").disabled = false;
+            }
         });
 
         $(function () {
@@ -321,6 +340,8 @@
                 stickyElem.style.top = "initial";
             }
         }
+
+
 
     </script>
 </asp:Content>

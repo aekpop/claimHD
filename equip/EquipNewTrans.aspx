@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipNewTrans.aspx.cs" Inherits="ClaimProject.equip.EquipNewTrans" %>
+﻿<%@ Page Title="โอนย้ายครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipNewTrans.aspx.cs" Inherits="ClaimProject.equip.EquipNewTrans" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -6,6 +6,7 @@
             font-family: 'Prompt';
             src: url('/fonts/Prompt-Light.ttf') format('truetype');
         }
+
         .modal-header {
             font-size: 24px;
         }
@@ -16,7 +17,7 @@
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
 
         <div class="card" style="font-size: 19px; z-index: 0;" runat="server">
-            <div class="bg form-control" style="font-size: 25px; color: white; height: 60px; background-color: darkcyan">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</div>
+            <div class="card-header">&nbsp;&nbsp;โอนย้ายครุภัณฑ์</div>
             <br />
             <div id="divtranFirst" class="card-body table-responsive" style="padding-top: 1px" runat="server">
                 <div class="card-title alert-warning" style="font-size: 16px;">
@@ -63,7 +64,7 @@
                     </div>
                     <div class="form-group bmd-form-group col-md-6 col-xl-3">
                         <label class="bmd-label-floating">วันที่-เวลาทำรายการ</label>
-                        <asp:TextBox runat="server" ID="txtTimeSend" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtTimeSend" Enabled="false" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div id="divSubmitFirst" runat="server" class="row">
@@ -86,12 +87,13 @@
                         <asp:Button ID="chkSEAgain" runat="server" Width="120px" Text="<<-แก้ไขเลข" BackColor="#006666" CssClass="btn form-control" OnClick="chkSEAgain_Click" />
                     </div>
                 </div>
+                <!-- โอนย้าย ปกติ -->
                 <div class="row " id="divnormal" runat="server">
                     <div class="col-xl-3" style="enable-background: initial;">
-                        <asp:DropDownList ID="txtEquipTrans" runat="server" CssClass="combobox form-control custom-select"></asp:DropDownList>
+                        <asp:DropDownList ID="txtEquipTrans" runat="server" CssClass="combobox form-control custom-select" ></asp:DropDownList>
                     </div>
                     <div class="col-xl-1">
-                        <asp:LinkButton ID="btnAddEQTran" runat="server" CssClass="btn btn-success" OnCommand="btnAddEQTran_Command" OnClientClick="return UpdteConfirm('ยืนยันเลือกเลขครุภัณฑ์นี้ ใช่หรือไม่');"><i class="fas fa-plus-circle"></i>&nbspเพิ่มรายการ</asp:LinkButton>
+                        <asp:LinkButton ID="btnAddEQTran" runat="server" CssClass="btn btn-success" OnCommand="btnAddEQTran_Command"><i class="fas fa-plus-circle"></i>&nbspเพิ่มรายการ</asp:LinkButton>
                     </div>
                 </div>
                 <!-- ทดแทน-->
@@ -504,7 +506,7 @@
         <div class="modal fade" id="modalPrint" tabindex="-1" role="dialog" aria-labelledby="modalPrint" aria-hidden="true">
             <div class="modal-dialog modal modal-dialog-centered " style="max-height: 100%; margin-top: 50px; margin-bottom: 50px; width: 500px" role="form">
                 <div class="modal-content">
-                    <div class="modal-header">            
+                    <div class="modal-header">
                         <div class="col-12">
                             <div class="modal-title text-success">
                                 <i class="fa">&#xf058;</i> บันทึกข้อมูลสำเร็จ 
@@ -605,5 +607,6 @@
                 return confirm(msg);
             }
         }
+
     </script>
 </asp:Content>

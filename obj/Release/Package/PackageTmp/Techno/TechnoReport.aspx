@@ -31,8 +31,7 @@
                     <div class="col text-center" style="font-size:smaller">
                         <asp:Button ID="btnResultReport" runat="server" CssClass="btn btn-success" OnCommand="btnResultReport_Command" Text="ตกลง"/>
                     </div>
-                </div>
-                
+                </div>                
             </div>
         </div>
     </div>

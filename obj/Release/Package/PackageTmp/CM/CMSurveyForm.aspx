@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMSurveyForm.aspx.cs" Inherits="ClaimProject.CM.CMSurveyForm" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- CSS Custom-->
     <link href="../Content/CM.css" rel="stylesheet" />
@@ -111,8 +109,7 @@
                     </asp:Panel>
                 </div>
             </div>
-        </div>
-
+        </div>        
         <!------------------------------------------------------------------------------------------------------------>
         <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
@@ -199,20 +196,20 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="form-group bmd-form-group">
-                                         <span class="label label-primary">อุปกรณ์/อะไหล่ที่ทดแทน : </span>
-                                        <asp:Label ID="lbnameRepalce" runat="server" CssClass="text-center" ></asp:Label>
+                                        <span class="label label-primary">อุปกรณ์/อะไหล่ที่ทดแทน : </span>
+                                        <asp:Label ID="lbnameRepalce" runat="server" CssClass="text-center"></asp:Label>
                                     </div>
                                 </div>
                                 <div class="col-xl-3">
                                     <div class="form-group bmd-form-group">
-                                         <span class="label label-primary">หมายเลขเดิม : </span>
-                                        <asp:Label ID="lbnoOriginal" runat="server" CssClass="text-center" ></asp:Label>
+                                        <span class="label label-primary">หมายเลขเดิม : </span>
+                                        <asp:Label ID="lbnoOriginal" runat="server" CssClass="text-center"></asp:Label>
                                     </div>
                                 </div>
                                 <div class="col-xl-3">
                                     <div class="form-group bmd-form-group">
-                                         <span class="label label-primary">หมายเลขทดแทน : </span>
-                                        <asp:Label ID="lbnoRepalce" runat="server" CssClass="text-center" ></asp:Label>
+                                        <span class="label label-primary">หมายเลขทดแทน : </span>
+                                        <asp:Label ID="lbnoRepalce" runat="server" CssClass="text-center"></asp:Label>
                                     </div>
                                 </div>
                             </div>
@@ -279,39 +276,39 @@
                 </div>
             </div>
         </div>
-        <!------------------------------------------------------------------------------------------------------------>
-        <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
-        <script src="/Scripts/moment.min.js"></script>
-        <script src="/Scripts/ClaimProjectScript.js"></script>
-        <script type="text/javascript"> 
-            $(function () {
-            <% if (EditModal != "")
-            {%>
-            $("#ApprovCMModal").modal('show');
-            <%}
-            else
-            {%>
-            $("#ApprovCMModal").modal('hide');
-            <%}%>       
-            });
-
-            function ClickAdd() {
-                $("#addCMModal").modal('show');
-                return false;
-            }
-
-            function CompareConfirm(msg) {
-                var str1 = "1";
-                var str2 = "2";
-
-                if (str1 === str2) {
-                    // your logic here
-                    return false;
-                } else {
-                    // your logic here
-                    return confirm(msg);
-                }
-            }
-        </script>
     </div>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/Scripts/ClaimProjectScript.js"></script>
+    <script type="text/javascript"> 
+        $(function () {
+            <% if (EditModal != "")
+        {%>
+                $("#ApprovCMModal").modal('show');
+            <%}
+        else
+        {%>
+                $("#ApprovCMModal").modal('hide');
+            <%}%>       
+        });
+
+        function ClickAdd() {
+            $("#addCMModal").modal('show');
+            return false;
+        }
+
+        function CompareConfirm(msg) {
+            var str1 = "1";
+            var str2 = "2";
+
+            if (str1 === str2) {
+                // your logic here
+                return false;
+            } else {
+                // your logic here
+                return confirm(msg);
+            }
+        }
+    </script>
 </asp:Content>

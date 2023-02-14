@@ -20,15 +20,24 @@
             position: sticky;
             top: 100px;
         }
+
+        .card {
+            border-top: 5px solid #ffc107;
+        }
+
+            .card .card-header {
+                font-size: 1.3rem;
+                font-weight: 900;
+            }
     </style>
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-
         <div class="row">
             <div class="card col-sm-12 col-md-3  sticky" style="z-index: 0; font-size: 1rem; height: 860px;">
                 <div class="card-header">
-                    <div class="card-title text-black-50">
-                        แจ้งซ่อมอุปกรณ์ 
-                        <asp:Label ID="statheader" runat="server"></asp:Label>
+                    <div class="card-title">
+                        <div class="col-6">
+                            <asp:Label ID="statheader" runat="server"></asp:Label>
+                        </div>                                    
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -118,7 +127,7 @@
             </div>
             <div id="DivCMGridView" runat="server" class="col-sm-12 col-md-9">
                 <div class="card" style="z-index: 0; font-size: 1rem;">
-                    <div class="card-header">
+                    <div class="card-header"> รายการแจ้งซ่อม
                         <div id="divSearch" runat="server">
                             <div class="input-group mb-3">
                             <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control"></asp:DropDownList>

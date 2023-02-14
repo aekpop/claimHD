@@ -54,13 +54,13 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <asp:Label ID="lbBudget" runat="server" Text="ปีงบประมาณ"></asp:Label>
-                                <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control  "></asp:DropDownList>
+                                <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                         <div class=" col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <asp:Label ID="lbToll" runat="server" Text="ด่านฯ"></asp:Label>
-                                <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control "></asp:DropDownList>
+                                <asp:DropDownList ID="txtCpointSearch" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                         <div class=" col-md-6 col-xl-3">
@@ -72,7 +72,7 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <asp:Label ID="lbChannel" runat="server" Text="หมายเลขช่องทาง"></asp:Label>
-                                <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control "></asp:DropDownList>
+                                <asp:DropDownList ID="txtSearchChannel" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                     </div>
@@ -86,13 +86,13 @@
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <asp:Label ID="lbStatus" runat="server" Text="สถานะ"></asp:Label>
-                                <asp:DropDownList ID="txtCMStatus" runat="server" CssClass="form-control "></asp:DropDownList>
+                                <asp:DropDownList ID="txtCMStatus" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <asp:Label ID="lblbRespons" runat="server" Text="ผู้รับผิดชอบ"></asp:Label>
-                                <asp:DropDownList ID="ddlResponsible" runat="server" CssClass="form-control "></asp:DropDownList>
+                                <asp:DropDownList ID="ddlResponsible" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3">
@@ -100,13 +100,13 @@
                                 <div class=" col-6 ">
                                     <div class="form-group bmd-form-group">
                                         <asp:Label ID="lbDayS" runat="server" Text="วันที่เริ่มต้น"></asp:Label>
-                                        <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker "></asp:TextBox>
+                                        <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control datepicker"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class=" col-6">
                                     <div class="form-group bmd-form-group">
                                         <asp:Label ID="lbDayE" runat="server" Text="สิ้นสุด "></asp:Label>
-                                        <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker "></asp:TextBox>
+                                        <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control datepicker"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-CssClass="d-sm-none d-md-block" ItemStyle-CssClass="d-sm-none d-md-block">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbClaimNumrow" Text='<%#  Container.DataItemIndex + 1 %>' runat="server" />
+                                    <asp:Label ID="lbClaimNumrow" Text='<%# Container.DataItemIndex + 1 %>' runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left">

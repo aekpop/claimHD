@@ -162,6 +162,7 @@
                                         <div class="dropdown-divider"></div>
                                         <div class="dropdown-header">ผู้ดูแลระบบ(Admin)</div>
                                         <a class="dropdown-item" href="/CM/CMSurveyForm">ตรวจสอบรายการแจ้งซ่อม จากด่านฯ</a>
+                                        <a class="dropdown-item" href="/CM/asanaForm">แจ้งเรื่องติดตาม</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown" runat="server" id="equipDiv">

@@ -31,7 +31,6 @@ namespace ClaimProject.Techno
                 {
                     Response.Redirect("/Claim/claimForm");
                 }
-
                 if (!this.IsPostBack)
                 {
                     if (txtDateOrder.Text == "")
@@ -49,13 +48,12 @@ namespace ClaimProject.Techno
                     {
                         txtestimateDay.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
                     }
-                    if(txtappointdate.Text == "")
+                    if (txtappointdate.Text == "")
                     {
                         txtappointdate.Text = DateTime.Now.ToString("dd-MM-") + (DateTime.Now.Year + 543);
                     }
-                    
-
                     PageLoadData();
+
                     string sql = "SELECT * FROM tbl_company ORDER BY company_name";
                     function.getListItem(txtCompany, sql, "company_name", "company_id");
                     string sqldevice = "SELECT * FROM tbl_device WHERE davice_group = '9' ORDER BY device_name";
@@ -69,8 +67,6 @@ namespace ClaimProject.Techno
                     function.GetList(ddlPosition3, "PosList");
 
                     Session["Chk"] = "";
-
-                   
                 }
 
                 if (int.Parse(Session["status_id"].ToString()) >= 2)
@@ -157,7 +153,7 @@ namespace ClaimProject.Techno
                 lbTitle.Text = rs.GetString("claim_equipment");
                 lbTitleStatus.CssClass = "badge badge-" + rs.GetString("status_alert");
                 lbTitleStatus.Text = rs.GetString("status_name");
-                if(rs["claim_auto_id"] != System.DBNull.Value)
+                if (rs["claim_auto_id"] != System.DBNull.Value)
                 {
                     lbRefnum.Text = rs.GetString("claim_auto_id");
                 }
@@ -165,7 +161,7 @@ namespace ClaimProject.Techno
                 {
                     lbRefnum.Text = "XXXX-XXXXX";
                 }
-                
+
                 lbCpoint.Text = rs.GetString("cpoint_name");
                 lbCb.Text = rs.GetString("claim_detail_cb_claim");
                 if (rs.GetString("claim_detail_point").ToLower() != "tsb" && rs.GetString("claim_detail_point").ToLower() != "") { lbCpoint.Text += " " + rs.GetString("claim_detail_point"); }
@@ -192,9 +188,9 @@ namespace ClaimProject.Techno
                 Response.Redirect("/Techno/TechnoFormView");
             }
 
-            if(rs["quotations_order"] != System.DBNull.Value) 
+            if (rs["quotations_order"] != System.DBNull.Value)
             {
-                if(rs.GetString("quotations_order") == "1")
+                if (rs.GetString("quotations_order") == "1")
                 {
                     Div3.Visible = true;
                 }
@@ -246,7 +242,7 @@ namespace ClaimProject.Techno
                     Div3.Visible = false;
                     Div4.Visible = false;
                     divFileUploalNote.Visible = false;
-                    LinkButton2.Visible = false;                    
+                    LinkButton2.Visible = false;
                     estimate.Visible = false;
 
                     btns0.Enabled = true;
@@ -271,7 +267,6 @@ namespace ClaimProject.Techno
                     Div4.Visible = false;
                     LinkButton2.Visible = false;
                     estimate.Visible = false;
-
                     btns0.Enabled = false;
                     btns1.Enabled = false;
                     btns2.Enabled = true;
@@ -294,7 +289,6 @@ namespace ClaimProject.Techno
                     Div4.Visible = false;
                     LinkButton2.Visible = false;
                     estimate.Visible = false;
-
                     btns0.Enabled = false;
                     btns1.Enabled = false;
                     btns2.Enabled = true;
@@ -309,14 +303,12 @@ namespace ClaimProject.Techno
                     btns3.Visible = false;
                     btn3_1.Visible = true;
                     btns4.Visible = true;*/
-
                     Div1.Visible = true;
                     Div2.Visible = true;
                     Div3.Visible = false;
                     Div4.Visible = false;
                     divFileUploalNote.Visible = false;
                     LinkButton2.Visible = false;
-
                     btns0.Enabled = false;
                     btns1.Enabled = false;
                     btns2.Enabled = false;
@@ -337,10 +329,9 @@ namespace ClaimProject.Techno
                     //btns4.Visible = false;
                     Div1.Visible = true;
                     Div2.Visible = true;
-                    Div3.Visible = true;   
+                    Div3.Visible = true;
                     Div4.Visible = true;
                     divFileUploalNote.Visible = false;
-
                     btns0.Enabled = false;
                     btns1.Enabled = false;
                     btns2.Enabled = false;
@@ -383,7 +374,6 @@ namespace ClaimProject.Techno
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#QuotationsModel').modal();", true);
             //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#QuotationsModel').modal('show');</script>", false);
         }
-
 
         protected void QuotationsGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -430,49 +420,49 @@ namespace ClaimProject.Techno
 
             if (txtDateQuotations.Text.Trim() != "")
             {
-                if(ddlSelectQua.SelectedIndex == 0)
+                if (ddlSelectQua.SelectedIndex == 0)
                 {
-                    string sqlprice = "SELECT * FROM tbl_device WHERE device_id = '"+ ddlDevice.SelectedValue + "' ";
+                    string sqlprice = "SELECT * FROM tbl_device WHERE device_id = '" + ddlDevice.SelectedValue + "' ";
                     MySqlDataReader rs = function.MySqlSelect(sqlprice);
-                    if(rs.Read())
+                    if (rs.Read())
                     {
-                         price = rs.GetDouble("device_ref_Price");
+                        price = rs.GetDouble("device_ref_Price");
                         //rs.Close();
                     }
                 }
-            string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img,quotations_refer,quotations_device_id) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','" + price + "','" + txtNoteNumber.Text + "','0','" + txtDateQuotations.Text.Trim() + "','0','0','0','0','"+ ddlSelectQua.SelectedIndex +"','"+ ddlDevice.SelectedValue + "')";
-            //string script = "";
-            if (function.MySqlQuery(sql))
-            {
-                //script = "บันทึกสำเร็จ";
-                sql = "SELECT * FROM tbl_status_detail WHERE detail_claim_id='" + Session["codePK"].ToString() + "' AND detail_status_id= '3'";
-                MySqlDataReader rs = function.MySqlSelect(sql);
-                if (!rs.Read())
+                string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img,quotations_refer,quotations_device_id) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','" + price + "','" + txtNoteNumber.Text + "','0','" + txtDateQuotations.Text.Trim() + "','0','0','0','0','" + ddlSelectQua.SelectedIndex + "','" + ddlDevice.SelectedValue + "')";
+                //string script = "";
+                if (function.MySqlQuery(sql))
                 {
+                    //script = "บันทึกสำเร็จ";
+                    sql = "SELECT * FROM tbl_status_detail WHERE detail_claim_id='" + Session["codePK"].ToString() + "' AND detail_status_id= '3'";
+                    MySqlDataReader rs = function.MySqlSelect(sql);
+                    if (!rs.Read())
+                    {
+                        rs.Close();
+                        function.Close();
+                        sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('3','" + Session["codePK"].ToString() + "','" + txtDateQuotations.Text.Trim() + "','" + function.ConvertDateTime(txtDateQuotations.Text.Trim(), Quotations) + "')";
+                        if (function.MySqlQuery(sql))
+                        {
+                            sql = "UPDATE tbl_claim SET claim_status = '3' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
+                            function.MySqlQuery(sql);
+                        }
+                    }
                     rs.Close();
                     function.Close();
-                    sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('3','" + Session["codePK"].ToString() + "','" + txtDateQuotations.Text.Trim() + "','" + function.ConvertDateTime(txtDateQuotations.Text.Trim() , Quotations) + "')";
-                    if (function.MySqlQuery(sql))
-                    {
-                        sql = "UPDATE tbl_claim SET claim_status = '3' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
-                        function.MySqlQuery(sql);
-                    }
-                }
-                rs.Close();
-                function.Close();
 
-                txtNoteNumber.Text = "";
-                txtCompany.SelectedIndex = 0;
-                Response.Redirect("/Techno/TechnoFormDetail");
-            }
-            BindConpaney();
-            //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
+                    txtNoteNumber.Text = "";
+                    txtCompany.SelectedIndex = 0;
+                    Response.Redirect("/Techno/TechnoFormDetail");
+                }
+                BindConpaney();
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
             }
             else
             {
                 //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาใส่วันที่')", true);
-            }       
+            }
         }
 
         void BindConpaney()
@@ -483,7 +473,6 @@ namespace ClaimProject.Techno
             da.Fill(ds);
             QuotationsGridView.DataSource = ds.Tables[0];
             QuotationsGridView.DataBind();
-
             QuotaGridView.DataSource = ds.Tables[0];
             QuotaGridView.DataBind();
 
@@ -598,7 +587,7 @@ namespace ClaimProject.Techno
             }
 
             Label lbRefer = (Label)e.Row.FindControl("lbRefer");
-            
+
             if (lbRefer != null)
             {
                 lbRefer.Text = DataBinder.Eval(e.Row.DataItem, "quotations_refer").ToString();
@@ -606,7 +595,7 @@ namespace ClaimProject.Techno
                 {
                     lbRefer.Text = "ราคากลาง " + (string)DataBinder.Eval(e.Row.DataItem, "device_name").ToString();
                 }
-                else if(lbRefer.Text == "1")
+                else if (lbRefer.Text == "1")
                 {
                     lbRefer.Text = "ใบเสนอราคา";
                 }
@@ -672,9 +661,9 @@ namespace ClaimProject.Techno
             //string note_num = "คค.060005/ฝจ./" + function.GetSelectValue("tbl_quotations", "quotations_id='" + key + "'", "quotations_note_number") + "/" + date.Split(' ')[2];
             string note_num = "คค.060005/ฝจ./";
             string title_name = "ขอความอนุเคราะห์ประเมินและเสนอราคางานอุบัติเหตุ";
-            string send_to = "ผู้จัดการ " + function.GetSelectValue("tbl_quotations JOIN tbl_company ON company_id=quotations_company_id", "quotations_id='" + key + "'", "company_name"); 
+            string send_to = "ผู้จัดการ " + function.GetSelectValue("tbl_quotations JOIN tbl_company ON company_id=quotations_company_id", "quotations_id='" + key + "'", "company_name");
             string cpoint = function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON claim_cpoint = cpoint_id", "claim_id='" + Session["codePK"].ToString() + "'", "cpoint_name");
-            
+
 
             ReportDocument rpt = new ReportDocument();
             rpt.Load(Server.MapPath("/Techno/Quotations.rpt"));
@@ -800,7 +789,7 @@ namespace ClaimProject.Techno
             newLabel.CssClass = "col-md-6";
             newLabelEnd.Text = " ฉบับ";
             newLabelEnd.CssClass = "col-md-4";
-            
+
             // add the label and textbox to the panel, then add the panel to the form
             Div.Controls.Add(new LiteralControl("<il class='row'>"));
             Div.Controls.Add(newLabel);
@@ -869,8 +858,8 @@ namespace ClaimProject.Techno
             string list_dev = "";
             string list_doc = "";
             //string name = function.GetDirector("name") + "\r\n";
-            string name = function.GetDirector("name") ;
-            string pos = function.GetDirector("Pos");     
+            string name = function.GetDirector("name");
+            string pos = function.GetDirector("Pos");
             string copy_title = "2.) สำเนาเรียน";
             string copy_tiele1 = "";
             //string name_copy = "";
@@ -942,7 +931,7 @@ namespace ClaimProject.Techno
                 if (Values == "0") Values = "-";
                 list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
                 i++;
-               
+
                 //if (Values != "0")
                 //{
                 //    list_doc += "\r\n                                 " + i + ". " + s + " จำนวน " + Values + " ฉบับ";
@@ -1096,15 +1085,15 @@ namespace ClaimProject.Techno
 
                     sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('7','" + Session["codePK"].ToString() + "','" + txtDateOrder.Text.Trim() + "','" + function.ConvertDateTime(txtDateOrder.Text.Trim(), int.Parse(txtSendOrder.Text)) + "')";
                     if (function.MySqlQuery(sql))
-                    //{
+                        //{
                         //sql = "UPDATE tbl_claim SET claim_status = '5' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
                         //function.MySqlQuery(sql);
 
                         sql = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_company_id = '" + txtCompanyOrder.SelectedValue + "'";
-                        function.MySqlQuery(sql);
-                        getDataStatus4();
-                        Div3.Visible = true;
-                        btn3_1.Enabled = false;
+                    function.MySqlQuery(sql);
+                    getDataStatus4();
+                    Div3.Visible = true;
+                    btn3_1.Enabled = false;
                     //}
 
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
@@ -1193,7 +1182,7 @@ namespace ClaimProject.Techno
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
-                if(rs["quotations_doc_img_send"] != System.DBNull.Value)
+                if (rs["quotations_doc_img_send"] != System.DBNull.Value)
                 {
                     chk = "1";
                 }
@@ -1209,7 +1198,7 @@ namespace ClaimProject.Techno
                 gridquatation.DataSource = ds.Tables[0];
                 gridquatation.DataBind();
             }
-        
+
             rs.Close();
             function.Close();
 
@@ -1217,7 +1206,7 @@ namespace ClaimProject.Techno
             //lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_end"));
             lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '7'", "detail_date_start"));
             lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '7'", "detail_date_end"));
-            if(lbDateOrderEnd.Text == "" && chk == "0")
+            if (lbDateOrderEnd.Text == "" && chk == "0")
             {
                 Div3.Visible = false;
             }
@@ -1225,7 +1214,7 @@ namespace ClaimProject.Techno
             {
                 Div3.Visible = true;
             }
-        } 
+        }
 
 
 
@@ -1294,7 +1283,7 @@ namespace ClaimProject.Techno
 
         protected void btnDownloadOrderSend_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         void getDataStatus5()
@@ -1313,8 +1302,8 @@ namespace ClaimProject.Techno
                 {
                     lbFineOrder.Text = double.Parse(rs.GetString("quotations_fine")).ToString("#,##0.00") + " บาท";
                 }
-                
-                string imgfinal =  "SELECT* FROM tbl_quotations " +
+
+                string imgfinal = "SELECT* FROM tbl_quotations " +
                           " WHERE quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND quotations_order = '1'";
                 MySqlDataAdapter da = function.MySqlSelectDataSet(imgfinal);
                 System.Data.DataSet ds = new System.Data.DataSet();
@@ -1380,17 +1369,17 @@ namespace ClaimProject.Techno
             string sql = "UPDATE tbl_claim SET claim_delete = '1' WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
             if (function.MySqlQuery(sql))
             {
-                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Delete_Success_" +Session["CodePK"].ToString());
+                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Delete_Success_" + Session["CodePK"].ToString());
                 // flush every 20 seconds as you do it
                 File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
                 sb.Clear();
 
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success : ลบข้อมูลสำเร็จ ')", true);
-                Response.Redirect("/");    
+                Response.Redirect("/");
             }
             else
             {
-                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Delete_Failure_"+Session["CodePK"].ToString());
+                sb.Append("\r\n" + DateNoww + " " + TimeNoww + " User:" + Session["User"].ToString() + " IP:" + IPAddress + " Delete_Failure_" + Session["CodePK"].ToString());
                 // flush every 20 seconds as you do it
                 File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
                 sb.Clear();
@@ -1599,10 +1588,10 @@ namespace ClaimProject.Techno
                     NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
                     FileEditEQ.SaveAs(Server.MapPath(NewFileDocName.ToString()));
-                    
+
                     string sqlp = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "'";
 
-                    if(function.MySqlQuery(sqlp))
+                    if (function.MySqlQuery(sqlp))
                     {
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Success')", true);
                     }
@@ -1617,7 +1606,7 @@ namespace ClaimProject.Techno
                     //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                 }
-                    bindImgGridQuatation();
+                bindImgGridQuatation();
             }
             else
             {
@@ -1751,7 +1740,7 @@ namespace ClaimProject.Techno
         {
             string Prj = txtProject.Text;
 
-            Session.Add("HeadmesProject", Prj );
+            Session.Add("HeadmesProject", Prj);
             Session.Add("Person1", txtPerson1.Text);
             Session.Add("Person2", txtPerson2.Text);
             Session.Add("Person3", txtPerson3.Text);
@@ -1783,8 +1772,8 @@ namespace ClaimProject.Techno
             string chk = Session["Chk"].ToString();
 
             String NewFileDocName = "";
-            
-                    NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
+
+            NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
 
             if (chk == "1")
             {
@@ -1825,7 +1814,7 @@ namespace ClaimProject.Techno
                         else
                         {
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#004')", true);
-                        }                        
+                        }
                     }
                     else
                     {
@@ -1851,7 +1840,7 @@ namespace ClaimProject.Techno
                             sql = "UPDATE tbl_claim_doc SET Estimate_num = '" + txtestimateNum.Text + "' , Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
                             if (function.MySqlQuery(sql))
                             {
-                                if(FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
+                                if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
                                 {
                                     foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
                                     {
@@ -1875,7 +1864,7 @@ namespace ClaimProject.Techno
                             else
                             {
                                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#004')", true);
-                            }                                
+                            }
                         }
                         else
                         {
@@ -1913,8 +1902,8 @@ namespace ClaimProject.Techno
         protected void lbtnEditEstimate_Command(object sender, CommandEventArgs e)
         {
             ChkEditEst = "1";
-            Session.Add("Chk" , ChkEditEst);
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);            
+            Session.Add("Chk", ChkEditEst);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);
         }
 
         protected void GridViewEstimate_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -2002,7 +1991,7 @@ namespace ClaimProject.Techno
 
         protected void btnappoint_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE tbl_claim_doc SET appoint_num = '"+ txtappointNum.Text + "' , appoint_date = '"+ function.ConvertDateTime(txtappointdate.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
+            string sql = "UPDATE tbl_claim_doc SET appoint_num = '" + txtappointNum.Text + "' , appoint_date = '" + function.ConvertDateTime(txtappointdate.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
             if (function.MySqlQuery(sql))
             {
                 if (FileUploadappoint.HasFile)
@@ -2077,6 +2066,12 @@ namespace ClaimProject.Techno
                 }
                 BindImgEtc();
             }
+        }
+
+        protected void BtnIncreate_Click(object sender, EventArgs e)
+        {
+            //BindConpaney();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#QuotationsModel').modal();", true);
         }
     }
 }

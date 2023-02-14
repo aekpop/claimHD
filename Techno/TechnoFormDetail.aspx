@@ -330,6 +330,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="card-footer">
+                        <asp:Button ID="BtnIncreate" runat="server" CssClass="btn btn-outline-info" OnClick="BtnIncreate_Click" Text="เพิ่ม"/>
+                    </div>
+                </div>
             </div>
 
             <div id="estimate" runat="server">
