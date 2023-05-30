@@ -20,7 +20,6 @@ namespace ClaimProject
         public string icons = "";
         public string ReModal = "";
         public string key = "";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] == null)
@@ -35,7 +34,7 @@ namespace ClaimProject
                 Session.Add("SenderTran", "");
                 Session.Add("PosSender", "");
                 Session.Add("CopyTran", "");
-                if(Session["PrintdocuMent"].ToString() != "Yes")
+                if (Session["PrintdocuMent"].ToString() != "Yes")
                 {
                     Session["TranRepId"] = "";
                 }
@@ -68,7 +67,6 @@ namespace ClaimProject
                     lbtnGoReport.Visible = true;
                     lbtnGoReportCopy.Visible = true;
                 }
-
             }
             LineTran();
             LoadPaging();
@@ -94,11 +92,10 @@ namespace ClaimProject
                 SreviceLine.WebService_Server serviceLine = new SreviceLine.WebService_Server();
                 try
                 {
-                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41); 
+                    serviceLine.MessageToServer(token, Session["LineTran"].ToString(), "", 1, 41);
                     Session["LineTran"] = "";
                 }
                 catch (Exception) { }
-
             }
         }
         protected void btnnewTranpage_Click(object sender, EventArgs e)
@@ -121,13 +118,11 @@ namespace ClaimProject
                 Session["TransNew"] = "0";
                 Response.Redirect("/equip/EquipNewTrans");
             }
-
         }
 
         protected void LoadPaging()
         {
             string TransRef = Session["TransID"].ToString();
-            //COLLATE utf8_general_ci
             string type = "";
             string EndState = ddlsearchEndToll.SelectedValue;
             string status = "";
@@ -176,8 +171,6 @@ namespace ClaimProject
                     {
                         sqlsendSearch += " WHERE Toll_EQGroup IN (2,9) AND Toll_send = '9200' ";
                     }
-
-
                 }
                 else if (Session["User"].ToString() == "watcharee")
                 {
@@ -204,9 +197,6 @@ namespace ClaimProject
                         sqlsendSearch += " AND Toll_send = '9200' ";
                     }
                 }
-
-
-
             }
             else
             {
@@ -218,7 +208,7 @@ namespace ClaimProject
                 sqlsendSearch += " WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "'  ";
             }
 
-                if (EndState == "0") // ทุกปลายทาง
+            if (EndState == "0") // ทุกปลายทาง
             {
                 if (type == "0")// ทุกประเภทรายการ
                 {
@@ -232,7 +222,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND complete_stat !='5'  Order By tbl_trans_complete.complete_sort ASC , STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
                     }
                     else
                     {
@@ -244,8 +233,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                 }
                 else
@@ -260,8 +247,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND complete_stat !='5'  AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                     else
                     {
@@ -273,8 +258,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                 }
             }
@@ -292,8 +275,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND complete_stat !='5' AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                     else
                     {
@@ -305,8 +286,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                 }
                 else
@@ -322,8 +301,6 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND complete_stat !='5'  AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                     else  // เลือกเฉพาะทุกอย่าง
                     {
@@ -335,12 +312,10 @@ namespace ClaimProject
                         {
                             sqlsendSearch += " AND toll_recieve = '" + ddlsearchEndToll.SelectedValue + "' AND trans_stat = '" + ddlsearchType.SelectedValue + "' AND complete_stat = '" + status + "' Order By tbl_trans_complete.complete_sort ASC, STR_TO_DATE(time_send, '%d-%m-%Y %H.%i.%s') DESC ";
                         }
-
-
                     }
                 }
             }
-            
+
             /*
             if (EndState == "0") // ทุกปลายทาง
             {
@@ -566,7 +541,7 @@ namespace ClaimProject
 
         protected void lbtnUptran_Command(object sender, CommandEventArgs e)
         {
-
+            //
         }
 
         protected void lbtnSearchSend_Command(object sender, CommandEventArgs e)
@@ -581,7 +556,7 @@ namespace ClaimProject
             }
             else
             {
-                if(ddlsearchStat.SelectedIndex == 0)
+                if (ddlsearchStat.SelectedIndex == 0)
                 {
                     ddlsearchStat.SelectedItem.Value = "0";
                 }
@@ -589,18 +564,17 @@ namespace ClaimProject
                 {
                     ddlsearchStat.SelectedItem.Value = ddlsearchStat.SelectedValue;
                 }
-                
+
                 LoadPaging();
             }
             Session["Finded"] = "Yes";
         }
-        
+
         protected void lbtnprintTran_Command(object sender, CommandEventArgs e)
         {
-            ReModal = e.CommandName; 
+            ReModal = e.CommandName;
             string checkcommand = e.CommandName;
             Session["TranRepId"] = e.CommandName;
-            
         }
         public void AlertPop(string msg, string type)
         {
@@ -647,7 +621,6 @@ namespace ClaimProject
 
             if (Session["TranRepId"].ToString() != "")
             {
-
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/equip/EquipReportTran','_newtab');", true);
             }
             else
@@ -680,7 +653,6 @@ namespace ClaimProject
 
             if (Session["TranRepId"].ToString() != "")
             {
-
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/equip/EquipReportTran','_newtab');", true);
             }
             else
@@ -697,7 +669,7 @@ namespace ClaimProject
 
         protected void printReport1_Command(object sender, CommandEventArgs e)
         {
-            GetReport(e.CommandName, 0);           
+            GetReport(e.CommandName, 0);
         }
 
         void GetReport(string key, int report)
@@ -717,12 +689,11 @@ namespace ClaimProject
                 string cpoint_title = "";
                 string dev = "";
                 string cpoint_manager = "";
-
                 string sql = "SELECT * FROM tbl_transfer tf JOIN tbl_transfer_status ON trans_stat = trans_stat_id JOIN tbl_toll t ON tf.toll_send = t.toll_id " +
                     " JOIN tbl_cpoint cp ON t.cpoint_id = cp.cpoint_id WHERE tf.trans_id = '" + key + "'";
-                     
+
                 MySqlDataReader rs = function.MySqlSelect(sql);
-                if(rs.Read())
+                if (rs.Read())
                 {
                     transStat = rs.GetString("trans_stat_name");
                     cpointName = rs.GetString("Cpoint_name");
@@ -740,25 +711,25 @@ namespace ClaimProject
                 //MySqlDataAdapter da = function.MySqlSelectDataSet(tablelist);
                 //DataSetEquip dts = new DataSetEquip();
                 //da.Fill(dts, "tranAct");
-            
+
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(Server.MapPath("/equip/reportDocuTran.rpt"));            
+                rpt.Load(Server.MapPath("/equip/reportDocuTran.rpt"));
                 //rpt.SetDataSource(dts);
 
                 string strNote = "";
                 title = "ขอ" + transStat + " รายการครุภัณฑ์";
-                      
+
                 rpt.SetParameterValue("note_title", title);
                 rpt.SetParameterValue("num_title", noteNumber);
-                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));                
+                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(startDate));
 
                 i = 1;
                 rs = function.MySqlSelect(sql_list);
                 while (rs.Read())
                 {
-                    if( i == 1)
+                    if (i == 1)
                     {
-                        dev = "\r\n          " + i +". " + rs.GetString("eqnameth") + "  " + rs.GetString("eqnumber") + "  " + rs.GetString("eqserial");
+                        dev = "\r\n          " + i + ". " + rs.GetString("eqnameth") + "  " + rs.GetString("eqnumber") + "  " + rs.GetString("eqserial");
                     }
                     else
                     {
@@ -778,11 +749,11 @@ namespace ClaimProject
                         strNote = cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
                         name = " (นายบุญเพิ่ม เรียงไธสง)\r\nผู้อำนวยการฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
 
-                        sql = "SELECT * FROM tbl_transfer c JOIN tbl_toll t ON c.toll_recieve = t.toll_id JOIN `tbl_cpoint` p ON p.`cpoint_id` = t.`cpoint_id` WHERE c.`trans_id` = "+key;
+                        sql = "SELECT * FROM tbl_transfer c JOIN tbl_toll t ON c.toll_recieve = t.toll_id JOIN `tbl_cpoint` p ON p.`cpoint_id` = t.`cpoint_id` WHERE c.`trans_id` = " + key;
                         MySqlDataReader rss = function.MySqlSelect(sql);
                         if (rss.Read())
                         {
-                            string  CpointReName = rss.GetString("cpoint_name");
+                            string CpointReName = rss.GetString("cpoint_name");
                             noteTo = "ผจด. " + CpointReName;
                             rss.Close();
                             function.Close();
@@ -803,22 +774,20 @@ namespace ClaimProject
                     rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
 
                 }
-                else if(report == 1)
+                else if (report == 1)
                 {
-
+                    //
                 }
 
                 //CRSEquipviewer.ReportSource = rpt;            
                 Session["Report"] = rpt;
                 Session["ReportTitle"] = "บันทึกข้อความ";
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
-
             }
             else
             {
                 AlertPop("Error Report!! ติดต่อเจ้าหน้าที่", "error");
             }
-            
         }
 
         protected void lbtnGoReportrd_Command(object sender, CommandEventArgs e)
@@ -854,5 +823,4 @@ namespace ClaimProject
             }
         }
     }
-    
 }

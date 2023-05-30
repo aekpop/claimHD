@@ -65,6 +65,7 @@ namespace ClaimProject.Techno
                     function.GetList(ddlPosition1, "PosList");
                     function.GetList(ddlPosition2, "PosList");
                     function.GetList(ddlPosition3, "PosList");
+                    function.GetListEstimate(ddlestimate, 0);
 
                     Session["Chk"] = "";
                 }
@@ -402,11 +403,17 @@ namespace ClaimProject.Techno
 
         protected void QuotationsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            string partFile = function.GetSelectValue("tbl_quotations", "quotations_id = '" + QuotationsGridView.DataKeys[e.RowIndex].Value + "'", "quotations_doc_img");
+
             string sql = "DELETE FROM tbl_quotations  WHERE quotations_id = '" + QuotationsGridView.DataKeys[e.RowIndex].Value + "'";
-            //string script = "";
             if (function.MySqlQuery(sql))
             {
-                //script = "บันทึกสำเร็จ";
+                if (File.Exists(Server.MapPath(partFile)))
+                {
+                    File.Delete(Server.MapPath(partFile));
+                }
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('ลบข้อมูลสำเร็จ')", true);
             }
             BindConpaney();
         }
@@ -453,10 +460,10 @@ namespace ClaimProject.Techno
 
                     txtNoteNumber.Text = "";
                     txtCompany.SelectedIndex = 0;
-                    Response.Redirect("/Techno/TechnoFormDetail");
+                    //Response.Redirect("/Techno/TechnoFormDetail");
                 }
                 BindConpaney();
-                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
             }
             else
             {
@@ -710,7 +717,7 @@ namespace ClaimProject.Techno
             if (fileDoc.HasFile)
             {
                 string typeFile = fileDoc.FileName.Split('.')[fileDoc.FileName.Split('.').Length - 1];
-                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
                 {
                     if (txtDateRecive.Text.Trim() != "")
                     {
@@ -1786,30 +1793,31 @@ namespace ClaimProject.Techno
                         sql = "UPDATE tbl_claim_doc SET Estimate_num = '" + txtestimateNum.Text + "' , Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
                         if (function.MySqlQuery(sql))
                         {
-                            if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
-                            {
-                                foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
-                                {
-                                    Insert(3, postedFile);
-                                }
+                            //if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
+                            //{
+                            //    foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
+                            //    {
+                            //        Insert(3, postedFile);
+                            //    }
 
-                                foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
-                                {
-                                    Insert(3, postedFile);
-                                }
+                            //    foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
+                            //    {
+                            //        Insert(3, postedFile);
+                            //    }
 
-                                foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
-                                {
-                                    Insert(3, postedFile);
-                                }
+                            //    foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
+                            //    {
+                            //        Insert(3, postedFile);
+                            //    }
 
-                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
-                                Response.Redirect("/Techno/TechnoFormDetail");
-                            }
-                            else
-                            {
-                                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
-                            }
+                            //    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
+                            //    Response.Redirect("/Techno/TechnoFormDetail");
+                            //}
+                            //else
+                            //{
+                            //    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                            //}
+                            UploadFile();
                         }
                         else
                         {
@@ -1840,26 +1848,7 @@ namespace ClaimProject.Techno
                             sql = "UPDATE tbl_claim_doc SET Estimate_num = '" + txtestimateNum.Text + "' , Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
                             if (function.MySqlQuery(sql))
                             {
-                                if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
-                                {
-                                    foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
-                                    {
-                                        Insert(3, postedFile);
-                                    }
-
-                                    foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
-                                    {
-                                        Insert(3, postedFile);
-                                    }
-
-                                    foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
-                                    {
-                                        Insert(3, postedFile);
-                                    }
-
-                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
-                                    Response.Redirect("/Techno/TechnoFormDetail");
-                                }
+                                UploadFile();
                             }
                             else
                             {
@@ -1881,7 +1870,42 @@ namespace ClaimProject.Techno
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : Error#001')", true);
                 }
             }
+        }
 
+        void UploadFile()
+        {
+            if (ddlestimate.SelectedIndex == 1)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                //Response.Redirect("/Techno/TechnoFormDetail");
+            }
+            else
+            {
+                if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
+                {
+                    foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
+                    {
+                        Insert(3, postedFile);
+                    }
+
+                    foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
+                    {
+                        Insert(3, postedFile);
+                    }
+
+                    foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
+                    {
+                        Insert(3, postedFile);
+                    }
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                    //Response.Redirect("/Techno/TechnoFormDetail");
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
+                }
+            }
         }
 
         protected void btn3_1_Click(object sender, EventArgs e)
@@ -1904,6 +1928,7 @@ namespace ClaimProject.Techno
             ChkEditEst = "1";
             Session.Add("Chk", ChkEditEst);
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#estimateQuotationsModel').modal();", true);
+            //ดึงข้อมูลเดิม to do
         }
 
         protected void GridViewEstimate_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1924,7 +1949,7 @@ namespace ClaimProject.Techno
             {
                 try
                 {
-                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการรูปภาพแนบ ใช่หรือไม่');";
+                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('คุณต้องการลบ ใช่หรือไม่');";
                 }
                 catch { }
             }
@@ -1940,6 +1965,7 @@ namespace ClaimProject.Techno
                 if (File.Exists(Server.MapPath(partFile)))
                 {
                     File.Delete(Server.MapPath(partFile));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Success : ลบข้อมูลสำเร็จ')", true);
                 }
                 BindImgEstimate();
             }

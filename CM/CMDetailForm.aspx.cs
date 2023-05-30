@@ -312,8 +312,8 @@ namespace ClaimProject.CM
                                 id = rd.GetString("cm_detail_id");
                             }
 
-                            if (txtCpoint.SelectedValue != "711" && txtCpoint.SelectedValue != "712" && txtCpoint.SelectedValue != "713")
-                            {
+                            //if (txtCpoint.SelectedValue != "711" && txtCpoint.SelectedValue != "712" && txtCpoint.SelectedValue != "713")
+                            //{
                                 if (rs.GetString("drive_group_id") == "2")
                                 {
                                     messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
@@ -326,13 +326,13 @@ namespace ClaimProject.CM
                                     AlertPop("บันทึกสำเร็จ", "success");
                                     function.LineTran(sysname, messageLine);
                                 }
-                            }
-                            else
-                            {
-                                messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
-                                AlertPop("บันทึกสำเร็จ", "success");
-                                function.LineTran(sysname, messageLine);
-                            }
+                            //}
+                            //else
+                            //{
+                            //    messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
+                            //    AlertPop("บันทึกสำเร็จ", "success");
+                            //    function.LineTran(sysname, messageLine);
+                            //}
                         }
                         BindData();
                         ClearDate();

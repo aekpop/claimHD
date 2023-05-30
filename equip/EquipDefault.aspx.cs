@@ -848,8 +848,8 @@ namespace ClaimProject.equip
                 "DATE_FORMAT('2021-09-11', '%Y') - DATE_FORMAT(DATE_ADD(STR_TO_DATE(`equipment_buy_date`, '%d-%m-%Y'), " +
                 "INTERVAL - 543 YEAR), '%Y') AS age FROM tbl_equipment JOIN tbl_toll ON tbl_equipment.toll_id = tbl_toll.toll_id " +
                 "WHERE (DATE_FORMAT('2021-10-31', '%Y') - DATE_FORMAT(DATE_ADD(STR_TO_DATE(equipment_buy_date, '%d-%m-%Y'), " +
-                "INTERVAL - 543 YEAR), '%Y') - (DATE_FORMAT('2021-10-31', '00-%m-%d') < DATE_FORMAT(DATE_ADD(STR_TO_DATE(equipment_buy_date, '%d-%m-%Y'), INTERVAL - 543 YEAR), '00-%m-%d')) >= equipment_life ) AND (tbl_equipment.toll_id != '9400') " +
-                "ORDER BY age DESC";
+                "INTERVAL - 543 YEAR), '%Y') - (DATE_FORMAT('2021-10-31', '00-%m-%d') < DATE_FORMAT(DATE_ADD(STR_TO_DATE(equipment_buy_date, '%d-%m-%Y'), INTERVAL - 543 YEAR), '00-%m-%d')) >= equipment_life ) AND (tbl_toll.in_outdepart != '1') " +
+                "ORDER BY age DESC LIMIT 10";
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);

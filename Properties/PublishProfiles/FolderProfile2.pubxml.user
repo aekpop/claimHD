@@ -7,6 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>D:\Publish</_PublishTargetUrl>
+    <History>False|2023-04-26T03:46:21.0991946Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
@@ -40,13 +41,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>02/14/2023 11:35:10</publishTime>
+      <publishTime>02/20/2023 18:23:01</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>02/14/2023 11:35:10</publishTime>
+      <publishTime>02/20/2023 18:23:01</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>02/14/2023 11:35:11</publishTime>
+      <publishTime>02/20/2023 18:23:02</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>

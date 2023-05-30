@@ -263,6 +263,7 @@
                 </div>
             </footer>
         </div>
+            </div>
     </form>
     <script src="/Scripts/popper.min.js"></script>
     <script src="/Scripts/umd/popper.js"></script>

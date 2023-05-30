@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="รายละเอียดอุบัติเหตุ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TechnoFormDetail.aspx.cs" Inherits="ClaimProject.Techno.TechnoFormDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <!-- CSS only -->
+    <link href="../Content/CM.css" rel="stylesheet" />
+
     <style>
         #ddlCom {
             display: none;
@@ -205,7 +209,7 @@
                         <h3>อัพโหลดใบปะหน้า (ที่เสนอเซ็นเรียบร้อยแล้ว)</h3>
                     </div>
                 </div>
-                <div class="row" runat="server" id="divFileUploalNote">                    
+                <div class="row" runat="server" id="divFileUploalNote">
                     <div class="col-md-12 col-xl-6">
                         <div class="form-row formHead">
                             <div class="input-group mb-3">
@@ -332,7 +336,7 @@
                 </div>
                 <div class="col-12">
                     <div class="card-footer">
-                        <asp:Button ID="BtnIncreate" runat="server" CssClass="btn btn-outline-info" OnClick="BtnIncreate_Click" Text="เพิ่ม"/>
+                        <asp:Button ID="BtnIncreate" runat="server" CssClass="btn btn-outline-info" OnClick="BtnIncreate_Click" Text="เพิ่ม" />
                     </div>
                 </div>
             </div>
@@ -593,50 +597,50 @@
             </div>
         </div>
         <div class="card-body table-responsive">
-             <div class="row" runat="server" id="divUploadetc">                    
-                    <div class="col-md-12 col-xl-6">
-                        <div class="form-row formHead">
-                            <div class="input-group mb-3">
-                                <asp:FileUpload ID="FileUploadetc" runat="server" CssClass="form-control-file"></asp:FileUpload>
-                                <div class="input-group-append">
-                                    <asp:Button ID="btnUploadetc" runat="server" Text="Upload" CssClass="btn btn-outline-secondary" OnClick="btnUploadetc_Click" />
-                                </div>
+            <div class="row" runat="server" id="divUploadetc">
+                <div class="col-md-12 col-xl-6">
+                    <div class="form-row formHead">
+                        <div class="input-group mb-3">
+                            <asp:FileUpload ID="FileUploadetc" runat="server" CssClass="form-control-file"></asp:FileUpload>
+                            <div class="input-group-append">
+                                <asp:Button ID="btnUploadetc" runat="server" Text="Upload" CssClass="btn btn-outline-secondary" OnClick="btnUploadetc_Click" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-5">
-                        <asp:GridView ID="GridViewEtc" runat="server"
-                            DataKeyNames="claim_img_id"
-                            GridLines="both"
-                            BorderColor="White"
-                            OnRowDataBound="GridViewEtc_RowDataBound"
-                            AutoGenerateColumns="False"
-                            CssClass="table table-hover table-sm"
-                            OnRowDeleting="GridViewEtc_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-success">
-                            <Columns>
-                                <asp:TemplateField HeaderText="เอกสารอื่นๆ">
-                                    <ItemTemplate>
-                                        <asp:Image ID="ImgEtc" runat="server" Width="200px" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDownload" runat="server" Font-Size="xx-large" CssClass="fa text-center" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:CommandField ShowDeleteButton="True" HeaderText="" DeleteText="&#xf014; " ControlStyle-CssClass="fa text-danger " ControlStyle-Font-Size="xx-large" />
-                            </Columns>
-                        </asp:GridView>
-                    </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <asp:GridView ID="GridViewEtc" runat="server"
+                        DataKeyNames="claim_img_id"
+                        GridLines="both"
+                        BorderColor="White"
+                        OnRowDataBound="GridViewEtc_RowDataBound"
+                        AutoGenerateColumns="False"
+                        CssClass="table table-hover table-sm"
+                        OnRowDeleting="GridViewEtc_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-success">
+                        <Columns>
+                            <asp:TemplateField HeaderText="เอกสารอื่นๆ">
+                                <ItemTemplate>
+                                    <asp:Image ID="ImgEtc" runat="server" Width="200px" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnDownload" runat="server" Font-Size="xx-large" CssClass="fa text-center" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ShowDeleteButton="True" HeaderText="" DeleteText="&#xf014; " ControlStyle-CssClass="fa text-danger " ControlStyle-Font-Size="xx-large" />
+                        </Columns>
+                    </asp:GridView>
                 </div>
             </div>
         </div>
-   
+    </div>
 
-    <div class="card border-dark mb-3" style="font-family: 'TH SarabunPSK'; font-size:16px;">
+
+    <div class="card border-dark mb-3" style="font-family: 'TH SarabunPSK'; font-size: 16px;">
         <div class="card-header">
             <div class="col-md">
                 <h3 class="card-title">สถานะดำเนินการ</h3>
@@ -659,7 +663,7 @@
                             <asp:Button ID="btns3" runat="server" CssClass="btn btn-primary custom" Text="ส่งประเมินราคา" OnClick="btns3_Click" OnClientClick="return CompareConfirm('ยืนยัน ส่งประเมินราคา ?');" />
                         </div>
                         <div class="col-md-2">
-                            <asp:Button ID="btn3_1" runat="server" CssClass="btn btn-info custom" Text="สั่งจ้าง" OnClick="btn3_1_Click" OnClientClick="return CompareConfirm('ยืนยัน สั่งจ้าง ?');"/>
+                            <asp:Button ID="btn3_1" runat="server" CssClass="btn btn-info custom" Text="สั่งจ้าง" OnClick="btn3_1_Click" OnClientClick="return CompareConfirm('ยืนยัน สั่งจ้าง ?');" />
                         </div>
                         <div class="col-md-2">
                             <asp:Button ID="btns4" runat="server" CssClass="btn btn-success custom" Text="ส่งงาน/เสร็จสิ้น" OnClick="btns4_Click" OnClientClick="return CompareConfirm('ยืนยันเปลี่ยนส่งงาน/เสร็จสิ้น ?');" />
@@ -721,7 +725,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-md text-center">
-                                    <asp:Button ID="btnSaveQuotations" runat="server" CssClass="btn btn-warning btn-sm text-lg-center" Text="เสนอราคา" Font-Size="Larger" OnClick="btnSaveQuotations_Click" />
+                                    <asp:Button ID="btnSaveQuotations" runat="server" CssClass="btn btn-success btn-sm text-lg-center" Text="ตกลง" Font-Size="Larger" OnClick="btnSaveQuotations_Click" />
                                 </div>
                             </div>
                             </div>
@@ -756,8 +760,9 @@
                                             <asp:Label ID="lbPriceQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.quotations_company_price") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:CommandField ShowEditButton="True" CancelText="ยกเลิก" EditText="&#xf040; แก้ไข" UpdateText="แก้ไข" HeaderText="แก้ไข" ControlStyle-Font-Size="Small" ControlStyle-CssClass="fa" />
+                                    
                                     <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa" ControlStyle-Font-Size="Small" />
+                                   
                                 </Columns>
                             </asp:GridView>
                         </ContentTemplate>
@@ -832,47 +837,60 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-3 text-right">วันที่ส่ง : </div>
-                        <div class="col-md-4">
-                            <asp:TextBox ID="txtestimateDay" runat="server" CssClass="datepicker form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                        <div class="col-md">
+                            <asp:DropDownList ID="ddlestimate" runat="server" name="form_select" onchange="showDiv('formestimate', this)" class="btn btn-warning dropdown-toggle dropdown-toggle-split">
+                            </asp:DropDownList>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3 text-right">เลขที่ : </div>
-                        <div class="col-md-4">
-                            <asp:TextBox ID="txtestimateNum" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 text-right">บันทึก : </div>
-                        <div class="col-md-8">
-                            <div class="custom-file">
-                                <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
-                                <asp:FileUpload ID="FileUploadstimate1" runat="server" CssClass="custom-file-input" lang="en" />
+                    <hr />
+                    <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+                        <ContentTemplate>
+                            <div class="row">
+                                <div class="col-md-3 text-right">วันที่ส่ง : </div>
+                                <div class="col-md-4">
+                                    <asp:TextBox ID="txtestimateDay" runat="server" CssClass="datepicker form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 text-right">บก.06 : </div>
-                        <div class="col-md-8">
-                            <div class="custom-file">
-                                <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
-                                <asp:FileUpload ID="FileUploadstimate2" runat="server" CssClass="custom-file-input" lang="en" />
+                            <div class="row">
+                                <div class="col-md-3 text-right">เลขที่ : </div>
+                                <div class="col-md-4">
+                                    <asp:TextBox ID="txtestimateNum" runat="server" CssClass="form-control" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 text-right">ตารางราคา : </div>
-                        <div class="col-md-8">
-                            <div class="custom-file">
-                                <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
-                                <asp:FileUpload ID="FileUploadstimate3" runat="server" CssClass="custom-file-input" lang="en" />
+                            <div id="formestimate">
+                                <div class="row">
+                                    <div class="col-md-3 text-right">บันทึกข้อความ : </div>
+                                    <div class="col-md-8">
+                                        <div class="custom-file">
+                                            <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
+                                            <asp:FileUpload ID="FileUploadstimate1" runat="server" CssClass="custom-file-input" lang="en" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 text-right">บก.06 : </div>
+                                    <div class="col-md-8">
+                                        <div class="custom-file">
+                                            <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
+                                            <asp:FileUpload ID="FileUploadstimate2" runat="server" CssClass="custom-file-input" lang="en" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 text-right">ตารางราคา : </div>
+                                    <div class="col-md-8">
+                                        <div class="custom-file">
+                                            <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
+                                            <asp:FileUpload ID="FileUploadstimate3" runat="server" CssClass="custom-file-input" lang="en" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                     <div class="row">
                         <div class="col-md text-center">
-                            <asp:Button ID="btnEstimate" runat="server" Font-Size="16px" CssClass="btn btn-warning btn-sm" Text="บันทึก" OnClick="btnEstimate_Click" />
+                            <asp:Button ID="btnEstimate" runat="server" Font-Size="16px" CssClass="btn btn-warning btn-sm" Text="ตกลง" OnClick="btnEstimate_Click" />
                         </div>
                     </div>
                 </div>
@@ -1108,7 +1126,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 text-danger text-xl-center">
-                            <i class="fa fa-times fa-10x" aria-hidden="true" style="font-size:xx-large;"></i>
+                            <i class="fa fa-times fa-10x" aria-hidden="true" style="font-size: xx-large;"></i>
                         </div>
                     </div>
                     <br />
@@ -1163,7 +1181,7 @@
                 return false;
             }
             return true;
-        }
+        }       
 
     </script>
 </asp:Content>
