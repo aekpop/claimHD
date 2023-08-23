@@ -312,15 +312,15 @@
                 <br />
                 <div class="row">
                     <div class="col-md text-center">
-                        <asp:Button ID="btnPlanSheet" runat="server" Visible="false" Text="บันทึกฉบับร่าง" OnClick="btnPlanSheet_Click" CssClass="btn btn-default" OnClientClick="return UpdteConfirm('ยืนยันบันทึกฉบับร่าง ใช่หรือไม่');" />
-                        <asp:Button ID="btnSendRepair" runat="server" Visible="false" Text="ส่งซ่อม" OnClick="btnSendRepair_Click" CssClass="btn btn-info" OnClientClick="return UpdteConfirm('ยืนยันแจ้งส่งซ่อม ใช่หรือไม่');" />
-                        <asp:Button ID="btnSecondSubmit" runat="server" Visible="false" Text="ยืนยัน" OnClick="btnSecondSubmit_Click" CssClass="btn btn-success" OnClientClick="return UpdteConfirm('ยืนยันบันทึกและส่งข้อมูลไปปลายทาง ใช่หรือไม่');" />
+                        <asp:Button ID="btnPlanSheet" runat="server" Visible="false" Text="บันทึกฉบับร่าง" OnClick="btnPlanSheet_Click" CssClass="btn btn-default" OnClientClick="return UpdteConfirm('คุณต้องการ บันทึกฉบับร่าง ใช่หรือไม่');" />
+                        <asp:Button ID="btnSendRepair" runat="server" Visible="false" Text="ส่งซ่อม" OnClick="btnSendRepair_Click" CssClass="btn btn-info" OnClientClick="return UpdteConfirm('คุณต้องการ ส่งซ่อม ใช่หรือไม่');" />
+                        <asp:Button ID="btnSecondSubmit" runat="server" Visible="false" Text="ยืนยัน" OnClick="btnSecondSubmit_Click" CssClass="btn btn-success" OnClientClick="return UpdteConfirm('คุณต้องการ โอนย้าย ใช่หรือไม่');" />
                         <asp:Button ID="btnEdit" runat="server" Visible="false" Text="ดึงเรื่องกลับแก้ไข" OnClick="btnEdit_Click" CssClass="btn btn-warning" />
                         <asp:Button ID="btnGet" runat="server" Visible="false" Text="อนุมัติ" OnClick="btnGet_Click" CssClass="btn btn-success" />
                         <asp:Button ID="btnRepaired" runat="server" Visible="false" Text="อัพเดทส่งซ่อม" OnClick="btnRepaired_Click" CssClass="btn btn-success" />
                         <asp:Button ID="btnBackto" runat="server" Visible="false" Text="ไม่อนุมัติ" OnClick="btnBackto_Click" CssClass="btn btn-danger" />
                         <asp:Button ID="btnReturn" runat="server" Visible="false" Text="คืน" OnClick="btnReturn_Click" CssClass="btn btn-success" />
-                        <asp:LinkButton ID="lbtnDelete" runat="server" Visible="false" CssClass="btn btn-danger " OnCommand="lbtnDelete_Command" OnClientClick="return UpdteConfirm('ยืนยันลบรายการทั้งหมด ใช่หรือไม่');">ลบ</asp:LinkButton>
+                        <asp:LinkButton ID="lbtnDelete" runat="server" Visible="false" CssClass="btn btn-danger " OnCommand="lbtnDelete_Command" OnClientClick="return UpdteConfirm('คุณต้องการ ลบรายการทั้งหมด ใช่หรือไม่');">ลบ</asp:LinkButton>
                     </div>
                 </div>
             </div>

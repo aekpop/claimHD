@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.Techno {
-    
-    
-    public partial class TechnoFormDetail {
-        
+namespace ClaimProject.Techno
+{
+
+
+    public partial class TechnoFormDetail
+    {
+
         /// <summary>
         /// lbTitleStatus control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbTitleStatus;
-        
+
         /// <summary>
         /// lbRefnum control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbRefnum;
-        
+
         /// <summary>
         /// lbTitle control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbTitle;
-        
+
         /// <summary>
         /// lbCpoint control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCpoint;
-        
+
         /// <summary>
         /// lbDate control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDate;
-        
+
         /// <summary>
         /// lbAround control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbAround;
-        
+
         /// <summary>
         /// lbAlert control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbAlert;
-        
+
         /// <summary>
         /// lbCb control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCb;
-        
+
         /// <summary>
         /// lbDetail control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDetail;
-        
+
         /// <summary>
         /// lbCar control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCar;
-        
+
         /// <summary>
         /// lbLP control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbLP;
-        
+
         /// <summary>
         /// lbDriver control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDriver;
-        
+
         /// <summary>
         /// lbIDCard control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbIDCard;
-        
+
         /// <summary>
         /// lbAddress control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbAddress;
-        
+
         /// <summary>
         /// lbTel control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbTel;
-        
+
         /// <summary>
         /// lbInsure control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbInsure;
-        
+
         /// <summary>
         /// lbClaimNum control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbClaimNum;
-        
+
         /// <summary>
         /// lbPolicy control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbPolicy;
-        
+
         /// <summary>
         /// lbInform control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbInform;
-        
+
         /// <summary>
         /// lbDevice control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDevice;
-        
+
         /// <summary>
         /// lbEmp control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbEmp;
-        
+
         /// <summary>
         /// lbEmpCom control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbEmpCom;
-        
+
         /// <summary>
         /// Div2 control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
-        
+
         /// <summary>
         /// txtNoteNumTo control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoteNumTo;
-        
+
         /// <summary>
         /// txtDateNoteto control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateNoteto;
-        
+
         /// <summary>
         /// txtNoteTitleTo control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoteTitleTo;
-        
+
         /// <summary>
         /// txtNoteSendTo control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoteSendTo;
-        
+
         /// <summary>
         /// Panel1 control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
-        
+
         /// <summary>
         /// btnSaveNoteTo control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveNoteTo;
-        
+
         /// <summary>
         /// btnNoteTo control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNoteTo;
-        
+
         /// <summary>
         /// btnNoteToCpoy control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNoteToCpoy;
-        
+
         /// <summary>
         /// divFileUploalNote control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFileUploalNote;
-        
+
         /// <summary>
         /// FileUploalNote control.
         /// </summary>
@@ -308,7 +310,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploalNote;
-        
+
         /// <summary>
         /// btnUploadNote control.
         /// </summary>
@@ -317,7 +319,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUploadNote;
-        
+
         /// <summary>
         /// FileNoteGridView control.
         /// </summary>
@@ -326,7 +328,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView FileNoteGridView;
-        
+
         /// <summary>
         /// check49 control.
         /// </summary>
@@ -335,7 +337,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label check49;
-        
+
         /// <summary>
         /// Div1 control.
         /// </summary>
@@ -344,7 +346,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
-        
+
         /// <summary>
         /// QuotaGridView control.
         /// </summary>
@@ -353,7 +355,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView QuotaGridView;
-        
+
         /// <summary>
         /// BtnIncreate control.
         /// </summary>
@@ -362,7 +364,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnIncreate;
-        
+
         /// <summary>
         /// estimate control.
         /// </summary>
@@ -371,7 +373,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl estimate;
-        
+
         /// <summary>
         /// lbestimatedays control.
         /// </summary>
@@ -380,7 +382,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbestimatedays;
-        
+
         /// <summary>
         /// lbestimateNum control.
         /// </summary>
@@ -389,7 +391,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbestimateNum;
-        
+
         /// <summary>
         /// lbtnEditEstimate control.
         /// </summary>
@@ -398,7 +400,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnEditEstimate;
-        
+
         /// <summary>
         /// lbAppointDate control.
         /// </summary>
@@ -407,7 +409,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbAppointDate;
-        
+
         /// <summary>
         /// lbAppointNum control.
         /// </summary>
@@ -416,7 +418,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbAppointNum;
-        
+
         /// <summary>
         /// lbtnAddAppoint control.
         /// </summary>
@@ -425,7 +427,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnAddAppoint;
-        
+
         /// <summary>
         /// GridViewEstimate control.
         /// </summary>
@@ -434,7 +436,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewEstimate;
-        
+
         /// <summary>
         /// GridViewAppoint control.
         /// </summary>
@@ -443,7 +445,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewAppoint;
-        
+
         /// <summary>
         /// Div3 control.
         /// </summary>
@@ -452,7 +454,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
-        
+
         /// <summary>
         /// lbCompanyOrder control.
         /// </summary>
@@ -461,7 +463,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCompanyOrder;
-        
+
         /// <summary>
         /// lbDateOrderStart control.
         /// </summary>
@@ -470,7 +472,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDateOrderStart;
-        
+
         /// <summary>
         /// lbPriceOrder control.
         /// </summary>
@@ -479,7 +481,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbPriceOrder;
-        
+
         /// <summary>
         /// lbDateOrderEnd control.
         /// </summary>
@@ -488,7 +490,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDateOrderEnd;
-        
+
         /// <summary>
         /// FileEditEQ control.
         /// </summary>
@@ -497,7 +499,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileEditEQ;
-        
+
         /// <summary>
         /// lbtnchangeimg control.
         /// </summary>
@@ -506,7 +508,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnchangeimg;
-        
+
         /// <summary>
         /// gridquatation control.
         /// </summary>
@@ -515,7 +517,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridquatation;
-        
+
         /// <summary>
         /// Div4 control.
         /// </summary>
@@ -524,7 +526,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div4;
-        
+
         /// <summary>
         /// lbDateSendOrder control.
         /// </summary>
@@ -533,7 +535,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDateSendOrder;
-        
+
         /// <summary>
         /// lbFineOrder control.
         /// </summary>
@@ -542,7 +544,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbFineOrder;
-        
+
         /// <summary>
         /// FileUpload2 control.
         /// </summary>
@@ -551,7 +553,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
-        
+
         /// <summary>
         /// LinkButton2 control.
         /// </summary>
@@ -560,7 +562,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-        
+
         /// <summary>
         /// ImageOrderSend control.
         /// </summary>
@@ -569,7 +571,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImageOrderSend;
-        
+
         /// <summary>
         /// btnDownloadOrderSend control.
         /// </summary>
@@ -578,7 +580,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnDownloadOrderSend;
-        
+
         /// <summary>
         /// gridFinal control.
         /// </summary>
@@ -587,7 +589,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridFinal;
-        
+
         /// <summary>
         /// divUploadetc control.
         /// </summary>
@@ -596,7 +598,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUploadetc;
-        
+
         /// <summary>
         /// FileUploadetc control.
         /// </summary>
@@ -605,7 +607,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadetc;
-        
+
         /// <summary>
         /// btnUploadetc control.
         /// </summary>
@@ -614,7 +616,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUploadetc;
-        
+
         /// <summary>
         /// GridViewEtc control.
         /// </summary>
@@ -623,7 +625,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewEtc;
-        
+
         /// <summary>
         /// btns0 control.
         /// </summary>
@@ -632,7 +634,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btns0;
-        
+
         /// <summary>
         /// btns1 control.
         /// </summary>
@@ -641,7 +643,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btns1;
-        
+
         /// <summary>
         /// btns2 control.
         /// </summary>
@@ -650,7 +652,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btns2;
-        
+
         /// <summary>
         /// btns3 control.
         /// </summary>
@@ -659,7 +661,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btns3;
-        
+
         /// <summary>
         /// btn3_1 control.
         /// </summary>
@@ -668,7 +670,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn3_1;
-        
+
         /// <summary>
         /// btns4 control.
         /// </summary>
@@ -677,7 +679,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btns4;
-        
+
         /// <summary>
         /// ddlSelectQua control.
         /// </summary>
@@ -686,7 +688,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSelectQua;
-        
+
         /// <summary>
         /// SelectQua1 control.
         /// </summary>
@@ -695,7 +697,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel SelectQua1;
-        
+
         /// <summary>
         /// txtCompany control.
         /// </summary>
@@ -704,7 +706,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtCompany;
-        
+
         /// <summary>
         /// ddlDevice control.
         /// </summary>
@@ -713,7 +715,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDevice;
-        
+
         /// <summary>
         /// txtNoteNumber control.
         /// </summary>
@@ -722,7 +724,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoteNumber;
-        
+
         /// <summary>
         /// txtDateQuotations control.
         /// </summary>
@@ -731,7 +733,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateQuotations;
-        
+
         /// <summary>
         /// btnSaveQuotations control.
         /// </summary>
@@ -740,7 +742,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveQuotations;
-        
+
         /// <summary>
         /// QuotationsGridView control.
         /// </summary>
@@ -749,7 +751,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView QuotationsGridView;
-        
+
         /// <summary>
         /// lbCompany control.
         /// </summary>
@@ -758,7 +760,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCompany;
-        
+
         /// <summary>
         /// txtDateRecive control.
         /// </summary>
@@ -767,7 +769,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateRecive;
-        
+
         /// <summary>
         /// txtPrice control.
         /// </summary>
@@ -776,7 +778,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
-        
+
         /// <summary>
         /// fileDoc control.
         /// </summary>
@@ -785,7 +787,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileDoc;
-        
+
         /// <summary>
         /// btnSaveRecive control.
         /// </summary>
@@ -794,7 +796,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveRecive;
-        
+
         /// <summary>
         /// ddlestimate control.
         /// </summary>
@@ -803,7 +805,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlestimate;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -812,7 +814,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// txtestimateDay control.
         /// </summary>
@@ -821,7 +823,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtestimateDay;
-        
+
         /// <summary>
         /// txtestimateNum control.
         /// </summary>
@@ -830,7 +832,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtestimateNum;
-        
+
         /// <summary>
         /// FileUploadstimate1 control.
         /// </summary>
@@ -839,7 +841,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadstimate1;
-        
+
         /// <summary>
         /// FileUploadstimate2 control.
         /// </summary>
@@ -848,7 +850,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadstimate2;
-        
+
         /// <summary>
         /// FileUploadstimate3 control.
         /// </summary>
@@ -857,7 +859,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadstimate3;
-        
+
         /// <summary>
         /// btnEstimate control.
         /// </summary>
@@ -866,7 +868,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEstimate;
-        
+
         /// <summary>
         /// txtCompanyOrder control.
         /// </summary>
@@ -875,7 +877,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtCompanyOrder;
-        
+
         /// <summary>
         /// txtPriceOrder control.
         /// </summary>
@@ -884,7 +886,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPriceOrder;
-        
+
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -893,7 +895,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-        
+
         /// <summary>
         /// txtDateOrder control.
         /// </summary>
@@ -902,7 +904,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateOrder;
-        
+
         /// <summary>
         /// txtSendOrder control.
         /// </summary>
@@ -911,7 +913,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSendOrder;
-        
+
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -920,7 +922,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// FileOrder control.
         /// </summary>
@@ -929,7 +931,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileOrder;
-        
+
         /// <summary>
         /// btnSaveOrder control.
         /// </summary>
@@ -938,7 +940,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveOrder;
-        
+
         /// <summary>
         /// TextBox1 control.
         /// </summary>
@@ -947,7 +949,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
+
         /// <summary>
         /// txtDateSendOrder control.
         /// </summary>
@@ -956,7 +958,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateSendOrder;
-        
+
         /// <summary>
         /// DivFine control.
         /// </summary>
@@ -965,7 +967,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivFine;
-        
+
         /// <summary>
         /// txtFine control.
         /// </summary>
@@ -974,7 +976,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFine;
-        
+
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -983,7 +985,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// FileUploadSendDoc control.
         /// </summary>
@@ -992,7 +994,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadSendDoc;
-        
+
         /// <summary>
         /// btnSaveSendDoc control.
         /// </summary>
@@ -1001,7 +1003,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveSendDoc;
-        
+
         /// <summary>
         /// txtProject control.
         /// </summary>
@@ -1010,7 +1012,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProject;
-        
+
         /// <summary>
         /// txtPerson1 control.
         /// </summary>
@@ -1019,7 +1021,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPerson1;
-        
+
         /// <summary>
         /// ddlPosition1 control.
         /// </summary>
@@ -1028,7 +1030,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPosition1;
-        
+
         /// <summary>
         /// txtPerson2 control.
         /// </summary>
@@ -1037,7 +1039,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPerson2;
-        
+
         /// <summary>
         /// ddlPosition2 control.
         /// </summary>
@@ -1046,7 +1048,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPosition2;
-        
+
         /// <summary>
         /// txtPerson3 control.
         /// </summary>
@@ -1055,7 +1057,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPerson3;
-        
+
         /// <summary>
         /// ddlPosition3 control.
         /// </summary>
@@ -1064,7 +1066,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPosition3;
-        
+
         /// <summary>
         /// btnTblQuan control.
         /// </summary>
@@ -1073,7 +1075,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnTblQuan;
-        
+
         /// <summary>
         /// btnShowCost control.
         /// </summary>
@@ -1082,7 +1084,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnShowCost;
-        
+
         /// <summary>
         /// txtappointdate control.
         /// </summary>
@@ -1091,7 +1093,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtappointdate;
-        
+
         /// <summary>
         /// txtappointNum control.
         /// </summary>
@@ -1100,7 +1102,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtappointNum;
-        
+
         /// <summary>
         /// FileUploadappoint control.
         /// </summary>
@@ -1109,7 +1111,7 @@ namespace ClaimProject.Techno {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadappoint;
-        
+
         /// <summary>
         /// btnappoint control.
         /// </summary>

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject {
-    
-    
-    public partial class SiteMaster {
-        
+namespace ClaimProject
+{
+
+
+    public partial class SiteMaster
+    {
+
         /// <summary>
         /// nav0 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav0;
-        
+
         /// <summary>
         /// nav1 control.
         /// </summary>
@@ -29,7 +31,43 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav1;
-        
+
+        /// <summary>
+        /// navAddClaim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navAddClaim;
+
+        /// <summary>
+        /// navLineClaim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navLineClaim;
+
+        /// <summary>
+        /// navHoldClaim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navHoldClaim;
+
+        /// <summary>
+        /// navstat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navstat;
+
         /// <summary>
         /// Li2 control.
         /// </summary>
@@ -38,7 +76,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li2;
-        
+
         /// <summary>
         /// Li3 control.
         /// </summary>
@@ -47,7 +85,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li3;
-        
+
         /// <summary>
         /// equipDiv control.
         /// </summary>
@@ -56,7 +94,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl equipDiv;
-        
+
         /// <summary>
         /// Li4 control.
         /// </summary>
@@ -65,7 +103,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li4;
-        
+
         /// <summary>
         /// nav2 control.
         /// </summary>
@@ -74,7 +112,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav2;
-        
+
         /// <summary>
         /// nav3 control.
         /// </summary>
@@ -83,7 +121,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav3;
-        
+
         /// <summary>
         /// Li1 control.
         /// </summary>
@@ -92,7 +130,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
-        
+
         /// <summary>
         /// searchEn control.
         /// </summary>
@@ -101,7 +139,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchEn;
-        
+
         /// <summary>
         /// lbUser control.
         /// </summary>
@@ -110,7 +148,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbUser;
-        
+
         /// <summary>
         /// btnLogout control.
         /// </summary>
@@ -119,7 +157,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnLogout;
-        
+
         /// <summary>
         /// lblText control.
         /// </summary>
@@ -128,7 +166,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblText;
-        
+
         /// <summary>
         /// MainContent control.
         /// </summary>
@@ -137,7 +175,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
-        
+
         /// <summary>
         /// txtUrlchk control.
         /// </summary>

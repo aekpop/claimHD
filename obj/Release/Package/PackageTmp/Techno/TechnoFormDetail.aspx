@@ -401,6 +401,11 @@
                                                 <asp:Image ID="ImgEstimate" runat="server" Width="200px" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="ชื่อ">
+                                            <ItemTemplate>
+                                                <asp:Label ID="filenameEstimate" runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Download">
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="btnDownload" runat="server" Font-Size="Small" CssClass="fa" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
@@ -423,6 +428,11 @@
                                         <asp:TemplateField HeaderText="เอกสารประกอบ">
                                             <ItemTemplate>
                                                 <asp:Image ID="ImgAppoint" runat="server" Width="200px" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="ชื่อ">
+                                            <ItemTemplate>
+                                                <asp:Label ID="filenameAppoint" runat="server" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Download">
@@ -453,7 +463,7 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-md">
-                                <h3>ข้อมูลใบสั่งจ้าง</h3>
+                                <h3>สั่งจ้าง</h3>
                             </div>
                         </div>
                         <div class="row">
@@ -487,7 +497,7 @@
                         <hr />
                         <div class="row">
                             <div class="col-md-3 text-right">
-                                อัพโหลดใบสั่งจ้างใหม่
+                                อัพโหลดเอกสารสั่งจ้าง
                             </div>
                             <div class="col-md-6">
                                 <asp:FileUpload ID="FileEditEQ" runat="server" CssClass="custom-file" lang="en" />
@@ -510,6 +520,11 @@
                                             <asp:Image ID="imgqua" runat="server" Width="200px" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="ชื่อ">
+                                        <ItemTemplate>
+                                            <asp:Label ID="filenameQuatation" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Download">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lbtnload" runat="server" Font-Size="Larger" CssClass="fa" OnCommand="lbtnload_Command">&#xf0ed;</asp:LinkButton>
@@ -525,7 +540,7 @@
                         <div runat="server" id="Div4">
                             <div class="row">
                                 <div class="col-md">
-                                    <h3>ข้อมูลใบส่งงาน</h3>
+                                    <h3>ส่งงาน</h3>
                                 </div>
                             </div>
                             <div class="row">
@@ -547,7 +562,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-3 text-right">
-                                    อัพโหลดใบส่งงานใหม่
+                                    อัพโหลดเอกสารส่งงาน
                                 </div>
                                 <div class="col-md-6">
                                     <asp:FileUpload ID="FileUpload2" runat="server" CssClass="custom-file" lang="en" />
@@ -573,6 +588,11 @@
                                         <asp:TemplateField HeaderText="ใบส่งงาน">
                                             <ItemTemplate>
                                                 <asp:Image ID="imgfinal" runat="server" Width="200px" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="ชื่อ">
+                                            <ItemTemplate>
+                                                <asp:Label ID="filenameFinal" runat="server" CssClass="col-2"/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Download">
@@ -619,19 +639,26 @@
                         OnRowDataBound="GridViewEtc_RowDataBound"
                         AutoGenerateColumns="False"
                         CssClass="table table-hover table-sm"
-                        OnRowDeleting="GridViewEtc_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-success">
+                        OnRowDeleting="GridViewEtc_RowDeleting"
+                        OnRowCommand="GridViewEtc_RowCommand"
+                        HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-success">
                         <Columns>
                             <asp:TemplateField HeaderText="เอกสารอื่นๆ">
                                 <ItemTemplate>
-                                    <asp:Image ID="ImgEtc" runat="server" Width="200px" />
+                                    <asp:Image ID="ImgEtc" runat="server" Width="100px" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ชื่อ">
+                                <ItemTemplate>
+                                    <asp:Label ID="namePDF" runat="server" Font-Size="Medium" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnDownload" runat="server" Font-Size="xx-large" CssClass="fa text-center" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
+                                    <asp:LinkButton ID="btnDownload" runat="server" Visible="true" Font-Size="Medium" CssClass="fa text-center" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:CommandField ShowDeleteButton="True" HeaderText="" DeleteText="&#xf014; " ControlStyle-CssClass="fa text-danger " ControlStyle-Font-Size="xx-large" />
+                            <asp:CommandField ShowDeleteButton="true" HeaderText="" DeleteText="&#xf014; " ControlStyle-CssClass="fa text-danger " ControlStyle-Font-Size="xx-large" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -688,7 +715,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md">
-                            <asp:DropDownList ID="ddlSelectQua" runat="server" name="form_select" onchange="showDiv('ddlCom', this)" class="btn btn-warning dropdown-toggle dropdown-toggle-split">
+                            <asp:DropDownList ID="ddlSelectQua" runat="server"  name="form_select" onchange="showDiv('ddlCom', this)" class="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -699,7 +726,7 @@
                                 <div class="row">
                                     <div class="col-md-3 text-right">ชื่อบริษัท : </div>
                                     <div class="col-md">
-                                        <asp:DropDownList ID="txtCompany" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
+                                        <asp:DropDownList ID="txtCompany" runat="server" CssClass="form-control custom-control col-md-6" ></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
@@ -707,8 +734,8 @@
                             <div class="row" id="ddlDevi">
                                 <div class="col-md-3 text-right">ชื่ออุปกรณ์ : </div>
                                 <div class="col-md">
-                                    <asp:DropDownList ID="ddlDevice" runat="server" CssClass="form-control custom-control col-md-6"></asp:DropDownList>
-                                </div>
+                                    <asp:DropDownList ID="ddlDevice" runat="server" CssClass="form-control custom-control col-md-8"></asp:DropDownList>
+                                </div>                               
                             </div>
                             <br />
                             <div class="row">
@@ -1181,7 +1208,6 @@
                 return false;
             }
             return true;
-        }       
-
+        }
     </script>
 </asp:Content>

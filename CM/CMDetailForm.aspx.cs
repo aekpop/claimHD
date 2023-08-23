@@ -88,7 +88,7 @@ namespace ClaimProject.CM
                     btnSaveCM.Visible = false;
                     btnEditCM.Visible = true;
                     btnCancelCM.Visible = true;
-                    statheader.Text = "แก้ไขข้อมูลแจ้งซ่อม";
+                    statheader.Text = "edit";
                     statheader.CssClass = "badge badge-warning";
 
                     if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
@@ -108,7 +108,7 @@ namespace ClaimProject.CM
                     btnEditCM.Visible = false;
                     btnCancelCM.Visible = false;
                     btnDeleteCM.Visible = false;
-                    statheader.Text = "แจ้งซ่อมอุปกรณ์ใหม่";
+                    statheader.Text = "NEW";
                     statheader.CssClass = "badge badge-danger";
                 }
             }
@@ -299,9 +299,13 @@ namespace ClaimProject.CM
                                     sysname = "MAM72";
                                     //sysname = "test";
                                 }
-                                else
+                                else if (txtCpoint.SelectedValue == "711" || txtCpoint.SelectedValue == "712" || txtCpoint.SelectedValue == "713" )
                                 {
                                     sysname = "MAM73";
+                                    //sysname = "test";
+                                }
+                                else
+                                {
                                     //sysname = "test";
                                 }
                             }
@@ -449,7 +453,7 @@ namespace ClaimProject.CM
             {
                 AlertPop("ล้มเหลว เกิดข้อผิดพลาด", "error");
             }
-            function.Close();
+            //function.Close();
         }
 
         protected void btnCancelCM_Click(object sender, EventArgs e)

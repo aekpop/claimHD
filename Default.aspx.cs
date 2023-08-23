@@ -25,11 +25,18 @@ namespace ClaimProject
                     {
                         Response.Redirect("/equip/EquipMain");
                     }
-                    else 
+                    else
                     {
                         Response.Redirect("/Claim/DefaultClaim");
                     }
-                    
+
+                }
+                else
+                {
+                    if (Session["UserPrivilegeId"].ToString() == "4")
+                    {
+                        Response.Redirect("/Claim/DefaultClaim");
+                    }                    
                 }
             }
 

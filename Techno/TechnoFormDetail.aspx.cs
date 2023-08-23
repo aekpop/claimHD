@@ -56,9 +56,8 @@ namespace ClaimProject.Techno
 
                     string sql = "SELECT * FROM tbl_company ORDER BY company_name";
                     function.getListItem(txtCompany, sql, "company_name", "company_id");
-                    string sqldevice = "SELECT * FROM tbl_device WHERE davice_group = '9' ORDER BY device_name";
+                    string sqldevice = "SELECT device_id, CONCAT(device_name,' - ',device_ref_Price) AS device_name FROM tbl_device WHERE davice_group = '9' AND davice_delete = '0' ORDER BY device_name";
                     function.getListItem(ddlDevice, sqldevice, "device_name", "device_id");
-                    //lbTitle.Text = Session["codePK"].ToString();
                     sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_delete = '0'";
                     function.getListItem(txtCompanyOrder, sql, "company_name", "company_id");
                     function.GetListQuantations(ddlSelectQua, 0);
@@ -66,7 +65,6 @@ namespace ClaimProject.Techno
                     function.GetList(ddlPosition2, "PosList");
                     function.GetList(ddlPosition3, "PosList");
                     function.GetListEstimate(ddlestimate, 0);
-
                     Session["Chk"] = "";
                 }
 
@@ -81,27 +79,10 @@ namespace ClaimProject.Techno
                     int num = 1;
                     foreach (string s in readText)
                     {
-                        /*  if (num != 8)
-                          {*/
                         AddControls(num, num + ". " + s + " จำนวน", Panel1);
-                        /* }
-                         else
-                         {
-                             AddControls(num, num + ". " + s + " " + function.GetSelectValue("tbl_claim_com", "claim_id='" + Session["codePK"].ToString() + "'", "claim_detail_insurer") + " จำนวน", Panel1);
-                         }*/
                         num++;
                     }
 
-                    /*string sql_doc = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON c.company_id = q.quotations_company_id WHERE q.quotations_claim_id = '" + Session["codePK"].ToString() + "'";
-                    MySqlDataReader rs = function.MySqlSelect(sql_doc);
-
-                    while (rs.Read())
-                    {
-                        AddControls(num, num + ". ใบประเมินราคาค่าเสียหาย ของ " + rs.GetString("company_name") + " จำนวน", Panel1);
-                        num++;
-                    }
-                    rs.Close();
-                    function.Close();*/
                     if (!this.IsPostBack)
                     {
                         getDataStatus3();
@@ -123,8 +104,9 @@ namespace ClaimProject.Techno
                 {
                     getDataStatus4();
                     getDataStatus5();
-                    BindImgEtc();
+                    //BindImgEtc();
                 }
+                BindImgEtc();
             }
             else
             {
@@ -292,7 +274,7 @@ namespace ClaimProject.Techno
                     estimate.Visible = false;
                     btns0.Enabled = false;
                     btns1.Enabled = false;
-                    btns2.Enabled = true;
+                    btns2.Enabled = false;
                     btns3.Enabled = true;
                     btn3_1.Enabled = false;
                     btns4.Enabled = false;
@@ -320,6 +302,7 @@ namespace ClaimProject.Techno
                 case "4.1":
                     Div3.Visible = true;
                     btn3_1.Enabled = false;
+                    estimate.Visible = true;
                     break;
                 case "5":
                     //btns0.Visible = false;
@@ -421,7 +404,8 @@ namespace ClaimProject.Techno
         protected void btnSaveQuotations_Click(object sender, EventArgs e)
         {
             double price = 0;
-
+            string stus = "";
+            // 2023/06/12 alb ข้ามไปสั่งจ้าง หรือ ส่งงาน 
             //string Prj = txtProject.Text;
             //Session.Add("HeadmesProject", Prj );
 
@@ -434,36 +418,74 @@ namespace ClaimProject.Techno
                     if (rs.Read())
                     {
                         price = rs.GetDouble("device_ref_Price");
-                        //rs.Close();
+                        stus = "4";
                     }
+                }
+                else
+                {
+                    stus = "3";
                 }
                 string sql = "INSERT INTO tbl_quotations (quotations_claim_id,quotations_company_id,quotations_company_price,quotations_note_number,quotations_delete,quotations_date_send,quotations_date_recive,quotations_doc_img,quotations_order,quotations_order_img,quotations_refer,quotations_device_id) VALUES ('" + Session["codePK"].ToString() + "','" + txtCompany.SelectedValue + "','" + price + "','" + txtNoteNumber.Text + "','0','" + txtDateQuotations.Text.Trim() + "','0','0','0','0','" + ddlSelectQua.SelectedIndex + "','" + ddlDevice.SelectedValue + "')";
                 //string script = "";
                 if (function.MySqlQuery(sql))
                 {
                     //script = "บันทึกสำเร็จ";
-                    sql = "SELECT * FROM tbl_status_detail WHERE detail_claim_id='" + Session["codePK"].ToString() + "' AND detail_status_id= '3'";
+                    sql = "SELECT * FROM tbl_status_detail WHERE detail_claim_id='" + Session["codePK"].ToString() + "' AND detail_status_id= '" + stus + "'";
                     MySqlDataReader rs = function.MySqlSelect(sql);
                     if (!rs.Read())
                     {
-                        rs.Close();
-                        function.Close();
-                        sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('3','" + Session["codePK"].ToString() + "','" + txtDateQuotations.Text.Trim() + "','" + function.ConvertDateTime(txtDateQuotations.Text.Trim(), Quotations) + "')";
+                        //rs.Close();
+                        //function.Close();
+                        sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('" + stus + "','" + Session["codePK"].ToString() + "','" + txtDateQuotations.Text.Trim() + "','" + function.ConvertDateTime(txtDateQuotations.Text.Trim(), Quotations) + "')";
                         if (function.MySqlQuery(sql))
                         {
-                            sql = "UPDATE tbl_claim SET claim_status = '3' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
+                            sql = "UPDATE tbl_claim SET claim_status = '" + stus + "' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
                             function.MySqlQuery(sql);
+                            BindConpaney();
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                            //function.AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+                            //Response.Redirect("/Techno/TechnoFormDetail");
+                            EnableBtn("" + stus + "");
+                            //getDataStatus3();
+                            //PageLoadData();
                         }
                     }
+
+                    if(stus == "3")
+                    {
+                        EnableBtn("3");
+                        getDataStatus3();
+                    }
+                    else
+                    {
+                        sql = "UPDATE tbl_claim_doc SET Estimate_num = 'Pending' ,Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "' " +
+                            " ,appoint_num = 'Pending' ,appoint_date = '" + function.ConvertDateTime(txtappointdate.Text.Trim(), 30) + "' " +
+                            " WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
+                        if (function.MySqlQuery(sql))
+                        {
+                            EnableBtn("4.1");
+                            getDataStatus3_1();
+                            getDataStatus3_2();
+                            //getDataStatus4();
+                        }
+                        else
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Error", "alert('Error Update Pending!!!')", true);
+                        }
+                    }
+                    PageLoadData();
                     rs.Close();
                     function.Close();
 
                     txtNoteNumber.Text = "";
                     txtCompany.SelectedIndex = 0;
-                    //Response.Redirect("/Techno/TechnoFormDetail");
                 }
-                BindConpaney();
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง')", true);
+                }
+                //BindConpaney();
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
             }
             else
             {
@@ -755,22 +777,24 @@ namespace ClaimProject.Techno
 
         protected void btnDocDownload_Command(object sender, CommandEventArgs e)
         {
-            DownLoad(e.CommandName.ToString());
+            DownLoad(e.CommandName.ToString() , "3");
         }
 
-        public void DownLoad(string FName)
+        public void DownLoad(string FName , string Sequence)
         {
             try
             {
                 string strURL = FName;
+                int Sequen = int.Parse(Sequence);
                 string[] typeFile = FName.Split('/');
+                string item = typeFile[Sequen];
                 WebClient req = new WebClient();
                 HttpResponse response = HttpContext.Current.Response;
                 response.Clear();
                 response.ClearContent();
                 response.ClearHeaders();
                 response.Buffer = true;
-                response.AddHeader("Content-Disposition", "attachment;filename=\"" + function.getMd5Hash(Session["CodePK"].ToString() + DateTime.Now) + "." + typeFile[typeFile.Length - 1].Split('.')[1] + "\"");
+                response.AddHeader("Content-Disposition", "attachment;filename=\"" + item + "");
                 byte[] data = req.DownloadData(Server.MapPath(strURL));
                 response.BinaryWrite(data);
                 response.End();
@@ -851,7 +875,6 @@ namespace ClaimProject.Techno
             }
 
         }
-
 
         void PrintReport(int doc)
         {
@@ -1084,7 +1107,7 @@ namespace ClaimProject.Techno
             if (FileOrder.HasFile)
             {
                 string typeFile = FileOrder.FileName.Split('.')[FileOrder.FileName.Split('.').Length - 1];
-                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
                 {
                     NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
@@ -1092,32 +1115,26 @@ namespace ClaimProject.Techno
 
                     sql = "INSERT INTO tbl_status_detail (detail_status_id,detail_claim_id,detail_date_start,detail_date_end) VALUES ('7','" + Session["codePK"].ToString() + "','" + txtDateOrder.Text.Trim() + "','" + function.ConvertDateTime(txtDateOrder.Text.Trim(), int.Parse(txtSendOrder.Text)) + "')";
                     if (function.MySqlQuery(sql))
-                        //{
-                        //sql = "UPDATE tbl_claim SET claim_status = '5' WHERE claim_id = '" + Session["codePK"].ToString() + "'";
-                        //function.MySqlQuery(sql);
-
+                    {
                         sql = "UPDATE tbl_quotations SET quotations_order='1', quotations_order_img='" + NewFileDocName + "' WHERE quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_company_id = '" + txtCompanyOrder.SelectedValue + "'";
-                    function.MySqlQuery(sql);
-                    getDataStatus4();
-                    Div3.Visible = true;
-                    btn3_1.Enabled = false;
-                    //}
-
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
-                    //Response.Redirect("/Techno/TechnoFormDetail");
+                        if (function.MySqlQuery(sql))
+                        {
+                            getDataStatus4();
+                            Div3.Visible = true;
+                            btn3_1.Enabled = false;
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('บันทึกสำเร็จ')", true);
+                        }                        
+                    }                    
                 }
                 else
                 {
-                    //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
                 }
             }
             else
             {
-                //AlertPop("Error : แนบรูปภาพล้มเหลวไม่พบไฟล์", "error");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
-
         }
 
         protected void txtCompanyOrder_SelectedIndexChanged(object sender, EventArgs e)
@@ -1153,7 +1170,7 @@ namespace ClaimProject.Techno
             else
             {
                 lbestimateNum.Text = "-";
-                Div3.Visible = false;
+                //Div3.Visible = false;
             }
         }
 
@@ -1178,21 +1195,21 @@ namespace ClaimProject.Techno
             else
             {
                 lbAppointNum.Text = "-";
-                Div3.Visible = false;
+                //Div3.Visible = false;
             }
         }
 
         void getDataStatus4()
         {
-            string chk = "0";
+            //string chk = "0";
             string sql = "SELECT * FROM tbl_company c JOIN tbl_quotations q ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["CodePK"].ToString() + "' AND q.quotations_order = '1'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
             {
-                if (rs["quotations_doc_img_send"] != System.DBNull.Value)
+                /*if (rs["quotations_doc_img_send"] != System.DBNull.Value)
                 {
                     chk = "1";
-                }
+                }*/
 
                 lbCompanyOrder.Text = rs.GetString("company_name");
                 lbPriceOrder.Text = double.Parse(rs.GetString("quotations_company_price")).ToString("#,##0.00") + " บาท";
@@ -1213,17 +1230,17 @@ namespace ClaimProject.Techno
             //lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '5'", "detail_date_end"));
             lbDateOrderStart.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '7'", "detail_date_start"));
             lbDateOrderEnd.Text = function.ConvertDatelongThai(function.GetSelectValue("tbl_status_detail", "detail_claim_id = '" + Session["CodePK"].ToString() + "' AND detail_status_id = '7'", "detail_date_end"));
-            if (lbDateOrderEnd.Text == "" && chk == "0")
-            {
-                Div3.Visible = false;
-            }
-            else
-            {
-                Div3.Visible = true;
-            }
+            //if (lbDateOrderEnd.Text == "" && chk == "0")
+            //{
+            //    Div3.Visible = false;
+            //}
+            //else
+            //{
+            //    Div3.Visible = true;
+            //}
+
+            //Div3.Visible = true;
         }
-
-
 
         protected void txtDateSendOrder_TextChanged(object sender, EventArgs e)
         {
@@ -1250,7 +1267,7 @@ namespace ClaimProject.Techno
             if (FileUploadSendDoc.HasFile)
             {
                 string typeFile = FileUploadSendDoc.FileName.Split('.')[FileUploadSendDoc.FileName.Split('.').Length - 1];
-                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
                 {
                     NewFileDocName = Session["CodePK"].ToString() + "_Order_Send" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
@@ -1415,10 +1432,18 @@ namespace ClaimProject.Techno
         {
             String NewFileDocName = "";
             string typeFile = file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
             {
-                NewFileDocName = Session["CodePK"].ToString() + new Random().Next(1000, 9999);
-                NewFileDocName = "/Claim/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                if (type == 5)
+                {
+                    NewFileDocName = "/Claim/Upload/" + new Random().Next(1000, 9999) + file.FileName;
+                }
+                else
+                {
+                    NewFileDocName = Session["CodePK"].ToString() + new Random().Next(1000, 9999);
+                    NewFileDocName = "/Claim/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                }
+
                 file.SaveAs(Server.MapPath(NewFileDocName.ToString()));
 
                 string sql_text = "claim_img_url,claim_deteil_id,claim_img_type";
@@ -1502,7 +1527,6 @@ namespace ClaimProject.Techno
             }
         }
 
-
         protected void FileNoteGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + FileNoteGridView.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
@@ -1520,12 +1544,12 @@ namespace ClaimProject.Techno
 
         protected void btnDownload_Command(object sender, CommandEventArgs e)
         {
-            DownLoad(e.CommandArgument.ToString());
+            DownLoad(e.CommandArgument.ToString() , "3");
         }
 
         protected void lbtnload_Command(object sender, CommandEventArgs e) //โหลดใบสั่งจ้าง
         {
-            DownLoad(e.CommandName.ToString());
+            DownLoad(e.CommandName.ToString() , "4");
         }
 
         protected void gridquatation_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1533,13 +1557,32 @@ namespace ClaimProject.Techno
             Image imgqua = (Image)e.Row.FindControl("imgqua");
             if (imgqua != null)
             {
-                imgqua.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+                string typeFile = (string)DataBinder.Eval(e.Row.DataItem, "quotations_order_img");
+                string ext = Path.GetExtension(typeFile);
+                if (ext == ".pdf")
+                {
+                    imgqua.ImageUrl = "/Claim/Upload/img_pdf.png";
+                }
+                else
+                {
+                    imgqua.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
+                }
+
+                /*imgqua.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString();
                 if (imgqua.ImageUrl == "")
                 {
                     imgqua.Visible = false;
+                } */
+                Label filenameQuatation = (Label)(e.Row.FindControl("filenameQuatation"));
+                if (filenameQuatation != null)
+                {
+                    string[] data = DataBinder.Eval(e.Row.DataItem, "quotations_order_img").ToString().Split('/');
+                    if(data.Length > 1)
+                    {
+                        filenameQuatation.Text = data[4];
+                    }                   
                 }
             }
-
 
             LinkButton lbtnload = (LinkButton)(e.Row.FindControl("lbtnload"));
             if (lbtnload != null)
@@ -1590,7 +1633,7 @@ namespace ClaimProject.Techno
             if (FileEditEQ.HasFile)
             {
                 string typeFile = FileEditEQ.FileName.Split('.')[FileEditEQ.FileName.Split('.').Length - 1];
-                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
                 {
                     NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
@@ -1621,17 +1664,37 @@ namespace ClaimProject.Techno
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลวไม่พบไฟล์')", true);
             }
         }
-
-        //โหลดภาพ ส่งงาาน
+        //โหลดภาพ ส่งงาน
         protected void gridFinal_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Image imgfinal = (Image)e.Row.FindControl("imgfinal");
+            string typeFile = "";
+
             if (imgfinal != null)
             {
-                imgfinal.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
+                typeFile = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
+                string ext = Path.GetExtension(typeFile);
+
+                if (ext == ".pdf")
+                {
+                    imgfinal.ImageUrl = "/Claim/Upload/img_pdf.png";
+                }
+                else
+                {
+                    imgfinal.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
+                }
+
+                //imgfinal.ImageUrl = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString();
                 if (imgfinal.ImageUrl == "")
                 {
                     imgfinal.Visible = false;
+                }
+
+                Label filenameFinal = (Label)(e.Row.FindControl("filenameFinal"));
+                if (filenameFinal != null && filenameFinal.Text != "")
+                {
+                    string[] data = DataBinder.Eval(e.Row.DataItem, "quotations_doc_img_send").ToString().Split('/');
+                    filenameFinal.Text = data[4];
                 }
             }
 
@@ -1683,15 +1746,16 @@ namespace ClaimProject.Techno
 
         protected void lbtnloadfinal_Command(object sender, CommandEventArgs e)
         {
-            DownLoad(e.CommandName.ToString());
+            DownLoad(e.CommandName.ToString() , "4");
         }
+
         protected void lbtnchangefinalimg_Command(object sender, CommandEventArgs e)
         {
             String NewFileDocName = "";
             if (FileUpload2.HasFile)
             {
                 string typeFile = FileUpload2.FileName.Split('.')[FileUpload2.FileName.Split('.').Length - 1];
-                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+                if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
                 {
                     NewFileDocName = Session["CodePK"].ToString() + "_Order" + Quotations_id + new Random().Next(1000, 9999);
                     NewFileDocName = "/Techno/Upload/Order/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
@@ -1793,30 +1857,6 @@ namespace ClaimProject.Techno
                         sql = "UPDATE tbl_claim_doc SET Estimate_num = '" + txtestimateNum.Text + "' , Estimate_date = '" + function.ConvertDateTime(txtestimateDay.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
                         if (function.MySqlQuery(sql))
                         {
-                            //if (FileUploadstimate1.HasFile || FileUploadstimate2.HasFile || FileUploadstimate3.HasFile)
-                            //{
-                            //    foreach (HttpPostedFile postedFile in FileUploadstimate1.PostedFiles)
-                            //    {
-                            //        Insert(3, postedFile);
-                            //    }
-
-                            //    foreach (HttpPostedFile postedFile in FileUploadstimate2.PostedFiles)
-                            //    {
-                            //        Insert(3, postedFile);
-                            //    }
-
-                            //    foreach (HttpPostedFile postedFile in FileUploadstimate3.PostedFiles)
-                            //    {
-                            //        Insert(3, postedFile);
-                            //    }
-
-                            //    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
-                            //    Response.Redirect("/Techno/TechnoFormDetail");
-                            //}
-                            //else
-                            //{
-                            //    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
-                            //}
                             UploadFile();
                         }
                         else
@@ -1910,6 +1950,9 @@ namespace ClaimProject.Techno
 
         protected void btn3_1_Click(object sender, EventArgs e)
         {
+            string sql = "SELECT * FROM tbl_quotations q JOIN tbl_company c ON q.quotations_company_id = c.company_id WHERE q.quotations_claim_id = '" + Session["codePK"].ToString() + "' AND quotations_delete = '0'";
+            function.getListItem(txtCompanyOrder, sql, "company_name", "company_id");
+
             if (lbAppointNum.Text == "-" && lbestimateNum.Text == "-")
             {
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#alertModel').modal();", true);
@@ -1919,8 +1962,6 @@ namespace ClaimProject.Techno
                 getPrice();
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
             }
-            //getPrice();
-            //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#WaitQuotationsModel').modal();", true);
         }
 
         protected void lbtnEditEstimate_Command(object sender, CommandEventArgs e)
@@ -1936,7 +1977,24 @@ namespace ClaimProject.Techno
             Image ImgEstimate = (Image)(e.Row.FindControl("ImgEstimate"));
             if (ImgEstimate != null)
             {
-                ImgEstimate.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                //ImgEstimate.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string typeFile = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string ext = Path.GetExtension(typeFile);
+                if (ext == ".pdf")
+                {
+                    ImgEstimate.ImageUrl = "/Claim/Upload/img_pdf.png";
+                }
+                else
+                {
+                    ImgEstimate.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                }
+
+                Label filenameEstimate = (Label)(e.Row.FindControl("filenameEstimate"));
+                if (filenameEstimate != null)
+                {
+                    string[] data = DataBinder.Eval(e.Row.DataItem, "claim_img_url").ToString().Split('/');
+                    filenameEstimate.Text = data[3];
+                }
             }
 
             LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
@@ -1976,7 +2034,25 @@ namespace ClaimProject.Techno
             Image ImgAppoint = (Image)(e.Row.FindControl("ImgAppoint"));
             if (ImgAppoint != null)
             {
-                ImgAppoint.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                //ImgAppoint.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string typeFile = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string ext = Path.GetExtension(typeFile);
+
+                if (ext == ".pdf")
+                {
+                    ImgAppoint.ImageUrl = "/Claim/Upload/img_pdf.png";
+                }
+                else
+                {
+                    ImgAppoint.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                }
+            }
+
+            Label filenameAppoint = (Label)(e.Row.FindControl("filenameAppoint"));
+            if (filenameAppoint != null)
+            {
+                string[] data = DataBinder.Eval(e.Row.DataItem, "claim_img_url").ToString().Split('/');
+                filenameAppoint.Text = data[3];
             }
 
             LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
@@ -2017,7 +2093,7 @@ namespace ClaimProject.Techno
 
         protected void btnappoint_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE tbl_claim_doc SET appoint_num = '" + txtappointNum.Text + "' , appoint_date = '" + function.ConvertDateTime(txtappointdate.Text.Trim(), 30) + "'WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
+            string sql = "UPDATE tbl_claim_doc SET appoint_num = '" + txtappointNum.Text + "' , appoint_date = '" + txtappointdate.Text + "' WHERE claim_doc_id = '" + Session["codePK"].ToString() + "' ";
             if (function.MySqlQuery(sql))
             {
                 if (FileUploadappoint.HasFile)
@@ -2030,10 +2106,14 @@ namespace ClaimProject.Techno
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('แก้ไขสำเร็จ')", true);
                     Response.Redirect("/Techno/TechnoFormDetail");
                 }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ไม่พบไฟล์อัพโหลด')", true);
+                }
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ไม่สามารถทำรายงานได้')", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('ไม่สามารถทำรายการได้')", true);
             }
         }
 
@@ -2052,6 +2132,8 @@ namespace ClaimProject.Techno
                 //AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
             }
+
+            BindImgEtc();
         }
 
         protected void GridViewEtc_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -2059,7 +2141,17 @@ namespace ClaimProject.Techno
             Image ImgEtc = (Image)(e.Row.FindControl("ImgEtc"));
             if (ImgEtc != null)
             {
-                ImgEtc.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string typeFile = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string ext = Path.GetExtension(typeFile);
+
+                if (ext == ".pdf")
+                {
+                    ImgEtc.ImageUrl = "/Claim/Upload/img_pdf.png";
+                }
+                else
+                {
+                    ImgEtc.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                }                
             }
 
             LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDownload"));
@@ -2072,9 +2164,16 @@ namespace ClaimProject.Techno
             {
                 try
                 {
-                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการรูปภาพแนบ ใช่หรือไม่');";
+                    ((LinkButton)e.Row.Cells[2].Controls[0]).OnClientClick = "return confirm('ต้องการลบรูปภาพแนบ ใช่หรือไม่');";
                 }
                 catch { }
+            }
+
+            Label namePDF = (Label)(e.Row.FindControl("namePDF"));
+            if (namePDF != null)
+            {
+                string[] data = DataBinder.Eval(e.Row.DataItem, "claim_img_url").ToString().Split('/');
+                namePDF.Text = data[3];
             }
         }
 
@@ -2098,6 +2197,45 @@ namespace ClaimProject.Techno
         {
             //BindConpaney();
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#QuotationsModel').modal();", true);
+
+        }
+
+        protected void GridViewEtc_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            /*string fileId = (string)e.CommandArgument;
+            string folderPath = Server.MapPath(fileId);
+            string[] item = fileId.Split('/');
+            string fileName = item[3];
+
+            if (fileId != null)
+            {
+                string pdfPath = folderPath;
+
+                StreamReader streamReader = new StreamReader(pdfPath);
+
+                Stream stream = streamReader.BaseStream;
+
+                BinaryReader binaryReader = new BinaryReader(stream);
+
+                byte[] sendbyteArray = binaryReader.ReadBytes(Convert.ToInt32(binaryReader.BaseStream.Length));
+
+                if (e.CommandName.Equals("View"))
+                {
+                    Response.ContentType = "application/pdf";
+                    Response.AddHeader("Content-Type", "application/pdf");
+                    Response.AddHeader("Content-Disposition", "inline");
+                    Response.BinaryWrite(sendbyteArray);
+                    Response.End();
+                }
+
+                if (e.CommandName.Equals("Download"))
+                {
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename= " + fileName + " ");
+                    Response.BinaryWrite(sendbyteArray);
+                    Response.End();
+                }
+            }*/
         }
     }
 }

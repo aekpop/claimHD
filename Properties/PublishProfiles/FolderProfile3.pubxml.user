@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Publish</_PublishTargetUrl>
-    <History>True|2023-04-27T04:18:42.3113480Z;False|2023-04-26T10:50:41.6012240+07:00;False|2023-04-26T10:50:12.6385087+07:00;False|2023-04-26T10:48:47.3639679+07:00;</History>
+    <History>True|2023-06-19T08:50:05.7628650Z;True|2023-06-08T17:00:08.4357698+07:00;True|2023-04-27T11:18:42.3113480+07:00;False|2023-04-26T10:50:41.6012240+07:00;False|2023-04-26T10:50:12.6385087+07:00;False|2023-04-26T10:48:47.3639679+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -36,13 +36,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>04/27/2023 10:53:15</publishTime>
+      <publishTime>06/19/2023 15:49:57</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>04/27/2023 10:53:15</publishTime>
+      <publishTime>06/19/2023 15:49:57</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>04/27/2023 10:53:17</publishTime>
+      <publishTime>06/19/2023 15:49:59</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.Data.AdoDotNetInterop.dll">
       <publishTime>08/31/2017 05:29:44</publishTime>
@@ -519,7 +519,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/10/2018 10:56:04</publishTime>
     </File>
     <File Include="Claim/claimDetailForm.aspx">
-      <publishTime>11/30/2022 14:49:37</publishTime>
+      <publishTime>06/08/2023 12:46:59</publishTime>
     </File>
     <File Include="Claim/ClaimDevice.aspx">
       <publishTime>10/17/2022 16:10:51</publishTime>
@@ -535,6 +535,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Claim/Upload/chrome_installer.exe">
       <publishTime>04/26/2023 11:22:42</publishTime>
+    </File>
+    <File Include="Claim/Upload/img_pdf.png">
+      <publishTime>06/07/2023 19:57:59</publishTime>
     </File>
     <File Include="CM/asanaForm.aspx">
       <publishTime>01/05/2023 10:58:12</publishTime>
@@ -4284,7 +4287,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/11/2022 12:41:11</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>03/04/2023 15:14:43</publishTime>
+      <publishTime>06/16/2023 20:47:19</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>01/10/2022 15:39:43</publishTime>
@@ -4305,7 +4308,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/19/2018 10:52:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormDetail.aspx">
-      <publishTime>03/04/2023 15:44:22</publishTime>
+      <publishTime>06/19/2023 14:06:52</publishTime>
     </File>
     <File Include="Techno/TechnoFormView.aspx">
       <publishTime>11/24/2022 13:23:41</publishTime>

@@ -324,6 +324,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Claim\Upload\img_pdf.png" />
+    <Content Include="Scripts\custom-signin.js" />
     <Content Include="TransitCard.aspx" />
     <Content Include="car\car.aspx" />
     <Content Include="Claim\300px-Thai_government_Garuda_emblem_%28Version_2%29.jpg" />

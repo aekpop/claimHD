@@ -61,12 +61,13 @@ namespace ClaimProject
                 {
                     ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
                 }
+                
+                //if (Session["UserPrivilegeId"].ToString() == "0") //Admin
+                //{
+                //    lbtnGoReport.Visible = true;
+                //    lbtnGoReportCopy.Visible = true;
+                //}
 
-                if (Session["UserPrivilegeId"].ToString() == "0") //Admin
-                {
-                    lbtnGoReport.Visible = true;
-                    lbtnGoReportCopy.Visible = true;
-                }
             }
             LineTran();
             LoadPaging();
@@ -75,6 +76,37 @@ namespace ClaimProject
                 string msgAlert = Session["alert"].ToString();
                 AlertPop(msgAlert, "success");
                 Session["alert"] = "";
+            }
+
+            switch (Session["UserPrivilegeId"].ToString())
+            {
+                case "0":
+                    lbtnGoReport.Visible = true;
+                    lbtnGoReportCopy.Visible = true;
+                    break;
+                case "1"://เทคโน
+                    
+                    break;
+                case "2"://คอม
+                    
+                    //btnPrintNoteSup.Visible = true;
+                    break;
+                case "3"://รอง
+                    
+                    //btnPrintNoteSup.Visible = true;
+                    break;
+                case "4"://สถิติ
+                    
+                    //btnPrintNoteSup.Visible = false;
+                    break;
+                case "6"://viewer
+
+                    //btnPrintNoteSup.Visible = false;
+                    break;
+                default:
+                    
+                    //btnPrintNoteSup.Visible = false;
+                    break;
             }
         }
         protected void LineTran()
@@ -133,6 +165,7 @@ namespace ClaimProject
                 type = Request.Params["t"];
                 status = Request.Params["s"];
                 AddPM.Visible = false;
+                GrpNewTrans.Visible = false;
             }
             else
             {

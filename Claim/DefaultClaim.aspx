@@ -194,7 +194,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-history fa-2x text-gray-300 text-info"></i>
+                                <i class="fas fa-table fa-2x text-gray-300 text-info"></i>
                             </div>
                         </div>
                         <div class="row">
@@ -211,21 +211,21 @@
                                             </tr>
                                             <tr class="">
                                                 <th scope="row" class="text-center"></th>
-                                                <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">ส่งเรื่องเข้ากองฯ</td>
+                                                <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">รายงานอุบัติเหตุ (ส่งกอง)</td>
                                                 <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">
                                                     <asp:Label ID="lbTotalSta2" runat="server"></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr class="">
                                                 <th scope="row" class="text-center"></th>
-                                                <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">ขอใบเสนอราคา</td>
+                                                <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">เสนอราคา</td>
                                                 <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">
                                                     <asp:Label ID="lbTotalSta3" runat="server"></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr class="">
                                                 <th scope="row" class="text-center"></th>
-                                                <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">อยู่ระหว่างการซ่อม</td>
+                                                <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">ประเมินราคา (ส่งนิติกร)</td>
                                                 <td class="text-nowrap" style="font-size: 15px; font-family: 'Prompt', sans-serif;">
                                                     <asp:Label ID="lbTotalSta4" runat="server"></asp:Label>
                                                 </td>

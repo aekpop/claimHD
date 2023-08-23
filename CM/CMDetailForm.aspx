@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group bmd-form-group">
-                                <asp:Label runat="server">หมายเลขช่องทาง</asp:Label>
+                                <asp:Label runat="server">สถานที่</asp:Label>
                                 <asp:DropDownList ID="ddlChanel" runat="server" CssClass="form-control dropdown"></asp:DropDownList>
                             </div>
                         </div>

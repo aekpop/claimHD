@@ -42,7 +42,7 @@ namespace ClaimProject
             }
             else
             {
-                lbUser.Text = Session["UserName"].ToString() + " " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name" ) +" "+ function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
+                lbUser.Text = Session["UserName"].ToString() + " " + Session["UserPrivilege"] + " " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + Session["UserCpoint"].ToString() + "'", "cpoint_name") + " " + function.GetSelectValue("tbl_annex", "Annex_id='" + Session["Userpoint"].ToString() + "'", "Annex_name");
 
                 if (function.CheckLevel("Techno", Session["UserPrivilegeId"].ToString()))
                 {
@@ -57,11 +57,10 @@ namespace ClaimProject
                         Li2.Visible = false;
                         nav3.Visible = true;
                     }
-                        
                 }
                 else
                 {
-                    if(Session["UserPrivilegeId"].ToString() == "5")
+                    if (Session["UserPrivilegeId"].ToString() == "5")
                     {
                         if (Session["UserCpoint"].ToString() == "0")
                         {
@@ -76,6 +75,7 @@ namespace ClaimProject
                             Li4.Visible = true;
                         }
                         else
+                        //ธุรการด่านฯ
                         {
                             nav3.Visible = false;
                             equipDiv.Visible = true;
@@ -86,8 +86,12 @@ namespace ClaimProject
                             searchEn.Visible = false;
                             Li3.Visible = false;
                             Li4.Visible = false;
+                            navAddClaim.Visible = false;
+                            navLineClaim.Visible = false;
+                            navstat.Visible = false;
+                            //navheadstat.Visible = false;
                         }
-                        
+
                     }
                     else if (Session["UserPrivilegeId"].ToString() == "4")
                     {
@@ -97,23 +101,38 @@ namespace ClaimProject
                         Li3.Visible = false;
                         Li2.Visible = false;
                         Li4.Visible = false;
+                        nav0.Visible = false;
+                        navAddClaim.Visible = false;
+                        navLineClaim.Visible = false;
                     }
                     else
                     {
                         equipDiv.Visible = true;
                         nav3.Visible = false;
                     }
-                    
                 }
 
                 if (!function.CheckLevel("Department", Session["UserPrivilegeId"].ToString()))
                 {
-                        nav0.Visible = false;
-                        //nav6.Visible = false;
-                        Li3.Visible = false;
-                        Li4.Visible = false;
+                    nav0.Visible = false;
+                    //nav6.Visible = false;
+                    Li3.Visible = false;
+                    Li4.Visible = false;
                 }
-                
+
+                if (function.CheckLevel("Viewer", Session["UserPrivilegeId"].ToString()))
+                {
+                    nav3.Visible = false;
+                    //equipDiv.Visible = false;
+                    searchEn.Visible = false;
+                    Li3.Visible = false;
+                    Li2.Visible = false;
+                    Li4.Visible = false;
+                    nav0.Visible = false;
+                    navAddClaim.Visible = false;
+                    navLineClaim.Visible = false;
+                    navHoldClaim.Visible = false;
+                }
             }
         }
         public string UserName()

@@ -104,13 +104,19 @@
                     <Columns>
                         <asp:TemplateField HeaderText="ลำดับ">
                             <ItemTemplate>
-                                <asp:Label ID="lbClaimNumrow" Text='<%#  Container.DataItemIndex + 1 %>' runat="server" />
+                                <%# Container.DataItemIndex + 1+"." %>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="เลขที่(ฝ่ายฯ)">
+                        <asp:TemplateField HeaderText="เลขควบคุม">
                             <ItemTemplate>
-                                <asp:Label ID="lbTechnoNumdoc" runat="server" Text='<%#DataBinder.Eval(Container, "DataItem.techno_doc_num")+" /"+DataBinder.Eval(Container, "DataItem.techno_doc_date") %>' ></asp:Label>
+                                <asp:Label ID="lbCCnum" runat="server" Text='<%#DataBinder.Eval(Container, "DataItem.claim_auto_id") %>'  />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="ต้นเรื่อง">
+                            <ItemTemplate>
+                                <asp:Label ID="lbTechnoNumdoc" runat="server" Text='<%#DataBinder.Eval(Container, "DataItem.techno_doc_num") %>' ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -129,7 +135,7 @@
                                 <asp:Label ID="lbClaimDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="อาการที่ชำรุด"  ControlStyle-Width="250px">
+                        <asp:TemplateField HeaderText="ความเสียหาย"  ControlStyle-Width="250px">
                             <ItemTemplate>
                                 <asp:Label ID="lbClaimProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_damaged") %>'></asp:Label>
                             </ItemTemplate>
@@ -144,16 +150,15 @@
                                 <asp:Label ID="lbClaimSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.claim_detail_time")+" น." %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="นับเวลา">
+                        <asp:TemplateField HeaderText="นับเวลา" Visible="false">
                         <ItemTemplate>
-                            <asp:Label ID="lbDay" runat="server"></asp:Label>
+                            <asp:Label ID="lbDay" runat="server" Visible="false"></asp:Label>
                         </ItemTemplate>
                         </asp:TemplateField>
 
-
-                        <asp:TemplateField HeaderText="สถานะ">
+                        <asp:TemplateField HeaderText="สถานะ" Visible="false">
                             <ItemTemplate>
-                                <asp:Label ID="lbClaimStatus" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
+                                <asp:Label ID="lbClaimStatus" runat="server" Visible="false" Text='<%# DataBinder.Eval(Container, "DataItem.status_name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>                    

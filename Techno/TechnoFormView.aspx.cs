@@ -147,7 +147,7 @@ namespace ClaimProject.Techno
             {
                 if(search != "1")
                 {
-                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status " +
+                    sql = "SELECT c.claim_id, ci.claim_auto_id, tbl_cpoint.cpoint_name, c.claim_user_start_claim_time, tbl_status.status_name, c.claim_equipment, c.claim_start_date, sd.detail_date_start, tbl_status.status_alert FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status " +
                     "LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id " +
                     "AND sd.detail_status_id = c.claim_status LEFT JOIN tbl_claim_auto_id ci ON c.claim_id = ci.claim_id " +
                     "WHERE c.claim_delete = '0' AND c.claim_status = '" + status + "' AND claim_budget_year = '" + year + "' " +
@@ -156,7 +156,7 @@ namespace ClaimProject.Techno
                 }
                 else
                 {
-                    sql = "SELECT * FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status " +
+                    sql = "SELECT c.claim_id, ci.claim_auto_id, tbl_cpoint.cpoint_name, c.claim_user_start_claim_time, tbl_status.status_name, c.claim_equipment, c.claim_start_date, sd.detail_date_start, tbl_status.status_alert FROM tbl_claim c JOIN tbl_cpoint ON claim_cpoint = cpoint_id JOIN tbl_status ON status_id = claim_status " +
                     "LEFT JOIN tbl_user ON username=claim_user_start_claim JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id " +
                     "AND sd.detail_status_id = c.claim_status LEFT JOIN tbl_claim_auto_id ci ON c.claim_id = ci.claim_id " +
                     "WHERE c.claim_delete = '0' " +

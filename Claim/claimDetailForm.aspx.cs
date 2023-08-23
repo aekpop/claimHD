@@ -74,14 +74,45 @@ namespace ClaimProject.Claim
                     BindDevice();
                     BindImg();
                     BindDoc();
+                    BindPDF();
                     PageLoadData();
                     /*if(function.GetSelectValue("tbl_claim","claim_id='"+ Session["CodePK"].ToString()+"'", "claim_status") != "1")
                     {
                         cardBody.Attributes.Add("readonly","true");
                     }*/
+
+                    //กำหนดสิทธิ์
+                    switch (Session["UserPrivilegeId"].ToString())
+                    {
+                        case "0":
+                            break;
+                        case "1"://เทคโน
+
+                            break;
+                        case "2"://คอม
+
+                            //btnPrintNoteSup.Visible = true;
+                            break;
+                        case "3"://รอง
+
+                            //btnPrintNoteSup.Visible = true;
+                            break;
+                        case "4"://สถิติ
+
+                            //btnPrintNoteSup.Visible = false;
+                            break;
+                        case "6"://viewer
+                            btnSaveReport.Visible = false;
+                            //btnPrintNoteSup.Visible = false;
+                            break;
+                        default:
+
+                            //btnPrintNoteSup.Visible = false;
+                            break;
+                    }
                 }
             }
-            catch { }
+            catch { AlertPop("network fails กรุณาทำรายการใหม่อีกครั้ง", "error"); }
         }
 
         protected void btnPrintNote_Click(object sender, EventArgs e)
@@ -170,17 +201,28 @@ namespace ClaimProject.Claim
 
         protected void btnAddDeviceBroken_Click(object sender, EventArgs e)
         {
-            if (txtDeviceBroken.Text != "" && txtDevice.SelectedValue != "")
-            {
-                string sql = "INSERT INTO tbl_device_damaged (device_id,device_damaged,claim_id,device_damaged_delete) VALUES ('" + txtDevice.SelectedValue + "','" + txtDeviceBroken.Text.Trim() + "','" + Session["CodePK"].ToString() + "','0')";
-                function.MySqlQuery(sql);
-                txtDevice.SelectedIndex = 0;
-                txtDeviceBroken.Text = "";
-                BindDevice();
+            if (CheckDeviceNotDamaged.Checked) {
+            
+                AlertPop("แจ้งเพื่อทราบ (อุปกรณ์ไม่ได้รับความเสียหาย) ไม่สามารถเพิ่มอุปกรณ์ได้ ", "error");
             }
+            else
+            {
+                if (txtDeviceBroken.Text != "" && txtDevice.SelectedValue != "")
+                {
+                    string sql = "INSERT INTO tbl_device_damaged (device_id,device_damaged,claim_id,device_damaged_delete) VALUES ('" + txtDevice.SelectedValue + "','" + txtDeviceBroken.Text.Trim() + "','" + Session["CodePK"].ToString() + "','0')";
+                    function.MySqlQuery(sql);
+                    BindDevice();
+                }
+                else
+                {
+                    AlertPop("ไม่สามารถเพิ่มอุปกรณ์ได้ กรุณาตรวจสอบอีกครั้ง", "error");
+                }
+            }
+            txtDevice.SelectedIndex = 0;
+            txtDeviceBroken.Text = "";
         }
 
-        protected void FileGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+            protected void FileGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Image ImgClaim = (Image)(e.Row.FindControl("ImgClaim"));
             if (ImgClaim != null)
@@ -207,8 +249,8 @@ namespace ClaimProject.Claim
         protected void FileGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + FileGridView.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
-
             string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + FileGridView.DataKeys[e.RowIndex].Value + "'";
+
             if (function.MySqlQuery(sql_delete))
             {
                 if (File.Exists(Server.MapPath(partFile)))
@@ -312,7 +354,6 @@ namespace ClaimProject.Claim
             if (RadioButton3.Checked) { txtInsurer.Text = ""; } else { }
 
             string sql_check = "SELECT * FROM tbl_claim WHERE claim_id='" + Session["CodePK"].ToString() + "'";
-
             string note_number = "กท./ฝจ./" + txtCpoint.SelectedItem;
 
             if (txtPoint.Text.Trim().ToLower() != "tsb" && txtPoint.Text.Trim().ToLower() != "") { note_number += " " + txtPoint.Text.Trim(); }
@@ -365,6 +406,7 @@ namespace ClaimProject.Claim
                         ", claim_detail_accident='" + txtDetail.Text + "'" +
                         ", claim_detail_supervisor='" + txtSup.Text + "'" +
                         ", claim_detail_supervisor_pos='" + txtPosSup.SelectedItem + "'";
+
                     if (txtBrandCar.SelectedItem.ToString() == "")
                     {
                         text += ", claim_detail_car = '" + txtTypeCar.SelectedItem + " ,," + txtBrandCar.SelectedItem + " ,สี," + txtColorCar.Text.Trim() + "' ";
@@ -598,7 +640,6 @@ namespace ClaimProject.Claim
                 txtAddressDriver.Text = rs.GetString("claim_detail_address");
                 txtTelDrive.Text = rs.GetString("claim_detail_tel");
                 txtComeFrom.Text = rs.GetString("claim_detail_comefrom");
-
                 txtLp2.Text = rs.GetString("claim_detail_lp2");
                 txtInsurer.Text = rs.GetString("claim_detail_insurer");
                 txtPolicyholders.Text = rs.GetString("claim_detail_policyholders");
@@ -635,6 +676,7 @@ namespace ClaimProject.Claim
             rs.Close();
             string firstsql = "SELECT * FROM tbl_claim_com WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '1'";
             MySqlDataReader fst = function.MySqlSelect(firstsql);
+
             if (fst.Read())
             {
                 divcar2.Visible = true;
@@ -652,9 +694,20 @@ namespace ClaimProject.Claim
         protected void UploadDocGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Image ImgClaim = (Image)(e.Row.FindControl("DocClaim"));
+            
             if (ImgClaim != null)
             {
-                ImgClaim.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string typeFile = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                string ext = Path.GetExtension(typeFile);
+
+                if (ext == ".pdf")
+                {
+                    ImgClaim.ImageUrl = "/Claim/Upload/img_pdf.png";
+                }
+                else
+                {
+                    ImgClaim.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+                }
             }
 
             LinkButton btnDownload = (LinkButton)(e.Row.FindControl("btnDocDownload"));
@@ -676,7 +729,6 @@ namespace ClaimProject.Claim
         protected void UploadDocGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + UploadDocGridView.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
-
             string sql_delete = "DELETE FROM tbl_claim_img WHERE claim_img_id = '" + UploadDocGridView.DataKeys[e.RowIndex].Value + "'";
 
             if (function.MySqlQuery(sql_delete))
@@ -692,7 +744,6 @@ namespace ClaimProject.Claim
         void BindDoc()
         {
             string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '1'";
-
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
@@ -721,26 +772,31 @@ namespace ClaimProject.Claim
         {
             String NewFileDocName = "";
             string typeFile = file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png")
+            if (typeFile == "jpg" || typeFile == "jpeg" || typeFile == "png" || typeFile == "pdf")
             {
-                NewFileDocName = Session["CodePK"].ToString() + new Random().Next(1000, 9999);
-                NewFileDocName = "/Claim/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                if(type == 6)
+                {
+                    NewFileDocName = "/Claim/Upload/" + file.FileName;
+                }else{
+                    NewFileDocName = Session["CodePK"].ToString() + new Random().Next(1000, 9999);
+                    NewFileDocName = "/Claim/Upload/" + function.getMd5Hash(NewFileDocName) + "." + typeFile;
+                }
+                
                 file.SaveAs(Server.MapPath(NewFileDocName.ToString()));
 
                 string sql_text = "claim_img_url,claim_deteil_id,claim_img_type";
                 string sql_value = "'" + NewFileDocName + "','" + Session["CodePK"].ToString() + "','" + type + "'";
                 string sql_insert = "INSERT INTO tbl_claim_img (" + sql_text + ") VALUES (" + sql_value + ")";
-
                 function.MySqlQuery(sql_insert);
                 BindImg();
                 BindDoc();
+                BindPDF();
             }
             else
             {
                 AlertPop("Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
                 //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : แนบรูปภาพล้มเหลว ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น')", true);
             }
-
         }
 
         void ShowDiv()
@@ -783,6 +839,11 @@ namespace ClaimProject.Claim
                     divSup.Visible = true;
                     //btnPrintNoteSup.Visible = false;
                     break;
+                case "6"://viewer
+                    divCom.Visible = true;
+                    divSup.Visible = true;
+                    //btnPrintNoteSup.Visible = false;
+                    break;
                 default:
                     divCom.Visible = false;
                     divSup.Visible = false;
@@ -797,8 +858,8 @@ namespace ClaimProject.Claim
             rpt.Load(Server.MapPath("/Claim/reportImg.rpt"));
             Model.DataSetClaim setClaim = new Model.DataSetClaim();
 
-            string sql = "SELECT claim_img_id,claim_img_url,claim_deteil_id,claim_img_type FROM tbl_claim_img WHERE claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '0'";
-
+            string sql = "SELECT claim_img_id,claim_img_url,claim_deteil_id,claim_img_type FROM tbl_claim_img "; 
+                   sql += "WHERE claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '0'";
             MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
             setClaim.Clear();
             da.Fill(setClaim, "tbl_claim_img");
@@ -819,7 +880,8 @@ namespace ClaimProject.Claim
 
         void GetReport()
         {
-            string strNote = "เนื่องด้วยเมื่อวันที่ " + function.ConvertDatelongThai(txtStartDate.Text) + " " + txtAround.Text + " เวลาประมาณ " + txtTime.Text + " น. ได้รับแจ้งจาก" + txtNameAleat.Text + " " + txtPosAleat.Text + " ปฏิบัติหน้าที่ประจำด่านฯ " + txtCpoint.SelectedItem;
+            string strNote = "เนื่องด้วยเมื่อวันที่ " + function.ConvertDatelongThai(txtStartDate.Text) + " " + txtAround.Text + " เวลาประมาณ " ;
+                   strNote += txtTime.Text + " น. ได้รับแจ้งจาก" + txtNameAleat.Text + " " + txtPosAleat.Text + " ปฏิบัติหน้าที่ประจำด่านฯ " + txtCpoint.SelectedItem;
 
             if (txtCB.Text != "" && txtCB.Text != "-") { strNote += " ตู้ " + txtCB.Text; }
             strNote += " " + txtDirection.Text + " ได้แจ้งว่าเกิดอุบัติเหตุ" + txtDetail.Text + " จึงได้แจ้งรองผู้จัดการด่านฯ ประจำผลัด คือ " + txtSup.Text + " ให้ทราบ";
@@ -879,7 +941,6 @@ namespace ClaimProject.Claim
                 strNote += " หลังจากได้รับแจ้งเหตุเจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ลงไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน พบคู่กรณีเป็น หมายเลขทะเบียน " + txtLicensePlate.Text;
             }
 
-
             if (txtLp2.Text != "")
             {
                 if (txtProvince22.Text != "")
@@ -920,7 +981,6 @@ namespace ClaimProject.Claim
                         strNote += " จังหวัด" + txtProvince.Text + " ขับรถมาจาก" + txtComeFrom.Text + "มุ่งหน้า" + txtDirectionIn.Text + " โดยมี" + txtNameDrive.Text + " เลขที่บัตรประจำตัวประชาชนเลขที่ " + txtIdcard.Text + " ที่อยู่ " + txtAddressDriver.Text + " หมายเลขโทรศัพท์ " + txtTelDrive.Text + " เป็นผู้ขับรถยนต์ขันดังกล่าว";
                     }
                 }
-
             }
             else
             {
@@ -1024,7 +1084,7 @@ namespace ClaimProject.Claim
             alert = msg;
         }
 
-        protected void btnDelete_Click(object sender, EventArgs e)
+        protected void btnDelete_Click(object sender, EventArgs e) // รอปรับ code
         {
             string sql = "DELETE FROM tbl_claim  WHERE claim_id = '" + Session["CodePK"].ToString() + "'";
             string script = "";
@@ -1058,14 +1118,14 @@ namespace ClaimProject.Claim
 
         protected void CheckDeviceNotDamaged_CheckedChanged(object sender, EventArgs e)
         {
-            if (CheckDeviceNotDamaged.Checked)
-            {
-                DivDamaged.Visible = false;
-            }
-            else
-            {
-                DivDamaged.Visible = true;
-            }
+            // if (CheckDeviceNotDamaged.Checked)
+            // {
+            //     DivDamaged.Visible = false;
+            // }
+            // else
+            // {
+            //     DivDamaged.Visible = true;
+            // }
         }
 
         protected void btnTechno_Click(object sender, EventArgs e)
@@ -1086,7 +1146,6 @@ namespace ClaimProject.Claim
             {
                 DivNoDamage.Visible = false;
             }
-
         }
 
         protected void rbtNormal_CheckedChanged(object sender, EventArgs e)
@@ -1096,6 +1155,7 @@ namespace ClaimProject.Claim
                 DivNoDamage.Visible = false;
                 DivDamaged.Visible = true;
                 status = "1";
+                CheckDeviceNotDamaged.Checked = false;
             }
             else
             {
@@ -1144,6 +1204,7 @@ namespace ClaimProject.Claim
                                 "','" + txtTelcar2.Text +
                                 "','" + txtprovince2222.Text + "','" + lbmodaltitle.Text + "','" + Session["CodePK"].ToString() + "')";
                     insertcar2 = "INSERT INTO tbl_claim_com  " + textt;
+
                     if (function.MySqlQuery(insertcar2))
                     {
                         //AlertPop("บันทึกข้อมูล สำเร็จ", "success");
@@ -1157,7 +1218,6 @@ namespace ClaimProject.Claim
                 {
                     AlertPop("กรุณาเลือกประเภทรถ และยี่ห้อ", "error");
                 }
-
             }
             else
             {
@@ -1177,7 +1237,6 @@ namespace ClaimProject.Claim
             Car2 = Session["codePK"].ToString();
             lbmodaltitle.Text = "3";
             modalLoadDATA("3");
-
         }
 
         void modalLoadDATA(string carnum)
@@ -1186,16 +1245,15 @@ namespace ClaimProject.Claim
             if (carnum == "2")
             {
                 carload = "select * FROM tbl_claim_com WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '2'";
-
             }
             else
             {
                 carload = "select * FROM tbl_claim_com WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number = '3'";
             }
             MySqlDataReader SecCar = function.MySqlSelect(carload);
+
             if (SecCar.Read())
             {
-
                 ddlSecTypecar.SelectedValue = SecCar.GetString("claim_detail_car").Split(',')[0].Trim();
                 txtnocar2.Text = SecCar.GetString("claim_detail_license_plate");
                 txtprovince2.Text = SecCar.GetString("claim_detail_province");
@@ -1205,7 +1263,6 @@ namespace ClaimProject.Claim
                 txtTelcar2.Text = SecCar.GetString("claim_detail_tel");
                 try
                 {
-
                     ddlbrandcar2.SelectedValue = SecCar.GetString("claim_detail_car").Split(',')[2].Trim();
                     txtColorcar2.Text = SecCar.GetString("claim_detail_car").Split(',')[4].Trim();
                     txtEngNo2.Text = SecCar.GetString("Licen_Eng");
@@ -1216,7 +1273,6 @@ namespace ClaimProject.Claim
                 lbtnEditcar2.Visible = true;
                 lbtnsubmitcar2.Visible = false;
             }
-
         }
 
         protected void lbtnEditcar2_Command(object sender, CommandEventArgs e)
@@ -1254,6 +1310,7 @@ namespace ClaimProject.Claim
                             ", claim_detail_inform='" + txtInform.Text + "'" +
                             ", claim_detail_tel='" + txtTelcar2.Text + "',claim_detail_provi2 = '" + txtprovince2222.Text + "' ";
                 updatecar2 = "UPDATE tbl_claim_com SET " + text + " WHERE claim_id = '" + Session["CodePK"].ToString() + "' AND claim_detail_number ='" + lbmodaltitle.Text + "'";
+
                 if (function.MySqlQuery(updatecar2))
                 {
                     AlertPop("บันทึกสำเร็จ", "success");
@@ -1263,12 +1320,10 @@ namespace ClaimProject.Claim
                     AlertPop("บันทึกล้มเหลว ติดต่อเจ้าหน้าที่", "error");
                 }
             }
-
             else
             {
                 AlertPop("กรุณาใส่เลขทะเบียนและจังหวัด", "error");
             }
-
         }
         void checkInsuran()
         {
@@ -1293,6 +1348,121 @@ namespace ClaimProject.Claim
                 "WHERE SUBSTR(claim_auto_id, 1, 4) = '" + function.getBudgetYear(txtCpointDate.Text) + "' " +
                 "ORDER BY claim_auto_id DESC LIMIT 1 ) + 1, 1), 5, '0' ) ) ) , '" + Session["CodePK"].ToString() + "' , '0') ";
             function.MySqlQuery(sqlgenID);
+        }
+
+        protected void UploadDocGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //
+        }
+
+        protected void btnFileUploadPDF_Click(object sender, EventArgs e)
+        {
+            if (FileUploadPDF.HasFile)
+            {
+                foreach (HttpPostedFile postedFile in FileUploadPDF.PostedFiles)
+                {
+                    Insert(6, postedFile);
+                    AlertPop("Upload Complete", "success");
+                }
+            }
+            else
+            {
+                AlertPop("Error : แนบรูปภาพเอกสารประกอบ ล้มเหลว ไม่พบไฟล์เอกสาร / ไฟล์เอกสารต้องเป็น *.jpg *.jpge *.png เท่านั้น", "error");
+            }
+        }
+
+        protected void GridViewUploadPDF_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            // Image PDFClaim = (Image)(e.Row.FindControl("DocPDF"));
+
+            // if (PDFClaim != null)
+            // {
+            //     string typeFile = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+            //     string ext = Path.GetExtension(typeFile);
+
+            //     if (ext == ".pdf")
+            //     {
+            //         PDFClaim.ImageUrl = "/Claim/Upload/img_pdf.png";
+            //     }
+            //     else
+            //     {
+            //         PDFClaim.ImageUrl = (string)DataBinder.Eval(e.Row.DataItem, "claim_img_url");
+            //     }
+            // }
+
+            Label namePDF = (Label)(e.Row.FindControl("namePDF"));
+            if(namePDF != null)
+            {
+                string[] data = DataBinder.Eval(e.Row.DataItem, "claim_img_url").ToString().Split('/');
+                namePDF.Text = data[3];
+            }
+        }
+
+        protected void GridViewUploadPDF_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void GridViewUploadPDF_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string fileId = (string)e.CommandArgument;
+            string folderPath = Server.MapPath(fileId);
+            string[] item = fileId.Split('/');
+            string fileName = item[3];
+
+            if (fileId != null)
+            {
+                string pdfPath = folderPath;
+
+                StreamReader streamReader = new StreamReader(pdfPath);
+
+                Stream stream = streamReader.BaseStream;
+
+                BinaryReader binaryReader = new BinaryReader(stream);
+
+                byte[] sendbyteArray = binaryReader.ReadBytes(Convert.ToInt32(binaryReader.BaseStream.Length));
+
+                if (e.CommandName.Equals("View"))
+                {
+                    Response.ContentType = "application/pdf";
+                    Response.AddHeader("Content-Type", "application/pdf");
+                    Response.AddHeader("Content-Disposition", "inline");
+                    Response.BinaryWrite(sendbyteArray);
+                    Response.End();
+                }
+
+                if (e.CommandName.Equals("Download"))
+                {
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename= "+ fileName + " ");
+                    Response.BinaryWrite(sendbyteArray);
+                    Response.End();
+                }
+
+                if (e.CommandName.Equals("Delete"))
+                {
+                    //string partFile = e.CommandArgument.ToString();
+                    //string partFile = function.GetSelectValue("tbl_claim_img", "claim_img_id='" + GridViewUploadPDF.DataKeys[e.RowIndex].Value + "'", "claim_img_url");
+                    string sql_delete = "UPDATE tbl_claim_img SET claim_img_type = '9' WHERE claim_img_url = '" + fileId + "' AND claim_deteil_id = '" + Session["CodePK"].ToString() + "' ";
+
+                    if (function.MySqlQuery(sql_delete))
+                    {
+                        AlertPop("Success : ลบข้อมูลสำเร็จ", "success");
+                    }
+                    BindPDF();
+                }
+            }
+        }
+
+        void BindPDF()
+        {
+            string sql = "SELECT * FROM tbl_claim_img where claim_deteil_id = '" + Session["CodePK"].ToString() + "' and claim_img_type = '6'";
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            GridViewUploadPDF.DataSource = ds.Tables[0];
+            GridViewUploadPDF.DataBind();
+            lbPDFDoc.Text = "เอกสารแนบ " + ds.Tables[0].Rows.Count + " รายการ";
         }
     }
 }

@@ -339,7 +339,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div id="Opr" runat="server" class="modal-footer">
                         <asp:LinkButton ID="btnchkHistory" runat="server" CssClass="btn btn-warning btn-sm" Font-Size="Medium" OnCommand="btnchkHistory_Command">ประวัติ</asp:LinkButton>
                         <asp:LinkButton ID="btnUpdateEQ" runat="server" CssClass="btn btn-success btn-sm" Font-Size="Medium" OnCommand="btnUpdateEQ_Command" OnClientClick="return UpdteConfirm('ยืนยันแก้ไขข้อมูล ใช่หรือไม่');">ยืนยัน</asp:LinkButton>
                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">Close</button>

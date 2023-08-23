@@ -11,6 +11,7 @@
         }
             .card .card-body {
                 background-color: #ffffff;
+                font-size: 22px;
             }
 
         .btn, .btn.btn-default {
@@ -31,25 +32,25 @@
         .form-control-file, .form-control-range {
             border: 1px solid;
             border-color: #bfcad5;
-            width: 90%;
+            width: 80%;
         }
 
         button, input, optgroup, select, textarea {
-            font-size: 1.6rem;
+            font-size: 1.65rem;
+            max-width: 100%;
         }
 
         .form-control {
             font-size:1.3rem;
         }
-
     </style>
     <div class="tab-content">
         <div class="card" style="font-size: 26px; z-index: 0; font-family: 'TH SarabunPSK';">
             <div class="card-body table-responsive">
                 <div runat="server" id="divCom">
                     <div class="card-title text-gray-800">
-                        รายละเอียดการเกิดอุบัติเหตุ (เจ้าหน้าที่คอม)
-                        <asp:Label ID="statheader" runat="server"></asp:Label>
+                        <asp:Label ID="statheader" runat="server" Font-Size="X-Large"></asp:Label>
+                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 1 (เจ้าหน้าที่คอม)</h3>                        
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3">
@@ -66,9 +67,8 @@
                         </div>
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
-                                <p class="bmd-label-floating">เลขที่บันทึก</p>
+                                <p class="bmd-label-floating text-danger">*เลขที่บันทึก</p>
                                 <asp:TextBox ID="txtCpointNote" runat="server" CssClass="form-control" placeholder="เช่น 1234" />
-                                <span id="numNote-error">ไม่ถูกต้อง</span>
                             </div>
                         </div>
                     </div>
@@ -85,6 +85,8 @@
                                 <asp:TextBox ID="txtNoteTo" runat="server" CssClass="form-control" Text="ผจด. ผ่าน รอง ผจด."></asp:TextBox>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ชื่อเรื่อง </p>
@@ -156,7 +158,7 @@
                     </div>
                     <br />
                     <hr />
-                    <div class="card-title text-black-50">รายละเอียดรถยนต์ของคู่กรณี (เจ้าหน้าที่คอม) </div>
+                    <div class="card-title"><h3>รายละเอียดรถยนต์</h3></div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
@@ -218,13 +220,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-xl-6">
+                        <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">วิ่งมาจาก</p>
                                 <asp:TextBox ID="txtComeFrom" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-6">
+                        <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">มุ่งหน้า</p>
                                 <asp:TextBox ID="txtDirectionIn" runat="server" CssClass="form-control"></asp:TextBox>
@@ -268,23 +270,24 @@
                     <hr />
                 </div>
                 <div id="divSup" runat="server">
-                    <div class="card-title text-black-50">รายละเอียดอุบัติเหตุ (รองผู้จัดการด่านฯ)</div>
-                    <div class="row ">
+                    <div class="card-title">
+                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 2 (รอง.ผจด.)</h3>
+                    </div>
+                    <div class="form-group bmd-form-group ">
                         <div class="col-xl-3">
                             <label>
-                                <asp:RadioButton ID="RadioButton1" GroupName="Check1" runat="server" onclick="Radio_Click()" Text="รถมีประกัน" />
+                                <asp:RadioButton ID="RadioButton1" GroupName="Check1" runat="server" CssClass="text-primary" onclick="Radio_Click()" Text="มีประกัน" />
+                            </label>
+                        </div>
+                        <div class="col-xl-3">
+                            <label>
+                                <asp:RadioButton ID="RadioButton2" GroupName="Check1" runat="server" onclick="Radio_Click()" Text=" ไม่มีประกัน" />
 
                             </label>
                         </div>
                         <div class="col-xl-3">
                             <label>
-                                <asp:RadioButton ID="RadioButton2" GroupName="Check1" runat="server" onclick="Radio_Click()" Text="รถไม่มีประกัน" />
-
-                            </label>
-                        </div>
-                        <div class="col-xl-3">
-                            <label>
-                                <asp:RadioButton ID="RadioButton3" GroupName="Check1" runat="server" onclick="Radio_Click()" Text="รถฝ่าด่านฯ" />
+                                <asp:RadioButton ID="RadioButton3" GroupName="Check1" runat="server" onclick="Radio_Click()" Text=" ฝ่าด่านฯ" />
                             </label>
                         </div>
                     </div>
@@ -318,7 +321,9 @@
                     </div>
                 </div>
                 <hr />
-                <div class="card-title text-black-50">พนักงานที่ปฏิบัติงาน</div>
+                <div class="card-title">
+                    <h3>พนักงานที่ปฏิบัติงาน</h3>
+                </div>
                 <div class="row">
                     <div class="col-md-6 col-xl-6">
                         <div class="form-group bmd-form-group">
@@ -355,8 +360,8 @@
                     </div>
                 </div>
                 <br />
-                <div style="font-size: larger" class="row">
-                    <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5">
                         <asp:GridView ID="ComGridView" runat="server"
                             DataKeyNames="com_working_id"
                             GridLines="None"
@@ -382,22 +387,27 @@
                     </div>
                 </div>
                 <hr />
-                <div class="card-title text-black-50">รายการอุปกรณ์ที่ได้รับความเสียหาย</div>
+                <div class="card-title">
+                    <h3>รายการอุปกรณ์ที่ได้รับความเสียหาย</h3>
+                </div>
                 <div class="row">
-                    <div class="col-md-6 col-xl-6">
+                    <div class="col-md-12 col-xl-12">
                         <asp:RadioButton ID="rbtNormal" runat="server" AutoPostBack="true" GroupName="NormalOrKnow" OnCheckedChanged="rbtNormal_CheckedChanged" />
                         <label>แจ้งอุบัติเหตุ (อุปกรณ์ได้รับความเสียหาย)</label>
                     </div>
-                    <div class="col-md-6 col-xl-6">
+                    <div class="col-md-12 col-xl-12">
                         <asp:RadioButton ID="rbtForKnow" runat="server" AutoPostBack="true" GroupName="NormalOrKnow" OnCheckedChanged="rbtForKnow_CheckedChanged" />
-                        <label>แจ้งเพื่อทราบ (อุปกรณ์ไม่ได้รับความเสียหาย)</label>
+                        <label>แจ้งเพื่อทราบ </label>
+                    </div>
+                    <div class="col-md-6 col-xl-7">
+
                     </div>
                     <asp:Label ID="chkClaimm" runat="server" Visible="false"></asp:Label>
                 </div>
                 <div class="row" id="DivNoDamage" runat="server" visible="false">
-                    <div class="col-md-2">
-                        <asp:CheckBox ID="CheckDeviceNotDamaged" runat="server" AutoPostBack="true" OnCheckedChanged="CheckDeviceNotDamaged_CheckedChanged" />
-                        <label>อุปกรณ์ไม่ได้รับความเสียหาย</label>
+                    <div class="col-md-12">
+                        <asp:CheckBox ID="CheckDeviceNotDamaged" runat="server" onclick="rdio_rbt()"/>
+                        <label>แจ้งเพื่อทราบ (อุปกรณ์ไม่ได้รับความเสียหาย)</label>
                     </div>
                 </div>
                 <div id="DivDamaged" visible="false" runat="server">
@@ -426,7 +436,7 @@
                 </div>
             <br />
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8 col-xl-5">
                     <asp:GridView ID="DeviceGridView" runat="server"
                         DataKeyNames="device_damaged_id"
                         GridLines="None"
@@ -452,13 +462,13 @@
                 </div>
             </div>
             <hr />
-            <div class="row card-title text-black-50">
-                <div class="col-md-3">
-                    <div>รูปภาพประกอบ</div>
+            <div class="row card-title">
+                <div class="col-md-12">
+                    <div>รูปภาพประกอบ (*.png *.jpg ขนาดไฟล์ ไม่เกิน 4mb)</div>
+                    <h5 class="text-black-50">เช่น รูปภาพความเสียหาย รูปภาพรถคู่กรณี</h5>
                 </div>
             </div>
-            <h5 class="text-danger">เช่น รูปภาพความเสียหาย รูปภาพรถคู่กรณี</h5>
-            <div class="col-md-12 col-xl-6">
+            <div class="col-md-8 col-xl-5">
                 <div class="form-row formHead">
                     <div class="input-group mb-3">
                         <asp:FileUpload ID="fileImg" runat="server" CssClass="form-control-file"></asp:FileUpload>
@@ -470,26 +480,31 @@
             </div>
             <br />
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8 col-xl-5">
                     <asp:GridView ID="FileGridView" runat="server"
                         DataKeyNames="claim_img_id"
                         GridLines="None"
                         OnRowDataBound="FileGridView_RowDataBound"
                         AutoGenerateColumns="False"
-                        CssClass="table table-hover table-sm"
-                        OnRowDeleting="FileGridView_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-light">
+                        CssClass="table table-striped "
+                        OnRowDeleting="FileGridView_RowDeleting" HeaderStyle-Font-Bold="true" >
                         <Columns>
+                            <asp:TemplateField HeaderText="#">
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1+"." %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="รูปภาพประกอบ">
                                 <ItemTemplate>
                                     <asp:Image ID="ImgClaim" runat="server" Width="300px" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Download">
+                            <asp:TemplateField HeaderText="Action">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnDownload" runat="server" Font-Size="Small" CssClass="fa" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
+                                    <asp:LinkButton ID="btnDownload" runat="server" Font-Size="" CssClass="btn btn-outline-success text-right" OnCommand="btnDownload_Command">ดาวน์โหลด</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014; ลบ" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Small" />
+                            <asp:CommandField ShowDeleteButton="True" HeaderText="" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="larger" />
                         </Columns>
                     </asp:GridView>
                     <asp:Label ID="LabelImg" runat="server" Text="Label"></asp:Label>
@@ -497,13 +512,13 @@
                 </div>
             </div>
             <hr />
-            <div class="row card-title text-black-50">
-                <div class="col-md-5">
-                    <h3>รูปภาพเอกสารประกอบ</h3>
+            <div class="row card-title">
+                <div class="col-md-12">
+                    <h3>เอกสารประกอบ (*.png *.jpg ขนาดไฟล์ ไม่เกิน 4mb)</h3>
+                    <h5 class="text-black-50">เช่น สำเนาบัตรประจำตัวประชาชน สำเนาใบขับขี่ สำเนาใบยอมรับความผิด เอกสารที่เกี่ยวข้องอื่นๆ</h5>
                 </div>
-            </div>
-            <h5 class="text-danger">เช่น สำเนาบัตรประจำตัวประชาชน สำเนาใบขับขี่ สำเนาใบยอมรับความผิด เอกสารที่เกี่ยวข้องอื่นๆ</h5>
-            <div class="col-md-12 col-xl-6">
+            </div>            
+            <div class="col-md-8 col-xl-5">
                 <div class="form-row formHead">
                     <div class="input-group mb-3">
                         <asp:FileUpload ID="FileUploadDoc" runat="server" CssClass="form-control-file"></asp:FileUpload>
@@ -515,35 +530,100 @@
             </div>
             <br />
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8 col-xl-5">
                     <asp:GridView ID="UploadDocGridView" runat="server"
                         DataKeyNames="claim_img_id"
                         GridLines="None"
                         OnRowDataBound="UploadDocGridView_RowDataBound"
                         AutoGenerateColumns="False"
-                        CssClass="table table-hover table-sm"
-                        OnRowDeleting="UploadDocGridView_RowDeleting" HeaderStyle-Font-Bold="true" RowStyle-CssClass="table-light">
+                        CssClass="table table-striped "
+                        OnRowDeleting="UploadDocGridView_RowDeleting" 
+                        HeaderStyle-Font-Bold="true" >
                         <Columns>
-                            <asp:TemplateField HeaderText="รูปภาพประกอบ">
+                            <asp:TemplateField HeaderText="#">
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1+"." %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="เอกสารประกอบ">
                                 <ItemTemplate>
                                     <asp:Image ID="DocClaim" runat="server" Width="300px" />
                                 </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Download">
+                            </asp:TemplateField>                            
+                            <asp:TemplateField HeaderText="Action">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnDocDownload" runat="server" Font-Size="Small" CssClass="fa" OnCommand="btnDownload_Command">&#xf0ed; Download</asp:LinkButton>
-                                </ItemTemplate>
+                                    <asp:LinkButton ID="btnDocDownload" runat="server" CssClass="btn btn-outline-success text-right" OnCommand="btnDownload_Command">ดาวน์โหลด</asp:LinkButton>                                   
+                                </ItemTemplate>                              
                             </asp:TemplateField>
-                            <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="Medium" />
+                            <asp:CommandField ShowDeleteButton="True" DeleteText="&#xf014;" ControlStyle-CssClass="fa text-danger" ControlStyle-Font-Size="larger" />
+
                         </Columns>
                     </asp:GridView>
                     <asp:Label ID="LabelDoc" runat="server" Text=""></asp:Label>
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <div class="stats">
+            <hr />
+            <div class="row card-title text-black-100">
+                <div class="col-md-12">
+                    <h3>เอกสารประกอบ (*.PDF ขนาดไฟล์ ไม่เกิน 4mb)</h3>
+                    <h5 class="text-black-50">เช่น สำเนาบัตรประจำตัวประชาชน สำเนาใบขับขี่ สำเนาใบยอมรับความผิด เอกสารที่เกี่ยวข้องอื่นๆ</h5>
+                </div>
+            </div>  
+
+            <div class="col-md-8 col-xl-5">
+                <div class="form-row formHead">
+                    <div class="input-group mb-3">
+                        <asp:FileUpload ID="FileUploadPDF" runat="server" CssClass="form-control-file"></asp:FileUpload>
+                        <div class="input-group-append">
+                            <asp:Button ID="btnFileUploadPDF" runat="server" Text="Upload" CssClass="btn btn-outline-secondary" OnClick="btnFileUploadPDF_Click" />
+                        </div>
+                    </div>                        
+                </div>
+                     <h5 class="text-black-50">รูปแบบการตั้งชื่อไฟล์ : เลขควบคุม_ชื่อเอกสาร</h5>
+                     <h5 class="text-primary">ตัวอย่าง : 2566-00147_บัตรประชาชน</h5>
             </div>
+            <br />
+            <div class="row">
+                <div class="col-md-8 col-xl-5">
+                    <asp:GridView ID="GridViewUploadPDF" runat="server"
+                        DataKeyNames="claim_img_id"
+                        GridLines="None"
+                        OnRowDataBound="GridViewUploadPDF_RowDataBound"
+                        AutoGenerateColumns="False"
+                        CssClass="table table-striped "
+                        OnRowDeleting="GridViewUploadPDF_RowDeleting"
+                        OnRowCommand="GridViewUploadPDF_RowCommand"
+                        HeaderStyle-Font-Bold="true" >
+                        <Columns>
+                             <asp:TemplateField HeaderText="#">
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1+"." %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                             <asp:TemplateField HeaderText="ชื่อเอกสาร">
+                                <ItemTemplate>
+                                    <asp:Label ID="namePDF" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>  
+                            
+                            <asp:TemplateField HeaderText="Action" headerstyle-cssclass="text-center" ItemStyle-CssClass="text-right">
+                                <ItemTemplate>
+                                    <asp:Button ID="ViewBtn" runat="server" class="btn btn-outline-info" CommandArgument='<%#Eval("claim_img_url") %>' CommandName="View" Text="View"></asp:Button>
+                                    <asp:Button ID="DownloadBtn" runat="server" class="btn btn-outline-success" CommandArgument='<%#Eval("claim_img_url") %>' CommandName="Download" Text="ดาวน์โหลด"></asp:Button>
+                                    <asp:Button ID="DeletedBtn" runat="server" class="btn btn-md btn-outline-danger" CommandArgument='<%#Eval("claim_img_url") %>' CommandName="Delete" Text="ลบ"></asp:Button>
+                                </ItemTemplate>
+                            </asp:TemplateField>                      
+                        </Columns>
+                    </asp:GridView>
+                    <asp:Label ID="lbPDFDoc" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="stats"></div>
         </div>
         <div class="row">
             <div class="col-md text-center">
@@ -555,7 +635,8 @@
             </div>
         </div>
     </div>
-    </div>
+
+    <!-- Start Modal -->
     <div class="modal fade " id="AddSecondModal" tabindex="-1" role="dialog" aria-labelledby="AddSecondModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered " style="max-height: 85%; margin-top: 50px; margin-bottom: 50px;" role="form">
             <div class="modal-content">
@@ -665,6 +746,7 @@
             </div>
         </div>
     </div>
+    <!-- End Modal -->
     <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/ClaimProjectScript.js"></script>
@@ -746,6 +828,18 @@
             } else {
                 textBox.disabled = false;
                 textBox.focus();
+            }
+        }
+
+        function rdio_rbt() {
+            var radio2 = document.getElementById("<%=CheckDeviceNotDamaged.ClientID %>");
+            var txtbox2 = document.getElementById("<%=txtDeviceBroken.ClientID %>");
+            if (radio2.checked) {
+                txtbox2.value = '';
+                txtbox2.disabled = true;
+            } else {
+                txtbox2.disabled = false;
+                txtbox2.focus();
             }
         }
     </script>

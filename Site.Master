@@ -122,15 +122,17 @@
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/Claim/DefaultClaim">หน้าแรก</a>
-                                        <a class="dropdown-item" href="/Claim/claimForm?add=true">แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
+                                        <a id="navAddClaim" runat="server" class="dropdown-item" href="/Claim/claimForm?add=true">แจ้งอุบัติเหตุ(แจ้งใหม่)</a>
                                         <div class="dropdown-divider"></div>
                                         <div class="dropdown-header">รายงาน</div>
                                         <a class="dropdown-item" href="/Claim/claimForm">รายการอุบัติเหตุ</a>
-                                        <a class="dropdown-item" href="/Claim/claimLine">ส่งรายงาน (Line)</a>
-                                        <a class="dropdown-item" href="/Claim/ClaimDevice">รายการอุปกรณ์ค้างซ่อม</a>
-                                        <div class="dropdown-divider"></div>
-                                        <div class="dropdown-header">สถิติ</div>
-                                        <a class="dropdown-item" href="/ReportView/">ข้อมูลทางสถิติ</a>
+                                        <a id="navLineClaim" runat="server" class="dropdown-item" href="/Claim/claimLine">ส่งรายงาน (Line)</a>
+                                        <a id="navHoldClaim" runat="server" class="dropdown-item" href="/Claim/ClaimDevice">รายการอุปกรณ์ค้างซ่อม</a>
+                                        <div id="navstat" runat="server">
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-header">สถิติ</div>
+                                            <a class="dropdown-item" href="/ReportView/">ข้อมูลทางสถิติ</a>
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown" runat="server" id="Li2">
@@ -507,7 +509,7 @@
                     window.clearInterval(intervalId);
                     callback.call(this);
                 }
-            }, 500);
+            }, 1500);
         }
 
         function setVisible(selector, visible) {
@@ -525,6 +527,12 @@
             $("#sidebarCollapse").on('click', function () {
                 $("#sidebar").toggleClass('active');
             });
+        });
+
+        //dont back in browser
+        window.history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            window.history.pushState(null, null, document.URL);
         });
 
     </script>

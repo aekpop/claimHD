@@ -14,7 +14,7 @@
     </style>
 
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-        <div class="row">
+        <div id="GrpNewTrans" runat="server" class="row">
             <div class="col-6">
                 <asp:Button runat="server" ID="btnNewTran" CssClass="btn btn-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" Text="แจ้งใหม่" />
             </div>
@@ -81,7 +81,7 @@
                     GridLines="None"
                     AllowSorting="true"
                     Font-Size="16px"
-                    RowStyle-Height="50px"
+                    RowStyle-Height="40px"
                     OnPageIndexChanging="gridTranlist_PageIndexChanging"
                     PagerSettings-Mode="NumericFirstLast"
                     PageSize="25"

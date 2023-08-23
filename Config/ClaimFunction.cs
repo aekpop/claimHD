@@ -21,14 +21,11 @@ namespace ClaimProject.Config
 {
     public class ClaimFunction
     {
-
         //ClaimConnection conn = new ClaimConnection();
         public MySqlConnection conn;
-        //charset=tis620
         //string strConnString = "Server=10.6.3.201;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //main server
-        //string strConnString = "Server=10.6.3.202;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false"; //database server
-        string strConnString = "Server=192.168.101.91;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
-        //string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        //string strConnString = "Server=192.168.101.91;User Id=adminclaim; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
+        string strConnString = "Server=localhost;User Id=root; Password=admin25;charset=utf8; Database=db_claim; Pooling=false";
         public string icons = "";
         public string alerts = "";
         public string alertTypes = "";
@@ -67,6 +64,7 @@ namespace ClaimProject.Config
             {
                 if (int.Parse(s.Split(',')[0]) == level) { return s.Split(',')[1]; }
             }
+
             return "";
         }
 
@@ -86,11 +84,10 @@ namespace ClaimProject.Config
                         list.Items.Add(new ListItem(s.Split(',')[1], s.Split(',')[0]));
                     }
                 }
-
             }
         }
 
-         public MySqlDataReader MySqlSelect(string sql)
+        public MySqlDataReader MySqlSelect(string sql)
          {
              conn = new MySqlConnection(strConnString);
              MySqlCommand cmd = conn.CreateCommand();
@@ -117,7 +114,6 @@ namespace ClaimProject.Config
         {
             DataTable dt = new DataTable();
             MySqlCommand cmd = new MySqlCommand(query);
-
             conn = new MySqlConnection(strConnString);
             conn.Open();
             MySqlDataAdapter sda = new MySqlDataAdapter();
@@ -127,7 +123,6 @@ namespace ClaimProject.Config
             sda.Fill(dt);
             conn.Close();
             return dt;
-
         }
 
         public MySqlDataAdapter MySqlSelectDataSet(string sql)
@@ -573,6 +568,7 @@ namespace ClaimProject.Config
             DateTime dateTime = DateTime.ParseExact(dSplit[0] + "-" + dSplit[1] + "-" + (int.Parse(dSplit[2]) - 543), "dd-MM-yyyy", CultureInfo.InvariantCulture);
             return dateTime;
         }
+
         public DateTime ConvertDateTimeEB(string date)
         {
             string[] dSplit = date.Split('-');
@@ -632,9 +628,19 @@ namespace ClaimProject.Config
                     {
                         return false;
                     }
+                case "Viewer":
+                    if (level == "6")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 default: return false;
             }
         }
+
         public void Set_Max_Connection()
         {
             try
@@ -841,8 +847,8 @@ namespace ClaimProject.Config
                         list.Items.Add(new ListItem(s.Split(',')[1], s.Split(',')[0]));
                     }
                 }
-
             }
         }
+
     }
 }

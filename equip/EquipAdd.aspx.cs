@@ -133,6 +133,11 @@ namespace ClaimProject.equip
                 ddlEditCompany.Enabled = true;
                 txtlifetime.Enabled = true;
             }
+
+            if (function.CheckLevel("viewer", Session["UserPrivilegeId"].ToString()))
+            {
+                Opr.Visible = false;
+            }
         }
         public void BindGridData()
         {
