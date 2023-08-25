@@ -72,6 +72,7 @@
                                 </div>
                                 <asp:DropDownList ID="txtPoint" runat="server" CssClass="form-control" Visible="true"></asp:DropDownList>
                             </div>
+
                             <asp:Button ID="btnSubmit" runat="server" Text="Login" CssClass="btn btn-warning col-6" OnClick="btnSubmit_Click1" />
                             <br />
                             <asp:LinkButton ID="linkDownload" runat="server" OnClick="linkDownload_Click">Download Google Chrome</asp:LinkButton>

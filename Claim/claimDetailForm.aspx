@@ -771,12 +771,11 @@
 
     <script type="text/javascript">
         $(function () {
-                //
                 <%
         if (Session["View"].Equals(true))
         {
                 %>
-            $('.tab-content input').attr('disabled', 'true');
+            //$('.tab-content input').attr('disabled', 'true');
             $('.tab-content select').attr('disabled', 'true');
             $('.tab-content textarea').attr('disabled', 'true');
             $('.tab-content a').removeAttr('href');
@@ -784,7 +783,7 @@
             $('.tab-content a').attr('disabled', 'true');
             $('.tab-content a').hide();
             //$('.combobox').attr('disabled', 'true');
-            $('.tab-content input[type=submit]').hide();
+            $('[id$="MainContent_GridViewUploadPDF_DeletedBtn_0"]').hide();
             $('.formHead').hide();
                 <%
         }

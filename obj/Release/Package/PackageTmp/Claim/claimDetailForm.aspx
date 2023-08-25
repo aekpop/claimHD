@@ -32,25 +32,25 @@
         .form-control-file, .form-control-range {
             border: 1px solid;
             border-color: #bfcad5;
-            width: 90%;
+            width: 80%;
         }
 
         button, input, optgroup, select, textarea {
             font-size: 1.65rem;
+            max-width: 100%;
         }
 
         .form-control {
             font-size:1.3rem;
         }
-
     </style>
     <div class="tab-content">
         <div class="card" style="font-size: 26px; z-index: 0; font-family: 'TH SarabunPSK';">
             <div class="card-body table-responsive">
                 <div runat="server" id="divCom">
                     <div class="card-title text-gray-800">
-                        รายละเอียดการเกิดอุบัติเหตุ (เจ้าหน้าที่คอม)
-                        <asp:Label ID="statheader" runat="server"></asp:Label>
+                        <asp:Label ID="statheader" runat="server" Font-Size="X-Large"></asp:Label>
+                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 1 (เจ้าหน้าที่คอม)</h3>                        
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3">
@@ -85,6 +85,8 @@
                                 <asp:TextBox ID="txtNoteTo" runat="server" CssClass="form-control" Text="ผจด. ผ่าน รอง ผจด."></asp:TextBox>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 col-xl-6">
                             <div class="form-group bmd-form-group">
                                 <p class="bmd-label-floating">ชื่อเรื่อง </p>
@@ -156,7 +158,7 @@
                     </div>
                     <br />
                     <hr />
-                    <div class="card-title text-black-50">รายละเอียดรถยนต์ของคู่กรณี (เจ้าหน้าที่คอม) </div>
+                    <div class="card-title"><h3>รายละเอียดรถยนต์</h3></div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3">
                             <div class="form-group bmd-form-group">
@@ -269,7 +271,7 @@
                 </div>
                 <div id="divSup" runat="server">
                     <div class="card-title">
-                        <h3>รายละเอียดอุบัติเหตุ (รองผู้จัดการด่านฯ)</h3>
+                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 2 (รอง.ผจด.)</h3>
                     </div>
                     <div class="form-group bmd-form-group ">
                         <div class="col-xl-3">
@@ -319,7 +321,9 @@
                     </div>
                 </div>
                 <hr />
-                <div class="card-title text-black-50">พนักงานที่ปฏิบัติงาน</div>
+                <div class="card-title">
+                    <h3>พนักงานที่ปฏิบัติงาน</h3>
+                </div>
                 <div class="row">
                     <div class="col-md-6 col-xl-6">
                         <div class="form-group bmd-form-group">
@@ -356,8 +360,8 @@
                     </div>
                 </div>
                 <br />
-                <div style="font-size: larger" class="row">
-                    <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5">
                         <asp:GridView ID="ComGridView" runat="server"
                             DataKeyNames="com_working_id"
                             GridLines="None"
@@ -388,7 +392,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xl-12">
-                        <asp:RadioButton ID="rbtNormal" runat="server" AutoPostBack="true" GroupName="NormalOrKnow" OnCheckedChanged="rbtNormal_CheckedChanged" CssClass=""/>
+                        <asp:RadioButton ID="rbtNormal" runat="server" AutoPostBack="true" GroupName="NormalOrKnow" OnCheckedChanged="rbtNormal_CheckedChanged" />
                         <label>แจ้งอุบัติเหตุ (อุปกรณ์ได้รับความเสียหาย)</label>
                     </div>
                     <div class="col-md-12 col-xl-12">
@@ -432,7 +436,7 @@
                 </div>
             <br />
             <div class="row">
-                <div class="col-md-12 col-xl-5">
+                <div class="col-md-8 col-xl-5">
                     <asp:GridView ID="DeviceGridView" runat="server"
                         DataKeyNames="device_damaged_id"
                         GridLines="None"
@@ -464,7 +468,7 @@
                     <h5 class="text-black-50">เช่น รูปภาพความเสียหาย รูปภาพรถคู่กรณี</h5>
                 </div>
             </div>
-            <div class="col-md-12 col-xl-5">
+            <div class="col-md-8 col-xl-5">
                 <div class="form-row formHead">
                     <div class="input-group mb-3">
                         <asp:FileUpload ID="fileImg" runat="server" CssClass="form-control-file"></asp:FileUpload>
@@ -476,7 +480,7 @@
             </div>
             <br />
             <div class="row">
-                <div class="col-md-12 col-xl-5">
+                <div class="col-md-8 col-xl-5">
                     <asp:GridView ID="FileGridView" runat="server"
                         DataKeyNames="claim_img_id"
                         GridLines="None"
@@ -514,7 +518,7 @@
                     <h5 class="text-black-50">เช่น สำเนาบัตรประจำตัวประชาชน สำเนาใบขับขี่ สำเนาใบยอมรับความผิด เอกสารที่เกี่ยวข้องอื่นๆ</h5>
                 </div>
             </div>            
-            <div class="col-md-12 col-xl-6">
+            <div class="col-md-8 col-xl-5">
                 <div class="form-row formHead">
                     <div class="input-group mb-3">
                         <asp:FileUpload ID="FileUploadDoc" runat="server" CssClass="form-control-file"></asp:FileUpload>
@@ -526,7 +530,7 @@
             </div>
             <br />
             <div class="row">
-                <div class="col-md-12 col-xl-5">
+                <div class="col-md-8 col-xl-5">
                     <asp:GridView ID="UploadDocGridView" runat="server"
                         DataKeyNames="claim_img_id"
                         GridLines="None"
@@ -566,7 +570,7 @@
                 </div>
             </div>  
 
-            <div class="col-md-12 col-xl-6">
+            <div class="col-md-8 col-xl-5">
                 <div class="form-row formHead">
                     <div class="input-group mb-3">
                         <asp:FileUpload ID="FileUploadPDF" runat="server" CssClass="form-control-file"></asp:FileUpload>

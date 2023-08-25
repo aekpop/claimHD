@@ -59,13 +59,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 text-right">ได้รับแจ้งจาก : </div>
+                <div class="col-md-2 text-right">ผู้แจ้งเหตุ : </div>
                 <div class="col-md">
                     <asp:Label ID="lbAlert" runat="server" Text="Label"></asp:Label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 text-right">เกิดอุบัติเหตุตู้ : </div>
+                <div class="col-md-2 text-right">บริเวณที่เกิดเหตุ : </div>
                 <div class="col-md">
                     <asp:Label ID="lbCb" runat="server" Text="Label"></asp:Label>
                 </div>
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 text-right">เจ้าหน้าที่คอม : </div>
+                <div class="col-md-3 text-right">เจ้าหน้าที่ควบคุมระบบ : </div>
                 <div class="col-md">
                     <asp:Label ID="lbEmpCom" runat="server" Text="Label"></asp:Label>
                 </div>
