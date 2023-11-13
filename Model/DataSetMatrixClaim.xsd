@@ -12,7 +12,7 @@
   <xs:element name="DataSetMatrixClaim" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetMatrixClaim" msprop:Generator_UserDSName="DataSetMatrixClaim">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MatrixClaim" msprop:Generator_TableClassName="MatrixClaimDataTable" msprop:Generator_TableVarName="tableMatrixClaim" msprop:Generator_RowChangedName="MatrixClaimRowChanged" msprop:Generator_TablePropName="MatrixClaim" msprop:Generator_RowDeletingName="MatrixClaimRowDeleting" msprop:Generator_RowChangingName="MatrixClaimRowChanging" msprop:Generator_RowEvHandlerName="MatrixClaimRowChangeEventHandler" msprop:Generator_RowDeletedName="MatrixClaimRowDeleted" msprop:Generator_RowClassName="MatrixClaimRow" msprop:Generator_UserTableName="MatrixClaim" msprop:Generator_RowEvArgName="MatrixClaimRowChangeEvent">
+        <xs:element name="MatrixClaim" msprop:Generator_TableClassName="MatrixClaimDataTable" msprop:Generator_TableVarName="tableMatrixClaim" msprop:Generator_TablePropName="MatrixClaim" msprop:Generator_RowDeletingName="MatrixClaimRowDeleting" msprop:Generator_RowChangingName="MatrixClaimRowChanging" msprop:Generator_RowEvHandlerName="MatrixClaimRowChangeEventHandler" msprop:Generator_RowDeletedName="MatrixClaimRowDeleted" msprop:Generator_UserTableName="MatrixClaim" msprop:Generator_RowChangedName="MatrixClaimRowChanged" msprop:Generator_RowEvArgName="MatrixClaimRowChangeEvent" msprop:Generator_RowClassName="MatrixClaimRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" minOccurs="0" />
@@ -33,6 +33,7 @@
               <xs:element name="apdate" msprop:Generator_ColumnVarNameInTable="columnapdate" msprop:Generator_ColumnPropNameInRow="apdate" msprop:Generator_ColumnPropNameInTable="apdateColumn" msprop:Generator_UserColumnName="apdate" type="xs:string" minOccurs="0" />
               <xs:element name="apnum" msprop:Generator_ColumnVarNameInTable="columnapnum" msprop:Generator_ColumnPropNameInRow="apnum" msprop:Generator_ColumnPropNameInTable="apnumColumn" msprop:Generator_UserColumnName="apnum" type="xs:string" minOccurs="0" />
               <xs:element name="insurer" msprop:Generator_ColumnVarNameInTable="columninsurer" msprop:Generator_ColumnPropNameInRow="insurer" msprop:Generator_ColumnPropNameInTable="insurerColumn" msprop:Generator_UserColumnName="insurer" type="xs:string" minOccurs="0" />
+              <xs:element name="statsys" msprop:Generator_ColumnVarNameInTable="columnstatsys" msprop:Generator_ColumnPropNameInRow="statsys" msprop:Generator_ColumnPropNameInTable="statsysColumn" msprop:Generator_UserColumnName="statsys" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

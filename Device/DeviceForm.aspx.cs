@@ -61,7 +61,7 @@ namespace ClaimProject.Device
             {
                 try
                 {
-                    ((LinkButton)e.Row.Cells[6].Controls[0]).OnClientClick = "return confirm('ต้องการลบข้อมูลใช่หรือไม่');";
+                    ((LinkButton)e.Row.Cells[7].Controls[0]).OnClientClick = "return confirm('ต้องการลบข้อมูลใช่หรือไม่');";
                 }
                 catch { }
             }
@@ -94,13 +94,19 @@ namespace ClaimProject.Device
         protected void DeviceGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             TextBox txtEDevice = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtEDevice");
+            TextBox txtEDeviceSub = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtEDeviceSub");
             DropDownList txtEDeviceGroup = (DropDownList)DeviceGridView.Rows[e.RowIndex].FindControl("txtEDeviceGroup");
             TextBox txtEDeviceSchedule = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtEDeviceSchedule");
             TextBox txtDeviceref = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtDeviceref");
             TextBox txtDevicePrice = (TextBox)DeviceGridView.Rows[e.RowIndex].FindControl("txtDevicePrice");
 
-            string sql = "UPDATE tbl_device SET device_name='" + txtEDevice.Text + "',davice_group = '" + txtEDeviceGroup.SelectedValue + "',device_schedule_hour='" + txtEDeviceSchedule.Text.Trim() + "' " +
-                         ",device_ref_Project = '" + txtDeviceref.Text + "' , device_ref_Price = '" + txtDevicePrice.Text + "' WHERE device_id = '" + DeviceGridView.DataKeys[e.RowIndex].Value + "'";
+            string sql = "UPDATE tbl_device SET device_name='" + txtEDevice.Text + "'" +
+                         ",davice_group = '" + txtEDeviceGroup.SelectedValue + "'" +
+                         ",device_schedule_hour='" + txtEDeviceSchedule.Text.Trim() + "' " +
+                         ",device_ref_Project = '" + txtDeviceref.Text + "' " +
+                         ",device_ref_Price = '" + txtDevicePrice.Text + "' " +
+                         ",device_initials = '" + txtEDeviceSub.Text + "' " +
+                         "WHERE device_id = '" + DeviceGridView.DataKeys[e.RowIndex].Value + "'";
             string script = "";
             if (function.MySqlQuery(sql))
             {
@@ -153,7 +159,7 @@ namespace ClaimProject.Device
                 function.Close();
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
                 DeviceGridView.EditIndex = -1;
-                BindData(txtDeviceName.Text);
+                BindData("");
                 txtDeviceName.Text = "";
             }
             else

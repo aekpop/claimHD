@@ -843,6 +843,15 @@ namespace ClaimProject.Techno
         protected global::System.Web.UI.WebControls.FileUpload FileUploadstimate1;
 
         /// <summary>
+        /// SubReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubReport;
+
+        /// <summary>
         /// FileUploadstimate2 control.
         /// </summary>
         /// <remarks>
@@ -1120,5 +1129,14 @@ namespace ClaimProject.Techno
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnappoint;
+
+        /// <summary>
+        /// lbModalAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbModalAlert;
     }
 }

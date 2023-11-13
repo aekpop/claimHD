@@ -50,7 +50,8 @@
                 <div runat="server" id="divCom">
                     <div class="card-title text-gray-800">
                         <asp:Label ID="statheader" runat="server" Font-Size="X-Large"></asp:Label>
-                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 1 (เจ้าหน้าที่คอม)</h3>                        
+                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 1 (เจ้าหน้าที่คอม)</h3>
+                        <asp:Label ID="lbControlNum" runat="server" CssClass="text-black-50"></asp:Label>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3">

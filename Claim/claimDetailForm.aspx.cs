@@ -65,6 +65,7 @@ namespace ClaimProject.Claim
                     ddlbrandcar2.Items.Insert(0, new ListItem("", ""));
                     statheader.Text = "แจ้งใหม่";
                     statheader.CssClass = "badge badge-danger";
+                    lbControlNum.Text = "เลชควบคุม : XXXX-XXXXX";
 
                     string sql_Device = "SELECT * FROM tbl_device WHERE davice_delete = '0' ORDER BY device_name";
 
@@ -593,10 +594,11 @@ namespace ClaimProject.Claim
         void PageLoadData()
         {
             //string sql = "SELECT * FROM tbl_claim c1 JOIN tbl_claim_com cc ON c1.claim_id = cc.claim_id WHERE c1.claim_id = '" + Session["CodePK"].ToString() + "'";
-            string sql = "SELECT * FROM tbl_claim c1 " +
-                " JOIN tbl_claim_com cc ON c1.claim_id = cc.claim_id " +
-                " JOIN tbl_status ON c1.claim_status = tbl_status.status_id  " +
-                " WHERE c1.claim_id = '" + Session["CodePK"].ToString() + "'";
+            string sql = "SELECT * FROM tbl_claim c1 ";
+            sql += " JOIN tbl_claim_com cc ON c1.claim_id = cc.claim_id ";
+            sql += " JOIN tbl_status ON c1.claim_status = tbl_status.status_id ";
+            sql += " JOIN tbl_claim_auto_id id ON c1.claim_id = id.claim_id ";
+            sql += " WHERE c1.claim_id = '" + Session["CodePK"].ToString() + "'";
 
             MySqlDataReader rs = function.MySqlSelect(sql);
 
@@ -622,6 +624,7 @@ namespace ClaimProject.Claim
                 txtPosSup.Text = rs.GetString("claim_detail_supervisor_pos");
                 statheader.Text = rs.GetString("status_name");
                 statheader.CssClass = "badge badge-" + rs.GetString("status_alert");
+                lbControlNum.Text = "เลขควบคุม : "+ rs.GetString("claim_auto_id");
                 try
                 {
                     txtTypeCar.SelectedValue = rs.GetString("claim_detail_car").Split(',')[0].Trim();

@@ -27,7 +27,8 @@ namespace ClaimProject.Techno
                 ddlselectReport.Items.Insert(0, new ListItem("เลือก", "0"));
                 ddlselectReport.Items.Insert(1, new ListItem("รายงานอุบัติเหตุจำแนกตามด่านฯ", "1"));
                 ddlselectReport.Items.Insert(2, new ListItem("รายงานอุบัติเหตุจำแนกตามอุปกรณ์", "2"));
-                ddlselectReport.Items.Insert(3, new ListItem("ตารางสรุปสถานะอุบัติเหตุ", "3"));
+                ddlselectReport.Items.Insert(3, new ListItem("รายงานสถานะอุบัติเหตุ", "3"));
+                ddlselectReport.Items.Insert(4, new ListItem("รายงานสถานะอุบัติเหตุรวมทั้งหมด", "4"));
 
                 var month = new CultureInfo("th-TH").DateTimeFormat.MonthNames;
                 //month = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
@@ -65,10 +66,21 @@ namespace ClaimProject.Techno
                 sql = "SELECT ci.claim_auto_id AS ID, cp.cpoint_name AS toll , cc.claim_detail_cb_claim AS channel , c.claim_equipment AS cname , cc.`claim_detail_license_plate` AS plate, cc.`claim_detail_lp2` AS plate2, " +
                     " cc.`claim_detail_province` AS prov,c.`claim_start_date` AS sdate, c.`claim_cpoint_note` AS snum, cd.`claim_doc_date` AS docdate ,cd.claim_doc_num AS docnum ," +
                     " cd.techno_doc_date AS redate ,cd.techno_doc_num AS renum ,cd.Estimate_date AS esdate ,cd.Estimate_num AS esnum ,cd.appoint_date AS apdate ,cd.appoint_num AS apnum ," +
-                    " cc.`claim_detail_insurer` AS insurer " +
+                    " cc.`claim_detail_insurer` AS insurer , IF(c.claim_delete = '1' , 'Deleted' ,IF(c.claim_status = '6','Inform','Active')) AS statsys " +
                     " FROM `tbl_claim` c LEFT JOIN `tbl_claim_doc` cd ON c.`claim_id` = cd.`claim_doc_id` LEFT JOIN `tbl_claim_com` cc ON c.`claim_id` = cc.`claim_id` " +
                     " LEFT JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id`" +
                     " LEFT JOIN tbl_claim_auto_id ci ON c.`claim_id` = ci.claim_id WHERE (c.`claim_budget_year` = '" + ddlbudget.SelectedValue + "' " + mouconst + " ) AND (c.claim_delete = '0' AND c.`claim_status` != '6' )" +
+                    " ORDER BY STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') ASC";
+            }
+            else if (ddlselectReport.SelectedValue == "4")
+            {
+                sql = "SELECT ci.claim_auto_id AS ID, cp.cpoint_name AS toll , cc.claim_detail_cb_claim AS channel , c.claim_equipment AS cname , cc.`claim_detail_license_plate` AS plate, cc.`claim_detail_lp2` AS plate2, " +
+                    " cc.`claim_detail_province` AS prov,c.`claim_start_date` AS sdate, c.`claim_cpoint_note` AS snum, cd.`claim_doc_date` AS docdate ,cd.claim_doc_num AS docnum ," +
+                    " cd.techno_doc_date AS redate ,cd.techno_doc_num AS renum ,cd.Estimate_date AS esdate ,cd.Estimate_num AS esnum ,cd.appoint_date AS apdate ,cd.appoint_num AS apnum ," +
+                    " cc.`claim_detail_insurer` AS insurer , IF(c.claim_delete = '1' , 'Deleted' ,IF(c.claim_status = '6','Inform','Active')) AS statsys " +
+                    " FROM `tbl_claim` c LEFT JOIN `tbl_claim_doc` cd ON c.`claim_id` = cd.`claim_doc_id` LEFT JOIN `tbl_claim_com` cc ON c.`claim_id` = cc.`claim_id` " +
+                    " LEFT JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id`" +
+                    " LEFT JOIN tbl_claim_auto_id ci ON c.`claim_id` = ci.claim_id WHERE (c.`claim_budget_year` = '" + ddlbudget.SelectedValue + "' " + mouconst + " ) " +
                     " ORDER BY STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') ASC";
             }
         }
@@ -88,19 +100,27 @@ namespace ClaimProject.Techno
             if (ddlselectReport.SelectedValue == "1")
             {
                 Session.Add("report", 1);
+                Session.Add("reportName", "");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportMonthlyClaim','_newtab');", true);
             }
             else if (ddlselectReport.SelectedValue == "2")
             {
                 Session.Add("report", 2);
+                Session.Add("reportName", "");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportMonthlyClaim','_newtab');", true);
             }
             else if (ddlselectReport.SelectedValue == "3")
             {
                 Session.Add("report", 3);
+                Session.Add("reportName", "รายงานสถานะอุบัติเหตุ");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportIndexMatrixClaim','_newtab');", true);
             }
-
+            else if (ddlselectReport.SelectedValue == "4")
+            {
+                Session.Add("report", 4);
+                Session.Add("reportName", "รายงานสถานะอุบัติเหตุรวมทั้งหมด");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportIndexMatrixClaim','_newtab');", true);
+            }
         }
     }
 }

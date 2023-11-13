@@ -11,14 +11,23 @@
             font-size: 26px;
             font-family: 'Prompt';
         }
+
+        .card {
+            font-size: 1rem;
+        }
+
+        .form-control {
+            font-size: 1rem;
+        }
+        
     </style>
     <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
     <link href="../Content/form-design-new.css" rel="stylesheet" />
     <script src="/Scripts/bootbox.js"></script>
     <script src="/Scripts/HRSProjectScript.js"></script>
 
-    <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
-        <!-- Menu Dropdown -->
+    <div class="container-fluid" style="font-family: 'Prompt','sans-serif';">
+        <!-- Menu Dropdown 
         <div class="btn-group" runat="server" visible="false">
             <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
             <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
@@ -36,16 +45,16 @@
                 <li>
                     <asp:LinkButton ID="divcheckkk" runat="server" href="/equip/EquipHistory" Visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
             </ul>
-        </div>
-        <!------------------>
+        </div> --->
         <div class="col text-right">
             <a class="btn btn-outline-warning" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch"><i class="fas fa-bars"></i></a>
         </div>
         <div class="collapse show" id="collapseSearch">
-            <div id="AddPM" runat="server" class="card" style="z-index: 0; font-size: medium">
-                <div class="card-header ">
-                    <div class="card-title " style="font-size: larger">ค้นหา</div>
+            <div id="AddPM" runat="server" class="card" style="z-index: 0;">
+                <!--<div class="card-header">
+                    <div class="card-title">ค้นหา</div>
                 </div>
+                -->
                 <div class="card-body table-responsive table-sm">
                     <div id="divsearch" runat="server">
                         <div class="row">
@@ -96,7 +105,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-6 text-right">
-                            <asp:Button ID="searchEquip" runat="server" Text="&#xf002; ค้นหา" CssClass="fa btn btn-info btn-sm" Font-Bold="true" Font-Size="Large" OnClick="searchEquip_Click" />
+                            <asp:Button ID="searchEquip" runat="server" Text="&#xf002; ค้นหา" CssClass="fa btn btn-info btn-sm" OnClick="searchEquip_Click" />
                         </div>
                         <div id="divSagain" runat="server" visible="false" class="col-md-6">
                             <asp:Label ID="chkS" runat="server" Font-Size="Small"></asp:Label>
@@ -118,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body" style="font-size: medium; font-family: 'TH SarabunPSK';">
+            <div class="card-body" style="font-size: medium; font-family: 'TH Sarabun New';">
                 <asp:Panel ID="Panel1" runat="server">
                     <asp:GridView ID="GridEquipAdd" runat="server"
                         DataKeyNames="equipment_id"

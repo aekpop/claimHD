@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>H:\Publish</_PublishTargetUrl>
-    <History>True|2023-08-17T08:23:19.0841569Z;True|2023-07-28T11:34:36.6995007+07:00;True|2023-07-13T15:32:38.5479148+07:00;True|2023-07-12T15:44:02.5526874+07:00;True|2023-07-10T18:23:06.1783712+07:00;True|2023-07-10T11:18:49.5428546+07:00;False|2023-07-10T11:08:52.5782263+07:00;False|2023-07-07T22:09:59.3971025+07:00;False|2023-07-07T22:07:33.3363268+07:00;False|2023-07-07T22:01:26.6367088+07:00;True|2023-07-07T18:23:35.0769616+07:00;</History>
+    <History>True|2023-08-25T08:07:00.7291251Z;True|2023-08-17T15:23:19.0841569+07:00;True|2023-07-28T11:34:36.6995007+07:00;True|2023-07-13T15:32:38.5479148+07:00;True|2023-07-12T15:44:02.5526874+07:00;True|2023-07-10T18:23:06.1783712+07:00;True|2023-07-10T11:18:49.5428546+07:00;False|2023-07-10T11:08:52.5782263+07:00;False|2023-07-07T22:09:59.3971025+07:00;False|2023-07-07T22:07:33.3363268+07:00;False|2023-07-07T22:01:26.6367088+07:00;True|2023-07-07T18:23:35.0769616+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -36,13 +36,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>08/23/2023 18:46:46</publishTime>
+      <publishTime>08/25/2023 15:06:57</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>08/23/2023 18:46:46</publishTime>
+      <publishTime>08/25/2023 15:06:57</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>08/23/2023 18:46:47</publishTime>
+      <publishTime>08/25/2023 15:06:58</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -543,7 +543,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/04/2018 10:56:04</publishTime>
     </File>
     <File Include="Claim/claimDetailForm.aspx">
-      <publishTime>08/18/2023 12:08:41</publishTime>
+      <publishTime>08/25/2023 11:33:26</publishTime>
     </File>
     <File Include="Claim/ClaimDevice.aspx">
       <publishTime>08/23/2023 15:15:21</publishTime>

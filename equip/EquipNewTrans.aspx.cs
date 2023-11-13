@@ -22,7 +22,9 @@ namespace ClaimProject.equip
         public string HitBack = "";
         public string Print = "";
         public int amountrow;
-        public int wait; public int norepair; public int repairedd;
+        public int wait; 
+        public int norepair; 
+        public int repairedd;
         public string no = "";
         public string ok = "";
 
@@ -32,6 +34,7 @@ namespace ClaimProject.equip
             {
                 Response.Redirect("/");
             }
+
             if (!this.IsPostBack)
             {
                 string top = Session["TransID"].ToString();
@@ -41,20 +44,13 @@ namespace ClaimProject.equip
                 string usercpo = Session["UserCpoint"].ToString();
 
                 Session["TranRepId"] = "";
-                // if (Session["BackWhat"].ToString() == "Send")
-                //{
-                //    btnMainTranSend.Visible = true;
-                ///    btnMainTranGet.Visible = false;
-                //}
-                //else
-                //{
-                //     btnMainTranSend.Visible = false;
-                //     btnMainTranGet.Visible = true;
-                // }
+
                 if (usercpo == "0")
                 {
                     //qry หมาบเลขครุภัณฑ์ เกินความจำเป็น? by aek
-                    equipNo = "SELECT equipment_no,equipment_id FROM tbl_equipment WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete = '0' AND toll_id = '9200' Order By equipment_id ASC";
+                    equipNo = "SELECT equipment_no,equipment_id FROM tbl_equipment ";
+                    equipNo += "WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete = '0' AND toll_id = '9200' ";
+                    equipNo += "Order By equipment_id ASC";
                     tollStart = "SELECT * FROM tbl_toll WHERE toll_id = '9200' ";
                     function.getListItem(ddlNewLocated, "SELECT * FROM tbl_location WHERE locate_group = '3' Order By locate_id ", "locate_name", "locate_id");
                 }
@@ -62,8 +58,9 @@ namespace ClaimProject.equip
                 {
                     tollStart = "SELECT * FROM tbl_toll WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "' ";
                     //qry หมาบเลขครุภัณฑ์ เกินความจำเป็น? by aek
-                    equipNo = "SELECT * FROM tbl_equipment" +
-                           " JOIN tbl_toll on tbl_toll.toll_id = tbl_equipment.toll_id  WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' AND Estatus_id != '3' AND Estatus_id != '4' AND trans_complete = '0' ";
+                    equipNo = "SELECT equipment_no,equipment_id FROM tbl_equipment" ;
+                    equipNo += " JOIN tbl_toll on tbl_toll.toll_id = tbl_equipment.toll_id ";
+                    equipNo += " WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' AND Estatus_id != '3' AND Estatus_id != '4' AND trans_complete = '0' ";
                     function.getListItem(ddlNewLocated, "SELECT * FROM tbl_location WHERE locate_group != '3' Order By locate_id ", "locate_name", "locate_id");
                 }
                 txtSender.Text = Session["UserName"].ToString();
@@ -81,7 +78,6 @@ namespace ClaimProject.equip
                 inputDDLSELECT();
                 //AddTransDatabind("ADD");
             }
-
         }
 
         protected void inputDDLSELECT()
@@ -90,7 +86,6 @@ namespace ClaimProject.equip
             if (Session["UserCpoint"].ToString() == "0")
             {
                 EQDDL = "SELECT equipment_no,equipment_id FROM tbl_equipment WHERE Estatus_id != '3' AND Estatus_id != '4' AND trans_complete != '1' AND toll_id = '9200' AND equipment_chkUpdateLocate ='0' Order By equipment_id ASC";
-
             }
             else
             {
@@ -105,7 +100,6 @@ namespace ClaimProject.equip
 
         protected void LoadDataPaging()
         {
-
             string startvalue = "";
             string endvalue = "";
             if (Session["TransNew"].ToString() == "1")
@@ -120,20 +114,17 @@ namespace ClaimProject.equip
                 MySqlDataReader redf = function.MySqlSelect(selectData);
                 if (redf.Read())
                 {
+                    string completestatus = redf.GetString("complete_stat");
                     string transtatt = redf.GetString("trans_stat");
                     ddlTypeEQQ.SelectedValue = transtatt;
-                    string completestatus = redf.GetString("complete_stat");
-
+                    //string completestatus = redf.GetString("complete_stat");
                     refnoo.Text = " (เลขอ้างอิง : " + Session["TransID"].ToString() + " / สถานะ : ";
                     stathead.Text = redf.GetString("complete_name") + " ";
                     stathead.CssClass = "badge badge-" + redf.GetString("complete_badge");
-
                     endvalue = redf.GetInt32("toll_recieve").ToString();
                     startvalue = redf.GetInt32("toll_send").ToString();
                     ddlTollEQ.SelectedValue = endvalue;
                     ddlStartEQ.SelectedValue = startvalue;
-
-
                     txtDateSend.Text = redf.GetString("date_send");
                     txtactnote.Text = redf.GetString("trans_note");
                     txtSender.Text = redf.GetString("name_send");
@@ -176,7 +167,6 @@ namespace ClaimProject.equip
                     //string tollbvalue = ddlTollEQ.SelectedValue;
                     string tollbvalue = ddlStartEQ.SelectedValue;
                     string sameucpoint = "";
-
 
                     if (tollbvalue == "7010")
                     {
@@ -311,9 +301,17 @@ namespace ClaimProject.equip
                                 btnEdit.Visible = true;
                                 lbtnDelete.Visible = true;
                             }
+
+                            if (Session["UserPrivilegeId"].ToString() == "5")
+                            {
+                                btnGet.Visible = true;
+                                btnBackto.Visible = true;
+                                //btnPrintNoteSup.Visible = false;
+                            }
+                            /**
                             else
                             {
-                                if (!function.CheckLevel("viewer", Session["UserPrivilegeId"].ToString()))
+                                if (!function.CheckLevel("Viewer", Session["UserPrivilegeId"].ToString()))
                                 {
                                     divfirst.Visible = true;
                                 }
@@ -328,8 +326,9 @@ namespace ClaimProject.equip
                                     lbtnreplace.Enabled = false;
                                     btnEdit.Visible = false;
                                     lbtnDelete.Visible = false;
-                                }
+                                }                              
                             }
+                            **/
                         }
                         else
                         {
@@ -553,10 +552,11 @@ namespace ClaimProject.equip
 
             switch (Session["UserPrivilegeId"].ToString())
             {
-                case "0":
+                case "0"://admin
                     btnGet.Visible = true;
                     btnBackto.Visible = true;
                     lbtnDelete.Visible = true;
+                    btnEdit.Visible = true;
                     break;
                 case "1"://เทคโน
 
@@ -574,8 +574,8 @@ namespace ClaimProject.equip
                     //btnPrintNoteSup.Visible = false;
                     break;
                 case "5"://ครุภัณฑ์
-                    btnGet.Visible = true;
-                    btnBackto.Visible = true;
+                    //btnGet.Visible = true;
+                    //btnBackto.Visible = true;
                     //btnPrintNoteSup.Visible = false;
                     break;
                 case "6"://viewer
@@ -584,7 +584,6 @@ namespace ClaimProject.equip
                     //btnPrintNoteSup.Visible = false;
                     break;
                 default:
-
                     //btnPrintNoteSup.Visible = false;
                     break;
             }
@@ -695,6 +694,9 @@ namespace ClaimProject.equip
                                             if (function.MySqlQuery(sqlUpEQ))
                                             {
                                                 Response.Redirect("/equip/EquipNewTrans");
+                                                //AddTransDatabind("ADD");
+                                                //Cleartxt();
+                                                //AlertPop("success เพิ่มครุภัณฑ์แล้ว 1", "success");
                                             }
                                             else
                                             {
@@ -704,8 +706,10 @@ namespace ClaimProject.equip
                                         else
                                         {
                                             Response.Redirect("/equip/EquipNewTrans");
+                                            //AddTransDatabind("ADD");
+                                            //Cleartxt();
+                                            //AlertPop("success เพิ่มครุภัณฑ์แล้ว 2", "success");
                                         }
-
                                     }
                                     else
                                     {
@@ -716,7 +720,6 @@ namespace ClaimProject.equip
                                 {
                                     AlertPop("ERROR 4500 บันทึกข้อมูลล้มเหลว", "error");
                                 }
-
                             }
                             else
                             {
@@ -735,18 +738,17 @@ namespace ClaimProject.equip
 
                                 if (function.MySqlQuery(sqltranAct))
                                 {
-
                                     if (function.MySqlQuery(sqlUpEQ))
                                     {
-
                                         Response.Redirect("/equip/EquipNewTrans");
-
+                                        //AddTransDatabind("ADD");
+                                        //Cleartxt();
+                                        //AlertPop("success เพิ่มครุภัณฑ์แล้ว 4", "success");
                                     }
                                     else
                                     {
                                         AlertPop("ERROR upMainEquipment!! บันทึกข้อมูลล้มเหลว", "error");
                                     }
-
                                 }
                                 else
                                 {
@@ -764,14 +766,11 @@ namespace ClaimProject.equip
                     {
                         AlertPop("เลขครุภัณฑ์ถูกใช้แล้ว กรุณาเลือกใหม่!!", "warning");
                     }
-
                 }
                 else
                 {
                     AlertPop("Error Check  ติดต่อเจ้าหน้าที่", "warning");
                 }
-
-
             }
             else
             {
@@ -787,40 +786,34 @@ namespace ClaimProject.equip
             DataTable dt = new DataTable();
             da.Fill(dt);
             GridRepair.DataSource = dt;
-
             amountrow = dt.Rows.Count;
             lbchkTotal.Text = amountrow.ToString();
-            lbshowamount.Text = "พบครุภัณฑ์ " + amountrow.ToString() + " รายการ";
+            lbshowamount.Text = "จำนวน " + amountrow.ToString() + " รายการ";
             GridRepair.DataBind();
         }
 
         protected void AddTransDatabind(string whatgrid)
         {
             string TransRef = Session["TransID"].ToString();
-            //COLLATE utf8_general_ci
             string sqlx = "SELECT * FROM tbl_transfer_action d  " +
                          " WHERE d.transfer_id = '" + TransRef + "' Order By d.trans_act_id ASC ";
             MySqlDataAdapter da = function.MySqlSelectDataSet(sqlx);
-            //System.Data.DataSet ds = new System.Data.DataSet();
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (whatgrid == "ADD")
             {
                 GridAddTran.DataSource = dt;
                 amountrow = dt.Rows.Count;
-                lbshowamount.Text = "พบครุภัณฑ์ " + amountrow.ToString() + " รายการ";
+                lbshowamount.Text = "จำนวน " + amountrow.ToString() + " รายการ";
                 GridAddTran.DataBind();
             }
             else
             {
                 gridreplace.DataSource = dt;
                 amountrow = dt.Rows.Count;
-                lbshowamount.Text = "พบครุภัณฑ์ " + amountrow.ToString() + " รายการ";
+                lbshowamount.Text = "จำนวน " + amountrow.ToString() + " รายการ";
                 gridreplace.DataBind();
             }
-
-            //lbClaimDetailNull.Text = "อุปกรณ์ที่ได้รับความเสียหาย " + ds.Tables[0].Rows.Count + " ชิ้น";
-
         }
 
         protected void GridAddTran_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -845,12 +838,12 @@ namespace ClaimProject.equip
                     }
                     else
                     {
-
+                        AlertPop("ระบบขัดข้อง ลบข้อมูลล้มเหลว ติดต่อเจ้าหน้าที่", "error");
                     }
                 }
                 else
                 {
-                    AlertPop("ระบบขัดข้อง ลบข้อมูลล้มเหลว ติดต่อเจ้าหน้าที่", "error");
+                    AlertPop("ระบบขัดข้อง Update ข้อมูลล้มเหลว ติดต่อเจ้าหน้าที่", "error");
                 }
                 function.Close();
                 //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
@@ -938,7 +931,7 @@ namespace ClaimProject.equip
         {
             string levelcpoint = Session["UserCpoint"].ToString();
 
-            if (ddlTypeEQQ.SelectedValue == "6")
+            /*if (ddlTypeEQQ.SelectedValue == "6")
             {
                 divEndToll.Visible = true;
                 ddlTollEQ.SelectedValue = "9300";
@@ -954,7 +947,6 @@ namespace ClaimProject.equip
                 divnewserial.Visible = true;
                 ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#fffec2");
                 ddlTollEQ.Enabled = true;
-
             }
             else if (ddlTypeEQQ.SelectedValue == "4")
             {
@@ -998,6 +990,70 @@ namespace ClaimProject.equip
                 divnormal.Style.Add("background-color", "lightcyan");
                 ddlTollEQ.Enabled = true;
             }
+            */
+
+            switch (ddlTypeEQQ.SelectedValue)
+            {
+                //case "1":
+                    //
+                //    break;
+                case "2":
+                    divEndToll.Visible = true;
+                    divreplace.Visible = false;
+                    divnormal.Visible = true;
+                    divnewserial.Visible = false;
+                    ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#dbfff8");
+                    divnormal.Style.Add("background-color", "lightcyan");
+                    changeDropdown(levelcpoint);
+                    break;
+                //case "3":
+                    //
+                //    break;
+                case "4":
+                    divEndToll.Visible = true;
+                    divreplace.Visible = false;
+                    divnormal.Visible = true;
+                    divnewserial.Visible = false;
+                    ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#ede0ff");
+                    divnormal.Style.Add("background-color", "#ede0ff");
+                    ddlTollEQ.Enabled = true;
+                    changeDropdown(levelcpoint);
+                    break;
+                case "5":
+                    divEndToll.Visible = true;
+                    divnormal.Visible = false;
+                    divnewserial.Visible = true;
+                    ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#fffec2");
+                    ddlTollEQ.Enabled = true;
+                    break;
+                case "6":
+                    divEndToll.Visible = true;
+                    ddlTollEQ.SelectedValue = "9300";
+                    divnormal.Visible = true;
+                    divnewserial.Visible = false;
+                    ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#fffec2");
+                    ddlTollEQ.Enabled = true;
+                    break;
+                case "7":
+                    divEndToll.Visible = true;
+                    divreplace.Visible = false;
+                    divnormal.Visible = true;
+                    divnewserial.Visible = false;
+                    ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#ede0ff");
+                    divnormal.Style.Add("background-color", "#ede0ff");
+                    ddlTollEQ.Enabled = true;
+                    changeDropdown(levelcpoint);
+                    break;
+                default:
+                    divEndToll.Visible = true;
+                    divreplace.Visible = false;
+                    divnormal.Visible = true;
+                    divnewserial.Visible = false;
+                    ddlTypeEQQ.BackColor = System.Drawing.ColorTranslator.FromHtml("#dbfff8");
+                    divnormal.Style.Add("background-color", "lightcyan");
+                    ddlTollEQ.Enabled = true;
+                    break;
+            }               
         }
 
         protected void lbtnreplace_Command(object sender, CommandEventArgs e)
@@ -1025,11 +1081,8 @@ namespace ClaimProject.equip
             }
             else
             {
-
+                AlertPop("Error 4040 replace ติดต่อเจ้าหน้าที่", "error");
             }
-
-
-
         }
 
         string checkDupliForReplace(string newserialK)
@@ -1116,8 +1169,6 @@ namespace ClaimProject.equip
                 GridAddTran.EditIndex = -1;
                 AddTransDatabind("ADD");
             }
-
-
             function.MySqlQuery(sql);
             function.Close();
             //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('" + script + "')", true);
@@ -1127,7 +1178,6 @@ namespace ClaimProject.equip
 
         protected void lbtnSubreplace_Command(object sender, CommandEventArgs e)
         {
-
             string InsertReplace = "Insert into tbl_transfer_action (tran_type,transfer_id,trans_equip_id,old_locate,old_toll,old_name" +
                 ",old_nameth,old_no,old_serial,new_serial" +
                 ",old_brand,old_series" +
@@ -1152,7 +1202,6 @@ namespace ClaimProject.equip
             {
                 AlertPop("ระบบขัดข้อง ติดต่อเจ้าหน้าที่", "error");
             }
-
         }
 
         protected void chknewSEE_Command(object sender, CommandEventArgs e)
@@ -1213,7 +1262,6 @@ namespace ClaimProject.equip
                 SQLFirst = "INSERT INTO tbl_transfer (company_repair,thai_month,position_sender,trans_note,trans_id,trans_stat,date_send,time_send,user_send,name_send,toll_send,toll_recieve,complete_stat,trans_budget)" +
                         "VALUES ('556','" + dateSs + "','" + ddlPosition.SelectedValue + "','" + txtactnote.Text + "','" + Session["TransID"].ToString() + "','" + ddlTypeEQQ.SelectedValue + "','" + txtDateSend.Text + "','" + timenow + "','" + Session["UserName"].ToString() + "'" +
                                 ",'" + txtSender.Text + "','" + ddlStartEQ.SelectedValue + "','" + ddlTollEQ.SelectedValue + "','" + completeStatf + "','" + function.getBudgetYear(txtDateSend.Text) + "')";
-
             }
 
             if (function.MySqlQuery(SQLFirst))
@@ -1227,8 +1275,6 @@ namespace ClaimProject.equip
             {
                 AlertPop("ระบบขัดข้อง ติดต่อเจ้าหน้าที่", "error");
             }
-
-
         }
 
         protected void btnSecondSubmit_Click(object sender, EventArgs e)
@@ -2240,7 +2286,7 @@ namespace ClaimProject.equip
                 Session["PosSender"] = txtPosSender.Text;
             }
 
-            ReportDocument rpt = new ReportDocument();
+            //ReportDocument rpt = new ReportDocument();
 
             if (Session["TranRepId"].ToString() != "")
             {
@@ -2261,6 +2307,11 @@ namespace ClaimProject.equip
         public void Redirect()
         {
             Response.Redirect("/equip/EquipTranList");
+        }
+
+        public void Cleartxt()
+        {
+            btnAddEQTran.Text = "";
         }
     }
 }

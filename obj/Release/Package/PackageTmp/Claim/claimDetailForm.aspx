@@ -50,7 +50,8 @@
                 <div runat="server" id="divCom">
                     <div class="card-title text-gray-800">
                         <asp:Label ID="statheader" runat="server" Font-Size="X-Large"></asp:Label>
-                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 1 (เจ้าหน้าที่คอม)</h3>                        
+                        <h3>รายละเอียดอุบัติเหตุ ส่วนที่ 1 (เจ้าหน้าที่คอม)</h3>
+                        <asp:Label ID="lbControlNum" runat="server" CssClass="text-black-50"></asp:Label>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3">
@@ -771,12 +772,11 @@
 
     <script type="text/javascript">
         $(function () {
-                //
                 <%
         if (Session["View"].Equals(true))
         {
                 %>
-            $('.tab-content input').attr('disabled', 'true');
+            //$('.tab-content input').attr('disabled', 'true');
             $('.tab-content select').attr('disabled', 'true');
             $('.tab-content textarea').attr('disabled', 'true');
             $('.tab-content a').removeAttr('href');
@@ -784,7 +784,7 @@
             $('.tab-content a').attr('disabled', 'true');
             $('.tab-content a').hide();
             //$('.combobox').attr('disabled', 'true');
-            $('.tab-content input[type=submit]').hide();
+            $('[id$="MainContent_GridViewUploadPDF_DeletedBtn_0"]').hide();
             $('.formHead').hide();
                 <%
         }

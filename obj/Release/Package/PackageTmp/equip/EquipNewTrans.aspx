@@ -150,8 +150,6 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-
-
                             <asp:TemplateField HeaderText="ยี่ห้อ" ItemStyle-Width="300px" ItemStyle-CssClass="text-center" Visible="false">
                                 <ItemTemplate>
                                     <asp:Label ID="TextBox3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.old_brand") %>'></asp:Label>

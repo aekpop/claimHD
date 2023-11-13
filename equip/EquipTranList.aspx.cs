@@ -828,7 +828,7 @@ namespace ClaimProject
             Session["CopyTran"] = "";
             if (txtSenderName.Text == "")
             {
-                Session["SenderTran"] = ".";
+                Session["SenderTran"] = " ";
             }
             else
             {
@@ -836,14 +836,14 @@ namespace ClaimProject
             }
             if (txtPosSender.Text == "")
             {
-                Session["PosSender"] = "..";
+                Session["PosSender"] = " ";
             }
             else
             {
                 Session["PosSender"] = txtPosSender.Text;
             }
 
-            ReportDocument rpt = new ReportDocument();
+            //ReportDocument rpt = new ReportDocument();
 
             if (Session["TranRepId"].ToString() != "")
             {

@@ -25,9 +25,9 @@ namespace ClaimProject.Report
             if (!this.IsPostBack)
             {
                 string sql = Session["SqlResult"].ToString();
-                //string Month = Session["Month"].ToString();
-                //string Budget = Session["Budget"].ToString();
-                //string Report = Session["report"].ToString();
+                string Month = Session["Month"].ToString();
+                string Budget = Session["Budget"].ToString();
+                string Report = Session["reportName"].ToString();
 
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 DataTable dt = function.GetTable(sql);
@@ -36,11 +36,12 @@ namespace ClaimProject.Report
                     ReportViewer1.LocalReport.ReportPath = Server.MapPath("reportIndexMatrixClaim.rdlc");
 
 
-                //ReportParameter[] parameter = new ReportParameter[2];
-                //parameter[0] = new ReportParameter("Budget", Budget);
-                //parameter[1] = new ReportParameter("Month", Month);
+                ReportParameter[] parameter = new ReportParameter[3];
+                parameter[0] = new ReportParameter("Budget", Budget);
+                parameter[1] = new ReportParameter("Month", Month);
+                parameter[2] = new ReportParameter("Report", Report);
 
-                //ReportViewer1.LocalReport.SetParameters(parameter);
+                ReportViewer1.LocalReport.SetParameters(parameter);
                 ReportViewer1.LocalReport.Refresh();
 
                 ReportDataSource dataSource = new ReportDataSource("DataSet1", dt);

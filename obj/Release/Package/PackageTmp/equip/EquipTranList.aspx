@@ -16,7 +16,7 @@
     <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
         <div id="GrpNewTrans" runat="server" class="row">
             <div class="col-6">
-                <asp:Button runat="server" ID="btnNewTran" CssClass="btn btn-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" Text="แจ้งใหม่" />
+                <asp:Button runat="server" ID="btnNewTran" CssClass="btn btn-danger" OnClick="btnnewTranpage_Click" OnClientClick="return CheckIsRepeat();" Text="ทำรายการใหม่" />
             </div>
             <div class="col-6 text-right">
                 <a class="btn btn-outline-warning" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch"><i class="fas fa-bars"></i></a>

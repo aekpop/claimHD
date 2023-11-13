@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.Device {
-    
-    
-    public partial class DeviceForm {
-        
+namespace ClaimProject.Device
+{
+
+
+    public partial class DeviceForm
+    {
+
         /// <summary>
         /// txtDeviceName control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClaimProject.Device {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeviceName;
-        
+
         /// <summary>
         /// txtGroup control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ClaimProject.Device {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtGroup;
-        
+
         /// <summary>
         /// txtSchedule control.
         /// </summary>
@@ -38,16 +40,16 @@ namespace ClaimProject.Device {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSchedule;
-        
+
         /// <summary>
-        /// btnDeviceAdd control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeviceAdd;
-        
+        protected global::System.Web.UI.WebControls.Button Button1;
+
         /// <summary>
         /// txtSearch control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ClaimProject.Device {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
+
         /// <summary>
         /// btnSearch control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ClaimProject.Device {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
-        
+
         /// <summary>
         /// DeviceGridView control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace ClaimProject.Device {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView DeviceGridView;
-        
+
         /// <summary>
         /// lbDeviceNull control.
         /// </summary>

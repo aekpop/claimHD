@@ -315,6 +315,8 @@ namespace ClaimProject.Model {
             
             private global::System.Data.DataColumn columninsurer;
             
+            private global::System.Data.DataColumn columnstatsys;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public MatrixClaimDataTable() {
@@ -494,6 +496,14 @@ namespace ClaimProject.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn statsysColumn {
+                get {
+                    return this.columnstatsys;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -547,7 +557,8 @@ namespace ClaimProject.Model {
                         string esnum, 
                         string apdate, 
                         string apnum, 
-                        string insurer) {
+                        string insurer, 
+                        string statsys) {
                 MatrixClaimRow rowMatrixClaimRow = ((MatrixClaimRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -567,7 +578,8 @@ namespace ClaimProject.Model {
                         esnum,
                         apdate,
                         apnum,
-                        insurer};
+                        insurer,
+                        statsys};
                 rowMatrixClaimRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMatrixClaimRow);
                 return rowMatrixClaimRow;
@@ -608,6 +620,7 @@ namespace ClaimProject.Model {
                 this.columnapdate = base.Columns["apdate"];
                 this.columnapnum = base.Columns["apnum"];
                 this.columninsurer = base.Columns["insurer"];
+                this.columnstatsys = base.Columns["statsys"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -649,6 +662,8 @@ namespace ClaimProject.Model {
                 base.Columns.Add(this.columnapnum);
                 this.columninsurer = new global::System.Data.DataColumn("insurer", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninsurer);
+                this.columnstatsys = new global::System.Data.DataColumn("statsys", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatsys);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1079,6 +1094,22 @@ namespace ClaimProject.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string statsys {
+                get {
+                    try {
+                        return ((string)(this[this.tableMatrixClaim.statsysColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'statsys\' in table \'MatrixClaim\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMatrixClaim.statsysColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableMatrixClaim.IDColumn);
             }
@@ -1291,6 +1322,18 @@ namespace ClaimProject.Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetinsurerNull() {
                 this[this.tableMatrixClaim.insurerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsstatsysNull() {
+                return this.IsNull(this.tableMatrixClaim.statsysColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetstatsysNull() {
+                this[this.tableMatrixClaim.statsysColumn] = global::System.Convert.DBNull;
             }
         }
         
