@@ -343,8 +343,8 @@ namespace ClaimProject.CM
                                             //sysname = "test";
                                         }
 
-                                        if (txtCpointSearch.SelectedValue != "711" && txtCpointSearch.SelectedValue != "712" && txtCpointSearch.SelectedValue != "713")
-                                        {
+                                        //if (txtCpointSearch.SelectedValue != "711" && txtCpointSearch.SelectedValue != "712" && txtCpointSearch.SelectedValue != "713")
+                                        //{
                                             if (rs.GetString("drive_group_id") == "2") // ซ่อมบำรุง
                                             {
                                                 messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
@@ -355,12 +355,12 @@ namespace ClaimProject.CM
                                                 messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
                                                 function.LineTran(sysname, messageLine);
                                             }
-                                        }
-                                        else
-                                        {
-                                            messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
-                                            function.LineTran(sysname, messageLine);
-                                        }
+                                        //}
+                                        //else
+                                        //{
+                                        //    messageLine = Label1.Text + "\nแจ้งใช้งานได้ปกติ : ด่านฯ " + Label5.Text + " (" + Label2.Text + ") \nวันที่แจ้ง : " + lbsDate.Text + " @" + lbsTime.Text + " \nอุปกรณ์ : " + Label3.Text + "\nตรวจสอบพบ : " + Label4.Text + "\nแก้ไข : " + txtMethod.Text + " ";
+                                        //    function.LineTran(sysname, messageLine);
+                                        //}
                                     }
                                     BindData();
                                 }
