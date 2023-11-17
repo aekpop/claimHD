@@ -71,12 +71,13 @@ namespace ClaimProject
             }
             LineTran();
             LoadPaging();
-            if (Session["alert"].ToString() != "")
-            {
-                string msgAlert = Session["alert"].ToString();
-                AlertPop(msgAlert, "success");
-                Session["alert"] = "";
-            }
+
+            //if (Session["alert"].ToString() != "")
+            //{
+            //    string msgAlert = Session["alert"].ToString();
+            //    AlertPop(msgAlert, "success");
+            //    Session["alert"] = "";
+            //}
 
             switch (Session["UserPrivilegeId"].ToString())
             {

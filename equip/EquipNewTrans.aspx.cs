@@ -37,10 +37,10 @@ namespace ClaimProject.equip
 
             if (!this.IsPostBack)
             {
-                string top = Session["TransID"].ToString();
+                //string top = Session["TransID"].ToString();
                 string equipNo = "";
                 string tollStart = "";
-                string chhh = Session["UserPrivilegeId"].ToString();
+                //string chhh = Session["UserPrivilegeId"].ToString();
                 string usercpo = Session["UserCpoint"].ToString();
 
                 Session["TranRepId"] = "";
@@ -76,7 +76,7 @@ namespace ClaimProject.equip
                 //string ucpoint = Session["UserCpoint"].ToString();
                 LoadDataPaging();
                 inputDDLSELECT();
-                //AddTransDatabind("ADD");
+                btndisabled();
             }
         }
 
@@ -1416,19 +1416,14 @@ namespace ClaimProject.equip
                                 }
                                 else
                                 {
-                                    Session["alert"] = "Error !!@#@#@!!";
-                                    //Response.Redirect("/equip/EquipTranList");
-                                    //break;
+                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!";
+                                    Response.Redirect("/equip/EquipTranList");
+                                    break;
                                 }
                             }
                             else if (value == "error")
                             {
                                 AlertPop("การดึงกลับแก้ไขล้มเหลว กรุณาติดต่อปลายทาง", "error");
-                                break;
-                            }
-                            else
-                            {
-                                AlertPop("Exception002 !!", "error");
                                 break;
                             }
                         }
@@ -1441,13 +1436,13 @@ namespace ClaimProject.equip
                             {
                                 if (function.MySqlQuery(loge))
                                 {
-                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว";
+                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!!";
                                     Response.Redirect("/equip/EquipTranList");
                                     break;
                                 }
                                 else
                                 {
-                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว";
+                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!!!";
                                     Response.Redirect("/equip/EquipTranList");
                                     break;
                                 }
@@ -1457,17 +1452,7 @@ namespace ClaimProject.equip
                                 AlertPop("การดึงกลับแก้ไขล้มเหลว กรุณาติดต่อปลายทาง", "error");
                                 break;
                             }
-                            else
-                            {
-                                AlertPop("Exception003 !!", "error");
-                                break;
-                            }
                         }
-                    }
-                    else
-                    {
-                        AlertPop("Exception001 !!", "error");
-                        break;
                     }
                 }
             }
@@ -1646,17 +1631,22 @@ namespace ClaimProject.equip
                             loo.Close();
                             return "1";
                         }
-                        if (function.MySqlQuery(updateequip))
-                        {
-                            loo.Close();
-                            return "1";
-                        }
-                        else
-                        {
-                            AlertPop("Error Get002 ติดต่อเจ้าหน้าที่", "warning");
-                            loo.Close();
-                            return "error";
-                        }
+
+                        //if(stedit != "1")
+                        //{
+                            if (function.MySqlQuery(updateequip))
+                            {
+                                loo.Close();
+                                return "1";
+                            }
+                            else
+                            {
+                                AlertPop("Error Get002 ติดต่อเจ้าหน้าที่", "warning");
+                                loo.Close();
+                                return "error";
+                            }
+                            //stedit = "0";
+                        //}                        
                     }
                     else
                     {
@@ -2312,6 +2302,11 @@ namespace ClaimProject.equip
         public void Cleartxt()
         {
             btnAddEQTran.Text = "";
+        }
+
+        public void btndisabled()
+        {
+            btnEdit.Visible = false;
         }
     }
 }

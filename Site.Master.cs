@@ -134,6 +134,7 @@ namespace ClaimProject
                     navHoldClaim.Visible = false;
                 }
             }
+            //closeMenu();
         }
         public string UserName()
         {
@@ -176,6 +177,13 @@ namespace ClaimProject
         private void URLchanges ()
         {
 
+        }
+
+        private void closeMenu()
+        {
+            //ครุภัณฑ์
+            equipDiv.Visible = false;
+            Li4.Visible = false;
         }
     }
 }

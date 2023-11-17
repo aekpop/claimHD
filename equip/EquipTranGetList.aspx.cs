@@ -32,7 +32,7 @@ namespace ClaimProject.equip
                 Session["TransID"] = "";
                 Session["TransNew"] = "";
                 Session["BackWhat"] = "Get";
-                //Session["alert"] = "";
+                Session["alert"] = "";
                 function.getListItem(ddlsearchEndToll, "SELECT * FROM tbl_toll Order By toll_id ASC", "toll_name", "toll_id");
                 function.getListItem(ddlsearchType, "SELECT * FROM tbl_transfer_status Order by trans_stat_id ASC ", "trans_stat_name", "trans_stat_id");
                 function.getListItem(ddlsearchStat, "SELECT * FROM tbl_trans_complete WHERE complete_id != '1' AND complete_id != '5'  order by complete_id asc ", "complete_name", "complete_id");

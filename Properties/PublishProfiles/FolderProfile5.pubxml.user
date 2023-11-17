@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>H:\Publish</_PublishTargetUrl>
-    <History>True|2023-11-03T11:13:35.9013751Z;True|2023-11-01T11:48:49.4906707+07:00;True|2023-10-18T17:57:27.1437715+07:00;True|2023-10-16T20:06:56.1031077+07:00;True|2023-10-16T20:06:04.6180281+07:00;</History>
+    <History>True|2023-11-16T05:23:28.1336997Z;True|2023-11-03T18:13:35.9013751+07:00;True|2023-11-01T11:48:49.4906707+07:00;True|2023-10-18T17:57:27.1437715+07:00;True|2023-10-16T20:06:56.1031077+07:00;True|2023-10-16T20:06:04.6180281+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -36,13 +36,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/24/2017 22:53:36</publishTime>
     </File>
     <File Include="bin/ClaimProject.dll">
-      <publishTime>11/03/2023 18:13:32</publishTime>
+      <publishTime>11/17/2023 15:24:54</publishTime>
     </File>
     <File Include="bin/ClaimProject.pdb">
-      <publishTime>11/03/2023 18:13:32</publishTime>
+      <publishTime>11/17/2023 15:24:54</publishTime>
     </File>
     <File Include="bin/ClaimProject.XmlSerializers.dll">
-      <publishTime>11/03/2023 18:13:33</publishTime>
+      <publishTime>11/17/2023 15:24:55</publishTime>
     </File>
     <File Include="bin/CrystalDecisions.CrystalReports.Design.dll">
       <publishTime>11/10/2018 07:44:08</publishTime>
@@ -3441,7 +3441,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/03/2023 10:19:08</publishTime>
     </File>
     <File Include="equip/EquipReportAll.aspx">
-      <publishTime>12/13/2021 18:37:18</publishTime>
+      <publishTime>11/13/2023 09:57:42</publishTime>
     </File>
     <File Include="equip/EquipReportPage.aspx">
       <publishTime>11/30/2020 10:50:54</publishTime>
@@ -3489,7 +3489,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/07/2015 00:00:00</publishTime>
     </File>
     <File Include="fonts/Prompt-Light.ttf">
-      <publishTime>06/15/2016 00:00:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="fonts/THSarabun Bold Italic.ttf">
       <publishTime>10/20/2018 15:06:32</publishTime>

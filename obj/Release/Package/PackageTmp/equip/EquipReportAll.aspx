@@ -14,7 +14,7 @@
             padding: 5px 50px 5px 5px;
         }
     </style>
-
+    
     <div class="container-fluid" style="font-family:'Prompt',sans-serif">
         <div id="Report" runat="server" class="card" style="z-index: 0">
             <div class="card-header card-header-info" >
@@ -56,94 +56,96 @@
                    </div>
             </div>
         </div>
-        </div>
-    <div class="container" style="font-family:'Prompt',sans-serif">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">รายงานรับครุภัณฑ์</div>
-            </div>
-
-            <div class="card-body" style="padding:10px;">
-                <asp:GridView ID="gridReport" runat="server"
-                    AutoGenerateColumns="false"
-                    OnRowDataBound="gridReport_RowDataBound"
-                    CssClass="table table-hover table-bordered table-sm"
-                    HeaderStyle-Font-Size="18px"
-                    HeaderStyle-Height="50px"
-                    GridLines="None" 
-                    AllowSorting="true"                   
-                    Font-Size="16px"
-                    RowStyle-Height="50px"
-                    
-                >
-                    <Columns>                        
-                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-left">
-                                <ItemTemplate>
-                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-left" > </asp:Label>
-                                </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="จำนวน (รายการ)" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ครั้ง") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        
-                        
-                    </Columns>
-                </asp:GridView>
+        <div class="row">
+            <div class="card col-6">
+                <div class="card-header">
+                    <div class="card-title">รายงานรับครุภัณฑ์</div>
                 </div>
-                <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
-                
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">รายงานส่งครุภัณฑ์</div>
-            </div>
-
-            <div class="card-body" style="padding:10px;">
-                <asp:GridView ID="GridView1" runat="server"
-                    AutoGenerateColumns="false"
-                    OnRowDataBound="GridView1_RowDataBound"
-                    CssClass="table table-hover table-bordered table-sm"
-                    HeaderStyle-Font-Size="18px"
-                    HeaderStyle-Height="50px"
-                    GridLines="None" 
-                    AllowSorting="true"                   
-                    Font-Size="16px"
-                    RowStyle-Height="50px"
-                    
-                >
-                    <Columns>                        
-                        <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-left">
-                                <ItemTemplate>
-                                    <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-left" > </asp:Label>
-                                </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="จำนวน (รายการ)" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
-                            <ItemTemplate>
-                                <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ครั้ง") %>' ></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+    
+                <div class="card-body" style="padding:10px;">
+                    <asp:GridView ID="gridReport" runat="server"
+                        AutoGenerateColumns="false"
+                        OnRowDataBound="gridReport_RowDataBound"
+                        CssClass="table table-hover table-bordered table-sm"
+                        HeaderStyle-Font-Size="18px"
+                        HeaderStyle-Height="50px"
+                        GridLines="None" 
+                        AllowSorting="true"                   
+                        Font-Size="16px"
+                        RowStyle-Height="50px"
                         
-                    </Columns>
-                </asp:GridView>
+                    >
+                        <Columns>                        
+                            <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-left" > </asp:Label>
+                                    </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>' ></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="จำนวน (รายการ)" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ครั้ง") %>' ></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            
+                            
+                        </Columns>
+                    </asp:GridView>
+                    </div>
+                    <div class="row" style="padding-left:20px;" >
+                        <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                    
                 </div>
-                <div class="row" style="padding-left:20px;" >
-                    <asp:Label ID="Label1" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
-                
+            </div>
+            <div class="card col-6">
+                <div class="card-header">
+                    <div class="card-title">รายงานส่งครุภัณฑ์</div>
+                </div>
+    
+                <div class="card-body" style="padding:10px;">
+                    <asp:GridView ID="GridView1" runat="server"
+                        AutoGenerateColumns="false"
+                        OnRowDataBound="GridView1_RowDataBound"
+                        CssClass="table table-hover table-bordered table-sm"
+                        HeaderStyle-Font-Size="18px"
+                        HeaderStyle-Height="50px"
+                        GridLines="None" 
+                        AllowSorting="true"                   
+                        Font-Size="16px"
+                        RowStyle-Height="50px"
+                        
+                    >
+                        <Columns>                        
+                            <asp:TemplateField HeaderText="ลำดับ" HeaderStyle-Width="20px" ItemStyle-CssClass="text-left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbRowNum" runat="server" Text="" CssClass="text-left" > </asp:Label>
+                                    </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ด่านฯ" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbpktrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>' ></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="จำนวน (รายการ)" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ครั้ง") %>' ></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            
+                        </Columns>
+                    </asp:GridView>
+                    </div>
+                    <div class="row" style="padding-left:20px;" >
+                        <asp:Label ID="Label1" runat="server" Font-Size="13px" Font-Bold="true" ForeColor="#0022ff" ></asp:Label>
+                    
+                </div>
             </div>
         </div>
+        
     </div>
+    
 </asp:Content>
