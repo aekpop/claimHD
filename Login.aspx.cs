@@ -13,6 +13,8 @@ namespace ClaimProject
         ClaimFunction function = new ClaimFunction();
 
         private string IPAddress;
+        public string annexGet = "";
+        string cpoint = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,7 +44,7 @@ namespace ClaimProject
             {
                 sb.Append("\r\n" + DateNoww + " " + TimeNoww + " IP:" + IPAddress + " Login_Failure");
                 // flush every 20 seconds as you do it
-                File.AppendAllText(filePath +  "_" + DateNoww + ".txt" , sb.ToString());
+                File.AppendAllText(filePath + "_" + DateNoww + ".txt", sb.ToString());
                 sb.Clear();
                 mess += "- กรุณาป้อน Username<br/>";
             }
@@ -55,54 +57,51 @@ namespace ClaimProject
                 sb.Clear();
                 mess += "- กรุณาป้อน Password<br/>";
             }
-
+            //login complete
             if (mess == "")
             {
-                int num = 0;
-                string numAnnex = "SELECT COUNT(*) AS num FROM tbl_toll WHERE `cpoint_id` = '" + txtCpoint.SelectedValue + "' ";
-                MySqlDataReader rd = function.MySqlSelect(numAnnex);
-                if (rd.Read())
-                {
-                    num = rd.GetInt32(num);
-                }
-
                 string sql = "SELECT * FROM tbl_user WHERE username ='" + txtUser.Text.Trim() + "' AND PASSWORD = '" + txtPass.Text.Trim() + "' AND delete_status = '0' ";
                 MySqlDataReader rs = function.MySqlSelect(sql);
                 if (rs.Read())
                 {
+                    int num = 0;
+                    string numAnnex = "";
+                    string point = "";
+                    cpoint = rs.GetString("cpoint_id");
+
+                    if (rs.GetString("level") == "2" || rs.GetString("level") == "5" && rs.GetString("user_cpoint") == "1")
+                    {
+                        if (cpoint == "703" || cpoint == "704" || cpoint == "706" || cpoint == "707" || cpoint == "708" || cpoint == "709")
+                        {
+                            point = txtPoint.SelectedValue;
+                        }
+                        else
+                        {
+                            point = " ";
+                        }
+                    }
+
+                    numAnnex = "SELECT COUNT(*) AS num FROM tbl_toll WHERE `cpoint_id` = '" + cpoint + "' ";
+                    MySqlDataReader rd = function.MySqlSelect(numAnnex);
+                    if (rd.Read())
+                    {
+                        num = rd.GetInt32(num);
+                    }
+
                     if (int.Parse(txtPoint.SelectedValue) > num)
                     {
                         mess += "กรุณาเลือก Annex ใหม่";
+                        visible("1");
                     }
                     else
                     {
                         if (!rs.IsDBNull(0))
                         {
-                            string cpoint = "";
-                            string point = "";
                             if (rs.GetString("user_cpoint") == "0")
                             {
                                 cpoint = "0";
                             }
-                            else
-                            {
-                                if (rs.GetString("level") == "5" && rs.GetString("user_cpoint") == "1")
-                                {
-                                    cpoint = rs.GetString("cpoint_id");
-                                }
-                                else
-                                {
-                                    cpoint = txtCpoint.SelectedValue;
-                                    if (cpoint == "703" || cpoint == "704" || cpoint == "706" || cpoint == "707" || cpoint == "708" || cpoint == "709")
-                                    {
-                                        point = txtPoint.SelectedValue;
-                                    }
-                                    else
-                                    {
-                                        point = " ";
-                                    }
-                                }
-                            }
+
                             // Storee Session
                             Session.Add("EQAddAlert", "");
                             Session.Add("NewEQPK", "");
@@ -114,81 +113,12 @@ namespace ClaimProject
                             Session.Add("UserPrivilege", function.GetLevel(int.Parse(rs.GetString("level"))));
                             Session.Add("user_cpoint", rs.GetString("user_cpoint"));
                             Session.Add("alert", "");
-
-                            string userrr = txtUser.Text;
-                            if (userrr == "lbmotorway")
-                            {
-                                cpoint = "701";
-                            }
-                            else if (userrr == "bbmotorway")
-                            {
-                                cpoint = "702";
-                            }
-                            else if (userrr == "bkmotorway")
-                            {
-                                cpoint = "703";
-                            }
-                            else if (userrr == "pnmotorway")
-                            {
-                                cpoint = "704";
-                            }
-                            else if (userrr == "bgmotorway")
-                            {
-                                cpoint = "706";
-                            }
-                            else if (userrr == "bpmotorway")
-                            {
-                                cpoint = "707";
-                            }
-                            else if (userrr == "nkmotorway")
-                            {
-                                cpoint = "708";
-                            }
-                            else if (userrr == "pomotorway")
-                            {
-                                cpoint = "709";
-                            }
-                            else if (userrr == "pymotorway")
-                            {
-                                cpoint = "710";
-                            }
-                            else if (userrr == "hymotorway")
-                            {
-                                cpoint = "711";
-                            }
-                            else if (userrr == "kcmotorway")
-                            {
-                                cpoint = "712";
-                            }
-                            else if (userrr == "utmotorway")
-                            {
-                                cpoint = "713";
-                            }
-                            else if (userrr == "tc1motorway")
-                            {
-                                cpoint = "902";
-                            }
-                            else if (userrr == "tc2motorway")
-                            {
-                                cpoint = "903";
-                            }
-                            else if (userrr == "ty1motorway")
-                            {
-                                cpoint = "904";
-                            }
-                            else if (userrr == "ty2motorway")
-                            {
-                                cpoint = "905";
-                            }
-
-
                             Session.Add("UserCpoint", cpoint);
                             Session.Add("Userpoint", point);
                             Session.Timeout = 28800;
 
+                            lbname.Text = rs.GetString("name");
 
-
-                            //Response.Charset = "UTF-8";
                             HttpCookie newCookie = new HttpCookie("ClaimLogin");
                             newCookie["User"] = txtUser.Text;
                             newCookie["UserName"] = rs.GetString("name");
@@ -208,17 +138,7 @@ namespace ClaimProject
 
                             string updateSQl = "UPDATE tbl_user SET login_log = '" + DateNoww + " " + TimeNoww + "' WHERE username = '" + txtUser.Text.Trim() + "'";
                             function.MySqlQuery(updateSQl);
-
-                            if (Session["UserPrivilegeId"].ToString() == "5")
-                            {
-
-                                Response.Redirect("/equip/EquipDefault");
-                            }
-                            else
-                            {
-                                Response.Redirect("/");
-                            }
-
+                            redirect();
                         }
                         else
                         {
@@ -228,7 +148,7 @@ namespace ClaimProject
                             sb.Clear();
                             mess += "- Username หรือ Password ไม่ถูกต้อง";
                         }
-                    }                  
+                    }
                 }
                 else
                 {
@@ -239,11 +159,10 @@ namespace ClaimProject
                     mess += "- Username หรือ Password ไม่ถูกต้อง";
                 }
 
-                rd.Close();
+                //rd.Close();
                 rs.Close();
                 function.Close();
             }
-            
 
             if (mess != "")
             {
@@ -253,9 +172,6 @@ namespace ClaimProject
             {
                 msgBox.Text = "";
             }
-
-            
-
         }
 
         protected void linkDownload_Click(object sender, EventArgs e)
@@ -310,8 +226,47 @@ namespace ClaimProject
             {
                 ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
-
             return ip;
+        }
+
+        public void visible(string con)
+        {
+            if (con == "1" && cpoint != "0")
+            {
+                txtCpoint.Visible = true;
+                txtCpoint.SelectedValue = cpoint;
+            }
+        }
+
+        public void redirect()
+        {
+            switch (Session["UserPrivilegeId"].ToString())
+            {
+                case "0"://admin
+                    Response.Redirect("/");
+                    break;
+                case "1"://เทคโน
+                    Response.Redirect("/");
+                    break;
+                case "2"://คอม
+                    Response.Redirect("/");
+                    break;
+                case "3"://รอง
+                    Response.Redirect("/");
+                    break;
+                case "4"://สถิติ
+                    Response.Redirect("/");
+                    break;
+                case "5"://พัสดุ ธุรการ
+                    Response.Redirect("/equip/EquipDefault");
+                    break;
+                case "6"://viewer
+                    Response.Redirect("/");
+                    break;
+                default:
+                    Response.Redirect("/");
+                    break;
+            }
         }
     }
 }

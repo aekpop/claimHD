@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject {
-    
-    
-    public partial class Login {
-        
+namespace ClaimProject
+{
+
+
+    public partial class Login
+    {
+
         /// <summary>
         /// msgBox control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label msgBox;
-        
+
         /// <summary>
         /// txtUser control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUser;
-        
+
         /// <summary>
         /// txtPass control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPass;
-        
+
         /// <summary>
         /// txtCpoint control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtCpoint;
-        
+
         /// <summary>
         /// txtPoint control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtPoint;
-        
+
         /// <summary>
         /// btnSubmit control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
+
         /// <summary>
         /// linkDownload control.
         /// </summary>
@@ -74,5 +76,14 @@ namespace ClaimProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton linkDownload;
+
+        /// <summary>
+        /// lbname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbname;
     }
 }

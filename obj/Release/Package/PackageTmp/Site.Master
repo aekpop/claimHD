@@ -90,8 +90,8 @@
             </Scripts>
         </asp:ScriptManager>
         <script src="/Scripts/offcanvas.js"></script>
-     
-        <div class="wrapper ">
+        <div class="Loading"></div>
+        <div class="wrapper">
             <div class="panel panel-default">
                 <nav class="navbar fixed-top sticky-top navbar-expand-sm navbar-dark bg-dark">
                     <div class="container-fluid" style="font-family: Prompt;">
@@ -508,7 +508,7 @@
                     window.clearInterval(intervalId);
                     callback.call(this);
                 }
-            }, 50);
+            }, 1000);
         }
 
         function setVisible(selector, visible) {

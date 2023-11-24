@@ -138,7 +138,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade " id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="ReportModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="ReportModalLabel" aria-hidden="true">
         <div class="modal-dialog modal modal-dialog-centered " style="max-height: 85%; margin-top: 50px; margin-bottom: 50px; width: 500px" role="form">
             <div class="modal-content">
                 <div class="modal-header">
@@ -179,7 +179,7 @@
                 <div class="modal-footer">
                     <asp:LinkButton ID="lbtnGoReport" runat="server" CssClass="btn btn-outline-success btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง" Visible="false" OnCommand="lbtnGoReport_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <asp:LinkButton ID="lbtnGoReportCopy" runat="server" CssClass="btn btn-outline-warning btn-sm" Font-Size="15px" ToolTip="ใบรับ-ส่ง สำเนา" Visible="false" OnCommand="lbtnGoReportCopy_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
-                    <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" Visible="true" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
+                    <asp:LinkButton ID="printReport1" runat="server" CssClass="btn btn-sm btn-outline-info" Font-Size="15px" ToolTip="บันทึกข้อความ" Visible="false" OnCommand="printReport1_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <asp:LinkButton ID="lbtnGoReportrd" runat="server" CssClass="btn btn-sm btn-outline-danger" Font-Size="15px" ToolTip="ใบรับส่ง RDLC" Visible="true" OnCommand="lbtnGoReportrd_Command"><i class="fa">&#xf02f;</i></asp:LinkButton>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="font-size: medium">X</button>
                 </div>

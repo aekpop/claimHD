@@ -354,6 +354,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade " id="ReplaceModal" tabindex="-1" role="dialog" aria-labelledby="ReplaceModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered " style="width: 600px" role="form">
                 <div class="modal-content">
@@ -477,6 +478,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade " id="modalHitBack" tabindex="-1" role="dialog" aria-labelledby="modalHitBack" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered " style="width: 320px" role="form">
                 <div class="modal-content">
@@ -501,6 +503,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="modalPrint" tabindex="-1" role="dialog" aria-labelledby="modalPrint" aria-hidden="true">
             <div class="modal-dialog modal modal-dialog-centered " style="max-height: 100%; margin-top: 50px; margin-bottom: 50px; width: 500px" role="form">
                 <div class="modal-content">
