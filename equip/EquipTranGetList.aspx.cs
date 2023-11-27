@@ -104,15 +104,15 @@ namespace ClaimProject.equip
 
             if (Session["UserCpoint"].ToString() == "0")
             {
-                if (Session["User"].ToString() == "sawitree")
+                if (Session["User"].ToString() == "AA")
                 {
                     sqlsendSearch += "WHERE toll_EQGroup = '1' ";
                 }
-                else if (Session["User"].ToString() == "supaporn")
+                else if (Session["User"].ToString() == "BB")
                 {
                     sqlsendSearch += "WHERE toll_EQGroup = '2' ";
                 }
-                else if (Session["User"].ToString() == "watcharee")
+                else if (Session["User"].ToString() == "CC")
                 {
                     sqlsendSearch += "WHERE toll_EQGroup = '3' ";
                 }

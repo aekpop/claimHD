@@ -31,7 +31,7 @@ namespace ClaimProject.equip
             //ddlsearchType   ddlsearchStat
             function.getListItem(ddlsearchType, "select * from tbl_transfer_status order by trans_stat_id ASC", "trans_stat_name", "trans_stat_id");
             function.getListItem(ddlsearchStat, "select * from tbl_trans_complete where complete_id != '1' order by complete_id ASC ", "complete_name", "complete_id");
-            string who = Session["User"].ToString();
+            string who = "";
             if(who == "watcharee")
             {
                 function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '3' OR eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");

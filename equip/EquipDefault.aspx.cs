@@ -71,7 +71,7 @@ namespace ClaimProject.equip
 
             if (Session["UserCpoint"].ToString() == "0")
             {
-                if (Session["User"].ToString() == "sawitree")
+                if (Session["User"].ToString() == "AA")
                 {
                     sqlcpSearch += " 7010' OR toll_send = '9010' OR toll_send = '9020' OR toll_send ='9030' OR toll_send ='9040 ";
                     sqlcpSearchtotal = "7010' OR toll_id = '9010' OR toll_id = '9020' OR toll_id ='9030' OR toll_id ='9040 ";
@@ -80,7 +80,7 @@ namespace ClaimProject.equip
                     newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
                     newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
                 }
-                else if (Session["User"].ToString() == "supaporn")
+                else if (Session["User"].ToString() == "BB")
                 {
                     sqlcpSearch += " 7020' OR toll_send = '7031' OR toll_send = '7032' OR toll_send = '7033' OR toll_send = '7041' OR toll_send = '7042' OR toll_send = '7051' OR toll_send = '7052'" +
                         "OR toll_send ='7061' OR toll_send = ' 7062 ' OR toll_send = ' 7063 ' OR toll_send = ' 7064 ";
@@ -92,7 +92,7 @@ namespace ClaimProject.equip
                     newTran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND user_send ='" + Session["UserName"].ToString() + "' ";
                     newTranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '2' AND num_success = 'no' AND user_send ='" + Session["UserName"].ToString() + "' ";
                 }
-                else if (Session["User"].ToString() == "watcharee")
+                else if (Session["User"].ToString() == "CC")
                 {
                     sqlcpSearch += " 7071' OR toll_send = '7072' OR toll_send = '7073' OR toll_send = '7074' OR toll_send = '7075' OR toll_send = '7076' OR toll_send = '7081' OR toll_send = '7082'" +
                         "OR toll_send ='7083' OR toll_send = ' 7084 ' OR toll_send = ' 7090 ' OR toll_send = ' 7100 ' OR toll_send = ' 7110 ' OR toll_send = ' 7120 ";

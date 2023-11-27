@@ -39,7 +39,7 @@ namespace ClaimProject.equip
         protected void LoadPaging()
         {
             string PrivCode = Session["UserPrivilegeId"].ToString();
-            string userrrr = Session["User"].ToString();
+            string userrrr = "";
             if (PrivCode == "0" || PrivCode == "1" || PrivCode == "5")
             {
                 if (userrrr == "sawitree")
