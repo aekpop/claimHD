@@ -12,7 +12,7 @@
     <!-- Custom styles for this template -->
     <link href="/Content/material-dashboard.css" rel="stylesheet" />
     <link href="/Content/form-design-new.css" rel="stylesheet" />
-    <link href="/Content/custom-signin.css" rel="stylesheet" />
+    <!--<link href="/Content/custom-signin.css" rel="stylesheet" /> -->
     <link href="Content/custom.css" rel="stylesheet" />
 
     <title>Toll Management System (TMS)</title>
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
     <script src="Scripts/bootstrap-material-design.min.js"></script>

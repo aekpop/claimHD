@@ -12,7 +12,7 @@
     <!--<a href="Login.aspx" style="color:#ffffff">Login.aspx</a> -->
     <link rel="icon" href="favicon.ico">
 
-    <title>ระบบการจัดการบริหารการจัดเก็บฯ Toll Management System (TMS)</title>
+    <title>ระบบจัดการบริหารงานจัดเก็บ Toll Management System (TMS)</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/Content/bootstrap.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                 <p class="card-category">
                     <h3>Toll Management System (TMS)</h3>
                 </p>
-                <h1 class="h3 mb-3 font-weight-normal">ระบบการจัดการบริหารการจัดเก็บฯ</h1>
+                <h1 class="h3 mb-3 font-weight-normal">ระบบจัดการบริหารงานจัดเก็บ</h1>
             </div>
             <div class="card-body table-responsive">
 
