@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.CM {
-    
-    
-    public partial class CMLine {
-        
+namespace ClaimProject.CM
+{
+
+
+    public partial class CMLine
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// btnBack control.
         /// </summary>
@@ -29,16 +31,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
-        
-        /// <summary>
-        /// btnExport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExport;
-        
+
         /// <summary>
         /// hfImageData control.
         /// </summary>
@@ -47,7 +40,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfImageData;
-        
+
         /// <summary>
         /// ddlCMBudget control.
         /// </summary>
@@ -56,7 +49,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCMBudget;
-        
+
         /// <summary>
         /// ddlCMLine control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCMLine;
-        
+
         /// <summary>
         /// lbBuild control.
         /// </summary>
@@ -74,7 +67,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbBuild;
-        
+
         /// <summary>
         /// ddlAnnex control.
         /// </summary>
@@ -83,16 +76,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAnnex;
-        
-        /// <summary>
-        /// ddlShift control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShift;
-        
+
         /// <summary>
         /// lbDatep control.
         /// </summary>
@@ -101,7 +85,25 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox lbDatep;
-        
+
+        /// <summary>
+        /// ddlShift control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShift;
+
+        /// <summary>
+        /// btnExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExport;
+
         /// <summary>
         /// btnrecm control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnrecm;
-        
+
         /// <summary>
         /// printimg control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button printimg;
-        
+
         /// <summary>
         /// lbHeadToll control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbHeadToll;
-        
+
         /// <summary>
         /// lbShift control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbShift;
-        
+
         /// <summary>
         /// date control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label date;
-        
+
         /// <summary>
         /// lbDateNow control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace ClaimProject.CM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDateNow;
-        
+
         /// <summary>
         /// gridCMLine control.
         /// </summary>

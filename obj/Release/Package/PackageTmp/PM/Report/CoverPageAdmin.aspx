@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CoverPageAdmin.aspx.cs" Inherits="ClaimProject.PM.Report.CoverPageAdmin" %>
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb"%>
 <!DOCTYPE html>
 
@@ -21,13 +21,7 @@
 </head>
 <body style="font-family: 'THSarabun,THSarabunIT๙'">
     <form id="form1" runat="server">
-        <div id="dvReport">
-            <asp:Label ID="TXTGETID" runat="server" ></asp:Label>
-
-            <CR:CrystalReportViewer ID="CRTCover" runat="server" EnableParameterPrompt="False" 
-                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="ActiveX" />
-
-        </div>
+        
     </form>
 </body>
 </html>

@@ -28,9 +28,9 @@ namespace ClaimProject.Report
                 {
                     Title = Session["ReportTitle"].ToString();
                     resultReportLeave.ReportSource = Session["Report"];
-                    this.DropDownList1.DataSource = System.Drawing.Printing.PrinterSettings.InstalledPrinters;
-                    this.DropDownList1.DataBind();
-                    this.DropDownList1.SelectedIndex = 0;
+                    //this.DropDownList1.DataSource = System.Drawing.Printing.PrinterSettings.InstalledPrinters;
+                    //this.DropDownList1.DataBind();
+                    //this.DropDownList1.SelectedIndex = 0;
                 }
                 else
                 {
@@ -81,9 +81,7 @@ namespace ClaimProject.Report
 
         protected void CriaPDF()
         {
-
             ReportDocument repDoc = Session["Report"] as ReportDocument;
-
             System.IO.Stream s = repDoc.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
             Response.ClearContent();
             Response.ClearHeaders();

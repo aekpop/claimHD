@@ -26,11 +26,11 @@
             <div class="card-header card-header-warning">
             </div>
             <div class="card-header card-header-warning">
-                <h2 class="card-title">ส่ง Line งาน Corrective Maintenance : CM</h2>
+                <h2 class="card-title">ออกรายงานค้างซ่อม Corrective Maintenance : CM (ส่งกรุ๊ปไลน์)</h2>
             </div>
             <div class="form-group bmd-form-group">
-                <asp:Button ID="btnBack" runat="server" Text="หน้าหลัก" Font-Size="large" OnClick="btnBack_Click" CssClass="btn" />
-                <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick="return ConvertToImage(this)" />
+                <asp:Button ID="btnBack" runat="server" Text="Home" Font-Size="large" OnClick="btnBack_Click" CssClass="btn" />
+                
                 <asp:HiddenField ID="hfImageData" runat="server" />
                 <asp:DropDownList ID="ddlCMBudget" runat="server" CssClass="form-control custom-select" Visible="false"></asp:DropDownList>
             </div>
@@ -49,18 +49,26 @@
                             <asp:ListItem Value="5">5</asp:ListItem>
                             <asp:ListItem Value="6">6</asp:ListItem>
                         </asp:DropDownList>
+                        </div>
+                    <br />
+                    <div class="row">
+                        <label class="bmd-label-floating" style="font-size: large;">วันที่</label>
+                        <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" type="date" onkeypress="return handleEnter(this, event)" />
+                    </div>
+                    <br />
+                    <div class="row">
                         <label class="bmd-label-floating">ผลัด : </label>
                         <asp:DropDownList ID="ddlShift" runat="server" CssClass="control-form" Font-Size="large">
                             <asp:ListItem Value="0">ผลัดที่ 1 (22.00 - 06.00)</asp:ListItem>
                             <asp:ListItem Value="1">ผลัดที่ 2 (06.00 - 14.00)</asp:ListItem>
                             <asp:ListItem Value="2">ผลัดที่ 3 (14.00 - 22.00)</asp:ListItem>
-                        </asp:DropDownList>
-
-                        <label class="bmd-label-floating" style="font-size: large;">วันที่</label>
-                        <asp:TextBox ID="lbDatep" runat="server" Font-Size="Large" type="date" onkeypress="return handleEnter(this, event)" />
-                        <asp:Button ID="btnrecm" runat="server" Text="แสดงตาราง" Font-Size="large" OnClick="btnrecm_Click" />
+                        </asp:DropDownList> 
                     </div>
                     <br />
+                    <div class="row">
+                        <asp:Button ID="btnExport" Text="Export" runat="server" Font-Size="large" UseSubmitBehavior="false" OnClick="btnExport_Click" OnClientClick="return ConvertToImage(this)" />
+                        <asp:Button ID="btnrecm" runat="server" Text="show table" Font-Size="large" OnClick="btnrecm_Click" />
+                    </div>
                 </div>
                 <div class="col-md">
                     <asp:Button ID="printimg" runat="server" Text="photo" Visible="false" OnClick="printimg_Click" />

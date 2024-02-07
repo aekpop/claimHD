@@ -895,7 +895,7 @@ namespace ClaimProject.Techno
         void PrintReport(int doc)
         {
             string cpoint_title = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร 0 2360 7865";
-            string num_title = "กท./ฝจ./";
+            string num_title = "กท.๘/";
             string date_thai = "";
             string note_title = "";
             string txt_to = "";
@@ -1099,7 +1099,7 @@ namespace ClaimProject.Techno
             }
             catch
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่มีต้นเรื่องจากธุระการด่านฯ')", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่มีต้นเรื่องจากธุรการด่านฯ')", true);
             }
         }
 
@@ -1111,7 +1111,7 @@ namespace ClaimProject.Techno
             }
             catch
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่มีต้นเรื่องจากธุระการด่านฯ')", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error : ไม่มีต้นเรื่องจากธุรการด่านฯ')", true);
             }
         }
 

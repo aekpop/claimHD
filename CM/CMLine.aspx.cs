@@ -52,15 +52,16 @@ namespace ClaimProject.CM
             string cpointt = ddlCMLine.SelectedValue;
             colortoll = cpointt;
             AnnexZZ = ddlAnnex.SelectedValue;
-            string chkm73 = "";
-            if(cpointt == "711" || cpointt == "712" || cpointt == "713")
-            {
-                chkm73 = "";
-            }
-            else
-            {
-                chkm73 = " AND drive_group_id = '1' ";
-            }
+
+            string chkm73 = " AND drive_group_id = '1' ";
+            //if(cpointt == "711" || cpointt == "712" || cpointt == "713")
+            //{
+            //    chkm73 = "";
+            //}
+            //else
+            //{
+            //    chkm73 = " AND drive_group_id = '1' ";
+            //}
 
             {
                 if (lbBuild.Visible == true)

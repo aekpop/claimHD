@@ -21,13 +21,7 @@
 </head>
 <body style="font-family: 'THSarabun,THSarabunIT๙'">
     <form id="form1" runat="server">
-        <div id="dvReport">
-            <asp:Label ID="TXTGETID" runat="server" ></asp:Label>
-
-            <CR:CrystalReportViewer ID="CRT1" runat="server" EnableParameterPrompt="False" 
-                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="ActiveX" />
-
-        </div>
+        
     </form>
 </body>
 </html>

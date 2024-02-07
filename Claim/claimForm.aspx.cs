@@ -999,7 +999,7 @@ namespace ClaimProject.Claim
         {
             if (Session["claim_id"].ToString() != "")
             {
-                string note_number = "กท./ฝจ./" + function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON cpoint_id = claim_cpoint", "claim_id='" + Session["claim_id"].ToString() + "'", "cpoint_name") + "/";
+                string note_number = "กท.๘/" + function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON cpoint_id = claim_cpoint", "claim_id='" + Session["claim_id"].ToString() + "'", "cpoint_name") + "/";
                 note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim() ;
                 string note_to = txtNoteTo.Text;
                 string[] textValue = new string[16];

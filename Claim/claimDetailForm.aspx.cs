@@ -355,7 +355,7 @@ namespace ClaimProject.Claim
             if (RadioButton3.Checked) { txtInsurer.Text = ""; } else { }
 
             string sql_check = "SELECT * FROM tbl_claim WHERE claim_id='" + Session["CodePK"].ToString() + "'";
-            string note_number = "กท./ฝจ./" + txtCpoint.SelectedItem;
+            string note_number = "กท.๘/" + txtCpoint.SelectedItem;
 
             if (txtPoint.Text.Trim().ToLower() != "tsb" && txtPoint.Text.Trim().ToLower() != "") { note_number += " " + txtPoint.Text.Trim(); }
             note_number += "/คร./";
@@ -1050,7 +1050,7 @@ namespace ClaimProject.Claim
             ReportDocument rpt = new ReportDocument();
             rpt.Load(Server.MapPath("/Claim/reportCom.rpt"));
             rpt.SetParameterValue("cpoint_title", "ด่านฯ " + txtCpoint.SelectedItem + " ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_id='" + txtCpoint.SelectedValue + "'", "cpoint_tel"));
-            rpt.SetParameterValue("num_title", "กท./ฝจ./" + txtCpoint.SelectedItem + (txtPoint.Text.ToLower() == "tsb" ? "/" : txtPoint.Text + "/") + txtCpointNote.Text);
+            rpt.SetParameterValue("num_title", "กท.๘/" + txtCpoint.SelectedItem + (txtPoint.Text.ToLower() == "tsb" ? "/" : txtPoint.Text + "/") + txtCpointNote.Text);
             rpt.SetParameterValue("txt_to", txtNoteTo.Text + " " + txtCpoint.SelectedItem);
             rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(txtCpointDate.Text));
             rpt.SetParameterValue("note_title", txtEquipment.Text);

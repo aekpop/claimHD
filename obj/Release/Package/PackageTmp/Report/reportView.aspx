@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="reportView.aspx.cs" Inherits="ClaimProject.Report.reportView" %>
 
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+<%@ Register assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
 
 <!DOCTYPE html>
 
@@ -12,16 +12,14 @@
 <body style="height: 862px">
     <form id="iframe" runat="server" >
         <asp:Panel id="dvReport" runat="server" >
-            <!--<asp:Button runat="server" ID="btnPrint" Text="พิมพ์" OnClick="btnPrint_Click" />
-            <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>-->
             <CR:CrystalReportViewer ID="resultReportLeave" runat="server" 
                 EnableParameterPrompt="False" 
                 ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="Pdf" AutoDataBind="true" EnableDatabaseLogonPrompt="False" />
         </asp:Panel>
-    </form>
+
     <script type="text/javascript">
         function Print() {
-            var dvReport = document.getElementById("<%=resultReportLeave.ClientID%>");
+            var dvReport = document.getElementById("");
             var frame1 = dvReport.getElementsByTagName("iframe")[0];
             if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
                 frame1.name = frame1.id;
@@ -33,7 +31,7 @@
                 frameDoc.print();
             }
         }
-
-    </script>
-</body>
+    </script>                                        
+    </form>
+    </body>
 </html>

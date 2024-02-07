@@ -144,7 +144,7 @@ namespace ClaimProject.equip
             rept.SetParameterValue("copyHead", Session["CopyTran"]);
             rept.SetParameterValue("SenderN", Session["SenderTran"]);
             rept.SetParameterValue("SendPos", Session["PosSender"]);
-            CRSEquipviewer.ReportSource = rept;
+            //CRSEquipviewer.ReportSource = rept;
             rept.PrintToPrinter(1, true, 0, 0);
         }
         string GetDefaultPrinter()
@@ -273,7 +273,7 @@ namespace ClaimProject.equip
             rept.SetParameterValue("copyHead", Session["CopyTran"]);
             rept.SetParameterValue("SenderN", Session["SenderTran"]);
             rept.SetParameterValue("SendPos", Session["PosSender"]);
-            CRSEquipviewer.ReportSource = rept;
+            //CRSEquipviewer.ReportSource = rept;
 
             //CRSEquipviewer.ReportSource = rept;
 

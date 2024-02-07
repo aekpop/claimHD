@@ -21,19 +21,6 @@ namespace ClaimProject.equip
         protected void Page_Load(object sender, EventArgs e)
         {
 
-                string sqlreport = Session["sqlreEQ"].ToString();
-                string tolltitle = Session["tolleq"].ToString() ;
-                string descriptt = Session["describe"].ToString();
-                MySqlDataAdapter da = function.MySqlSelectDataSet(sqlreport);
-
-                DataSetEquip dts = new DataSetEquip();
-                da.Fill(dts, "EquipRe");
-               
-                ReportDocument rept = new ReportDocument();
-                rept.Load(MapPath("/equip/EquipReport.rpt"));
-                rept.SetDataSource(dts);
-                CRSEquipviewer.ReportSource = rept;
-
         }
         string GetDefaultPrinter()
         {

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="งานบำรุงรักษา / รายงาน" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMReport.aspx.cs" Inherits="ClaimProject.CM.CMReport" EnableEventValidation="false" %>
 
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 

@@ -1,0 +1,178 @@
+﻿<%@ Page Title="งานครุภัณฑ์ / รับครุภัณฑ์" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipTranGetList.aspx.cs" Inherits="ClaimProject.equip.EquipTranGetList" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="/Content/jquery-ui-1.11.4.custom.css" rel="stylesheet" />
+    <link href="../Content/form-design-new.css" rel="stylesheet" />
+    <script src="/Scripts/bootbox.js"></script>
+    <script src="/Scripts/HRSProjectScript.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Prompt';
+            src: url('/fonts/Prompt-Light.ttf') format('truetype');
+        }
+        
+    </style>
+
+    <div class="container-fluid"  style="font-family:'Prompt',sans-serif;">
+        <!-- Menu Dropdown -->        
+                <!--<div class="btn-group">
+                      <button class="btn btn-info"><i class="fas fa-align-justify"></i></button>
+                      <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="/equip/EquipDefault">หน้าหลัก</a></li>                          
+                        <li><a href="/equip/EquipAdd">ค้นหา</a></li>
+                        <li><a href="/equip/EquipTranList">ส่งครุภัณฑ์</a></li>
+                        <li><a href="/equip/EquipTranGetList">รับครุภัณฑ์</a></li>
+                        <li><asp:LinkButton id="divaddnew" runat="server" href="/equip/EquipAddAll" visible="true">เพิ่มครุภัณฑ์ใหม่</asp:LinkButton></li>
+                        <li><asp:LinkButton id="divcheckk" runat="server" href="/equip/EquipCheckList" visible="true">การโอนย้าย(ด่านฯ)</asp:LinkButton></li>
+                        <li><asp:LinkButton id="divcheckkk" runat="server" href="/equip/EquipHistory" visible="true">ประวัติโอนย้าย</asp:LinkButton></li>
+                      </ul>
+                </div>
+       <!------------------>
+        <div class="row">
+            <div class="col text-right">
+                <a class="btn btn-outline-warning" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" ><i class="fas fa-bars"></i></a>
+            </div>
+        </div>
+    <div class="collapse show" id="collapseSearch">
+        <div id="AddPM" runat="server" class="card" style="z-index: 0; ">
+        <div class="card-header " >
+            <div class="card-title" >ค้นหา</div>
+        </div>
+            <div class="card-body table-responsive table-sm">
+
+                <div id="divSendSearch" style="font-size:medium;" runat="server" >
+                    <div class="row" >
+                        <div class="col-md-6 col-xl-3"  >
+                            <div class="form-group">
+                            <asp:Label ID="Label4" runat="server" Text="เลขอ้างอิง : "  ></asp:Label>
+                                <asp:TextBox ID="txtRefTran" runat="server" CssClass="form-control col-auto" onkeypress="return handleEnter(this, event)"></asp:TextBox>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3" >
+                            <div class="form-group">
+                            <asp:Label ID="Label1" runat="server" Text="ประเภทโอนย้าย : " ></asp:Label>
+                            <asp:DropDownList ID="ddlsearchType" runat="server"  CssClass="form-control" ></asp:DropDownList>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3"  >
+                            <div class="form-group">
+                            <asp:Label ID="Label2" runat="server" Text="ด่านต้นทาง : "  ></asp:Label>
+                            <asp:DropDownList ID="ddlsearchEndToll" runat="server"  CssClass="form-control"  ></asp:DropDownList>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3" >
+                            <div class="form-group">
+                            <asp:Label ID="Label3" runat="server" Text="สถานะ : "  ></asp:Label>
+                            <asp:DropDownList ID="ddlsearchStat" runat="server"  CssClass="form-control"  ></asp:DropDownList>
+                           </div>
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="col text-center" >
+                            <div class="form-group">
+                            <asp:LinkButton ID="lbtnSearchSend" runat="server" ToolTip="กดค้นหา" Font-Size="Large" CssClass="btn btn-success fa fa-search text-white" OnCommand="lbtnSearchSend_Command">&nbspค้นหา</asp:LinkButton>
+                           </div>
+                        </div>
+                    </div>
+                    </div>      
+                </div>
+              </div>
+    </div>
+    
+    
+    <div class="card">
+            <div class="card-header">
+                <div class="card-title">รายการรับครุภัณฑ์</div>
+            </div>
+               <div class="card-body">
+                <div class="row" style="padding-left:20px;" >
+                    <asp:Label ID="lbAmountgrid" runat="server" Font-Size="13px" ForeColor="#0022ff" ></asp:Label>
+                </div>
+                <asp:GridView ID="gridTranlist" runat="server" 
+                    AutoGenerateColumns="false" 
+                    DataKeyNames="trans_id" 
+                    OnRowDataBound="gridTranlist_RowDataBound"
+                    GridLines="None" 
+                    CssClass="table table-hover table-condensed table-sm"
+                    HeaderStyle-Font-Size="18px"
+                    HeaderStyle-Height="50px"
+                    Font-Size="15px"
+                    AllowSorting="true"
+                    RowStyle-Height="50px"
+                    OnPageIndexChanging="gridTranlist_PageIndexChanging" 
+                    PagerSettings-Mode="NumericFirstLast" 
+                    PageSize="50" 
+                    PagerSettings-FirstPageText="หน้าแรก"  
+                    PagerSettings-LastPageText="หน้าสุดท้าย"
+                    AllowPaging="true">                    
+                    <Columns>
+                        <asp:TemplateField HeaderText="เลขอ้างอิง" HeaderStyle-CssClass="text-left" ItemStyle-CssClass="text-left" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbTransId" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_id") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="วันที่" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ประเภท" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbtypetrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ต้นทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbStarttrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_name") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ปลายทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbEndtrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_recieve") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>                                                               
+                        <asp:TemplateField HeaderText="สถานะ" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" ControlStyle-Font-Size ="Large" >
+                            <ItemTemplate>
+                                <asp:Label ID="lbstat" runat="server"  Text='<%# DataBinder.Eval(Container, "DataItem.complete_name") %>' ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="จัดการข้อมูล" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" >
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtntrans" runat="server" ToolTip="คลิก!" Font-Size="X-Large" OnCommand="lbtntrans_Command" BackColor="#ffffff"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="#ffffff" Font-Bold="True" CssClass="text-center" ForeColor="#031f91" />
+                    <HeaderStyle BackColor="#ffffff" CssClass="text-center"   ForeColor="#031f91" />                   
+                    <PagerStyle HorizontalAlign="Center" CssClass="GridPager" BackColor="white" ForeColor="#990000" />
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/Scripts/ClaimProjectScript.js"></script>
+    <script type="text/javascript">
+        function handleEnter (field, event) {
+		    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        $(function () {
+        <% if (alerts != "")
+        { %>
+            demo.showNotification('top', 'center', '<%=icons%>', '<%=alertTypes%>', '<%=alerts%>');
+        <% } %>
+        });
+    </script>
+</asp:Content>

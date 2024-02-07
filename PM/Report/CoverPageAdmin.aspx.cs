@@ -100,7 +100,7 @@ namespace ClaimProject.PM.Report
                 rrr.SetParameterValue("today",todayy);
                 rrr.SetParameterValue("image", Server.MapPath("/PM/Report/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
                 function.Close();
-                this.CRTCover.ReportSource = rrr;
+                //this.CRTCover.ReportSource = rrr;
                 rrr.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "PMCoverReport");
             }
         }

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.equip {
-    
-    
-    public partial class EquipReportPage {
-        
+namespace ClaimProject.equip
+{
+
+
+    public partial class EquipReportPage
+    {
+
         /// <summary>
         /// EQframe control.
         /// </summary>
@@ -20,23 +22,5 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm EQframe;
-        
-        /// <summary>
-        /// dvReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel dvReport;
-        
-        /// <summary>
-        /// CRSEquipviewer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer CRSEquipviewer;
     }
 }

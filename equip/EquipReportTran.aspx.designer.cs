@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.equip {
-    
-    
-    public partial class EquipReportTran {
-        
+namespace ClaimProject.equip
+{
+
+
+    public partial class EquipReportTran
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,32 +22,5 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// btnprint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnprint;
-        
-        /// <summary>
-        /// dvReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel dvReport;
-        
-        /// <summary>
-        /// CRSEquipviewer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer CRSEquipviewer;
     }
 }

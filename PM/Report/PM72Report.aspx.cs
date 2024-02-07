@@ -69,7 +69,7 @@ namespace ClaimProject.PM.Report
                 rrr.SetParameterValue("partOftime", timeThai);
 
                 function.Close();
-                this.CRT72.ReportSource = rrr;
+                //this.CRT72.ReportSource = rrr;
                 rrr.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "PMReport72");
             }
         }
