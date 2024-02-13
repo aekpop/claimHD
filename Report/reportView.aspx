@@ -19,7 +19,7 @@
 
     <script type="text/javascript">
         function Print() {
-            var dvReport = document.getElementById("");
+            var dvReport = document.getElementById("resultReportLeave.ClientID%>");
             var frame1 = dvReport.getElementsByTagName("iframe")[0];
             if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
                 frame1.name = frame1.id;

@@ -850,5 +850,26 @@ namespace ClaimProject.Config
             }
         }
 
+        public string GetParam(string data)
+        {
+            try
+            {
+                string[] readText = File.ReadAllLines(HostingEnvironment.MapPath("/Config/") + "ParamDoc.txt");
+                string txt = "";
+
+                foreach (string s in readText)
+                {
+                    txt = s;
+                }
+
+                switch (data)
+                {
+                    case "Head":
+                        return txt.Split(',')[0];
+                }
+            }
+            catch { }
+            return "";
+        }
     }
 }

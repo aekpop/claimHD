@@ -274,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Claim\Upload\img_pdf.png" />
+    <Content Include="Config\ParamDoc.txt" />
     <Content Include="Scripts\custom-signin.js" />
     <Content Include="TransitCard.aspx" />
     <Content Include="car\car.aspx" />

@@ -339,6 +339,7 @@ namespace ClaimProject.Claim
         protected void btnSaveReport_Click(object sender, EventArgs e)
         {
             string claimmonth = GetThaiMonth(txtStartDate.Text);
+            string headDoc = function.GetParam("Head");
             if (rbtForKnow.Checked)
             {
                 //DivDamaged.Visible = false;
@@ -355,7 +356,7 @@ namespace ClaimProject.Claim
             if (RadioButton3.Checked) { txtInsurer.Text = ""; } else { }
 
             string sql_check = "SELECT * FROM tbl_claim WHERE claim_id='" + Session["CodePK"].ToString() + "'";
-            string note_number = "กท.๘/" + txtCpoint.SelectedItem;
+            string note_number = headDoc + txtCpoint.SelectedItem;
 
             if (txtPoint.Text.Trim().ToLower() != "tsb" && txtPoint.Text.Trim().ToLower() != "") { note_number += " " + txtPoint.Text.Trim(); }
             note_number += "/คร./";
@@ -604,10 +605,20 @@ namespace ClaimProject.Claim
 
             if (rs.Read())
             {
+                int num = rs.GetString("claim_cpoint_note").Split('/').Length;
+
                 txtEquipment.Text = rs.GetString("claim_equipment");
                 txtCpoint.SelectedValue = rs.GetString("claim_cpoint");
                 txtPoint.Text = rs.GetString("claim_point");
-                txtCpointNote.Text = rs.GetString("claim_cpoint_note").Split('/')[4];
+                if (num == 5)
+                {
+                    txtCpointNote.Text = rs.GetString("claim_cpoint_note").Split('/')[3];
+                }
+                else
+                {
+                    txtCpointNote.Text = rs.GetString("claim_cpoint_note").Split('/')[4];
+                }
+                //txtCpointNote.Text = rs.GetString("claim_cpoint_note").Split('/')[4];
                 txtCpointDate.Text = rs.GetString("claim_cpoint_date");
                 txtStartDate.Text = rs.GetString("claim_start_date");
                 txtNoteTo.Text = rs.GetString("claim_detail_note_to");
