@@ -339,17 +339,6 @@ namespace ClaimProject.equip
                             + " LEFT JOIN tbl_transfer ON d.transfer_idnow = tbl_transfer.trans_id "
                             + " LEFT JOIN tbl_transfer_status ON  tbl_transfer.trans_stat = tbl_transfer_status.trans_stat_id "
                             + " WHERE d.equipment_id ='" + pkeq.Text + "' ";
-            //string sqlStatTranfer = "";
-
-            //MySqlDataReader rst = function.MySqlSelect(sqlStatTranfer);
-            //if (!rst.Read())
-            //{
-            //    statTranfer = "ปกติ";
-            //}
-            //else
-            //{
-            //    statTranfer = rst.GetString("");
-            //}
 
             MySqlDataReader rttt = function.MySqlSelect(sqlEdit);
 
@@ -434,16 +423,17 @@ namespace ClaimProject.equip
 
                 if (departt == "9300" || departt == "9400" || departt == "9500")
                 {
-                    btnUpdateEQ.Visible = false;
-                    ddlEditCpoint.Enabled = false;
-                    diveditpic.Visible = false;
+                    levelUser();
+                    //btnUpdateEQ.Visible = false;
+                    //ddlEditCpoint.Enabled = false;
+                    //diveditpic.Visible = false;
                 }
-                else
-                {
-                    btnUpdateEQ.Visible = true;
-                    ddlEditCpoint.Enabled = true;
-                    diveditpic.Visible = true;
-                }
+                //else
+                //{
+                    //btnUpdateEQ.Visible = true;
+                    //ddlEditCpoint.Enabled = true;
+                    //diveditpic.Visible = true;
+                //}
             }
         }
 
@@ -1657,6 +1647,40 @@ namespace ClaimProject.equip
         protected void lbtnReportEquipment_Command(object sender, CommandEventArgs e)
         {
             Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/report/reportEquipmentDetails','_newtab');", true);
+        }
+
+        protected void levelUser()
+        {
+            //กำหนดสิทธิ์
+            switch (Session["UserPrivilegeId"].ToString())
+            {
+                case "0":
+                    btnUpdateEQ.Visible = true;
+                    ddlEditCpoint.Enabled = true;
+                    diveditpic.Visible = true;
+                    break;
+
+                case "1"://เทคโน
+
+                    break;
+                case "2"://คอม
+
+                    break;
+                case "3"://รอง
+
+                    break;
+                case "4"://สถิติ
+
+                    break;
+                case "6"://viewer
+
+                    break;
+                default:
+                    btnUpdateEQ.Visible = false;
+                    ddlEditCpoint.Enabled = false;
+                    diveditpic.Visible = false;
+                    break;
+            }
         }
     }
 }
