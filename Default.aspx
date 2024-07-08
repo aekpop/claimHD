@@ -133,7 +133,7 @@
                                 <div class="col-8">
                                      <div class="card-title">
                                         <div class="d-flex align-items-center mb-0 ">
-                                             <asp:Label ID="lbRepair" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+                                            <asp:Label ID="lbRepair" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
                                         </div>
                                      </div>
                                 </div>
@@ -141,7 +141,7 @@
                         </div>
                          <div class="card-footer">
                             <div class="stats">
-                                    <asp:LinkButton ID="btnWait" runat="server" CssClass="text-white-50" OnClick="btnWait_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                                <asp:LinkButton ID="btnWait" runat="server" CssClass="text-white-50" OnClick="btnWait_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                             </div>
                         </div>
                     </div>
@@ -165,12 +165,11 @@
                         </div>
                          <div class="card-footer">
                             <div class="stats">
-                                    <asp:LinkButton ID="btnSuccessJob" runat="server" CssClass="text-white-50" OnClick="btnSuccessJob_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                                <asp:LinkButton ID="btnSuccessJob" runat="server" CssClass="text-white-50" OnClick="btnSuccessJob_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-3 col-lg-6">
                     <div class="card l-bg-blue-dark">
                         <div class="card-statistic-3 p-4">
@@ -190,37 +189,31 @@
                         </div>
                          <div class="card-footer">
                             <div class="stats">
-                                    <asp:LinkButton ID="btnReport" runat="server" CssClass="text-white-50" OnClick="btnReport_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
+                                <asp:LinkButton ID="btnReport" runat="server" CssClass="text-white-50" OnClick="btnReport_Click"> <i class="fa fa-th-list"></i>&nbspรายละเอียด</asp:LinkButton>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
                 <div class="col-lg-3 col-md-6 col-sm-6" runat="server" id="Div6">
-                    <h3> ประกาศข่าวสารในกลุ่มไลน์</h3>
-
+                    <h3>ประกาศข่าวสารในกลุ่มไลน์</h3>
                     <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdown-item">
                         <asp:ListItem Text="Toll:อุบัติเหตุ" Value="uQQdUNuFfBphgSugC3OUa1lSjmovi4XINOAe2VwIczo" ></asp:ListItem>
-                        <asp:ListItem Text="Toll:CM_M9" Value="TcwUZJSfjZJf5KPOXd6HEoB6Bx4oXVB6zTAcRzLnf5F"></asp:ListItem>
+                        <asp:ListItem Text="Toll:ครุภัณฑ์" Value="zUq1qjowyyxFuPuubLX7FG7W71xoehlhpMMUohzF4ck"></asp:ListItem>
                         <asp:ListItem Text="ทดสอบ" Value="g0Zinn2LGsXH7MqNl6LqRRAloneiupRMel3VaC3TVdJ"></asp:ListItem>
                     </asp:DropDownList><br />
-                </div>
-               
-           
+                </div>               
                         <div class="col-lg-3 col-md-6 col-sm-6">
                              <h3>ข้อความ</h3> 
                              <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" ></asp:TextBox>
                         </div>
-
                         <div class="col-lg-3 col-md-6 col-sm-6">
-                            URL รูปภาพ
+                            <h3>URL รูปภาพ</h3>
                             <asp:TextBox ID="TextBox2" runat="server" Visible="false"></asp:TextBox>
                         </div>
-             <div class="col-lg-3 col-md-6 col-sm-6">
-                    <asp:LinkButton ID="Button1" runat="server" Text="ส่ง" CssClass="btn btn-success" OnClientClick="return CompareConfirm('ยืนยันการส่งข้อมูล');" OnClick="Button1_Click" />
-                </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <asp:LinkButton ID="Button1" runat="server" Text="ส่ง" CssClass="btn btn-success" OnClientClick="return CompareConfirm('ยืนยันการส่งข้อมูล');" OnClick="Button1_Click" />
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     </div>

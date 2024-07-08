@@ -21,7 +21,7 @@ namespace ClaimProject.equip
         public string alerts = "";
         public string alertTypes = "";
         public string icons = "";
-        public string admin = "";
+        //public string admin = "";
         ClaimFunction function = new ClaimFunction();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,20 +33,46 @@ namespace ClaimProject.equip
             {
                 Session["NewEQPK"] = "";
                 Session["NewEQPKtype"] = "";
-                if (function.CheckLevel("Admin", Session["UserPrivilegeId"].ToString()))
-                {
-                    admin = "1";
-                }
-                else
-                {
-                    admin = "0";
-                }
+                //if (function.CheckLevel("Admin", Session["UserPrivilegeId"].ToString()))
+                //{
+                 //   admin = "1";
+                //}
+                //else
+                //{
+                //    admin = "0";
+                //}
                 LoadPaging();
             }
         }
 
+        protected void databind()
+        {
+            string sqlbind = "";
+            if (function.CheckLevel("Admin", Session["UserPrivilegeId"].ToString()))
+            {
+                sqlbind = "select * from tbl_newequipment " +
+                " join tbl_toll on tbl_toll.toll_id = tbl_newequipment.AddCpoint " +
+                " join tbl_user on tbl_user.username =  tbl_newequipment.NewEQ_User " +
+                " order by  STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC";
+            }
+            else
+            {
+                sqlbind = "select * from tbl_newequipment " +
+                " join tbl_toll on tbl_toll.toll_id = tbl_newequipment.AddCpoint " +
+                " join tbl_user on tbl_user.username =  tbl_newequipment.NewEQ_User " +
+                " where NewEQ_User = '" + Session["User"].ToString() + "' order by  STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC";
+            }
+
+            MySqlDataAdapter da = function.MySqlSelectDataSet(sqlbind);
+            System.Data.DataSet ds = new System.Data.DataSet();
+            da.Fill(ds);
+            GridAddAll.DataSource = ds.Tables[0];
+            GridAddAll.DataBind();
+        }
+
         protected void LoadPaging()
         {
+            /*
             string gridload = "";
             if (admin == "1")
             {
@@ -62,12 +88,13 @@ namespace ClaimProject.equip
                 " join tbl_user on tbl_user.username =  tbl_newequipment.NewEQ_User " +
                 " where NewEQ_User = '" + Session["User"].ToString() + "' order by  STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC";
             }
-            
+
             MySqlDataAdapter da = function.MySqlSelectDataSet(gridload);
             System.Data.DataSet ds = new System.Data.DataSet();
             da.Fill(ds);
             GridAddAll.DataSource = ds.Tables[0];
             GridAddAll.DataBind();
+            */
 
             string username = Session["User"].ToString();
             string EQsearch = "SELECT * FROM tbl_toll WHERE ";
@@ -75,7 +102,6 @@ namespace ClaimProject.equip
             {
                 EQsearch += " toll_EQGroup = '1' Order By toll_id ASC ";
                 function.getListItem(ddlserchToll, EQsearch, "toll_name", "toll_id");
-
             }
             else if (username == "supaporn")
             {
@@ -98,23 +124,22 @@ namespace ClaimProject.equip
             {
                 AlertPop("บันทึกสำเร็จ!! ", "success");
             }
-            
 
+            databind();
         }
 
         protected void GridAddAll_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
             LinkButton lbtneditAdd = (LinkButton)(e.Row.FindControl("lbtneditAdd"));
             if (lbtneditAdd != null)
             {
                 lbtneditAdd.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "NewEQ_id").ToString();
             }
-            Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
-            if (lbRowNum != null)
-            {
-                lbRowNum.Text = (GridAddAll.Rows.Count + 1).ToString() + ".";
-            }
+            //Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
+            //if (lbRowNum != null)
+            //{
+            //    lbRowNum.Text = (GridAddAll.Rows.Count + 1).ToString() + ".";
+            //}
         }
         protected void lbtneditAdd_Command(object sender, CommandEventArgs e)
         {
@@ -128,35 +153,31 @@ namespace ClaimProject.equip
             string searchbtn = "select * from tbl_newequipment " +
                 " join tbl_toll on tbl_toll.toll_id = tbl_newequipment.AddCpoint " +
                 " join tbl_user on tbl_user.username =  tbl_newequipment.NewEQ_User ";
-            if(txtDatestart.Text != "")//เลือกวันที่
+                
+            if (txtDatestart.Text != "")//เลือกวันที่
             {
-                
-                    if(ddlserchToll.SelectedValue != "0")//เลือกด่าน
-                    {
-                        searchbtn += " where NewEQ_Date like '%"+ txtDatestart.Text + "%'" +
-                            "AND  AddCpoint ='"+ ddlserchToll.SelectedValue + "' ";
-                    }
-                    else//เลือกด่านทั้งหมด
-                    {
-                        searchbtn += " where  NewEQ_Date like '%" + txtDatestart.Text + "%' ";
-                    }
-
-                
+                if (ddlserchToll.SelectedValue != "0")//เลือกด่าน
+                {
+                    searchbtn += " where NewEQ_Date like '%" + txtDatestart.Text + "%'" +
+                        "AND  AddCpoint ='" + ddlserchToll.SelectedValue + "' ";
+                }
+                else//เลือกด่านทั้งหมด
+                {
+                    searchbtn += " where  NewEQ_Date like '%" + txtDatestart.Text + "%' ";
+                }
             }
             else //ไม่เลือกวันที่
             {
-
-                    if (ddlserchToll.SelectedValue != "0")//เลือกด่าน
-                    {
-                        searchbtn += " where AddCpoint ='" + ddlserchToll.SelectedValue + "' ";
-                    }
-                    else//เลือกด่านทั้งหมด
-                    {
-                        
-                    }
-                
+                if (ddlserchToll.SelectedValue != "0")//เลือกด่าน
+                {
+                    searchbtn += " where AddCpoint ='" + ddlserchToll.SelectedValue + "' ";
+                }
+                else//เลือกด่านทั้งหมด
+                {
+                    //none
+                }
             }
-            
+
             if (Session["User"].ToString() != "watcharee" && Session["User"].ToString() != "supaporn" && Session["User"].ToString() != "sawitree")
             {
                 searchbtn += " order by STR_TO_DATE(NewEQ_Date, '%d-%m-%Y') DESC";
@@ -172,18 +193,19 @@ namespace ClaimProject.equip
             GridAddAll.DataSource = ds.Tables[0];
             GridAddAll.DataBind();
             //(ds.Tables[0].Rows.Count).ToString()
-            lbamountEQ.Text = "พบ " + (ds.Tables[0].Rows.Count).ToString() + " รายการ" ;
+            lbamountEQ.Text = "พบ " + (ds.Tables[0].Rows.Count).ToString() + " รายการ";
         }
 
         protected void btnSagain_Click(object sender, EventArgs e)
         {
-
+            //none
         }
 
         protected void btnCreatenew_Click(object sender, EventArgs e)
         {
             string pkCode = "";
             string cpoint = Session["UserCpoint"].ToString();
+
             if (cpoint.Length < 3)
             {
                 cpoint = "50" + cpoint;
@@ -200,7 +222,6 @@ namespace ClaimProject.equip
                 Session["NewEQPKtype"] = "new";
                 Response.Redirect("/equip/EquipAddList.aspx");
             }
-
         }
         public void AlertPop(string msg, string type)
         {
@@ -219,9 +240,13 @@ namespace ClaimProject.equip
                     alertTypes = "warning";
                     break;
             }
-            //alertType = type;
             alerts = msg;
         }
 
+        protected void GridAddAll_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridAddAll.PageIndex = e.NewPageIndex;
+            databind();
+        }
     }
 }

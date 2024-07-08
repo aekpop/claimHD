@@ -1359,7 +1359,7 @@ namespace ClaimProject.equip
                 {
                     if (function.MySqlQuery(SQLFirst))
                     {
-                        Session["LineTran"] = "\n" + ddlTypeEQQ.SelectedItem + " \n วันที่ : " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "" +
+                        Session["LineTran"] = "\n" + ddlTypeEQQ.SelectedItem + " \n วันที่ : " + datenow + " \nหมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + ddlStartEQ.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "" +
                             "\nผู้บันทึก : " + txtSender.Text;
                         //Session["alert"] = lbmdrefNo.Text;
                         btnPlanSheet.Visible = false;
@@ -1542,7 +1542,7 @@ namespace ClaimProject.equip
                         if (function.MySqlQuery(loge))
                         {
                             Session["LineTran"] = "\nตรวจรับครุภัณฑ์  " +
-                            "\nวันที่ : " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
+                            "\nวันที่ : " + datenow + " \nหมายเลขอ้างอิง : " + Session["TransID"].ToString() + "\n ต้นทาง : " + DropDownList1.SelectedItem + "\n ปลายทาง : " + ddlTollEQ.SelectedItem + "  ";
                             Session["alert"] = "อนุมัติรายการ เรียบร้อยแล้ว";
                             Response.Redirect("/equip/EquipTranGetList");
                             break;                             
@@ -2184,7 +2184,7 @@ namespace ClaimProject.equip
                     if (function.MySqlQuery(finishTranFers))
                     {
                         Session["LineTran"] = "ระบบได้รับข้อมูล ตรวจรับส่งซ่อม  " +
-                        "\n เมื่อวันที่ " + datenow + " \n หมายเลขอ้างอิง : " + Session["TransID"].ToString() + " \n จาก : " + ddlTollEQ.SelectedItem + "  ";
+                        "\n เมื่อวันที่ " + datenow + " \nหมายเลขอ้างอิง : " + Session["TransID"].ToString() + " \n จาก : " + ddlTollEQ.SelectedItem + "  ";
                         Response.Redirect("/equip/EquipTranList");
                     }
                     else

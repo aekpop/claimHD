@@ -69,11 +69,7 @@ namespace ClaimProject.equip
                 {
                     serviceLine.MessageToServer("zUq1qjowyyxFuPuubLX7FG7W71xoehlhpMMUohzF4ck", Session["LineTran"].ToString(), "", 1, 41);
                     Session["LineTran"] = "";
-                }catch(Exception e)
-                {
-
-                }
-                
+                }catch(Exception e){}               
             }
 
         }

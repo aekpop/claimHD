@@ -12,9 +12,18 @@
 <body style="height: 862px">
     <form id="iframe" runat="server" >
         <asp:Panel id="dvReport" runat="server" >
-            <CR:CrystalReportViewer ID="resultReportLeave" runat="server" 
-                EnableParameterPrompt="False" 
-                ToolPanelView="None" GroupTreeStyle-ShowLines="False" HasCrystalLogo="False" HasToggleGroupTreeButton="False" PrintMode="Pdf" AutoDataBind="true" EnableDatabaseLogonPrompt="False" />
+            <CR:CrystalReportViewer 
+                ID="resultReportLeave" runat="server"                
+                ToolPanelView="None" 
+                GroupTreeStyle-ShowLines="False" 
+                HasCrystalLogo="False" 
+                HasToggleGroupTreeButton="False" 
+                PrintMode="ActiveX" 
+                Height="50px" 
+                ToolPanelWidth="200px" 
+                Width="350px" 
+                EnableDatabaseLogonPrompt="False" 
+                />
         </asp:Panel>
 
     <script type="text/javascript">

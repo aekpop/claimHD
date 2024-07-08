@@ -61,7 +61,7 @@ namespace ClaimProject.equip
                 string stat = parame.GetString("trans_stat");
                 if (stat == "1")
                 {
-                    Headmas = "ใบรับ - ส่งครุภัณฑ์";
+                    Headmas = "ส่งครุภัณฑ์";
                 }
                 else if(stat == "2" || stat == "6")
                 {
@@ -202,7 +202,7 @@ namespace ClaimProject.equip
                 string stat = parame.GetString("trans_stat");
                 if (stat == "1")
                 {
-                    Headmas = "ใบรับ - ส่งครุภัณฑ์";
+                    Headmas = "ส่งครุภัณฑ์";
                 }
                 else if (stat == "2" || stat == "6")
                 {

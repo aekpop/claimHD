@@ -7,38 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClaimProject.equip {
-    
-    
-    public partial class EquipAddAll {
-        
-        /// <summary>
-        /// divaddnew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton divaddnew;
-        
-        /// <summary>
-        /// divcheckk control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton divcheckk;
-        
-        /// <summary>
-        /// divcheckkk control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton divcheckkk;
-        
+namespace ClaimProject.equip
+{
+
+
+    public partial class EquipAddAll
+    {
+
         /// <summary>
         /// btnCreatenew control.
         /// </summary>
@@ -47,7 +22,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCreatenew;
-        
+
         /// <summary>
         /// AddPM control.
         /// </summary>
@@ -56,7 +31,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AddPM;
-        
+
         /// <summary>
         /// hhh control.
         /// </summary>
@@ -65,7 +40,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label hhh;
-        
+
         /// <summary>
         /// divsearch control.
         /// </summary>
@@ -74,7 +49,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divsearch;
-        
+
         /// <summary>
         /// txtDatestart control.
         /// </summary>
@@ -83,7 +58,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDatestart;
-        
+
         /// <summary>
         /// ddlserchToll control.
         /// </summary>
@@ -92,7 +67,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlserchToll;
-        
+
         /// <summary>
         /// btnsearchAdd control.
         /// </summary>
@@ -101,7 +76,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsearchAdd;
-        
+
         /// <summary>
         /// divSagain control.
         /// </summary>
@@ -110,7 +85,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSagain;
-        
+
         /// <summary>
         /// btnSagain control.
         /// </summary>
@@ -119,7 +94,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSagain;
-        
+
         /// <summary>
         /// chkS control.
         /// </summary>
@@ -128,7 +103,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label chkS;
-        
+
         /// <summary>
         /// titlegrid control.
         /// </summary>
@@ -137,7 +112,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label titlegrid;
-        
+
         /// <summary>
         /// lbamountEQ control.
         /// </summary>
@@ -146,7 +121,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbamountEQ;
-        
+
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -155,7 +130,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// Panel1 control.
         /// </summary>
@@ -164,7 +139,7 @@ namespace ClaimProject.equip {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
-        
+
         /// <summary>
         /// GridAddAll control.
         /// </summary>

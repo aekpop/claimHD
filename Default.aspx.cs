@@ -29,7 +29,6 @@ namespace ClaimProject
                     {
                         Response.Redirect("/Claim/DefaultClaim");
                     }
-
                 }
                 else
                 {
@@ -54,7 +53,7 @@ namespace ClaimProject
             string sql = "SELECT COUNT(*) AS count_num FROM tbl_claim c " +
                          " JOIN tbl_cpoint ON claim_cpoint = cpoint_id " +
                          " JOIN tbl_status ON status_id = claim_status " +
-                         "  LEFT JOIN tbl_user ON username = claim_user_start_claim " +
+                         " LEFT JOIN tbl_user ON username = claim_user_start_claim " +
                          " JOIN tbl_status_detail sd ON sd.detail_claim_id = c.claim_id AND sd.detail_status_id = c.claim_status WHERE claim_delete = '0' AND c.claim_status = '" + status + "' AND c.claim_budget_year = '" + year + "'";
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
@@ -121,10 +120,6 @@ namespace ClaimProject
             serviceLine.MessageToServer(DropDownList1.SelectedValue, TextBox1.Text /*+ DropDownList1.SelectedValue.ToString()*/, TextBox2.Text.Trim(), 1,430);
             TextBox1.Text = "";
             TextBox2.Text = "";
-
-            //function.LineNotify(DropDownList1.SelectedValue, TextBox1.Text.Trim(), TextBox2.Text.Trim(),1,430);
-            //TextBox1.Text = "";
-            //TextBox2.Text = "";
         }
 
         protected void btnSearch_Command(object sender, CommandEventArgs e)

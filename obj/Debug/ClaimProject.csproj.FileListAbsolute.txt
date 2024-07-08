@@ -3550,7 +3550,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\roslyn\VBCSCompiler.e
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Antlr3.Runtime.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\AspNet.ScriptManager.bootstrap.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\AspNet.ScriptManager.jQuery.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Assembly.Software.Crystal.Reports.2010.Printing.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Assembly.Software.Utilities.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\log4net.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Microsoft.AI.Agent.Intercept.dll
@@ -3592,7 +3591,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Microsoft.VisualStudi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Microsoft.MSXML.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Assembly.Software.Utilities.xml
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\log4net.xml
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\MySql.Data.xml
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\System.Web.Helpers.xml
@@ -3621,8 +3619,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\pt\Microsoft.ReportVi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\ru\Microsoft.ReportViewer.Common.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.Common.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.Common.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\de\Microsoft.ReportViewer.DataVisualization.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\es\Microsoft.ReportViewer.DataVisualization.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
@@ -3633,8 +3629,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\pt\Microsoft.ReportVi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.DataVisualization.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\de\Microsoft.ReportViewer.Design.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\es\Microsoft.ReportViewer.Design.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\fr\Microsoft.ReportViewer.Design.resources.dll
@@ -3645,8 +3639,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\pt\Microsoft.ReportVi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\ru\Microsoft.ReportViewer.Design.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.Design.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.Design.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\de\Microsoft.ReportViewer.WebDesign.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\es\Microsoft.ReportViewer.WebDesign.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\fr\Microsoft.ReportViewer.WebDesign.resources.dll
@@ -3657,8 +3649,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\pt\Microsoft.ReportVi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\ru\Microsoft.ReportViewer.WebDesign.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHS\Microsoft.ReportViewer.WebDesign.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHT\Microsoft.ReportViewer.WebDesign.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.WebDesign.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.WebDesign.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\de\Microsoft.ReportViewer.WebForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\fr\Microsoft.ReportViewer.WebForms.resources.dll
@@ -3669,8 +3659,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\pt\Microsoft.ReportVi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\ru\Microsoft.ReportViewer.WebForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.WebForms.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.WebForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\de\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\fr\Microsoft.ReportViewer.WinForms.resources.dll
@@ -3681,8 +3669,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\pt\Microsoft.ReportVi
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANS\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\zh-HANT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\ClaimProject.csproj.AssemblyReference.cache
 D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\ClaimProject.csproj.ResolveComReference.cache
 D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\RdlCompile.cache
@@ -3698,7 +3684,6 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.Shar
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\stdole.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\Interop.CrystalAnalysisCommonControlsLib.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.CrystalReports.Design.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.Data.AdoDotNetInterop.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.VSDesigner.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.Web.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.Windows.Forms.dll
@@ -3709,5 +3694,5 @@ D:\Running Project\ClaimProject_newserver\ClaimProject\bin\VSLangProj.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\VsWebSite.Interop.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\bin\EnvDTE80.dll
 D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\Interop.CrystalActiveXReportViewerLib13.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\Interop.CrystalReportViewerExportLib.dll
-D:\Running Project\ClaimProject_newserver\ClaimProject\obj\Debug\Interop.CrystalReportViewerWebReportSourceLib.dll
+D:\Running Project\ClaimProject_newserver\ClaimProject\bin\log4net.xml
+D:\Running Project\ClaimProject_newserver\ClaimProject\bin\CrystalDecisions.Data.AdoDotNetInterop.dll

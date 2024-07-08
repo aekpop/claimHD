@@ -176,7 +176,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">เรียน เช่น ผจท. ผ่าน หจ.จท.1 </label>
+                                <label class="bmd-label-floating">เรียน </label>
                                 <asp:TextBox ID="txtNoteTo" runat="server" CssClass="form-control form-control-sm" />
                             </div>
                         </div>

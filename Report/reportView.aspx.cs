@@ -22,24 +22,18 @@ namespace ClaimProject.Report
         //ReportDocument cryRpt;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
+            //if (!this.IsPostBack)
+            //{
                 if (Session["ReportTitle"] != null)
                 {
                     Title = Session["ReportTitle"].ToString();
                     resultReportLeave.ReportSource = Session["Report"];
-                    //this.DropDownList1.DataSource = System.Drawing.Printing.PrinterSettings.InstalledPrinters;
-                    //this.DropDownList1.DataBind();
-                    //this.DropDownList1.SelectedIndex = 0;
                 }
                 else
                 {
                     Response.Redirect("/");
                 }
-            }
-            //resultReportLeave.Visible = true;
-            //resultReportLeave.HasPrintButton = false;
-            //resultReportLeave.HasExportButton = false;
+            //}
         }
 
         protected void btnPrint_Click(object sender, EventArgs e)

@@ -27,7 +27,10 @@ namespace ClaimProject.Claim
             if (!this.IsPostBack)
             {
                 string sql = "";
-                string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+
+                //string date = DateTime.Now.ToString("dd-MM") + "-" + (DateTime.Now.Year + 543);
+                string date = DateTime.Now.ToString("dd-MM-yyyy", CultureInfo.GetCultureInfo("th-TH"));
+
                 BindData(date.Split('-')[2]);
                 function.getListItem(txtSearchYear, "SELECT claim_budget_year FROM tbl_claim c GROUP BY claim_budget_year ORDER by claim_budget_year DESC", "claim_budget_year", "claim_budget_year");
                 function.getListItem(txtSearchStatus, "SELECT * FROM tbl_status ORDER by status_id", "status_name", "status_id");

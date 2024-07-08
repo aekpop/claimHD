@@ -390,8 +390,8 @@ namespace ClaimProject.equip
 
         protected void btnFinalSubmit_Click(object sender, EventArgs e)
         {
-            string equipUpdate = "";
-            string TranferUpdate = "";
+            //string equipUpdate = "";
+            //string TranferUpdate = "";
 
             string datenow = DateTime.Now.ToString("dd-MM-") + (int.Parse(DateTime.Now.ToString("yyyy")) + 543).ToString();
             string timenow = DateTime.Now.ToString("HH.mm.ss");
@@ -445,7 +445,8 @@ namespace ClaimProject.equip
         }
         protected string loopGetCommand()
         {
-            string EQIDloop = ""; string newse = ""; string newserie = ""; string newbrand = "";
+            string EQIDloop = ""; 
+            //string newse = ""; string newserie = ""; string newbrand = "";
             string loopGetAct = "SELECT  *  FROM  tbl_transfer_action " +
                             " WHERE transfer_id = '" + Session["TransOutID"].ToString() + "'  AND num_success = 'no' ORDER BY  trans_act_id DESC  LIMIT 1";
 

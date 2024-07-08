@@ -178,7 +178,7 @@
                                 <i class="fas fa-chart-line fa-2x text-gray-300 text-info"></i>
                             </div>
                         </div>
-                        <canvas id="myChart" style="width: 100%;"></canvas>
+                        <canvas id="myChart" style="width: 60%;"></canvas>
                     </div>
                 </div>
             </div>

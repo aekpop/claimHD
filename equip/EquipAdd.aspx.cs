@@ -257,7 +257,8 @@ namespace ClaimProject.equip
         }
         public bool CheckDuplicate(string num, string serial, string typechk)
         {
-            int Numx = 0; int Serix = 0;
+            int Numx = 0;
+            //int Serix = 0;
             string sqlchkNo = "";
             string sqlchkSe = "";
             if (typechk == "")
@@ -293,8 +294,6 @@ namespace ClaimProject.equip
                 return true; //ไว้หลอกคลาสก่อนแก้
             }
             else { return false; }
-
-
         }
         protected void GridEquipAdd_RowDataBound(object sender, GridViewRowEventArgs e)
         {
