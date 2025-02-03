@@ -34,17 +34,13 @@ namespace ClaimProject.equip
                         div4.Visible = false;
                         div6.Visible = false;
                         tblClerical.Visible = false;
-                        //div3.Visible = false;
-                        //dvRent.Visible = true;
                         Expire.Visible = false;
                     }
                     else
                     {
                         tblToll.Visible = false;
-                        //dvRent.Visible = true;
                         Expire.Visible = true;
                     }
-
                 }
                 Session.Add("ddlsearchType", "0");
                 Session.Add("ddlsearchStat", "0");
@@ -58,7 +54,6 @@ namespace ClaimProject.equip
 
         protected void loadingpage()
         {
-
             function.getListItem(txtBudgetYear, "SELECT trans_budget FROM tbl_transfer GROUP BY trans_budget ORDER BY trans_budget DESC", "trans_budget", "trans_budget");
             int nowBudget = int.Parse(function.getBudgetYear("01-" + DateTime.Now.ToString("MM") + "-" + (DateTime.Now.Year + 543).ToString()));
             lbBudget.Text = nowBudget.ToString();
@@ -407,11 +402,8 @@ namespace ClaimProject.equip
                         lbnew1.Text = tract.GetInt32("devv").ToString() + " รายการ";
                         tract.Close();
                     }
-
                 }
             }
-
-
 
             string tran = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '1' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
             string tranact = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE tran_type = '1' AND num_success = 'yes' AND user_send ='" + Session["UserName"].ToString() + "' ";
@@ -456,7 +448,6 @@ namespace ClaimProject.equip
                     lbSell2.Text = sella.GetInt32("devv").ToString() + " รายการ";
                     sella.Close();
                 }
-
             }
 
             string rep = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '4' AND complete_stat = '6' AND (toll_send ='" + sqlcpSearch + "' )";
@@ -472,7 +463,6 @@ namespace ClaimProject.equip
                     lbRepair2.Text = reeact.GetInt32("devv").ToString() + " รายการ";
                     reeact.Close();
                 }
-
             }
 
             string copy = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '5' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
@@ -488,7 +478,6 @@ namespace ClaimProject.equip
                     lbCopy2.Text = peeact.GetInt32("devv").ToString() + " รายการ";
                     peeact.Close();
                 }
-
             }
 
             string seee = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '2' AND complete_stat = '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
@@ -504,7 +493,6 @@ namespace ClaimProject.equip
                     Label3.Text = seeact.GetInt32("devv").ToString() + " รายการ";
                     seeact.Close();
                 }
-
             }
 
             string seeto = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat BETWEEN '2' AND '3' AND user_send ='" + Session["UserName"].ToString() + "' ";
@@ -520,7 +508,6 @@ namespace ClaimProject.equip
                     lbTotal2.Text = seeeer.GetInt32("devv").ToString() + " รายการ";
                     seeeer.Close();
                 }
-
             }
 
             string seereceipt = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '2' AND (toll_send ='" + sqlcpSearch + "') ";
@@ -536,9 +523,7 @@ namespace ClaimProject.equip
                     lbreceive2.Text = seeeere.GetInt32("devv").ToString() + " รายการ";
                     seeeere.Close();
                 }
-
             }
-
 
             string eqTotal = "SELECT COUNT(*) AS num FROM tbl_equipment WHERE toll_id = '" + sqlcpSearchtotal + "' ";
             string eqNormal = "SELECT COUNT(*) AS numn FROM tbl_equipment WHERE (toll_id = '" + sqlcpSearchtotal + "' )AND Estatus_id = '1'";
@@ -556,8 +541,6 @@ namespace ClaimProject.equip
             string sqlact6 = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE num_success = 'yes' " + sqlUser + " AND t.trans_stat = " + sqlStatus + " ";
             string sqlrec = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE complete_stat = '3' AND (toll_send =' " + sqlcpSearch + "') ";
             string sqleqerc = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer t ON t.trans_id = tbl_transfer_action.transfer_id WHERE complete_stat = '3' AND(toll_send = '" + sqlcpSearch + "') ";
-            //string tranSentTotal = "";
-            //string tranClaimTotal = "";
             string sqlRent = "SELECT COUNT(*) AS num FROM tbl_transfer WHERE trans_stat = '7' AND complete_stat = '7' AND (tbl_transfer.toll_send =' " + sqltran + "') ";
             string sqleqRent = "SELECT COUNT(*) AS devv FROM tbl_transfer_action JOIN tbl_transfer ON transfer_id = trans_id WHERE(tran_type = '7' AND num_success = 'no') AND(tbl_transfer.toll_send = '" + sqltran + "') ";
             MySqlDataReader rt = function.MySqlSelect(eqTotal);
@@ -593,7 +576,6 @@ namespace ClaimProject.equip
                     lbStaTransfer.Text = String.Format("{0:n0}", rt3.GetInt32("numt")) + " / " + String.Format("{0:n0}", rtt3.GetInt32("numqt"));
                     rt3.Close();
                     rtt3.Close();
-
                 }
             }
             //ซ่อม
@@ -643,7 +625,6 @@ namespace ClaimProject.equip
                     lbStatrans.Text = String.Format("{0:n0}", rt6.GetInt32("num")) + " / " + String.Format("{0:n0}", rtt6.GetInt32("devv"));
                     rt6.Close();
                     rtt6.Close();
-
                 }
             }
             //
@@ -690,18 +671,22 @@ namespace ClaimProject.equip
             if (lbreceive.Text != "0")
             {
                 string title = "Greetings";
-                string body = " ขณะนี้มีรายการรอรับครุภัณฑ์ " + lbreceive.Text + " รายการ";
+                string body = "มีรายการส่งครุภัณฑ์เข้ามาใหม่่ " + lbreceive.Text + " รายการ";
                 lbAmountWait.Text = lbreceive.Text;
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-                //ScriptManager.RegisterStartupScript(this, GetType(), "ShowPopup", "$(function () {$('#MyPopup').modal();})", true);
+                popup(title, body);
+                //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
             else
             {
                 alertWaitTrans.Visible = false;
             }
-
         }
+
+        public void popup(string title, string body)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+        }
+
         /*protected void loadChart ()
         {
             int Nowmonth = int.Parse(DateTime.Now.ToString("MM"));
@@ -865,28 +850,16 @@ namespace ClaimProject.equip
 
         protected void lbtnTranDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchStat", "3");
-            //Session.Add("ddlsearchType", "1");
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=1&s=3");
         }
 
         protected void lbtnSendHeadDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchStat", "0");
-            //Session.Add("ddlsearchType", "6");
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=6&s=0");
         }
 
         protected void lbtnSellDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchType", "0");
-            //Session.Add("ddlsearchStat", "0");
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=0&s=0");
         }
 
@@ -897,56 +870,36 @@ namespace ClaimProject.equip
 
             if (Session["UserPrivilegeId"].ToString() == "5" || Session["UserPrivilegeId"].ToString() == "2")
             {
-                //Response.Redirect("/equip/EquipTranList");
                 Response.Redirect("/equip/EquipTranList?t=4&s=6");
             }
             else
             {
-                //Response.Redirect("/equip/EquipTranList");
                 Response.Redirect("/equip/EquipTranList?t=4&s=6");
             }
         }
 
         protected void lbtnCopyDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchType", "2"); //tran
-            //Session.Add("ddlsearchStat", "3"); //complete
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=0&s=2");
         }
 
         protected void lbtnNewTranDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchType", "0");
-            //Session.Add("ddlsearchStat", "2");
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=0&s=2");
         }
 
         protected void lbtnTotalDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchType", "0");
-            //Session.Add("ddlsearchStat", "0");
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=0&s=0");
         }
 
         protected void lbtnReceiveDetail_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchStat", "2");
-            //Response.Redirect("/equip/EquipTranGetList");
-
             Response.Redirect("/equip/EquipTranGetList?t=0&s=2");
         }
 
         protected void btnRent_Click(object sender, EventArgs e)
         {
-            //Session.Add("ddlsearchStat", "7");
-            //Response.Redirect("/equip/EquipTranList");
-
             Response.Redirect("/equip/EquipTranList?t=0&s=7");
         }
 

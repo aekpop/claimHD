@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-dark">
+                    <div class="card l-bg-blue-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-balance-scale""></i></div>
                             <div class="mb-4">
@@ -171,7 +171,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-blue-dark">
+                    <div class="card l-bg-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-car"></i></div>
                             <div class="mb-4">

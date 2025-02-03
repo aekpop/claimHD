@@ -742,7 +742,7 @@ namespace ClaimProject.equip
                                     {
                                         Response.Redirect("/equip/EquipNewTrans");
                                         //AddTransDatabind("ADD");
-                                        //Cleartxt();
+                                        //inputDDLSELECT();
                                         //AlertPop("success เพิ่มครุภัณฑ์แล้ว 4", "success");
                                     }
                                     else
@@ -1300,14 +1300,6 @@ namespace ClaimProject.equip
                 {
                     if (ddlTollEQ.SelectedValue == "9300" || ddlTollEQ.SelectedValue == "9400" || ddlTollEQ.SelectedValue == "9500")
                     {
-                        /*completeStatf = "3";
-                        SQLFirst = "update tbl_transfer SET trans_budget ='" + function.getBudgetYear(txtDateSend.Text) + "',trans_note = '" + txtactnote.Text + "' ,trans_id = '" + Session["TransID"].ToString() + "'," +
-                        "thai_month='" + datesf + "',trans_stat='" + ddlTypeEQQ.SelectedValue + "',date_send='" + txtDateSend.Text + "',time_send='" + timenow + "'," +
-                        "user_send = '" + Session["UserName"].ToString() + "',name_send ='" + txtSender.Text + "',toll_send ='" + ddlStartEQ.SelectedValue + "'," +
-                        "toll_recieve ='" + ddlTollEQ.SelectedValue + "',complete_stat ='" + completeStatf + "',position_sender = '" + ddlPosition.SelectedValue + "' " +
-                        " WHERE trans_id = '" + Session["TransID"].ToString() + "'";
-                        completedd("2", SQLFirst);
-                        typ = "com"; */
                         completeStatf = "2";
                     }
                     else
@@ -1330,14 +1322,6 @@ namespace ClaimProject.equip
                 {
                     if (ddlTollEQ.SelectedValue == "9300" || ddlTollEQ.SelectedValue == "9400" || ddlTollEQ.SelectedValue == "9500")
                     {
-                        /*completeStatf = "3";
-                        SQLFirst = "update tbl_transfer SET trans_budget ='" + function.getBudgetYear(txtDateSend.Text) + "',trans_note = '" + txtactnote.Text + "' ,trans_id = '" + Session["TransID"].ToString() + "'," +
-                        "thai_month='" + datesf + "',trans_stat='" + ddlTypeEQQ.SelectedValue + "',date_send='" + txtDateSend.Text + "',time_send='" + timenow + "'," +
-                        "user_send = '" + Session["UserName"].ToString() + "',name_send ='" + txtSender.Text + "',toll_send ='" + ddlStartEQ.SelectedValue + "'," +
-                        "toll_recieve ='" + ddlTollEQ.SelectedValue + "',complete_stat ='" + completeStatf + "',position_sender = '" + ddlPosition.SelectedValue + "' " +
-                        " WHERE trans_id = '" + Session["TransID"].ToString() + "'";
-                        completedd("11", SQLFirst);
-                        typ = "com"; */
                         completeStatf = "2";
                     }
                     else
@@ -1378,10 +1362,7 @@ namespace ClaimProject.equip
                         AlertPop("การบันทึกล้มเหลว ติดต่อเจ้าหน้าที่", "error");
                     }
                 }
-
             }
-
-
         }
 
         protected void btnEdit_Click(object sender, EventArgs e) // ดึงเรื่องกลับ
@@ -1414,12 +1395,12 @@ namespace ClaimProject.equip
                                     Response.Redirect("/equip/EquipTranList");
                                     break;
                                 }
-                                else
-                                {
-                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!";
-                                    Response.Redirect("/equip/EquipTranList");
-                                    break;
-                                }
+                                //else
+                                //{
+                                //    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!";
+                                //    Response.Redirect("/equip/EquipTranList");
+                                //    break;
+                                //}
                             }
                             else if (value == "error")
                             {
@@ -1440,12 +1421,12 @@ namespace ClaimProject.equip
                                     Response.Redirect("/equip/EquipTranList");
                                     break;
                                 }
-                                else
-                                {
-                                    Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!!!";
-                                    Response.Redirect("/equip/EquipTranList");
-                                    break;
-                                }
+                                //else
+                                //{
+                                    //Session["alert"] = "ดึงเรื่องกลับ เรียบร้อยแล้ว!!!!";
+                                    //Response.Redirect("/equip/EquipTranList");
+                                    //break;
+                                //}
                             }
                             else if (value == "error")
                             {
@@ -1476,9 +1457,10 @@ namespace ClaimProject.equip
 
             if (function.MySqlQuery(sqlcv))
             {
-                for (int i = 0; i < 51; i++)
+                for (int i = 0; i < 201; i++)
                 {
                     string value = loopGetCommand();
+
                     if (value == "0")
                     {
                         if (tty == "11")
@@ -1505,11 +1487,11 @@ namespace ClaimProject.equip
                         AlertPop("Exception !! 004", "error");
                         break;
                     }
-                    else
-                    {
-                        AlertPop("Exception !! 005", "error");
-                        break;
-                    }
+                    //else
+                    //{
+                    //    AlertPop("Exception !! 005", "error");
+                    //    break;
+                    //}
                 }
             }
             else
@@ -1532,7 +1514,7 @@ namespace ClaimProject.equip
                             ",complete_stat = '3' ,position_getder = '" + ddlposGet.SelectedItem + "'" +
                             " WHERE trans_id = '" + Session["TransID"].ToString() + "'";
 
-            for (int i = 0; i < 51; i++)
+            for (int i = 0; i < 201; i++)
             {
                 string value = loopGetCommand();
                 if (value == "0")
@@ -1561,6 +1543,7 @@ namespace ClaimProject.equip
                 }
                 else if (value == "error")
                 {
+                    AlertPop("Error!! loopGet", "warning");
                     break;
                 }
             }
@@ -1664,7 +1647,6 @@ namespace ClaimProject.equip
             else
             {
                 loo.Close();
-                //AlertPop("Error MysqlRead!! ติดต่อเจ้าหน้าที่", "error");
                 return "0";
             }
         }

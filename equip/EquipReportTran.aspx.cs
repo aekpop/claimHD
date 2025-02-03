@@ -82,7 +82,7 @@ namespace ClaimProject.equip
                 else
                 {
                     gettoll = parame.GetString("toll_name");
-                    if (gettoll == "ฝ่ายบริหารฯ")
+                    if (gettoll == "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม")
                     {
                         gettoll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                     }
@@ -213,7 +213,7 @@ namespace ClaimProject.equip
                     Headmas = "ใบส่งซ่อมครุภัณฑ์";
                 }
                 gettoll = parame.GetString("toll_name");
-                if (gettoll == "ฝ่ายบริหารฯ")
+                if (gettoll == "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม")
                 {
                     gettoll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                 }

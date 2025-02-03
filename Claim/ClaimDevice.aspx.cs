@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,6 @@ namespace ClaimProject.Claim
 
             if (!this.IsPostBack)
             {
-                
                 function.getListItem(txtSearchStatus, "SELECT * FROM tbl_status ORDER by status_id", "status_name", "status_id");
                 txtSearchStatus.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
                 string sql = "";
@@ -35,12 +35,10 @@ namespace ClaimProject.Claim
                     sql = "SELECT * FROM tbl_cpoint ORDER BY cpoint_id";
                     function.getListItem(txtSearchCpoint, sql, "cpoint_name", "cpoint_id");
                     txtSearchCpoint.Items.Insert(0, new ListItem("ทั้งหมด", ""));
-
-                    
                 }
                 else
                 {
-                    if ( Userp == "703" || Userp == "704" || Userp == "706" || Userp == "707" || Userp == "708" || Userp == "709")
+                    if (Userp == "703" || Userp == "704" || Userp == "706" || Userp == "707" || Userp == "708" || Userp == "709")
                     {
                         txtPoint.Enabled = true;
                     }
@@ -50,7 +48,7 @@ namespace ClaimProject.Claim
                     }
                     sql = "SELECT * FROM tbl_cpoint WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "'";
                     function.getListItem(txtSearchCpoint, sql, "cpoint_name", "cpoint_id");
-                    BindData(txtSearchCpoint.SelectedValue, txtPoint.Text.Trim(), 0 ,"" ,"");
+                    BindData(txtSearchCpoint.SelectedValue, txtPoint.Text.Trim(), 0, "", "");
                 }
 
                 sqlCh = "SELECT * FROM tbl_location where locate_group = '1' ORDER BY locate_id";
@@ -60,15 +58,12 @@ namespace ClaimProject.Claim
                 string sql_Device = "SELECT * FROM tbl_device ORDER BY device_name";
                 function.getListItem(txtDeviceDamage, sql_Device, "device_name", "device_id");
 
-
                 txtDeviceDamage.Items.Insert(0, new ListItem("", ""));
-
-
             }
         }
 
-        void BindData(string cpoint, string point, int except ,string datestart ,string dateend)
-        {                        
+        void BindData(string cpoint, string point, int except, string datestart, string dateend)
+        {
             string sql = "";
             string conCpoint = "";
             //ค้นหาแบบเลือกวันที่ได้
@@ -77,7 +72,7 @@ namespace ClaimProject.Claim
 
             if (cpoint != "")
             {
-                if(CheckAllDay.Checked)
+                if (CheckAllDay.Checked)
                 {
                     conCpoint = "AND c.claim_cpoint = '" + cpoint + "' AND c.claim_point Like '%" + point + "%' ";
 
@@ -91,7 +86,6 @@ namespace ClaimProject.Claim
                         {
                             conCpoint += "AND c.claim_status = '" + except + "' ";
                         }
-
                     }
                 }
                 else
@@ -108,14 +102,12 @@ namespace ClaimProject.Claim
                         {
                             conCpoint += "AND c.claim_status = '" + except + "' ";
                         }
-
                     }
                 }
-                
             }
             else
             {
-                if(CheckAllDay.Checked)
+                if (CheckAllDay.Checked)
                 {
                     if (txtSearchStatus.SelectedValue == "0")
                     {
@@ -139,20 +131,18 @@ namespace ClaimProject.Claim
                         "STR_TO_DATE( '" + dataS + "','%d-%m-%Y') AND STR_TO_DATE('" + dateE + "' ,'%d-%m-%Y') ";
                     }
                 }
-                
-                
             }
             try
             {
                 if (txtSearchChannel.SelectedValue == "")
                 {
-                    if(txtDeviceDamage.SelectedValue == "")
+                    if (txtDeviceDamage.SelectedValue == "")
                     {
                         sql = "SELECT c.claim_id, techno_doc_num, cpoint_name, claim_point, claim_detail_cb_claim, device_name, device_damaged, claim_start_date, claim_detail_time, status_name, status_alert, claim_auto_id " +
                               "FROM tbl_claim c JOIN `tbl_claim_com` cc ON cc.`claim_id` = c.`claim_id` JOIN tbl_device_damaged dd ON dd.`claim_id` = c.`claim_id` " +
                                 "AND dd.`device_damaged_delete` <> 1 JOIN `tbl_device` d ON d.`device_id` = dd.`device_id` JOIN `tbl_status` s ON s.`status_id` = c.`claim_status` " +
                                 "JOIN `tbl_cpoint` cp ON c.`claim_cpoint` = cp.`cpoint_id` LEFT JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` JOIN `tbl_claim_auto_id` aid ON c.`claim_id` = aid.`claim_id`" +
-                                " WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +                                
+                                " WHERE c.`claim_status` <> 5 AND c.`claim_status` <> 6 AND c.`claim_delete` <> 1 " + conCpoint + " " +
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
                     }
                     else
@@ -165,7 +155,6 @@ namespace ClaimProject.Claim
                                 "AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + "  " +
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
                     }
-                    
                 }
                 else
                 {
@@ -187,15 +176,14 @@ namespace ClaimProject.Claim
                                 "AND  claim_detail_cb_claim = '" + txtSearchChannel.SelectedItem + "' AND  dd.`device_id` = " + txtDeviceDamage.SelectedValue + " LEFT JOIN `tbl_claim_doc` dc ON c.`claim_id` = dc.`claim_doc_id` " +
                                 "ORDER BY c.claim_cpoint,c.claim_point,STR_TO_DATE(c.claim_start_date,'%d-%m-%Y') ASC";
                     }
-                    
                 }
-                
+
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
                 ClaimGridView.DataSource = ds.Tables[0];
                 ClaimGridView.DataBind();
-
+                //HighlightDuplicate(this.ClaimGridView);
                 lbClaimNull.Text = "พบข้อมูลจำนวน " + ds.Tables[0].Rows.Count + " แถว";
             }
             catch { }
@@ -208,7 +196,6 @@ namespace ClaimProject.Claim
             {
                 lbClaimSDate.Text = function.ConvertDateShortThai((string)DataBinder.Eval(e.Row.DataItem, "claim_start_date"));
             }
-
 
             Label lbDay = (Label)(e.Row.FindControl("lbDay"));
             if (lbDay != null)
@@ -239,7 +226,7 @@ namespace ClaimProject.Claim
         {
             try
             {
-                BindData(txtSearchCpoint.SelectedValue, txtPoint.Text.Trim(), int.Parse(txtSearchStatus.SelectedValue) , txtDateStart.Text.Trim(), txtDateEnd.Text.Trim());                
+                BindData(txtSearchCpoint.SelectedValue, txtPoint.Text.Trim(), int.Parse(txtSearchStatus.SelectedValue), txtDateStart.Text.Trim(), txtDateEnd.Text.Trim());
             }
             catch { }
         }
@@ -262,7 +249,6 @@ namespace ClaimProject.Claim
             ClaimGridView.RenderControl(htmltextwrtter);
             Response.Write(strwritter.ToString());
             Response.End();
-
         }
 
         public override void VerifyRenderingInServerForm(Control control)
@@ -278,15 +264,61 @@ namespace ClaimProject.Claim
 
         protected void CheckAllDay_CheckedChanged(object sender, EventArgs e)
         {
-            if(CheckAllDay.Checked)
+            if (CheckAllDay.Checked)
             {
-                txtDateStart.Enabled = false ;
-                txtDateEnd.Enabled = false ;
+                txtDateStart.Enabled = false;
+                txtDateEnd.Enabled = false;
             }
             else
             {
                 txtDateStart.Enabled = true;
                 txtDateEnd.Enabled = true;
+            }
+        }
+
+        public void HighlightDuplicate(GridView grv)
+        {
+            int duplicateCount = 1;
+            for (int currentRow = 0; currentRow < grv.Rows.Count - 1; currentRow++)
+            {
+                GridViewRow rowToCompare = grv.Rows[currentRow];
+                for (int otherRow = currentRow + 1; otherRow < grv.Rows.Count; otherRow++)
+                {
+                    GridViewRow row = grv.Rows[otherRow];
+                    bool duplicateRow = true;
+                    if ((rowToCompare.Cells[1].Text != row.Cells[1].Text))
+                    {
+                        duplicateRow = false;
+                        break;
+                    }
+                    if (duplicateRow)
+                    {
+                        switch (duplicateCount)
+                        {
+                            case 1:
+                                rowToCompare.BackColor = Color.Red;
+                                rowToCompare.ForeColor = Color.Black;
+                                row.BackColor = Color.Red;
+                                row.ForeColor = Color.Black;
+                                break;
+                            case 2:
+                                rowToCompare.BackColor = Color.Green;
+                                rowToCompare.ForeColor = Color.Black;
+                                row.BackColor = Color.Green;
+                                row.ForeColor = Color.Black;
+                                break;
+                            case 3:
+                                rowToCompare.BackColor = Color.Yellow;
+                                rowToCompare.ForeColor = Color.Black;
+                                row.BackColor = Color.Yellow;
+                                row.ForeColor = Color.Black;
+                                break;
+                            default:
+                                break;
+                        }
+                        duplicateCount++;
+                    }
+                }
             }
         }
     }

@@ -11,7 +11,7 @@
     <!-- CSS only -->
     <link href="../Content/CM.css" rel="stylesheet" />
 
-    <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
+    <!--<div class="container-fluid" style="font-family: 'Prompt',sans-serif;"> -->
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <!--<div class="row" style="height:100px">
@@ -31,7 +31,7 @@
                         <asp:LinkButton runat="server" ID="btnDetails" OnClick="lbtnReceiveDetail_Click">
                             <div class="col">
                                 <div class="row">
-                                    ขณะนี้มีรายการรอรับครุภัณฑ์ &nbsp<asp:Label runat="server" ID="lbAmountWait"></asp:Label>&nbsp รายการ
+                                    สวัสดี มีรายการส่งครุภัณฑ์เข้ามาใหม่ &nbsp<asp:Label runat="server" ID="lbAmountWait"></asp:Label>&nbsp รายการ
                                 </div>
                             </div>
                         </asp:LinkButton>
@@ -497,7 +497,6 @@
                         <div class="col-lg-2 col-md-3 col-sm-3"></div>
                     </div>
                 </div>
-
                 <div id="MyPopup" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
@@ -505,8 +504,7 @@
                             <div class="modal-header">
                                  <h4 class="modal-title"></h4>
                                 <button type="button" class="close" data-dismiss="modal">
-                                    &times;</button>
-                               
+                                    &times;</button>                               
                             </div>
                             <div class="modal-body">
                             </div>
@@ -517,7 +515,6 @@
                         </div>
                     </div>
                 </div>
-
             </ContentTemplate>
         </asp:UpdatePanel>
         <script type="text/javascript">
@@ -540,6 +537,6 @@
                 $("#MyPopup").modal("show");
             }
         </script>
-    </div>
+    <!--</div>-->
 
 </asp:Content>

@@ -1,73 +1,78 @@
-﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CMSurveyForm.aspx.cs" Inherits="ClaimProject.CM.CMSurveyForm" %>
+﻿<%@ Page Title="Maintenance Service Agreement (MA)" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="CMSurveyForm.aspx.cs" Inherits="ClaimProject.CM.CMSurveyForm" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- CSS Custom-->
-    <link href="../Content/CM.css" rel="stylesheet" />
-    <link href="../Content/custom.css" rel="stylesheet" />
+    <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <!-- CSS Custom-->
+        <link href="../Content/CM.css" rel="stylesheet" />
+        <link href="../Content/custom.css" rel="stylesheet" />
 
-    <style>
-        .table {
-            width: 100%;
-            margin-bottom: 1rem;
-            color: #ff6a00;
-            background-color: #ffffff;
-        }
-    </style>
-    <div class="container-fluid" style="font-family: 'Prompt',sans-serif;">
+        <style>
+            .table {
+                width: 100%;
+                margin-bottom: 1rem;
+                color: #ff6a00;
+                background-color: #f8ebd7;
+            }
+        </style>
         <div id="DivCMGridView" runat="server" class="col-12">
             <div class="card" style="z-index: 0">
                 <div class="card-header ">
-                    <div class="card-title">ตรวจสอบรายการแก้ไขอุปกรณ์จากทางด่านฯ</div>
+                    <div class="card-title">รายการแจ้งซ่อมสำเร็จ รอการอนุมัติ</div>
                 </div>
                 <div class="card-body table-responsive table-sm">
                     <asp:Panel ID="Panel1" runat="server">
-                        <asp:GridView ID="CMGridView" runat="server"
-                            AutoGenerateColumns="False"
-                            CssClass="col table table-striped table-hover"
-                            HeaderStyle-CssClass="text-center"
-                            HeaderStyle-BackColor="ActiveBorder"
-                            HeaderStyle-Font-Size="18px"
-                            HeaderStyle-Height="50px"
-                            RowStyle-Height="50px"
-                            OnRowDataBound="CMGridView_RowDataBound"
-                            Font-Size="16px"
-                            CellPadding="4"
-                            GridLines="None">
+                        <asp:GridView ID="CMGridView" runat="server" AutoGenerateColumns="False"
+                            CssClass="table table-striped table-hover" HeaderStyle-CssClass="text-center"
+                            HeaderStyle-BackColor="ActiveBorder" HeaderStyle-Font-Size="16px" HeaderStyle-Height="50px"
+                            RowStyle-Height="50px" OnRowDataBound="CMGridView_RowDataBound" Font-Size="14px"
+                            CellPadding="4" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
-                                <asp:TemplateField HeaderText="Ref.">
+                                <asp:TemplateField HeaderText="เลขอ้างอิง">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbref" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_id") %>' OnCommand="lbref_Command"></asp:LinkButton>
+                                        <asp:LinkButton ID="lbref" runat="server"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_id") %>'
+                                            OnCommand="lbref_Command"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ด่านฯ">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbCpoint" Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>' runat="server" OnCommand="lbref_Command" />
+                                        <asp:LinkButton ID="lbCpoint"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.cpoint_name")+" "+DataBinder.Eval(Container, "DataItem.cm_point") %>'
+                                            runat="server" OnCommand="lbref_Command" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ช่องทาง">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbChannel" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>' OnCommand="lbref_Command"></asp:LinkButton>
+                                        <asp:LinkButton ID="lbChannel" runat="server"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.locate_name") %>'
+                                            OnCommand="lbref_Command"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="อุปกรณ์">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbDeviceName" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>' OnCommand="lbref_Command"></asp:LinkButton>
+                                        <asp:LinkButton ID="lbDeviceName" runat="server"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.device_name") %>'
+                                            OnCommand="lbref_Command"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="อาการที่ชำรุด">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbProblem" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'></asp:Label>
+                                        <asp:Label ID="lbProblem" runat="server"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_problem") %>'>
+                                        </asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="วันที่แจ้งซ่อม">
+                                <asp:TemplateField HeaderText="วันที่แจ้ง">
                                     <ItemTemplate>
                                         <asp:Label ID="lbSDate" runat="server"></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="เวลาแจ้งซ่อม">
+                                <asp:TemplateField HeaderText="เวลาแจ้ง">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbSTime" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'></asp:Label>
+                                        <asp:Label ID="lbSTime" runat="server"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_stime")+" น." %>'>
+                                        </asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="วันที่แก้ไข">
@@ -83,14 +88,23 @@
 
                                 <asp:TemplateField HeaderText="วิธีแก้ไข">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbMethod" runat="server" Width="200px" Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_method") %>'></asp:Label>
+                                        <asp:Label ID="lbMethod" runat="server" Width="200px"
+                                            Text='<%# DataBinder.Eval(Container, "DataItem.cm_detail_method") %>'>
+                                        </asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ดำเนินการ" ControlStyle-Width="80px">
                                     <ItemTemplate>
                                         <div class="row">
-                                            <asp:LinkButton ID="btnStatusUpdate" runat="server" OnCommand="btnStatusUpdate_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="btn btn-outline-success"><i class="fas fa-check"></i></asp:LinkButton>
-                                            <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancel_Command" OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');" CssClass="btn btn-outline-danger"><i class="fas fa-times"></i></asp:LinkButton>
+                                            <asp:LinkButton ID="btnStatusUpdate" runat="server"
+                                                OnCommand="btnStatusUpdate_Command"
+                                                OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');"
+                                                CssClass="btn btn-outline-success"><i class="fas fa-check"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancel_Command"
+                                                OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');"
+                                                CssClass="btn btn-outline-danger"><i class="fas fa-times"></i>
+                                            </asp:LinkButton>
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -109,13 +123,14 @@
                     </asp:Panel>
                 </div>
             </div>
-        </div>        
+        </div>
         <!------------------------------------------------------------------------------------------------------------>
-        <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel" aria-hidden="true">
+        <div class="modal fade" id="ApprovCMModal" tabindex="-1" role="dialog" aria-labelledby="ApprovCMModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อมอุปกรณ์ CM</div>
+                        <div class="modal-title">ตรวจสอบรายละเอียดการแจ้งซ่อม CM</div>
                         <asp:Label ID="pkeq" runat="server" Visible="false" Font-Size="Smaller"></asp:Label>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -134,7 +149,8 @@
                                 </div>
                                 <div class="card border-white col-sm-4">
                                     <asp:Label ID="lbImageDocSer" runat="server" Text="ภาพใบ Service"></asp:Label>
-                                    <asp:Image ID="ImgImageDocSer" runat="server" Height="340px" CssClass="img-thumbnail" />
+                                    <asp:Image ID="ImgImageDocSer" runat="server" Height="340px"
+                                        CssClass="img-thumbnail" />
                                 </div>
                             </div>
                             <hr />
@@ -268,47 +284,49 @@
                                 </div>
                             </div>
                             <div class="row ">
-                                <asp:LinkButton ID="lbtnStatusUpdateModal" runat="server" OnCommand="lbtnStatusUpdateModal_Command" OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');" CssClass="fas text-success m-3" ToolTip="ยินยัน">&#xf058; อนุมัติ</asp:LinkButton>
-                                <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancelModal_Command" OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');" CssClass="fas text-danger m-3" ToolTip="ปฏิเสธ">&#xf057; ไม่อนุมัติ</asp:LinkButton>
+                                <asp:LinkButton ID="lbtnStatusUpdateModal" runat="server"
+                                    OnCommand="lbtnStatusUpdateModal_Command"
+                                    OnClientClick="return CompareConfirm('ยืนยันข้อมูลถูกต้อง ใช่หรือไม่');"
+                                    CssClass="fas text-success m-3" ToolTip="ยินยัน">&#xf058; อนุมัติ</asp:LinkButton>
+                                <asp:LinkButton ID="btnCancel" runat="server" OnCommand="btnCancelModal_Command"
+                                    OnClientClick="return CompareConfirm('ยืนยันไม่อนุมัติ ใช่หรือไม่');"
+                                    CssClass="fas text-danger m-3" ToolTip="ปฏิเสธ">&#xf057; ไม่อนุมัติ</asp:LinkButton>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!------------------------------------------------------------------------------------------------------------>
-    <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
-    <script src="/Scripts/moment.min.js"></script>
-    <script src="/Scripts/ClaimProjectScript.js"></script>
-    <script type="text/javascript"> 
-        $(function () {
-            <% if (EditModal != "")
-        {%>
-                $("#ApprovCMModal").modal('show');
+        <!------------------------------------------------------------------------------------------------------------>
+        <script src="/Scripts/jquery-ui-1.11.4.custom.js"></script>
+        <script src="/Scripts/moment.min.js"></script>
+        <script src="/Scripts/ClaimProjectScript.js"></script>
+        <script type="text/javascript">
+            $(function () {
+            <% if (EditModal != "") {%>
+                    $("#ApprovCMModal").modal('show');
             <%}
-        else
-        {%>
-                $("#ApprovCMModal").modal('hide');
+                else {%>
+                    $("#ApprovCMModal").modal('hide');
             <%}%>       
         });
 
-        function ClickAdd() {
-            $("#addCMModal").modal('show');
-            return false;
-        }
-
-        function CompareConfirm(msg) {
-            var str1 = "1";
-            var str2 = "2";
-
-            if (str1 === str2) {
-                // your logic here
+            function ClickAdd() {
+                $("#addCMModal").modal('show');
                 return false;
-            } else {
-                // your logic here
-                return confirm(msg);
             }
-        }
-    </script>
-</asp:Content>
+
+            function CompareConfirm(msg) {
+                var str1 = "1";
+                var str2 = "2";
+
+                if (str1 === str2) {
+                    // your logic here
+                    return false;
+                } else {
+                    // your logic here
+                    return confirm(msg);
+                }
+            }
+        </script>
+    </asp:Content>

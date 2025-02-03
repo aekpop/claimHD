@@ -23,7 +23,7 @@
 
     <!-- content  -->
     <!-- Card  รายละเอียด -->   
-    <div class="card border-dark mb-3" style="font-size: 21px; font-family: 'TH SarabunPSK'">
+    <div class="card border-dark mb-3" style="font-size: 21px; font-family: 'THSarabun'">
         <div class="card-header">
             <h3 class="card-title">รายละเอียด</h3>
         </div>

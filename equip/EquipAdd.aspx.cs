@@ -49,7 +49,6 @@ namespace ClaimProject.equip
                 function.getListItem(ddlEditLocate, "SELECT * FROM tbl_location Order By locate_name ", "locate_name", "locate_id");
                 function.getListItem(ddlsearchStat, "SELECT * FROM tbl_equipment_status Order By status_id ", "status_name", "status_id");
 
-
                 if (Session["UserCpoint"].ToString() != "0") //คนด่านฯ
                 {
                     string cpointToll = "SELECT * FROM tbl_toll " +
@@ -60,9 +59,9 @@ namespace ClaimProject.equip
                     function.getListItem(ddlserchToll, cpointToll, "toll_name", "toll_id");
                     ddlserchToll.Items.Insert(0, new ListItem("ทุกอาคาร", "0"));
                     function.getListItem(ddlEditCpoint, "SELECT * FROM tbl_toll WHERE tbl_toll.cpoint_id = '" + Session["UserCpoint"].ToString() + "' Order By toll_id ASC", "toll_name", "toll_id");
-                    divaddnew.Visible = false;
-                    divcheckk.Visible = false;
-                    divcheckkk.Visible = false;
+                    //divaddnew.Visible = false;
+                    //divcheckk.Visible = false;
+                    //divcheckkk.Visible = false;
                     btnchkHistory.Visible = false;
                 }
                 else //อื่นๆที่ไม่ใช่รหัสคนด่านฯ

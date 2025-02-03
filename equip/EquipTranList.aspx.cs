@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
 using ClaimProject.Model;
+using System.Text;
 
 namespace ClaimProject
 {
@@ -60,24 +61,10 @@ namespace ClaimProject
                 else
                 {
                     ddlsearchStat.SelectedItem.Value = Session["ddlsearchStat"].ToString();
-                }
-                
-                //if (Session["UserPrivilegeId"].ToString() == "0") //Admin
-                //{
-                //    lbtnGoReport.Visible = true;
-                //    lbtnGoReportCopy.Visible = true;
-                //}
-
+                }                
             }
             LineTran();
             LoadPaging();
-
-            //if (Session["alert"].ToString() != "")
-            //{
-            //    string msgAlert = Session["alert"].ToString();
-            //    AlertPop(msgAlert, "success");
-            //    Session["alert"] = "";
-            //}
 
             switch (Session["UserPrivilegeId"].ToString())
             {
@@ -203,7 +190,7 @@ namespace ClaimProject
                     }
                     else
                     {
-                        sqlsendSearch += " WHERE Toll_EQGroup IN (2,9) AND Toll_send = '9200' ";
+                        sqlsendSearch += " WHERE Toll_EQGroup IN (1,2,3,9) AND Toll_send = '9200' "; // EQGroup IN (1,2,3,9) มองเห็นทุกสาย
                     }
                 }
                 else if (Session["User"].ToString() == "watcharee")
@@ -547,11 +534,6 @@ namespace ClaimProject
                 //e.Row.Attributes["onmouseover"] = "onMouseOver('" + (e.Row.RowIndex + 1) + "')";
                 //e.Row.Attributes["onmouseout"] = "onMouseOut('" + (e.Row.RowIndex + 1) + "')";
             }
-            //Label lbRowNum = (Label)(e.Row.FindControl("lbRowNum"));
-            //if (lbRowNum != null)
-            //{
-            //    lbRowNum.Text = (gridTranlist.Rows.Count + 1).ToString() + ".";
-            //}
 
             LinkButton printReport1 = (LinkButton)(e.Row.FindControl("printReport1"));
             if (printReport1 != null)
@@ -561,16 +543,23 @@ namespace ClaimProject
                 {
                     printReport1.Visible = false;
                 }
-                //printReport1.OnClientClick = "document.forms[0].target ='_blank';";
-                //printReport1.t
             }
-
         }
         protected void lbtntrans_Command(object sender, CommandEventArgs e)
         {
             Session["TransID"] = e.CommandName;
             Session["TransNew"] = "1";
-            Response.Redirect("/equip/EquipNewTrans");
+            //Response.Redirect("/equip/EquipNewTrans");
+
+            string url = "/equip/EquipNewTrans";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.open('");
+            sb.Append(url);
+            sb.Append("');");
+            sb.Append("</script>");
+            ClientScript.RegisterStartupScript(this.GetType(),
+                    "script", sb.ToString());
         }
 
         protected void lbtnUptran_Command(object sender, CommandEventArgs e)

@@ -99,7 +99,11 @@
                                 <asp:Label ID="lbSentDate" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.date_send") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-
+                        <asp:TemplateField HeaderText="ประเภท" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <asp:Label ID="lbSentType" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.trans_stat_name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="ต้นทาง" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:Label ID="lbStarttrans" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.toll_send") %>'></asp:Label>

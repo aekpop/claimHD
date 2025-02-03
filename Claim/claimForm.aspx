@@ -78,7 +78,7 @@
             <div class="card-header ">
                 <h3 class="card-title">รายการอุบัติเหตุ</h3>
             </div>
-            <div class="card-body table-responsive table-sm" style="font-size: medium;">
+            <div class="card-body ">
                 <div style="font-size: medium;">
                     <asp:GridView ID="ClaimGridView" runat="server" DataKeyNames="claim_id" GridLines="None"
                         OnRowDataBound="ClaimGridView_RowDataBound" AutoGenerateColumns="False"

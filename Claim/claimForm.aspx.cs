@@ -36,8 +36,7 @@ namespace ClaimProject.Claim
                 function.getListItem(txtSearchStatus, "SELECT * FROM tbl_status ORDER by status_id", "status_name", "status_id");
                 txtSearchStatus.Items.Insert(0, new ListItem("ทั้งหมด", ""));
                 txtSearchYear.SelectedValue = function.getBudgetYear(date);
-                
-                
+
                 if (Session["UserCpoint"] != null)
                 {
                     if (Session["UserCpoint"].ToString() == "0")
@@ -50,7 +49,7 @@ namespace ClaimProject.Claim
                     {
                         sql = "SELECT * FROM tbl_cpoint WHERE cpoint_id = '" + Session["UserCpoint"].ToString() + "'";
                         function.getListItem(txtSearchCpoint, sql, "cpoint_name", "cpoint_id");
-                        btnSearch_Click(null,null);
+                        btnSearch_Click(null, null);
                     }
                 }
                 else
@@ -58,6 +57,7 @@ namespace ClaimProject.Claim
                     Response.Redirect("/");
                 }
             }
+
             if (Session["UserPrivilegeId"].ToString() == "4")
             {
                 btnAddClaim.Visible = false;
@@ -80,7 +80,7 @@ namespace ClaimProject.Claim
                         "AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' " +
                         "AND claim_start_date LIKE '%" + month + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%' ) " +
                         "ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
-                    Session["sql"] = sql;
+                    //Session["sql"] = sql;
                 }
                 else
                 {
@@ -90,14 +90,13 @@ namespace ClaimProject.Claim
                           " AND claim_equipment LIKE '%" + txtSearchComTitle.Text + "%' AND claim_budget_year = '" + txtSearchYear.SelectedValue + "' " +
                           " AND claim_start_date LIKE '%" + txtSearchDate.Text + "%' AND claim_status LIKE '%" + txtSearchStatus.SelectedValue + "%') " +
                           " ORDER BY status_id ASC, STR_TO_DATE(claim_cpoint_date, '%d-%m-%Y') DESC";
-                    Session["sql"] = sql;
+                    //Session["sql"] = sql;
                 }
+                Session["sql"] = sql;
             }
 
             try
             {
-
-
                 MySqlDataAdapter da = function.MySqlSelectDataSet(sql);
                 System.Data.DataSet ds = new System.Data.DataSet();
                 da.Fill(ds);
@@ -110,8 +109,6 @@ namespace ClaimProject.Claim
 
         protected void ClaimGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
-
             LinkButton lbCpoint = (LinkButton)(e.Row.FindControl("lbCpoint"));
             if (lbCpoint != null)
             {
@@ -124,14 +121,12 @@ namespace ClaimProject.Claim
                 lbNoteCom.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "claim_id");
             }
 
-
             LinkButton lbEquipment = (LinkButton)(e.Row.FindControl("lbEquipment"));
             if (lbEquipment != null)
             {
                 lbEquipment.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "claim_id");
                 lbEquipment.ToolTip = (string)DataBinder.Eval(e.Row.DataItem, "claim_equipment"); ;
             }
-
 
             Label lbCpointDate = (Label)(e.Row.FindControl("lbCpointDate"));
             if (lbCpointDate != null)
@@ -177,8 +172,6 @@ namespace ClaimProject.Claim
                 {
                     printReport1.Visible = false;
                 }
-                //printReport1.OnClientClick = "document.forms[0].target ='_blank';";
-                //printReport1.t
             }
 
             LinkButton printReport2 = (LinkButton)(e.Row.FindControl("printReport2"));
@@ -189,7 +182,6 @@ namespace ClaimProject.Claim
                 {
                     printReport2.Visible = false;
                 }
-                //printReport1.t
             }
 
             //*** Edit ***'
@@ -267,7 +259,6 @@ namespace ClaimProject.Claim
 
         protected void lbNoteCom_Command(object sender, CommandEventArgs e)
         {
-
             Session["codePK"] = e.CommandName;
             Session["View"] = false;
             if (function.GetSelectValue("tbl_claim", "claim_id='" + e.CommandName + "'", "claim_status") != "1" && function.GetSelectValue("tbl_claim", "claim_id='" + e.CommandName + "'", "claim_status") != "6")
@@ -377,11 +368,11 @@ namespace ClaimProject.Claim
             string licenAdd3 = "";
             string provinAdd3 = "";
             string tel3 = "";
-            string manager = "";
+            string pos_manager = "";
             string Cpcontrol = "";
             string reference = "";
-
-            string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON cc.claim_id=c.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint WHERE c.claim_id = '" + key + "'";
+            string sql = "SELECT * FROM tbl_claim c JOIN tbl_claim_com cc ON cc.claim_id=c.claim_id JOIN tbl_cpoint cp ON cp.cpoint_id = c.claim_cpoint ";
+                   sql += " JOIN tbl_position po ON po.position_id = cp.cpoint_manager_pos WHERE c.claim_id = '" + key + "'";
 
             MySqlDataReader rs = function.MySqlSelect(sql);
             if (rs.Read())
@@ -399,9 +390,8 @@ namespace ClaimProject.Claim
                 detail = rs.GetString("claim_detail_accident");
                 supper = rs.GetString("claim_detail_supervisor");
                 supperPos = rs.GetString("claim_detail_supervisor_pos");
-                manager = rs.GetString("cpoint_manager");
+                pos_manager = rs.GetString("position_name");
                 Cpcontrol = rs.GetString("cpoint_control");
-
                 car = rs.GetString("claim_detail_car").Replace(",", "").ToUpper();
                 licensePlate = rs.GetString("claim_detail_license_plate");
                 licenseEng = rs.GetString("Licen_Eng");
@@ -409,7 +399,7 @@ namespace ClaimProject.Claim
                 licensePlate2 = rs.GetString("claim_detail_lp2");
                 province = rs.GetString("claim_detail_province");
                 comeFrom = rs.GetString("claim_detail_comefrom");
-                nameDrive = rs.GetString("claim_detail_driver");                
+                nameDrive = rs.GetString("claim_detail_driver");
                 idcard = rs.GetString("claim_detail_idcard");
                 address = rs.GetString("claim_detail_address");
                 telDrive = rs.GetString("claim_detail_tel");
@@ -428,11 +418,7 @@ namespace ClaimProject.Claim
                 {
                     provinceplate2 = rs.GetString("claim_detail_provi2");
                 }
-                catch
-                {
-
-                }
-
+                catch{}
             }
             rs.Close();
             function.Close();
@@ -440,6 +426,7 @@ namespace ClaimProject.Claim
             string getcar3 = "select * FROM tbl_claim_com where claim_id = '" + key + "' AND claim_detail_number = '3'";
             string car2has = "1";
             string car3has = "1";
+
             MySqlDataReader checkcar2 = function.MySqlSelect(getcar2);
             if (checkcar2.Read())
             {
@@ -461,6 +448,7 @@ namespace ClaimProject.Claim
             }
             checkcar2.Close();
             MySqlDataReader checkcar3 = function.MySqlSelect(getcar3);
+
             if (checkcar3.Read())
             {
                 license3 = checkcar3.GetString("claim_detail_license_plate");
@@ -483,7 +471,7 @@ namespace ClaimProject.Claim
             string strNote = "เนื่องด้วยวันที่ " + function.ConvertDatelongThai(startDate) + " " + around + " เวลาประมาณ " + time + " น. ได้รับแจ้งจาก " + nameAleat + " " + posAleat + " ปฏิบัติหน้าที่ประจำด่านฯ " + cpointName + (point != "" ? " " + point : "");
             if (cabinet != "") { strNote += " ประจำช่องทาง " + cabinet; }
 
-            if(cabinet_claim != "อาคารสำนักงาน" && cabinet_claim != "อาคารด่านเก็บเงิน") { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ช่องทาง " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
+            if (cabinet_claim != "อาคารสำนักงาน" && cabinet_claim != "อาคารด่านเก็บเงิน") { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ช่องทาง " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
             else { strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " บริเวณ" + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ"; }
             //strNote += " " + direction + " แจ้งว่าเกิดอุบัติเหตุ" + detail + " ตู้ " + cabinet_claim + " จึงแจ้งรองผู้จัดการด่านฯ คือ " + supper + " ให้ทราบ";
             strNote += " เมื่อได้รับแจ้งเหตุ เจ้าหน้าที่ควบคุมระบบและรองผู้จัดการด่านฯ ได้ไปตรวจสอบที่เกิดเหตุพร้อมบันทึกภาพไว้เป็นหลักฐาน"; //พบคู่กรณีเป็น" + car;
@@ -596,10 +584,10 @@ namespace ClaimProject.Claim
                         }
                     }
                     */
-                    strNote += " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
-                    " จังหวัด" + province2 + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + driver2 + "" +
-                    " เลขที่บัตรประจำตัวประชาชน " + idcard2 + " ที่อยู่ " + address2 + (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
-                    " หมายเลขโทรศัพท์ " + tel2 : " เป็นผู้ขับขี่");
+                strNote += " และคันที่ ๒ เป็น" + cardetail2 + " หมายเลขทะเบียน " + license2 + "" +
+                " จังหวัด" + province2 + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + driver2 + "" +
+                " เลขที่บัตรประจำตัวประชาชน " + idcard2 + " ที่อยู่ " + address2 + (tel2.Trim() != "" && tel2.Trim() != "-" ? " " +
+                " หมายเลขโทรศัพท์ " + tel2 : " เป็นผู้ขับขี่");
                 //}
                 //strNote += " พบว่าคู่กรณีคันที่ ๑ เป็น" + car ;
                 if (insurer.Trim() == "" || insurer.Trim() == "-")
@@ -618,9 +606,9 @@ namespace ClaimProject.Claim
                 //}
                 //else
                 //{
-                    strNote += " ได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + inform + " ไว้เป็นหลักฐานแล้ว";
+                strNote += " ได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + inform + " ไว้เป็นหลักฐานแล้ว";
                 //}
-                
+
             }
             else
             {
@@ -637,17 +625,16 @@ namespace ClaimProject.Claim
 
                     if (licensePlate2 != "" && licensePlate2 != "-")
                     {
-
                         if (provinceplate2 != province)
                         {
                             strNote += " จังหวัด" + province + " ส่วนพ่วงหมายเลขทะเบียน " + licensePlate2 + " จังหวัด" + provinceplate2;
                             if (licenseEng != "")
                             {
                                 strNote += " หมายเลขทะเบียนสากล " + licenseEng + " " + provinceEng + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn;
-                                    if(nameDrive != "")
-                                    {
-                                        strNote += " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
-                                    }                                
+                                if (nameDrive != "")
+                                {
+                                    strNote += " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                                }
                             }
                             else
                             {
@@ -666,7 +653,6 @@ namespace ClaimProject.Claim
                                 strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn + " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
                             }
                         }
-
                     }
                     else
                     {
@@ -677,10 +663,10 @@ namespace ClaimProject.Claim
                         else
                         {
                             strNote += " จังหวัด" + province + " ใช้เส้นทาง" + comeFrom + "มุ่งหน้า" + directionIn;
-                                if (nameDrive != "")
-                                {
-                                    strNote += " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
-                                }
+                            if (nameDrive != "")
+                            {
+                                strNote += " โดยมี" + nameDrive + " เลขที่บัตรประจำตัวประชาชน " + idcard + " ที่อยู่ " + address + (telDrive.Trim() != "" && telDrive.Trim() != "-" ? " หมายเลขโทรศัพท์ " + telDrive : "") + " เป็นผู้ขับขี่รถยนต์คันดังกล่าว";
+                            }
                         }
                     }
                 }
@@ -736,18 +722,18 @@ namespace ClaimProject.Claim
                     }
                     */
 
-                    if (insurer.Trim() == "ไม่มีประกัน")
-                    {
-                        strNote += " ซึ่งไม่ได้ทำประกันภัยไว้";
-                    }
-                    else if(insurer.Trim() == "")
-                    {
-                        strNote += "";
-                    }
-                    else
-                    {
-                        strNote += " ซึ่งได้ทำประกันภัยไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
-                    }
+                if (insurer.Trim() == "ไม่มีประกัน")
+                {
+                    strNote += " ซึ่งไม่ได้ทำประกันภัยไว้";
+                }
+                else if (insurer.Trim() == "")
+                {
+                    strNote += "";
+                }
+                else
+                {
+                    strNote += " ซึ่งได้ทำประกันภัยไว้กับ" + insurer + " หมายเลขเคลมเลขที่ " + clemence + " หมายเลขกรมธรรม์ " + policyholders;
+                }
 
                 //strNote += " ทั้งนี้ ด่านฯ " + cpointName + (point != "" ? " " + point : "") + " ได้ดำเนินการแจ้งความร้องทุกข์ไว้ที่ " + inform + " ไว้เป็นหลักฐานแล้ว";
                 /*if (cpointName == "ทับช้าง ๒" || cpointName == "ทับช้าง ๑") // รอแก้ไข
@@ -760,48 +746,47 @@ namespace ClaimProject.Claim
                 } */
             }
 
-                string name = "";
-                string com = "";
-                string superb = "";
-                string dev = "";
-                string listDoc = "";
-                string doc_num = "";
+            string name = "";
+            string com = "";
+            string superb = "";
+            string dev = "";
+            string listDoc = "";
+            string doc_num = "";
+            string sql_com = "SELECT * FROM tbl_claim_com_working WHERE detail_com_id ='" + key + "'";
+            string sql_dev = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + key + "' AND d.device_damaged_delete = '0'";
+            int i = 1;
 
-                string sql_com = "SELECT * FROM tbl_claim_com_working WHERE detail_com_id ='" + key + "'";
-                string sql_dev = "SELECT * FROM tbl_device_damaged d JOIN tbl_device dd ON d.device_id = dd.device_id WHERE claim_id ='" + key + "' AND d.device_damaged_delete = '0'";
-                int i = 1;
-
-                if (report == 0)
+            if (report == 0)
+            {
+                rs = function.MySqlSelect(sql_com);
+                while (rs.Read())
                 {
-                    rs = function.MySqlSelect(sql_com);
-                    while (rs.Read())
+                    if (i == 1)
                     {
-                        if (i == 1)
-                        {
-                            name += "(" + rs.GetString("com_working_name") + ")\r\n" + rs.GetString("com_working_pos");
-                            com += "ซึ่งมีเจ้าหน้าที่ควบคุมระบบปฏิบัติหน้าที่ประจำผลัด ดังนี้\r\n                      ";
-                            com += i + ". " + rs.GetString("com_working_name");
-                        }
-                        else
-                        {
-                            com += "\r\n                      " + i + ". " + rs.GetString("com_working_name");
-                        }
-                        i++;
+                        name += "(" + rs.GetString("com_working_name") + ")\r\n" + rs.GetString("com_working_pos");
+                        com += "ซึ่งมีเจ้าหน้าที่ควบคุมระบบปฏิบัติหน้าที่ประจำผลัด ดังนี้\r\n                      ";
+                        com += i + ". " + rs.GetString("com_working_name");
                     }
-                    rs.Close();
+                    else
+                    {
+                        com += "\r\n                      " + i + ". " + rs.GetString("com_working_name");
+                    }
+                    i++;
+                }
+                rs.Close();
                 //name += "\r\n\r\n\r\n";
                 superb += "(" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor") + ")";
                 superb += "\r\n" + function.GetSelectValue("tbl_claim_com", "claim_id='" + key + "'", "claim_detail_supervisor_pos");
 
                 function.Close();
 
-                    i = 1;
-                    rs = function.MySqlSelect(sql_dev);                
-                        
+                i = 1;
+                rs = function.MySqlSelect(sql_dev);
+
                 while (rs.Read())
-                    {                        
+                {
                     if (i == 1)
-                        {
+                    {
                         if (cpointName == "ทับช้าง ๒" || cpointName == "ทับช้าง ๑") //ตรวจสอบอุปกรณ์ ประกันโครงการฯ
                         {
                             if (rs.GetString("device_id") == "0")
@@ -819,27 +804,27 @@ namespace ClaimProject.Claim
                         }
 
                         dev += "จากการตรวจสอบเบื้องต้นพบทรัพย์สินของทางราชการเสียหาย ดังนี้\r\n                      ";
-                            dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
-                        }
+                        dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                    }
                     else
                     {
-                            dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
+                        dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
                     }
-                        i++;
-                    }
-
-                    rs.Close();
-                    function.Close();
-                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาระบุอุปกรณ์ที่ได้รับความเสียหาย')", true);
+                    i++;
                 }
-                else
+
+                rs.Close();
+                function.Close();
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('กรุณาระบุอุปกรณ์ที่ได้รับความเสียหาย')", true);
+            }
+            else
+            {
+                i = 1;
+                rs = function.MySqlSelect(sql_dev);
+                while (rs.Read())
                 {
-                    i = 1;
-                    rs = function.MySqlSelect(sql_dev);
-                    while (rs.Read())
+                    if (i == 1)
                     {
-                        if (i == 1)
-                        {
                         if (cpointName == "ทับช้าง ๒" || cpointName == "ทับช้าง ๑") //ตรวจสอบอุปกรณ์ ประกันโครงการฯ
                         {
                             if (rs.GetString("device_id") == "0")
@@ -857,50 +842,50 @@ namespace ClaimProject.Claim
                         }
 
                         dev += "ความเสียหายของทรัพย์สินของทางราชการ เบื้องต้นสรุปได้ ดังนี้\r\n                      ";
-                            dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
-                        }
-                        else
-                        {
-                            dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
-                        }
-                        i++;
+                        dev += i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
                     }
-                    rs.Close();
-                    function.Close();
-
-
-                    string sql_doc = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + key + "' AND claim_doc_type = '1'";
-                    rs = function.MySqlSelect(sql_doc);
-                    if (rs.Read())
+                    else
                     {
-                        doc_num = rs.GetString("claim_doc_num");
-                        noteTo1 = rs.GetString("claim_doc_to");
-                        listDoc += "เอกสารประกอบการพิจารณาแนบ ดังนี้";
-                        listDoc += "\r\n                      1. บันทึกข้อความ จำนวน " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
-                        listDoc += "\r\n                      2. หนังสือยอมรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
-                        listDoc += "\r\n                      3. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
-                        listDoc += "\r\n                      4. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";
-                        listDoc += "\r\n                      5. บันทึกข้อมูลการเกิดอุบัติเหตุเบื้องต้นสำหรับการแจ้งความ จำนวน " + converNum(rs.GetString("claim_doc_no5")) + " ฉบับ";
-                        listDoc += "\r\n                      6. สำเนารายงานประจำวันเกี่ยวกับคดี จำนวน " + converNum(rs.GetString("claim_doc_no6")) + " ฉบับ";
-                        listDoc += "\r\n                      7. สำเนาบันทึกการเปรียบเทียบ จำนวน " + converNum(rs.GetString("claim_doc_no7")) + " ฉบับ";
-                        listDoc += "\r\n                      8. สำเนาใบเสร็จรับเงินค่าปรับ จำนวน " + converNum(rs.GetString("claim_doc_no8")) + " ฉบับ";
-                        listDoc += "\r\n                      9. ใบรับรองความเสียหายต่อทรัพย์สิน(ใบเคลมประกัน) จำนวน " + converNum(rs.GetString("claim_doc_no9")) + " ฉบับ";
-                        listDoc += "\r\n                      10. สำเนาบัตรประชาชน จำนวน " + converNum(rs.GetString("claim_doc_no10")) + " ฉบับ";
-                        listDoc += "\r\n                      11. สำเนาใบอนุญาตขับรถ จำนวน " + converNum(rs.GetString("claim_doc_no11")) + " ฉบับ";
-                        listDoc += "\r\n                      12. บันทึกข้อความรองผู้จัดการด่านฯ และพนักงานควบคุมระบบ จำนวน " + converNum(rs.GetString("claim_doc_no12")) + " ฉบับ";
-                        listDoc += "\r\n                      13. รูปถ่าย จำนวน " + converNum(rs.GetString("claim_doc_no13")) + " ฉบับ";
-                        title2 = rs.GetString("claim_doc_title");
-                        DateTitle = rs.GetString("claim_doc_date");
+                        dev += "\r\n                      " + i + ". " + rs.GetString("device_name") + " " + rs.GetString("device_damaged");
                     }
-                    rs.Close();
-                    function.Close();
+                    i++;
                 }
+                rs.Close();
+                function.Close();
+
+                string sql_doc = "SELECT * FROM tbl_claim_doc WHERE claim_doc_id = '" + key + "' AND claim_doc_type = '1'";
+                rs = function.MySqlSelect(sql_doc);
+
+                if (rs.Read())
+                {
+                    doc_num = rs.GetString("claim_doc_num");
+                    noteTo1 = rs.GetString("claim_doc_to");
+                    listDoc += "เอกสารประกอบการพิจารณาแนบ ดังนี้";
+                    listDoc += "\r\n                      1. บันทึกข้อความ จำนวน " + converNum(rs.GetString("claim_doc_no1")) + " ฉบับ";
+                    listDoc += "\r\n                      2. หนังสือยอมรับผิด จำนวน " + converNum(rs.GetString("claim_doc_no2")) + " ฉบับ";
+                    listDoc += "\r\n                      3. รายงานอุบัติเหตุบนทางหลวง (ส.3-02) จำนวน " + converNum(rs.GetString("claim_doc_no3")) + " ฉบับ";
+                    listDoc += "\r\n                      4. ข้อมูลเบื้องต้นจากการสอบปากคำผู้เกี่ยวข้อง สป.11 จำนวน " + converNum(rs.GetString("claim_doc_no4")) + " ฉบับ";
+                    listDoc += "\r\n                      5. บันทึกข้อมูลการเกิดอุบัติเหตุเบื้องต้นสำหรับการแจ้งความ จำนวน " + converNum(rs.GetString("claim_doc_no5")) + " ฉบับ";
+                    listDoc += "\r\n                      6. สำเนารายงานประจำวันเกี่ยวกับคดี จำนวน " + converNum(rs.GetString("claim_doc_no6")) + " ฉบับ";
+                    listDoc += "\r\n                      7. สำเนาบันทึกการเปรียบเทียบ จำนวน " + converNum(rs.GetString("claim_doc_no7")) + " ฉบับ";
+                    listDoc += "\r\n                      8. สำเนาใบเสร็จรับเงินค่าปรับ จำนวน " + converNum(rs.GetString("claim_doc_no8")) + " ฉบับ";
+                    listDoc += "\r\n                      9. ใบรับรองความเสียหายต่อทรัพย์สิน(ใบเคลมประกัน) จำนวน " + converNum(rs.GetString("claim_doc_no9")) + " ฉบับ";
+                    listDoc += "\r\n                      10. สำเนาบัตรประชาชน จำนวน " + converNum(rs.GetString("claim_doc_no10")) + " ฉบับ";
+                    listDoc += "\r\n                      11. สำเนาใบอนุญาตขับรถ จำนวน " + converNum(rs.GetString("claim_doc_no11")) + " ฉบับ";
+                    listDoc += "\r\n                      12. บันทึกข้อความรองผู้จัดการด่านฯ และพนักงานควบคุมระบบ จำนวน " + converNum(rs.GetString("claim_doc_no12")) + " ฉบับ";
+                    listDoc += "\r\n                      13. รูปถ่าย จำนวน " + converNum(rs.GetString("claim_doc_no13")) + " ฉบับ";
+                    title2 = rs.GetString("claim_doc_title");
+                    DateTitle = rs.GetString("claim_doc_date");
+                }
+                rs.Close();
+                function.Close();
+            }
 
             string sqlID = "SELECT claim_auto_id FROM tbl_claim c LEFT JOIN tbl_claim_auto_id i ON c.claim_id = i.claim_id WHERE c.claim_id = '" + key + "'";
             rs = function.MySqlSelect(sqlID);
             if (rs.Read())
             {
-                if(rs["claim_auto_id"] != System.DBNull.Value)
+                if (rs["claim_auto_id"] != System.DBNull.Value)
                 {
                     reference = "เลขควบคุม " + rs.GetString("claim_auto_id");
                 }
@@ -910,46 +895,47 @@ namespace ClaimProject.Claim
                 }
             }
             rs.Close();
-
             ReportDocument rpt = new ReportDocument();
-                string cpoint_title = "ด่านฯ " + cpointName;
-                if (report == 0)
-                {
-                    cpoint_title += " " + point;
-                    rpt.Load(Server.MapPath("/Claim/reportCom.rpt"));
-                    doc_num = noteNumber;
-                    rpt.SetParameterValue("list_com", com != "" ? com : "");
-                    rpt.SetParameterValue("name", name);
-                    rpt.SetParameterValue("txt_to", noteTo);
-                    rpt.SetParameterValue("note_title", title);
-                    rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(cpointDate));
-                    rpt.SetParameterValue("Cpointname", cpointName);
-                    rpt.SetParameterValue("superb", superb);
-                    //rpt.SetParameterValue("manager", manager);
-                    rpt.SetParameterValue("manager", "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName);
-                    rpt.SetParameterValue("Cpcontrol", Cpcontrol);
-                }
-                else
-                {
-                    rpt.Load(Server.MapPath("/Claim/reportOfficialBooks.rpt"));
-                    rpt.SetParameterValue("list_doc", listDoc != "" ? listDoc : "");
-                    rpt.SetParameterValue("name", "(" + cpoint_manager + ")\r\nผู้จัดการด่านฯ " + cpointName);
-                    rpt.SetParameterValue("txt_to", noteTo1);
-                    rpt.SetParameterValue("note_title", title2);
-                    rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(DateTitle));
-                }
-                cpoint_title += " ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
-                
-                rpt.SetParameterValue("cpoint_title", cpoint_title);
-                rpt.SetParameterValue("num_title", doc_num);
-                rpt.SetParameterValue("note_text", strNote);
-                rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
-                rpt.SetParameterValue("list_dev", dev);
-                rpt.SetParameterValue("reference", reference);
 
-                Session["Report"] = rpt;
-                Session["ReportTitle"] = "บันทึกข้อความ";
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
+            string cpoint_title = "ด่านฯ " + cpointName;
+
+            if (report == 0)
+            {
+                cpoint_title += " " + point;
+                rpt.Load(Server.MapPath("/Claim/reportCom.rpt"));
+                doc_num = noteNumber;
+                rpt.SetParameterValue("list_com", com != "" ? com : "");
+                rpt.SetParameterValue("name", name);
+                rpt.SetParameterValue("txt_to", noteTo);
+                rpt.SetParameterValue("note_title", title);
+                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(cpointDate));
+                rpt.SetParameterValue("Cpointname", cpointName);
+                rpt.SetParameterValue("superb", superb);
+                //rpt.SetParameterValue("manager", manager);
+                rpt.SetParameterValue("manager", "(" + cpoint_manager + ")\r\n" + pos_manager + " " + cpointName);
+                rpt.SetParameterValue("Cpcontrol", Cpcontrol);
+            }
+            else
+            {
+                rpt.Load(Server.MapPath("/Claim/reportOfficialBooks.rpt"));
+                rpt.SetParameterValue("list_doc", listDoc != "" ? listDoc : "");
+                rpt.SetParameterValue("name", "(" + cpoint_manager + ")\r\n" + pos_manager + " " + cpointName);
+                rpt.SetParameterValue("txt_to", noteTo1);
+                rpt.SetParameterValue("note_title", title2);
+                rpt.SetParameterValue("date_thai", function.ConvertDatelongThai(DateTitle));
+            }
+            cpoint_title += " ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม โทร. " + function.GetSelectValue("tbl_cpoint", "cpoint_name='" + cpointName + "'", "cpoint_tel");
+
+            rpt.SetParameterValue("cpoint_title", cpoint_title);
+            rpt.SetParameterValue("num_title", doc_num);
+            rpt.SetParameterValue("note_text", strNote);
+            rpt.SetParameterValue("part_img", Server.MapPath("/Claim/300px-Thai_government_Garuda_emblem_(Version_2).jpg"));
+            rpt.SetParameterValue("list_dev", dev);
+            rpt.SetParameterValue("reference", reference);
+
+            Session["Report"] = rpt;
+            Session["ReportTitle"] = "บันทึกข้อความ";
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('/Report/reportView','_newtab');", true);
             //}
         }
 
@@ -971,7 +957,7 @@ namespace ClaimProject.Claim
                 try
                 {
                     txtNoteTo.Text = rs.GetString("claim_doc_to");
-                    try { txtDocNum.Text = rs.GetString("claim_doc_num").Split('/')[3]+"/"+ rs.GetString("claim_doc_num").Split('/')[4]; } catch { txtDocNum.Text = ""; }
+                    try { txtDocNum.Text = rs.GetString("claim_doc_num").Split('/')[3] + "/" + rs.GetString("claim_doc_num").Split('/')[4]; } catch { txtDocNum.Text = ""; }
                     //try { txtDocNum.Text = rs.GetString("claim_doc_num"); } catch { txtDocNum.Text = ""; }
                     txtDate.Text = rs.GetString("claim_doc_date");
                     txtTitle.Text = rs.GetString("claim_doc_title");
@@ -1003,7 +989,7 @@ namespace ClaimProject.Claim
             if (Session["claim_id"].ToString() != "")
             {
                 string note_number = "กท.๘/" + function.GetSelectValue("tbl_claim JOIN tbl_cpoint ON cpoint_id = claim_cpoint", "claim_id='" + Session["claim_id"].ToString() + "'", "cpoint_name") + "/";
-                note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim() ;
+                note_number += txtDocNum.Text.Trim() == "" ? "          " : txtDocNum.Text.Trim();
                 string note_to = txtNoteTo.Text;
                 string[] textValue = new string[16];
                 textValue[0] = txtNo1.Text.Trim();
@@ -1033,7 +1019,6 @@ namespace ClaimProject.Claim
                     else
                     {
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99 ติดต่อเจ้าหน้าที่')", true);
-
                     }
                 }
                 else
@@ -1049,9 +1034,6 @@ namespace ClaimProject.Claim
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", "alert('Error99 ติดต่อเจ้าหน้าที่')", true);
                     }
                 }
-
-                //GetReport(Session["claim_id"].ToString(), 1);
-                //clearDate();
             }
         }
 
@@ -1084,6 +1066,5 @@ namespace ClaimProject.Claim
             }
             return num;
         }
-
     }
 }

@@ -45,7 +45,7 @@
         }
     </style>
     <div class="tab-content">
-        <div class="card" style="font-size: 26px; z-index: 0; font-family: 'TH SarabunPSK';">
+        <div class="card" style="font-size: 26px; z-index: 0; font-family: 'THSarabun';">
             <div class="card-body table-responsive">
                 <div runat="server" id="divCom">
                     <div class="card-title text-gray-800">

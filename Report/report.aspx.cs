@@ -34,7 +34,7 @@ namespace ClaimProject.Report
                 if (param.Read())
                 {
                     sendToll = param.GetString("toll_name");
-                    if (sendToll == "ฝ่ายบริหารฯ")
+                    if (sendToll == "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม")
                     {
                         sendToll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                     }
@@ -87,7 +87,7 @@ namespace ClaimProject.Report
                     else
                     {
                         gettoll = parame.GetString("toll_name");
-                        if (gettoll == "ฝ่ายบริหารฯ")
+                        if (gettoll == "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม")
                         {
                             gettoll = "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
                         }
