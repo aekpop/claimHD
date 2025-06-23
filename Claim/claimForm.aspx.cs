@@ -170,7 +170,7 @@ namespace ClaimProject.Claim
                 printReport1.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "claim_id");
                 if (DataBinder.Eval(e.Row.DataItem, "claim_status").ToString() == "6")
                 {
-                    printReport1.Visible = false;
+                    printReport1.Visible = true;
                 }
             }
 
@@ -180,7 +180,7 @@ namespace ClaimProject.Claim
                 printReport2.CommandName = (string)DataBinder.Eval(e.Row.DataItem, "claim_id");
                 if (DataBinder.Eval(e.Row.DataItem, "claim_status").ToString() == "6")
                 {
-                    printReport2.Visible = false;
+                    printReport2.Visible = true;
                 }
             }
 

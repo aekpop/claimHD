@@ -34,8 +34,7 @@ namespace ClaimProject.equip
             string who = "";
             if(who == "watcharee")
             {
-                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '3' OR eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");
-                
+                function.getListItem(ddlsearchEndToll, "select * from tbl_cpoint where eq_gr = '3' OR eq_gr = '0' order by cpoint_id ASC ", "cpoint_name", "cpoint_id");                
             }
             else if(who == "sawitree")
             {
@@ -84,7 +83,6 @@ namespace ClaimProject.equip
                                     {
                                         tollid += " where " + finalwhere(annexValue, cpointValue);
                                     }
-
                                 }
                                 else  //เลือกอาคาร
                                 {
@@ -94,7 +92,6 @@ namespace ClaimProject.equip
                                     }
                                     tollid += " where " + finalwhere(annexValue, cpointValue);
                                 }
-
                             }
                             else //เลือกสถานะเอกสาร
                             {
@@ -121,7 +118,6 @@ namespace ClaimProject.equip
                                 {
                                     tollid += " where " + finalwhere(annexValue, cpointValue);
                                 }
-
                             }
                             else //เลือกสถานะเอกสาร
                             {
@@ -136,7 +132,6 @@ namespace ClaimProject.equip
                                 }
                             }
                         }
-
                     }
                     else  //ระบุเลขอ้างอิง
                     {
@@ -153,14 +148,11 @@ namespace ClaimProject.equip
                                 {
                                     tollid += finalwhere(annexValue, cpointValue);
                                 }
-
                             }
                             else //เลือกสถานะเอกสาร
                             {
                                 tollid += " complete_stat = '" + StatusValue + "' AND ";
-
                                 tollid += finalwhere(annexValue, cpointValue);
-
                             }
                         }
                         else //เลือกด่านฯ
@@ -172,9 +164,7 @@ namespace ClaimProject.equip
                             else //เลือกสถานะเอกสาร
                             {
                                 tollid += "  complete_stat = '" + StatusValue + "' AND ";
-
                                 tollid += finalwhere(annexValue, cpointValue);
-
                             }
                         }
                     }
@@ -188,15 +178,12 @@ namespace ClaimProject.equip
                         {
                             if (StatusValue == "0")//ทุกสถานะเอกสาร
                             {
-
                                 tollid += finalwhere(annexValue, cpointValue);
-
                             }
                             else //เลือกสถานะเอกสาร
                             {
                                 tollid += "  complete_stat = '" + StatusValue + "' AND ";
                                 tollid += finalwhere(annexValue, cpointValue);
-
                             }
                         }
                         else //เลือกด่านฯ
@@ -211,7 +198,6 @@ namespace ClaimProject.equip
                                 {
                                     tollid += finalwhere(annexValue, cpointValue);
                                 }
-
                             }
                             else //เลือกสถานะเอกสาร
                             {
@@ -219,7 +205,6 @@ namespace ClaimProject.equip
                                 tollid += finalwhere(annexValue, cpointValue);
                             }
                         }
-
                     }
                     else
                     {
@@ -249,11 +234,7 @@ namespace ClaimProject.equip
                             }
                         }
                     }
-                }
-            
-                
-            
-            
+                }                                           
 
             //must join toll
             string qrytable = "select trans_id,complete_name,date_send,trans_stat_name,toll_name,toll_recieve,name_send,complete_badge,complete_link from tbl_transfer" +
@@ -288,16 +269,12 @@ namespace ClaimProject.equip
                 {
                     //aeknofear
                     valueReturn += " complete_stat != '1'  order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC";
-                }
-                         
-                
-                
+                }                                                  
             }
             else //เลือกด่าน
             {
                 if (annex == "0")//ทุกอาคาร
                 {
-
                     if (cpoint == "701") { valueReturn = "  toll_send = '7010' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
                     else if (cpoint == "702") { valueReturn = "  toll_send = '7020' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
                     else if (cpoint == "703") { valueReturn = "  cpoint_id = '703' AND complete_stat != '1'   order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
@@ -315,16 +292,12 @@ namespace ClaimProject.equip
                     else if (cpoint == "904") { valueReturn = "  cpoint_id = '904' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
                     else if (cpoint == "905") { valueReturn = "  cpoint_id = '905' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC"; }
                     else { valueReturn = "  toll_send = '0' "; }
-
-
                 }
                 else//เลือกอาคาร
                 {
                     valueReturn = "  toll_send = '"+annex+ "' AND complete_stat != '1' order by complete_stat ASC ,STR_TO_DATE(date_send,'%d-%m-%Y')DESC";
-
                 }
             }
-
             return valueReturn;
         }        
 
@@ -420,15 +393,13 @@ namespace ClaimProject.equip
             {
                 lbstat.CssClass = "badge badge-" + (string)DataBinder.Eval(e.Row.DataItem, "complete_badge");
                 lbtntrans.CssClass = (string)DataBinder.Eval(e.Row.DataItem, "complete_link");
-
             }
         }
         protected void showannex ()
         {
             string idcpoint = ddlsearchEndToll.SelectedValue;
             if (idcpoint != "0")
-            {
-                
+            {             
                 if (idcpoint == "701")
                 {
                     divannex.Visible = false;
@@ -520,7 +491,6 @@ namespace ClaimProject.equip
                     divannex.Visible = false;
                     function.getListItem(ddlannex, "select * from tbl_toll where cpoint_id = '920' order by toll_id ASC ", "toll_name", "toll_id");
                 }
-
             }
             else
             {
@@ -528,7 +498,6 @@ namespace ClaimProject.equip
                 function.getListItem(ddlannex, "select * from tbl_toll  order by toll_id ASC ", "toll_name", "toll_id");
                 ddlannex.Items.Insert(0, new ListItem("ทั้งหมด", "0"));
             }
-
         }
 
         protected void btnUpdateEQ_Command(object sender, CommandEventArgs e)

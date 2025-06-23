@@ -770,7 +770,7 @@ namespace ClaimProject
                     {
                         cpoint_title += "ฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม กองทางหลวงพิเศษระหว่างเมือง โทร. 02 360 7865";
                         strNote = cpointName + " มีความประสงค์ขอ" + transStat + "รายการครุภัณฑ์ เพื่อใช้ในการปฏิบัติงานราชการ ตามรายละเอียดดังต่อไปนี้";
-                        name = " (นายบุญเพิ่ม เรียงไธสง)\r\nผู้อำนวยการฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
+                        name = " (นายชาคริต ดุลยรัตน์)\r\nผู้อำนวยการฝ่ายบริหารจัดเก็บเงินค่าธรรมเนียม";
 
                         sql = "SELECT * FROM tbl_transfer c JOIN tbl_toll t ON c.toll_recieve = t.toll_id JOIN `tbl_cpoint` p ON p.`cpoint_id` = t.`cpoint_id` WHERE c.`trans_id` = " + key;
                         MySqlDataReader rss = function.MySqlSelect(sql);

@@ -1,5 +1,6 @@
 ﻿using ClaimProject.Config;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,7 @@ namespace ClaimProject.CM
         public string EditModal = "";
         public string chkdup = "";
         public string token = "";
-        public string messageLine = "";
+        public string messageLine = "";        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -280,29 +281,25 @@ namespace ClaimProject.CM
                             if (rs.GetString("drive_group_id") == "4")
                             {
                                 sysname = "CMAir";
-                                //sysname = "test";
                             }
                             else
                             {
                                 if (txtCpoint.SelectedValue == "902" || txtCpoint.SelectedValue == "903" || txtCpoint.SelectedValue == "904" || txtCpoint.SelectedValue == "905")
                                 {
                                     sysname = "MAM9";
-                                    //sysname = "test";
                                 }
                                 else if (txtCpoint.SelectedValue == "701" || txtCpoint.SelectedValue == "702" || txtCpoint.SelectedValue == "703" || txtCpoint.SelectedValue == "704")
                                 {
                                     sysname = "MAM71";
-                                    //sysname = "test";
                                 }
                                 else if (txtCpoint.SelectedValue == "706" || txtCpoint.SelectedValue == "707" || txtCpoint.SelectedValue == "708" || txtCpoint.SelectedValue == "709" || txtCpoint.SelectedValue == "710")
                                 {
                                     sysname = "MAM72";
-                                    //sysname = "test";
                                 }
                                 else if (txtCpoint.SelectedValue == "711" || txtCpoint.SelectedValue == "712" || txtCpoint.SelectedValue == "713" )
                                 {
                                     sysname = "MAM73";
-                                    //sysname = "test";
+
                                 }
                                 else
                                 {
@@ -315,9 +312,6 @@ namespace ClaimProject.CM
                             {
                                 id = rd.GetString("cm_detail_id");
                             }
-
-                            //if (txtCpoint.SelectedValue != "711" && txtCpoint.SelectedValue != "712" && txtCpoint.SelectedValue != "713")
-                            //{
                                 if (rs.GetString("drive_group_id") == "2")
                                 {
                                     messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ")" + " \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \n ตรวจสอบพบ : " + txtProblem.Text + " ";
@@ -328,15 +322,8 @@ namespace ClaimProject.CM
                                 {
                                     messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
                                     AlertPop("บันทึกสำเร็จ", "success");
-                                    function.LineTran(sysname, messageLine);
-                                }
-                            //}
-                            //else
-                            //{
-                            //    messageLine = "#" + id + "\nแจ้งซ่อม : ด่านฯ " + txtCpoint.SelectedItem + " " + txtPoint.Text + "(" + ddlChanel.SelectedItem + ") \nวันที่ : " + txtSDate.Text + " @" + txtSTime.Text + " \nอุปกรณ์ : " + txtDeviceAdd.SelectedItem + " \nตรวจสอบพบ : " + txtProblem.Text + " ";
-                            //    AlertPop("บันทึกสำเร็จ", "success");
-                            //    function.LineTran(sysname, messageLine);
-                            //}
+                                    //function.LineTran(sysname, messageLine);
+                            }
                         }
                         BindData();
                         ClearDate();
@@ -348,7 +335,6 @@ namespace ClaimProject.CM
                 }
                 function.Close();
             }
-
         }
 
         private void ClearDate()
@@ -544,6 +530,6 @@ namespace ClaimProject.CM
             txtProblem.CssClass = "form-control";
             txtDeviceAdd.CssClass = "combobox form-control custom-select ";
             lbImg.CssClass = "text-black-50";
-        }
+        }     
     }
 }

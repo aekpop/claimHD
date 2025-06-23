@@ -16,6 +16,8 @@ using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Services;
+using System.Web.Services.Description;
+using Newtonsoft.Json;
 
 namespace ClaimProject.Config
 {
@@ -29,7 +31,7 @@ namespace ClaimProject.Config
         public string icons = "";
         public string alerts = "";
         public string alertTypes = "";
-        public string messageLine = "";
+        public string messageLine = "";       
 
         internal void getListItem(HtmlGenericControl ddlCMBudget, string v1, string v2, string v3)
         {
@@ -870,6 +872,6 @@ namespace ClaimProject.Config
             }
             catch { }
             return "";
-        }
+        }        
     }
 }

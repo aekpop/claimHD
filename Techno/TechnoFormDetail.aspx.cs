@@ -705,11 +705,11 @@ namespace ClaimProject.Techno
             if (doc == 1)
             {
                 rpt.SetParameterValue("copy_title", "สำเนา");
-                rpt.SetParameterValue("name", "ลงชื่อ          บุญเพิ่ม เรียงไธสง");
+                rpt.SetParameterValue("name", "ลงชื่อ          ชาคริต ดุลยรัตน์");
                 rpt.SetParameterValue("copy", "2.) สำเนาเรียน");
                 rpt.SetParameterValue("copy1", "หจ.จท.1, หจ.จท.2, หจ.จท.3, งานเทคโนฯ");
                 rpt.SetParameterValue("copy_detail", "- เพื่อทราบ");
-                rpt.SetParameterValue("name_copy", "(นายบุญเพิ่ม เรียงไธสง)\r\n                                            ผจท.");
+                rpt.SetParameterValue("name_copy", "(นายชาคริต ดุลยรัตน์)\r\n                                            ผจท.");
             }
             else
             {
@@ -946,10 +946,7 @@ namespace ClaimProject.Techno
                     }
                 }
                 note_text += " ทั้งนี้ด่านฯ " + rs.GetString("cpoint_name") + " ได้ดำเนินการแจ้งความร้องทุกไว้ที่ " + rs.GetString("claim_detail_inform") + " ไว้เป็นหลักฐานเรียบร้อยแล้ว";
-                //copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name") + "\r\n                   - เพื่อทราบติดตามผลการดำเนินงานต่อไป";
                 copy_tiele1 = "หจ.จท." + rs.GetString("cpoint_sup") + ", ผจด." + rs.GetString("cpoint_name");
-                //name_copy = "(นายบุญเพิ่ม เรียงไธสง)\r\n                                 ผจท.";
-
             }
             rs.Close();
             function.Close();
@@ -1018,7 +1015,7 @@ namespace ClaimProject.Techno
             rpt.SetParameterValue("fullname", "(" + function.GetDirector("name") + ")");
             if (doc != 0)
             {
-                name = "(ลงชื่อ)     บุญเพิ่ม เรียงไธสง";
+                name = "(ลงชื่อ)     ชาคริต ดุลยรัตน์";
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("copy_title", copy_title);
                 rpt.SetParameterValue("copy_tiele1", copy_tiele1);
